@@ -17,56 +17,104 @@ $result = mysqli_query(dbconnect(), $sql);
 
 ?>
 <div class="grid lg:grid-cols-7 md:grid-cols-4  gap-6 px-4">
-<?php
+    <style>
+        .overlay {
+            position: absolute;
+            background-color: skyblue;
+            color: white;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 100%;
+            overflow: hidden;
+            transition: all 0.2s ease-in-out;
+        }
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $n = $n + 1;
-        $interval = nishatimedef($repeatkeeper, $row["time"]);
-        $capsoltimesecond =   $interval->s;
-        $capsoltimeminute =   $interval->i;
+        .parent:hover .overlay {
+            top: 0;
+        }
+    </style>
+    <?php
 
-        if ($capsoltimesecond > 1 or $capsoltimeminute > 0) {
-            $repeatkeeper =  $row["time"];
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $n = $n + 1;
+            $interval = nishatimedef($repeatkeeper, $row["time"]);
+            $capsoltimesecond =   $interval->s;
+            $capsoltimeminute =   $interval->i;
 
-            if ($n == 1) {
-                $phone = $row['phone'];
-                $status = $row['status'];
-                $statuskeeper = $statuskeeper . $status;
-                $callid = $row["callid"];
-                $internal = $row["user"];
+            if ($capsoltimesecond > 1 or $capsoltimeminute > 0) {
+                $repeatkeeper =  $row["time"];
 
-                if ($status == 1) {
-                    $answer = 'class="this-user-answer"';
-                } else {
-                    $answer = '';
+                if ($n == 1) {
+                    $phone = $row['phone'];
+                    $status = $row['status'];
+                    $statuskeeper = $statuskeeper . $status;
+                    $callid = $row["callid"];
+                    $internal = $row["user"];
+
+                    if ($status == 1) {
+                        $answer = 'class="this-user-answer"';
+                    } else {
+                        $answer = '';
+                    }
+
+                    $img = $img . '<img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />';
+                    $taglabel = '';
+                    $userlabel = '';
+                    $jalali_time = '';
+
+                    continue;
                 }
 
-                $img = $img . '<img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />';
-                $taglabel = '';
-                $userlabel = '';
-                $jalali_time = '';
-
-                continue;
-            }
-
-            $sql2 = "SELECT * FROM customer WHERE phone LIKE '" . $phone . "%'";
-            $result2 = mysqli_query($con, $sql2);
-            if (mysqli_num_rows($result2) > 0) {
-                while ($row2 = mysqli_fetch_assoc($result2)) {
-                    $name = $row2['name'];
-                    $family = $row2['family'];
-                    $userlabel = $row2['user'];
-                    $taglabel = $row2['label'];
+                $sql2 = "SELECT * FROM customer WHERE phone LIKE '" . $phone . "%'";
+                $result2 = mysqli_query($con, $sql2);
+                if (mysqli_num_rows($result2) > 0) {
+                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                        $name = $row2['name'];
+                        $family = $row2['family'];
+                        $userlabel = $row2['user'];
+                        $taglabel = $row2['label'];
 
 
-?>
+    ?>
 
-                    <a href="main.php?phone=<?php echo $phone ?>" class="bg-gray-200 p-2 rounded-lg <?php if ($statuskeeper == 0) {
-                                                                                            echo 'this-capsol-answer';
-                                                                                        } ?> <?php if ($internal > 150) {echo 'capsol-bazar';                                                                                                                                              } ?>">
+                        <a href="main.php?phone=<?php echo $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
+                                                                                                                            echo 'this-capsol-answer';
+                                                                                                                        } ?> <?php if ($internal > 150) {
+                                                                                                                                echo 'capsol-bazar';
+                                                                                                                            } ?>">
+                            <div class="call-capsol-phone"><?php echo $phone ?></div>
+                            <div class="call-capsol-name"><?php echo $name ?> <?php echo $family ?></div>
+                            <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
+                            <div class="call-capsol-extra-info"><?php googlecontact($phone); ?></div>
+                            <div class="call-capsol-user-img"><?php echo $img ?></div>
+                            <div class="call-capsol-taglabel"> <?php taglabelshow($taglabel)  ?></div>
+                            <div class="call-capsol-userlabel"> <?php userlabelshow($userlabel)  ?></div>
+                            <div class="call-capsol-if-reconnect"><?php ifreconnect($phone) ?></div>
+                            <div class="call-capsol-time-info"><?php echo $jalali_time ?></div>
+                            <div class="call-capsol-time-ago"><?php echo $jalali_time_ago ?></div>
+                            <div class="overlay rounded-lg text-sm">آخرین استعلام نمایش داده می شود</div>
+                        </a>
+
+
+                    <?php
+
+
+
+                    }
+                } else {
+                    ?>
+
+
+                    <a href="main.php?phone=<?php echo $phone ?>" class="call- <?php if ($statuskeeper == 0) {
+                                                                                    echo 'this-capsol-answer';
+                                                                                } ?>  <?php if ($internal > 150) {
+                                                                                            echo 'capsol-bazar';
+                                                                                        } ?>">
                         <div class="call-capsol-phone"><?php echo $phone ?></div>
-                        <div class="call-capsol-name"><?php echo $name ?> <?php echo $family ?></div>
+                        <div class="call-capsol-name no-save">این شماره ذخیره نشده است</div>
                         <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
                         <div class="call-capsol-extra-info"><?php googlecontact($phone); ?></div>
                         <div class="call-capsol-user-img"><?php echo $img ?></div>
@@ -79,107 +127,79 @@ if (mysqli_num_rows($result) > 0) {
                     </a>
 
 
+
                 <?php
 
-
-
                 }
+                $img = '';
+                $taglabel = '';
+                $userlabel = '';
+                $statuskeeper = '';
+
+
+                // get value 
+
+                $phone = $row['phone'];
+                $status = $row['status'];
+                $statuskeeper = $statuskeeper . $status;
+                $callid = $row["callid"];
+                $internal = $row["user"];
+                $start = $row['starttime'];
+                $end = $row['endtime'];
+                $answertime = nishatimedef($start, $end);
+                $answertime = '<div class="capsol-answer-time">' . format_calling_time($answertime) . '</div>';
+
+
+                if ($status == 1) {
+                    $answer = 'class="this-user-answer"';
+                } else {
+                    $answer = '';
+                    $answertime = '';
+                }
+
+                $img = $img . '<div><img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />' . $answertime . '</div>';
+
+                $jalali_time = jalalitime($row["time"]);
+                $jalali_time_ago =  format_interval(nishatimedef(date('Y/m/d H:i:s'), $row["time"]));
             } else {
+
+
                 ?>
 
 
-                <a href="main.php?phone=<?php echo $phone ?>" class="call- <?php if ($statuskeeper == 0) {
-                                                                                        echo 'this-capsol-answer';
-                                                                                    } ?>  <?php if ($internal > 150) {
-                                                                                                                                                    echo 'capsol-bazar';
-                                                                                                                                                } ?>">
-                    <div class="call-capsol-phone"><?php echo $phone ?></div>
-                    <div class="call-capsol-name no-save">این شماره ذخیره نشده است</div>
-                    <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
-                    <div class="call-capsol-extra-info"><?php googlecontact($phone); ?></div>
-                    <div class="call-capsol-user-img"><?php echo $img ?></div>
-                    <div class="call-capsol-taglabel"> <?php taglabelshow($taglabel)  ?></div>
-                    <div class="call-capsol-userlabel"> <?php userlabelshow($userlabel)  ?></div>
-                    <div class="call-capsol-if-reconnect"><?php ifreconnect($phone) ?></div>
-                    <div class="call-capsol-time-info"><?php echo $jalali_time ?></div>
-                    <div class="call-capsol-time-ago"><?php echo $jalali_time_ago ?></div>
-                    <div class="capsol-behind min-w-full">آخرین استعلام نمایش داده می شود</div>
-                </a>
 
 
+    <?php
 
-            <?php
+                // get value 
 
+                $phone = $row['phone'];
+                $status = $row['status'];
+                $statuskeeper = $statuskeeper . $status;
+
+                $callid = $row["callid"];
+                $internal = $row["user"];
+
+                $start = $row['starttime'];
+                $end = $row['endtime'];
+                $answertime = nishatimedef($start, $end);
+                $answertime = '<div class="capsol-answer-time">' . format_calling_time($answertime) . '</div>';
+
+                if ($status == 1) {
+                    $answer = 'class="this-user-answer"';
+                } else {
+                    $answer = '';
+                    $answertime = '';
+                }
+
+                $img = $img . '<div><img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />' . $answertime . '</div>';
+
+                $jalali_time = jalalitime($row["time"]);
+                $jalali_time_ago =  format_interval(nishatimedef(date('Y/m/d H:i:s'), $row["time"]));
             }
-            $img = '';
-            $taglabel = '';
-            $userlabel = '';
-            $statuskeeper = '';
-
-
-            // get value 
-
-            $phone = $row['phone'];
-            $status = $row['status'];
-            $statuskeeper = $statuskeeper . $status;
-            $callid = $row["callid"];
-            $internal = $row["user"];
-            $start = $row['starttime'];
-            $end = $row['endtime'];
-            $answertime = nishatimedef($start, $end);
-            $answertime = '<div class="capsol-answer-time">' . format_calling_time($answertime) . '</div>';
-
-
-            if ($status == 1) {
-                $answer = 'class="this-user-answer"';
-            } else {
-                $answer = '';
-                $answertime = '';
-            }
-
-            $img = $img . '<div><img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />' . $answertime . '</div>';
-
-            $jalali_time = jalalitime($row["time"]);
-            $jalali_time_ago =  format_interval(nishatimedef(date('Y/m/d H:i:s'), $row["time"]));
-        } else {
-
-
-            ?>
-
-
-
-
-<?php
-
-            // get value 
-
-            $phone = $row['phone'];
-            $status = $row['status'];
-            $statuskeeper = $statuskeeper . $status;
-
-            $callid = $row["callid"];
-            $internal = $row["user"];
-
-            $start = $row['starttime'];
-            $end = $row['endtime'];
-            $answertime = nishatimedef($start, $end);
-            $answertime = '<div class="capsol-answer-time">' . format_calling_time($answertime) . '</div>';
-
-            if ($status == 1) {
-                $answer = 'class="this-user-answer"';
-            } else {
-                $answer = '';
-                $answertime = '';
-            }
-
-            $img = $img . '<div><img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />' . $answertime . '</div>';
-
-            $jalali_time = jalalitime($row["time"]);
-            $jalali_time_ago =  format_interval(nishatimedef(date('Y/m/d H:i:s'), $row["time"]));
         }
     }
-}
-?>
+    ?>
 </div>
 <?php
 require_once './layout/heroFooter.php';
