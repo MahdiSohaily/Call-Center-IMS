@@ -22,13 +22,16 @@ require_once('./app/Controllers/notificationController.php');
                         <th scope="col" class="px-3 py-3 text-white text-center">
                             وضعیت
                         </th>
-                        <th scope="col" class="px-3 py-3 text-white text-center w-24">
-                            عملیات
-                        </th>
+                        <?php if ($data['name'] === 'مریم') { ?>
+
+                            <th scope="col" class="px-3 py-3 text-white text-center w-24">
+                                عملیات
+                            </th>
+                        <?php } ?>
                     </tr>
-                </thead> 
+                </thead>
                 <tbody id="results">
-                    <?php if (count($notifications['adminNotification']) > 0) { 
+                    <?php if (count($notifications['adminNotification']) > 0) {
 
                         foreach ($notifications['adminNotification'] as $notification) {
                     ?>
@@ -45,23 +48,28 @@ require_once('./app/Controllers/notificationController.php');
                                 <td class="whitespace-nowrap px-3 py-3 text-center font-bold">
                                     <?php echo $notification['status'] === 'pending' ? 'در حال انتظار' : 'بررسی شده' ?>
                                 </td>
-                                <td class="whitespace-nowrap w-24">
-                                    <div class="flex justify-center gap-1 items-center px-2">
-                                        <form action="./showPriceReports.php" method="post">
-                                            <input name="givenPrice" type="text" value="givenPrice" id="form" hidden>
-                                            <input name="user" type="text" value="<?php echo $_SESSION['user_id'] ?>" id="form" hidden>
-                                            <input name="customer" value="<?php echo $notification['customer_id'] ?>" type="number" hidden />
-                                            <input name="code" value="<?php echo $notification['code'] ?>" type="text" hidden />
-                                            <input name="notification" value="<?php echo $notification['id'] ?>" type="text" hidden />
-                                            <button type="submit">
-                                                <i class="material-icons text-blue-500 hover:text-blue-700 hover:cursor-pointer">archive</i>
-                                            </button>
-                                        </form>
-                                        <a>
-                                            <i onclick="weDontHave(this)" data-id="<?php echo $notification['id'] ?>" data-code="<?php echo $notification['code'] ?>" data-customer="<?php echo $notification['customer_id'] ?>" class="bold material-icons text-red-500 hover:text-red-700 hover:cursor-pointer">close</i>
-                                        </a>
-                                    </div>
-                                </td>
+                                <?php if ($data['name'] === 'مریم') { ?>
+                                    <td class="whitespace-nowrap w-24">
+                                        <div class="flex justify-center gap-1 items-center px-2">
+                                            <form action="./showPriceReports.php" method="post" title="قیمت دهی">
+                                                <input name="givenPrice" type="text" value="givenPrice" id="form" hidden>
+                                                <input name="user" type="text" value="<?php echo $_SESSION['user_id'] ?>" id="form" hidden>
+                                                <input name="customer" value="<?php echo $notification['customer_id'] ?>" type="number" hidden />
+                                                <input name="code" value="<?php echo $notification['code'] ?>" type="text" hidden />
+                                                <input name="notification" value="<?php echo $notification['id'] ?>" type="text" hidden />
+                                                <button type="submit">
+                                                    <i class="material-icons text-blue-500 hover:text-blue-700 hover:cursor-pointer">archive</i>
+                                                </button>
+                                            </form>
+                                            <a title="نادیده گرفتن">
+                                                <i onclick="weDontHave(this)" data-id="<?php echo $notification['id'] ?>" data-code="<?php echo $notification['code'] ?>" data-customer="<?php echo $notification['customer_id'] ?>" class="bold material-icons text-red-500 hover:text-red-700 hover:cursor-pointer">block</i>
+                                            </a>
+                                            <a title="نداریم">
+                                                <i onclick="weDontHave(this)" data-id="<?php echo $notification['id'] ?>" data-code="<?php echo $notification['code'] ?>" data-customer="<?php echo $notification['customer_id'] ?>" class="bold material-icons text-red-500 hover:text-red-700 hover:cursor-pointer">close</i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php }
                     } else { ?>
@@ -152,7 +160,7 @@ require_once('./app/Controllers/notificationController.php');
                         کاربر
                     </th>
                     <th scope="col" class="px-3 py-3 text-white text-center">
-                        قیمت داده شده 
+                        قیمت داده شده
                     </th>
                 </tr>
             </thead>

@@ -17,7 +17,7 @@ function index($conn, $id)
     if ($similar->num_rows > 0) {
         $data = mysqli_fetch_array($similar);
     }
-
+ 
 
     $adminNotification = [];
     if ($data['roll'] == 1) {
