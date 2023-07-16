@@ -14,6 +14,11 @@ $img = '';
 
 $sql = "SELECT * FROM incoming ORDER BY  time DESC LIMIT 200";
 $result = mysqli_query(dbconnect(), $sql);
+
+?>
+<div class="grid lg:grid-cols-7 md:grid-cols-4  gap-6 px-4">
+<?php
+
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $n = $n + 1;
@@ -44,9 +49,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 continue;
             }
-?>
-<div class="grid grid-cols-7">
-<?php
+
             $sql2 = "SELECT * FROM customer WHERE phone LIKE '" . $phone . "%'";
             $result2 = mysqli_query($con, $sql2);
             if (mysqli_num_rows($result2) > 0) {
@@ -59,7 +62,7 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 
-                    <a href="main.php?phone=<?php echo $phone ?>" class="call- <?php if ($statuskeeper == 0) {
+                    <a href="main.php?phone=<?php echo $phone ?>" class="bg-gray-200 p-2 rounded-lg <?php if ($statuskeeper == 0) {
                                                                                             echo 'this-capsol-answer';
                                                                                         } ?> <?php if ($internal > 150) {echo 'capsol-bazar';                                                                                                                                              } ?>">
                         <div class="call-capsol-phone"><?php echo $phone ?></div>
@@ -108,9 +111,6 @@ if (mysqli_num_rows($result) > 0) {
             <?php
 
             }
-            ?>
-            </div>
-            <?php
             $img = '';
             $taglabel = '';
             $userlabel = '';
@@ -179,4 +179,7 @@ if (mysqli_num_rows($result) > 0) {
         }
     }
 }
+?>
+</div>
+<?php
 require_once './layout/heroFooter.php';
