@@ -1,4 +1,4 @@
-<div class="manual-add-customer">
+<div style="z-index: 100;" class="manual-add-customer">
     <a href="#">کارتابل</a>
     <div contenteditable="true"></div>
 
