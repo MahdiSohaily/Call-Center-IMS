@@ -16,8 +16,6 @@
             $kind = $row['kind'];
             $label = $row['label'];
             $userselect = $row['user'];
-
-
             echo '<div class="phone-status">شماره <span>' . $phone . '</span> با نام <span>' . $name . '</span> <span>' . $family . '</span> در سیستم ثبت می باشد .</div>';
             $isold = 1;
         }
