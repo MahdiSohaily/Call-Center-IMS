@@ -20,7 +20,7 @@ $result = mysqli_query(dbconnect(), $sql);
     <style>
         .overlay {
             position: absolute;
-            background-color: skyblue;
+            background-color: rgba(85, 85, 85, 0.826);
             color: white;
             inset: 0;
             display: flex;
@@ -108,7 +108,7 @@ $result = mysqli_query(dbconnect(), $sql);
                     ?>
 
 
-                    <a href="main.php?phone=<?php echo $phone ?>" class="call- <?php if ($statuskeeper == 0) {
+                    <a href="main.php?phone=<?php echo $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
                                                                                     echo 'this-capsol-answer';
                                                                                 } ?>  <?php if ($internal > 150) {
                                                                                             echo 'capsol-bazar';
@@ -123,7 +123,7 @@ $result = mysqli_query(dbconnect(), $sql);
                         <div class="call-capsol-if-reconnect"><?php ifreconnect($phone) ?></div>
                         <div class="call-capsol-time-info"><?php echo $jalali_time ?></div>
                         <div class="call-capsol-time-ago"><?php echo $jalali_time_ago ?></div>
-                        <div class="capsol-behind min-w-full">آخرین استعلام نمایش داده می شود</div>
+                        <div class="overlay rounded-lg text-sm">آخرین استعلام نمایش داده می شود</div>
                     </a>
 
 
