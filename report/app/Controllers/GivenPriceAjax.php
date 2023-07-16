@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require_once('../../database/connect.php');
 if (isset($_POST['store_price'])) {
@@ -24,7 +24,7 @@ if (isset($_POST['store_price'])) {
                 if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
                     <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
                     <?php } else { ?>
-                    <tr class="min-w-full mb-1  bg-indigo-200 ?>" data-price="<?php echo $price['price'] ?>">
+                    <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
                     <?php  } ?>
                     <td scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                         <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
@@ -37,7 +37,7 @@ if (isset($_POST['store_price'])) {
                         }
                         ?>
                     </td>
-                    <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                    <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
                         <?php echo array_key_exists("partnumber", $price) ? $price['partnumber'] : '' ?>
                     </td>
                     <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
@@ -330,10 +330,10 @@ if ($isValidCustomer) {
                                         <table class=" min-w-full text-sm font-light">
                                             <thead>
                                                 <tr class="min-w-full bg-green-600">
-                                                    <td class="text-white text-center bold py-2 px-2 w-28">قیمت</td>
-                                                    <td class="text-white text-center bold py-2 px-2 rtl">مشتری</td>
-                                                    <td class="text-white text-center bold py-2 px-2 rtl">کد فنی</td>
-                                                    <td class="text-white text-center bold py-2 px-2 rtl">کاربر</td>
+                                                    <td class="text-white bold text-center py-2 px-2 w-28">قیمت</td>
+                                                    <td class="text-white bold text-center py-2 px-2 rtl">مشتری</td>
+                                                    <td class="text-white bold text-center py-2 px-2 rtl">کد فنی</td>
+                                                    <td class="text-white bold text-center py-2 px-2 rtl">کاربر</td>
                                                 </tr>
                                             </thead>
                                             <tbody id="price-<?php echo $partNumber ?>">
@@ -344,7 +344,7 @@ if ($isValidCustomer) {
                                                             if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
                                                                 <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
                                                                 <?php } else { ?>
-                                                                <tr class="min-w-full mb-1  bg-indigo-200 ?>" data-price="<?php echo $price['price'] ?>">
+                                                                <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
                                                                 <?php  } ?>
                                                                 <td scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
@@ -357,7 +357,7 @@ if ($isValidCustomer) {
                                                                     }
                                                                     ?>
                                                                 </td>
-                                                                <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
                                                                     <?php echo array_key_exists("partnumber", $price) ? $price['partnumber'] : '' ?>
                                                                 </td>
                                                                 <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">

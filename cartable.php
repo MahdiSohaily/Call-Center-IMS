@@ -44,7 +44,9 @@ if (mysqli_num_rows($result) > 0) {
 
                 continue;
             }
-
+?>
+<div class="grid grid-cols-7">
+<?php
             $sql2 = "SELECT * FROM customer WHERE phone LIKE '" . $phone . "%'";
             $result2 = mysqli_query($con, $sql2);
             if (mysqli_num_rows($result2) > 0) {
@@ -57,13 +59,9 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 
-                    <a href="main.php?phone=<?php echo $phone ?>" class="call-capsol <?php if ($statuskeeper == 0) {
+                    <a href="main.php?phone=<?php echo $phone ?>" class="call- <?php if ($statuskeeper == 0) {
                                                                                             echo 'this-capsol-answer';
-                                                                                        } ?> <?php if ($internal > 150) {
-                                                                                                                                                    echo 'capsol-bazar';
-                                                                                                                                                } ?>">
-
-
+                                                                                        } ?> <?php if ($internal > 150) {echo 'capsol-bazar';                                                                                                                                              } ?>">
                         <div class="call-capsol-phone"><?php echo $phone ?></div>
                         <div class="call-capsol-name"><?php echo $name ?> <?php echo $family ?></div>
                         <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
@@ -87,7 +85,7 @@ if (mysqli_num_rows($result) > 0) {
                 ?>
 
 
-                <a href="main.php?phone=<?php echo $phone ?>" class="call-capsol <?php if ($statuskeeper == 0) {
+                <a href="main.php?phone=<?php echo $phone ?>" class="call- <?php if ($statuskeeper == 0) {
                                                                                         echo 'this-capsol-answer';
                                                                                     } ?>  <?php if ($internal > 150) {
                                                                                                                                                     echo 'capsol-bazar';
@@ -110,6 +108,9 @@ if (mysqli_num_rows($result) > 0) {
             <?php
 
             }
+            ?>
+            </div>
+            <?php
             $img = '';
             $taglabel = '';
             $userlabel = '';
