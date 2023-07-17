@@ -63,7 +63,8 @@ require_once('./views/Layouts/header.php');
         }
     };
 
-    const selectCustomer = (id = 1) => {
+    const selectCustomer = (element) => {
+        id = element.getAttribute('data-customer-id');
         document.getElementById('target_customer').value = id;
         document.getElementById('search_result').classList.add("hidden");
     }
