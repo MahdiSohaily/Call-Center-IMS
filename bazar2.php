@@ -1,12 +1,18 @@
 <?php require_once './layout/heroHeader.php'; ?>
+<style>
+    .estelam-form-code,
+    .estelam-form-price {
+        color: black;
+    }
+</style>
 <div class="estelam-table-top">
-    <input style="border: 2px solid gray;" id="myInput" type="text" placeholder="سرچ کنید ...">
+    <input class="border border-gray-400" id="myInput" type="text" placeholder="سرچ کنید ...">
 
-    <a href="#" class="hyundaimobisshow">هیوندای موبیز</a>
-    <a href="#" class="kiamobisshow">کیا موبیز</a>
-    <a href="#" class="mobisshow">موبیز</a>
-    <a href="#" class="kiashow">کیا</a>
-    <a href="#" class="hyundaishow">هیوندای</a>
+    <a href="#" class="hover:bg-gray-500 hyundaimobisshow">هیوندای موبیز</a>
+    <a href="#" class="hover:bg-gray-500 kiamobisshow">کیا موبیز</a>
+    <a href="#" class="hover:bg-gray-500 mobisshow">موبیز</a>
+    <a href="#" class="hover:bg-gray-500 kiashow">کیا</a>
+    <a href="#" class="hover:bg-gray-500 hyundaishow">هیوندای</a>
 </div>
 <table class="estelam-table">
     <tr>
@@ -43,14 +49,21 @@
                     <span></span>
                     <span></span>
                     <span></span>
+
                 </td>
                 <td class="sellername" tableid="<?php echo $sellerid ?>"><?php echo $sellername ?></td>
+
                 <td class="sellerphone"><?php echo $sellerphone ?></td>
                 <td class="sellerdes"><?php echo $sellerdes ?></td>
+
+
+
             </tr>
+
     <?php
         }
     }
+
     ?>
 
 </table>
@@ -61,16 +74,20 @@
     <div class="input-keeper">
         <input type="text" name="code[]" class="text-gray-500 estelam-form-code" placeholder="کد فنی">
         <input type="text" name="price[]" class="text-gray-500 estelam-form-price" placeholder="قیمت">
-        <a class="remove-from-estelam-form" href="#">X</a>
+        <a class="remove-from-estelam-form" href="#">
+            <i class="material-icons bold">close</i>
+        </a>
     </div>
     <div class="estelam-form-box">
-        <input type="text" class="sellername-input tiny-text" placeholder="فروشنده">
-        <input type="text" name="sellerid" class="sellerid-input tiny-text" hidden>
+        <input type="text" class="sellername-input" placeholder="فروشنده">
+        <input type="text" name="sellerid" class="sellerid-input" hidden>
 
-
-        <div style="clear: both; direction: ltr;" class="flex gap-3 px-1 py-3">
-            <button class="bg-gray-600 rounded-md px-5 py-3 tiny-text" type="submit">ذخیره استعلام ها</button>
-            <a class="bg-gray-600 rounded-md px-5 py-3 tiny-text" href="#">افزودن</a>
+        <div style="clear: both;"></div>
+        <div class="flex justify-between py-3">
+            <a class="add-item bg-gray-700 rounded-lg px-5 py-2 text-sm hover:bg-gray-800 mr-7" href="javascript:void();">افزودن</a>
+            <button class="bg-gray-700 rounded-lg px-5 py-2 text-sm hover:bg-gray-800 hover:cursor-pointer" type="submit">
+                ذخیره استعلام ها
+            </button>
         </div>
 
     </div>
@@ -160,10 +177,10 @@
 
         });
 
-        $(".add-to-estelam-form").click(function() {
+        $(".add-item").click(function() {
 
 
-            $(".estelam-form").prepend('<div class="input-keeper"> <input type="text" name="code[]" class="estelam-form-code" placeholder="کد فنی"> <input type="text" name="price[]" class="estelam-form-price" placeholder="قیمت"> <a class="remove-from-estelam-form" href="#">X</a> </div>')
+            $(".estelam-form").prepend('<div class="input-keeper"> <input type="text" name="code[]" class="estelam-form-code" placeholder="کد فنی"> <input type="text" name="price[]" class="estelam-form-price" placeholder="قیمت"> <a class="remove-from-estelam-form" href="#"><i class="material-icons bold">close</i></a> </div>')
 
         });
 
