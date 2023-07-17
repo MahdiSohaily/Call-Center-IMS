@@ -6,6 +6,7 @@ require_once('./views/Layouts/header.php');
     <form target="_blank" action="giveOrderedPrice.php" method="post">
         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
         <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
+        <input type="text" name="customer" value="1" id="target_customer" hidden>
         <div class="">
             <div class="col-span-12 sm:col-span-4 mb-3 relative">
                 <label for="customer">
@@ -13,7 +14,7 @@ require_once('./views/Layouts/header.php');
                     :
                     ( <span id="customer_info">کاربر دستوری</span> )
                 </label>
-                <input onkeyup="search(this.value)" type="text" name="customer" id="customer" class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+                <input onkeyup="searchCustomer(this.value)" type="text" name="search_input" id="customer" class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
                 <ul id="search_result" style="min-height: 150px;" class="hidden border bg-white rounded-lg my-2 shadow-md p-2 absolute min-w-full">
                     <li title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
                         <span>کاربر دستوری</span>
@@ -39,7 +40,7 @@ require_once('./views/Layouts/header.php');
     </form>
 </div>
 <script>
-    const search = (val) => {
+    const searchCustomer = (val) => {
         let pattern = val;
         let superMode = 0;
         const resultBox = document.getElementById("search_result");
