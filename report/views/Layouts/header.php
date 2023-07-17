@@ -82,7 +82,7 @@ switch (basename($_SERVER['PHP_SELF'])) {
             transform: translateX(-50%);
             padding: 10px;
             border-radius: 5px;
-            width: 300px;
+            width: 400px;
             z-index: 100000000;
             background-color: #9899ef;
         }
