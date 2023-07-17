@@ -5,7 +5,7 @@ $finalResult = null;
 
 
 if (filter_has_var(INPUT_POST, 'givenPrice') && filter_has_var(INPUT_POST, 'user')) {
-    $customer = $_POST['customer'];
+    $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
     $code = $_POST['code'];
     $_SESSION["user_id"] = $_POST['user'];
     $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;

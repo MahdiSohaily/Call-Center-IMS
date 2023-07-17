@@ -1,5 +1,7 @@
 <?php
 require_once('./views/Layouts/header.php');
+$sql = "SELECT * FROM callcenter.customer";
+$cars = mysqli_query($conn, $sql);
 ?>
 <div class="rtl max-w-2xl mx-auto py-20 sm:px-6 lg:px-8 bg-white rounded-lg shadow-sm mt-11">
 
@@ -7,10 +9,23 @@ require_once('./views/Layouts/header.php');
         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
         <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
         <div class="">
-            <div class="col-span-6 sm:col-span-4">
-                <input name="customer" hidden value="1" class="border-1 border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 p-3
-                focus:ring-indigo-500 rounded-md shadow-sm px-3" required id="customer" type="number" />
-                <p class="mt-2"></p>
+            <div class="col-span-12 sm:col-span-4 mb-3">
+                <label for="cars">
+                    مشتری مد نظر
+                </label>
+                <select name="customer" id="cars" type="cars" multiple class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    <?php
+                    if (mysqli_num_rows($cars) > 0) {
+                        while ($item = mysqli_fetch_assoc($cars)) {
+                    ?>
+                            <option value="<?php echo $item['id'] ?>" class="flex justify-between text-sm">
+                                <span style="direction: rtl;"><?php echo $item['name'] . ' ' . $item['family'] ?></span>
+                                <span style="direction: rtl;"><?php echo $item['phone']  ?></span>
+                            </option>
+
+                    <?php }
+                    } ?>
+                </select>
             </div>
             <!-- Korea section -->
             <div class="col-span-6 sm:col-span-4">
@@ -30,6 +45,54 @@ require_once('./views/Layouts/header.php');
     </form>
 </div>
 <script>
+    // This function helps to set the selected items from select elements when we load a predefined relationship
+    function setSelectedItems(id, cars) {
+        for (var option of document.getElementById(id).options) {
+            if (cars.includes(option.value)) {
+                option.selected = 'true';
+                option.style.color = 'red';
+            }
+        }
+    }
+
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('#cars').select2({
+            matcher: matchCustom,
+            maximumSelectionLength: 1,
+            formatSelectionTooBig: function(limit) {
+                return 'شما باید تنها یک مورد انتخاب کنید';
+            }
+        });
+
+    });
+
+    // This function helps to display only the matching results when user types a keyword (Slecte 2 plugin)
+    function matchCustom(params, data) {
+        // If there are no search terms, return all of the data
+        if ($.trim(params.term) === '') {
+            return data;
+        }
+
+        // Do not display the item if there is no 'text' property
+        if (typeof data.text === 'undefined') {
+            return null;
+        }
+
+        // `params.term` should be the term that is used for searching
+        // `data.text` is the text that is displayed for the data object
+        if (data.text.indexOf(params.term) > -1) {
+            var modifiedData = $.extend({}, data, true);
+            modifiedData.text += '';
+
+            // You can return modified objects from here
+            // This includes matching the `children` how you want in nested data sets
+            return modifiedData;
+        }
+
+        // Return `null` if the term should not be displayed
+        return null;
+    }
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
