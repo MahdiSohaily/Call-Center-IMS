@@ -1,7 +1,5 @@
 <?php
 require_once('./views/Layouts/header.php');
-$sql = "SELECT * FROM callcenter.customer";
-$cars = mysqli_query($conn, $sql);
 ?>
 <div class="rtl max-w-2xl mx-auto py-20 sm:px-6 lg:px-8 bg-white rounded-lg shadow-sm mt-11">
 
@@ -9,23 +7,19 @@ $cars = mysqli_query($conn, $sql);
         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
         <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
         <div class="">
-            <div class="col-span-12 sm:col-span-4 mb-3">
-                <label for="cars">
+            <div class="col-span-12 sm:col-span-4 mb-3 relative">
+                <label for="customer">
                     مشتری مد نظر
+                    :
+                    ( <span id="customer_info">کاربر دستوری</span> )
                 </label>
-                <select name="customer" id="cars" type="cars" multiple class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                    <?php
-                    if (mysqli_num_rows($cars) > 0) {
-                        while ($item = mysqli_fetch_assoc($cars)) {
-                    ?>
-                            <option value="<?php echo $item['id'] ?>" class="flex justify-between text-sm">
-                                <span style="direction: rtl;"><?php echo $item['name'] . ' ' . $item['family'] ?></span>
-                                <span style="direction: rtl;"><?php echo $item['phone']  ?></span>
-                            </option>
-
-                    <?php }
-                    } ?>
-                </select>
+                <input onkeyup="search()" type="text" name="customer" id="customer" class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+                <ul id="search_result" style="min-height: 150px;" class="hidden border bg-white rounded-lg my-2 shadow-md p-2 absolute min-w-full">
+                    <li title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
+                        <span>کاربر دستوری</span>
+                        <span style="direction: ltr;">+939333346016</span>
+                    </li>
+                </ul>
             </div>
             <!-- Korea section -->
             <div class="col-span-6 sm:col-span-4">
@@ -45,16 +39,9 @@ $cars = mysqli_query($conn, $sql);
     </form>
 </div>
 <script>
-    // This function helps to set the selected items from select elements when we load a predefined relationship
-    function setSelectedItems(id, cars) {
-        for (var option of document.getElementById(id).options) {
-            if (cars.includes(option.value)) {
-                option.selected = 'true';
-                option.style.color = 'red';
-            }
-        }
+    function search() {
+        alert('www');
     }
-
     // In your Javascript (external .js resource or <script> tag)
     $(document).ready(function() {
         $('#cars').select2({
@@ -66,33 +53,6 @@ $cars = mysqli_query($conn, $sql);
         });
 
     });
-
-    // This function helps to display only the matching results when user types a keyword (Slecte 2 plugin)
-    function matchCustom(params, data) {
-        // If there are no search terms, return all of the data
-        if ($.trim(params.term) === '') {
-            return data;
-        }
-
-        // Do not display the item if there is no 'text' property
-        if (typeof data.text === 'undefined') {
-            return null;
-        }
-
-        // `params.term` should be the term that is used for searching
-        // `data.text` is the text that is displayed for the data object
-        if (data.text.indexOf(params.term) > -1) {
-            var modifiedData = $.extend({}, data, true);
-            modifiedData.text += '';
-
-            // You can return modified objects from here
-            // This includes matching the `children` how you want in nested data sets
-            return modifiedData;
-        }
-
-        // Return `null` if the term should not be displayed
-        return null;
-    }
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
