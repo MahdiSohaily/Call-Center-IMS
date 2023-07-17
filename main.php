@@ -117,8 +117,13 @@
                     } ?>
              </form>
          </div>
-         <button onclick="displayNotification('Hello', 'This is a notification message.')">Notify me!</button>
-
+         <!-- <button onclick="displayNotification('Hello', 'This is a notification message.')">Notify me!</button>
+         <p>
+             chrome://flags/#unsafely-treat-insecure-origin-as-secure
+         </p>
+         <p>
+         http://192.168.9.14/
+         </p> -->
      </div>
  </div>
 
