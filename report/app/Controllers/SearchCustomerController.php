@@ -10,11 +10,12 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
             $rates_sql = "SELECT * FROM rates ORDER BY amount ASC";
             $rates = mysqli_query($conn, $rates_sql);
 
+            $id = $item['id'];
             $name = $item['name'];
             $family = $item['family'];
             $phone = $item['phone'];
 ?>
-            <li title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
+            <li onclick="selectCustomer()" data-customer-id="<?php echo $id ?>" title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
                 <span><?php echo $name . ' ' . $family ?></span>
                 <span style="direction: ltr;"><?php echo $phone ?></span>
             </li>
