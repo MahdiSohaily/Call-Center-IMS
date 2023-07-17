@@ -117,11 +117,39 @@
                     } ?>
              </form>
          </div>
+         <button onclick="displayNotification('Hello', 'This is a notification message.')">Notify me!</button>
+
      </div>
  </div>
 
- <!-- WRITTEN BY MAHDI REZAEI -->
- <script src="./report/public/js/index.js"></script>
+ <script>
+     function displayNotification(title, body) {
+         // Check if the browser supports notifications
+         if (!("Notification" in window)) {
+             console.log("This browser does not support desktop notifications.");
+             return;
+         }
+
+         // Check the current permission status
+         if (Notification.permission === "granted") {
+             // If permission has been granted, create a notification
+             new Notification(title, {
+                 body
+             });
+         } else if (Notification.permission !== "denied") {
+             // Otherwise, request permission from the user
+             Notification.requestPermission().then((permission) => {
+                 if (permission === "granted") {
+                     // If permission has been granted, create a notification
+                     new Notification(title, {
+                         body
+                     });
+                 }
+             });
+         }
+     }
+ </script>
+
  <?php
     if (isset($id)) {
         $givenPrice = (givenPrice($con, $id));

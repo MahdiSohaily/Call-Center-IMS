@@ -32,6 +32,7 @@ $title = '';
             echo "<link rel='stylesheet' href='./css/factor/factorStyles.css?v=$rand' type='text/css' media='all' />";
             break;
         case 'main.php':
+            $rand = rand();
             $title = "اطلاعات مشتری";
             echo "<link rel='stylesheet' href='./css/main/mainStyle.css?v=$rand' type='text/css' media='all' />";
             break;
