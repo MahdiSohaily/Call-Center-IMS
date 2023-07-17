@@ -1,6 +1,6 @@
 <?php
 require_once('../../database/connect.php');
-if (filter_var(INPUT_POST, 'pattern')) {
+if (filter_has_var(INPUT_POST, 'pattern')) {
     $pattern = $_POST['pattern'];
     $sql = "SELECT * FROM callcenter.customer WHERE name LIKE '" . $pattern . "%' OR  family LIKE '" . $pattern . "%'";
     $result = mysqli_query($conn, $sql);
@@ -15,8 +15,8 @@ if (filter_var(INPUT_POST, 'pattern')) {
             $phone = $item['phone'];
 ?>
             <li title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
-                <span>کاربر دستوری</span>
-                <span style="direction: ltr;">+939333346016</span>
+                <span><?php echo $name . ' ' . $family ?></span>
+                <span style="direction: ltr;"><?php echo $phone ?></span>
             </li>
 <?php }
     }
