@@ -65,6 +65,14 @@ require_once('./views/Layouts/header.php');
 
     const selectCustomer = (element) => {
         id = element.getAttribute('data-customer-id');
+        name = element.getAttribute('data-customer-name');
+        family = element.getAttribute('data-customer-family');
+
+        document.getElementById('customer_info').innerHTML = name + " " + family;
+        document.getElementById('customer').value = name + " " + family;
+
+
+
         document.getElementById('target_customer').value = id;
         document.getElementById('search_result').classList.add("hidden");
     }

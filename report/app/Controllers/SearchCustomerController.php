@@ -15,7 +15,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
             $family = $item['family'];
             $phone = $item['phone'];
 ?>
-            <li onclick="selectCustomer(this)" data-customer-id="<?php echo $id ?>" title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
+            <li onclick="selectCustomer(this)" data-customer-id="<?php echo $id ?>" data-customer-name="<?php echo $name ?>" data-customer-family="<?php echo $family ?>" title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
                 <span><?php echo $name . ' ' . $family ?></span>
                 <span style="direction: ltr;"><?php echo $phone ?></span>
             </li>
