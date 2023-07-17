@@ -15,7 +15,7 @@ require_once('./views/Layouts/header.php');
                     ( <span id="customer_info">کاربر دستوری</span> )
                 </label>
                 <input onkeyup="searchCustomer(this.value)" type="text" name="search_input" id="customer" class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
-                <ul id="search_result" style="min-height: 150px;" class="hidden border bg-white rounded-lg my-2 shadow-md p-2 absolute min-w-full">
+                <ul id="search_result" style="max-height: 350px; overflow: auto;" class="hidden border bg-white rounded-lg my-2 shadow-md p-2 absolute min-w-full">
                     <li onclick="selectCustomer()" title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
                         <span>کاربر دستوری</span>
                         <span style="direction: ltr;">+939333346016</span>
