@@ -1,8 +1,8 @@
 <?php
 require_once('../../database/connect.php');
-if (filter_var(INPUT_POST,'pattern')) {
+if (filter_var(INPUT_POST, 'pattern')) {
     $pattern = $_POST['pattern'];
-    $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $pattern . "%'";
+    $sql = "SELECT * FROM callcenter.customer WHERE name LIKE '" . $pattern . "%' OR  family LIKE '" . $pattern . "%'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -10,21 +10,14 @@ if (filter_var(INPUT_POST,'pattern')) {
             $rates_sql = "SELECT * FROM rates ORDER BY amount ASC";
             $rates = mysqli_query($conn, $rates_sql);
 
-            $partNumber = $item['partnumber'];
-            $price = $item['price'];
-            $avgPrice = round(($price * 110) / 243.5);
-            $weight = round($item['weight'], 2);
-            $mobis = $item['mobis'];
-            $korea = $item['korea'];
-            $status = null;
-
-            if ($mobis == "0.00") {
-                $status = "NO-Price";
-            } elseif ($mobis == "-") {
-                $status = "NO-Mobis";
-            } elseif ($mobis == NULL) {
-                $status = "Request";
-            } else {
-                $status = "YES-Mobis";
-            }
+            $name = $item['name'];
+            $family = $item['family'];
+            $phone = $item['phone'];
 ?>
+            <li title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
+                <span>کاربر دستوری</span>
+                <span style="direction: ltr;">+939333346016</span>
+            </li>
+<?php }
+    }
+} ?>
