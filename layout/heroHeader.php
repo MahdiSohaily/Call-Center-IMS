@@ -33,7 +33,7 @@ $title = '';
             break;
         case 'main.php':
             $title = "اطلاعات مشتری";
-            echo "<link rel='stylesheet' href='./css/main/mainStyle.css' type='text/css' media='all' />";
+            echo "<link rel='stylesheet' href='./css/main/mainStyle.css?v=$rand' type='text/css' media='all' />";
             break;
         case 'customer-list.php':
             $title = "لیست مشتریان";
