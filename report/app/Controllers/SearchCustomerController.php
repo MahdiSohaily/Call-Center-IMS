@@ -19,6 +19,12 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
                 <span><?php echo $name . ' ' . $family ?></span>
                 <span style="direction: ltr;"><?php echo $phone ?></span>
             </li>
-<?php }
+        <?php }
+    } else {
+        ?>
+        <li title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
+            <span>مورد مشابهی در پایگاه داده پیدا نشد</span>
+        </li>
+<?php
     }
 } ?>
