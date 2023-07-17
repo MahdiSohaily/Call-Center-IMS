@@ -289,7 +289,7 @@ $title = '';
                             </a>
                         </li>
                         <li>
-                            <a target="_blank" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/givePrice.php">
+                            <a target="_self" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/givePrice.php">
                                 <i class="fas fa-feather-alt"></i>
                                 قیمت دهی دستوری
                             </a>
