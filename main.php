@@ -71,16 +71,19 @@
                      <input name="isold" id="isold" type="hidden" value="<?php echo ($isold) ?>">
                      <div class="col-span-3 bg-gray-200	p-3">
                          <p> درج اطلاعات استعلام</p>
-                         <textarea id="call_info_text" class="" name="callinfo"></textarea>
-                         <div class="callinfobox-option">
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست بارنامه </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست شماره کارت</div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> پیگیری پیک </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> پیگیری روند فاکتور </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست ثبت فاکتور </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> ارجاع به واتساپ </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست شماره واتساپ </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> اطلاعات واریز وجه </div>
+                         <textarea id="call_info_text" class="callinfo" name="callinfo"></textarea>
+                         <div class="flex items-start">
+                             <div class="callinfobox-option">
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست بارنامه </div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست شماره کارت</div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> پیگیری پیک </div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> پیگیری روند فاکتور </div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست ثبت فاکتور </div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> ارجاع به واتساپ </div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست شماره واتساپ </div>
+                                 <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> اطلاعات واریز وجه </div>
+                             </div>
+                             <i onclick="toGivenPrice()" title='انتقال کد به بخش جستجو' class="w-16 material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_backward</i>
                          </div>
                      </div>
                  </div>
@@ -134,6 +137,11 @@
      function toEstelam() {
          call_info_text.value = price_textarea.value;
          price_textarea.value = null;
+     }
+
+     function toGivenPrice() {
+         price_textarea.value = call_info_text.value;
+         call_info_text.value = null;
      }
 
 
