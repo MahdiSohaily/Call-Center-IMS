@@ -6,6 +6,7 @@ if (isset($_POST['store_price'])) {
     $price = $_POST['price'];
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
+    $code = $_POST['code'];
     store($conn, $partnumber, $price, $customer_id, $notification_id);
 
     $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partnumber'";
@@ -22,9 +23,9 @@ if (isset($_POST['store_price'])) {
         foreach ($givenPrice as $price) {
             if ($price['price'] !== null && $price['price'] !== '') {
                 if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
-                    <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
+                    <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
                     <?php } else { ?>
-                    <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
+                    <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
                     <?php  } ?>
                     <td scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                         <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
