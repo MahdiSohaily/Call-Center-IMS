@@ -28,11 +28,11 @@
     ?>
 
  <div class="customer_info px-5">
-     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-6 lg:p-2 overflow-auto">
+     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-6 lg:p-2 overflow-auto items-start">
          <div class="col-span-3">
              <h2 class="title text-lg">مشخصات مشتری</h2>
              <form class="save-contact form" action="php/save.php" method="get" autocomplete="off">
-                 <div class="grid grid-cols-1 md:grid-cols-5  gap-6">
+                 <div class="grid grid-cols-1 md:grid-cols-3  gap-6">
                      <div class="bg-gray-200 p-3">
                          <p>
                              شماره تماس
@@ -69,7 +69,7 @@
                          <textarea name="des"><?php echo !empty($des) ? $des : '' ?></textarea>
                      </div>
                      <input name="isold" id="isold" type="hidden" value="<?php echo ($isold) ?>">
-                     <div class="col-span-3 bg-gray-200	p-3">
+                     <div class="col-span-2 bg-gray-200	p-3">
                          <p> درج اطلاعات استعلام</p>
                          <textarea id="call_info_text" class="callinfo" name="callinfo"></textarea>
                          <div class="flex items-start">
@@ -94,7 +94,7 @@
                  </div>
              </form>
          </div>
-         <!-- The main bloack for the search codes for giving price and displaying the already given prices to the specidied client -->
+         <!-- The main block for the search codes for giving price and displaying the already given prices to the specified client -->
          <div class="bg-gray-200">
              <h2 class="title text-lg bg-white"> کد های مد نظر برای جستجو
              </h2>
