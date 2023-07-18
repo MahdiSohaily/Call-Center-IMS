@@ -22,15 +22,23 @@ require_once './layout/heroHeader.php';
             </tr>
             <tbody id="results">
                 <?php
-                $sql2 = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
+                $sql = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
                 FROM estelam AS e
                 JOIN yadakshop1402.users AS u ON e.user = u.id
                 JOIN yadakshop1402.seller AS s ON e.seller = s.id
                 ORDER BY e.time DESC
-                LIMIT 250;";
-                $result2 = mysqli_query($con, $sql2);
-                if (mysqli_num_rows($result2) > 0) {
-                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                LIMIT 250";
+
+                // Prepare the statement
+                $stmt = $pdo->prepare($sql);
+
+                // Execute the query
+                $stmt->execute();
+
+                // Fetch the results
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                if (count($results)) {
+                    foreach ($results as $row2) {
 
                         $code = $row2['codename'];
                         $seller = $row2['seller_name'];
@@ -79,7 +87,6 @@ require_once './layout/heroHeader.php';
 
         axios.post("./estelam-list-ajax.php", params)
             .then(function(response) {
-                console.log(response.data);
                 resultBox.innerHTML = response.data;
             })
             .catch(function(error) {
