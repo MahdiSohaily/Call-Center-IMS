@@ -16,7 +16,7 @@ $sql = "SELECT * FROM incoming ORDER BY  time DESC LIMIT 200";
 $result = mysqli_query(dbconnect(), $sql);
 
 ?>
-<div class="grid lg:grid-cols-7 md:grid-cols-4  gap-6 px-4">
+<div class="grid lg:grid-cols-6 md:grid-cols-4  gap-6 px-4">
     <style>
         .overlay {
             position: absolute;
