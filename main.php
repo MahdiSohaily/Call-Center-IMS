@@ -71,14 +71,10 @@
                      <input name="isold" id="isold" type="hidden" value="<?php echo ($isold) ?>">
                      <div class="col-span-3 bg-gray-200	p-3">
                          <p> درج اطلاعات استعلام</p>
-                         <textarea class="callinfo" name="callinfo"></textarea>
+                         <textarea id="call_info_text" class="" name="callinfo"></textarea>
                          <div class="callinfobox-option">
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white">
-                                 درخواست بارنامه
-                             </div>
-                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست شماره کارت
-
-                             </div>
+                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست بارنامه </div>
+                             <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست شماره کارت</div>
                              <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> پیگیری پیک </div>
                              <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> پیگیری روند فاکتور </div>
                              <div class="hover:cursor-pointer hover:bg-gray-400 hover:text-white"> درخواست ثبت فاکتور </div>
@@ -107,7 +103,10 @@
                      <div class="bg-gray-200  p-3">
 
                          <textarea class="border p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
-                         <button type="submit" class="give-search-button"> جستجو</button>
+                         <div class="flex justify-between items-center">
+                             <button type="submit" class="give-search-button"> جستجو</button>
+                             <i onclick="toEstelam()" title='انتقال کد به بخش استعلام' class="material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_forward</i>
+                         </div>
                      </div>
 
                      <!-- <button type="button" class="give-search-button" onclick="SearchGivenPrice()"> بررسی</button> -->
@@ -117,6 +116,7 @@
                     } ?>
              </form>
          </div>
+
          <!-- <button onclick="displayNotification('Hello', 'This is a notification message.')">Notify me!</button>
          <p>
              chrome://flags/#unsafely-treat-insecure-origin-as-secure
@@ -126,8 +126,17 @@
          </p> -->
      </div>
  </div>
-
  <script>
+     const price_textarea = document.getElementById('givenCode');
+     const call_info_text = document.getElementById('call_info_text');
+
+
+     function toEstelam() {
+         call_info_text.value = price_textarea.value;
+         price_textarea.value = null;
+     }
+
+
      function displayNotification(title, body) {
          // Check if the browser supports notifications
          if (!("Notification" in window)) {
