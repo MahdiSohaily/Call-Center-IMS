@@ -26,7 +26,7 @@ require_once './layout/heroHeader.php';
                 FROM estelam AS e
                 JOIN yadakshop1402.users AS u ON e.user = u.id
                 JOIN yadakshop1402.seller AS s ON e.seller = s.id
-                ORDER BY e.time
+                ORDER BY e.time DESC
                 LIMIT 250;";
                 $result2 = mysqli_query($con, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
