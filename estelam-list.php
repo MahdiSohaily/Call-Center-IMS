@@ -26,6 +26,7 @@ require_once './layout/heroHeader.php';
                 FROM estelam AS e
                 JOIN yadakshop1402.users AS u ON e.user = u.id
                 JOIN yadakshop1402.seller AS s ON e.seller = s.id
+                GROUP BY e.time
                 ORDER BY e.time DESC
                 LIMIT 250";
 

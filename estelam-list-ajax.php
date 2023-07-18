@@ -11,6 +11,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
     JOIN yadakshop1402.seller AS s ON e.seller = s.id
     WHERE LOWER(REPLACE(e.codename, ' ', '')) LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
         OR REPLACE(s.name, ' ', '') LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
+        GROUP BY e.time
     ORDER BY e.time DESC
     LIMIT 250";
 
