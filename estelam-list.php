@@ -2,8 +2,8 @@
 require_once './layout/heroHeader.php';
 ?>
 
-<div class="box">
-    <div class="flex justify-">
+<div class="">
+    <div class="flex">
         <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
         <div class="px-24">
             <label for="search">جستجو</label>
@@ -38,6 +38,8 @@ require_once './layout/heroHeader.php';
 
                 // Fetch the results
                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $currentGroup = null;
+                $condition = true;
                 if (count($results)) {
                     foreach ($results as $row2) {
 
@@ -46,11 +48,22 @@ require_once './layout/heroHeader.php';
                         $price = $row2['price'];
                         $name = $row2['user_name'];
                         $family = $row2['user_family'];
-                        $time = $row2['time'];
+                        $date_time = explode(' ', $row2['time']);
+                        $date = $date_time[0];
+                        $time = $date_time[1];
+
+                        $date = explode('-', $date);
+
+                        $conditionValidator = $date[2];
+                        if ($conditionValidator !== $currentGroup) {
+                            // Update the current group
+                            $currentGroup = $conditionValidator;
+                            $condition = !$condition;
+                        }
                 ?>
-                        <tr>
-                            <td><?php echo $code ?></td>
-                            <td><?php echo $seller ?></td>
+                        <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(226 232 240)' ?>">
+                            <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $code ?>'><?php echo $code ?></td>
+                            <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                             <td><?php echo $price ?></td>
                             <td><?php echo $name ?> <?php echo $family ?></td>
                             <td><?php echo $time ?></td>
@@ -70,6 +83,14 @@ require_once './layout/heroHeader.php';
     </div>
 </div>
 <script>
+    const input = document.getElementById('search-bazar');
+
+    function searchByCustomer(element) {
+        const customer_name = element.getAttribute('data-customer');
+        searchBazar(customer_name);
+        input.value = customer_name;
+    }
+
     function searchBazar(pattern) {
         let superMode = 0;
         const resultBox = document.getElementById("results");

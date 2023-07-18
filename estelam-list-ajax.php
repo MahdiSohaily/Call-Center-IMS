@@ -26,21 +26,35 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
 
     // Fetch the results
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $currentGroup = null;
+    $condition = true;
     if (count($results)) {
         foreach ($results as $row2) {
+
             $code = $row2['codename'];
             $seller = $row2['seller_name'];
             $price = $row2['price'];
             $name = $row2['user_name'];
             $family = $row2['user_family'];
-            $time = $row2['time'];
+            $date_time = explode(' ', $row2['time']);
+            $date = $date_time[0];
+            $time = $date_time[1];
+
+            $date = explode('-', $date);
+
+            $conditionValidator = $date[2];
+            if ($conditionValidator !== $currentGroup) {
+                // Update the current group
+                $currentGroup = $conditionValidator;
+                $condition = !$condition;
+            }
 ?>
-            <tr>
-                <td><?php echo $code ?></td>
-                <td><?php echo $seller ?></td>
+            <tr style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(226 232 240)' ?>">
+                <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $code ?>'><?php echo $code ?></td>
+                <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                 <td><?php echo $price ?></td>
                 <td><?php echo $name ?> <?php echo $family ?></td>
-                <td><?php echo $time ?></td>
+                <td><?php echo $row2['time'] ?></td>
             </tr>
         <?php
         }
