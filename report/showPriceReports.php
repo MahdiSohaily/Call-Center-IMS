@@ -442,13 +442,13 @@ if ($isValidCustomer) {
 
 
                                             <div class="rtl">
-                                                <button onclick="createRelation(this)" data-part="<?php echo $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
+                                                <button onclick="createRelation(this)" data-code="<?php echo $code ?>" data-part="<?php echo $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
                                                     ثبت قیمت
                                                 </button>
                                                 <button onclick="donotHave(this)" data-code="<?php echo $code ?>" data-part="<?php echo $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
                                                     موجود نیست
                                                 </button>
-                                                <button onclick="askPrice(this)" data-user="<?php echo $_SESSION['user_id'] ?>" data-part="<?php echo $partNumber ?>" type="button" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
+                                                <button onclick="askPrice(this)" data-code="<?php echo $code ?>" data-user="<?php echo $_SESSION['user_id'] ?>" data-part="<?php echo $partNumber ?>" type="button" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
                                                     ارسال به نیایش
                                                 </button>
                                             </div>
@@ -603,11 +603,13 @@ if ($isValidCustomer) {
                 const user_id = element.getAttribute('data-user');
                 const customer_id = document.getElementById('customer_id').value;
 
+
                 const params = new URLSearchParams();
                 params.append('askPrice', 'askPrice');
                 params.append('partNumber', partNumber);
                 params.append('customer_id', customer_id);
                 params.append('user_id', user_id);
+
 
                 axios.post("./app/Controllers/GivenPriceAjax.php", params)
                     .then(function(response) {
@@ -639,6 +641,7 @@ if ($isValidCustomer) {
                 const partNumber = e.getAttribute('data-part');
                 const customer_id = document.getElementById('customer_id').value;
                 const notification_id = document.getElementById('notification_id').value;
+                const code = e.getAttribute('data-code');
 
                 const goodPrice = document.getElementById(partNumber + '-price').value;
                 const resultBox = document.getElementById('price-' + partNumber);
@@ -650,6 +653,7 @@ if ($isValidCustomer) {
                 params.append('customer_id', customer_id);
                 params.append('notification_id', notification_id);
                 params.append('price', goodPrice);
+                params.append('code', code);
 
                 axios.post("./app/Controllers/GivenPriceAjax.php", params)
                     .then(function(response) {
@@ -678,11 +682,13 @@ if ($isValidCustomer) {
                 newPrice = element.getAttribute('data-price');
                 part = element.getAttribute('data-part');
                 const input = document.getElementById(part + '-price');
+                console.log(part);
                 input.value = newPrice;
                 price = newPrice;
 
 
                 const partNumber = element.getAttribute('data-code').split('-')[0];
+
                 const target = document.getElementById(partNumber + '-append');
                 target.innerHTML = price;
             }
