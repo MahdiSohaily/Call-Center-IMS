@@ -7,7 +7,7 @@ require_once './layout/heroHeader.php';
         <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
         <div class="px-24">
             <label for="search">جستجو</label>
-            <input class="border" type="text" name="search" id="search-bazar" onkeyup="searchBazar(this.value)">
+            <input class="border py-2 px-3" type="text" name="search" id="search-bazar" onkeyup="searchBazar(this.value)">
         </div>
     </div>
     <div class="box-keeper">
