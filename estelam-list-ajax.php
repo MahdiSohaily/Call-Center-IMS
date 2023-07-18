@@ -3,18 +3,44 @@ require_once './php/function.php';
 require_once './config/database.php';
 
 if (filter_has_var(INPUT_POST, 'pattern')) {
+    $pattern = $_POST['pattern'];
 
-    $sql2 = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
-                FROM estelam AS e
-                JOIN yadakshop1402.users AS u ON e.user = u.id
-                JOIN yadakshop1402.seller AS s ON e.seller = s.id
-                WHERE e.codename LIKE '%" . $_POST['pattern'] . "%' OR s.name LIKE '%" . $_POST['pattern'] . "%'
-                ORDER BY e.time DESC
-                LIMIT 250";
-    $result2 = mysqli_query($con, $sql2);
-    if (mysqli_num_rows($result2) > 0) {
-        while ($row2 = mysqli_fetch_assoc($result2)) {
+    $host = 'localhost';
+    $dbname = 'callcenter';
+    $username = 'root';
+    $password = '';
 
+    // Establish a database connection
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+        exit();
+    }
+
+    $sql = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
+    FROM estelam AS e
+    JOIN yadakshop1402.users AS u ON e.user = u.id
+    JOIN yadakshop1402.seller AS s ON e.seller = s.id
+    WHERE LOWER(REPLACE(e.codename, ' ', '')) LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
+        OR REPLACE(s.name, ' ', '') LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
+    ORDER BY e.time DESC
+    LIMIT 250";
+
+    // Prepare the statement
+    $stmt = $pdo->prepare($sql);
+
+    // Bind the value to the :pattern placeholder
+    $stmt->bindValue(':pattern', $pattern);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Fetch the results
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (count($results)) {
+        foreach ($results as $row2) {
             $code = $row2['codename'];
             $seller = $row2['seller_name'];
             $price = $row2['price'];
@@ -39,4 +65,3 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
 <?php
     }
 }
-?>

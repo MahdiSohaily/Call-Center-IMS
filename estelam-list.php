@@ -79,6 +79,7 @@ require_once './layout/heroHeader.php';
 
         axios.post("./estelam-list-ajax.php", params)
             .then(function(response) {
+                console.log(response.data);
                 resultBox.innerHTML = response.data;
             })
             .catch(function(error) {
