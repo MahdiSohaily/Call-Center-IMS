@@ -2,45 +2,34 @@
 require_once './php/function.php';
 require_once './config/database.php';
 
-$sql2 = "SELECT * FROM estelam WHERE name LIKE '%" . $pattern . "%' OR  family LIKE '%" . $pattern . "%' ORDER BY  time DESC LIMIT 250  ";
-$result2 = mysqli_query($con, $sql2);
-if (mysqli_num_rows($result2) > 0) {
-    while ($row2 = mysqli_fetch_assoc($result2)) {
+if (filter_has_var(INPUT_POST, 'pattern')) {
 
-        $code = $row2['codename'];
-        $seller = $row2['seller'];
-        $price = $row2['price'];
-        $user = $row2['user'];
-        $time = $row2['time'];
+    $sql2 = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
+FROM estelam AS e
+JOIN yadakshop1402.users AS u ON e.user = u.id
+JOIN yadakshop1402.seller AS s ON e.seller = s.id
+WHERE e.codename LIKE '%" . $_POST['pattern'] . "' OR s.name LIKE '%" . $_POST['pattern'] . "%'
+ORDER BY e.time
+LIMIT 250;";
+    $result2 = mysqli_query($con, $sql2);
+    if (mysqli_num_rows($result2) > 0) {
+        while ($row2 = mysqli_fetch_assoc($result2)) {
 
-
-        $sql = "SELECT * FROM users WHERE id=$user";
-        $result = mysqli_query(dbconnect2(), $sql);
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $name = $row['name'];
-                $family = $row['family'];
-
-
-
-                $sql3 = "SELECT * FROM seller WHERE id=$seller";
-                $result3 = mysqli_query(dbconnect2(), $sql3);
-                if (mysqli_num_rows($result3) > 0) {
-                    while ($row3 = mysqli_fetch_assoc($result3)) {
-
-                        $sellername = $row3['name'];
+            $code = $row2['codename'];
+            $seller = $row2['seller_name'];
+            $price = $row2['price'];
+            $name = $row2['user_name'];
+            $family = $row2['user_family'];
+            $time = $row2['time'];
 ?>
-                        <tr>
-                            <td><?php echo $code ?></td>
-                            <td><?php echo $sellername ?></td>
-                            <td><?php echo $price ?></td>
-                            <td><?php echo $name ?> <?php echo $family ?></td>
-                            <td><?php echo $time ?></td>
-                        </tr>
+            <tr>
+                <td><?php echo $code ?></td>
+                <td><?php echo $seller ?></td>
+                <td><?php echo $price ?></td>
+                <td><?php echo $name ?> <?php echo $family ?></td>
+                <td><?php echo $time ?></td>
+            </tr>
 <?php
-                    }
-                }
-            }
         }
     }
 }

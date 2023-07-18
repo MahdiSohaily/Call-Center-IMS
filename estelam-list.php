@@ -68,6 +68,7 @@ require_once './layout/heroHeader.php';
 </div>
 <script>
     function searchBazar(pattern) {
+        alert(pattern);
         let superMode = 0;
         const resultBox = document.getElementById("results");
 
@@ -82,7 +83,6 @@ require_once './layout/heroHeader.php';
             </tr>`;
         var params = new URLSearchParams();
         params.append('pattern', pattern);
-        params.append('superMode', superMode);
 
         axios.post("./estelam-list-ajax.php", params)
             .then(function(response) {
