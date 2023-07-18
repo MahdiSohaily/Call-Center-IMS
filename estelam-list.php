@@ -22,44 +22,38 @@ require_once './layout/heroHeader.php';
             </tr>
             <tbody id="results">
                 <?php
-                $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 250  ";
+                $sql2 = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
+                FROM estelam AS e
+                JOIN yadakshop1402.users AS u ON e.user = u.id
+                JOIN yadakshop1402.seller AS s ON e.seller = s.id
+                ORDER BY e.time
+                LIMIT 250;";
                 $result2 = mysqli_query($con, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row2 = mysqli_fetch_assoc($result2)) {
+
                         $code = $row2['codename'];
-                        $seller = $row2['seller'];
+                        $seller = $row2['seller_name'];
                         $price = $row2['price'];
-                        $user = $row2['user'];
+                        $name = $row2['user_name'];
+                        $family = $row2['user_family'];
                         $time = $row2['time'];
-
-                        $sql = "SELECT * FROM users WHERE id=$user";
-                        $result = mysqli_query(dbconnect2(), $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $name = $row['name'];
-                                $family = $row['family'];
-
-
-
-                                $sql3 = "SELECT * FROM seller WHERE id=$seller";
-                                $result3 = mysqli_query(dbconnect2(), $sql3);
-                                if (mysqli_num_rows($result3) > 0) {
-                                    while ($row3 = mysqli_fetch_assoc($result3)) {
-                                        $sellername = $row3['name'];
                 ?>
-                                        <tr>
-                                            <td><?php echo $code ?></td>
-                                            <td><?php echo $sellername ?></td>
-                                            <td><?php echo $price ?></td>
-                                            <td><?php echo $name ?> <?php echo $family ?></td>
-                                            <td><?php echo $time ?></td>
-                                        </tr>
-                <?php
-                                    }
-                                }
-                            }
-                        }
+                        <tr>
+                            <td><?php echo $code ?></td>
+                            <td><?php echo $seller ?></td>
+                            <td><?php echo $price ?></td>
+                            <td><?php echo $name ?> <?php echo $family ?></td>
+                            <td><?php echo $time ?></td>
+                        </tr>
+                    <?php
                     }
+                } else {
+                    ?>
+                    <tr>
+                        <td colspan="5">مورد مشابهی در پایگاه داده پیدا نشد</td>
+                    </tr>
+                <?php
                 }
                 ?>
             </tbody>
@@ -68,7 +62,6 @@ require_once './layout/heroHeader.php';
 </div>
 <script>
     function searchBazar(pattern) {
-        alert(pattern);
         let superMode = 0;
         const resultBox = document.getElementById("results");
 
