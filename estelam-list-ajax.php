@@ -55,6 +55,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
                 <td><?php echo $price ?></td>
                 <td><?php echo $name ?> <?php echo $family ?></td>
                 <td><?php echo $row2['time'] ?></td>
+                <td><?php echo $row2['time'] ?></td>
             </tr>
         <?php
         }

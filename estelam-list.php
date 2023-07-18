@@ -18,7 +18,7 @@ require_once './layout/heroHeader.php';
 
                 <th>قیمت</th>
                 <th>کاربر ثبت کننده</th>
-                <th>زمان</th>
+                <th colspan="2">زمان</th>
             </tr>
             <tbody id="results">
                 <?php
@@ -66,6 +66,7 @@ require_once './layout/heroHeader.php';
                             <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                             <td><?php echo $price ?></td>
                             <td><?php echo $name ?> <?php echo $family ?></td>
+                            <td><?php echo $time ?></td>
                             <td><?php echo $time ?></td>
                         </tr>
                     <?php
