@@ -49,10 +49,10 @@ require_once './layout/heroHeader.php';
                         $name = $row2['user_name'];
                         $family = $row2['user_family'];
                         $date_time = explode(' ', $row2['time']);
-                        $date = $date_time[0];
+                        $fullDate = $date_time[0];
                         $time = $date_time[1];
 
-                        $date = explode('-', $date);
+                        $date = explode('-', $fullDate);
 
                         $conditionValidator = $date[2];
                         if ($conditionValidator !== $currentGroup) {
@@ -66,8 +66,42 @@ require_once './layout/heroHeader.php';
                             <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                             <td><?php echo $price ?></td>
                             <td><?php echo $name ?> <?php echo $family ?></td>
+                            <td>
+                                <?php
+                                $create = date($fullDate);
+
+
+                                $now = new DateTime(); // current date time
+                                $date_time = new DateTime($create); // date time from string
+                                $interval = $now->diff($date_time); // difference between two date times
+                                $days = $interval->format('%a'); // difference in days
+                                $hours = $interval->format('%h'); // difference in hours
+                                $minutes = $interval->format('%i'); // difference in minutes
+                                $seconds = $interval->format('%s'); // difference in seconds
+
+                                $text = '';
+
+                                if ($days) {
+                                    $text .= " $days روز و ";
+                                }
+
+                                if ($hours) {
+                                    $text .= "$hours ساعت ";
+                                }
+
+                                if (!$days && $minutes) {
+                                    $text .= "$minutes دقیقه ";
+                                }
+
+                                if (!$days && !$hours && $seconds) {
+                                    $text .= "$seconds ثانیه ";
+                                }
+
+                                echo "$text قبل";
+                                ?>
+                            </td>
                             <td><?php echo $time ?></td>
-                            <td><?php echo $time ?></td>
+
                         </tr>
                     <?php
                     }
