@@ -5,20 +5,6 @@ require_once './config/database.php';
 if (filter_has_var(INPUT_POST, 'pattern')) {
     $pattern = $_POST['pattern'];
 
-    $host = 'localhost';
-    $dbname = 'callcenter';
-    $username = 'root';
-    $password = '';
-
-    // Establish a database connection
-    try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-        exit();
-    }
-
     $sql = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
     FROM estelam AS e
     JOIN yadakshop1402.users AS u ON e.user = u.id
