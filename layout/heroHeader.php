@@ -53,6 +53,9 @@ $title = '';
             $rand = rand();
             echo "<link rel='stylesheet' href='./css/tv.css?v=$rand' type='text/css' media='all' />";
             break;
+        case 'estelam-list.php':
+            $title = "قیمت های گرفته شده";
+            break;
 
         default:
             $title = "صفحه اصلی";

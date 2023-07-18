@@ -3,9 +3,11 @@ require_once './layout/heroHeader.php';
 ?>
 
 <div class="box">
-    <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
+    <div class="flex justify-between">
+        <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
+        <input type="text" name="search" id="search-bazar" onkeyup="searchBazar(this.value)">
+    </div>
     <div class="box-keeper">
-
         <table class="customer-list">
             <tr>
                 <th>کد فنی</th>
@@ -14,12 +16,8 @@ require_once './layout/heroHeader.php';
                 <th>قیمت</th>
                 <th>کاربر ثبت کننده</th>
                 <th>زمان</th>
-
             </tr>
-
-
             <?php
-
             $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 250  ";
             $result2 = mysqli_query($con, $sql2);
             if (mysqli_num_rows($result2) > 0) {
@@ -49,7 +47,6 @@ require_once './layout/heroHeader.php';
                                     $sellername = $row3['name'];
             ?>
                                     <tr>
-
                                         <td><?php echo $code ?></td>
                                         <td><?php echo $sellername ?></td>
                                         <td><?php echo $price ?></td>
@@ -67,5 +64,10 @@ require_once './layout/heroHeader.php';
         </table>
     </div>
 </div>
+<script>
+    function searchBazar() {
+        
+    }
+</script>
 <?php
 require_once './layout/heroFooter.php';
