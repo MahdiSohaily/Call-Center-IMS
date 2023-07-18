@@ -77,7 +77,7 @@ require_once './layout/heroHeader.php';
 
         resultBox.innerHTML = `<tr class=''>
                 <td colspan='14' class='py-10 text-center'> 
-                    <img class=' block w-10 mx-auto h-auto' src='./public/img/loading.png' alt='loading'>
+                    <img class=' block w-10 mx-auto h-auto' src='./report/public/img/loading.png' alt='loading'>
                     </td>
             </tr>`;
         var params = new URLSearchParams();

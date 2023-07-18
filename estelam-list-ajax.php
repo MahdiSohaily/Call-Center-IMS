@@ -1,5 +1,8 @@
 <?php
-$sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 250  ";
+require_once './php/function.php';
+require_once './config/database.php';
+
+$sql2 = "SELECT * FROM estelam WHERE name LIKE '%" . $pattern . "%' OR  family LIKE '%" . $pattern . "%' ORDER BY  time DESC LIMIT 250  ";
 $result2 = mysqli_query($con, $sql2);
 if (mysqli_num_rows($result2) > 0) {
     while ($row2 = mysqli_fetch_assoc($result2)) {
