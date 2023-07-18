@@ -28,7 +28,7 @@ function format_interval(DateInterval $interval)
 }
 ?>
 <!-- START NEWLY ADDED SECTION BY MAHDI REZAEI -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-2">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-2" id="resultBox">
     <div class="rtl mb-5">
         <h2 class="text-xl py-2">آخرین قیمت های داده شده</h2>
         <table class="min-w-full text-left text-sm bg-white custom-table mb-2 p-3">
@@ -51,7 +51,7 @@ function format_interval(DateInterval $interval)
                     </th>
                 </tr>
             </thead>
-            <tbody id="resultBox">
+            <tbody >
                 <?php
                 if (count($givenPrice) > 0) {
                 ?>
@@ -61,8 +61,11 @@ function format_interval(DateInterval $interval)
                             <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
                             <?php  } ?>
                             <td class=" px-1">
-                                <p class="text-right text-gray-700 px-2 py-1">
-                                    <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                <p class="text-right text-indigo-600 px-1 py-1">
+                                    <a class="flex items-center" href="../main.php?phone=<?php echo $price['phone'] ?>">
+                                        <i class="small material-icons px-2">attachment</i>
+                                        <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                    </a>
                                 </p>
                             </td>
                             <td class=" px-1">
@@ -233,7 +236,7 @@ function format_interval(DateInterval $interval)
             .catch(function(error) {
                 console.log(error);
             });
-    }, 5000);
+    }, 20000);
 </script>
 
 <?php
