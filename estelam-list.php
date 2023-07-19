@@ -1,5 +1,21 @@
 <?php
 require_once './layout/heroHeader.php';
+$sql = "SELECT e.*, u.id As user_id, s.name AS seller_name
+FROM estelam AS e
+JOIN yadakshop1402.users AS u ON e.user = u.id
+JOIN yadakshop1402.seller AS s ON e.seller = s.id
+GROUP BY e.time
+ORDER BY e.time DESC
+LIMIT 250";
+
+// Prepare the statement
+$stmt = $pdo->prepare($sql);
+
+// Execute the query
+$stmt->execute();
+
+// Fetch the results
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="">
@@ -11,76 +27,88 @@ require_once './layout/heroHeader.php';
         </div>
     </div>
     <div class="box-keeper">
-        <table class="customer-list">
-            <tr>
-                <th>کد فنی</th>
-                <th>فروشنده</th>
+        <?php
+        $currentGroup = null;
+        $bgColors = ['rgb(241 245 249)', 'rgb(165 243 252)']; // Array of background colors for date groups
 
-                <th>قیمت</th>
-                <th>کاربر ثبت کننده</th>
-                <th>زمان</th>
-            </tr>
-            <tbody id="results">
-                <?php
-                $sql = "SELECT e.*, u.id As user_id, s.name AS seller_name
-                FROM estelam AS e
-                JOIN yadakshop1402.users AS u ON e.user = u.id
-                JOIN yadakshop1402.seller AS s ON e.seller = s.id
-                GROUP BY e.time
-                ORDER BY e.time DESC
-                LIMIT 250";
+        // Function to compare prices
+        function comparePrices($a, $b)
+        {
+            // Extract the date and price from the input
+            $dateA = substr($a['price'], 0, 10);
+            $dateB = substr($b['price'], 0, 10);
+            $priceA = substr($a['price'], 11);
+            $priceB = substr($b['price'], 11);
 
-                // Prepare the statement
-                $stmt = $pdo->prepare($sql);
+            // Compare the dates
+            $dateComparison = strcmp($dateA, $dateB);
 
-                // Execute the query
-                $stmt->execute();
+            // If the dates are not the same, sort by date
+            if ($dateComparison != 0) {
+                return $dateComparison;
+            }
 
-                // Fetch the results
-                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                $currentGroup = null;
-                $condition = true;
-                if (count($results)) {
-                    foreach ($results as $row) {
-                        $time = $row['time'];
-                        $price = $row['price'];
+            // If either price contains "/", move it to the end
+            if (strpos($priceA, '/') !== false) {
+                return 1; // Move $a to the end
+            } elseif (strpos($priceB, '/') !== false) {
+                return -1; // Move $b to the end
+            }
 
-                        // Check if the group has changed
-                        if ($time !== $currentGroup) {
-                            // Display a row for the new group
-                            echo '<div class="date-group">' . $time . '</div>';
+            // If both prices don't contain "/", compare them numerically
+            return strcmp($priceA, $priceB);
+        }
 
-                            // Update the current group
-                            $currentGroup = $time;
-                        }
+        // Sort the result array based on prices
+        usort($results, 'comparePrices');
 
-                        // Check if the price section contains a slash
-                        if (strpos($price, '/') !== false) {
-                            // Display the row with slash at the end
-                            echo '<div class="row">';
-                            echo '<p>' . $row['user_id'] . ' ' . $row['user_i'] . ' - ' . $row['seller_name'] . '</p>';
-                            echo '<p>' . $price . '</p>';
-                            // Add more data if needed
-                            echo '</div>';
-                        } else {
-                            // Display the row without slash at the beginning
-                            echo '<div class="row">';
-                            echo '<p>' . $price . '</p>';
-                            echo '<p>' . $row['user_name'] . ' ' . $row['user_family'] . ' - ' . $row['seller_name'] . '</p>';
-                            // Add more data if needed
-                            echo '</div>';
-                        }
-                    }
-                } else {
-                ?>
-                    <tr>
-                        <td colspan="5">مورد مشابهی در پایگاه داده پیدا نشد</td>
-                    </tr>
-                <?php
-                }
-                ?>
-            </tbody>
-        </table>
+        echo '<table class="min-w-full">';
+        echo '<tr>';
+        echo '<th>Part Number</th>';
+        echo '<th>Seller Name</th>';
+        echo '<th>Price</th>';
+        echo '<th>User ID</th>';
+        echo '</tr>';
+
+        $bgColorIndex = 0;
+
+        foreach ($results as $row) {
+            $time = $row['time'];
+            $partNumber = $row['codename'];
+            $sellerName = $row['seller_name'];
+            $price = $row['price'];
+            $userId = $row['user_id'];
+
+            // Explode the time value to separate date and time
+            $dateTime = explode(' ', $time);
+            $date = $dateTime[0];
+
+            // Check if the group has changed
+            if ($date !== $currentGroup) {
+                // Update the current group
+                $currentGroup = $date;
+
+                // Get the background color for the current group
+                $bgColor = $bgColors[$bgColorIndex % count($bgColors)];
+                $bgColorIndex++;
+
+                // Display a row for the new group with the background color
+                echo '<tr class="bg-red-400">';
+                echo '<td colspan="5">' . $date . '</td>';
+                echo '</tr>';
+            }
+
+            // Display the row for current entry with the same background color as the group
+            echo '<tr style="background-color: ' . $bgColor . ';">';
+            echo '<td>' . $partNumber . '</td>';
+            echo '<td>' . $sellerName . '</td>';
+            echo '<td>' . $price . '</td>';
+            echo '<td>' . $userId . '</td>';
+            echo '</tr>';
+        }
+
+        echo '</table>';
+        ?>
     </div>
 </div>
 <script>
