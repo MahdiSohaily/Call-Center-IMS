@@ -44,7 +44,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
     WHERE LOWER(REPLACE(e.codename, ' ', '')) LIKE CONCAT('', LOWER(REPLACE(:pattern, ' ', '')), '%')
         OR REPLACE(s.name, ' ', '') LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
     ORDER BY e.time DESC
-    LIMIT 250";
+    LIMIT 600";
 
     // Prepare the statement
     $stmt = $pdo->prepare($sql);
