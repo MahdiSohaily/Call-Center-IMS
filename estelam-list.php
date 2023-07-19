@@ -4,7 +4,6 @@ $sql = "SELECT e.*, u.id As user_id, s.name AS seller_name
 FROM estelam AS e
 JOIN yadakshop1402.users AS u ON e.user = u.id
 JOIN yadakshop1402.seller AS s ON e.seller = s.id
-GROUP BY e.time
 ORDER BY e.time DESC
 LIMIT 250";
 
@@ -29,46 +28,17 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="box-keeper">
         <?php
         $currentGroup = null;
-        $bgColors = ['rgb(241 245 249)', 'rgb(165 243 252)']; // Array of background colors for date groups
-
-        // Function to compare prices
-        function comparePrices($a, $b)
-        {
-            // Extract the date and price from the input
-            $dateA = substr($a['price'], 0, 10);
-            $dateB = substr($b['price'], 0, 10);
-            $priceA = substr($a['price'], 11);
-            $priceB = substr($b['price'], 11);
-
-            // Compare the dates
-            $dateComparison = strcmp($dateA, $dateB);
-
-            // If the dates are not the same, sort by date
-            if ($dateComparison != 0) {
-                return $dateComparison;
-            }
-
-            // If either price contains "/", move it to the end
-            if (strpos($priceA, '/') !== false) {
-                return 1; // Move $a to the end
-            } elseif (strpos($priceB, '/') !== false) {
-                return -1; // Move $b to the end
-            }
-
-            // If both prices don't contain "/", compare them numerically
-            return strcmp($priceA, $priceB);
-        }
-
-        // Sort the result array based on prices
-        usort($results, 'comparePrices');
+        $bgColors = ['rgb(241 245 249)', 'rgb(236 254 255)']; // Array of background colors for date groups
 
         echo '<table class="min-w-full">';
-        echo '<tr>';
-        echo '<th>Part Number</th>';
-        echo '<th>Seller Name</th>';
-        echo '<th>Price</th>';
-        echo '<th>User ID</th>';
+        echo '<tr class="bg-violet-700">';
+        echo '<th class="text-right px-3 text-white py-2">کد فنی</th>';
+        echo '<th class="text-right px-3 text-white py-2">فروشنده</th>';
+        echo '<th class="text-right px-3 text-white py-2">قیمت</th>';
+        echo '<th class="text-right px-3 text-white py-2">کاربر ثبت کننده</th>';
+        echo '<th class="text-right px-3 text-white py-2">زمان ثبت</th>';
         echo '</tr>';
+        echo '<tbody id="results">';
 
         $bgColorIndex = 0;
 
@@ -93,20 +63,26 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $bgColorIndex++;
 
                 // Display a row for the new group with the background color
-                echo '<tr class="bg-red-400">';
-                echo '<td colspan="5">' . $date . '</td>';
+                echo '<tr class="bg-rose-400">';
+                echo '<td class="p-3" colspan="5">' . $date . '</td>';
                 echo '</tr>';
             }
 
             // Display the row for current entry with the same background color as the group
-            echo '<tr style="background-color: ' . $bgColor . ';">';
-            echo '<td>' . $partNumber . '</td>';
-            echo '<td>' . $sellerName . '</td>';
-            echo '<td>' . $price . '</td>';
-            echo '<td>' . $userId . '</td>';
-            echo '</tr>';
+        ?>
+            <tr style="background-color:<?php echo $bgColor ?>">
+                <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $partNumber ?>'><?php echo $partNumber ?></td>
+                <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $sellerName ?>'><?php echo $sellerName ?></td>
+                <td><?php echo $price ?></td>
+                <td>
+                    <img class="w-8 mt-1 rounded-full" src='<?php echo "../userimg/$userId.jpg" ?>' alt="" srcset="">
+                </td>
+                <td><?php echo $dateTime[1] ?></td>
+            </tr>
+        <?php
         }
 
+        echo '</tbody>';
         echo '</table>';
         ?>
     </div>

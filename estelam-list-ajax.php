@@ -9,9 +9,8 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
     FROM estelam AS e
     JOIN yadakshop1402.users AS u ON e.user = u.id
     JOIN yadakshop1402.seller AS s ON e.seller = s.id
-    WHERE LOWER(REPLACE(e.codename, ' ', '')) LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
+    WHERE LOWER(REPLACE(e.codename, ' ', '')) LIKE CONCAT('', LOWER(REPLACE(:pattern, ' ', '')), '%')
         OR REPLACE(s.name, ' ', '') LIKE CONCAT('%', LOWER(REPLACE(:pattern, ' ', '')), '%')
-        GROUP BY e.time
     ORDER BY e.time DESC
     LIMIT 250";
 
@@ -53,7 +52,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
                 <td class="hover:cursor-pointer text-teal-400" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                 <td><?php echo $price ?></td>
                 <td>
-                    <img class="w-10 mx-auto rounded-full" src='<?php echo "../userimg/$user_id.jpg" ?>' alt="" srcset="">
+                    <img class="w-8 rounded-full" src='<?php echo "../userimg/$user_id.jpg" ?>' alt="" srcset="">
                 </td>
                 <td>
                     <?php
