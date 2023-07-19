@@ -53,9 +53,10 @@ function displayTimePassed($timePassed)
 <div class="">
     <div class="flex">
         <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
-        <div class="px-24">
+        <div class="px-24 flex items-center gap-2">
             <label for="search">جستجو</label>
             <input class="border py-2 px-3" type="text" name="search" id="search-bazar" onkeyup="searchBazar(this.value)">
+            <i class="material-icons text-red-500 hover:cursor-pointer" onclick="searchByCustomer(this)" data-customer=''>close</i>
         </div>
     </div>
     <div class="box-keeper">
