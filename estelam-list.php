@@ -22,7 +22,7 @@ require_once './layout/heroHeader.php';
             </tr>
             <tbody id="results">
                 <?php
-                $sql = "SELECT e.*, u.name AS user_name, u.family AS user_family, s.name AS seller_name
+                $sql = "SELECT e.*, u.id As user_id, s.name AS seller_name
                 FROM estelam AS e
                 JOIN yadakshop1402.users AS u ON e.user = u.id
                 JOIN yadakshop1402.seller AS s ON e.seller = s.id
@@ -46,8 +46,7 @@ require_once './layout/heroHeader.php';
                         $code = $row2['codename'];
                         $seller = $row2['seller_name'];
                         $price = $row2['price'];
-                        $name = $row2['user_name'];
-                        $family = $row2['user_family'];
+                        $user_id = $row2['user_id'];
                         $date_time = explode(' ', $row2['time']);
                         $fullDate = $date_time[0];
                         $time = $date_time[1];
@@ -61,11 +60,13 @@ require_once './layout/heroHeader.php';
                             $condition = !$condition;
                         }
                 ?>
-                        <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(226 232 240)' ?>">
-                            <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $code ?>'><?php echo $code ?></td>
-                            <td class="hover:cursor-pointer text-indigo-600" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
+                        <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(212 212 212)' ?>">
+                            <td class="hover:cursor-pointer text-rose-500" onclick="searchByCustomer(this)" data-customer='<?php echo $code ?>'><?php echo $code ?></td>
+                            <td class="hover:cursor-pointer text-rose-500" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                             <td><?php echo $price ?></td>
-                            <td><?php echo $name ?> <?php echo $family ?></td>
+                            <td>
+                                <img class="w-10 mx-auto rounded-full" src='<?php echo "../userimg/$user_id.jpg" ?>' alt="" srcset="">
+                            </td>
                             <td>
                                 <?php
                                 $create = date($fullDate);
@@ -101,9 +102,18 @@ require_once './layout/heroHeader.php';
                                 ?>
                             </td>
                             <td><?php echo $time ?></td>
-
                         </tr>
+                        <?php
+                        if ($conditionValidator !== $currentGroup) {
+                            echo 'hi hi';
+                        ?>
+                            <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(212 212 212)' ?>">
+                                <td colspan="6">Im here</td>
+                            </tr>
                     <?php
+                        } else {
+                            echo "bye bye";
+                        }
                     }
                 } else {
                     ?>
