@@ -60,9 +60,6 @@ function displayTimePassed($timePassed)
     </div>
     <div class="box-keeper">
         <?php
-        $currentGroup = null;
-        $bgColors = ['rgb(224 231 255)', 'rgb(236 254 255)']; // Array of background colors for date groups
-
         echo '<table class="min-w-full">';
         echo '<tr class="bg-violet-700">';
         echo '<th class="text-right px-3 text-white py-2">کد فنی</th>';
@@ -73,6 +70,8 @@ function displayTimePassed($timePassed)
         echo '</tr>';
         echo '<tbody id="results">';
 
+        $currentGroup = null;
+        $bgColors = ['rgb(224 231 255)', 'rgb(236 254 255)']; // Array of background colors for date groups
         $bgColorIndex = 0;
 
         foreach ($results as $row) {
