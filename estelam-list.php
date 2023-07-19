@@ -18,7 +18,7 @@ require_once './layout/heroHeader.php';
 
                 <th>قیمت</th>
                 <th>کاربر ثبت کننده</th>
-                <th colspan="2">زمان</th>
+                <th>زمان</th>
             </tr>
             <tbody id="results">
                 <?php
@@ -55,65 +55,64 @@ require_once './layout/heroHeader.php';
 
                         $conditionValidator = $date[2];
                         if ($conditionValidator !== $currentGroup) {
+                ?>
+                            <div class="" style="background-color:<?php echo 'rgb(255 237 213)' ?>">
+                                <td style="padding: 5px">
+                                    <?php
+                                    $create = date($fullDate);
+                                    $now = new DateTime(); // current date time
+                                    $date_time = new DateTime($create); // date time from string
+                                    $interval = $now->diff($date_time); // difference between two date times
+                                    $days = $interval->format('%a'); // difference in days
+                                    $hours = $interval->format('%h'); // difference in hours
+                                    $minutes = $interval->format('%i'); // difference in minutes
+                                    $seconds = $interval->format('%s'); // difference in seconds
+
+                                    $text = '';
+
+                                    if ($days) {
+                                        $text .= " $days روز و ";
+                                    }
+
+                                    if ($hours) {
+                                        $text .= "$hours ساعت ";
+                                    }
+
+                                    if (!$days && $minutes) {
+                                        $text .= "$minutes دقیقه ";
+                                    }
+
+                                    if (!$days && !$hours && $seconds) {
+                                        $text .= "$seconds ثانیه ";
+                                    }
+
+                                    echo "$text قبل";
+                                    ?>
+                                    -
+                                    <span style="direction: rtl;">
+                                        <?php echo $fullDate ?>
+                                    </span>
+                                </td>
+                                <td colspan="4" style="padding: 5px"></td>
+                            </div>
+                        <?php
                             // Update the current group
                             $currentGroup = $conditionValidator;
                             $condition = !$condition;
                         }
-                ?>
-                        <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(212 212 212)' ?>">
+                        ?>
+                        <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(226 232 240)' ?>">
                             <td class="hover:cursor-pointer text-rose-500" onclick="searchByCustomer(this)" data-customer='<?php echo $code ?>'><?php echo $code ?></td>
                             <td class="hover:cursor-pointer text-rose-500" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
                             <td><?php echo $price ?></td>
                             <td>
                                 <img class="w-10 mx-auto rounded-full" src='<?php echo "../userimg/$user_id.jpg" ?>' alt="" srcset="">
                             </td>
-                            <td>
-                                <?php
-                                $create = date($fullDate);
 
-
-                                $now = new DateTime(); // current date time
-                                $date_time = new DateTime($create); // date time from string
-                                $interval = $now->diff($date_time); // difference between two date times
-                                $days = $interval->format('%a'); // difference in days
-                                $hours = $interval->format('%h'); // difference in hours
-                                $minutes = $interval->format('%i'); // difference in minutes
-                                $seconds = $interval->format('%s'); // difference in seconds
-
-                                $text = '';
-
-                                if ($days) {
-                                    $text .= " $days روز و ";
-                                }
-
-                                if ($hours) {
-                                    $text .= "$hours ساعت ";
-                                }
-
-                                if (!$days && $minutes) {
-                                    $text .= "$minutes دقیقه ";
-                                }
-
-                                if (!$days && !$hours && $seconds) {
-                                    $text .= "$seconds ثانیه ";
-                                }
-
-                                echo "$text قبل";
-                                ?>
-                            </td>
                             <td><?php echo $time ?></td>
+
                         </tr>
-                        <?php
-                        if ($conditionValidator !== $currentGroup) {
-                            echo 'hi hi';
-                        ?>
-                            <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(212 212 212)' ?>">
-                                <td colspan="6">Im here</td>
-                            </tr>
                     <?php
-                        } else {
-                            echo "bye bye";
-                        }
                     }
                 } else {
                     ?>
