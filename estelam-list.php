@@ -110,7 +110,20 @@ function displayTimePassed($timePassed)
                 <td>
                     <img class="w-8 mt-1 rounded-full" src='<?php echo "../userimg/$userId.jpg" ?>' alt="" srcset="">
                 </td>
-                <td><?php echo $dateTime[1] ?></td>
+                <td><?php $timeString = $dateTime[1]; // Example time string
+                    $adjustment = "-1 hour"; // Adjustment to subtract one hour
+
+                    // Create a DateTime object from the time string
+                    $time = DateTime::createFromFormat("H:i:s", $timeString);
+
+                    // Adjust the time by subtracting one hour
+                    $time->modify($adjustment);
+
+                    // Format the adjusted time to display only the hour and minute
+                    $formattedTime = $time->format("H:i");
+
+                    echo $formattedTime; // Output: 14:30
+                    ?></td>
             </tr>
         <?php
         }
