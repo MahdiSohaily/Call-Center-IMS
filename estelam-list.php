@@ -41,81 +41,38 @@ require_once './layout/heroHeader.php';
                 $currentGroup = null;
                 $condition = true;
                 if (count($results)) {
-                    foreach ($results as $row2) {
+                    foreach ($results as $row) {
+                        $time = $row['time'];
+                        $price = $row['price'];
 
-                        $code = $row2['codename'];
-                        $seller = $row2['seller_name'];
-                        $price = $row2['price'];
-                        $user_id = $row2['user_id'];
-                        $date_time = explode(' ', $row2['time']);
-                        $fullDate = $date_time[0];
-                        $time = $date_time[1];
+                        // Check if the group has changed
+                        if ($time !== $currentGroup) {
+                            // Display a row for the new group
+                            echo '<div class="date-group">' . $time . '</div>';
 
-                        $date = explode('-', $fullDate);
-
-                        $conditionValidator = $date[2];
-                        if ($conditionValidator !== $currentGroup) {
-                ?>
-                            <div class="" style="background-color:<?php echo 'rgb(255 237 213)' ?>">
-                                <td style="padding: 5px">
-                                    <?php
-                                    $create = date($fullDate);
-                                    $now = new DateTime(); // current date time
-                                    $date_time = new DateTime($create); // date time from string
-                                    $interval = $now->diff($date_time); // difference between two date times
-                                    $days = $interval->format('%a'); // difference in days
-                                    $hours = $interval->format('%h'); // difference in hours
-                                    $minutes = $interval->format('%i'); // difference in minutes
-                                    $seconds = $interval->format('%s'); // difference in seconds
-
-                                    $text = '';
-
-                                    if ($days) {
-                                        $text .= " $days روز و ";
-                                    }
-
-                                    if ($hours) {
-                                        $text .= "$hours ساعت ";
-                                    }
-
-                                    if (!$days && $minutes) {
-                                        $text .= "$minutes دقیقه ";
-                                    }
-
-                                    if (!$days && !$hours && $seconds) {
-                                        $text .= "$seconds ثانیه ";
-                                    }
-
-                                    echo "$text قبل";
-                                    ?>
-                                    -
-                                    <span style="direction: rtl;">
-                                        <?php echo $fullDate ?>
-                                    </span>
-                                </td>
-                                <td colspan="4" style="padding: 5px"></td>
-                            </div>
-                        <?php
                             // Update the current group
-                            $currentGroup = $conditionValidator;
-                            $condition = !$condition;
+                            $currentGroup = $time;
                         }
-                        ?>
-                        <tr class="" style="background-color:<?php echo $condition ? 'rgb(255 237 213)' : 'rgb(226 232 240)' ?>">
-                            <td class="hover:cursor-pointer text-rose-500" onclick="searchByCustomer(this)" data-customer='<?php echo $code ?>'><?php echo $code ?></td>
-                            <td class="hover:cursor-pointer text-rose-500" onclick="searchByCustomer(this)" data-customer='<?php echo $seller ?>'><?php echo $seller ?></td>
-                            <td><?php echo $price ?></td>
-                            <td>
-                                <img class="w-10 mx-auto rounded-full" src='<?php echo "../userimg/$user_id.jpg" ?>' alt="" srcset="">
-                            </td>
 
-                            <td><?php echo $time ?></td>
-
-                        </tr>
-                    <?php
+                        // Check if the price section contains a slash
+                        if (strpos($price, '/') !== false) {
+                            // Display the row with slash at the end
+                            echo '<div class="row">';
+                            echo '<p>' . $row['user_id'] . ' ' . $row['user_i'] . ' - ' . $row['seller_name'] . '</p>';
+                            echo '<p>' . $price . '</p>';
+                            // Add more data if needed
+                            echo '</div>';
+                        } else {
+                            // Display the row without slash at the beginning
+                            echo '<div class="row">';
+                            echo '<p>' . $price . '</p>';
+                            echo '<p>' . $row['user_name'] . ' ' . $row['user_family'] . ' - ' . $row['seller_name'] . '</p>';
+                            // Add more data if needed
+                            echo '</div>';
+                        }
                     }
                 } else {
-                    ?>
+                ?>
                     <tr>
                         <td colspan="5">مورد مشابهی در پایگاه داده پیدا نشد</td>
                     </tr>
