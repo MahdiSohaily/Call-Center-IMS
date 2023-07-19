@@ -15,6 +15,39 @@ $stmt->execute();
 
 // Fetch the results
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+function displayTimePassed($timePassed)
+{
+    $create = date($timePassed);
+    $now = new DateTime(); // current date time
+    $date_time = new DateTime($create); // date time from string
+    $interval = $now->diff($date_time); // difference between two date times
+    $days = $interval->format('%a'); // difference in days
+    $hours = $interval->format('%h'); // difference in hours
+    $minutes = $interval->format('%i'); // difference in minutes
+    $seconds = $interval->format('%s'); // difference in seconds
+
+    $text = '';
+
+    if ($days) {
+        $text .= " $days روز و ";
+    }
+
+    if ($hours) {
+        $text .= "$hours ساعت ";
+    }
+
+    if (!$days && $minutes) {
+        $text .= "$minutes دقیقه ";
+    }
+
+    if (!$days && !$hours && $seconds) {
+        $text .= "$seconds ثانیه ";
+    }
+
+    return "$text قبل";
+}
 ?>
 
 <div class="">
@@ -28,7 +61,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="box-keeper">
         <?php
         $currentGroup = null;
-        $bgColors = ['rgb(241 245 249)', 'rgb(236 254 255)']; // Array of background colors for date groups
+        $bgColors = ['rgb(224 231 255)', 'rgb(236 254 255)']; // Array of background colors for date groups
 
         echo '<table class="min-w-full">';
         echo '<tr class="bg-violet-700">';
@@ -64,7 +97,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 // Display a row for the new group with the background color
                 echo '<tr class="bg-rose-400">';
-                echo '<td class="p-3" colspan="5">' . $date . '</td>';
+                echo '<td class="p-3" colspan="5">' . displayTimePassed($time) . ' - ' . "<span class='direction:ltr' >$date </span>" . '</td>';
                 echo '</tr>';
             }
 
