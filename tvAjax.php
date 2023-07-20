@@ -7,56 +7,62 @@ if (isset($_POST['user'])) {
 } else {
     $user  = getinternal($_SESSION["id"]);
 }
-function getFirstLetters($string)
-{
-    // Trim the string and remove special characters
-    $string = trim(preg_replace('/[^a-zA-Z0-9\sآ-ی]/u', '', $string));
 
-    $words = preg_split('/\s+/u', $string);
-    $firstLetters = '';
+$sql = "SELECT * FROM shop.tv WHERE id='1'";
+$factor_result = mysqli_query($con, $sql);
+$tv = mysqli_fetch_assoc($factor_result);
+$status = $tv['status'];
+if ($status !== 'on') :
+    function getFirstLetters($string)
+    {
+        // Trim the string and remove special characters
+        $string = trim(preg_replace('/[^a-zA-Z0-9\sآ-ی]/u', '', $string));
 
-    if (count($words) === 1) {
-        $firstLetters = mb_substr($words[0], 0, 2);
-    } else {
-        foreach ($words as $word) {
-            $firstLetters .= mb_substr($word, 0, 1) . ' ';
+        $words = preg_split('/\s+/u', $string);
+        $firstLetters = '';
+
+        if (count($words) === 1) {
+            $firstLetters = mb_substr($words[0], 0, 2);
+        } else {
+            foreach ($words as $word) {
+                $firstLetters .= mb_substr($word, 0, 1) . ' ';
+            }
         }
-    }
 
-    return trim($firstLetters);
-}
+        return trim($firstLetters);
+    }
 ?>
-<script>
-    function closeFullscreen() {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-            /* Safari */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-            /* IE11 */
-            document.msExitFullscreen();
+    <script>
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                /* IE11 */
+                document.msExitFullscreen();
+            }
         }
-    }
-</script>
-<div class="bg-white">
-    <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons">aspect_ratio</i>
-    <i style="cursor: pointer;" onclick="closeFullscreen()" class="material-icons">border_clear</i>
-    <div class="d-grid">
-         <div class="div1">
-             <h2 class="title">تماس های ورودی</h2>
-             <table class="border text-sm bg-white custom-table mb-2 p-3">
-                 <thead>
-                     <tr>
-                         <th class="bg-violet-800 text-white tiny-text px-2 py-2">مشخصات</th>
-                         <th class="bg-violet-800 text-white tiny-text px-2 py-2">نیایش</th>
-                         <th class="bg-violet-800 text-white tiny-text px-2 py-2">محک</th>
-                         <th class="bg-violet-800 text-white tiny-text px-2 py-2">زمان</th>
-                         <!-- <th>تاریخ</th> -->
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <?php
+    </script>
+    <div class="bg-white">
+        <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons">aspect_ratio</i>
+        <i style="cursor: pointer;" onclick="closeFullscreen()" class="material-icons">border_clear</i>
+        <div class="d-grid">
+            <div class="div1">
+                <h2 class="title">تماس های ورودی</h2>
+                <table class="border text-sm bg-white custom-table mb-2 p-3">
+                    <thead>
+                        <tr>
+                            <th class="bg-violet-800 text-white tiny-text px-2 py-2">مشخصات</th>
+                            <th class="bg-violet-800 text-white tiny-text px-2 py-2">نیایش</th>
+                            <th class="bg-violet-800 text-white tiny-text px-2 py-2">محک</th>
+                            <th class="bg-violet-800 text-white tiny-text px-2 py-2">زمان</th>
+                            <!-- <th>تاریخ</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
                         global  $repeat;
                         $sql = "SELECT * FROM incoming WHERE user = $user ORDER BY  time DESC LIMIT 100";
                         $result = mysqli_query($con, $sql);
@@ -81,10 +87,10 @@ function getFirstLetters($string)
                                         $family = $row2['family'];
                         ?>
 
-                                     <tr class="">
-                                         <td class=" tiny-text p-2"><?php echo $name ?> <?php echo $family ?></td>
-                                         <td class=" tiny-text p-2">
-                                             <?php
+                                        <tr class="">
+                                            <td class=" tiny-text p-2"><?php echo $name ?> <?php echo $family ?></td>
+                                            <td class=" tiny-text p-2">
+                                                <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
                                                 $result3 = mysqli_query($con, $sql3);
@@ -105,9 +111,9 @@ function getFirstLetters($string)
                                                     }
                                                 }
                                                 ?>
-                                         </td>
-                                         <td class=" tiny-text p-2">
-                                             <?php
+                                            </td>
+                                            <td class=" tiny-text p-2">
+                                                <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
                                                 $result4 = mysqli_query($con, $sql4);
@@ -129,20 +135,20 @@ function getFirstLetters($string)
                                                     }
                                                 }
                                                 ?></td>
-                                         <td class=" tiny-text p-2"><?php echo $jalali_time ?></td>
-                                         <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
-                                     </tr>
-                                 <?php
+                                            <td class=" tiny-text p-2"><?php echo $jalali_time ?></td>
+                                            <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
+                                        </tr>
+                                    <?php
 
                                     }
                                 } else {
                                     ?>
-                                 <tr>
-                                     <td>
-                                         <i style="color: red" class="material-icons">cancel</i>
-                                     </td>
-                                     <td class="p-2">
-                                         <?php
+                                    <tr>
+                                        <td>
+                                            <i style="color: red" class="material-icons">cancel</i>
+                                        </td>
+                                        <td class="p-2">
+                                            <?php
                                             $gphone = substr($phone, 1);
                                             $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
                                             $result3 = mysqli_query($con, $sql3);
@@ -163,9 +169,9 @@ function getFirstLetters($string)
                                                 }
                                             }
                                             ?>
-                                     </td>
-                                     <td class="p-2">
-                                         <?php
+                                        </td>
+                                        <td class="p-2">
+                                            <?php
                                             $gphone = substr($phone, 1);
                                             $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
                                             $result4 = mysqli_query($con, $sql4);
@@ -187,11 +193,11 @@ function getFirstLetters($string)
                                                 }
                                             }
                                             ?>
-                                     </td>
-                                     <td class="p-2"><?php echo $jalali_time ?></td>
-                                     <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
-                                 </tr>
-                     <?php
+                                        </td>
+                                        <td class="p-2"><?php echo $jalali_time ?></td>
+                                        <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
+                                    </tr>
+                        <?php
                                 }
                             }
                         } // end while
@@ -199,31 +205,31 @@ function getFirstLetters($string)
                             echo 'هیچ اطلاعاتی موجود نیست';
                         }
                         ?>
-                 </tbody>
-             </table>
-         </div>
-         <div class="div2">
-             <h2 class="title">آخرین قیمت های داده شده</h2>
-             <table class="border text-sm bg-white custom-table mb-2 p-3">
-                 <thead class="font-medium bg-green-600">
-                     <tr>
-                         <th scope="col" class=" py-2 tiny-text text-white text-right">
-                             کد فنی
-                         </th>
-                         <th scope="col" class=" py-2 tiny-text text-white text-right">
-                             قیمت
-                         </th>
+                    </tbody>
+                </table>
+            </div>
+            <div class="div2">
+                <h2 class="title">آخرین قیمت های داده شده</h2>
+                <table class="border text-sm bg-white custom-table mb-2 p-3">
+                    <thead class="font-medium bg-green-600">
+                        <tr>
+                            <th scope="col" class=" py-2 tiny-text text-white text-right">
+                                کد فنی
+                            </th>
+                            <th scope="col" class=" py-2 tiny-text text-white text-right">
+                                قیمت
+                            </th>
 
-                         <th scope="col" class=" py-2 tiny-text text-white text-right">
-                             مشتری
-                         </th>
-                         <th scope="col" class=" py-2 tiny-text text-white text-center">
-                             کاربر
-                         </th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     <?php
+                            <th scope="col" class=" py-2 tiny-text text-white text-right">
+                                مشتری
+                            </th>
+                            <th scope="col" class=" py-2 tiny-text text-white text-center">
+                                کاربر
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
                         $givenPrice = givenPrice($con);
                         function givenPrice($con)
                         {
@@ -247,60 +253,60 @@ function getFirstLetters($string)
 
                         if (count($givenPrice) > 0) {
                         ?>
-                         <?php foreach ($givenPrice as $price) { ?>
-                             <?php if ($price['price'] !== null) {
+                            <?php foreach ($givenPrice as $price) { ?>
+                                <?php if ($price['price'] !== null) {
                                 ?>
-                                 <tr class="mb-1 ?> odd:bg-gray-200">
-                                 <?php  } ?>
-                                 <td  class="tiny-text bold px-1">
-                                     <p style="font-size: 8px !important;" class="text-right bold text-gray-700 px-2 py-1">
-                                         <?php echo $price['partnumber']; ?>
-                                     </p>
-                                 </td>
+                                    <tr class="mb-1 ?> odd:bg-gray-200">
+                                    <?php  } ?>
+                                    <td class="tiny-text bold px-1">
+                                        <p style="font-size: 8px !important;" class="text-right bold text-gray-700 px-2 py-1">
+                                            <?php echo $price['partnumber']; ?>
+                                        </p>
+                                    </td>
 
 
-                                 <td class="tiny-text bold px-1">
-                                     <p class="text-right bold text-gray-700 px-2 py-1">
-                                         <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
-                                     </p>
-                                 </td>
-                                 <td class="tiny-text bold px-1">
-                                     <p class="text-right bold text-gray-700 px-2 py-1">
-                                         <?php echo $price['name'] . ' ' . $price['family'] ?>
-                                     </p>
-                                 </td>
-                                 <td>
-                                     <p class="text-center bold text-gray-700 px-2 py-1">
-                                         <img title="<?php echo $price['username'] ?>" class="user-img mx-auto" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
-                                     </p>
-                                 </td>
-                                 </tr>
-                             <?php
+                                    <td class="tiny-text bold px-1">
+                                        <p class="text-right bold text-gray-700 px-2 py-1">
+                                            <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                                        </p>
+                                    </td>
+                                    <td class="tiny-text bold px-1">
+                                        <p class="text-right bold text-gray-700 px-2 py-1">
+                                            <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="text-center bold text-gray-700 px-2 py-1">
+                                            <img title="<?php echo $price['username'] ?>" class="user-img mx-auto" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
+                                        </p>
+                                    </td>
+                                    </tr>
+                                <?php
                             } ?>
-                         <?php } else { ?>
-                             <tr class="">
-                                 <td colspan="4" scope="col" class="not-exist">
-                                     موردی برای نمایش وجود ندارد !!
-                                 </td>
-                             </tr>
-                         <?php } ?>
-                 </tbody>
-             </table>
-         </div>
-         <div class="div3">
-             <h2 class="title">آخرین استعلام ها</h2>
-             <div class="">
+                            <?php } else { ?>
+                                <tr class="">
+                                    <td colspan="4" scope="col" class="not-exist">
+                                        موردی برای نمایش وجود ندارد !!
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="div3">
+                <h2 class="title">آخرین استعلام ها</h2>
+                <div class="">
 
-                 <table class="border text-sm bg-white custom-table mb-2 p-3 ">
-                     <thead>
-                         <tr class="tiny-text bg-violet-800 text-white">
-                             <th class="p-2">مشتری</th>
-                             <th class="p-2">اطلاعات استعلام</th>
-                             <th class="p-2">کاربر</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <?php
+                    <table class="border text-sm bg-white custom-table mb-2 p-3 ">
+                        <thead>
+                            <tr class="tiny-text bg-violet-800 text-white">
+                                <th class="p-2">مشتری</th>
+                                <th class="p-2">اطلاعات استعلام</th>
+                                <th class="p-2">کاربر</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             $sql2 = "SELECT * FROM record ORDER BY  time DESC LIMIT 100  ";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
@@ -318,11 +324,11 @@ function getFirstLetters($string)
                                             $family = $row['family'];
                             ?>
 
-                                         <tr>
-                                             <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                             <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
-                                             <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
-                                         <?php
+                                            <tr>
+                                                <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
+                                                <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                                <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
+                                            <?php
                                         }
                                     }
 
@@ -332,36 +338,36 @@ function getFirstLetters($string)
                                     $datetime2 = new DateTime($time);
                                     $interval = $datetime1->diff($datetime2);
                                             ?>
-                                             </td>
-                                             <!-- <td class="record-date"><?php echo $time ?></td> -->
-                                         </tr>
+                                                </td>
+                                                <!-- <td class="record-date"><?php echo $time ?></td> -->
+                                            </tr>
 
-                                 <?php
+                                    <?php
 
                                 }
                             } else {
                                 echo '<td colspan="4">هیچ اطلاعاتی موجود نیست</td>';
                             }
                                     ?>
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-         <div class="div4">
-             <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
-             <div class="">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="div4">
+                <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
+                <div class="">
 
-                 <table class="border text-sm bg-white custom-table mb-2 p-3">
-                     <thead>
-                         <tr class="tiny-text bg-violet-800 text-white">
-                             <th class="p-2">کد فنی</th>
-                             <th class="p-2">فروشنده</th>
-                             <th style="text-align: center;" class="p-2">قیمت</th>
-                             <th class="p-2">زمان</th>
-                         </tr>
-                     </thead>
-                     <tbody>
-                         <?php
+                    <table class="border text-sm bg-white custom-table mb-2 p-3">
+                        <thead>
+                            <tr class="tiny-text bg-violet-800 text-white">
+                                <th class="p-2">کد فنی</th>
+                                <th class="p-2">فروشنده</th>
+                                <th style="text-align: center;" class="p-2">قیمت</th>
+                                <th class="p-2">زمان</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 100  ";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
@@ -386,14 +392,14 @@ function getFirstLetters($string)
                                                     $sellername = $row3['name'];
                             ?>
 
-                                                 <tr class="tiny-text">
-                                                     <td style="font-size: 8px !important;" class="p-2"><?php echo $code ?></td>
-                                                     <td class="p-2"><?php echo getFirstLetters($sellername) ?></td>
-                                                     <td class="ltr p-2"><?php echo $price ?></td>
-                                                     <td class="p-2"><?php echo date('H:i', strtotime($time)) ?></td>
-                                                 </tr>
+                                                    <tr class="tiny-text">
+                                                        <td style="font-size: 8px !important;" class="p-2"><?php echo $code ?></td>
+                                                        <td class="p-2"><?php echo getFirstLetters($sellername) ?></td>
+                                                        <td class="ltr p-2"><?php echo $price ?></td>
+                                                        <td class="p-2"><?php echo date('H:i', strtotime($time)) ?></td>
+                                                    </tr>
 
-                         <?php
+                            <?php
                                                 }
                                             }
                                         }
@@ -401,27 +407,41 @@ function getFirstLetters($string)
                                 }
                             }
                             ?>
-                     </tbody>
-                 </table>
-             </div>
-         </div>
-     </div>
-</div>
-<script>
-    /* Get the element you want displayed in fullscreen mode (a video in this example): */
-    var elem = document.getElementById("fullpage");
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /* Get the element you want displayed in fullscreen mode (a video in this example): */
+        var elem = document.getElementById("fullpage");
 
-    /* When the openFullscreen() function is executed, open the video in fullscreen.
-    Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
-    function openFullscreen() {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-            /* Safari */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-            /* IE11 */
-            elem.msRequestFullscreen();
+        /* When the openFullscreen() function is executed, open the video in fullscreen.
+        Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                /* IE11 */
+                elem.msRequestFullscreen();
+            }
         }
-    }
-</script>
+    </script>
+<?php
+else :
+?>
+    <style>
+        body,
+        html {
+            padding: 0 !important;
+            margin: 0 !important;
+            background: url(https://images.pexels.com/photos/10987310/pexels-photo-10987310.jpeg?auto=compress&cs=tinysrgb&w=600)no-repeat center;
+            background-size: cover;
+        }
+    </style>
+<?php
+endif;
