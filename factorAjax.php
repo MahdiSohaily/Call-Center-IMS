@@ -21,23 +21,18 @@ if (isset($_POST['getFactor'])) {
     <div class="today-faktor-statistics">
         <div class="">
             <?php
-            $sql = "SELECT COUNT(*) as count_shomare FROM shomarefaktor WHERE time < '$end' AND time >= '$start'";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
+            if (mysqli_num_rows($factor_result) > 0) :
             ?>
-                    <div class="ranking mb-2">
-                        <p class="text-white px-2">تعداد کل</p>
-                        <span class="counter">
-                            <?php
-                            echo $row['count_shomare'];
-                            ?>
-                        </span>
-                    </div>
+                <div class="ranking mb-2">
+                    <p class="text-white px-2">تعداد کل</p>
+                    <span class="counter">
+                        <?php
+                        echo mysqli_num_rows($factor_result);
+                        ?>
+                    </span>
+                </div>
             <?php
-                }
-            }
-
+            endif;
             ?>
         </div>
 

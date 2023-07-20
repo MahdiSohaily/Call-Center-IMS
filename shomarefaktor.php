@@ -3,6 +3,10 @@ require_once './layout/heroHeader.php';
 ?>
 <?php
 $date = date('Y-m-d H:i:s');
+
+$sql = "SELECT * FROM shomarefaktor WHERE time >= '$date' ORDER BY shomare DESC";
+$factor_result = mysqli_query(dbconnect(), $sql);
+
 ?>
 <div class="shomare-faktor-date">
     <?php echo jdate('Y/m/d')  ?> -
@@ -40,22 +44,18 @@ $date = date('Y-m-d H:i:s');
     <div class="today-faktor-statistics">
         <div class="">
             <?php
-            $sql = "SELECT COUNT(*) as count_shomare FROM shomarefaktor WHERE time >= CURDATE()";
-            $result = mysqli_query(dbconnect(), $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
+            if (mysqli_num_rows($factor_result) > 0) :
             ?>
-                    <div class="ranking mb-2">
-                        <p class="text-white px-2">تعداد کل</p>
-                        <span class="counter">
-                            <?php
-                            echo $row['count_shomare'];
-                            ?>
-                        </span>
-                    </div>
+                <div class="ranking mb-2">
+                    <p class="text-white px-2">تعداد کل</p>
+                    <span class="counter">
+                        <?php
+                        echo mysqli_num_rows($factor_result);
+                        ?>
+                    </span>
+                </div>
             <?php
-                }
-            }
+            endif;
 
             ?>
         </div>
@@ -107,11 +107,9 @@ $date = date('Y-m-d H:i:s');
             </tr>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM shomarefaktor WHERE time >= '$date' ORDER BY shomare DESC";
-                $result = mysqli_query(dbconnect(), $sql);
 
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
+                if (mysqli_num_rows($factor_result) > 0) {
+                    while ($row = mysqli_fetch_assoc($factor_result)) {
                         $shomare = $row['shomare'];
                         $kharidar = $row['kharidar'];
                         $user = $row['user'];
