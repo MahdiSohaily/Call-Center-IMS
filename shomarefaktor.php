@@ -2,14 +2,20 @@
 require_once './layout/heroHeader.php';
 ?>
 <?php
-$date = "time >= CURDATE()";
-if (!empty($_GET['date'])) {
-    $date =  $_GET['date'];
-}
+$date = date('Y-m-d H:i:s');
 ?>
 <div class="shomare-faktor-date">
     <?php echo jdate('Y/m/d')  ?> -
     <?php echo jdate('l J F'); ?>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>
+            <iframe width="100%" height="470px" src=""></iframe>
+        </p>
+    </div>
 </div>
 
 <div class="shomare-faktor-box">
@@ -30,7 +36,7 @@ if (!empty($_GET['date'])) {
     <div class="shomare-faktor-result">
     </div>
 </div>
-<div class="shomare-faktor-list-show">
+<div id="resultBox" class="shomare-faktor-list-show">
     <div class="today-faktor-statistics">
         <div class="">
             <?php
@@ -91,7 +97,7 @@ if (!empty($_GET['date'])) {
             ?>
         </div>
     </div>
-    <div id="resultBox">
+    <div>
         <table class="customer-list jadval-shomare">
             <tr>
                 <th>شماره فاکتور</th>
@@ -101,8 +107,9 @@ if (!empty($_GET['date'])) {
             </tr>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM shomarefaktor WHERE $date ORDER BY shomare DESC";
+                $sql = "SELECT * FROM shomarefaktor WHERE time >= '$date' ORDER BY shomare DESC";
                 $result = mysqli_query(dbconnect(), $sql);
+
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $shomare = $row['shomare'];
@@ -130,14 +137,6 @@ if (!empty($_GET['date'])) {
                 ?>
             </tbody>
         </table>
-    </div>
-</div>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>
-            <iframe width="100%" height="470px" src=""></iframe>
-        </p>
     </div>
 </div>
 <script type="text/javascript">
