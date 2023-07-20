@@ -22,26 +22,7 @@ function displayTimePassed($timePassed)
     $create = date($timePassed);
     $now = new DateTime(); // current date time
     $date_time = new DateTime($create); // date time from string
-    $interval = $now->diff($date_time); // difference between two date times
-    $days = $interval->format('%a'); // difference in days
-    $hours = $interval->format('%h'); // difference in hours
-    $minutes = $interval->format('%i'); // difference in minutes
-    $seconds = $interval->format('%s'); // difference in seconds
-
-    $text = '';
-
-    if ($days) {
-        $text .= " $days روز و ";
-    }
-
-    if (!$days && $minutes) {
-        $text .= "$minutes دقیقه ";
-    }
-
-    if (!$days && !$hours && $seconds) {
-        $text .= "$seconds ثانیه ";
-    }
-
+   
     return "$text قبل";
 }
 ?>
