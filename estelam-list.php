@@ -22,8 +22,14 @@ function displayTimePassed($timePassed)
     $create = date($timePassed);
     $now = new DateTime(); // current date time
     $date_time = new DateTime($create); // date time from string
-   
-    return "$text قبل";
+
+    $current_day = date_format($now, 'd');
+    $data_day = date_format($date_time, 'd');
+
+    $diff = $current_day - $data_day;
+
+    $text = "  $diff روز قبل";
+    return  $text;
 }
 ?>
 
@@ -74,7 +80,7 @@ function displayTimePassed($timePassed)
 
                 // Display a row for the new group with the background color
                 echo '<tr class="bg-rose-400">';
-                echo '<td class="p-3" colspan="5">' . jdate('Y/m/d') . ' - ' .  displayTimePassed($date) . '</td>';
+                echo '<td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d') . '</td>';
                 echo '</tr>';
             }
 
