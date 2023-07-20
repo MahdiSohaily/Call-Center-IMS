@@ -115,7 +115,6 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                         $user = $row['user'];
                 ?>
                         <tr>
-
                             <td>
                                 <div class="jadval-shomare-blue"><?php echo $shomare ?></div>
                             </td>
