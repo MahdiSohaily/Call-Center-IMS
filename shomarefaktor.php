@@ -1,5 +1,4 @@
 <?php
-
 require_once './layout/heroHeader.php';
 ?>
 <?php

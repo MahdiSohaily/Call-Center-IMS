@@ -97,7 +97,7 @@ function displayTimePassed($timePassed)
 
                 // Display a row for the new group with the background color
                 echo '<tr class="bg-rose-400">';
-                echo '<td class="p-3" colspan="5">' . displayTimePassed($time) . ' - ' . "<span class='direction:ltr' >$date </span>" . '</td>';
+                echo '<td class="p-3" colspan="5">' . jdate('Y/m/d') . ' - ' .  displayTimePassed($date) . '</td>';
                 echo '</tr>';
             }
 
