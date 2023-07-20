@@ -28,7 +28,7 @@ function displayTimePassed($timePassed)
 
     $diff = $current_day - $data_day;
 
-    if($diff ==0) {
+    if ($diff == 0) {
         $text = "امروز";
     } else {
         $text = "  $diff روز قبل";
@@ -82,10 +82,9 @@ function displayTimePassed($timePassed)
                 // Get the background color for the current group
                 $bgColor = $bgColors[$bgColorIndex % count($bgColors)];
                 $bgColorIndex++;
-
                 // Display a row for the new group with the background color
                 echo '<tr class="bg-rose-400">';
-                echo '<td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d') . '</td>';
+                echo '<td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) . '</td>';
                 echo '</tr>';
             }
 

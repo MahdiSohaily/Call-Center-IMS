@@ -197,53 +197,53 @@ $title = '';
             <nav id="nav" ref="nav" class="main-nav bg-white shadow-lg flex flex-col justify-between overflow-auto">
                 <i id="close" onclick="toggleNav()" class="material-icons absolute m-3  left-0 hover:cursor-pointer">close</i>
                 <ul class="rtl flex flex-col pt-5 mt-5">
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="index.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">account_balance</i>
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="index.php">
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">account_balance</i>
                         صفحه اصلی
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="../1402/">
-                        <i class="px-2 material-icons hover:cursor-pointer">attach_money</i>
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="../1402/">
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">attach_money</i>
                         سامانه قیمت
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="cartable-personal.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">assignment_ind</i>
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="cartable-personal.php">
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">assignment_ind</i>
                         کارتابل شخصی
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
                     font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white 
                     focus:outline-none transition duration-150 ease-in-out" href="customer-list.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">assignment</i>
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">assignment</i>
                         لیست مشتریان
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
                     font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white 
                     focus:outline-none transition duration-150 ease-in-out" href="last-calling-time.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">call_end</i>
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">call_end</i>
                         آخرین مکالمات
                     </a>
 
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
                     font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white 
                     focus:outline-none transition duration-150 ease-in-out" href="./report/index.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">search</i>
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">search</i>
                         جستجوی اجناس
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="./report/showGoods.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">local_mall</i>
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="./report/showGoods.php">
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">local_mall</i>
                         اجناس
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="./report/showRates.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">show_chart</i>
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="./report/showRates.php">
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">show_chart</i>
                         نرخ های ارز
                     </a>
-                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="./report/relationships.php">
-                        <i class="px-2 material-icons hover:cursor-pointer">sync</i>
+                    <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="./report/relationships.php">
+                        <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">sync</i>
                         تعریف رابطه اجناس
                     </a>
                 </ul>
                 <!-- Authentication -->
-                <a class="rtl cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="../1402/logout.php">
-                    <i class="px-2 material-icons hover:cursor-pointer">power_settings_new</i>
+                <a style="font-size:12px" class="rtl cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="../1402/logout.php">
+                    <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">power_settings_new</i>
                     خروج از حساب
                 </a>
             </nav>
@@ -263,44 +263,36 @@ $title = '';
                     <i class="p-2 right-0 material-icons hover:cursor-pointer fixed" onclick="toggleNav()">menu</i>
                     <ul class="flex mr-20 py-3">
                         <li>
-                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="cartable.php">
-                                <i class="fas fa-layer-group"></i>
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="cartable.php">
                                 کارتابل
                             </a>
                         </li>
                         <li>
-                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="bazar.php">
-                                <i class="fas fa-phone-volume"></i>
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="bazar.php">
                                 تماس عمومی
                             </a>
                         </li>
-                        <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="bazar2.php">
-                                <i class="fas fa-phone-volume"></i>
+                        <li><a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="bazar2.php">
                                 تماس با بازار
                             </a>
                         </li>
                         <li>
-                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="estelam-list.php">
-                                <i class="fas fa-arrow-down"></i>
-                                <i class="fas fa-dollar-sign"></i>
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="estelam-list.php">
                                 قیمت های گرفته شده
                             </a>
                         </li>
                         <li>
-                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="shomarefaktor.php">
-                                <i class="fas fa-feather-alt"></i>
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="shomarefaktor.php">
                                 شماره فاکتور
                             </a>
                         </li>
                         <li>
-                            <a target="_self" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/givePrice.php">
-                                <i class="fas fa-feather-alt"></i>
+                            <a style="font-size: 10px;" target="_self" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/givePrice.php">
                                 قیمت دهی دستوری
                             </a>
                         </li>
                         <li>
-                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/GivenPriceHistory.php">
-                                <i class="fas fa-history"></i>
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/GivenPriceHistory.php">
                                 تاریخچه
                             </a>
                         </li>
