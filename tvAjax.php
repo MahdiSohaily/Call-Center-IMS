@@ -12,7 +12,7 @@ $sql = "SELECT * FROM shop.tv WHERE id='1'";
 $factor_result = mysqli_query($con, $sql);
 $tv = mysqli_fetch_assoc($factor_result);
 $status = $tv['status'];
-if ($status !== 'on') :
+if ($status == 'on') :
     function getFirstLetters($string)
     {
         // Trim the string and remove special characters
