@@ -28,7 +28,12 @@ function displayTimePassed($timePassed)
 
     $diff = $current_day - $data_day;
 
-    $text = "  $diff روز قبل";
+    if($diff ==0) {
+        $text = "امروز";
+    } else {
+        $text = "  $diff روز قبل";
+    }
+
     return  $text;
 }
 ?>
