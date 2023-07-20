@@ -117,7 +117,7 @@ if ($isValidCustomer) {
                             $customer = $customer;
                             $completeCode = $completeCode;
                     ?>
-                            <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-9 gap-6 lg:gap-2 lg:p-2 overflow-auto px-5">
+                            <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-9 gap-6 lg:gap-2 lg:p-2 overflow-auto">
 
                                 <!-- Start the code info section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md mt-2">
