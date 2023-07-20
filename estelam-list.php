@@ -34,10 +34,6 @@ function displayTimePassed($timePassed)
         $text .= " $days روز و ";
     }
 
-    if ($hours) {
-        $text .= "$hours ساعت ";
-    }
-
     if (!$days && $minutes) {
         $text .= "$minutes دقیقه ";
     }
