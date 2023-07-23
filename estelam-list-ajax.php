@@ -74,7 +74,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) :
             // Display a row for the new group with the background color
 ?>
             <tr class="bg-rose-400">
-                <td class="p-3" colspan="5"><?php echo displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) ?></td>
+                <td class="p-3" colspan="6"><?php echo displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) ?></td>
             </tr>
         <?php
         endif;
@@ -103,6 +103,10 @@ if (filter_has_var(INPUT_POST, 'pattern')) :
 
                 echo $formattedTime; // Output: 14:30
                 ?>
+            </td>
+            <td>
+                <i onclick="editItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
+                <i onclick="deleteItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-red-600">delete</i>
             </td>
         </tr>
 <?php
