@@ -415,16 +415,21 @@ function exist($conn, $id)
     }
 
     $brands = array_unique($brands);
+    usort($incoming, function ($a, $b) {
+        return $b['qty'] - $a['qty'];
+    });
 
     echo '<br/>';
     echo '<br/>';
     echo '<br/>';
     echo '<br/>';
-    print_r(json_encode($brands));
+    print_r(json_encode($incoming));
     echo '<br/>';
     echo '<br/>';
     echo '<br/>';
     echo '<br/>';
+
+
 
     foreach ($brands as $item) {
         $total = 0;
@@ -449,4 +454,12 @@ function getMax($array)
         $max = $max < $v ? $v : $max;
     }
     return $max;
+}
+
+function sortArrayByNumericPropertyDescending($array, $property)
+{
+    usort($array, function ($a, $b) use ($property) {
+        return $b->$property - $a->$property;
+    });
+    return $array;
 }
