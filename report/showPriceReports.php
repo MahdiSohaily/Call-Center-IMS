@@ -12,18 +12,22 @@ function displayTimePassed($datetimeString)
 
     $totalDays = $interval->days;
     $passedMonths = floor($totalDays / 30);
-    $remainingDays = $totalDays % 30;
-    $passedWeeks = floor($remainingDays / 7);
-    $passedDays = $remainingDays % 7;
+    $passedDays = $totalDays % 30;
 
     $persianMonths = convertToPersian($passedMonths);
-    $persianWeeks = convertToPersian($passedWeeks);
     $persianDays = convertToPersian($passedDays);
 
-    $result = "$persianMonths ماه و $persianWeeks هفته";
+    $result = "زمان گذشته: ";
+
+    if ($passedMonths > 0) {
+        $result .= "$persianMonths ماه";
+    }
 
     if ($passedDays > 0) {
-        $result .= " و $persianDays روز";
+        if ($passedMonths > 0) {
+            $result .= " و ";
+        }
+        $result .= "$persianDays روز";
     }
 
     return $result;
@@ -244,7 +248,7 @@ if ($isValidCustomer) {
                                                                                                 <thead class="font-medium bg-violet-800">
                                                                                                     <tr>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">فروشنده</th>
-                                                                                                        <th class="text-right px-3 py-2 tiny-text">مقدار موجود</th>
+                                                                                                        <th class="text-right px-3 py-2 tiny-text"> موجودی</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">تاریخ</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">زمان سپری شده</th>
                                                                                                     </tr>

@@ -12,18 +12,22 @@ function displayTimePassed($datetimeString)
 
     $totalDays = $interval->days;
     $passedMonths = floor($totalDays / 30);
-    $remainingDays = $totalDays % 30;
-    $passedWeeks = floor($remainingDays / 7);
-    $passedDays = $remainingDays % 7;
+    $passedDays = $totalDays % 30;
 
     $persianMonths = convertToPersian($passedMonths);
-    $persianWeeks = convertToPersian($passedWeeks);
     $persianDays = convertToPersian($passedDays);
 
-    $result = "$persianMonths ماه و $persianWeeks هفته";
+    $result = "";
+
+    if ($passedMonths > 0) {
+        $result .= "$persianMonths ماه";
+    }
 
     if ($passedDays > 0) {
-        $result .= " و $persianDays روز";
+        if ($passedMonths > 0) {
+            $result .= " و ";
+        }
+        $result .= "$persianDays روز";
     }
 
     return $result;
@@ -205,7 +209,7 @@ if ($isValidCustomer) {
                                                         شماره فنی
                                                     </th>
                                                     <th scope="col" class="px-3 py-3 text-white text-center">
-                                                        مقدار موجودی
+                                                        موجودی
                                                     </th>
                                                     <th scope="col" class="px-3 py-3 text-white text-center">
                                                         قیمت به اساس نرخ ارز
@@ -245,8 +249,9 @@ if ($isValidCustomer) {
                                                                                                 <thead class="font-medium bg-violet-800">
                                                                                                     <tr>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">فروشنده</th>
-                                                                                                        <th class="text-right px-3 py-2 tiny-text">مقدار موجود</th>
+                                                                                                        <th class="text-right px-3 py-2 tiny-text"> موجودی</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">تاریخ</th>
+                                                                                                        <th class="text-right px-3 py-2 tiny-text">زمان سپری شده</th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
@@ -258,6 +263,7 @@ if ($isValidCustomer) {
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo jdate('Y/m/d', strtotime($item['create_time'])) ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo displayTimePassed($item['create_time']) ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     <?php
