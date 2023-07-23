@@ -325,7 +325,7 @@ function out($conn, $id)
     return $result;
 }
 
-function stockInfo($conn, $id, $brand)
+function stockInfo($conn, $id, $brand, $date)
 {
 
     $stockInfo_sql = "SELECT id FROM yadakshop1402.brand WHERE brand.name = '" . $brand . "'";
@@ -371,7 +371,7 @@ function stockInfo($conn, $id, $brand)
                 $total += $record['qty'];
             }
         }
-        $final_result[$customer] = $total;
+        $final_result[$customer] = [$total, $date];
     }
 
 
@@ -418,7 +418,7 @@ function exist($conn, $id)
             if ($item == $value['name']) {
                 $total += $value['qty'];
             }
-            $stockInfo[$value['name']] =  stockInfo($conn, $id, $value['name']);
+            $stockInfo[$value['name']] =  stockInfo($conn, $id, $value['name'], $value['create_time']);
         }
 
         array_push($amount, $total);
