@@ -65,6 +65,7 @@ function displayTimePassed($timePassed)
                 $bgColorIndex = 0;
 
                 foreach ($results as $row) :
+                    $id = $row['id'];
                     $time = $row['time'];
                     $partNumber = $row['codename'];
                     $sellerName = $row['seller_name'];
@@ -116,8 +117,8 @@ function displayTimePassed($timePassed)
                             ?>
                         </td>
                         <td>
-                            <i class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
-                            <i class="material-icons hover:cursor-pointer text-red-600">delete</i>
+                            <i onclick="editItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
+                            <i onclick="deleteItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-red-600">delete</i>
                         </td>
                     </tr>
                 <?php
@@ -159,6 +160,14 @@ function displayTimePassed($timePassed)
             .catch(function(error) {
                 console.log(error);
             });
+    }
+
+    function editItem(element) {
+        const id = element.getAttribute('data-item');
+    }
+
+    function deleteItem(element) {
+        const id = element.getAttribute('data-item');
     }
 </script>
 <?php
