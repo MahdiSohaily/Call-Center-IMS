@@ -51,7 +51,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
     $bgColors = ['rgb(224 231 255)', 'rgb(236 254 255)']; // Array of background colors for date groups
     $bgColorIndex = 0;
 
-    foreach ($results as $row) {
+    foreach ($results as $row) :
         $time = $row['time'];
         $partNumber = $row['codename'];
         $sellerName = $row['seller_name'];
@@ -63,7 +63,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
         $date = $dateTime[0];
 
         // Check if the group has changed
-        if ($date !== $currentGroup) {
+        if ($date !== $currentGroup) :
             // Update the current group
             $currentGroup = $date;
 
@@ -72,13 +72,14 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
             $bgColorIndex++;
 
             // Display a row for the new group with the background color
-            echo '<tr class="bg-rose-400">';
-            echo '<td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) . '</td>';
-            echo '</tr>';
-        }
-
-        // Display the row for current entry with the same background color as the group
 ?>
+            <tr class="bg-rose-400">
+                <td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) . '</td>
+            </tr>
+        <?php
+        endif;
+        // Display the row for current entry with the same background color as the group
+        ?>
         <tr style="background-color:<?php echo $bgColor ?>">
             <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $partNumber ?>'><?php echo $partNumber ?></td>
             <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $sellerName ?>'><?php echo $sellerName ?></td>
@@ -86,7 +87,8 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
             <td>
                 <img class="w-8 mt-1 rounded-full" src='<?php echo "../userimg/$userId.jpg" ?>' alt="" srcset="">
             </td>
-            <td><?php
+            <td>
+                <?php
                 $timeString = $dateTime[1]; // Example time string
                 $adjustment = "-1 hour"; // Adjustment to subtract one hour
 
@@ -100,8 +102,9 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
                 $formattedTime = $time->format("H:i");
 
                 echo $formattedTime; // Output: 14:30
-                ?></td>
+                ?>
+            </td>
         </tr>
 <?php
-    }
+    endforeach;
 }
