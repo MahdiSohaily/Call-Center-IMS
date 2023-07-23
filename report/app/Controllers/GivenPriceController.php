@@ -31,7 +31,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 {
     $explodedCodes = explode("\n", $completeCode);
 
-    $results_arry = [
+    $results_array = [
         'not_exist' => [],
         'existing' => [],
     ];
@@ -91,7 +91,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
     $relation_id = [];
 
     foreach ($explodedCodes as $code) {
-        if (!in_array($code, $results_arry['not_exist'])) {
+        if (!in_array($code, $results_array['not_exist'])) {
             $data[$code] = [];
             foreach ($existing_code[$code] as $item) {
                 $relation_exist = isInRelation($conn, $item['id']);
@@ -115,7 +115,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     return ([
         'explodedCodes' => $explodedCodes,
-        'not_exist' => $results_arry['not_exist'],
+        'not_exist' => $results_array['not_exist'],
         'existing' => $data,
         'customer' => $customer,
         'completeCode' => $completeCode,
