@@ -405,25 +405,30 @@ function exist($conn, $id)
     }, $incoming);
 
     $incoming = array_filter($incoming, function ($item) {
-        if ($item !== null) return $item;
+        if ($item !== null) {
+            return $item;
+        }
     });
 
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    print_r(json_encode($incoming));
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
+    foreach ($incoming as $item) {
+        array_push($brands, $item['name']);
+    }
 
     $brands = array_unique($brands);
 
-    foreach ($brands as $key => $value) {
-        $item = $value;
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    print_r(json_encode($brands));
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+
+    foreach ($brands as $item) {
         $total = 0;
-        foreach ($modifiedResult as $key => $value) {
+        foreach ($incoming as $value) {
             if ($item == $value['name']) {
                 $total += $value['qty'];
             }
