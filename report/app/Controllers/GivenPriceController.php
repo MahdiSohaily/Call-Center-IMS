@@ -5,19 +5,12 @@ $finalResult = null;
 
 
 if (filter_has_var(INPUT_POST, 'givenPrice') && filter_has_var(INPUT_POST, 'user')) {
-    // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
     $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
-
-    // remove all the special characters from the user input
-    $code = htmlspecialchars($_POST['code']);
-
-    // Setting the user ID who have submitted the form
+    $code = $_POST['code'];
     $_SESSION["user_id"] = $_POST['user'];
-
-    // Check if the requested is coming from the notification page
     $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
 
-    $customer_sql = "SELECT * FROM callcenter.customer WHERE id = '" . $customer . "'";
+    $customer_sql = "SELECT * FROM callcenter.customer WHERE id = '" . $customer . "%'";
     $result = mysqli_query($conn, $customer_sql);
     if (mysqli_num_rows($result) > 0) {
         $isValidCustomer = true;
@@ -31,23 +24,25 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 {
     $explodedCodes = explode("\n", $completeCode);
 
-    $results_array = [
+    $results_arry = [
         'not_exist' => [],
         'existing' => [],
     ];
 
-    // Check if the code length is correct than apply filter operation on it
+    $explodedCodes = array_map(function ($code) {
+        if (strlen($code) > 0) {
+            return  preg_replace('/[^a-z0-9]/i', '', $code);
+        }
+    }, $explodedCodes);
+
     $explodedCodes = array_filter($explodedCodes, function ($code) {
         if (strlen($code) > 5) {
-            $code = preg_replace('/[^a-z0-9]/i', '', $code);
             return  $code;
         }
     });
 
-    // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
 
-    $existing_code = []; // this array will hold the id and partNumber of the existing codes in DB
     foreach ($explodedCodes as $code) {
         $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $code . "%'";
         $result = mysqli_query($conn, $sql);
@@ -62,7 +57,26 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         if (count($all_matched)) {
             $existing_code[$code] = $all_matched;
         } else {
-            array_push($results_array['not_exist'], $code); //Adding nonexisting codes to the final result array's not_exist index Line NO: 34
+            array_push($results_arry['not_exist'], $code);
+        }
+    }
+
+    $existing_code = [];
+    foreach ($explodedCodes as $code) {
+        $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $code . "%'";
+        $result = mysqli_query($conn, $sql);
+
+        $all_matched = [];
+        if (mysqli_num_rows($result) > 0) {
+            while ($item = mysqli_fetch_assoc($result)) {
+                array_push($all_matched, $item);
+            }
+        }
+
+        if (count($all_matched)) {
+            $existing_code[$code] = $all_matched;
+        } else {
+            array_push($results_arry['not_exist'], $code);
         }
     }
 
@@ -70,7 +84,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
     $relation_id = [];
 
     foreach ($explodedCodes as $code) {
-        if (!in_array($code, $results_array['not_exist'])) {
+        if (!in_array($code, $results_arry['not_exist'])) {
             $data[$code] = [];
             foreach ($existing_code[$code] as $item) {
                 $relation_exist = isInRelation($conn, $item['id']);
@@ -94,7 +108,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     return ([
         'explodedCodes' => $explodedCodes,
-        'not_exist' => $results_array['not_exist'],
+        'not_exist' => $results_arry['not_exist'],
         'existing' => $data,
         'customer' => $customer,
         'completeCode' => $completeCode,
@@ -311,7 +325,7 @@ function out($conn, $id)
     return $result;
 }
 
-function stockInfo($conn, $id, $brand, $date)
+function stockInfo($conn, $id, $brand)
 {
 
     $stockInfo_sql = "SELECT id FROM yadakshop1402.brand WHERE brand.name = '" . $brand . "'";
@@ -357,7 +371,7 @@ function stockInfo($conn, $id, $brand, $date)
                 $total += $record['qty'];
             }
         }
-        $final_result[$customer] = [$total, $date];
+        $final_result[$customer] = $total;
     }
 
 
@@ -367,7 +381,7 @@ function stockInfo($conn, $id, $brand, $date)
 function exist($conn, $id)
 {
 
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand WHERE codeid = '" . $id . "' ";
+    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand WHERE codeid = '" . $id . "' ";
     $data_result = mysqli_query($conn, $data_sql);
 
     $result = [];
@@ -388,10 +402,8 @@ function exist($conn, $id)
 
         $out_data = out($conn, $clone['id']);
         $out =  $out_data;
-
         $clone['qty'] = (int)($clone['qty']) - $out;
         array_push($modifiedResult, $clone);
-
         array_push($brands, $value['name']);
     }
 
@@ -404,7 +416,7 @@ function exist($conn, $id)
             if ($item == $value['name']) {
                 $total += $value['qty'];
             }
-            $stockInfo[$value['name']] =  stockInfo($conn, $id, $value['name'], $value['create_time']);
+            $stockInfo[$value['name']] =  stockInfo($conn, $id, $value['name']);
         }
 
         array_push($amount, $total);
