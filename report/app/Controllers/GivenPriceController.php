@@ -409,9 +409,6 @@ function exist($conn, $id)
         array_push($brands, $value['name']);
     }
 
-    // print_r(json_encode($modifiedResult));
-    // echo '<br>';
-
     $brands = array_unique($brands);
 
     foreach ($brands as $key => $value) {
