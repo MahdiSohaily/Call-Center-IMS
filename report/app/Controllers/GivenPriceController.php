@@ -36,13 +36,19 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         'existing' => [],
     ];
 
-    // Check if the code length is correct than apply filter operation on it
+    $explodedCodes = array_map(function ($code) {
+        if (strlen($code) > 0) {
+            return  preg_replace('/[^a-z0-9]/i', '', $code);
+        }
+    }, $explodedCodes);
+
     $explodedCodes = array_filter($explodedCodes, function ($code) {
         if (strlen($code) > 5) {
-            $code = preg_replace('/[^a-z0-9]/i', '', $code);
             return  $code;
         }
     });
+
+    print_r(json_encode($explodedCodes));
 
     // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
