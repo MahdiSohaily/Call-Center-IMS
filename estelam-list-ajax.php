@@ -2,36 +2,25 @@
 require_once './php/function.php';
 require_once './config/database.php';
 
+
 function displayTimePassed($timePassed)
 {
     $create = date($timePassed);
     $now = new DateTime(); // current date time
     $date_time = new DateTime($create); // date time from string
-    $interval = $now->diff($date_time); // difference between two date times
-    $days = $interval->format('%a'); // difference in days
-    $hours = $interval->format('%h'); // difference in hours
-    $minutes = $interval->format('%i'); // difference in minutes
-    $seconds = $interval->format('%s'); // difference in seconds
 
-    $text = '';
+    $current_day = date_format($now, 'd');
+    $data_day = date_format($date_time, 'd');
 
-    if ($days) {
-        $text .= " $days روز و ";
+    $diff = $current_day - $data_day;
+
+    if ($diff == 0) {
+        $text = "امروز";
+    } else {
+        $text = "  $diff روز قبل";
     }
 
-    if ($hours) {
-        $text .= "$hours ساعت ";
-    }
-
-    if (!$days && $minutes) {
-        $text .= "$minutes دقیقه ";
-    }
-
-    if (!$days && !$hours && $seconds) {
-        $text .= "$seconds ثانیه ";
-    }
-
-    return "$text قبل";
+    return  $text;
 }
 
 if (filter_has_var(INPUT_POST, 'pattern')) {
