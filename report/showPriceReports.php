@@ -3,24 +3,44 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
 
-function displayTimePassed($timePassed)
+function displayTimePassed($datetimeString)
 {
-    $create = date($timePassed);
-    $now = new DateTime(); // current date time
-    $date_time = new DateTime($create); // date time from string
+    $datetime = new DateTime($datetimeString);
+    $now = new DateTime();
 
-    $current_day = date_format($now, 'd');
-    $data_day = date_format($date_time, 'd');
+    $interval = $now->diff($datetime);
 
-    $diff = $current_day - $data_day;
+    $totalDays = $interval->days;
+    $passedMonths = floor($totalDays / 30);
+    $remainingDays = $totalDays % 30;
+    $passedWeeks = floor($remainingDays / 7);
+    $passedDays = $remainingDays % 7;
 
-    if ($diff == 0) {
-        $text = "امروز";
-    } else {
-        $text = "  $diff روز قبل";
+    $persianMonths = convertToPersian($passedMonths);
+    $persianWeeks = convertToPersian($passedWeeks);
+    $persianDays = convertToPersian($passedDays);
+
+    $result = "$persianMonths ماه و $persianWeeks هفته";
+
+    if ($passedDays > 0) {
+        $result .= " و $persianDays روز";
     }
 
-    return   $diff;
+    return $result;
+}
+
+function convertToPersian($number)
+{
+    $persianDigits = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+    $persianNumber = '';
+
+    while ($number > 0) {
+        $digit = $number % 10;
+        $persianNumber = $persianDigits[$digit] . $persianNumber;
+        $number = (int)($number / 10);
+    }
+
+    return $persianNumber;
 }
 
 if ($isValidCustomer) {

@@ -3,6 +3,46 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
 
+function displayTimePassed($datetimeString)
+{
+    $datetime = new DateTime($datetimeString);
+    $now = new DateTime();
+
+    $interval = $now->diff($datetime);
+
+    $totalDays = $interval->days;
+    $passedMonths = floor($totalDays / 30);
+    $remainingDays = $totalDays % 30;
+    $passedWeeks = floor($remainingDays / 7);
+    $passedDays = $remainingDays % 7;
+
+    $persianMonths = convertToPersian($passedMonths);
+    $persianWeeks = convertToPersian($passedWeeks);
+    $persianDays = convertToPersian($passedDays);
+
+    $result = "$persianMonths ماه و $persianWeeks هفته";
+
+    if ($passedDays > 0) {
+        $result .= " و $persianDays روز";
+    }
+
+    return $result;
+}
+
+function convertToPersian($number)
+{
+    $persianDigits = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+    $persianNumber = '';
+
+    while ($number > 0) {
+        $digit = $number % 10;
+        $persianNumber = $persianDigits[$digit] . $persianNumber;
+        $number = (int)($number / 10);
+    }
+
+    return $persianNumber;
+}
+
 if ($isValidCustomer) {
     if ($finalResult) {
         $explodedCodes = $finalResult['explodedCodes'];
