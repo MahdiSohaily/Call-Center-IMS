@@ -48,8 +48,6 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         }
     });
 
-    print_r(json_encode($explodedCodes));
-
     // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
 
@@ -88,13 +86,13 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
                         array_push($relation_id, $relation_exist); // if a new relation exists -> put it in the result array
 
                         $itemDetails[$code][$item['partnumber']]['information'] = info($conn, $item['id'], $relation_exist);
-                        $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id']);
+                        $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $relation_exist, true);
                         $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']), $relation_exist);
                         $itemDetails[$code][$item['partnumber']]['estelam'] =  estelam($conn, $item['partnumber']);
                     }
                 } else {
                     $itemDetails[$code][$item['partnumber']]['information'] = info($conn, $item['id']);
-                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id']);
+                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id'], false);
                     $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']));
                     $itemDetails[$code][$item['partnumber']]['estelam'] = estelam($conn, $item['partnumber']);
                 }
@@ -117,7 +115,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
  * @param Connection to the database
  * @return array of rates selected to be used in the goods report table
  */
-function getSelectedRates($conn): array
+function getSelectedRates($conn)
 {
 
     $sql = "SELECT amount, status FROM rates WHERE selected = '1' ORDER BY amount ASC";
@@ -138,7 +136,7 @@ function getSelectedRates($conn): array
  * @param int $id is the id of the good to check if it has a relationship
  * @return int if the good has a relationship return the id of the relationship
  */
-function isInRelation($conn, $id): int
+function isInRelation($conn, $id)
 {
     $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '$id'";
     $result = mysqli_query($conn, $sql);
@@ -192,21 +190,13 @@ function info($conn, $id, $relation_exist = null)
     return $info ? ['relationInfo' => $info, 'cars' => $cars] : false;
 }
 
-function relations($conn, $id)
+function relations($conn, $id, $condition)
 {
-    $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '" . $id . "'";
-    $result = mysqli_query($conn, $sql);
-
-    $isInRelation = null;
-    if (mysqli_num_rows($result) > 0) {
-        $isInRelation = mysqli_fetch_assoc($result);
-    }
-
     $relations = [];
 
-    if ($isInRelation) {
+    if ($condition) {
 
-        $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $isInRelation['pattern_id'] . "'";
+        $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($info = mysqli_fetch_assoc($result)) {
