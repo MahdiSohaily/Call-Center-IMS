@@ -56,7 +56,6 @@ function displayTimePassed($timePassed)
                 <th class="text-right px-3 text-white py-2">قیمت</th>
                 <th class="text-right px-3 text-white py-2">کاربر ثبت کننده</th>
                 <th class="text-right px-3 text-white py-2">زمان ثبت</th>
-                <th class="text-right px-3 text-white py-2">عملیات</th>
             </tr>
             <tbody id="results">
                 <?php
@@ -70,6 +69,7 @@ function displayTimePassed($timePassed)
                     $sellerName = $row['seller_name'];
                     $price = $row['price'];
                     $userId = $row['user_id'];
+
                     // Explode the time value to separate date and time
                     $dateTime = explode(' ', $time);
                     $date = $dateTime[0];
@@ -82,12 +82,13 @@ function displayTimePassed($timePassed)
                         // Get the background color for the current group
                         $bgColor = $bgColors[$bgColorIndex % count($bgColors)];
                         $bgColorIndex++;
-                        // Display a row for the new group with the background color
                 ?>
+                        <!-- // Display a row for the new group with the background color -->
                         <tr class="bg-rose-400">
                             <td class="p-3" colspan="5"><?php echo displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) ?></td>
                         </tr>
-                    <? endif;
+                    <?php
+                    endif;
 
                     // Display the row for current entry with the same background color as the group
                     ?>
@@ -117,7 +118,7 @@ function displayTimePassed($timePassed)
                 endforeach;
                 ?>
             </tbody>
-        </table>
+        </table>';
     </div>
 </div>
 <script>
