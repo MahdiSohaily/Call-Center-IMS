@@ -218,7 +218,7 @@ function relations($conn, $id, $condition)
 
     foreach ($relations as $relation) {
         $data = exist($conn, $relation['id']);
-        $existing[$relation['partnumber']] = $data['final'];
+        $existing[$relation['partnumber']] = $data['brands_info'];
         $stockInfo[$relation['partnumber']] = $data['stockInfo'];
         $sortedGoods[$relation['partnumber']] = $relation;
     }
@@ -431,33 +431,11 @@ function exist($conn, $id)
         $brands_info[$item] = $total;
     }
 
+    arsort($brands_info);
 
-
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
     print_r(json_encode($brands_info));
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
 
-
-    foreach ($brands as $item) {
-        $total = 0;
-        foreach ($incoming as $value) {
-            if ($item == $value['name']) {
-                $total += $value['qty'];
-            }
-            $stockInfo[$value['name']] =  stockInfo($conn, $id, $value['name']);
-        }
-
-        array_push($amount, $total);
-    }
-    $final = array_combine($brands, $amount);
-    arsort($final);
-    return ['stockInfo' => $stockInfo, 'final' => $final];
+    return ['stockInfo' => $stockInfo, 'brands_info' => $brands_info];
 }
 
 function getMax($array)
