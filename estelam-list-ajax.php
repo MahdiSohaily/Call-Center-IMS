@@ -1,6 +1,7 @@
 <?php
 require_once './php/function.php';
 require_once './config/database.php';
+require_once './php/jdf.php';
 
 
 function displayTimePassed($timePassed)
@@ -72,7 +73,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
 
             // Display a row for the new group with the background color
             echo '<tr class="bg-rose-400">';
-            echo '<td class="p-3" colspan="5">' . displayTimePassed($time) . ' - ' . "<span class='direction:ltr' >$date </span>" . '</td>';
+            echo '<td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) . '</td>';
             echo '</tr>';
         }
 
