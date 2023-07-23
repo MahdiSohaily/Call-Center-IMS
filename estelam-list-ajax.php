@@ -74,7 +74,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
             // Display a row for the new group with the background color
 ?>
             <tr class="bg-rose-400">
-                <td class="p-3" colspan="5">' . displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) . '</td>
+                <td class="p-3" colspan="5"><?php echo displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) ?></td>
             </tr>
         <?php
         endif;

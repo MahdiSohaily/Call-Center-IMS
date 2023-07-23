@@ -56,6 +56,7 @@ function displayTimePassed($timePassed)
                 <th class="text-right px-3 text-white py-2">قیمت</th>
                 <th class="text-right px-3 text-white py-2">کاربر ثبت کننده</th>
                 <th class="text-right px-3 text-white py-2">زمان ثبت</th>
+                <th class="text-right px-3 text-white py-2">عملیات</th>
             </tr>
             <tbody id="results">
                 <?php
@@ -85,7 +86,7 @@ function displayTimePassed($timePassed)
                 ?>
                         <!-- // Display a row for the new group with the background color -->
                         <tr class="bg-rose-400">
-                            <td class="p-3" colspan="5"><?php echo displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) ?></td>
+                            <td class="p-3" colspan="6"><?php echo displayTimePassed($date) . ' - ' . jdate('Y/m/d', strtotime($date)) ?></td>
                         </tr>
                     <?php
                     endif;
@@ -112,7 +113,12 @@ function displayTimePassed($timePassed)
                             $formattedTime = $time->format("H:i");
 
                             echo $formattedTime; // Output: 14:30
-                            ?></td>
+                            ?>
+                        </td>
+                        <td>
+                            <i class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
+                            <i class="material-icons hover:cursor-pointer text-red-600">delete</i>
+                        </td>
                     </tr>
                 <?php
                 endforeach;
