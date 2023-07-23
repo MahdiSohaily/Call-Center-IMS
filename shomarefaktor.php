@@ -3,8 +3,16 @@ require_once './layout/heroHeader.php';
 ?>
 <?php
 $date = date('Y-m-d H:i:s');
+$startDate = date_create(date('Y-m-d H:i:s'));
+$endDate = date_create(date('Y-m-d H:i:s'));
 
-$sql = "SELECT * FROM shomarefaktor WHERE time >= '$date' ORDER BY shomare DESC";
+$endDate = $endDate->setTime(23, 59, 59);
+$startDate = $startDate->setTime(1, 1, 0);
+
+$end = date_format($endDate, "Y-m-d H:i:s");
+$start = date_format($startDate, "Y-m-d H:i:s");
+
+$sql = "SELECT * FROM shomarefaktor WHERE time < '$end' AND time >= '$start' ORDER BY shomare DESC";
 $factor_result = mysqli_query(dbconnect(), $sql);
 
 ?>
