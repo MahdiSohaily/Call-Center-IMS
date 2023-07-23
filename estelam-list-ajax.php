@@ -24,7 +24,7 @@ function displayTimePassed($timePassed)
     return  $text;
 }
 
-if (filter_has_var(INPUT_POST, 'pattern')) {
+if (filter_has_var(INPUT_POST, 'pattern')) :
     $pattern = $_POST['pattern'];
 
     $sql = "SELECT e.*, u.id As user_id, s.name AS seller_name
@@ -107,4 +107,4 @@ if (filter_has_var(INPUT_POST, 'pattern')) {
         </tr>
 <?php
     endforeach;
-}
+endif;
