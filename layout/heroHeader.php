@@ -258,31 +258,31 @@ $title = '';
                 };
             </script>
             <!-- Page Content -->
-            <main class="pt-14">
+            <main class="pt-20">
                 <div id="topNav" class="flex justify-between bg-gray-200 fixed w-full shadow-lg" style="top: 0; z-index:100">
                     <i class="p-2 right-0 material-icons hover:cursor-pointer fixed" onclick="toggleNav()">menu</i>
                     <ul class="flex mr-20 py-3">
                         <li>
-                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="cartable.php">
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="cartable.php">
                                 کارتابل
                             </a>
                         </li>
                         <li>
-                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="bazar.php">
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="bazar.php">
                                 تماس عمومی
                             </a>
                         </li>
-                        <li><a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="bazar2.php">
+                        <li><a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="bazar2.php">
                                 تماس با بازار
                             </a>
                         </li>
                         <li>
-                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="estelam-list.php">
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="estelam-list.php">
                                 قیمت های گرفته شده
                             </a>
                         </li>
                         <li>
-                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="shomarefaktor.php">
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="shomarefaktor.php">
                                 شماره فاکتور
                             </a>
                         </li>
@@ -292,7 +292,7 @@ $title = '';
                             </a>
                         </li>
                         <li>
-                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/GivenPriceHistory.php">
+                            <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/GivenPriceHistory.php">
                                 تاریخچه
                             </a>
                         </li>
