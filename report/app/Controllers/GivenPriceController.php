@@ -151,22 +151,13 @@ function isInRelation($conn, $id): int
  * @return int $relation_exist
  * @return array of information about the good
  */
-function info($conn, $id, $relation_exist = null): array
+function info($conn, $id, $relation_exist = null)
 {
-    $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '" . $id . "'";
-    $result = mysqli_query($conn, $sql);
-
-    $isInRelation = null;
-    if (mysqli_num_rows($result) > 0) {
-        $isInRelation = mysqli_fetch_assoc($result);
-    }
-
-
     $info = false;
     $cars = [];
-    if ($isInRelation) {
+    if ($relation_exist) {
 
-        $sql = "SELECT * FROM patterns WHERE id = '" . $isInRelation['pattern_id'] . "'";
+        $sql = "SELECT * FROM patterns WHERE id = '" . $relation_exist . "'";
         $result = mysqli_query($conn, $sql);
 
         $info = null;
@@ -175,14 +166,14 @@ function info($conn, $id, $relation_exist = null): array
         }
 
         if ($info['status_id'] !== 0) {
-            $sql = "SELECT patterns.*, status.name AS  status_name FROM patterns INNER JOIN status ON status.id = patterns.status_id WHERE patterns.id = '" . $isInRelation['pattern_id'] . "'";
+            $sql = "SELECT patterns.*, status.name AS  status_name FROM patterns INNER JOIN status ON status.id = patterns.status_id WHERE patterns.id = '" . $relation_exist . "'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 $info = mysqli_fetch_assoc($result);
             }
         }
 
-        $sql = "SELECT cars.name FROM patterncars INNER JOIN cars ON cars.id = patterncars.car_id WHERE patterncars.pattern_id = '" . $isInRelation['pattern_id'] . "'";
+        $sql = "SELECT cars.name FROM patterncars INNER JOIN cars ON cars.id = patterncars.car_id WHERE patterncars.pattern_id = '" . $relation_exist . "'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
