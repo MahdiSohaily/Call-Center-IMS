@@ -36,20 +36,18 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         'existing' => [],
     ];
 
-    $explodedCodes = array_map(function ($code) {
-        if (strlen($code) > 0) {
-            return  preg_replace('/[^a-z0-9]/i', '', $code);
-        }
-    }, $explodedCodes);
-
+    // Check if the code length is correct than apply filter operation on it
     $explodedCodes = array_filter($explodedCodes, function ($code) {
         if (strlen($code) > 5) {
+            $code = preg_replace('/[^a-z0-9]/i', '', $code);
             return  $code;
         }
     });
 
+    // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
 
+    $existing_code = []; // this array will hold the id and partNumber of the existing codes in DB
     foreach ($explodedCodes as $code) {
         $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $code . "%'";
         $result = mysqli_query($conn, $sql);
@@ -64,26 +62,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         if (count($all_matched)) {
             $existing_code[$code] = $all_matched;
         } else {
-            array_push($results_arry['not_exist'], $code);
-        }
-    }
-
-    $existing_code = [];
-    foreach ($explodedCodes as $code) {
-        $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $code . "%'";
-        $result = mysqli_query($conn, $sql);
-
-        $all_matched = [];
-        if (mysqli_num_rows($result) > 0) {
-            while ($item = mysqli_fetch_assoc($result)) {
-                array_push($all_matched, $item);
-            }
-        }
-
-        if (count($all_matched)) {
-            $existing_code[$code] = $all_matched;
-        } else {
-            array_push($results_arry['not_exist'], $code);
+            array_push($results_array['not_exist'], $code); //Adding nonexisting codes to the final result array's not_exist index Line NO: 34
         }
     }
 
