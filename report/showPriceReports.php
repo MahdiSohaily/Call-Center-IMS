@@ -3,6 +3,25 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
 
+function displayTimePassed($timePassed)
+{
+    $create = date($timePassed);
+    $now = new DateTime(); // current date time
+    $date_time = new DateTime($create); // date time from string
+
+    $current_day = date_format($now, 'd');
+    $data_day = date_format($date_time, 'd');
+
+    $diff = $current_day - $data_day;
+
+    if ($diff == 0) {
+        $text = "امروز";
+    } else {
+        $text = "  $diff روز قبل";
+    }
+
+    return   $diff;
+}
 
 if ($isValidCustomer) {
     if ($finalResult) {
@@ -207,6 +226,7 @@ if ($isValidCustomer) {
                                                                                                         <th class="text-right px-3 py-2 tiny-text">فروشنده</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">مقدار موجود</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">تاریخ</th>
+                                                                                                        <th class="text-right px-3 py-2 tiny-text">زمان سپری شده</th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
@@ -218,6 +238,7 @@ if ($isValidCustomer) {
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo jdate('Y/m/d', strtotime($item['create_time'])) ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo displayTimePassed($item['create_time']) ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     <?php
@@ -449,7 +470,7 @@ if ($isValidCustomer) {
                                         </form>
                                     </div>
                                 </div>
-                                
+
                                 <!-- END GIVEN PRICE SECTION -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
                                     <div class="p-3">
