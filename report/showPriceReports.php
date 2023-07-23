@@ -119,7 +119,7 @@ if ($isValidCustomer) {
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-2 lg:p-2 overflow-auto">
 
                                 <!-- Start the code info section -->
-                                <div class="min-w-full bg-white rounded-lg col-span-1 overflow-auto shadow-md mt-2">
+                                <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md mt-2">
                                     <div class="rtl p-3">
                                         <p style="font-size: 0.8rem;" class="text-left bg-gray-600 text-white p-2 my-3 rounded-md">
                                             <?php echo $index; ?>
@@ -207,19 +207,17 @@ if ($isValidCustomer) {
                                                                                                         <th class="text-right px-3 py-2 tiny-text">فروشنده</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">مقدار موجود</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">تاریخ</th>
-                                                                                                        <th class="text-right px-3 py-2 tiny-text">سپری شده</th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
                                                                                                     <?php
-                                                                                                    foreach ($stockInfo[$index][$brand] as $iterator => $item) {
+                                                                                                    foreach ($stockInfo[$index] as $item) {
                                                                                                     ?>
-                                                                                                        <?php if ($item !== 0) { ?>
+                                                                                                        <?php if ($item !== 0 && $item['name'] === $brand) { ?>
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $iterator ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo date('Y-m-d') ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo date('Y-m-d') ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo jdate('Y/m/d', strtotime($item['create_time'])) ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     <?php
@@ -239,13 +237,9 @@ if ($isValidCustomer) {
                                                                 <tbody>
                                                                     <tr class="py-3">
                                                                         <?php foreach ($exist[$index] as $brand => $amount) {
-                                                                            if ($amount > 0) {
-                                                                                $total = 0;
-                                                                                foreach ($stockInfo[$index][$brand] as $iterator => $item) {
-                                                                                    $total += $item;
-                                                                                } ?>
+                                                                            if ($amount > 0) { ?>
                                                                                 <td class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> whitespace-nowrap text-white px-3 py-2 text-center">
-                                                                                    <?php echo $total;
+                                                                                    <?php echo $amount;
                                                                                     ?>
                                                                                 </td>
                                                                         <?php }
@@ -455,7 +449,7 @@ if ($isValidCustomer) {
                                         </form>
                                     </div>
                                 </div>
-
+                                
                                 <!-- END GIVEN PRICE SECTION -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
                                     <div class="p-3">

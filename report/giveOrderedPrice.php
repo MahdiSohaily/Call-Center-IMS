@@ -2,6 +2,7 @@
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
+require_once('./app/controllers/jdf.php');
 
 
 if ($isValidCustomer) {
@@ -13,8 +14,6 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
-
-        print_r(json_encode($finalResult));
 
 ?>
         <div class="grid grid-cols-6">
@@ -204,7 +203,7 @@ if ($isValidCustomer) {
                                                                                     <th scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
                                                                                         <?php echo $brand ?>
                                                                                         <div class="custome-tooltip" id="<?php echo $index . '-' . $brand ?>">
-                                                                                            <table class="min-w-full text-sm font-light p-2">
+                                                                                            <table class="rtl min-w-full text-sm font-light p-2">
                                                                                                 <thead class="font-medium bg-violet-800">
                                                                                                     <tr>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">فروشنده</th>
@@ -220,7 +219,7 @@ if ($isValidCustomer) {
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo date('Y-m-d') ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo jdate('Y/m/d', strtotime($item['create_time'])) ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     <?php
