@@ -5,12 +5,19 @@ $finalResult = null;
 
 
 if (filter_has_var(INPUT_POST, 'givenPrice') && filter_has_var(INPUT_POST, 'user')) {
+    // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
     $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
-    $code = $_POST['code'];
+
+    // remove all the special characters from the user input
+    $code = htmlspecialchars($_POST['code']);
+
+    // Setting the user ID who have submitted the form
     $_SESSION["user_id"] = $_POST['user'];
+
+    // Check if the requested is coming from the notification page
     $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
 
-    $customer_sql = "SELECT * FROM callcenter.customer WHERE id = '" . $customer . "%'";
+    $customer_sql = "SELECT * FROM callcenter.customer WHERE id = '" . $customer . "'";
     $result = mysqli_query($conn, $customer_sql);
     if (mysqli_num_rows($result) > 0) {
         $isValidCustomer = true;
@@ -24,7 +31,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 {
     $explodedCodes = explode("\n", $completeCode);
 
-    $results_arry = [
+    $results_array = [
         'not_exist' => [],
         'existing' => [],
     ];
@@ -41,8 +48,10 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         }
     });
 
+    // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
 
+    $existing_code = []; // this array will hold the id and partNumber of the existing codes in DB
     foreach ($explodedCodes as $code) {
         $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $code . "%'";
         $result = mysqli_query($conn, $sql);
@@ -52,55 +61,40 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
             while ($item = mysqli_fetch_assoc($result)) {
                 array_push($all_matched, $item);
             }
-        }
 
-        if (count($all_matched)) {
             $existing_code[$code] = $all_matched;
         } else {
-            array_push($results_arry['not_exist'], $code);
+            array_push($results_array['not_exist'], $code); //Adding nonexisting codes to the final result array's not_exist index Line NO: 34
         }
     }
 
-    $existing_code = [];
-    foreach ($explodedCodes as $code) {
-        $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $code . "%'";
-        $result = mysqli_query($conn, $sql);
-
-        $all_matched = [];
-        if (mysqli_num_rows($result) > 0) {
-            while ($item = mysqli_fetch_assoc($result)) {
-                array_push($all_matched, $item);
-            }
-        }
-
-        if (count($all_matched)) {
-            $existing_code[$code] = $all_matched;
-        } else {
-            array_push($results_arry['not_exist'], $code);
-        }
-    }
-
-    $data = [];
+    $itemDetails = [];
     $relation_id = [];
-
     foreach ($explodedCodes as $code) {
-        if (!in_array($code, $results_arry['not_exist'])) {
-            $data[$code] = [];
+        if (!in_array($code, $results_array['not_exist'])) {
+            $itemDetails[$code] = [];
             foreach ($existing_code[$code] as $item) {
+
+                // Check every matched good's Id If they have relationship and,
+                // avoid operation for items in the same relationship
                 $relation_exist = isInRelation($conn, $item['id']);
+
                 if ($relation_exist) {
+
                     if (!in_array($relation_exist, $relation_id)) {
-                        array_push($relation_id, $relation_exist);
-                        $data[$code][$item['partnumber']]['information'] = info($conn, $item['id']);
-                        $data[$code][$item['partnumber']]['relation'] = relations($conn, $item['id']);
-                        $data[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($data[$code][$item['partnumber']]['relation']['goods']), $relation_exist);
-                        $data[$code][$item['partnumber']]['estelam'] =  estelam($conn, $item['partnumber']);
+
+                        array_push($relation_id, $relation_exist); // if a new relation exists -> put it in the result array
+
+                        $itemDetails[$code][$item['partnumber']]['information'] = info($conn, $relation_exist);
+                        $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $relation_exist, true);
+                        $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']), $relation_exist);
+                        $itemDetails[$code][$item['partnumber']]['estelam'] =  estelam($conn, $item['partnumber']);
                     }
                 } else {
-                    $data[$code][$item['partnumber']]['information'] = info($conn, $item['id']);
-                    $data[$code][$item['partnumber']]['relation'] = relations($conn, $item['id']);
-                    $data[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($data[$code][$item['partnumber']]['relation']['goods']));
-                    $data[$code][$item['partnumber']]['estelam'] = estelam($conn, $item['partnumber']);
+                    $itemDetails[$code][$item['partnumber']]['information'] = info($conn);
+                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id'], false);
+                    $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']));
+                    $itemDetails[$code][$item['partnumber']]['estelam'] = estelam($conn, $item['partnumber']);
                 }
             }
         }
@@ -108,8 +102,8 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     return ([
         'explodedCodes' => $explodedCodes,
-        'not_exist' => $results_arry['not_exist'],
-        'existing' => $data,
+        'not_exist' => $results_array['not_exist'],
+        'existing' => $itemDetails,
         'customer' => $customer,
         'completeCode' => $completeCode,
         'notification' => $notification,
@@ -117,6 +111,10 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
     ]);
 }
 
+/**
+ * @param Connection to the database
+ * @return array of rates selected to be used in the goods report table
+ */
 function getSelectedRates($conn)
 {
 
@@ -133,6 +131,11 @@ function getSelectedRates($conn)
     return $rates;
 }
 
+/**
+ * @param Connection to the database
+ * @param int $id is the id of the good to check if it has a relationship
+ * @return int if the good has a relationship return the id of the relationship
+ */
 function isInRelation($conn, $id)
 {
     $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '$id'";
@@ -146,22 +149,19 @@ function isInRelation($conn, $id)
     return false;
 }
 
-function info($conn, $id)
+/**
+ * @param Connection to the database
+ * @param int $id is the id of specified good
+ * @return int $relation_exist
+ * @return array of information about the good
+ */
+function info($conn, $relation_exist = null)
 {
-    $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '" . $id . "'";
-    $result = mysqli_query($conn, $sql);
-
-    $isInRelation = null;
-    if (mysqli_num_rows($result) > 0) {
-        $isInRelation = mysqli_fetch_assoc($result);
-    }
-
-
     $info = false;
     $cars = [];
-    if ($isInRelation) {
+    if ($relation_exist) {
 
-        $sql = "SELECT * FROM patterns WHERE id = '" . $isInRelation['pattern_id'] . "'";
+        $sql = "SELECT * FROM patterns WHERE id = '" . $relation_exist . "'";
         $result = mysqli_query($conn, $sql);
 
         $info = null;
@@ -170,14 +170,14 @@ function info($conn, $id)
         }
 
         if ($info['status_id'] !== 0) {
-            $sql = "SELECT patterns.*, status.name AS  status_name FROM patterns INNER JOIN status ON status.id = patterns.status_id WHERE patterns.id = '" . $isInRelation['pattern_id'] . "'";
+            $sql = "SELECT patterns.*, status.name AS  status_name FROM patterns INNER JOIN status ON status.id = patterns.status_id WHERE patterns.id = '" . $relation_exist . "'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 $info = mysqli_fetch_assoc($result);
             }
         }
 
-        $sql = "SELECT cars.name FROM patterncars INNER JOIN cars ON cars.id = patterncars.car_id WHERE patterncars.pattern_id = '" . $isInRelation['pattern_id'] . "'";
+        $sql = "SELECT cars.name FROM patterncars INNER JOIN cars ON cars.id = patterncars.car_id WHERE patterncars.pattern_id = '" . $relation_exist . "'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -190,21 +190,13 @@ function info($conn, $id)
     return $info ? ['relationInfo' => $info, 'cars' => $cars] : false;
 }
 
-function relations($conn, $id)
+function relations($conn, $id, $condition)
 {
-    $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '" . $id . "'";
-    $result = mysqli_query($conn, $sql);
-
-    $isInRelation = null;
-    if (mysqli_num_rows($result) > 0) {
-        $isInRelation = mysqli_fetch_assoc($result);
-    }
-
     $relations = [];
 
-    if ($isInRelation) {
+    if ($condition) {
 
-        $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $isInRelation['pattern_id'] . "'";
+        $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($info = mysqli_fetch_assoc($result)) {
@@ -221,11 +213,13 @@ function relations($conn, $id)
 
 
     $existing = [];
-    $stockinfo = [];
+    $stockInfo = [];
     $sortedGoods = [];
+
     foreach ($relations as $relation) {
-        $existing[$relation['partnumber']] =  exist($conn, $relation['id'])['final'];
-        $stockinfo[$relation['partnumber']] =  exist($conn, $relation['id'])['stockInfo'];
+        $data = exist($conn, $relation['id']);
+        $existing[$relation['partnumber']] = $data['brands_info'];
+        $stockInfo[$relation['partnumber']] = $data['stockInfo'];
         $sortedGoods[$relation['partnumber']] = $relation;
     }
 
@@ -237,7 +231,7 @@ function relations($conn, $id)
 
     arsort($sorted);
 
-    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockinfo];
+    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo];
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
@@ -380,14 +374,18 @@ function stockInfo($conn, $id, $brand)
 
 function exist($conn, $id)
 {
+    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time,seller.name As seller_name
+                FROM (( yadakshop1402.qtybank 
+                INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
+                INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
+                WHERE codeid = '" . $id . "'";
 
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand WHERE codeid = '" . $id . "' ";
     $data_result = mysqli_query($conn, $data_sql);
 
-    $result = [];
+    $incoming = [];
     if (mysqli_num_rows($data_result) > 0) {
         while ($item = mysqli_fetch_assoc($data_result)) {
-            array_push($result, $item);
+            array_push($incoming, $item);
         }
     };
 
@@ -397,33 +395,44 @@ function exist($conn, $id)
 
     $modifiedResult = [];
 
-    foreach ($result as $value) {
-        $clone = $value;
-
-        $out_data = out($conn, $clone['id']);
+    $incoming = array_map(function ($item) {
+        global $conn;
+        $out_data = out($conn, $item['id']);
         $out =  $out_data;
-        $clone['qty'] = (int)($clone['qty']) - $out;
-        array_push($modifiedResult, $clone);
-        array_push($brands, $value['name']);
+        $item['qty'] -= $out;
+
+        if ($item['qty'] !== 0) return $item;
+    }, $incoming);
+
+    $incoming = array_filter($incoming, function ($item) {
+        if ($item !== null) {
+            return $item;
+        }
+    });
+
+    foreach ($incoming as $item) {
+        array_push($brands, $item['name']);
     }
 
     $brands = array_unique($brands);
+    usort($incoming, function ($a, $b) {
+        return $b['qty'] - $a['qty'];
+    });
 
-    foreach ($brands as $key => $value) {
-        $item = $value;
+    $brands_info = [];
+    foreach ($brands as $item) {
         $total = 0;
-        foreach ($modifiedResult as $key => $value) {
+        foreach ($incoming as $value) {
             if ($item == $value['name']) {
                 $total += $value['qty'];
             }
-            $stockInfo[$value['name']] =  stockInfo($conn, $id, $value['name']);
         }
 
-        array_push($amount, $total);
+        $brands_info[$item] = $total;
     }
-    $final = array_combine($brands, $amount);
-    arsort($final);
-    return ['stockInfo' => $stockInfo, 'final' => $final];
+
+    arsort($brands_info);
+    return ['stockInfo' => $incoming, 'brands_info' => $brands_info];
 }
 
 function getMax($array)
@@ -433,4 +442,12 @@ function getMax($array)
         $max = $max < $v ? $v : $max;
     }
     return $max;
+}
+
+function sortArrayByNumericPropertyDescending($array, $property)
+{
+    usort($array, function ($a, $b) use ($property) {
+        return $b->$property - $a->$property;
+    });
+    return $array;
 }

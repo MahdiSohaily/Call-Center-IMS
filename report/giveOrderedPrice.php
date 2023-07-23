@@ -3,6 +3,49 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
 
+function displayTimePassed($datetimeString)
+{
+    $datetime = new DateTime($datetimeString);
+    $now = new DateTime();
+
+    $interval = $now->diff($datetime);
+
+    $totalDays = $interval->days;
+    $passedMonths = floor($totalDays / 30);
+    $passedDays = $totalDays % 30;
+
+    $persianMonths = convertToPersian($passedMonths);
+    $persianDays = convertToPersian($passedDays);
+
+    $result = "";
+
+    if ($passedMonths > 0) {
+        $result .= "$persianMonths ماه";
+    }
+
+    if ($passedDays > 0) {
+        if ($passedMonths > 0) {
+            $result .= " و ";
+        }
+        $result .= "$persianDays روز";
+    }
+
+    return $result;
+}
+
+function convertToPersian($number)
+{
+    $persianDigits = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+    $persianNumber = '';
+
+    while ($number > 0) {
+        $digit = $number % 10;
+        $persianNumber = $persianDigits[$digit] . $persianNumber;
+        $number = (int)($number / 10);
+    }
+
+    return $persianNumber;
+}
 
 if ($isValidCustomer) {
     if ($finalResult) {
@@ -166,7 +209,7 @@ if ($isValidCustomer) {
                                                         شماره فنی
                                                     </th>
                                                     <th scope="col" class="px-3 py-3 text-white text-center">
-                                                        مقدار موجودی
+                                                        موجودی
                                                     </th>
                                                     <th scope="col" class="px-3 py-3 text-white text-center">
                                                         قیمت به اساس نرخ ارز
@@ -202,23 +245,25 @@ if ($isValidCustomer) {
                                                                                     <th scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
                                                                                         <?php echo $brand ?>
                                                                                         <div class="custome-tooltip" id="<?php echo $index . '-' . $brand ?>">
-                                                                                            <table class="min-w-full text-sm font-light p-2">
+                                                                                            <table class="rtl min-w-full text-sm font-light p-2">
                                                                                                 <thead class="font-medium bg-violet-800">
                                                                                                     <tr>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">فروشنده</th>
-                                                                                                        <th class="text-right px-3 py-2 tiny-text">مقدار موجود</th>
+                                                                                                        <th class="text-right px-3 py-2 tiny-text"> موجودی</th>
                                                                                                         <th class="text-right px-3 py-2 tiny-text">تاریخ</th>
+                                                                                                        <th class="text-right px-3 py-2 tiny-text">زمان سپری شده</th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
                                                                                                     <?php
-                                                                                                    foreach ($stockInfo[$index][$brand] as $iterator => $item) {
+                                                                                                    foreach ($stockInfo[$index] as $item) {
                                                                                                     ?>
-                                                                                                        <?php if ($item !== 0) { ?>
+                                                                                                        <?php if ($item !== 0 && $item['name'] === $brand) { ?>
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $iterator ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo date('Y-m-d') ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo jdate('Y/m/d', strtotime($item['create_time'])) ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo displayTimePassed($item['create_time']) ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     <?php
@@ -238,13 +283,9 @@ if ($isValidCustomer) {
                                                                 <tbody>
                                                                     <tr class="py-3">
                                                                         <?php foreach ($exist[$index] as $brand => $amount) {
-                                                                            if ($amount > 0) {
-                                                                                $total = 0;
-                                                                                foreach ($stockInfo[$index][$brand] as $iterator => $item) {
-                                                                                    $total += $item;
-                                                                                } ?>
+                                                                            if ($amount > 0) { ?>
                                                                                 <td class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> whitespace-nowrap text-white px-3 py-2 text-center">
-                                                                                    <?php echo $total;
+                                                                                    <?php echo $amount;
                                                                                     ?>
                                                                                 </td>
                                                                         <?php }

@@ -7,6 +7,7 @@ if (!isset($_SESSION["id"])) {
 }
 require_once './config/config.php';
 require_once './database/connect.php';
+require_once('./views/Layouts/jdf.php');
 
 date_default_timezone_set("Asia/Tehran");
 $_SESSION["user_id"] = $_SESSION["id"];
