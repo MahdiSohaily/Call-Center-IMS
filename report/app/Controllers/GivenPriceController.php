@@ -317,7 +317,7 @@ function out($conn, $id)
     return $result;
 }
 
-function stockInfo($conn, $id, $brand,)
+function stockInfo($conn, $id, $brand)
 {
 
     $stockInfo_sql = "SELECT id FROM yadakshop1402.brand WHERE brand.name = '" . $brand . "'";
