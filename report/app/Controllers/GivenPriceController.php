@@ -5,12 +5,19 @@ $finalResult = null;
 
 
 if (filter_has_var(INPUT_POST, 'givenPrice') && filter_has_var(INPUT_POST, 'user')) {
+    // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
     $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
-    $code = $_POST['code'];
+
+    // remove all the special characters from the user input
+    $code = htmlspecialchars($_POST['code']);
+
+    // Setting the user ID who have submitted the form
     $_SESSION["user_id"] = $_POST['user'];
+
+    // Check if the requested is coming from the notification page
     $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
 
-    $customer_sql = "SELECT * FROM callcenter.customer WHERE id = '" . $customer . "%'";
+    $customer_sql = "SELECT * FROM callcenter.customer WHERE id = '" . $customer . "'";
     $result = mysqli_query($conn, $customer_sql);
     if (mysqli_num_rows($result) > 0) {
         $isValidCustomer = true;
