@@ -419,16 +419,29 @@ function exist($conn, $id)
         return $b['qty'] - $a['qty'];
     });
 
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    print_r(json_encode($incoming));
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
-    echo '<br/>';
+    $brands_info = [];
+    foreach ($brands as $item) {
+        $total = 0;
+        foreach ($incoming as $value) {
+            if ($item == $value['name']) {
+                $total += $value['qty'];
+            }
+        }
 
+        $brands_info[$item] = $total;
+    }
+
+
+
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    print_r(json_encode($brands_info));
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
 
 
     foreach ($brands as $item) {
