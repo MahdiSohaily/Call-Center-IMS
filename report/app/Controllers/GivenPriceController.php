@@ -374,13 +374,18 @@ function stockInfo($conn, $id, $brand)
 
 function exist($conn, $id)
 {
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand WHERE codeid = '" . $id . "' ";
+    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time,seller.name As seller_name
+                FROM (( yadakshop1402.qtybank 
+                INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
+                INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
+                WHERE codeid = '" . $id . "'";
+
     $data_result = mysqli_query($conn, $data_sql);
 
-    $result = [];
+    $incoming = [];
     if (mysqli_num_rows($data_result) > 0) {
         while ($item = mysqli_fetch_assoc($data_result)) {
-            array_push($result, $item);
+            array_push($incoming, $item);
         }
     };
 
@@ -390,17 +395,28 @@ function exist($conn, $id)
 
     $modifiedResult = [];
 
-    foreach ($result as $value) {
-        $clone = $value;
-
-        $out_data = out($conn, $clone['id']);
+    $incoming = array_map(function ($item) {
+        global $conn;
+        $out_data = out($conn, $item['id']);
         $out =  $out_data;
+        $item['qty'] -= $out;
 
-        $clone['qty'] = (int)($clone['qty']) - $out;
-        array_push($modifiedResult, $clone);
+        if ($item['qty'] !== 0) return $item;
+    }, $incoming);
 
-        array_push($brands, $value['name']);
-    }
+    $incoming = array_filter($incoming, function ($item) {
+        if ($item !== null) return $item;
+    });
+
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    print_r(json_encode($incoming));
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
+    echo '<br/>';
 
     $brands = array_unique($brands);
 
