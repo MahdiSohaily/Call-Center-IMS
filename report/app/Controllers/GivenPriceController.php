@@ -85,13 +85,13 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
                         array_push($relation_id, $relation_exist); // if a new relation exists -> put it in the result array
 
-                        $itemDetails[$code][$item['partnumber']]['information'] = info($conn, $item['id'], $relation_exist);
+                        $itemDetails[$code][$item['partnumber']]['information'] = info($conn, $relation_exist);
                         $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $relation_exist, true);
                         $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']), $relation_exist);
                         $itemDetails[$code][$item['partnumber']]['estelam'] =  estelam($conn, $item['partnumber']);
                     }
                 } else {
-                    $itemDetails[$code][$item['partnumber']]['information'] = info($conn, $item['id']);
+                    $itemDetails[$code][$item['partnumber']]['information'] = info($conn);
                     $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id'], false);
                     $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']));
                     $itemDetails[$code][$item['partnumber']]['estelam'] = estelam($conn, $item['partnumber']);
@@ -155,7 +155,7 @@ function isInRelation($conn, $id)
  * @return int $relation_exist
  * @return array of information about the good
  */
-function info($conn, $id, $relation_exist = null)
+function info($conn, $relation_exist = null)
 {
     $info = false;
     $cars = [];
@@ -213,11 +213,11 @@ function relations($conn, $id, $condition)
 
 
     $existing = [];
-    $stockinfo = [];
+    $stockInfo = [];
     $sortedGoods = [];
     foreach ($relations as $relation) {
         $existing[$relation['partnumber']] =  exist($conn, $relation['id'])['final'];
-        $stockinfo[$relation['partnumber']] =  exist($conn, $relation['id'])['stockInfo'];
+        $stockInfo[$relation['partnumber']] =  exist($conn, $relation['id'])['stockInfo'];
         $sortedGoods[$relation['partnumber']] = $relation;
     }
 
@@ -229,7 +229,7 @@ function relations($conn, $id, $condition)
 
     arsort($sorted);
 
-    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockinfo];
+    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo];
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
