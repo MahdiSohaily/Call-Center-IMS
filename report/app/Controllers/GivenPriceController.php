@@ -215,10 +215,11 @@ function relations($conn, $id, $condition)
     $existing = [];
     $stockInfo = [];
     $sortedGoods = [];
-    
+
     foreach ($relations as $relation) {
-        $existing[$relation['partnumber']] =  exist($conn, $relation['id'])['final'];
-        $stockInfo[$relation['partnumber']] =  exist($conn, $relation['id'])['stockInfo'];
+        $data = exist($conn, $relation['id']);
+        $existing[$relation['partnumber']] = $data['final'];
+        $stockInfo[$relation['partnumber']] = $data['stockInfo'];
         $sortedGoods[$relation['partnumber']] = $relation;
     }
 
