@@ -14,6 +14,8 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
 
+        print_r(json_encode($finalResult));
+
 ?>
         <div class="grid grid-cols-6">
             <div class="m-2 col-span-2 p-3 bg-gray-500 relative">

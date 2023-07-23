@@ -432,10 +432,7 @@ function exist($conn, $id)
     }
 
     arsort($brands_info);
-
-    print_r(json_encode($brands_info));
-
-    return ['stockInfo' => $stockInfo, 'brands_info' => $brands_info];
+    return ['stockInfo' => $incoming, 'brands_info' => $brands_info];
 }
 
 function getMax($array)
