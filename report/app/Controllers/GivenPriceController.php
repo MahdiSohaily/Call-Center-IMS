@@ -381,7 +381,7 @@ function stockInfo($conn, $id, $brand)
 function exist($conn, $id)
 {
 
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand WHERE codeid = '" . $id . "' ";
+    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand WHERE codeid = '" . $id . "' ";
     $data_result = mysqli_query($conn, $data_sql);
 
     $result = [];
@@ -402,10 +402,15 @@ function exist($conn, $id)
 
         $out_data = out($conn, $clone['id']);
         $out =  $out_data;
+
         $clone['qty'] = (int)($clone['qty']) - $out;
         array_push($modifiedResult, $clone);
+
         array_push($brands, $value['name']);
     }
+
+    // print_r(json_encode($modifiedResult));
+    // echo '<br>';
 
     $brands = array_unique($brands);
 
