@@ -214,12 +214,12 @@ if ($isValidCustomer) {
                                                                                                 </thead>
                                                                                                 <tbody>
                                                                                                     <?php
-                                                                                                    foreach ($stockInfo[$index][$brand] as $iterator => $item) {
+                                                                                                    foreach ($stockInfo[$index] as $item) {
                                                                                                     ?>
-                                                                                                        <?php if ($item !== 0) { ?>
+                                                                                                        <?php if ($item !== 0 && $item['name'] === $brand) { ?>
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $iterator ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo date('Y-m-d') ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
@@ -240,13 +240,9 @@ if ($isValidCustomer) {
                                                                 <tbody>
                                                                     <tr class="py-3">
                                                                         <?php foreach ($exist[$index] as $brand => $amount) {
-                                                                            if ($amount > 0) {
-                                                                                $total = 0;
-                                                                                foreach ($stockInfo[$index][$brand] as $iterator => $item) {
-                                                                                    $total += $item;
-                                                                                } ?>
+                                                                            if ($amount > 0) { ?>
                                                                                 <td class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> whitespace-nowrap text-white px-3 py-2 text-center">
-                                                                                    <?php echo $total;
+                                                                                    <?php echo $amount;
                                                                                     ?>
                                                                                 </td>
                                                                         <?php }
