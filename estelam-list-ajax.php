@@ -84,7 +84,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) :
         <tr id="row-<?php echo $id ?>" style="background-color:<?php echo $bgColor ?>">
             <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $partNumber ?>'><?php echo $partNumber ?></td>
             <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $sellerName ?>'><?php echo $sellerName ?></td>
-            <td><?php echo $price ?></td>
+            <td id="price-<?php echo $id ?>"><?php echo $price ?></td>
             <td>
                 <img class="w-8 mt-1 rounded-full" src='<?php echo "../userimg/$userId.jpg" ?>' alt="" srcset="">
             </td>
