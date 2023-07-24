@@ -156,7 +156,7 @@ function displayTimePassed($timePassed)
     let toBeDeleted = null;
 
     deleteModal.addEventListener('click', (e) => {
-        e.target.style.display = 'none';
+        document.getElementById('deleteModal').style.display = 'none';
     })
 
     function searchByCustomer(element) {
