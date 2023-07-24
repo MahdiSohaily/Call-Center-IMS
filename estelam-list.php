@@ -206,8 +206,10 @@ function displayTimePassed($timePassed)
         params.append('toBeDelete', toBeDeleted);
         params.append('operation', 'delete');
 
+        console.log(toBeDeleted);
         axios.post("./estelam-operations-list-ajax.php", params)
             .then(function(response) {
+                console.log(response.data);
                 document.getElementById('modalContent').innerHTML = `<i class="material-icons text-6xl text-green-600 mb-4">check_circle</i>
                                                                     <h4 class=" text-2xl mb-3 font-bold">عملیات موفقیت آمیز</h4>
                                                                     <p class="text-center my-4">

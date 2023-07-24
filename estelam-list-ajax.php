@@ -52,6 +52,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) :
     $bgColorIndex = 0;
 
     foreach ($results as $row) :
+        $id = $row['id'];
         $time = $row['time'];
         $partNumber = $row['codename'];
         $sellerName = $row['seller_name'];
@@ -80,16 +81,14 @@ if (filter_has_var(INPUT_POST, 'pattern')) :
         endif;
         // Display the row for current entry with the same background color as the group
         ?>
-        <tr style="background-color:<?php echo $bgColor ?>">
+        <tr id="row-<?php echo $id ?>" style="background-color:<?php echo $bgColor ?>">
             <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $partNumber ?>'><?php echo $partNumber ?></td>
             <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $sellerName ?>'><?php echo $sellerName ?></td>
             <td><?php echo $price ?></td>
             <td>
                 <img class="w-8 mt-1 rounded-full" src='<?php echo "../userimg/$userId.jpg" ?>' alt="" srcset="">
             </td>
-            <td>
-                <?php
-                $timeString = $dateTime[1]; // Example time string
+            <td><?php $timeString = $dateTime[1]; // Example time string
                 $adjustment = "-1 hour"; // Adjustment to subtract one hour
 
                 // Create a DateTime object from the time string
