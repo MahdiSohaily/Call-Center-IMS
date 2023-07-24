@@ -15,7 +15,9 @@ endif;
 
 if (filter_has_var(INPUT_POST, 'editOperation')) :
     $toBeEdited = filter_input(INPUT_POST, 'toBeEdited', FILTER_SANITIZE_NUMBER_INT);
-    $sql = "DELETE FROM estelam WHERE id = $toBeEdited";
+    $price = htmlspecialchars($_POST['price']);
+
+    $sql = "UPDATE estelam SET price ='" . $price . "' WHERE id = $toBeEdited";
     if (mysqli_query($con, $sql) === TRUE) {
         echo true;
     } else {
