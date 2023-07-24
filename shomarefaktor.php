@@ -78,7 +78,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
             ?>
                     <div class="ranking mb-2">
-                        <img src="../userimg/<?php echo $row['user']; ?>.jpg" />
+                        <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="../userimg/<?php echo $row['user']; ?>.jpg" />
                         <?php if ($n == 1) {
                             echo '<i class="fas ranking-icon fa-star golden"></i>';
                         }
@@ -129,7 +129,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                             <td>
                                 <div class="jadval-shomare-kharidar"><?php echo $kharidar ?></div>
                             </td>
-                            <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" /></td>
+                            <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" src="../userimg/<?php echo $user ?>.jpg" /></td>
 
                             <td class="edit"><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
 
@@ -195,6 +195,12 @@ $factor_result = mysqli_query(dbconnect(), $sql);
         });
     });
     const element = document.getElementById('invoice_time');
+
+
+    function userReport(element) {
+        const id = element.getAttribute('data-id');
+        alert(id)
+    }
 </script>
 
 
