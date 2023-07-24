@@ -290,3 +290,16 @@ function givenPrice($conn)
     }
     return  $givenPrices;
 }
+
+if (filter_has_var(INPUT_POST, 'togglePin')) {
+    $pin = $_POST['pin'];
+    $id = $_POST['id'];
+
+    $sql = "UPDATE callcenter.record SET pin = '$pin' WHERE id = '$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo true;
+    } else {
+        echo "error";
+    }
+}

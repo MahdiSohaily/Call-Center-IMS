@@ -183,7 +183,7 @@ function format_interval(DateInterval $interval)
                         </td>
                         <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
                         <td class="px-2 py-2">
-                            <input onclick="togglePin(this.value)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>" checked>
+                            <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>" checked>
                         </td>
                         <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
                         <?php
@@ -249,7 +249,7 @@ function format_interval(DateInterval $interval)
                         </td>
                         <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
                         <td class="px-2 py-2">
-                            <input onclick="togglePin(this.value)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>">
+                            <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>">
                         </td>
                         <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
                         <?php
@@ -309,6 +309,23 @@ function format_interval(DateInterval $interval)
                 console.log(error);
             });
     }, 20000);
+
+    function togglePin(element) {
+        const id = element.getAttribute('data-id');
+        let pin = element.checked ? 'pin' : 'unpin';
+        var params = new URLSearchParams();
+        params.append('togglePin', 'togglePin');
+        params.append('pin', pin);
+        params.append('id', id);
+
+        axios.post("./app/Controllers/GivenPriceAjaxHistoryController.php", params)
+            .then(function(response) {
+                resultBox.innerHTML = response.data;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
 </script>
 
 <?php
