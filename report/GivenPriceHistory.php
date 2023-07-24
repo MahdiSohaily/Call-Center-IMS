@@ -51,7 +51,7 @@ function format_interval(DateInterval $interval)
                     </th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody>
                 <?php
                 if (count($givenPrice) > 0) {
                 ?>
@@ -144,6 +144,9 @@ function format_interval(DateInterval $interval)
                     <th scope="col" class="px-3 py-2 text-white text-right">
                         اطلاعات استعلام
                     </th>
+                    <th scope="col" class="px-3 py-2 text-white text-right">
+                        پین
+                    </th>
                     <th scope="col" class="px-3 py-2 text-white text-center">
                         کاربر
                     </th>
@@ -152,74 +155,139 @@ function format_interval(DateInterval $interval)
                     </th>
                 </tr>
             </thead>
-
             <?php
 
-            $sql2 = "SELECT * FROM callcenter.record ORDER BY  time DESC LIMIT 350";
+            $sql2 = "SELECT customer.name, customer.family, customer.phone, record.*, users.id AS userID
+            FROM ((callcenter.record
+            INNER JOIN callcenter.customer ON record.phone = customer.phone)
+            INNER JOIN yadakshop1402.users ON record.user = users.id)
+            WHERE record.pin = 'pin'
+            ORDER BY record.time DESC
+            LIMIT 350";
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row2 = mysqli_fetch_assoc($result2)) {
                     $time = $row2['time'];
                     $callinfo = $row2['callinfo'];
-                    $user = $row2['user'];
+                    $user = $row2['userID'];
                     $phone = $row2['phone'];
+                    $name = $row2['name'];
+                    $family = $row2['family'];
+            ?>
+                    <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
+                        <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
+                        <td>
+                            <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
+                                <?php echo $phone ?></a>
+                        </td>
+                        <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
+                        <td class="px-2 py-2">
+                            <input type="checkbox" name="pin" checked>
+                        </td>
+                        <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
+                        <?php
+                        date_default_timezone_set('Asia/Tehran');
+                        $now = new DateTime(); // current date time
+                        $date_time = new DateTime($time); // date time from string
+                        $interval = $now->diff($date_time); // difference between two date times
+                        $days = $interval->format('%a'); // difference in days
+                        $hours = $interval->format('%h'); // difference in hours
+                        $minutes = $interval->format('%i'); // difference in minutes
+                        $seconds = $interval->format('%s'); // difference in seconds
 
-                    $sql = "SELECT * FROM callcenter.customer WHERE phone LIKE '" . $phone . "%'";
-                    $result = mysqli_query($conn, $sql);
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $name = $row['name'];
-                            $family = $row['family']; ?>
-                            <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
-                                <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
-                                <td><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo $phone ?></a></td>
-                                <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
-                                <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" />
-                            <?php
+                        $text = '';
+
+                        if ($days) {
+                            $text .= " $days روز و ";
                         }
-                    }
 
-                    date_default_timezone_set('Asia/Tehran');
-                    $now = new DateTime(); // current date time
-                    $date_time = new DateTime($time); // date time from string
-                    $interval = $now->diff($date_time); // difference between two date times
-                    $days = $interval->format('%a'); // difference in days
-                    $hours = $interval->format('%h'); // difference in hours
-                    $minutes = $interval->format('%i'); // difference in minutes
-                    $seconds = $interval->format('%s'); // difference in seconds
+                        if ($hours) {
+                            $text .= "$hours ساعت ";
+                        }
 
-                    $text = '';
+                        if (!$days && $minutes) {
+                            $text .= "$minutes دقیقه ";
+                        }
 
-                    if ($days) {
-                        $text .= " $days روز و ";
-                    }
+                        if (!$days && !$hours && $seconds) {
+                            $text .= "$seconds ثانیه ";
+                        }
 
-                    if ($hours) {
-                        $text .= "$hours ساعت ";
-                    }
+                        $text = "$text قبل";
 
-                    if (!$days && $minutes) {
-                        $text .= "$minutes دقیقه ";
-                    }
+                        ?>
+                        <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
+                    </tr>
+                <?php
 
-                    if (!$days && !$hours && $seconds) {
-                        $text .= "$seconds ثانیه ";
-                    }
+                }
+            }
+            $sql2= "SELECT customer.name, customer.family, customer.phone, record.*, users.id AS userID
+            FROM ((callcenter.record
+            INNER JOIN callcenter.customer ON record.phone = customer.phone)
+            INNER JOIN yadakshop1402.users ON record.user = users.id)
+            WHERE record.pin = 'unpin'
+            ORDER BY record.time DESC
+            LIMIT 350";
+            $result2 = mysqli_query($conn, $sql2);
+            if (mysqli_num_rows($result2) > 0) {
+                while ($row2 = mysqli_fetch_assoc($result2)) {
+                    $time = $row2['time'];
+                    $callinfo = $row2['callinfo'];
+                    $user = $row2['userID'];
+                    $phone = $row2['phone'];
+                    $name = $row2['name'];
+                    $family = $row2['family'];
+                ?>
+                    <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
+                        <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
+                        <td>
+                            <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
+                                <?php echo $phone ?></a>
+                        </td>
+                        <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
+                        <td class="px-2 py-2"> <input type="checkbox" name="pin"></td>
+                        <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
+                        <?php
+                        date_default_timezone_set('Asia/Tehran');
+                        $now = new DateTime(); // current date time
+                        $date_time = new DateTime($time); // date time from string
+                        $interval = $now->diff($date_time); // difference between two date times
+                        $days = $interval->format('%a'); // difference in days
+                        $hours = $interval->format('%h'); // difference in hours
+                        $minutes = $interval->format('%i'); // difference in minutes
+                        $seconds = $interval->format('%s'); // difference in seconds
 
-                    $text = "$text قبل";
+                        $text = '';
 
-                            ?>
-                                </td>
+                        if ($days) {
+                            $text .= " $days روز و ";
+                        }
 
-                                <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
-                            </tr>
-                    <?php
+                        if ($hours) {
+                            $text .= "$hours ساعت ";
+                        }
+
+                        if (!$days && $minutes) {
+                            $text .= "$minutes دقیقه ";
+                        }
+
+                        if (!$days && !$hours && $seconds) {
+                            $text .= "$seconds ثانیه ";
+                        }
+
+                        $text = "$text قبل";
+
+                        ?>
+                        <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
+                    </tr>
+            <?php
 
                 }
             } else {
                 echo '<td colspan="4">هیچ اطلاعاتی موجود نیست</td>';
             }
-                    ?>
+            ?>
         </table>
     </div>
 </div>
