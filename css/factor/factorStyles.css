@@ -29,11 +29,13 @@
     margin: auto !important;
     border: 1px solid black;
   }
+
   .table-heading th {
     color: black !important;
     border: 1px solid black !important;
     font-weight: bold !important;
   }
+
   td {
     border: 1px solid black !important;
   }
@@ -68,10 +70,6 @@
 
     background: none;
     padding: 4px;
-  }
-
-  html {
-    margin: 0;
   }
 
   table.customer-list th {
