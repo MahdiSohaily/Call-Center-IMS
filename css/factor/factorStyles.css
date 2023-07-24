@@ -1,37 +1,62 @@
 @media print {
+  @page :footer {
+    display: none !important;
+  }
+
+  @page :header {
+    display: none !important;
+  }
+
+  @page {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  main {
+    padding: 0 !important;
+  }
+
   .shomare-faktor-box,
   .top-bar,
   #topNav {
     display: none;
   }
-
-  .shomare-faktor-list-show table.customer-list.jadval-shomare {
-    width: 90%;
-    margin: auto;
-    float: none;
+  .customer-list {
+    width: 100% !important;
+    margin: auto !important;
+    border: 1px solid black;
+  }
+  .table-heading th {
+    color: black !important;
+    border: 1px solid black !important;
+    font-weight: bold !important;
+  }
+  td {
+    border: 1px solid black !important;
   }
 
-  table.customer-list.jadval-shomare tr th:nth-child(4n),
-  table.customer-list.jadval-shomare tr td:nth-child(4n) {
-    display: none;
-  }
-
-  .jadval-shomare-blue {
-    background: white;
-    color: black;
-    border: none;
-    box-shadow: none;
-    font-size: 12px;
-    padding: 0;
+  .jadval-shomare-blue,
+  .jadval-shomare-kharidar {
+    all: unset !important;
+    padding: 5px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
   }
 
   .jadval-shomare-kharidar {
     font-size: 13px;
   }
 
-  img.user-img {
-    width: 30px;
-    height: 30px;
+  .user-img {
+    width: 30px !important;
+    height: 30px !important;
+    margin: auto !important;
+  }
+  .edit {
+    display: none !important;
   }
 
   table.customer-list td {

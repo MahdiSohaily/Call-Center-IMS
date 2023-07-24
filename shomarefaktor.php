@@ -107,11 +107,11 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     </div>
     <div>
         <table class="customer-list jadval-shomare">
-            <tr>
+            <tr class="table-heading">
                 <th>شماره فاکتور</th>
                 <th>خریدار</th>
                 <th>کاربر</th>
-                <th>ویرایش</th>
+                <th class="edit">ویرایش</th>
             </tr>
             <tbody>
                 <?php
@@ -131,7 +131,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                             </td>
                             <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" /></td>
 
-                            <td><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
+                            <td class="edit"><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
 
                         </tr>
                 <?php

@@ -75,7 +75,7 @@ if (isset($_POST['getFactor'])) {
     </div>
     <div>
         <table class="customer-list jadval-shomare">
-            <tr>
+            <tr class="table-heading">
                 <th>شماره فاکتور</th>
                 <th>خریدار</th>
                 <th>کاربر</th>
