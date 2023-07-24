@@ -74,8 +74,8 @@ function displayTimePassed($timePassed)
             <input class="border p-2 min-w-full rounded-md" type="text" name="price" id="price">
         </div>
         <div class="py-5">
-            <button onclick="confirmDelete()" class="border-4 border-blue-500/75 rounded-lg  bg-blue-500 text-white py-2 px-5">ویرایش</button>
-            <button onclick="closeModal('deleteModal')" class=" border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">انصراف</button>
+            <button onclick="confirmEdit()" class="border-4 border-blue-500/75 rounded-lg  bg-blue-500 text-white py-2 px-5">ویرایش</button>
+            <button onclick="closeModal('editModal')" class=" border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">انصراف</button>
         </div>
     </div>
 </div>
@@ -177,7 +177,15 @@ function displayTimePassed($timePassed)
     let itemPrice = null;
 
     deleteModal.addEventListener('click', (e) => {
-        document.getElementById('deleteModal').style.display = 'none';
+        if (e.target.id === 'deleteModal') {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+    });
+
+    editModal.addEventListener('click', (e) => {
+        if (e.target.id === 'editModal') {
+            document.getElementById('editModal').style.display = 'none';
+        }
     })
 
     function searchByCustomer(element) {
@@ -214,9 +222,11 @@ function displayTimePassed($timePassed)
     function editItem(element) {
         const id = element.getAttribute('data-item');
         const price = element.getAttribute('data-price');
+        const priceInput = document.getElementById('price');
 
         editModal.style.display = 'flex';
         itemPrice = price;
+        priceInput.value = itemPrice;
     }
 
     function deleteItem(element) {
