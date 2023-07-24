@@ -61,6 +61,22 @@ function displayTimePassed($timePassed)
         </div>
     </div>
 </div>
+
+<div id="editModal" class="flex items-center justify-center">
+    <div id="modalContent" style="width: 530px;" class="bg-white rounded-md shadow-ld w-54 p-5 flex flex-col items-center justify-center">
+        <i class="material-icons text-4xl text-orange-600">warning</i>
+        <h4 class=" text-2xl mb-3 font-bold"></h4>
+        <p class="text-center my-4">
+            آیا مطمئن هستید میخواهید اطاعات انتخاب شده را حذف نمایید؟
+            <br>
+            اطلاعات مورد نظر بعد از حذف در درسترس نخواهد بود!
+        </p>
+        <div class="py-5">
+            <button onclick="confirmDelete()" class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
+            <button onclick="closeModal('deleteModal')" class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
+        </div>
+    </div>
+</div>
 <div class="">
     <div class="flex">
         <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
