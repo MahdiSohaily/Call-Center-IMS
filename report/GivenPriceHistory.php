@@ -222,7 +222,7 @@ function format_interval(DateInterval $interval)
 
                 }
             }
-            $sql2= "SELECT customer.name, customer.family, customer.phone, record.*, users.id AS userID
+            $sql2 = "SELECT  customer.name, customer.family, customer.phone, record.id as recordID, record.time, record.callinfo, record.pin, users.id AS userID
             FROM ((callcenter.record
             INNER JOIN callcenter.customer ON record.phone = customer.phone)
             INNER JOIN yadakshop1402.users ON record.user = users.id)
@@ -232,6 +232,7 @@ function format_interval(DateInterval $interval)
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row2 = mysqli_fetch_assoc($result2)) {
+                    $recordID = $row2['recordID'];
                     $time = $row2['time'];
                     $callinfo = $row2['callinfo'];
                     $user = $row2['userID'];
@@ -246,7 +247,7 @@ function format_interval(DateInterval $interval)
                                 <?php echo $phone ?></a>
                         </td>
                         <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
-                        <td class="px-2 py-2"> <input type="checkbox" name="pin"></td>
+                        <td class="px-2 py-2"> <input onclick="togglePin(this.value)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>"></td>
                         <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
                         <?php
                         date_default_timezone_set('Asia/Tehran');
