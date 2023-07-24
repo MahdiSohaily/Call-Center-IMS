@@ -104,7 +104,7 @@ if (filter_has_var(INPUT_POST, 'pattern')) :
                 ?>
             </td>
             <td>
-                <i onclick="editItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
+                <i onclick="editItem(this)" data-price="<?php echo $price ?>" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
                 <i onclick="deleteItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-red-600">delete</i>
             </td>
         </tr>
