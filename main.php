@@ -72,7 +72,7 @@
                      <div class="col-span-2 bg-gray-200	p-3">
                          <div class="flex justify-between">
                              <span class="text-sm bg-indigo-300"> درج اطلاعات استعلام</span>
-                             <div class="bg-green-400">
+                             <div class="bg-green-400 flex items-start justify-start" style="width: 300px;">
                                  <input type="checkbox" name="pin" id="pin">
                                  <span class="text-sm"> پین کردن استعلام</span>
                              </div>
