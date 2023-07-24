@@ -173,7 +173,7 @@ function displayTimePassed($timePassed)
     const deleteModal = document.getElementById('deleteModal');
     const editModal = document.getElementById('editModal');
 
-    let toBeDeleted = null;
+    let toBeModified = null;
     let itemPrice = null;
 
     deleteModal.addEventListener('click', (e) => {
@@ -227,13 +227,14 @@ function displayTimePassed($timePassed)
         editModal.style.display = 'flex';
         itemPrice = price;
         priceInput.value = itemPrice;
+        toBeModified = id;
     }
 
     function deleteItem(element) {
         const id = element.getAttribute('data-item');
 
         deleteModal.style.display = 'flex';
-        toBeDeleted = id;
+        toBeModified = id;
     }
 
     function closeModal(modalId) {
@@ -242,7 +243,7 @@ function displayTimePassed($timePassed)
 
     function confirmDelete() {
         var params = new URLSearchParams();
-        params.append('toBeDelete', toBeDeleted);
+        params.append('toBeDelete', toBeModified);
         params.append('operation', 'delete');
 
         axios.post("./estelam-operations-list-ajax.php", params)
@@ -266,7 +267,7 @@ function displayTimePassed($timePassed)
             <button onclick="closeModal('deleteModal')" class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
         </div>`;
                     deleteModal.style.display = 'none';
-                    document.getElementById('row-' + toBeDeleted).remove();
+                    document.getElementById('row-' + toBeModified).remove();
                 }, 1000)
 
             })
@@ -277,6 +278,41 @@ function displayTimePassed($timePassed)
 
     function updatePrice(value) {
         itemPrice = value;
+    }
+
+    function confirmEdit() {
+        var params = new URLSearchParams();
+        params.append('editOperation', 'edit');
+        params.append('toBeEdited', toBeModified);
+
+        axios.post("./estelam-operations-list-ajax.php", params)
+            .then(function(response) {
+                console.log(response.data);
+                document.getElementById('modalContent').innerHTML = `<i class="material-icons text-6xl text-green-600 mb-4">check_circle</i>
+                                                                    <h4 class=" text-2xl mb-3 font-bold">عملیات موفقیت آمیز</h4>
+                                                                    <p class="text-center my-4">
+                                                                        حذف اطلاعات موفقانه صورت گرفت!
+                                                                    </p>‍‍`;
+                setTimeout(() => {
+                    document.getElementById('modalContent').innerHTML = `<i class="material-icons text-4xl text-orange-600">warning</i>
+        <h4 class=" text-2xl mb-3 font-bold">حذف معلومات</h4>
+        <p class="text-center my-4">
+            آیا مطمئن هستید میخواهید اطاعات انتخاب شده را حذف نمایید؟
+            <br>
+            اطلاعات مورد نظر بعد از حذف در درسترس نخواهد بود!
+        </p>
+        <div class="py-5">
+            <button onclick="confirmDelete()" class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
+            <button onclick="closeModal('deleteModal')" class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
+        </div>`;
+                    deleteModal.style.display = 'none';
+                    document.getElementById('row-' + toBeModified).remove();
+                }, 1000)
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 </script>
 <?php
