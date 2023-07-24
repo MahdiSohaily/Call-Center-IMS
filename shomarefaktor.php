@@ -176,9 +176,6 @@ $factor_result = mysqli_query(dbconnect(), $sql);
             onHide: function() {},
             onSelect: function() {
                 const date = ($("#invoice_time").attr("data-gdate"));
-
-                console.log(date);
-
                 var params = new URLSearchParams();
                 params.append('getFactor', 'getFactor');
                 params.append('date', date);
@@ -199,7 +196,18 @@ $factor_result = mysqli_query(dbconnect(), $sql);
 
     function userReport(element) {
         const id = element.getAttribute('data-id');
-        alert(id)
+        const date = ($("#invoice_time").attr("data-gdate"));
+        var params = new URLSearchParams();
+        params.append('getReport', 'getReport');
+        params.append('date', date);
+        axios.post("./factorAjax.php", params)
+            .then(function(response) {
+                console.log(response.data);
+                resultBox.innerHTML = response.data;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 </script>
 
