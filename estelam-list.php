@@ -47,7 +47,7 @@ function displayTimePassed($timePassed)
 </style>
 
 <div id="deleteModal" class="flex items-center justify-center">
-    <div style="width: 530px;" class="bg-white rounded-md shadow-ld w-54 p-5 flex flex-col items-center justify-center">
+    <div id="modalContent" style="width: 530px;" class="bg-white rounded-md shadow-ld w-54 p-5 flex flex-col items-center justify-center">
         <i class="material-icons text-4xl text-orange-600">warning</i>
         <h4 class=" text-2xl mb-3 font-bold">حذف معلومات</h4>
         <p class="text-center my-4">
@@ -152,6 +152,8 @@ function displayTimePassed($timePassed)
 </div>
 <script>
     const input = document.getElementById('search-bazar');
+    const deleteModal = document.getElementById('deleteModal');
+    let toBeDeleted = null;
 
     function searchByCustomer(element) {
         const customer_name = element.getAttribute('data-customer');
@@ -190,12 +192,35 @@ function displayTimePassed($timePassed)
 
     function deleteItem(element) {
         const id = element.getAttribute('data-item');
-        const modal = document.getElementById('deleteModal');
-        modal.style.display = 'flex';
+
+        deleteModal.style.display = 'flex';
+        toBeDeleted = id;
     }
 
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
+    }
+
+    function confirmDelete() {
+        var params = new URLSearchParams();
+        params.append('toBeDelete', toBeDeleted);
+        params.append('operation', 'delete');
+
+        axios.post("./estelam-operations-list-ajax.php", params)
+            .then(function(response) {
+                document.getElementById('modalContent').innerHTML = `<i class="material-icons text-6xl text-green-600 mb-4">check_circle</i>
+                                                                    <h4 class=" text-2xl mb-3 font-bold">عملیات موفقیت آمیز</h4>
+                                                                    <p class="text-center my-4">
+                                                                        حذف اطلاعات موفقانه صورت گرفت!
+                                                                    </p>‍‍`;
+                setTimeout(() => {
+                    deleteModal.style.display = 'none';
+                }, 1000)
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 </script>
 <?php
