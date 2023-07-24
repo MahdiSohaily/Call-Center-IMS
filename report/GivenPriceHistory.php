@@ -75,7 +75,9 @@ function format_interval(DateInterval $interval)
                             </td>
                             <td class=" px-1">
                                 <p class="text-right text-gray-700 px-2 py-1">
-                                    <?php echo $price['partnumber']; ?>
+                                    <a class="text-indigo-600" href="./givePrice.php?phone=<?php echo $price['partnumber']; ?>">
+                                        <?php echo $price['partnumber']; ?>
+                                    </a>
                                 </p>
                             </td>
                             <td class=" record-user">
