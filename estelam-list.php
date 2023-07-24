@@ -155,6 +155,10 @@ function displayTimePassed($timePassed)
     const deleteModal = document.getElementById('deleteModal');
     let toBeDeleted = null;
 
+    deleteModal.addEventListener('click', (e) => {
+        e.target.style.display = 'none';
+    })
+
     function searchByCustomer(element) {
         const customer_name = element.getAttribute('data-customer');
         searchBazar(customer_name);
