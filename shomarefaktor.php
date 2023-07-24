@@ -97,11 +97,6 @@ $factor_result = mysqli_query(dbconnect(), $sql);
             <?php
                 }
             }
-
-
-
-
-
             ?>
         </div>
     </div>
@@ -200,6 +195,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
         var params = new URLSearchParams();
         params.append('getReport', 'getReport');
         params.append('date', date);
+        params.append('user', id);
         axios.post("./factorAjax.php", params)
             .then(function(response) {
                 console.log(response.data);
