@@ -37,7 +37,30 @@ function displayTimePassed($timePassed)
     return  $text;
 }
 ?>
+<style>
+    #deleteModal {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+    }
+</style>
 
+<div id="deleteModal" class="flex items-center justify-center">
+    <div style="width: 530px;" class="bg-white rounded-md shadow-ld w-54 p-5 flex flex-col items-center justify-center">
+        <i class="material-icons text-4xl text-orange-600">warning</i>
+        <h4 class=" text-2xl mb-3 font-bold">حذف معلومات</h4>
+        <p class="text-center my-4">
+            آیا مطمئن هستید میخواهید اطاعات انتخاب شده را حذف نمایید؟
+            <br>
+            اطلاعات مورد نظر بعد از حذف در درسترس نخواهد بود!
+        </p>
+        <div class="py-5">
+            <button class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
+            <button class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
+        </div>
+    </div>
+</div>
 <div class="">
     <div class="flex">
         <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
@@ -48,7 +71,6 @@ function displayTimePassed($timePassed)
         </div>
     </div>
     <div class="box-keeper">
-
         <table class="min-w-full">
             <tr class="bg-violet-700">
                 <th class="text-right px-3 text-white py-2">کد فنی</th>
@@ -168,6 +190,8 @@ function displayTimePassed($timePassed)
 
     function deleteItem(element) {
         const id = element.getAttribute('data-item');
+        const modal = document.getElementById('deleteModal');
+        modal.style.display = 'flex';
     }
 </script>
 <?php
