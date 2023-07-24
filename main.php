@@ -70,13 +70,11 @@
                      </div>
                      <input name="isold" id="isold" type="hidden" value="<?php echo ($isold) ?>">
                      <div class="col-span-2 bg-gray-200	p-3">
-                         <div class="flex">
-                             <p> درج اطلاعات استعلام</p>
-
-                         </div>
-                         <div style="float: left;">
-                             <input style="display: inline-block;" type="checkbox" name="pin" id="pin">پین کردن استعلام
-                         </div>
+                         <p> درج اطلاعات استعلام</p>
+                         <input style="text-align: left;" type="checkbox" name="pin" id="pin">
+                         <span>
+                             پین کردن استعلام
+                         </span>
                          <textarea id="call_info_text" class="callinfo" name="callinfo"></textarea>
                          <div class="flex items-start">
                              <div class="callinfobox-option">
