@@ -76,6 +76,19 @@ require_once('./views/Layouts/header.php');
         document.getElementById('target_customer').value = id;
         document.getElementById('search_result').classList.add("hidden");
     }
+
+    // Get the current page URL query string
+    const queryString = window.location.search;
+
+    // Remove the leading '?phone=' from the query string
+    const phoneValue = queryString.replace('?phone=', '');
+
+    // Get the text area element
+    const textArea = document.getElementById('code');
+
+    // Set the phone value as the value of the text area with cursor in a new line
+    textArea.value += phoneValue + '\n';
+    textArea.focus();
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
