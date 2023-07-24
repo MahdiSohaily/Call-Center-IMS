@@ -71,7 +71,7 @@ function displayTimePassed($timePassed)
             برای ویرایش اطلاعات فورم ذیل را به دقت پر نمایید
         </p>
         <div class="py-3">
-            <input class="border p-2 min-w-full rounded-md" type="text" name="price" id="price">
+            <input onkeyup="updatePrice(this.value)" class="border p-2 min-w-full rounded-md" type="text" name="price" id="price">
         </div>
         <div class="py-5">
             <button onclick="confirmEdit()" class="border-4 border-blue-500/75 rounded-lg  bg-blue-500 text-white py-2 px-5">ویرایش</button>
@@ -273,6 +273,10 @@ function displayTimePassed($timePassed)
             .catch(function(error) {
                 console.log(error);
             });
+    }
+
+    function updatePrice(value) {
+        itemPrice = value;
     }
 </script>
 <?php
