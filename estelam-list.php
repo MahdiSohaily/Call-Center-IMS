@@ -116,7 +116,7 @@ function displayTimePassed($timePassed)
 
                     // Display the row for current entry with the same background color as the group
                     ?>
-                    <tr style="background-color:<?php echo $bgColor ?>">
+                    <tr id="row-<?php echo $id ?>" style="background-color:<?php echo $bgColor ?>">
                         <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $partNumber ?>'><?php echo $partNumber ?></td>
                         <td class="px-4 hover:cursor-pointer text-rose-400" onclick="searchByCustomer(this)" data-customer='<?php echo $sellerName ?>'><?php echo $sellerName ?></td>
                         <td><?php echo $price ?></td>
@@ -208,14 +208,25 @@ function displayTimePassed($timePassed)
 
         axios.post("./estelam-operations-list-ajax.php", params)
             .then(function(response) {
-                console.log(response.data);
                 document.getElementById('modalContent').innerHTML = `<i class="material-icons text-6xl text-green-600 mb-4">check_circle</i>
                                                                     <h4 class=" text-2xl mb-3 font-bold">عملیات موفقیت آمیز</h4>
                                                                     <p class="text-center my-4">
                                                                         حذف اطلاعات موفقانه صورت گرفت!
                                                                     </p>‍‍`;
                 setTimeout(() => {
+                    document.getElementById('modalContent').innerHTML = `<i class="material-icons text-4xl text-orange-600">warning</i>
+        <h4 class=" text-2xl mb-3 font-bold">حذف معلومات</h4>
+        <p class="text-center my-4">
+            آیا مطمئن هستید میخواهید اطاعات انتخاب شده را حذف نمایید؟
+            <br>
+            اطلاعات مورد نظر بعد از حذف در درسترس نخواهد بود!
+        </p>
+        <div class="py-5">
+            <button onclick="confirmDelete()" class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
+            <button onclick="closeModal('deleteModal')" class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
+        </div>`;
                     deleteModal.style.display = 'none';
+                    document.getElementById('row-' + toBeDeleted).remove();
                 }, 1000)
 
             })
