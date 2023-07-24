@@ -56,8 +56,8 @@ function displayTimePassed($timePassed)
             اطلاعات مورد نظر بعد از حذف در درسترس نخواهد بود!
         </p>
         <div class="py-5">
-            <button class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
-            <button class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
+            <button onclick="confirmDelete()" class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
+            <button onclick="closeModal('deleteModal')" class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
         </div>
     </div>
 </div>
@@ -192,6 +192,10 @@ function displayTimePassed($timePassed)
         const id = element.getAttribute('data-item');
         const modal = document.getElementById('deleteModal');
         modal.style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
     }
 </script>
 <?php
