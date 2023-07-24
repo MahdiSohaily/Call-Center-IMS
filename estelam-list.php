@@ -224,10 +224,10 @@ function displayTimePassed($timePassed)
         const price = element.getAttribute('data-price');
         const priceInput = document.getElementById('price');
 
-        editModal.style.display = 'flex';
-        itemPrice = price;
-        priceInput.value = itemPrice;
         toBeModified = id;
+        editModal.style.display = 'flex';
+        itemPrice = document.getElementById('price-' + toBeModified).innerHTML;
+        priceInput.value = itemPrice;
     }
 
     function deleteItem(element) {
