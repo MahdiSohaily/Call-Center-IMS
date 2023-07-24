@@ -19,7 +19,7 @@ if (isset($_POST['historyAjax'])) {
                         کد فنی
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-center">
-                        قیمت دهنده
+                         کاربر
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-right">
                         زمان
@@ -317,7 +317,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                             کد فنی
                         </th>
                         <th scope="col" class="px-3 py-2 text-white text-center">
-                            قیمت دهنده
+                             کاربر
                         </th>
                         <th scope="col" class="px-3 py-2 text-white text-right">
                             زمان
