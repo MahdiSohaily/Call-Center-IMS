@@ -38,7 +38,8 @@ function displayTimePassed($timePassed)
 }
 ?>
 <style>
-    #deleteModal {
+    #deleteModal,
+    #editModal {
         position: fixed;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.7);
@@ -64,16 +65,17 @@ function displayTimePassed($timePassed)
 
 <div id="editModal" class="flex items-center justify-center">
     <div id="modalContent" style="width: 530px;" class="bg-white rounded-md shadow-ld w-54 p-5 flex flex-col items-center justify-center">
-        <i class="material-icons text-4xl text-orange-600">warning</i>
-        <h4 class=" text-2xl mb-3 font-bold"></h4>
+        <i class="material-icons text-4xl text-blue-600">dvr</i>
+        <h4 class=" text-2xl mb-3 font-bold">ویرایش معلومات</h4>
         <p class="text-center my-4">
-            آیا مطمئن هستید میخواهید اطاعات انتخاب شده را حذف نمایید؟
-            <br>
-            اطلاعات مورد نظر بعد از حذف در درسترس نخواهد بود!
+            برای ویرایش اطلاعات فورم ذیل را به دقت پر نمایید
         </p>
+        <div class="py-3">
+            <input class="border p-2 min-w-full rounded-md" type="text" name="price" id="price">
+        </div>
         <div class="py-5">
-            <button onclick="confirmDelete()" class="border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">تایید و حذف</button>
-            <button onclick="closeModal('deleteModal')" class=" border-4 border-indigo-500/75 rounded-lg bg-indigo-500 text-white py-2 px-5">انصراف</button>
+            <button onclick="confirmDelete()" class="border-4 border-blue-500/75 rounded-lg  bg-blue-500 text-white py-2 px-5">ویرایش</button>
+            <button onclick="closeModal('deleteModal')" class=" border-4 border-red-500/75 rounded-lg bg-red-500 text-white py-2 px-5">انصراف</button>
         </div>
     </div>
 </div>
@@ -155,7 +157,7 @@ function displayTimePassed($timePassed)
                             ?>
                         </td>
                         <td>
-                            <i onclick="editItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
+                            <i onclick="editItem(this)" data-price="<?php echo $price ?>" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-indigo-600">edit</i>
                             <i onclick="deleteItem(this)" data-item='<?php echo $id ?>' class="material-icons hover:cursor-pointer text-red-600">delete</i>
                         </td>
                     </tr>
@@ -169,7 +171,10 @@ function displayTimePassed($timePassed)
 <script>
     const input = document.getElementById('search-bazar');
     const deleteModal = document.getElementById('deleteModal');
+    const editModal = document.getElementById('editModal');
+
     let toBeDeleted = null;
+    let itemPrice = null;
 
     deleteModal.addEventListener('click', (e) => {
         document.getElementById('deleteModal').style.display = 'none';
@@ -208,6 +213,10 @@ function displayTimePassed($timePassed)
 
     function editItem(element) {
         const id = element.getAttribute('data-item');
+        const price = element.getAttribute('data-price');
+
+        editModal.style.display = 'flex';
+        itemPrice = price;
     }
 
     function deleteItem(element) {
@@ -226,7 +235,6 @@ function displayTimePassed($timePassed)
         params.append('toBeDelete', toBeDeleted);
         params.append('operation', 'delete');
 
-        console.log(toBeDeleted);
         axios.post("./estelam-operations-list-ajax.php", params)
             .then(function(response) {
                 console.log(response.data);
