@@ -27,7 +27,7 @@ require_once('./views/Layouts/header.php');
                 <label for="code" class="block font-medium text-sm text-gray-700">
                     کدهای مدنظر
                 </label>
-                <textarea onkeyup="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                <textarea onchange="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
             </div>
         </div>
 
@@ -80,11 +80,13 @@ require_once('./views/Layouts/header.php');
             final = result.map((item) => {
                 item = item.split(" ");
                 if (item[0].length > 7 && !regex.test(item[0])) {
-                    console.log(item[0]);
-                    return item[0];
+                    return item[0] && item[0];
                 }
             });
 
+            final = final.filter(function(element) {
+                return element !== undefined;
+            });
             element.value = final.join("\n");
         }
     }
