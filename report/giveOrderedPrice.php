@@ -667,16 +667,21 @@ if ($isValidCustomer) {
                 let tdElements = parentElement.getElementsByTagName('td');
                 let tdTextContent = [];
 
-                for (let i = 0; i < tdElements.length; i++) {
+                const elementLenght = tdElements.length;
 
-                    let text = tdElements[i].textContent;
-                    tdTextContent.push(text);
+                for (let i = 0; i < elementLenght; i++) {
+
+                    if (i !== 2 && i !== 5) {
+                        let text = tdElements[i].textContent;
+                        tdTextContent.push(text);
+                    }
                 }
 
                 const chunkSize = 2;
 
                 let finalResult = []
-                for (let i = 0; i < tdTextContent.length; i += chunkSize) {
+                const size = tdTextContent.length;
+                for (let i = 0; i < size; i += chunkSize) {
                     finalResult.push(tdTextContent.slice(i, i + chunkSize));
                 }
 
