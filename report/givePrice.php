@@ -40,33 +40,38 @@ require_once('./views/Layouts/header.php');
     </form>
 </div>
 <script>
+    $('#code').keyup(delay(function(e) {
+        console.log('Time elapsed!', this.value);
+    }, 500));
+
     function filterCode(element) {
-        var explodedCodes = element.value.split("\n");
+        if (element.value) {
+            var explodedCodes = element.value.split("\n");
 
-        var result = explodedCodes.map(function(code) {
-            if (code.length > 0) {
-                var stringWithBracketsAndColon = code;
+            var result = explodedCodes.map(function(code) {
+                if (code.length > 0) {
+                    var stringWithBracketsAndColon = code;
 
-                // Remove everything between square brackets
-                var removedText = stringWithBracketsAndColon.replace(/\[[^\]]*\]/g, "");
+                    // Remove everything between square brackets
+                    var removedText = stringWithBracketsAndColon.replace(/\[[^\]]*\]/g, "");
 
-                if (removedText.includes(":")) {
-                    var parts = removedText.split(":");
-                    var rightSide = parts[1].trim();
-                    rightSide = rightSide.replace(/[^a-zA-Z0-9]/g, "");
-                    return rightSide;
-                } else {
-                    return removedText.replace(/[^a-zA-Z0-9]/g, "");
+                    if (removedText.includes(":")) {
+                        var parts = removedText.split(":");
+                        var rightSide = parts[1].trim();
+                        rightSide = rightSide.replace(/[^a-zA-Z0-9]/g, "");
+                        return rightSide;
+                    } else {
+                        return removedText.replace(/[^a-zA-Z0-9]/g, "");
+                    }
                 }
-            }
-        });
-        const regex = /[a-zAZ]{4}/;
-        console.log(result);
-        result = result.filter((item) => {
-            return item.length > 7 && !regex.test(item);
-        });
+            });
+            const regex = /[a-zAZ]{4}/;
+            result = result.filter((item) => {
+                return item.length > 7 && !regex.test(item);
+            });
 
-        element.value = result.join("\n");
+            element.value = result.join("\n");
+        }
     }
 
     const searchCustomer = (val) => {
