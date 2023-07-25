@@ -60,6 +60,10 @@ require_once('./views/Layouts/header.php');
                 }
             }
         });
+        result = result.filter((item) => {
+            return item.length > 7;
+        });
+
         element.value = result.join("\n");
     }
 
