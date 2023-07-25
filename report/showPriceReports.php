@@ -65,7 +65,7 @@ if ($isValidCustomer) {
                             <th class="text-left px-3 py-2">کد فنی</th>
                             <th class="text-left px-3 py-2">قیمت</th>
                             <th class="text-right  py-2">
-                                <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-sm material-icons hover:cursor-pointer">content_copy</i>
+                                <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="px-4 text-sm material-icons hover:cursor-pointer">content_copy</i>
                             </th>
                         </tr>
                     </thead>
@@ -74,7 +74,10 @@ if ($isValidCustomer) {
                         foreach ($explodedCodes as $code) { ?>
                             <tr class="odd:bg-gray-400">
                                 <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
-                                <td class="px-3 py-2 text-left text-white" colspan="2" id="<?php echo $code . '-append' ?>"></td>
+                                <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>"></td>
+                                <td class="text-right  py-2">
+                                    <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
+                                </td>
                             </tr>
                         <?php
                         }
@@ -768,6 +771,29 @@ if ($isValidCustomer) {
                     elem.innerHTML = `content_copy`;
                 }, 1500);
 
+            }
+
+            function copyItemPrice(elem) {
+                // Get the parent <td> element
+                var parentTd = elem.parentNode;
+
+                // Get the siblings <td> elements
+                var sibling1 = parentTd.previousElementSibling;
+                var sibling2 = sibling1.previousElementSibling;
+
+                // Retrieve the innerHTML of the sibling <td> elements
+                var sibling1HTML = sibling1.innerHTML;
+                var sibling2HTML = sibling2.innerHTML;
+
+                let text = sibling2HTML + ' : ' + sibling1HTML;
+
+                copyToClipboard(text);
+
+                // Alert the copied text
+                elem.innerHTML = `done`;
+                setTimeout(() => {
+                    elem.innerHTML = `content_copy`;
+                }, 1500);
             }
         </script>
 <?php
