@@ -131,55 +131,22 @@
  </div>
  <script>
      function filterCode(element) {
-         if (element.value) {
-             var explodedCodes = element.value.split("\n");
+         if (!element.value) return;
 
-             var result = explodedCodes.map(function(code) {
-                 if (code.length > 0) {
-                     var stringWithBracketsAndColon = code;
+         const codes = element.value.split("\n").filter(code => code.length > 0);
 
-                     // Remove everything between square brackets
-                     var removedText = stringWithBracketsAndColon.replace(/\[[^\]]*\]/g, "");
+         const filteredCodes = codes.map(code => {
+             const removedText = code.replace(/\[[^\]]*\]/g, "");
+             const parts = removedText.includes(":") ? removedText.split(":") : removedText.split(",");
+             const rightSide = parts[1] ? parts[1].trim().replace(/[^a-zA-Z0-9 ]/g, "") : "";
+             return rightSide || removedText.replace(/[^a-zA-Z0-9 ]/g, "");
+         }).filter(item => item && !/[^a-zA-Z0-9 ]/g.test(item));
 
-                     if (removedText.includes(":")) {
-                         var parts = removedText.split(":");
-                         var rightSide = parts[1].trim();
-                         rightSide = rightSide.replace(/[^a-zA-Z0-9 ]/g, "");
-                         return rightSide;
-                     } else if (removedText.includes(",")) {
-                         var parts = removedText.split(",");
-                         var rightSide = parts[1].trim();
-                         rightSide = rightSide.replace(/[^a-zA-Z0-9 ]/g, "");
-                         return rightSide;
-                     } else {
-                         return removedText.replace(/[^a-zA-Z0-9 ]/g, "");
-                     }
-                 }
-             });
+         const finalCodes = filteredCodes.filter(item => item.split(" ")[0].length > 6);
 
-             const regex = /[a-zAZ]{4}/;
-             result = result.filter((item) => {
-                 if (item) {
-                     item = item.trim();
-                     item = item.replace(/[ ]/g, "");
-                     const regex = /[^a-zA-Z0-9 ]/g;
-                     return !regex.test(item);
-                 }
-             });
-
-             final = result.map((item) => {
-                 item = item.split(" ");
-                 if (item[0].length > 6 && !regex.test(item[0])) {
-                     return item[0] && item[0];
-                 }
-             });
-
-             final = final.filter(function(element) {
-                 return element !== undefined;
-             });
-             element.value = final.join("\n");
-         }
+         element.value = finalCodes.join("\n");
      }
+
 
      const price_textarea = document.getElementById('givenCode');
      const call_info_text = document.getElementById('call_info_text');
