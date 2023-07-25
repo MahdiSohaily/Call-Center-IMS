@@ -47,20 +47,22 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
             if (strpos($removedText, ":") !== false) {
                 $parts = explode(":", $removedText);
                 $rightSide = trim($parts[1]);
-                $rightSide = preg_replace("/[^a-zA-Z0-9 ]/", "", $rightSide);
+                $rightSide = preg_replace("/[^a-zA-Z0-9]/", "", $rightSide);
                 return $rightSide;
             } else {
-                return preg_replace("/[^a-zA-Z0-9 ]/", "", $removedText);
+                return preg_replace("/[^a-zA-Z0-9]/", "", $removedText);
             }
         }
     }, $explodedCodes);
 
+    
     $explodedCodes = array_filter($explodedCodes, function ($code) {
         if (strlen($code) > 5) {
             return  $code;
         }
     });
-
+    
+    
     // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
 
