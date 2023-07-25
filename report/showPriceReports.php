@@ -724,7 +724,6 @@ if ($isValidCustomer) {
                 newPrice = element.getAttribute('data-price');
                 part = element.getAttribute('data-part');
                 const input = document.getElementById(part + '-price');
-                console.log(part);
                 input.value = newPrice;
                 price = newPrice;
 
