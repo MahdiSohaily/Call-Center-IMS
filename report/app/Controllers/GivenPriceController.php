@@ -38,7 +38,20 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     $explodedCodes = array_map(function ($code) {
         if (strlen($code) > 0) {
-            return  preg_replace('/[^a-z0-9]/i', '', $code);
+            $stringWithBracketsAndColon = $code;
+
+            // Remove everything between square brackets
+            $removedText = preg_replace("/\[[^\]]*\]/", "", $stringWithBracketsAndColon);
+
+
+            if (strpos($removedText, ":") !== false) {
+                $parts = explode(":", $removedText);
+                $rightSide = trim($parts[1]);
+                $rightSide = preg_replace("/[^a-zA-Z0-9 ]/", "", $rightSide);
+                return $rightSide;
+            } else {
+                return preg_replace("/[^a-zA-Z0-9 ]/", "", $removedText);
+            }
         }
     }, $explodedCodes);
 
