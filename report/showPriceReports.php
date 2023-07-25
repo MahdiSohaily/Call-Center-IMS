@@ -742,7 +742,9 @@ if ($isValidCustomer) {
                 let tdElements = parentElement.getElementsByTagName('td');
                 let tdTextContent = [];
 
-                for (let i = 0; i < tdElements.length; i++) {
+                const elementLenght = tdElements.length;
+
+                for (let i = 0; i < elementLenght; i++) {
 
                     let text = tdElements[i].textContent;
                     tdTextContent.push(text);
@@ -751,8 +753,8 @@ if ($isValidCustomer) {
                 const chunkSize = 2;
 
                 let finalResult = []
-                const size = tdTextContent.length - 1;
-                for (let i = 0; i < size ; i += chunkSize) {
+                const size = tdTextContent.length;
+                for (let i = 0; i < size; i += chunkSize) {
                     finalResult.push(tdTextContent.slice(i, i + chunkSize));
                 }
 
