@@ -66,7 +66,7 @@ if ($isValidCustomer) {
                             <th class="text-left px-3 py-2">کد فنی</th>
                             <th class="text-left px-3 py-2">قیمت</th>
                             <th class="text-right  py-2">
-                                <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="px-4 text-sm material-icons hover:cursor-pointer">content_copy</i>
+                                <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                             </th>
                         </tr>
                     </thead>
