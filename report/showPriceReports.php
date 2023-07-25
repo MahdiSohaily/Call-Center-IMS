@@ -17,7 +17,7 @@ function displayTimePassed($datetimeString)
     $persianMonths = convertToPersian($passedMonths);
     $persianDays = convertToPersian($passedDays);
 
-    $result = "زمان گذشته: ";
+    $result = "";
 
     if ($passedMonths > 0) {
         $result .= "$persianMonths ماه";
