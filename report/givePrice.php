@@ -27,7 +27,7 @@ require_once('./views/Layouts/header.php');
                 <label for="code" class="block font-medium text-sm text-gray-700">
                     کدهای مدنظر
                 </label>
-                <textarea rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                <textarea onkeyup="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
             </div>
         </div>
 
@@ -40,6 +40,29 @@ require_once('./views/Layouts/header.php');
     </form>
 </div>
 <script>
+    function filterCode(element) {
+        var explodedCodes = element.value.split("\n");
+
+        var result = explodedCodes.map(function(code) {
+            if (code.length > 0) {
+                var stringWithBracketsAndColon = code;
+
+                // Remove everything between square brackets
+                var removedText = stringWithBracketsAndColon.replace(/\[[^\]]*\]/g, "");
+
+                if (removedText.includes(":")) {
+                    var parts = removedText.split(":");
+                    var rightSide = parts[1].trim();
+                    rightSide = rightSide.replace(/[^a-zA-Z0-9]/g, "");
+                    return rightSide;
+                } else {
+                    return removedText.replace(/[^a-zA-Z0-9]/g, "");
+                }
+            }
+        });
+        element.value = result.join("\n");
+    }
+
     const searchCustomer = (val) => {
         let pattern = val;
         let superMode = 0;
@@ -87,7 +110,9 @@ require_once('./views/Layouts/header.php');
     const textArea = document.getElementById('code');
 
     // Set the phone value as the value of the text area with cursor in a new line
-    textArea.value += phoneValue + '\n';
+    if (phoneValue) {
+        textArea.value += phoneValue + '\n';
+    }
     textArea.focus();
 </script>
 <?php
