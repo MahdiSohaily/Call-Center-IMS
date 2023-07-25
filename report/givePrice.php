@@ -60,8 +60,10 @@ require_once('./views/Layouts/header.php');
                 }
             }
         });
+        const regex = /[a-zAZ]{4}/;
+        console.log(result);
         result = result.filter((item) => {
-            return item.length > 7;
+            return item.length > 7 && !regex.test(item);
         });
 
         element.value = result.join("\n");
