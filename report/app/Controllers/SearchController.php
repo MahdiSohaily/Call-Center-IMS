@@ -3,7 +3,6 @@ require_once('../../database/connect.php');
 if (isset($_POST['pattern'])) {
     $pattern = $_POST['pattern'];
     $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $pattern . "%'";
-    echo $sql . "<br>";	
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
