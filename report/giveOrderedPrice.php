@@ -670,7 +670,6 @@ if ($isValidCustomer) {
                 const elementLenght = tdElements.length;
 
                 for (let i = 0; i < elementLenght; i++) {
-                    console.log(tdElements[i].textContent);
                     if (tdElements[i].textContent.trim() !== 'content_copy') {
                         let text = tdElements[i].textContent;
                         tdTextContent.push(text);
