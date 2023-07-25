@@ -58,28 +58,60 @@ require_once('./views/Layouts/header.php');
     }
 
 
-    const searchCustomer = (val) => {
+    // Function with optimized performance
+    const searchCustomer = ((val) => {
         let pattern = val;
         let superMode = 0;
         const resultBox = document.getElementById("search_result");
-        pattern = pattern.replace(/-_\s/g, "");
-        var params = new URLSearchParams();
-        params.append('pattern', pattern);
-        if (pattern.length > 3) {
-            resultBox.classList.remove("hidden");
-            resultBox.innerHTML = `<li class=''>
-                                    <img class='block w-7 mx-auto h-auto' src='./public/img/loading.png' alt='loading'>
-                                </li>`;
+        const searchCache = new Map();
 
-            axios.post("./app/Controllers/SearchCustomerController.php", params)
-                .then(function(response) {
-                    resultBox.innerHTML = response.data;
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        }
-    };
+
+        const debouncedSearch = debounce((val) => {
+            pattern = val.replace(/-_\s/g, "");
+            var params = new URLSearchParams();
+            params.append('pattern', pattern);
+
+            if (pattern.length > 3) {
+                if (searchCache.has(pattern)) {
+                    resultBox.innerHTML = searchCache.get(pattern);
+                } else {
+                    resultBox.classList.remove("hidden");
+                    resultBox.innerHTML = `<li class=''>
+                                        <img class='block w-7 mx-auto h-auto' src='./public/img/loading.png' alt='loading'>
+                                    </li>`;
+
+                    axios.post("./app/Controllers/SearchCustomerController.php", {
+                            pattern
+                        })
+                        .then(function(response) {
+                            console.log(response.data);
+                            resultBox.innerHTML = response.data;
+                            searchCache.set(pattern, response.data);
+                        })
+                        .catch(function(error) {
+                            console.log(error);
+                        });
+                }
+            }
+        }, 300); // Debounce time in milliseconds (adjust as needed)
+
+        return (val) => {
+            debouncedSearch(val);
+        };
+    })();
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                timeout = null;
+                func.apply(this, args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
 
     const selectCustomer = (element) => {
         id = element.getAttribute('data-customer-id');

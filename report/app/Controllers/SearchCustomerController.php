@@ -2,6 +2,7 @@
 require_once('../../database/connect.php');
 if (filter_has_var(INPUT_POST, 'pattern')) {
     $pattern = $_POST['pattern'];
+    echo $_POST['pattern'] . "******";
     $sql = "SELECT * FROM callcenter.customer WHERE name LIKE '%" . $pattern . "%' OR  family LIKE '%" . $pattern . "%'";
     $result = mysqli_query($conn, $sql);
 
