@@ -169,7 +169,7 @@
 
              final = result.map((item) => {
                  item = item.split(" ");
-                 if (item[0].length > 7 && !regex.test(item[0])) {
+                 if (item[0].length > 6 && !regex.test(item[0])) {
                      return item[0] && item[0];
                  }
              });
