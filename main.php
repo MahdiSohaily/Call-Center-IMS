@@ -113,10 +113,9 @@
                      <input hidden name="customer" required id="givenCustomer" type="number" value="<?php echo $id ?>" />
                      <div class="bg-gray-200  p-3">
 
-                         <textarea style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
+                         <textarea onchange="filterCode(this)" style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
                          <div class="flex justify-between items-center">
                              <button type="submit" class="give-search-button"> جستجو</button>
-                             <i onclick="filterCode(this)" title='انتقال کد به بخش استعلام' class="material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_forward</i>
                              <i onclick="toEstelam()" title='انتقال کد به بخش استعلام' class="material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_forward</i>
                          </div>
                      </div>
@@ -131,8 +130,7 @@
      </div>
  </div>
  <script>
-     function filterCode() {
-         const element = document.getElementById("givenCode");
+     function filterCode(element) {
          if (element.value) {
              var explodedCodes = element.value.split("\n");
 
@@ -146,19 +144,40 @@
                      if (removedText.includes(":")) {
                          var parts = removedText.split(":");
                          var rightSide = parts[1].trim();
-                         rightSide = rightSide.replace(/[^a-zA-Z0-9]/g, "");
+                         rightSide = rightSide.replace(/[^a-zA-Z0-9 ]/g, "");
+                         return rightSide;
+                     } else if (removedText.includes(",")) {
+                         var parts = removedText.split(",");
+                         var rightSide = parts[1].trim();
+                         rightSide = rightSide.replace(/[^a-zA-Z0-9 ]/g, "");
                          return rightSide;
                      } else {
-                         return removedText.replace(/[^a-zA-Z0-9]/g, "");
+                         return removedText.replace(/[^a-zA-Z0-9 ]/g, "");
                      }
                  }
              });
+
              const regex = /[a-zAZ]{4}/;
              result = result.filter((item) => {
-                 return item.length > 7 && !regex.test(item);
+                 if (item) {
+                     item = item.trim();
+                     item = item.replace(/[ ]/g, "");
+                     const regex = /[^a-zA-Z0-9 ]/g;
+                     return !regex.test(item);
+                 }
              });
 
-             element.value = result.join("\n");
+             final = result.map((item) => {
+                 item = item.split(" ");
+                 if (item[0].length > 7 && !regex.test(item[0])) {
+                     return item[0] && item[0];
+                 }
+             });
+
+             final = final.filter(function(element) {
+                 return element !== undefined;
+             });
+             element.value = final.join("\n");
          }
      }
 
