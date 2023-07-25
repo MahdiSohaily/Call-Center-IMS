@@ -29,12 +29,12 @@ if (filter_has_var(INPUT_POST, 'givenPrice') && filter_has_var(INPUT_POST, 'user
 
 function setup_loading($conn, $customer, $completeCode, $notification = null)
 {
-    $explodedCodes = explode("\n", $completeCode);
-
     $results_array = [
         'not_exist' => [],
         'existing' => [],
     ];
+    
+    $explodedCodes = explode("\n", $completeCode);
 
     $explodedCodes = array_map(function ($code) {
         if (strlen($code) > 0) {
