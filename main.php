@@ -113,7 +113,7 @@
                      <input hidden name="customer" required id="givenCustomer" type="number" value="<?php echo $id ?>" />
                      <div class="bg-gray-200  p-3">
 
-                         <textarea style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
+                         <textarea onkeyup="filterCode(this.value)" style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
                          <div class="flex justify-between items-center">
                              <button type="submit" class="give-search-button"> جستجو</button>
                              <i onclick="toEstelam()" title='انتقال کد به بخش استعلام' class="material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_forward</i>
@@ -127,17 +127,14 @@
                     } ?>
              </form>
          </div>
-
-         <!-- <button onclick="displayNotification('Hello', 'This is a notification message.')">Notify me!</button>
-         <p>
-             chrome://flags/#unsafely-treat-insecure-origin-as-secure
-         </p>
-         <p>
-         http://192.168.9.14/
-         </p> -->
      </div>
  </div>
  <script>
+
+    function filterCode(value) {
+        alert('value: ' + value);
+    }
+
      const price_textarea = document.getElementById('givenCode');
      const call_info_text = document.getElementById('call_info_text');
 
