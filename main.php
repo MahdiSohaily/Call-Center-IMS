@@ -113,7 +113,7 @@
                      <input hidden name="customer" required id="givenCustomer" type="number" value="<?php echo $id ?>" />
                      <div class="bg-gray-200  p-3">
 
-                         <textarea onkeyup="filterCode(this.value)" style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
+                         <textarea onkeyup="filterCode(this)" style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
                          <div class="flex justify-between items-center">
                              <button type="submit" class="give-search-button"> جستجو</button>
                              <i onclick="toEstelam()" title='انتقال کد به بخش استعلام' class="material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_forward</i>
@@ -130,10 +130,28 @@
      </div>
  </div>
  <script>
+     function filterCode(element) {
+         var explodedCodes = element.value.split("\n");
 
-    function filterCode(value) {
-        alert('value: ' + value);
-    }
+         var result = explodedCodes.map(function(code) {
+             if (code.length > 0) {
+                 var stringWithBracketsAndColon = code;
+
+                 // Remove everything between square brackets
+                 var removedText = stringWithBracketsAndColon.replace(/\[[^\]]*\]/g, "");
+
+                 if (removedText.includes(":")) {
+                     var parts = removedText.split(":");
+                     var rightSide = parts[1].trim();
+                     rightSide = rightSide.replace(/[^a-zA-Z0-9]/g, "");
+                     return rightSide;
+                 } else {
+                     return removedText.replace(/[^a-zA-Z0-9]/g, "");
+                 }
+             }
+         });
+         element.value = result.join("\n");
+     }
 
      const price_textarea = document.getElementById('givenCode');
      const call_info_text = document.getElementById('call_info_text');
