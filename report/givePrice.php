@@ -27,7 +27,7 @@ require_once('./views/Layouts/header.php');
                 <label for="code" class="block font-medium text-sm text-gray-700">
                     کدهای مدنظر
                 </label>
-                <textarea onpast="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                <textarea onkeyup="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
             </div>
         </div>
 
@@ -40,7 +40,6 @@ require_once('./views/Layouts/header.php');
     </form>
 </div>
 <script>
-
     function filterCode(element) {
         if (element.value) {
             var explodedCodes = element.value.split("\n");
@@ -55,19 +54,38 @@ require_once('./views/Layouts/header.php');
                     if (removedText.includes(":")) {
                         var parts = removedText.split(":");
                         var rightSide = parts[1].trim();
-                        rightSide = rightSide.replace(/[^a-zA-Z0-9]/g, "");
+                        rightSide = rightSide.replace(/[^a-zA-Z0-9 ]/g, "");
+                        return rightSide;
+                    } else if (removedText.includes(",")) {
+                        var parts = removedText.split(",");
+                        var rightSide = parts[1].trim();
+                        rightSide = rightSide.replace(/[^a-zA-Z0-9 ]/g, "");
                         return rightSide;
                     } else {
-                        return removedText.replace(/[^a-zA-Z0-9]/g, "");
+                        return removedText.replace(/[^a-zA-Z0-9 ]/g, "");
                     }
                 }
             });
+
             const regex = /[a-zAZ]{4}/;
             result = result.filter((item) => {
-                return item.length > 7 && !regex.test(item);
+                if (item) {
+                    item = item.trim();
+                    item = item.replace(/[ ]/g, "");
+                    const regex = /[^a-zA-Z0-9 ]/g;
+                    return !regex.test(item);
+                }
             });
 
-            element.value = result.join("\n");
+            final = result.map((item) => {
+                item = item.split(" ");
+                if (item[0].length > 7 && !regex.test(item[0])) {
+                    console.log(item[0]);
+                    return item[0];
+                }
+            });
+
+            element.value = final.join("\n");
         }
     }
 
