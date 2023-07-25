@@ -751,7 +751,8 @@ if ($isValidCustomer) {
                 const chunkSize = 2;
 
                 let finalResult = []
-                for (let i = 0; i < tdTextContent.length; i += chunkSize) {
+                const size = tdTextContent.length - 1;
+                for (let i = 0; i < size ; i += chunkSize) {
                     finalResult.push(tdTextContent.slice(i, i + chunkSize));
                 }
 
