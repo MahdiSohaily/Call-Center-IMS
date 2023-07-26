@@ -1,5 +1,5 @@
 <?php
- global $con;
+global $con;
 $con = mysqli_connect('localhost','root','','callcenter');
 if (!$con) {
   die('Could not connect: ' . mysqli_error($con));
@@ -18,12 +18,10 @@ if(!$result)
 {
     echo "Error MySQLI QUERY: ".mysqli_error($con)."";
     die();
-
 }
 else
 {
   echo "done";
- 
 } 
 
 ?>
