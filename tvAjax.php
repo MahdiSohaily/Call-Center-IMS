@@ -15,7 +15,7 @@ function givenPrice($con)
  FROM ((shop.prices 
  INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
  INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
- ORDER BY prices.created_at DESC LIMIT 100";
+ ORDER BY prices.created_at DESC LIMIT 40";
     $result = mysqli_query($con, $sql);
 
 
@@ -84,7 +84,7 @@ if ($status == 'on') :
                     <tbody>
                         <?php
                         global  $repeat;
-                        $sql = "SELECT * FROM incoming WHERE user = $user ORDER BY  time DESC LIMIT 100";
+                        $sql = "SELECT * FROM incoming WHERE user = $user ORDER BY  time DESC LIMIT 40";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -309,7 +309,7 @@ if ($status == 'on') :
                         </thead>
                         <tbody>
                             <?php
-                            $sql2 = "SELECT * FROM record ORDER BY  time DESC LIMIT 100  ";
+                            $sql2 = "SELECT * FROM record ORDER BY  time DESC LIMIT 40  ";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -370,7 +370,7 @@ if ($status == 'on') :
                         </thead>
                         <tbody>
                             <?php
-                            $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 100  ";
+                            $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 40  ";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
                                 while ($row2 = mysqli_fetch_assoc($result2)) {

@@ -28,6 +28,13 @@
         return trim($firstLetters);
     }
     ?>
+ <style>
+     body,
+     html {
+         padding: 0 !important;
+         margin: 10px !important;
+     }
+ </style>
  <div style="width: 854px;background-color: white !important; margin-inline:auto; font-size: 8px;" id="fullpage" data-user='<?php echo $user ?>'>
      <i onclick="openFullscreen()" class="large material-icons">aspect_ratio</i>
      <div class="d-grid">
@@ -46,7 +53,7 @@
                  <tbody>
                      <?php
                         global  $repeat;
-                        $sql = "SELECT * FROM incoming WHERE user = $user ORDER BY  time DESC LIMIT 100";
+                        $sql = "SELECT * FROM incoming WHERE user = $user ORDER BY  time DESC LIMIT 40";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -220,7 +227,7 @@
                          FROM ((shop.prices 
                          INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
                          INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
-                         ORDER BY prices.created_at DESC LIMIT 100";
+                         ORDER BY prices.created_at DESC LIMIT 40";
                             $result = mysqli_query($con, $sql);
 
 
@@ -240,7 +247,7 @@
                                 ?>
                                  <tr class="mb-1 ?> odd:bg-gray-200">
                                  <?php  } ?>
-                                 <td  class="tiny-text bold px-1">
+                                 <td class="tiny-text bold px-1">
                                      <p style="font-size: 8px !important;" class="text-right bold text-gray-700 px-2 py-1">
                                          <?php echo $price['partnumber']; ?>
                                      </p>
@@ -289,7 +296,7 @@
                      </thead>
                      <tbody>
                          <?php
-                            $sql2 = "SELECT * FROM record ORDER BY  time DESC LIMIT 100  ";
+                            $sql2 = "SELECT * FROM record ORDER BY  time DESC LIMIT 40  ";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -350,7 +357,7 @@
                      </thead>
                      <tbody>
                          <?php
-                            $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 100  ";
+                            $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 40  ";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
