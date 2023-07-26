@@ -613,11 +613,6 @@ if ($isValidCustomer) {
                 element.disabled = true;
                 element.innerHTML = 'ثبت شد';
 
-                setTimeout(() => {
-                    element.disabled = false;
-                    element.innerHTML = 'موجود نیست';
-                }, 5000);
-
                 price = 'موجود نیست';
                 part = element.getAttribute('data-part');
                 const input = document.getElementById(part + '-price');
@@ -625,7 +620,7 @@ if ($isValidCustomer) {
                 const partNumber = element.getAttribute('data-code').split('-')[0];
                 const target = document.getElementById(partNumber + '-append');
                 target.innerHTML = price;
-                createRelation(element);
+                createRelation(element, 'not');
                 input.value = null;
             }
 
@@ -637,7 +632,7 @@ if ($isValidCustomer) {
 
                 setTimeout(() => {
                     element.disabled = false;
-                    element.innerHTML = 'ارسال به نیایش';
+                    element.innerHTML = ` ارسال به نیایش<i class="material-icons text-green-500 font-sm px-1">check_circle</i>`;
                 }, 5000);
 
                 // Accessing the form fields to get thier value for an ajax store operation
@@ -671,13 +666,26 @@ if ($isValidCustomer) {
             }
 
             // A function to create the relationship
-            function createRelation(e) {
+            function createRelation(e, button = null) {
 
                 e.disabled = true;
+                if (button) {
+                    setTimeout(() => {
+                        e.disabled = false;
+                        e.innerHTML = `
+    موجود نیست
+    <i class="material-icons text-green-500 font-sm px-1">check_circle</i>
+    `;
+                    }, 5000);
+                } else {
+                    setTimeout(() => {
+                        e.disabled = false;
+                        e.innerHTML = `
+        ثبت قیمت
+        <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`
+                    }, 5000);
 
-                setTimeout(() => {
-                    e.disabled = false;
-                }, 5000);
+                }
 
                 // Accessing the form fields to get thier value for an ajax store operation
                 const partNumber = e.getAttribute('data-part');
@@ -718,7 +726,6 @@ if ($isValidCustomer) {
 
                     });
             }
-
             // A function to set the price while cliking on the prices table
             function setPrice(element) {
                 newPrice = element.getAttribute('data-price');
