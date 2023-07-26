@@ -1,22 +1,16 @@
 <?php
-$servername = "localhost";
+$host = "localhost";
 $username = "root";
 $password = "";
 $dbname = "callcenter";
 
 // Create connection
-$con = mysqli_connect($servername, $username, $password, $dbname);
+$con = mysqli_connect($host, $username, $password, $dbname);
 
 // Check connection
 if (!$con) {
   die("Connection failed: " . mysqli_connect_error());
 }
-
-
-$host = 'localhost';
-$dbname = 'callcenter';
-$username = 'root';
-$password = '';
 
 // Establish a database connection
 try {
