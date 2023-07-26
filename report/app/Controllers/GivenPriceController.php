@@ -29,40 +29,25 @@ if (filter_has_var(INPUT_POST, 'givenPrice') && filter_has_var(INPUT_POST, 'user
 
 function setup_loading($conn, $customer, $completeCode, $notification = null)
 {
+    $explodedCodes = explode("\n", $completeCode);
+
     $results_array = [
         'not_exist' => [],
         'existing' => [],
     ];
-    
-    $explodedCodes = explode("\n", $completeCode);
 
     $explodedCodes = array_map(function ($code) {
         if (strlen($code) > 0) {
-            $stringWithBracketsAndColon = $code;
-
-            // Remove everything between square brackets
-            $removedText = preg_replace("/\[[^\]]*\]/", "", $stringWithBracketsAndColon);
-
-
-            if (strpos($removedText, ":") !== false) {
-                $parts = explode(":", $removedText);
-                $rightSide = trim($parts[1]);
-                $rightSide = preg_replace("/[^a-zA-Z0-9]/", "", $rightSide);
-                return $rightSide;
-            } else {
-                return preg_replace("/[^a-zA-Z0-9]/", "", $removedText);
-            }
+            return  preg_replace('/[^a-z0-9]/i', '', $code);
         }
     }, $explodedCodes);
 
-    
     $explodedCodes = array_filter($explodedCodes, function ($code) {
         if (strlen($code) > 5) {
             return  $code;
         }
     });
-    
-    
+
     // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
 
