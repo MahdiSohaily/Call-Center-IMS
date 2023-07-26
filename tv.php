@@ -296,48 +296,85 @@
                      </thead>
                      <tbody>
                          <?php
-                            $sql2 = "SELECT * FROM record ORDER BY  time DESC LIMIT 40  ";
+                            $sql2 = "SELECT  customer.name, customer.family, customer.phone, record.id as recordID, record.time, record.callinfo, record.pin, users.id AS userID
+                            FROM ((callcenter.record
+                            INNER JOIN callcenter.customer ON record.phone = customer.phone)
+                            INNER JOIN yadakshop1402.users ON record.user = users.id)
+                            WHERE record.pin = 'pin'
+                            ORDER BY record.time DESC
+                            LIMIT 40";
                             $result2 = mysqli_query($con, $sql2);
                             if (mysqli_num_rows($result2) > 0) {
                                 while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    $recordID = $row2['recordID'];
                                     $time = $row2['time'];
                                     $callinfo = $row2['callinfo'];
-                                    $user = $row2['user'];
+                                    $user = $row2['userID'];
                                     $phone = $row2['phone'];
-
-                                    $sql = "SELECT * FROM customer WHERE phone LIKE '" . $phone . "%'";
-                                    $result = mysqli_query($con, $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $name = $row['name'];
-                                            $family = $row['family'];
+                                    $name = $row2['name'];
+                                    $family = $row2['family'];
                             ?>
 
-                                         <tr>
-                                             <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                             <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
-                                             <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
+                                 <tr class="pin">
+                                     <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
+                                     <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                     <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                          <?php
-                                        }
-                                    }
 
-                                    date_default_timezone_set('Asia/Tehran');
+                                            date_default_timezone_set('Asia/Tehran');
 
-                                    $datetime1 = new DateTime();
-                                    $datetime2 = new DateTime($time);
-                                    $interval = $datetime1->diff($datetime2);
+                                            $datetime1 = new DateTime();
+                                            $datetime2 = new DateTime($time);
+                                            $interval = $datetime1->diff($datetime2);
                                             ?>
-                                             </td>
-                                             <!-- <td class="record-date"><?php echo $time ?></td> -->
-                                         </tr>
+                                     </td>
+                                     <!-- <td class="record-date"><?php echo $time ?></td> -->
+                                 </tr>
 
-                                 <?php
-
+                         <?php
                                 }
-                            } else {
-                                echo '<td colspan="4">هیچ اطلاعاتی موجود نیست</td>';
                             }
-                                    ?>
+                            ?>
+                         <?php
+                            $sql2 = "SELECT  customer.name, customer.family, customer.phone, record.id as recordID, record.time, record.callinfo, record.pin, users.id AS userID
+                                        FROM ((callcenter.record
+                                        INNER JOIN callcenter.customer ON record.phone = customer.phone)
+                                        INNER JOIN yadakshop1402.users ON record.user = users.id)
+                                        WHERE record.pin = 'unpin'
+                                        ORDER BY record.time DESC
+                                        LIMIT 40";
+                            $result2 = mysqli_query($con, $sql2);
+                            if (mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    $recordID = $row2['recordID'];
+                                    $time = $row2['time'];
+                                    $callinfo = $row2['callinfo'];
+                                    $user = $row2['userID'];
+                                    $phone = $row2['phone'];
+                                    $name = $row2['name'];
+                                    $family = $row2['family'];
+                            ?>
+
+                                 <tr>
+                                     <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
+                                     <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                     <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
+                                         <?php
+
+                                            date_default_timezone_set('Asia/Tehran');
+
+                                            $datetime1 = new DateTime();
+                                            $datetime2 = new DateTime($time);
+                                            $interval = $datetime1->diff($datetime2);
+                                            ?>
+                                     </td>
+                                     <!-- <td class="record-date"><?php echo $time ?></td> -->
+                                 </tr>
+
+                         <?php
+                                }
+                            }
+                            ?>
                      </tbody>
                  </table>
              </div>

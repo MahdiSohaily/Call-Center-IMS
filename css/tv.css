@@ -46,6 +46,7 @@ th {
 td {
   padding: 3px 7px !important;
   line-height: 2 !important;
+  border: none!important;
 }
 
 tr {
@@ -54,6 +55,14 @@ tr {
 
 tr:nth-child(even) {
   background-color: rgb(188, 222, 236);
+}
+
+tr.pin:nth-child(even) {
+  background-color: rgb(255 237 213) !important;
+}
+
+tr.pin:nth-child(odd) {
+  background-color: rgb(253 186 116) !important;
 }
 
 .phone_number {
