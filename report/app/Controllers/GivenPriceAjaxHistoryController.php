@@ -152,7 +152,7 @@ if (isset($_POST['historyAjax'])) {
                     $name = $row2['name'];
                     $family = $row2['family'];
             ?>
-                    <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
+                    <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
                         <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                         <td>
                             <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
@@ -450,7 +450,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                         $name = $row2['name'];
                         $family = $row2['family'];
                 ?>
-                        <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
+                        <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
                             <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                             <td>
                                 <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
@@ -516,7 +516,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                         $name = $row2['name'];
                         $family = $row2['family'];
                     ?>
-                        <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
+                        <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
                             <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                             <td>
                                 <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">

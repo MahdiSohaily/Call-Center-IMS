@@ -135,7 +135,7 @@ function format_interval(DateInterval $interval)
     <div class="rtl mb-5">
         <h2 class="text-xl py-2">آخرین استعلام ها</h2>
         <table class="min-w-full text-sm bg-white custom-table mb-2 p-3">
-            <thead class=" bg-green-600">
+            <thead class="bg-green-600">
                 <tr>
                     <th scope="col" class="px-3 py-2 text-white text-right">
                         مشتری
@@ -177,7 +177,7 @@ function format_interval(DateInterval $interval)
                     $name = $row2['name'];
                     $family = $row2['family'];
             ?>
-                    <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
+                    <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
                         <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                         <td>
                             <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
