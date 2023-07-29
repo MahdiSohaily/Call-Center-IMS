@@ -58,6 +58,20 @@ if ($isValidCustomer) {
         $rates = $finalResult['rates'];
 
 ?>
+        <style>
+            #deleteGivenPrice {
+                position: absolute;
+                font-size: 14px;
+                left: 5px;
+                font-weight: bold;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            #deleteGivenPrice:hover {
+                color: black;
+            }
+        </style>
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -383,6 +397,7 @@ if ($isValidCustomer) {
                                             </thead>
                                             <tbody id="price-<?php echo $partNumber ?>">
                                                 <?php if ($givenPrice !== null) {
+                                                    print_r(json_encode($givenPrice));
                                                 ?>
                                                     <?php foreach ($givenPrice as $price) { ?>
                                                         <?php if ($price['price'] !== null && $price['price'] !== '') {
@@ -391,8 +406,9 @@ if ($isValidCustomer) {
                                                                 <?php } else { ?>
                                                                 <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
                                                                 <?php  } ?>
-                                                                <td scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                <td scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                                                                    <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
                                                                 </td>
                                                                 <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php if (array_key_exists("ordered", $price)) {

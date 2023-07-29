@@ -19,7 +19,7 @@ if (isset($_POST['historyAjax'])) {
                         کد فنی
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-center">
-                         کاربر
+                        کاربر
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-right">
                         زمان
@@ -275,8 +275,7 @@ if (isset($_POST['historyAjax'])) {
 }
 function givenPrice($conn)
 {
-    $sql = "SELECT 
-    prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family, customer.phone
+    $sql = "SELECT prices.id, prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family, customer.phone
     FROM ((shop.prices 
     INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
     INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
@@ -317,7 +316,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                             کد فنی
                         </th>
                         <th scope="col" class="px-3 py-2 text-white text-center">
-                             کاربر
+                            کاربر
                         </th>
                         <th scope="col" class="px-3 py-2 text-white text-right">
                             زمان
