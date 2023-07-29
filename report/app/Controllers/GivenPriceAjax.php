@@ -100,13 +100,111 @@ if (isset($_POST['store_price'])) {
                 </td>
             </tr>
         <?php } ?>
-    <?php
+        <?php
+    }
+    if (isset($_POST['delete_price'])) {
+        $partnumber = $_POST['partNumber'];
+        $price = $_POST['price'];
+        $customer_id = $_POST['customer_id'];
+        $notification_id = $_POST['notification_id'];
+        $code = $_POST['code'];
+        store($conn, $partnumber, $price, $customer_id, $notification_id);
 
-}
+        $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partnumber'";
+        $result = mysqli_query($conn, $sql);
+        $good = $result->fetch_assoc();
 
-    ?>
+        $relation_exist = isInRelation($conn, $good['id']);
+        $relations = relations($conn, $good['id']);
+        $relations = array_keys($relations['goods']);
 
-    <?php
+        $givenPrice = givenPrice($conn, $relations, $relation_exist);
+
+        if ($givenPrice !== null) {
+            foreach ($givenPrice as $price) {
+                if ($price['price'] !== null && $price['price'] !== '') {
+                    if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
+                        <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
+                        <?php } else { ?>
+                        <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
+                        <?php  } ?>
+                        <td scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                            <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                            <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت" data-part="<?php echo $partNumber ?>" data-code="<?php echo $code ?>" onclick="deleteGivenPrice(this)" data-del='<?php echo $price['id'] ?>'>close</i>
+                        </td>
+                        <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                            <?php if (array_key_exists("ordered", $price)) {
+                                echo 'قیمت دستوری';
+                            } else {
+                                echo $price['name'] . ' ' . $price['family'];
+                            }
+                            ?>
+                        </td>
+                        <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
+                            <?php echo array_key_exists("partnumber", $price) ? $price['partnumber'] : '' ?>
+                        </td>
+                        <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                            <?php if (!array_key_exists("ordered", $price)) {
+                            ?>
+                                <img class="userImage" src="../../userimg/<?php echo $price['userID'] ?>.jpg" alt="userimage">
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        </tr>
+                        <tr class="min-w-full mb-1 border-b-2 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'bg-red-500' : 'bg-indigo-300' ?>" data-price='<?php echo $price['price'] ?>'>
+                            <td></td>
+                            <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="3" scope="col">
+                                <div class="rtl flex items-center w-full <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
+                                    <i class="px-1 material-icons tiny-text <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
+                                    <?php
+                                    $create = date($price['created_at']);
+
+
+                                    $now = new DateTime(); // current date time
+                                    $date_time = new DateTime($create); // date time from string
+                                    $interval = $now->diff($date_time); // difference between two date times
+                                    $days = $interval->format('%a'); // difference in days
+                                    $hours = $interval->format('%h'); // difference in hours
+                                    $minutes = $interval->format('%i'); // difference in minutes
+                                    $seconds = $interval->format('%s'); // difference in seconds
+
+                                    $text = '';
+
+                                    if ($days) {
+                                        $text .= " $days روز و ";
+                                    }
+
+                                    if ($hours) {
+                                        $text .= "$hours ساعت ";
+                                    }
+
+                                    if (!$days && $minutes) {
+                                        $text .= "$minutes دقیقه ";
+                                    }
+
+                                    if (!$days && !$hours && $seconds) {
+                                        $text .= "$seconds ثانیه ";
+                                    }
+
+                                    echo "$text قبل";
+                                    ?>
+                                </div>
+                            </td>
+                        </tr>
+
+                <?php }
+            } ?>
+            <?php } else { ?>
+                <tr class="min-w-full mb-4 border-b-2 border-white">
+                    <td colspan="3" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
+                        !! موردی برای نمایش وجود ندارد
+                    </td>
+                </tr>
+            <?php } ?>
+        <?php
+    }
+
 
     function relations($conn, $id)
     {
