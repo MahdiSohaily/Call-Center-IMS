@@ -7,7 +7,9 @@ if (isset($_POST['store_price'])) {
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
     $code = $_POST['code'];
-    store($conn, $partnumber, $price, $customer_id, $notification_id);
+
+    $delete_sql = "DELETE FROM prices WHERE id = $id";
+    mysqli_query($conn, $sql);
 
     $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partnumber'";
     $result = mysqli_query($conn, $sql);
@@ -27,8 +29,9 @@ if (isset($_POST['store_price'])) {
                     <?php } else { ?>
                     <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
                     <?php  } ?>
-                    <td scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                    <td scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                         <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                        <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت" data-part="<?php echo $partNumber ?>" data-code="<?php echo $code ?>" onclick="deleteGivenPrice(this)" data-del='<?php echo $price['id'] ?>'>close</i>
                     </td>
                     <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                         <?php if (array_key_exists("ordered", $price)) {
