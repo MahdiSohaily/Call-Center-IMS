@@ -2,12 +2,15 @@
 session_start();
 require_once('../../database/connect.php');
 if (isset($_POST['delete_price'])) {
+    print_r(json_encode($_POST));
+    $id = $_POST['id'];
     $partnumber = $_POST['partNumber'];
-    $price = $_POST['price'];
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
     $code = $_POST['code'];
-    $sql = "DELETE FROM `price` WHERE id = '$id'";
+    $sql = "DELETE FROM `prices` WHERE id = '$id'";
+    echo $sql;
+    mysqli_query($conn, $sql);
 
     $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partnumber'";
     $result = mysqli_query($conn, $sql);

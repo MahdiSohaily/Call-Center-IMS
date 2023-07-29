@@ -762,8 +762,6 @@ if ($isValidCustomer) {
                 const customer_id = document.getElementById('customer_id').value;
                 const notification_id = document.getElementById('notification_id').value;
                 const code = element.getAttribute('data-code');
-
-                const goodPrice = document.getElementById(partNumber + '-price').value;
                 const resultBox = document.getElementById('price-' + partNumber);
 
                 // Defining a params instance to be attached to the axios request
@@ -772,11 +770,10 @@ if ($isValidCustomer) {
                 params.append('partNumber', partNumber);
                 params.append('customer_id', customer_id);
                 params.append('notification_id', notification_id);
-                params.append('price', goodPrice);
                 params.append('code', code);
                 params.append('id', id);
 
-                axios.post("./app/Controllers/GivenPriceAjax.php", params)
+                axios.post("./app/Controllers/deleteGivenPrice.php", params)
                     .then(function(response) {
                         if (response.data) {
                             form_success.style.bottom = '10px';
