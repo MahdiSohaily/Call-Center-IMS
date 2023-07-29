@@ -751,13 +751,51 @@ if ($isValidCustomer) {
 
             function deleteGivenPrice(element) {
                 part = element.getAttribute('data-part');
+                id = element.getAttribute('data-del');
                 setTimeout(() => {
                     const input = document.getElementById(part + '-price');
                     input.value = null;
                     price = null;
                 }, 10);
 
+                // Accessing the form fields to get thier value for an ajax store operation
+                const partNumber = e.getAttribute('data-part');
+                const customer_id = document.getElementById('customer_id').value;
+                const notification_id = document.getElementById('notification_id').value;
+                const code = e.getAttribute('data-code');
 
+                const goodPrice = document.getElementById(partNumber + '-price').value;
+                const resultBox = document.getElementById('price-' + partNumber);
+
+                // Defining a params instance to be attached to the axios request
+                const params = new URLSearchParams();
+                params.append('store_price', 'store_price');
+                params.append('partNumber', partNumber);
+                params.append('customer_id', customer_id);
+                params.append('notification_id', notification_id);
+                params.append('price', goodPrice);
+                params.append('code', code);
+
+                axios.post("./app/Controllers/GivenPriceAjax.php", params)
+                    .then(function(response) {
+                        if (response.data) {
+                            form_success.style.bottom = '10px';
+                            goodPrice.value = null;
+                            setTimeout(() => {
+                                form_success.style.bottom = '-300px';
+                                resultBox.innerHTML = (response.data);
+                            }, 2000)
+                        } else {
+                            form_error.style.bottom = '10px';
+                            setTimeout(() => {
+                                form_error.style.bottom = '-300px';
+                                location.reload();
+                            }, 2000)
+                        }
+                    })
+                    .catch(function(error) {
+
+                    });
             }
         </script>
 <?php
