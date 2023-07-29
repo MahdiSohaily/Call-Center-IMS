@@ -750,8 +750,8 @@ if ($isValidCustomer) {
             }
 
             function deleteGivenPrice(element) {
-                part = element.getAttribute('data-part');
-                id = element.getAttribute('data-del');
+                const partNumber = element.getAttribute('data-part');
+                const id = element.getAttribute('data-del');
                 setTimeout(() => {
                     const input = document.getElementById(part + '-price');
                     input.value = null;
@@ -759,7 +759,6 @@ if ($isValidCustomer) {
                 }, 10);
 
                 // Accessing the form fields to get thier value for an ajax store operation
-                const partNumber = element.getAttribute('data-part');
                 const customer_id = document.getElementById('customer_id').value;
                 const notification_id = document.getElementById('notification_id').value;
                 const code = element.getAttribute('data-code');
@@ -775,6 +774,7 @@ if ($isValidCustomer) {
                 params.append('notification_id', notification_id);
                 params.append('price', goodPrice);
                 params.append('code', code);
+                params.append('id', id);
 
                 axios.post("./app/Controllers/GivenPriceAjax.php", params)
                     .then(function(response) {

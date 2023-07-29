@@ -1,13 +1,13 @@
-﻿<?php
+<?php
 session_start();
 require_once('../../database/connect.php');
-if (isset($_POST['store_price'])) {
+if (isset($_POST['delete_price'])) {
     $partnumber = $_POST['partNumber'];
     $price = $_POST['price'];
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
     $code = $_POST['code'];
-    store($conn, $partnumber, $price, $customer_id, $notification_id);
+    $sql = "DELETE FROM `price` WHERE id = '$id'";
 
     $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partnumber'";
     $result = mysqli_query($conn, $sql);
