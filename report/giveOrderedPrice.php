@@ -397,7 +397,6 @@ if ($isValidCustomer) {
                                             </thead>
                                             <tbody id="price-<?php echo $partNumber ?>">
                                                 <?php if ($givenPrice !== null) {
-                                                    print_r(json_encode($givenPrice));
                                                 ?>
                                                     <?php foreach ($givenPrice as $price) { ?>
                                                         <?php if ($price['price'] !== null && $price['price'] !== '') {
@@ -408,7 +407,7 @@ if ($isValidCustomer) {
                                                                 <?php  } ?>
                                                                 <td scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
-                                                                    <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
+                                                                    <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت" data-part="<?php echo $partNumber ?>" onclick="deleteGivenPrice(this)" data-del='<?php echo $price['id'] ?>'>close</i>
                                                                 </td>
                                                                 <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php if (array_key_exists("ordered", $price)) {
@@ -675,7 +674,6 @@ if ($isValidCustomer) {
                 newPrice = element.getAttribute('data-price');
                 part = element.getAttribute('data-part');
                 const input = document.getElementById(part + '-price');
-                console.log(part);
                 input.value = newPrice;
                 price = newPrice;
 
@@ -749,6 +747,17 @@ if ($isValidCustomer) {
                 setTimeout(() => {
                     elem.innerHTML = `content_copy`;
                 }, 1500);
+            }
+
+            function deleteGivenPrice(element) {
+                part = element.getAttribute('data-part');
+                setTimeout(() => {
+                    const input = document.getElementById(part + '-price');
+                    input.value = null;
+                    price = null;
+                }, 10);
+
+
             }
         </script>
 <?php
