@@ -60,9 +60,8 @@ if (isset($_POST['delete_price'])) {
                             <div class="rtl flex items-center w-full <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
                                 <i class="px-1 material-icons tiny-text <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
                                 <?php
+                                date_default_timezone_set('Asia/Tehran');
                                 $create = date($price['created_at']);
-
-
                                 $now = new DateTime(); // current date time
                                 $date_time = new DateTime($create); // date time from string
                                 $interval = $now->diff($date_time); // difference between two date times
@@ -149,19 +148,6 @@ if (isset($_POST['delete_price'])) {
         return ['goods' => $sortedGoods];
     }
 
-    function isInRelation($conn, $id)
-    {
-        $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '$id'";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            while ($item = mysqli_fetch_assoc($result)) {
-                return $item['pattern_id'];
-            }
-        }
-        return false;
-    }
-
     function givenPrice($conn, $codes, $relation_exist = null)
     {
         $codes = array_filter($codes, function ($item) {
@@ -181,12 +167,12 @@ if (isset($_POST['delete_price'])) {
         }
 
         $givenPrices = [];
-        $sql = "SELECT prices.id, prices.price, prices.partnumber, customer.name, customer.id AS customerID, customer.family, users.id AS userID, prices.created_at
-        FROM ((prices 
-        INNER JOIN callcenter.customer ON customer.id = prices.customer_id)
-        INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
-        WHERE partnumber IN ('" . implode("','", $codes) . "')
-        ORDER BY created_at DESC LIMIT 7";
+        $sql = "SELECT  prices.id, prices.price, prices.partnumber, customer.name, customer.id AS customerID, customer.family, users.id AS userID, prices.created_at
+                FROM ((prices 
+                INNER JOIN callcenter.customer ON customer.id = prices.customer_id)
+                INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
+                WHERE partnumber IN ('" . implode("','", $codes) . "')
+                ORDER BY created_at DESC LIMIT 7";
 
         $result = mysqli_query($conn, $sql);
         while ($item = mysqli_fetch_assoc($result))
@@ -216,36 +202,20 @@ if (isset($_POST['delete_price'])) {
         return  $final_data;
     }
 
-    if (isset($_POST['askPrice'])) {
-        $partnumber = $_POST['partNumber'];
-        $customer_id = $_POST['customer_id'];
-        $user_id = $_POST['user_id'];
-        date_default_timezone_set("Asia/Tehran");
-        $created_at = date("Y-m-d H:i:s");
-
-        askPrice($conn, $partnumber, $customer_id, $user_id, $created_at);
-    }
-
-    function store($conn, $partnumber, $price, $customer_id, $notification_id)
+    /**
+     * @param Connection to the database
+     * @param int $id is the id of the good to check if it has a relationship
+     * @return int if the good has a relationship return the id of the relationship
+     */
+    function isInRelation($conn, $id)
     {
-        date_default_timezone_set("Asia/Tehran");
-        $created_at = date("Y-m-d H:i:s");
-        $pattern_sql = "INSERT INTO prices (partnumber, price, user_id, customer_id, created_at, updated_at)
-            VALUES ('" . $partnumber . "', '" . $price . "','" . $_SESSION["id"] . "' ,'" . $customer_id . "', '" . $created_at . "', '" . $created_at . "')";
-        $conn->query($pattern_sql);
-        if ($notification_id) {
-            $sql = "UPDATE ask_price SET status= 'done' , notify = 'received', price = '$price' WHERE id = '$notification_id'";
-            $conn->query($sql);
+        $sql = "SELECT pattern_id FROM similars WHERE nisha_id = '$id'";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($item = mysqli_fetch_assoc($result)) {
+                return $item['pattern_id'];
+            }
         }
-    }
-
-
-    function askPrice($conn, $partnumber, $customer_id, $user_id, $created_at)
-    {
-        $pattern_sql = "INSERT INTO ask_price (customer_id, user_id, code, status, notify, created_at)
-            VALUES ('" . $customer_id . "', '" . $user_id . "', '" . $partnumber . "', 'pending', 'send' , '" . $created_at . "')";
-
-        if ($conn->query($pattern_sql) === TRUE) {
-            echo 'true';
-        }
+        return false;
     }

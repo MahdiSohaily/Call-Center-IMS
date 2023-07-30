@@ -60,8 +60,6 @@ if (isset($_POST['store_price'])) {
                                 <i class="px-1 material-icons tiny-text <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
                                 <?php
                                 $create = date($price['created_at']);
-
-
                                 $now = new DateTime(); // current date time
                                 $date_time = new DateTime($create); // date time from string
                                 $interval = $now->diff($date_time); // difference between two date times
@@ -180,7 +178,7 @@ if (isset($_POST['store_price'])) {
         }
 
         $givenPrices = [];
-        $sql = "SELECT prices.price, prices.partnumber, customer.name, customer.id AS customerID, customer.family, users.id AS userID, prices.created_at
+        $sql = "SELECT  prices.id, prices.price, prices.partnumber, customer.name, customer.id AS customerID, customer.family, users.id AS userID, prices.created_at
         FROM ((prices 
         INNER JOIN callcenter.customer ON customer.id = prices.customer_id)
         INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
