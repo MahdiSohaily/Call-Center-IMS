@@ -57,6 +57,16 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
 ?>
+        <style>
+            #deleteGivenPrice {
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            #deleteGivenPrice:hover {
+                color: black;
+            }
+        </style>
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -165,7 +175,7 @@ if ($isValidCustomer) {
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-2 lg:p-2 overflow-auto">
 
                                 <!-- Start the code info section -->
-                                <div class="min-w-full bg-white rounded-lg col-span-1 overflow-auto shadow-md mt-2">
+                                <div class="min-w-full bg-white rounded-lg overflow-auto shadow-md mt-2">
                                     <div class="rtl p-3">
                                         <p style="font-size: 0.8rem;" class="text-left bg-gray-600 text-white p-2 my-3 rounded-md">
                                             <?php echo $index; ?>
@@ -211,7 +221,7 @@ if ($isValidCustomer) {
                                                         شماره فنی
                                                     </th>
                                                     <th scope="col" class="px-3 py-3 text-white text-center">
-                                                        مقدار موجودی
+                                                        موجودی
                                                     </th>
                                                     <th scope="col" class="px-3 py-3 text-white text-center">
                                                         قیمت به اساس نرخ ارز
@@ -374,6 +384,7 @@ if ($isValidCustomer) {
                                         <table class=" min-w-full text-sm font-light">
                                             <thead>
                                                 <tr class="min-w-full bg-green-600">
+                                                    <td class="text-white bold text-center py-2 px-2 "></td>
                                                     <td class="text-white bold text-center py-2 px-2 w-28">قیمت</td>
                                                     <td class="text-white bold text-center py-2 px-2 rtl">مشتری</td>
                                                     <td class="text-white bold text-center py-2 px-2 rtl">کد فنی</td>
@@ -386,14 +397,17 @@ if ($isValidCustomer) {
                                                     <?php foreach ($givenPrice as $price) { ?>
                                                         <?php if ($price['price'] !== null && $price['price'] !== '') {
                                                             if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
-                                                                <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
+                                                                <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer">
                                                                 <?php } else { ?>
-                                                                <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>">
+                                                                <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer">
                                                                 <?php  } ?>
-                                                                <td scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                <td data-part="<?php echo $partNumber ?>" data-code="<?php echo $code ?>" onclick="deleteGivenPrice(this)" data-del='<?php echo $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                    <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
+                                                                </td>
+                                                                <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                                                 </td>
-                                                                <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php if (array_key_exists("ordered", $price)) {
                                                                         echo 'قیمت دستوری';
                                                                     } else {
@@ -401,10 +415,10 @@ if ($isValidCustomer) {
                                                                     }
                                                                     ?>
                                                                 </td>
-                                                                <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
+                                                                <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
                                                                     <?php echo array_key_exists("partnumber", $price) ? $price['partnumber'] : '' ?>
                                                                 </td>
-                                                                <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                     <?php if (!array_key_exists("ordered", $price)) {
                                                                     ?>
                                                                         <img class="userImage" src="../../userimg/<?php echo $price['userID'] ?>.jpg" alt="userimage">
@@ -415,7 +429,7 @@ if ($isValidCustomer) {
                                                                 </tr>
                                                                 <tr class="min-w-full mb-1 border-b-2 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'bg-red-500' : 'bg-indigo-300' ?>" data-price='<?php echo $price['price'] ?>'>
                                                                     <td></td>
-                                                                    <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="3" scope="col">
+                                                                    <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
                                                                         <div class="rtl flex items-center w-full <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
                                                                             <i class="px-1 material-icons tiny-text <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
                                                                             <?php
@@ -632,7 +646,10 @@ if ($isValidCustomer) {
 
                 setTimeout(() => {
                     element.disabled = false;
-                    element.innerHTML = ` ارسال به نیایش<i class="material-icons text-green-500 font-sm px-1">check_circle</i>`;
+                    element.innerHTML = `
+                    ارسال به نیایش
+                    <i class="material-icons text-green-500 font-sm px-1">check_circle</i>
+                    `;
                 }, 5000);
 
                 // Accessing the form fields to get thier value for an ajax store operation
@@ -667,22 +684,21 @@ if ($isValidCustomer) {
 
             // A function to create the relationship
             function createRelation(e, button = null) {
-
                 e.disabled = true;
                 if (button) {
                     setTimeout(() => {
                         e.disabled = false;
                         e.innerHTML = `
-    موجود نیست
-    <i class="material-icons text-green-500 font-sm px-1">check_circle</i>
-    `;
+                    موجود نیست
+                    <i class="material-icons text-green-500 font-sm px-1">check_circle</i>
+                    `;
                     }, 5000);
                 } else {
                     setTimeout(() => {
                         e.disabled = false;
                         e.innerHTML = `
-        ثبت قیمت
-        <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`
+                        ثبت قیمت
+                        <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`
                     }, 5000);
 
                 }
@@ -726,7 +742,8 @@ if ($isValidCustomer) {
 
                     });
             }
-            // A function to set the price while cliking on the prices table
+
+            // A function to set the price while clicking on the prices table
             function setPrice(element) {
                 newPrice = element.getAttribute('data-price');
                 part = element.getAttribute('data-part');
@@ -804,6 +821,38 @@ if ($isValidCustomer) {
                 setTimeout(() => {
                     elem.innerHTML = `content_copy`;
                 }, 1500);
+            }
+
+            function deleteGivenPrice(element) {
+                const partNumber = element.getAttribute('data-part');
+                const id = element.getAttribute('data-del');
+
+                // Accessing the form fields to get thier value for an ajax store operation
+                const customer_id = document.getElementById('customer_id').value;
+                const notification_id = document.getElementById('notification_id').value;
+                const code = element.getAttribute('data-code');
+                const resultBox = document.getElementById('price-' + partNumber);
+                // Defining a params instance to be attached to the axios request
+                const params = new URLSearchParams();
+                params.append('delete_price', 'delete_price');
+                params.append('partNumber', partNumber);
+                params.append('customer_id', customer_id);
+                params.append('notification_id', notification_id);
+                params.append('code', code);
+                params.append('id', id);
+
+                axios.post("./app/Controllers/deleteGivenPrice.php", params)
+                    .then(function(response) {
+                        if (response.data) {
+                            console.log(response.data);
+                            resultBox.innerHTML = (response.data);
+                        } else {
+                            console.log(response.data);
+                        }
+                    })
+                    .catch(function(error) {
+
+                    });
             }
         </script>
 <?php
