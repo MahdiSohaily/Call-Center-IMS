@@ -5,12 +5,14 @@ require_once('./app/Controllers/GivenPriceController.php');
 
 function displayTimePassed($datetimeString)
 {
+    date_default_timezone_set('Asia/Tehran');
     $datetime = new DateTime($datetimeString);
     $now = new DateTime();
 
     $interval = $now->diff($datetime);
 
     $totalDays = $interval->days;
+    echo $totalDays;
     $passedMonths = floor($totalDays / 30);
     $passedDays = $totalDays % 30;
 

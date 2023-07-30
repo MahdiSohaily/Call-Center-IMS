@@ -5,6 +5,7 @@ require_once('./app/Controllers/GivenPriceController.php');
 
 function displayTimePassed($datetimeString)
 {
+    date_default_timezone_set('Asia/Tehran');
     $datetime = new DateTime($datetimeString);
     $now = new DateTime();
 
