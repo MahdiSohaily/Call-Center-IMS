@@ -2,14 +2,14 @@
 session_start();
 require_once('../../database/connect.php');
 if (isset($_POST['store_price'])) {
-    $partnumber = $_POST['partNumber'];
+    $partNumber = $_POST['partNumber'];
     $price = $_POST['price'];
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
     $code = $_POST['code'];
-    store($conn, $partnumber, $price, $customer_id, $notification_id);
+    store($conn, $partNumber, $price, $customer_id, $notification_id);
 
-    $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partnumber'";
+    $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partNumber'";
     $result = mysqli_query($conn, $sql);
     $good = $result->fetch_assoc();
 
@@ -23,15 +23,17 @@ if (isset($_POST['store_price'])) {
         foreach ($givenPrice as $price) {
             if ($price['price'] !== null && $price['price'] !== '') {
                 if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
-                    <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
+                    <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer">
                     <?php } else { ?>
-                    <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partnumber ?>">
+                    <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer">
                     <?php  } ?>
-                    <td scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
-                        <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
-                        <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت" data-part="<?php echo $partNumber ?>" data-code="<?php echo $code ?>" onclick="deleteGivenPrice(this)" data-del='<?php echo $price['id'] ?>'>close</i>
+                    <td data-part="<?php echo $partNumber ?>" data-code="<?php echo $code ?>" onclick="deleteGivenPrice(this)" data-del='<?php echo $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                        <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
                     </td>
-                    <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                    <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                        <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                    </td>
+                    <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                         <?php if (array_key_exists("ordered", $price)) {
                             echo 'قیمت دستوری';
                         } else {
@@ -39,10 +41,10 @@ if (isset($_POST['store_price'])) {
                         }
                         ?>
                     </td>
-                    <td class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
+                    <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?> ">
                         <?php echo array_key_exists("partnumber", $price) ? $price['partnumber'] : '' ?>
                     </td>
-                    <td scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                    <td onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $price['price'] ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                         <?php if (!array_key_exists("ordered", $price)) {
                         ?>
                             <img class="userImage" src="../../userimg/<?php echo $price['userID'] ?>.jpg" alt="userimage">
@@ -53,7 +55,7 @@ if (isset($_POST['store_price'])) {
                     </tr>
                     <tr class="min-w-full mb-1 border-b-2 <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'bg-red-500' : 'bg-indigo-300' ?>" data-price='<?php echo $price['price'] ?>'>
                         <td></td>
-                        <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="3" scope="col">
+                        <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
                             <div class="rtl flex items-center w-full <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
                                 <i class="px-1 material-icons tiny-text <?php echo array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
                                 <?php
@@ -91,7 +93,6 @@ if (isset($_POST['store_price'])) {
                             </div>
                         </td>
                     </tr>
-
             <?php }
         } ?>
         <?php } else { ?>
