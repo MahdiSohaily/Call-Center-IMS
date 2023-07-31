@@ -5,28 +5,43 @@ require_once('./app/Controllers/GivenPriceController.php');
 
 function displayTimePassed($datetimeString)
 {
+    $date_parts = explode('/', $datetimeString);
+    $datetimeString = jalali_to_gregorian(abs($date_parts[0]), abs($date_parts[1]), abs($date_parts[2]));
+    $month_days_num = [30, 29, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30];
     date_default_timezone_set('Asia/Tehran');
-    $datetime = new DateTime($datetimeString);
+    $datetime = new DateTime(join('-', $datetimeString));
+    $month = $datetime->format("m");
     $now = new DateTime();
 
     $interval = $now->diff($datetime);
 
     $totalDays = $interval->days;
-    echo $totalDays;
-    $passedMonths = floor($totalDays / 30);
-    $passedDays = $totalDays % 30;
 
+    $passedYears = floor($totalDays / 365);
+    $remainingDays = $totalDays % 365;
+
+    $passedMonths = floor($remainingDays / $month_days_num[$month - 1]);
+    $passedDays = $remainingDays % $month_days_num[$month - 1];
+
+    $persianYears = convertToPersian($passedYears);
     $persianMonths = convertToPersian($passedMonths);
     $persianDays = convertToPersian($passedDays);
 
     $result = "";
 
+    if ($passedYears > 0) {
+        $result .= "$persianYears سال";
+    }
+
     if ($passedMonths > 0) {
+        if ($passedYears > 0) {
+            $result .= " و ";
+        }
         $result .= "$persianMonths ماه";
     }
 
     if ($passedDays > 0) {
-        if ($passedMonths > 0) {
+        if ($passedYears > 0 || $passedMonths > 0) {
             $result .= " و ";
         }
         $result .= "$persianDays روز";
@@ -34,6 +49,7 @@ function displayTimePassed($datetimeString)
 
     return $result;
 }
+
 
 function convertToPersian($number)
 {
@@ -276,8 +292,8 @@ if ($isValidCustomer) {
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo jdate('Y/m/d', strtotime($item['create_time'])) ?></td>
-                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo displayTimePassed($item['create_time']) ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo $item['invoice_date'] ?></td>
+                                                                                                                <td class="px-3 py-2 tiny-text text-right"><?php echo displayTimePassed($item['invoice_date']) ?></td>
                                                                                                             </tr>
                                                                                                         <?php } ?>
                                                                                                     <?php
