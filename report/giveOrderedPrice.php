@@ -12,20 +12,32 @@ function displayTimePassed($datetimeString)
     $interval = $now->diff($datetime);
 
     $totalDays = $interval->days;
-    $passedMonths = floor($totalDays / 30);
-    $passedDays = $totalDays % 30;
 
+    $passedYears = floor($totalDays / 365);
+    $remainingDays = $totalDays % 365;
+
+    $passedMonths = floor($remainingDays / 31);
+    $passedDays = $remainingDays % 31;
+
+    $persianYears = convertToPersian($passedYears);
     $persianMonths = convertToPersian($passedMonths);
     $persianDays = convertToPersian($passedDays);
 
     $result = "";
 
+    if ($passedYears > 0) {
+        $result .= "$persianYears سال";
+    }
+
     if ($passedMonths > 0) {
+        if ($passedYears > 0) {
+            $result .= " و ";
+        }
         $result .= "$persianMonths ماه";
     }
 
     if ($passedDays > 0) {
-        if ($passedMonths > 0) {
+        if ($passedYears > 0 || $passedMonths > 0) {
             $result .= " و ";
         }
         $result .= "$persianDays روز";
