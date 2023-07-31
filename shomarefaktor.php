@@ -141,6 +141,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
 </div>
 <script type="text/javascript">
     const resultBox = document.getElementById('resultBox');
+    let filter = false;
     $(function() {
         $("#invoice_time").persianDatepicker({
             months: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
@@ -176,7 +177,6 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                 params.append('date', date);
                 axios.post("./factorAjax.php", params)
                     .then(function(response) {
-                        console.log(response.data);
                         resultBox.innerHTML = response.data;
                     })
                     .catch(function(error) {
@@ -193,12 +193,27 @@ $factor_result = mysqli_query(dbconnect(), $sql);
         const id = element.getAttribute('data-id');
         const date = ($("#invoice_time").attr("data-gdate"));
         var params = new URLSearchParams();
+
+        filter = !filter;
+
+        if (filter == false) {
+            params.append('getFactor', 'getFactor');
+            params.append('date', date);
+            axios.post("./factorAjax.php", params)
+                .then(function(response) {
+                    resultBox.innerHTML = response.data;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+            return;
+        }
+
         params.append('getReport', 'getReport');
         params.append('date', date);
         params.append('user', id);
         axios.post("./factorAjax.php", params)
             .then(function(response) {
-                console.log(response.data);
                 resultBox.innerHTML = response.data;
             })
             .catch(function(error) {
