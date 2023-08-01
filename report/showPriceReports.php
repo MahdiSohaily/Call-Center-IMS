@@ -791,7 +791,7 @@ if ($isValidCustomer) {
 
                 for (let i = 0; i < elementLenght; i++) {
                     if (tdElements[i].textContent.trim() !== 'content_copy') {
-                        let text = tdElements[i].textContent;
+                        let text = tdElements[i].textContent === 'موجود نیست' ? '-' : tdElements[i].textContent;
                         tdTextContent.push(text);
                     }
                 }
