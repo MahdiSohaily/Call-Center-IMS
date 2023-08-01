@@ -5,6 +5,7 @@ require_once('./app/Controllers/GivenPriceController.php');
 
 function displayTimePassed($datetimeString)
 {
+    echo $datetimeString;
     $date_parts = explode('/', $datetimeString);
     $datetimeString = jalali_to_gregorian(abs($date_parts[0]), abs($date_parts[1]), abs($date_parts[2]));
     $month_days_num = [30, 29, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30];
