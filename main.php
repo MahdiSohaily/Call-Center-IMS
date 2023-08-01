@@ -146,7 +146,7 @@
          let finalCodes = filteredCodes.filter(item => item.split(" ")[0].length > 6);
          finalCodes = finalCodes.map(item => item.split(" ")[0]);
          finalCodes = finalCodes.filter(item => {
-             const consecutiveChars = item.match(/[a-zA-Z]{3,}/g);
+             const consecutiveChars = item.match(/[a-zA-Z]{4,}/g);
              return !consecutiveChars;
          });
 
