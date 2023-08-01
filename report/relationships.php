@@ -413,7 +413,6 @@ $status = $conn->query($status_sql);
 
     // This function helps to set the selected items from select elements when we load a predefined relationship
     function setSelectedItems(id, cars) {
-        console.log(cars);
         for (var option of document.getElementById(id).options) {
             if (cars.includes(option.value)) {
                 option.selected = 'true';
