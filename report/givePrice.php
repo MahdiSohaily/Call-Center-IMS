@@ -52,9 +52,13 @@ require_once('./views/Layouts/header.php');
             return rightSide || removedText.replace(/[^a-zA-Z0-9 ]/g, "");
         }).filter(item => item && !/[^a-zA-Z0-9 ]/g.test(item));
 
-        
+
         let finalCodes = filteredCodes.filter(item => item.split(" ")[0].length > 6);
         finalCodes = finalCodes.map(item => item.split(" ")[0]);
+        finalCodes = finalCodes.filter(item => {
+            const consecutiveChars = item.match(/[a-zA-Z]{3,}/g);
+            return !consecutiveChars;
+        });
 
         element.value = finalCodes.join("\n");
     }
