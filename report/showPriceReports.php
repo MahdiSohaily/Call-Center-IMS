@@ -122,7 +122,7 @@ if ($isValidCustomer) {
                         <tr>
                             <th class="text-left px-3 py-2">کد فنی</th>
                             <th class="text-left px-3 py-2">قیمت</th>
-                            <th class="text-right  py-2" id="closeButton">
+                            <th class="text-right  py-2" onclick="closeTab()">
                                 <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                             </th>
                         </tr>
@@ -133,7 +133,7 @@ if ($isValidCustomer) {
                             <tr class="odd:bg-gray-400">
                                 <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>"></td>
-                                <td class="text-right  py-2">
+                                <td class="text-right  py-2" onclick="closeTab()">
                                     <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
                                 </td>
                             </tr>
@@ -903,18 +903,14 @@ if ($isValidCustomer) {
                     });
             }
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const closeButton = document.getElementById('closeButton');
-
-                closeButton.addEventListener('click', function() {
-                    // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
-                    setTimeout(function() {
-                        // Try to close the window (tab)
-                        // This may not work if the window was not opened by a script or if the browser blocks the action.
-                        window.close();
-                    }, 120000);
-                });
-            });
+            function closeTab() {
+                // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
+                setTimeout(function() {
+                    // Try to close the window (tab)
+                    // This may not work if the window was not opened by a script or if the browser blocks the action.
+                    window.close();
+                }, 60000);
+            }
         </script>
 <?php
     }

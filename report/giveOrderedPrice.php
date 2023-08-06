@@ -832,7 +832,6 @@ if ($isValidCustomer) {
                     // This may not work if the window was not opened by a script or if the browser blocks the action.
                     window.close();
                 }, 60000);
-                console.log('called closeTab');
             }
         </script>
 <?php
