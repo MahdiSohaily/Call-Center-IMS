@@ -87,7 +87,34 @@ if ($isValidCustomer) {
             #deleteGivenPrice:hover {
                 color: black;
             }
+
+            .toTop {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .toTop i {
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .toTop:hover {
+                bottom: 15px;
+            }
         </style>
+        <a class="toTop" href="#">
+            <i class="material-icons">arrow_drop_up</i>
+        </a>
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
