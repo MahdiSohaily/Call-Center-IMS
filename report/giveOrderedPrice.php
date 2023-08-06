@@ -196,7 +196,7 @@ if ($isValidCustomer) {
                 </table>
             </div>
         </div>
-        <div class="accordion">
+        <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
             ?>
@@ -782,7 +782,7 @@ if ($isValidCustomer) {
                 var sibling1HTML = sibling1.innerHTML;
                 var sibling2HTML = sibling2.innerHTML;
 
-                let text = sibling2HTML + ' : ' + sibling1HTML;
+                let text = sibling2HTML + ' : ' + (sibling1HTML === 'موجود نیست' ? '-' : tdElements[i].textContent);
 
                 copyToClipboard(text);
 
