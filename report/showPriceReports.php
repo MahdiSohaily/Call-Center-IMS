@@ -122,7 +122,7 @@ if ($isValidCustomer) {
                         <tr>
                             <th class="text-left px-3 py-2">کد فنی</th>
                             <th class="text-left px-3 py-2">قیمت</th>
-                            <th class="text-right  py-2">
+                            <th class="text-right  py-2" id="closeButton">
                                 <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                             </th>
                         </tr>
@@ -902,6 +902,19 @@ if ($isValidCustomer) {
 
                     });
             }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const closeButton = document.getElementById('closeButton');
+
+                closeButton.addEventListener('click', function() {
+                    // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
+                    setTimeout(function() {
+                        // Try to close the window (tab)
+                        // This may not work if the window was not opened by a script or if the browser blocks the action.
+                        window.close();
+                    }, 120000);
+                });
+            });
         </script>
 <?php
     }
