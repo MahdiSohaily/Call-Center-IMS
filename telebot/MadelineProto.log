@@ -1,0 +1,1908 @@
+Logger:         	Automatically truncated logfile to 1048576
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.5
+Connection, AfgDeveloper:     	Disconnecting from DC -2.5
+Connection, AfgDeveloper:     	Disconnected from DC -2.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -2.5
+Connection, AfgDeveloper:     	Connected to DC -2.5!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.9
+Connection, AfgDeveloper:     	Disconnecting from DC -2.9
+Connection, AfgDeveloper:     	Disconnected from DC -2.9
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -2.9
+Connection, AfgDeveloper:     	Connected to DC -2.9!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.7
+Connection, AfgDeveloper:     	Disconnecting from DC -2.7
+Connection, AfgDeveloper:     	Disconnected from DC -2.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -2.7
+Connection, AfgDeveloper:     	Connected to DC -2.7!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.6
+Connection, AfgDeveloper:     	Disconnecting from DC -2.6
+Connection, AfgDeveloper:     	Disconnected from DC -2.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -2.6
+Connection, AfgDeveloper:     	Connected to DC -2.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.1
+Connection, AfgDeveloper:     	Disconnecting from DC -2.1
+Connection, AfgDeveloper:     	Disconnected from DC -2.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -2.1
+Connection, AfgDeveloper:     	Connected to DC -2.1!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.10
+Connection, AfgDeveloper:     	Disconnecting from DC -2.10
+Connection, AfgDeveloper:     	Disconnected from DC -2.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -2.10
+Connection, AfgDeveloper:     	Connected to DC -2.10!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.0
+Connection, AfgDeveloper:     	Disconnecting from DC -4.0
+Connection, AfgDeveloper:     	Disconnected from DC -4.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -4.0
+Connection, AfgDeveloper:     	Connected to DC -4.0!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.0
+Connection, AfgDeveloper:     	Disconnecting from DC -2.0
+Connection, AfgDeveloper:     	Disconnected from DC -2.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -2.0
+Connection, AfgDeveloper:     	Connected to DC -2.0!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.2
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection, AfgDeveloper:     	Disconnecting from DC -4.2
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+from DC -4.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -4.2
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection, AfgDeveloper:     	Connected to DC -4.2!
+DataCenter, AfgDeveloper:     	OK!
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.4
+Connection, AfgDeveloper:     	Disconnecting from DC -4.4
+Connection, AfgDeveloper:     	Disconnected from DC -4.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -4.4
+Connection, AfgDeveloper:     	Connected to DC -4.4!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.1
+Connection, AfgDeveloper:     	Disconnecting from DC -4.1
+Connection, AfgDeveloper:     	Disconnected from DC -4.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -4.1
+Connection, AfgDeveloper:     	Connected to DC -4.1!
+DataCenter, AfgDeveloper:     	OK!
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto, AfgDeveloper:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Exception:      	Error: Call to undefined method danog\MadelineProto\API::get_full_info() in C:\xampp\htdocs\telebot\index.php:210
+Stack trace:
+#0 {main}
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.5
+Connection, AfgDeveloper:     	Disconnecting from DC -4.5
+Connection, AfgDeveloper:     	Disconnected from DC -4.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -4.5
+Connection, AfgDeveloper:     	Connected to DC -4.5!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.8
+Connection, AfgDeveloper:     	Disconnecting from DC -4.8
+Connection, AfgDeveloper:     	Disconnected from DC -4.8
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection, AfgDeveloper:     	Connecting to DC -4.8
+Connection, AfgDeveloper:     	Connected to DC -4.8!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.10
+Connection, AfgDeveloper:     	Disconnecting from DC -4.10
+Connection, AfgDeveloper:     	Disconnected from DC -4.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -4.10
+Connection, AfgDeveloper:     	Connected to DC -4.10!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+DataCenter, AfgDeveloper:     	OK!
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.6
+Connection, AfgDeveloper:     	Disconnecting from DC -4.6
+Connection, AfgDeveloper:     	Disconnected from DC -4.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -4.6
+Connection, AfgDeveloper:     	Connected to DC -4.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.7
+Connection, AfgDeveloper:     	Disconnecting from DC -4.7
+Connection, AfgDeveloper:     	Disconnected from DC -4.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -4.7
+Connection, AfgDeveloper:     	Connected to DC -4.7!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.9
+Connection, AfgDeveloper:     	Disconnecting from DC -4.9
+Connection, AfgDeveloper:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -4.9
+Connection:     	Connected to DC -2.5!
+Connection, AfgDeveloper:     	Connected to DC -4.9!
+DataCenter:     	OK!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.3
+Connection, AfgDeveloper:     	Disconnecting from DC -4.3
+Connection, AfgDeveloper:     	Disconnected from DC -4.3
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, AfgDeveloper:     	Connecting to DC -4.3
+Connection, AfgDeveloper:     	Connected to DC -4.3!
+DataCenter, AfgDeveloper:     	OK!
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.2
+Connection, AfgDeveloper:     	Disconnecting from DC -2.2
+Connection, AfgDeveloper:     	Disconnected from DC -2.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -2.2
+Connection, AfgDeveloper:     	Connected to DC -2.2!
+DataCenter, AfgDeveloper:     	OK!
+PingLoop:       	Ping DC 5.0
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.3
+Connection, AfgDeveloper:     	Disconnecting from DC -2.3
+Connection, AfgDeveloper:     	Disconnected from DC -2.3
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, AfgDeveloper:     	Connecting to DC -2.3
+Connection, AfgDeveloper:     	Connected to DC -2.3!
+DataCenter, AfgDeveloper:     	OK!
+PingLoop:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+SeqLoop, AfgDeveloper:        	Was fed updates of type updates...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateUserStatus
+FeedLoop:       	Resumed update feed loop generic
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.4
+Connection, AfgDeveloper:     	Disconnecting from DC -2.4
+Connection, AfgDeveloper:     	Disconnected from DC -2.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -2.4
+Connection, AfgDeveloper:     	Connected to DC -2.4!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+FeedLoop:       	Resumed update feed loop generic
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryOutbox
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.8
+Connection, AfgDeveloper:     	Disconnecting from DC -2.8
+Connection, AfgDeveloper:     	Disconnected from DC -2.8
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection, AfgDeveloper:     	Connecting to DC -2.8
+Connection, AfgDeveloper:     	Connected to DC -2.8!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.5
+Connection, AfgDeveloper:     	Disconnecting from DC -2.5
+Connection, AfgDeveloper:     	Disconnected from DC -2.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -2.5
+Connection, AfgDeveloper:     	Connected to DC -2.5!
+DataCenter, AfgDeveloper:     	OK!
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+FeedLoop:       	Resumed update feed loop generic
+e updateUserStatus
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.9
+Connection, AfgDeveloper:     	Disconnecting from DC -2.9
+Connection, AfgDeveloper:     	Disconnected from DC -2.9
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -2.9
+Connection, AfgDeveloper:     	Connected to DC -2.9!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop:       	Resumed update feed loop generic
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateUserStatus
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.7
+Connection, AfgDeveloper:     	Disconnecting from DC -2.7
+Connection, AfgDeveloper:     	Disconnected from DC -2.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -2.7
+Connection, AfgDeveloper:     	Connected to DC -2.7!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.6
+Connection, AfgDeveloper:     	Disconnecting from DC -2.6
+Connection, AfgDeveloper:     	Disconnected from DC -2.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -2.6
+Connection, AfgDeveloper:     	Connected to DC -2.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.1
+Connection, AfgDeveloper:     	Disconnecting from DC -2.1
+Connection, AfgDeveloper:     	Disconnected from DC -2.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -2.1
+Connection, AfgDeveloper:     	Connected to DC -2.1!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateUserStatus
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.10
+Connection, AfgDeveloper:     	Disconnecting from DC -2.10
+Connection, AfgDeveloper:     	Disconnected from DC -2.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -2.10
+Connection, AfgDeveloper:     	Connected to DC -2.10!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+FeedLoop:       	Resumed update feed loop generic
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.0
+Connection, AfgDeveloper:     	Disconnecting from DC -4.0
+Connection, AfgDeveloper:     	Disconnected from DC -4.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -4.0
+Connection, AfgDeveloper:     	Connected to DC -4.0!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.0
+Connection, AfgDeveloper:     	Disconnecting from DC -2.0
+Connection, AfgDeveloper:     	Disconnected from DC -2.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -2.0
+Connection, AfgDeveloper:     	Connected to DC -2.0!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.2
+Connection, AfgDeveloper:     	Disconnecting from DC -4.2
+Connection, AfgDeveloper:     	Disconnected from DC -4.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -4.2
+Connection, AfgDeveloper:     	Connected to DC -4.2!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.4
+Connection, AfgDeveloper:     	Disconnecting from DC -4.4
+Connection, AfgDeveloper:     	Disconnected from DC -4.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -4.4
+Connection, AfgDeveloper:     	Connected to DC -4.4!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.1
+Connection, AfgDeveloper:     	Disconnecting from DC -4.1
+Connection, AfgDeveloper:     	Disconnected from DC -4.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -4.1
+Connection, AfgDeveloper:     	Connected to DC -4.1!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.5
+Connection, AfgDeveloper:     	Disconnecting from DC -4.5
+Connection, AfgDeveloper:     	Disconnected from DC -4.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -4.5
+Connection, AfgDeveloper:     	Connected to DC -4.5!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.8
+Connection, AfgDeveloper:     	Disconnecting from DC -4.8
+Connection, AfgDeveloper:     	Disconnected from DC -4.8
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection, AfgDeveloper:     	Connecting to DC -4.8
+Connection, AfgDeveloper:     	Connected to DC -4.8!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.10
+Connection, AfgDeveloper:     	Disconnecting from DC -4.10
+Connection, AfgDeveloper:     	Disconnected from DC -4.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -4.10
+Connection, AfgDeveloper:     	Connected to DC -4.10!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.6
+Connection, AfgDeveloper:     	Disconnecting from DC -4.6
+Connection, AfgDeveloper:     	Disconnected from DC -4.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -4.6
+Connection, AfgDeveloper:     	Connected to DC -4.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.7
+Connection, AfgDeveloper:     	Disconnecting from DC -4.7
+Connection, AfgDeveloper:     	Disconnected from DC -4.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -4.7
+Connection, AfgDeveloper:     	Connected to DC -4.7!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.9
+Connection, AfgDeveloper:     	Disconnecting from DC -4.9
+Connection, AfgDeveloper:     	Disconnected from DC -4.9
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -4.9
+Connection, AfgDeveloper:     	Connected to DC -4.9!
+DataCenter, AfgDeveloper:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.3
+Connection, AfgDeveloper:     	Disconnecting from DC -4.3
+Connection, AfgDeveloper:     	Disconnected from DC -4.3
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, AfgDeveloper:     	Connecting to DC -4.3
+Connection, AfgDeveloper:     	Connected to DC -4.3!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 5.0
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.2
+Connection, AfgDeveloper:     	Disconnecting from DC -2.2
+Connection, AfgDeveloper:     	Disconnected from DC -2.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -2.2
+Connection, AfgDeveloper:     	Connected to DC -2.2!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto, AfgDeveloper:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Exception:      	Error: Call to undefined method danog\MadelineProto\API::get_info() in C:\xampp\htdocs\telebot\index.php:210
+Stack trace:
+#0 {main}
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.3
+Connection, AfgDeveloper:     	Disconnecting from DC -2.3
+Connection, AfgDeveloper:     	Disconnected from DC -2.3
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, AfgDeveloper:     	Connecting to DC -2.3
+Connection, AfgDeveloper:     	Connected to DC -2.3!
+DataCenter, AfgDeveloper:     	OK!
+PingLoop:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.4
+Connection, AfgDeveloper:     	Disconnecting from DC -2.4
+Connection, AfgDeveloper:     	Disconnected from DC -2.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -2.4
+Connection, AfgDeveloper:     	Connected to DC -2.4!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.8
+Connection, AfgDeveloper:     	Disconnecting from DC -2.8
+Connection, AfgDeveloper:     	Disconnected from DC -2.8
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection, AfgDeveloper:     	Connecting to DC -2.8
+Connection, AfgDeveloper:     	Connected to DC -2.8!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.5
+Connection, AfgDeveloper:     	Disconnecting from DC -2.5
+Connection, AfgDeveloper:     	Disconnected from DC -2.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -2.5
+Connection, AfgDeveloper:     	Connected to DC -2.5!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.9
+Connection, AfgDeveloper:     	Disconnecting from DC -2.9
+Connection, AfgDeveloper:     	Disconnected from DC -2.9
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -2.9
+Connection, AfgDeveloper:     	Connected to DC -2.9!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 5.0
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateUserStatus
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.7
+Connection, AfgDeveloper:     	Disconnecting from DC -2.7
+Connection, AfgDeveloper:     	Disconnected from DC -2.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -2.7
+Connection, AfgDeveloper:     	Connected to DC -2.7!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.6
+Connection, AfgDeveloper:     	Disconnecting from DC -2.6
+Connection, AfgDeveloper:     	Disconnected from DC -2.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -2.6
+Connection, AfgDeveloper:     	Connected to DC -2.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.1
+Connection, AfgDeveloper:     	Disconnecting from DC -2.1
+Connection, AfgDeveloper:     	Disconnected from DC -2.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -2.1
+Connection, AfgDeveloper:     	Connected to DC -2.1!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+PingLoop:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateUserStatus
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto, AfgDeveloper:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Exception:      	Error: Call to undefined method danog\MadelineProto\API::get_full_user() in C:\xampp\htdocs\telebot\index.php:210
+Stack trace:
+#0 {main}
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.10
+Connection, AfgDeveloper:     	Disconnecting from DC -2.10
+Connection, AfgDeveloper:     	Disconnected from DC -2.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -2.10
+Connection, AfgDeveloper:     	Connected to DC -2.10!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.0
+Connection, AfgDeveloper:     	Disconnecting from DC -4.0
+Connection, AfgDeveloper:     	Disconnected from DC -4.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -4.0
+Connection, AfgDeveloper:     	Connected to DC -4.0!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.0
+Connection, AfgDeveloper:     	Disconnecting from DC -2.0
+Connection, AfgDeveloper:     	Disconnected from DC -2.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -2.0
+Connection, AfgDeveloper:     	Connected to DC -2.0!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.2
+Connection, AfgDeveloper:     	Disconnecting from DC -4.2
+Connection, AfgDeveloper:     	Disconnected from DC -4.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -4.2
+Connection, AfgDeveloper:     	Connected to DC -4.2!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.4
+Connection, AfgDeveloper:     	Disconnecting from DC -4.4
+Connection, AfgDeveloper:     	Disconnected from DC -4.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -4.4
+Connection, AfgDeveloper:     	Connected to DC -4.4!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.1
+Connection, AfgDeveloper:     	Disconnecting from DC -4.1
+Connection, AfgDeveloper:     	Disconnected from DC -4.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -4.1
+Connection, AfgDeveloper:     	Connected to DC -4.1!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.5
+Connection, AfgDeveloper:     	Disconnecting from DC -4.5
+Connection, AfgDeveloper:     	Disconnected from DC -4.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -4.5
+Connection, AfgDeveloper:     	Connected to DC -4.5!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.8
+Connection, AfgDeveloper:     	Disconnecting from DC -4.8
+Connection, AfgDeveloper:     	Disconnected from DC -4.8
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection, AfgDeveloper:     	Connecting to DC -4.8
+Connection, AfgDeveloper:     	Connected to DC -4.8!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.10
+Connection, AfgDeveloper:     	Disconnecting from DC -4.10
+Connection, AfgDeveloper:     	Disconnected from DC -4.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -4.10
+Connection, AfgDeveloper:     	Connected to DC -4.10!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.7
+Connection, AfgDeveloper:     	Disconnecting from DC -4.7
+Connection, AfgDeveloper:     	Disconnected from DC -4.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -4.7
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.6
+Connection, AfgDeveloper:     	Disconnecting from DC -4.6
+Connection, AfgDeveloper:     	Disconnected from DC -4.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -4.6
+Connection, AfgDeveloper:     	Connected to DC -4.7!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Connection, AfgDeveloper:     	Connected to DC -4.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.9
+Connection, AfgDeveloper:     	Disconnecting from DC -4.9
+Connection, AfgDeveloper:     	Disconnected from DC -4.9
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -4.9
+Connection, AfgDeveloper:     	Connected to DC -4.9!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.3
+Connection, AfgDeveloper:     	Disconnecting from DC -4.3
+Connection, AfgDeveloper:     	Disconnected from DC -4.3
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, AfgDeveloper:     	Connecting to DC -4.3
+Connection, AfgDeveloper:     	Connected to DC -4.3!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.2
+Connection, AfgDeveloper:     	Disconnecting from DC -2.2
+Connection, AfgDeveloper:     	Disconnected from DC -2.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -2.2
+Connection, AfgDeveloper:     	Connected to DC -2.2!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.3
+Connection, AfgDeveloper:     	Disconnecting from DC -2.3
+Connection, AfgDeveloper:     	Disconnected from DC -2.3
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection, AfgDeveloper:     	Connecting to DC -2.3
+Connection, AfgDeveloper:     	Connected to DC -2.3!
+DataCenter, AfgDeveloper:     	OK!
+PingLoop:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.4
+Connection, AfgDeveloper:     	Disconnecting from DC -2.4
+Connection, AfgDeveloper:     	Disconnected from DC -2.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -2.4
+Connection, AfgDeveloper:     	Connected to DC -2.4!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+FeedLoop:       	Resumed update feed loop generic
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.8
+Connection, AfgDeveloper:     	Disconnecting from DC -2.8
+Connection, AfgDeveloper:     	Disconnected from DC -2.8
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection, AfgDeveloper:     	Connecting to DC -2.8
+Connection, AfgDeveloper:     	Connected to DC -2.8!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.5
+Connection, AfgDeveloper:     	Disconnecting from DC -2.5
+Connection, AfgDeveloper:     	Disconnected from DC -2.5
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection, AfgDeveloper:     	Connecting to DC -2.5
+Connection, AfgDeveloper:     	Connected to DC -2.5!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.9
+Connection, AfgDeveloper:     	Disconnecting from DC -2.9
+Connection, AfgDeveloper:     	Disconnected from DC -2.9
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection, AfgDeveloper:     	Connecting to DC -2.9
+Connection, AfgDeveloper:     	Connected to DC -2.9!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop, AfgDeveloper:       	Ping DC 1.0
+PingLoop, AfgDeveloper:       	Ping DC 3.0
+PingLoop, AfgDeveloper:       	Ping DC 4.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session, AfgDeveloper:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.7
+Connection, AfgDeveloper:     	Disconnecting from DC -2.7
+Connection, AfgDeveloper:     	Disconnected from DC -2.7
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection, AfgDeveloper:     	Connecting to DC -2.7
+Connection, AfgDeveloper:     	Connected to DC -2.7!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.6
+Connection, AfgDeveloper:     	Disconnecting from DC -2.6
+Connection, AfgDeveloper:     	Disconnected from DC -2.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -2.6
+Connection, AfgDeveloper:     	Connected to DC -2.6!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.1
+Connection, AfgDeveloper:     	Disconnecting from DC -2.1
+Connection, AfgDeveloper:     	Disconnected from DC -2.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -2.1
+Connection, AfgDeveloper:     	Connected to DC -2.1!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 4.0
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto, AfgDeveloper:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Exception:      	Error: Call to undefined method danog\MadelineProto\API::get_info() in C:\xampp\htdocs\telebot\index.php:210
+Stack trace:
+#0 {main}
+Session, AfgDeveloper:        	Garbage collected 4 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\session.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.10
+Connection, AfgDeveloper:     	Disconnecting from DC -2.10
+Connection, AfgDeveloper:     	Disconnected from DC -2.10
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection, AfgDeveloper:     	Connecting to DC -2.10
+Connection, AfgDeveloper:     	Connected to DC -2.10!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+FeedLoop:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateMessageID
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.0
+Connection, AfgDeveloper:     	Disconnecting from DC -4.0
+Connection, AfgDeveloper:     	Disconnected from DC -4.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -4.0
+Connection, AfgDeveloper:     	Connected to DC -4.0!
+DataCenter, AfgDeveloper:     	OK!
