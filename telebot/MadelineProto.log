@@ -1873,3 +1873,2726 @@ DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 mai
 Connection:     	Connecting to DC -4.2
 Connection:     	Connected to DC -4.2!
 DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 2 Mb
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 2 Mb
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Server:         	Starting IPC server C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline (process)
+ProcessRunner:  	Starting process with "C:\xampp\php\php.exe" "-dhtml_errors=0" "-ddisplay_errors=0" "-dlog_errors=1" "C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Runner/entry.php" "madeline-ipc" "C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline" "1880641776"
+Server:         	Amp\Parallel\Context\ContextException: Mismatch between absolute root dir (C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\) and URI dir (\yadakShop-APP\callcenter\telebot\) in C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php:95
+Stack trace:
+#0 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php(43): danog\MadelineProto\Ipc\Runner\WebRunner::getAbsoluteRootDir()
+#1 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Server.php(112): danog\MadelineProto\Ipc\Runner\WebRunner::start('C:\\xampp\\htdocs...', 1880641776)
+#2 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Serialization.php(183): danog\MadelineProto\Ipc\Server::startMe(Object(danog\MadelineProto\SessionPaths))
+#3 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\amphp\amp\src\functions.php(34): danog\MadelineProto\Serialization::unserialize(Object(danog\MadelineProto\SessionPaths), Object(danog\MadelineProto\SettingsEmpty), false)
+#4 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(422): Amp\{closure}(NULL, NULL, Array)
+#5 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(558): Revolt\EventLoop\Internal\AbstractDriver->invokeMicrotasks()
+#6 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#7 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(495): Fiber->start()
+#8 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(534): Revolt\EventLoop\Internal\AbstractDriver->invokeCallbacks()
+#9 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#10 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(93): Fiber->start()
+#11 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\DriverSuspension.php(99): Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#12 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\amphp\amp\src\Future.php(251): Revolt\EventLoop\Internal\DriverSuspension->suspend()
+#13 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\API.php(320): Amp\Future->await(Object(Amp\Internal\WrappedCancellation))
+#14 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\API.php(213): danog\MadelineProto\API->connectToMadelineProto(Object(danog\MadelineProto\SettingsEmpty))
+#15 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\init.php(5): danog\MadelineProto\API->__construct('bot.madeline')
+#16 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\boot.php(3): require_once('C:\\xampp\\htdocs...')
+#17 {main}
+Server:         	Starting IPC server C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline (web)
+Server:         	Amp\Parallel\Context\ContextException: Mismatch between absolute root dir (C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\) and URI dir (\yadakShop-APP\callcenter\telebot\) in C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php:95
+Stack trace:
+#0 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php(43): danog\MadelineProto\Ipc\Runner\WebRunner::getAbsoluteRootDir()
+#1 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Ipc\Server.php(119): danog\MadelineProto\Ipc\Runner\WebRunner::start('C:\\xampp\\htdocs...', 1880641776)
+#2 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\Serialization.php(183): danog\MadelineProto\Ipc\Server::startMe(Object(danog\MadelineProto\SessionPaths))
+#3 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\amphp\amp\src\functions.php(34): danog\MadelineProto\Serialization::unserialize(Object(danog\MadelineProto\SessionPaths), Object(danog\MadelineProto\SettingsEmpty), false)
+#4 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(422): Amp\{closure}(NULL, NULL, Array)
+#5 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(558): Revolt\EventLoop\Internal\AbstractDriver->invokeMicrotasks()
+#6 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#7 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(495): Fiber->start()
+#8 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(534): Revolt\EventLoop\Internal\AbstractDriver->invokeCallbacks()
+#9 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#10 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(93): Fiber->start()
+#11 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\DriverSuspension.php(99): Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#12 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\amphp\amp\src\Future.php(251): Revolt\EventLoop\Internal\DriverSuspension->suspend()
+#13 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\API.php(320): Amp\Future->await(Object(Amp\Internal\WrappedCancellation))
+#14 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\API.php(213): danog\MadelineProto\API->connectToMadelineProto(Object(danog\MadelineProto\SettingsEmpty))
+#15 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\init.php(5): danog\MadelineProto\API->__construct('bot.madeline')
+#16 C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\boot.php(3): require_once('C:\\xampp\\htdocs...')
+#17 {main}
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:4495 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:4495 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+ProcessRunner:  	Got message from worker: file_get_contents(https://phar.madelineproto.xyz/release81): Failed to open stream: HTTP request failed! in Magic.php:323
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Reconnecting to DC 1 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.60:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 1.0
+Session:        	Resetting session in DC 1.0...
+DataCenter:     	Reconnecting to DC 2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 2.0
+Session:        	Resetting session in DC 2.0...
+DataCenter:     	Reconnecting to DC -2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC -2.0
+Session:        	Resetting session in DC -2.0...
+DataCenter:     	Reconnecting to DC 3 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 3.0
+Session:        	Resetting session in DC 3.0...
+DataCenter:     	Reconnecting to DC 4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.91:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 4.0
+Session:        	Resetting session in DC 4.0...
+DataCenter:     	Reconnecting to DC -4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC -4.0
+Session:        	Resetting session in DC -4.0...
+DataCenter:     	Reconnecting to DC 5 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://91.108.56.154:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 5.0
+Session:        	Resetting session in DC 5.0...
+Connection:     	Connected to DC 1.0!
+DataCenterConnection: 	Restoring 0 messages to DC 1
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenter:     	OK!
+Connection:     	Connected to DC 2.0!
+DataCenterConnection: 	Restoring 0 messages to DC 2
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenter:     	OK!
+Connection:     	Connected to DC -2.0!
+DataCenterConnection: 	Restoring 0 messages to DC -2
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenter:     	OK!
+Connection:     	Connected to DC 3.0!
+DataCenterConnection: 	Restoring 0 messages to DC 3
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenter:     	OK!
+Connection:     	Connected to DC 4.0!
+DataCenterConnection: 	Restoring 0 messages to DC 4
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenter:     	OK!
+Connection:     	Connected to DC -4.0!
+DataCenterConnection: 	Restoring 0 messages to DC -4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenter:     	OK!
+Connection:     	Connected to DC 5.0!
+DataCenterConnection: 	Restoring 0 messages to DC 5
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	OK!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	Reconnecting to DC 2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 1 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.60:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC -2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 3 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.91:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC -4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 5 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://91.108.56.154:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 1 Mb
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 3.0
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+MTProto:        	AUTH_KEY_UNREGISTERED
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+APIWrapper:     	MadelineProto is ready!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\ipcState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\ipcState.php.lock...
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 4 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 4 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 4 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 6 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 4 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 0 left
+Connection:     	Connecting to DC -2.1
+Session:        	Resetting session in DC -2.1...
+Connection:     	Connecting to DC -4.1
+Session:        	Resetting session in DC -4.1...
+Connection:     	Connected to DC -2.1!
+Connection:     	Connecting to DC -2.2
+Session:        	Resetting session in DC -2.2...
+Connection:     	Connected to DC -4.1!
+Connection:     	Connecting to DC -4.2
+Session:        	Resetting session in DC -4.2...
+Connection:     	Connected to DC -2.2!
+Connection:     	Connected to DC -4.2!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Connection:     	Connecting to DC -2.3
+Session:        	Resetting session in DC -2.3...
+Connection:     	Connecting to DC -4.3
+Session:        	Resetting session in DC -4.3...
+Connection:     	Connected to DC -2.3!
+Connection:     	Connecting to DC -2.4
+Session:        	Resetting session in DC -2.4...
+Connection:     	Connected to DC -4.3!
+Connection:     	Connecting to DC -4.4
+Session:        	Resetting session in DC -4.4...
+Connection:     	Connected to DC -2.4!
+Connection:     	Connected to DC -4.4!
+Connection:     	Connecting to DC -2.5
+Session:        	Resetting session in DC -2.5...
+Connection:     	Connecting to DC -4.5
+Session:        	Resetting session in DC -4.5...
+Connection:     	Connected to DC -2.5!
+Connection:     	Connecting to DC -2.6
+Session:        	Resetting session in DC -2.6...
+Connection:     	Connected to DC -4.5!
+Connection:     	Connecting to DC -4.6
+Session:        	Resetting session in DC -4.6...
+Connection:     	Connected to DC -2.6!
+Connection:     	Connected to DC -4.6!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+Connection:     	Connecting to DC -2.7
+Session:        	Resetting session in DC -2.7...
+Connection:     	Connected to DC -2.7!
+Connection:     	Connecting to DC -2.8
+Session:        	Resetting session in DC -2.8...
+Connection:     	Connected to DC -2.8!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Connection:     	Connecting to DC -4.7
+Session:        	Resetting session in DC -4.7...
+Connection:     	Connecting to DC -2.9
+Session:        	Resetting session in DC -2.9...
+Connection:     	Connected to DC -4.7!
+Connection:     	Connecting to DC -4.8
+Session:        	Resetting session in DC -4.8...
+Connection:     	Connected to DC -2.9!
+Connection:     	Connecting to DC -2.10
+Session:        	Resetting session in DC -2.10...
+Connection:     	Connected to DC -4.8!
+Connection:     	Connected to DC -2.10!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Connection:     	Connecting to DC -4.9
+Session:        	Resetting session in DC -4.9...
+Connection:     	Connected to DC -4.9!
+Connection:     	Connecting to DC -4.10
+Session:        	Resetting session in DC -4.10...
+Connection:     	Connected to DC -4.10!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 1 Mb
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 2 Mb
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection:     	Reconnecting DC -2.1
+Connection:     	Disconnecting from DC -2.1
+Connection:     	Disconnected from DC -2.1
+DataCenter:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -2.1
+Connection:     	Connected to DC -2.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.7, reconnecting...
+Connection:     	Reconnecting DC -4.7
+Connection:     	Disconnecting from DC -4.7
+Connection:     	Disconnected from DC -4.7
+DataCenter:     	Reconnecting to DC -4 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -4.7
+Connection:     	Connected to DC -4.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.5, reconnecting...
+Connection:     	Reconnecting DC -4.5
+Connection:     	Disconnecting from DC -4.5
+Connection:     	Disconnected from DC -4.5
+DataCenter:     	Reconnecting to DC -4 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -4.5
+Connection:     	Connected to DC -4.5!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.4, reconnecting...
+Connection:     	Reconnecting DC -4.4
+Connection:     	Disconnecting from DC -4.4
+Connection:     	Disconnected from DC -4.4
+DataCenter:     	Reconnecting to DC -4 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -4.4
+Connection:     	Connected to DC -4.4!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.9, reconnecting...
+Connection:     	Reconnecting DC -4.9
+Connection:     	Disconnecting from DC -4.9
+Connection:     	Disconnected from DC -4.9
+DataCenter:     	Reconnecting to DC -4 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -4.9
+Connection:     	Connected to DC -4.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.5, reconnecting...
+Connection:     	Reconnecting DC -2.5
+Connection:     	Disconnecting from DC -2.5
+Connection:     	Disconnected from DC -2.5
+DataCenter:     	Reconnecting to DC -2 (5) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (5)
+Connection:     	Connecting to DC -2.5
+Connection:     	Connected to DC -2.5!
+DataCenter:     	OK!
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 2 Mb
+ReadLoop:       	Got nothing in the socket in DC -4.3, reconnecting...
+Connection:     	Reconnecting DC -4.3
+Connection:     	Disconnecting from DC -4.3
+Connection:     	Disconnected from DC -4.3
+DataCenter:     	Reconnecting to DC -4 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -4.3
+Connection:     	Connected to DC -4.3!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.8, reconnecting...
+Connection:     	Reconnecting DC -4.8
+Connection:     	Disconnecting from DC -4.8
+Connection:     	Disconnected from DC -4.8
+DataCenter:     	Reconnecting to DC -4 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -4.8
+Connection:     	Connected to DC -4.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.10, reconnecting...
+Connection:     	Reconnecting DC -4.10
+Connection:     	Disconnecting from DC -4.10
+Connection:     	Disconnected from DC -4.10
+DataCenter:     	Reconnecting to DC -4 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -4.10
+Connection:     	Connected to DC -4.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.7, reconnecting...
+Connection:     	Reconnecting DC -2.7
+Connection:     	Disconnecting from DC -2.7
+Connection:     	Disconnected from DC -2.7
+DataCenter:     	Reconnecting to DC -2 (7) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (7)
+Connection:     	Connecting to DC -2.7
+Connection:     	Connected to DC -2.7!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.8, reconnecting...
+Connection:     	Reconnecting DC -2.8
+Connection:     	Disconnecting from DC -2.8
+Connection:     	Disconnected from DC -2.8
+DataCenter:     	Reconnecting to DC -2 (8) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (8)
+Connection:     	Connecting to DC -2.8
+Connection:     	Connected to DC -2.8!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.6, reconnecting...
+Connection:     	Reconnecting DC -4.6
+Connection:     	Disconnecting from DC -4.6
+Connection:     	Disconnected from DC -4.6
+DataCenter:     	Reconnecting to DC -4 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -4.6
+Connection:     	Connected to DC -4.6!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.9, reconnecting...
+Connection:     	Reconnecting DC -2.9
+Connection:     	Disconnecting from DC -2.9
+Connection:     	Disconnected from DC -2.9
+DataCenter:     	Reconnecting to DC -2 (9) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (9)
+Connection:     	Connecting to DC -2.9
+Connection:     	Connected to DC -2.9!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -2.10, reconnecting...
+Connection:     	Reconnecting DC -2.10
+Connection:     	Disconnecting from DC -2.10
+Connection:     	Disconnected from DC -2.10
+DataCenter:     	Reconnecting to DC -2 (10) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.222:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (10)
+Connection:     	Connecting to DC -2.10
+Connection:     	Connected to DC -2.10!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection:     	Reconnecting DC -4.1
+Connection:     	Disconnecting from DC -4.1
+Connection:     	Disconnected from DC -4.1
+DataCenter:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection:     	Connecting to DC -4.1
+Connection:     	Connected to DC -4.1!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection:     	Reconnecting DC -4.2
+Connection:     	Disconnecting from DC -4.2
+Connection:     	Disconnected from DC -4.2
+DataCenter:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.43:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -4.2
+Connection:     	Connected to DC -4.2!
+DataCenter:     	OK!

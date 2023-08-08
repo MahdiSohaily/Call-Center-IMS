@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita088ba212aac14e0256f07203cf58495
+class ComposerStaticInit921d3094ec16e1fd701e257b6b51c30b
 {
     public static $files = array (
         '88254829cb0eed057c30eaabb6d8edc4' => __DIR__ . '/..' . '/amphp/amp/src/functions.php',
@@ -166,8 +166,8 @@ class ComposerStaticInita088ba212aac14e0256f07203cf58495
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'PhpParser\\' => 
         array (
@@ -187,9 +187,9 @@ class ComposerStaticInita088ba212aac14e0256f07203cf58495
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri/src',
-            1 => __DIR__ . '/..' . '/league/uri-components/src',
-            2 => __DIR__ . '/..' . '/league/uri-interfaces/src',
+            0 => __DIR__ . '/..' . '/league/uri-interfaces/src',
+            1 => __DIR__ . '/..' . '/league/uri/src',
+            2 => __DIR__ . '/..' . '/league/uri-components/src',
             3 => __DIR__ . '/..' . '/league/uri-parser/src',
         ),
         'Kelunik\\Certificate\\' => 
@@ -335,10 +335,10 @@ class ComposerStaticInita088ba212aac14e0256f07203cf58495
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita088ba212aac14e0256f07203cf58495::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita088ba212aac14e0256f07203cf58495::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita088ba212aac14e0256f07203cf58495::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita088ba212aac14e0256f07203cf58495::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit921d3094ec16e1fd701e257b6b51c30b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit921d3094ec16e1fd701e257b6b51c30b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit921d3094ec16e1fd701e257b6b51c30b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit921d3094ec16e1fd701e257b6b51c30b::$classMap;
 
         }, null, ClassLoader::class);
     }
