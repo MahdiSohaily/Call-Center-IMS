@@ -1906,3 +1906,58 @@ DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.
 Connection, AfgDeveloper:     	Connecting to DC -4.0
 Connection, AfgDeveloper:     	Connected to DC -4.0!
 DataCenter, AfgDeveloper:     	OK!
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Session has event handler (class MyEventHandler), but it's not started.
+Serialization:  	We don't have access to the event handler class, so we can't start it.
+Serialization:  	Please start the event handler or unset it to use the IPC server.
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Exception:      	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) in functions.php:47
+Serialization:  	stream_socket_client(): Unable to connect to tcp://127.0.0.1:7618 (No connection could be made because the target machine actively refused it) while connecting to IPC socket
+Exception:      	Could not connect to MadelineProto, please enable proc_open or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in API.php:331
+Exception:      	\danog\MadelineProto\Exception: Could not connect to MadelineProto, please enable proc_open or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in C:\xampp\htdocs\YadakShop-APP\callcenter\telebot\vendor\danog\madelineproto\src\API.php:331
+Revision: 8.0.0-beta130
+TL Trace:
+<br>
+API.php(213):       	connectToMadelineProto({})<br>
+init.php(5):        	__construct("bot.madeline")<br>
+boot.php(3):        	require_once("C:\\xampp\\htdocs\\YadakShop-APP\\callcenter\\telebot\\init.php")

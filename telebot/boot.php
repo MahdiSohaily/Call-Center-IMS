@@ -2,8 +2,8 @@
 require_once './utilities/helper.php';
 require_once './init.php';
 
-$completeCode = '';
-$users = [];
+$completeCode = ''; // Complete code to be searched
+$users = []; // Array of users who have send message
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +30,7 @@ $users = [];
             foreach ($messages['messages'] as $message) :
                 // Check if the message is from a user (a person) and ignore system messages
                 if (isset($message['from_id']) && $message['from_id'] > 0 && empty($message['action'])) :
+
                     $senderInfo = $MadelineProto->getInfo($message['from_id']);
                     $senderName = trim($senderInfo['User']['first_name']);
                     $senderLastName = isset($senderInfo['User']['last_name']) ? trim($senderInfo['User']['last_name']) : '';
@@ -38,13 +39,12 @@ $users = [];
                     // Construct the full name
                     $fullName = $senderName . ($senderLastName !== '' ? ' ' . $senderLastName : '');
 
-                    $completeCode .= $message['message'];
-
+                    $completeCode .= $message['message']; // concat all incoming messages to search at once
                     array_push($users, $senderUsername);
+
                     if ($senderUsername === 'AfgDeveloper') :
             ?>
-
-                        <!-- Message 1 (received) -->
+                        <!-- Message 1 (sent) -->
                         <div class="flex items-start">
                             <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full">
                             <div class="bg-gray-500 text-white w-96 px-4 py-2 rounded-lg shadow-md">
@@ -53,7 +53,7 @@ $users = [];
                             </div>
                         </div>
                     <?php else : ?>
-                        <!-- Message 2 (sent) -->
+                        <!-- Message 2 (received) -->
                         <div class="flex items-end justify-end">
                             <div class="bg-blue-500 text-white w-96 px-4 py-2 rounded-lg shadow-md">
                                 <p><?php echo $message['id'] . ": $fullName ($senderUsername)"; ?></p>
@@ -69,37 +69,6 @@ $users = [];
                 endif;
                 $_SESSION['lastReadMessageId'] = $message['id'];
             endforeach;
-
-            function filterCode($elementValue)
-            {
-                if (empty($elementValue)) return;
-
-                $codes = explode("\n", $elementValue);
-                $filteredCodes = array_map(function ($code) {
-                    $removedText = preg_replace('/\[[^\]]*\]/', '', $code);
-                    $parts = strpos($removedText, ':') !== false ? explode(':', $removedText) : explode(',', $removedText);
-                    $rightSide = !empty($parts[1]) ? trim(preg_replace('/[^a-zA-Z0-9 ]/', '', $parts[1])) : '';
-                    return !empty($rightSide) ? $rightSide : preg_replace('/[^a-zA-Z0-9 ]/', '', $removedText);
-                }, array_filter($codes, function ($code) {
-                    return strlen(trim($code)) > 0;
-                }));
-
-                $finalCodes = array_filter($filteredCodes, function ($item) {
-                    return strlen(explode(' ', $item)[0]) > 6;
-                });
-
-                $finalCodes = array_map(function ($item) {
-                    return explode(' ', $item)[0];
-                }, $finalCodes);
-
-                $finalCodes = array_filter($finalCodes, function ($item) {
-                    $consecutiveChars = preg_match('/[a-zA-Z]{4,}/', $item);
-                    return !$consecutiveChars;
-                });
-
-                return implode("\n", $finalCodes) . "\n"; // Changed single quotes to double quotes here
-            }
-
             ?>
         </div>
     </div>
