@@ -581,7 +581,7 @@
                         $myString =     substr($label, 0, -1);
                         $myArray = explode(',', $myString);
                         foreach ($myArray as $ttt) {
-                            $ttt = $ttt - 1;
+                            $ttt = (int) $ttt - 1;
                             echo "$('#label option:eq($ttt)').attr('selected', 'selected');";
                         }
                         ?>
@@ -603,7 +603,7 @@
                         $myString =     substr($userselect, 0, -1);
                         $myArray = explode(',', $myString);
                         foreach ($myArray as $ttt) {
-                            $ttt = $ttt - 1;
+                            $ttt = (int) $ttt - 1;
                             echo "$('#userselector option:eq($ttt)').attr('selected', 'selected');";
                         }
                         ?>
