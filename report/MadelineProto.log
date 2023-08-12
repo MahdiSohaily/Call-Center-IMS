@@ -1260,3 +1260,19 @@ DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 ma
 Connection:     	Connecting to DC -2.4
 Connection:     	Connected to DC -2.4!
 DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 0 left
