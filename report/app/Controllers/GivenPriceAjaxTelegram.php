@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../../../../telebot/index.php';
 require_once('../../database/connect.php');
 // if (isset($_POST['sendMessage'])) {
 $partNumber = $_POST['partNumber'];

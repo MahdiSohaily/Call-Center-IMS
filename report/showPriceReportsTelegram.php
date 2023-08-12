@@ -131,7 +131,7 @@ if ($isValidCustomer) {
                 }
 
                 // A function to create the relationship
-                function sendMessage(e) {
+                function registerPrice(e) {
                     e.disabled = true;
 
                     setTimeout(() => {
@@ -141,7 +141,7 @@ if ($isValidCustomer) {
                         <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`
                     }, 5000);
 
-                    // Accessing the form fields to get their value for an ajax store operation
+                    // Accessing the form fields to get thier value for an ajax store operation
                     const partNumber = e.getAttribute('data-part');
                     const customer_id = document.getElementById('customer_id').value;
                     const notification_id = document.getElementById('notification_id').value;
@@ -152,16 +152,48 @@ if ($isValidCustomer) {
 
                     // Defining a params instance to be attached to the axios request
                     const params = new URLSearchParams();
-                    params.append('sendMessage', 'sendMessage');
+                    params.append('store_price', 'store_price');
                     params.append('partNumber', partNumber);
-                    params.append('customer_id', customer_id);
+                    params.append('customer_id', 1);
                     params.append('notification_id', notification_id);
+                    params.append('price', goodPrice);
+                    params.append('code', code);
+
+                    sendMessage(customer_id, code, goodPrice);
+
+                    axios.post("./app/Controllers/GivenPriceAjax.php", params)
+                        .then(function(response) {
+                            if (response.data) {
+                                form_success.style.bottom = '10px';
+                                goodPrice.value = null;
+                                setTimeout(() => {
+                                    form_success.style.bottom = '-300px';
+                                    resultBox.innerHTML = (response.data);
+                                }, 2000)
+                            } else {
+                                form_error.style.bottom = '10px';
+                                setTimeout(() => {
+                                    form_error.style.bottom = '-300px';
+                                    location.reload();
+                                }, 2000)
+                            }
+                        })
+                        .catch(function(error) {
+
+                        });
+                }
+
+                function sendMessage(receiver, code, price) {
+                    // Defining a params instance to be attached to the axios request
+                    const params = new URLSearchParams();
+                    params.append('sendMessage', 'sendMessage');
+                    params.append('customer', customer);
                     params.append('price', goodPrice);
                     params.append('code', code);
 
                     console.log(params);
 
-                    axios.post("./app/Controllers/GivenPriceAjaxTelegram.php", params)
+                    axios.post("../../../telebot/index.php", params)
                         .then(function(response) {
                             console.log(response.data);
                         })
@@ -671,7 +703,7 @@ if ($isValidCustomer) {
 
 
                                                 <div class="rtl">
-                                                    <button onclick="sendMessage(this)" data-customer="<?= $customer ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
+                                                    <button onclick="registerPrice(this)" data-customer="<?= $customer ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
                                                         ثبت قیمت
                                                     </button>
                                                 </div>
