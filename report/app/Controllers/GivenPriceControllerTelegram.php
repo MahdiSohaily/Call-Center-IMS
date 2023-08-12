@@ -14,7 +14,7 @@ if (!empty($messagesBySender)) {
     foreach ($messagesBySender as $sender => $message) {
 
         $explodedCodes = implode("\n", $message);
-        $finalResult[$sender] = setup_loading($conn, $customer, $explodedCodes, $notification_id);
+        $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $notification_id);
     }
 }
 
