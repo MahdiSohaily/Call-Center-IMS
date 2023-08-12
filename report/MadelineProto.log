@@ -3825,3 +3825,11 @@ SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\
 SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
 SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
 APIWrapper:     	Saved session!
+Session:        	Can't garbage collect msgs_state_req with message ID 7266385237998695696 sent 1419 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect msgs_state_req with message ID 7266385237998695696 sent 1420 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect msgs_state_req with message ID 7266385237998695696 sent 1421 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect msgs_state_req with message ID 7266385237998695696 sent 1422 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
