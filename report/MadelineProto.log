@@ -1,0 +1,1428 @@
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+MTProto:        	The database settings have changed!
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v160.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+MTProto:        	Filling database cache. This can take a few minutes.
+MTProto:        	The IPC settings have changed!
+MTProto:        	The serialization settings have changed!
+MTProto:        	Cache filled.
+TL:             	Loading TL schemes...
+TL:             	Parsing TL_telegram_v160.tl...
+TL:             	Parsing TL_mtproto_v1.tl...
+TL:             	Parsing TL_secret.tl...
+DataCenter:     	Connecting to DC 2 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.51:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 2.0
+Session:        	Resetting session in DC 2.0...
+Connection:     	Connected to DC 2.0!
+DataCenterConnection: 	Restoring 0 messages to DC 2
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenter:     	OK!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Generating permanent authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 0 Mb
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 3275807777997229147 = 1766212691 * 1854707417
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 2...
+AuthKeyHandler: 	Requesting pq...
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2142529013649324787 = 1430493221 * 1497755447
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 1 left
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+Session:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 2, 1 left
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 2
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+DataCenterConnection: 	Flushing pending messages, DC 2
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+MTProto:        	Got new DC options, reconnecting
+DataCenter:     	Connecting to DC 1 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.54:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 1.0
+Session:        	Resetting session in DC 1.0...
+DataCenter:     	Not reconnecting to DC 2 (-1)
+DataCenter:     	Connecting to DC -2 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC -2.0
+Session:        	Resetting session in DC -2.0...
+DataCenter:     	Connecting to DC 3 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 3.0
+Session:        	Resetting session in DC 3.0...
+DataCenter:     	Connecting to DC 4 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.92:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 4.0
+Session:        	Resetting session in DC 4.0...
+DataCenter:     	Connecting to DC -4 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC -4.0
+Session:        	Resetting session in DC -4.0...
+DataCenter:     	Connecting to DC 5 from scratch
+DataCenterConnection: 	Trying shared connection via tcp://91.108.56.159:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 5.0
+Session:        	Resetting session in DC 5.0...
+PingLoop:       	Ping DC 2.0
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+Connection:     	Connected to DC 1.0!
+DataCenterConnection: 	Restoring 0 messages to DC 1
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenter:     	OK!
+Connection:     	Connected to DC -2.0!
+DataCenterConnection: 	Restoring 0 messages to DC -2
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenter:     	OK!
+Connection:     	Connected to DC 3.0!
+DataCenterConnection: 	Restoring 0 messages to DC 3
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenter:     	OK!
+Connection:     	Connected to DC 4.0!
+DataCenterConnection: 	Restoring 0 messages to DC 4
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenter:     	OK!
+Connection:     	Connected to DC -4.0!
+DataCenterConnection: 	Restoring 0 messages to DC -4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenter:     	OK!
+Connection:     	Connected to DC 5.0!
+DataCenterConnection: 	Restoring 0 messages to DC 5
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	OK!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Generating permanent authorization key for DC 1...
+AuthKeyHandler: 	Requesting pq...
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Generating permanent authorization key for DC 3...
+AuthKeyHandler: 	Requesting pq...
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Generating permanent authorization key for DC 4...
+AuthKeyHandler: 	Requesting pq...
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Generating permanent authorization key for DC 5...
+AuthKeyHandler: 	Requesting pq...
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+PingLoop:       	Ping DC 2.0
+Session:        	Garbage collected 5 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 2, 2 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2133483503529472883 = 1177758299 * 1811478217
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 2 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 2, 0 left
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2503867235052277267 = 1581077269 * 1583646343
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2903778416678695319 = 1696092667 * 1712039957
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 3884048559719549737 = 1944001589 * 1997965733
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 1...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2081280173628199207 = 1214752067 * 1713337421
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 3...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2983628073123986987 = 1628220961 * 1832446667
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 0.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 4...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Generating temporary authorization key for DC 5...
+AuthKeyHandler: 	Requesting pq...
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 0.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+Session:        	Garbage collected 2 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 3 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 2 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 0 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 1865183865596713133 = 1213827317 * 1536613849
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 1 left
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2698372237865543191 = 1360685441 * 1983097751
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 3
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+DataCenterConnection: 	Flushing pending messages, DC 3
+PingLoop:       	Ping DC 3.0
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 5 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 5 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 1 left
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 5
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 1
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+Session:        	Garbage collected 4 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 4 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 1 left
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+DataCenterConnection: 	Flushing pending messages, DC 1
+PingLoop:       	Ping DC 1.0
+DataCenterConnection: 	Flushing pending messages, DC 5
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 1 left
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC 4
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 4 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Generating temporary authorization key for DC -2...
+AuthKeyHandler: 	Requesting pq...
+DataCenterConnection: 	Initing auth for DC -4
+DataCenterConnection: 	Generating temporary authorization key for DC -4...
+AuthKeyHandler: 	Requesting pq...
+PingLoop:       	Ping DC 4.0
+Session:        	Garbage collected 0 outgoing messages in DC -2, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC -4, 1 left
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 2849541491591247989 = 1552189253 * 1835820913
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+ResponseHandler: 	Trying to assign a response of type ResPQ to its request...
+ResponseHandler: 	Does the request of return type ResPQ match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Factorizing with native_single_cpp (please wait, might take a while)
+AuthKeyHandler: 	Factorizing with python_single_alt (please wait, might take a while)
+AuthKeyHandler: 	Install https://prime.madelineproto.xyz and the FFI extension to speed this up!
+AuthKeyHandler: 	Factorization 1848836784738299249 = 1008510407 * 1833235207
+AuthKeyHandler: 	Starting Diffie Hellman key exchange
+Session:        	Garbage collected 1 incoming messages in DC -2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC -2, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC -4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC -4, 1 left
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Server_DH_Params to its request...
+ResponseHandler: 	Does the request of return type Server_DH_Params match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Server-client time delta = 1.0 s
+Crypt:          	Executing p/g checks (1/2)...
+Crypt:          	Executing p/g checks (2/2)...
+Crypt:          	Executing g check...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Generating b...
+AuthKeyHandler: 	Generating g_b...
+Crypt:          	Executing g_a check (1/2)...
+Crypt:          	Executing g_a check (2/2)...
+AuthKeyHandler: 	Executing g_b check...
+AuthKeyHandler: 	Preparing client_DH_inner_data...
+AuthKeyHandler: 	Executing set_client_DH_params...
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+Session:        	Garbage collected 2 incoming messages in DC -2, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC -2, 1 left
+Session:        	Garbage collected 1 incoming messages in DC -4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC -4, 1 left
+ResponseHandler: 	Trying to assign a response of type Set_client_DH_params_answer to its request...
+ResponseHandler: 	Does the request of return type Set_client_DH_params_answer match?
+ResponseHandler: 	Yes
+AuthKeyHandler: 	Generating authorization key (install gmp to speed up this process)...
+AuthKeyHandler: 	Diffie Hellman key exchange processed successfully!
+AuthKeyHandler: 	Auth key generated
+DataCenterConnection: 	Binding authorization keys...
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC -2
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+DataCenterConnection: 	Bound temporary and permanent authorization keys, DC -4
+WriteLoop:      	Writing client info (also executing help.getConfig)...
+Session:        	Garbage collected 4 incoming messages in DC -2, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC -2, 1 left
+Session:        	Garbage collected 5 incoming messages in DC -4, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC -4, 1 left
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	Not reconnecting to DC 2 (-1)
+DataCenter:     	Not reconnecting to DC 1 (-1)
+DataCenter:     	Not reconnecting to DC -2 (-1)
+DataCenter:     	Not reconnecting to DC 3 (-1)
+DataCenter:     	Not reconnecting to DC 4 (-1)
+DataCenter:     	Not reconnecting to DC -4 (-1)
+DataCenter:     	Not reconnecting to DC 5 (-1)
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	Not reconnecting to DC 2 (-1)
+DataCenter:     	Not reconnecting to DC 1 (-1)
+DataCenter:     	Not reconnecting to DC -2 (-1)
+DataCenter:     	Not reconnecting to DC 3 (-1)
+DataCenter:     	Not reconnecting to DC 4 (-1)
+DataCenter:     	Not reconnecting to DC -4 (-1)
+DataCenter:     	Not reconnecting to DC 5 (-1)
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC -2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC -2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC -4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC -4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 2 left
+MTProto:        	We're in CA, nearest DC is 1.
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+APIWrapper:     	MadelineProto is ready!
+MTProto:        	Prompting final serialization (SHUTDOWN)...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+MTProto:        	Done final serialization (SHUTDOWN)!
+MTProto:        	Shutting down MadelineProto (MTProto)
+MTProto:        	Will unreference instance
+DataCenterConnection: 	Disconnecting from shared DC 2
+Connection:     	Disconnecting from DC 2.0
+DataCenterConnection: 	Backed up  from DC 2.0
+Connection:     	Disconnected from DC 2.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 2
+DataCenterConnection: 	Disconnecting from shared DC 1
+Connection:     	Disconnecting from DC 1.0
+DataCenterConnection: 	Backed up  from DC 1.0
+Connection:     	Disconnected from DC 1.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 1
+DataCenterConnection: 	Disconnecting from shared DC -2
+Connection:     	Disconnecting from DC -2.0
+DataCenterConnection: 	Backed up  from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC -2
+DataCenterConnection: 	Disconnecting from shared DC 3
+Connection:     	Disconnecting from DC 3.0
+DataCenterConnection: 	Backed up  from DC 3.0
+Connection:     	Disconnected from DC 3.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 3
+DataCenterConnection: 	Disconnecting from shared DC 4
+Connection:     	Disconnecting from DC 4.0
+DataCenterConnection: 	Backed up  from DC 4.0
+Connection:     	Disconnected from DC 4.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 4
+DataCenterConnection: 	Disconnecting from shared DC -4
+Connection:     	Disconnecting from DC -4.0
+DataCenterConnection: 	Backed up  from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC -4
+DataCenterConnection: 	Disconnecting from shared DC 5
+Connection:     	Disconnecting from DC 5.0
+DataCenterConnection: 	Backed up  from DC 5.0
+Connection:     	Disconnected from DC 5.0
+DataCenterConnection: 	Backed up 0, added to 0 existing messages) from DC 5
+MTProto:        	Unreferenced instance
+MTProto:        	Successfully destroyed MadelineProto
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Server:         	Starting IPC server C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline (process)
+ProcessRunner:  	Starting process with "C:\xampp\php\php.exe" "-dhtml_errors=0" "-ddisplay_errors=0" "-dlog_errors=1" "C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner/entry.php" "madeline-ipc" "C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline" "730604081"
+Server:         	Amp\Parallel\Context\ContextException: Mismatch between absolute root dir (C:\xampp\htdocs\YadakShop-APP\callcenter\report\) and URI dir (\yadakShop-APP\callcenter\report\) in C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php:95
+Stack trace:
+#0 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php(43): danog\MadelineProto\Ipc\Runner\WebRunner::getAbsoluteRootDir()
+#1 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Server.php(112): danog\MadelineProto\Ipc\Runner\WebRunner::start('C:\\xampp\\htdocs...', 730604081)
+#2 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Serialization.php(183): danog\MadelineProto\Ipc\Server::startMe(Object(danog\MadelineProto\SessionPaths))
+#3 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\functions.php(34): danog\MadelineProto\Serialization::unserialize(Object(danog\MadelineProto\SessionPaths), Object(danog\MadelineProto\SettingsEmpty), false)
+#4 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(422): Amp\{closure}(NULL, NULL, Array)
+#5 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(558): Revolt\EventLoop\Internal\AbstractDriver->invokeMicrotasks()
+#6 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#7 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(495): Fiber->start()
+#8 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(534): Revolt\EventLoop\Internal\AbstractDriver->invokeCallbacks()
+#9 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#10 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(93): Fiber->start()
+#11 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\DriverSuspension.php(99): Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#12 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\Future.php(251): Revolt\EventLoop\Internal\DriverSuspension->suspend()
+#13 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(320): Amp\Future->await(Object(Amp\Internal\WrappedCancellation))
+#14 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(213): danog\MadelineProto\API->connectToMadelineProto(Object(danog\MadelineProto\SettingsEmpty))
+#15 C:\xampp\htdocs\telebot\index.php(7): danog\MadelineProto\API->__construct('bot.madeline')
+#16 C:\xampp\htdocs\YadakShop-APP\callcenter\report\init.php(2): require_once('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\YadakShop-APP\callcenter\report\index.php(2): require_once('C:\\xampp\\htdocs...')
+#18 {main}
+Server:         	Starting IPC server C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline (web)
+Server:         	Amp\Parallel\Context\ContextException: Mismatch between absolute root dir (C:\xampp\htdocs\YadakShop-APP\callcenter\report\) and URI dir (\yadakShop-APP\callcenter\report\) in C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php:95
+Stack trace:
+#0 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php(43): danog\MadelineProto\Ipc\Runner\WebRunner::getAbsoluteRootDir()
+#1 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Server.php(119): danog\MadelineProto\Ipc\Runner\WebRunner::start('C:\\xampp\\htdocs...', 730604081)
+#2 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Serialization.php(183): danog\MadelineProto\Ipc\Server::startMe(Object(danog\MadelineProto\SessionPaths))
+#3 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\functions.php(34): danog\MadelineProto\Serialization::unserialize(Object(danog\MadelineProto\SessionPaths), Object(danog\MadelineProto\SettingsEmpty), false)
+#4 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(422): Amp\{closure}(NULL, NULL, Array)
+#5 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(558): Revolt\EventLoop\Internal\AbstractDriver->invokeMicrotasks()
+#6 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#7 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(495): Fiber->start()
+#8 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(534): Revolt\EventLoop\Internal\AbstractDriver->invokeCallbacks()
+#9 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#10 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(93): Fiber->start()
+#11 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\DriverSuspension.php(99): Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#12 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\Future.php(251): Revolt\EventLoop\Internal\DriverSuspension->suspend()
+#13 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(320): Amp\Future->await(Object(Amp\Internal\WrappedCancellation))
+#14 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(213): danog\MadelineProto\API->connectToMadelineProto(Object(danog\MadelineProto\SettingsEmpty))
+#15 C:\xampp\htdocs\telebot\index.php(7): danog\MadelineProto\API->__construct('bot.madeline')
+#16 C:\xampp\htdocs\YadakShop-APP\callcenter\report\init.php(2): require_once('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\YadakShop-APP\callcenter\report\index.php(2): require_once('C:\\xampp\\htdocs...')
+#18 {main}
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Server:         	Starting IPC server C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline (process)
+ProcessRunner:  	Starting process with "C:\xampp\php\php.exe" "-dhtml_errors=0" "-ddisplay_errors=0" "-dlog_errors=1" "C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner/entry.php" "madeline-ipc" "C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline" "733205956"
+Server:         	Amp\Parallel\Context\ContextException: Mismatch between absolute root dir (C:\xampp\htdocs\YadakShop-APP\callcenter\report\) and URI dir (\yadakShop-APP\callcenter\report\) in C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php:95
+Stack trace:
+#0 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php(43): danog\MadelineProto\Ipc\Runner\WebRunner::getAbsoluteRootDir()
+#1 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Server.php(112): danog\MadelineProto\Ipc\Runner\WebRunner::start('C:\\xampp\\htdocs...', 733205956)
+#2 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Serialization.php(183): danog\MadelineProto\Ipc\Server::startMe(Object(danog\MadelineProto\SessionPaths))
+#3 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\functions.php(34): danog\MadelineProto\Serialization::unserialize(Object(danog\MadelineProto\SessionPaths), Object(danog\MadelineProto\SettingsEmpty), false)
+#4 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(422): Amp\{closure}(NULL, NULL, Array)
+#5 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(558): Revolt\EventLoop\Internal\AbstractDriver->invokeMicrotasks()
+#6 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#7 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(495): Fiber->start()
+#8 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(534): Revolt\EventLoop\Internal\AbstractDriver->invokeCallbacks()
+#9 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#10 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(93): Fiber->start()
+#11 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\DriverSuspension.php(99): Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#12 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\Future.php(251): Revolt\EventLoop\Internal\DriverSuspension->suspend()
+#13 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(320): Amp\Future->await(Object(Amp\Internal\WrappedCancellation))
+#14 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(213): danog\MadelineProto\API->connectToMadelineProto(Object(danog\MadelineProto\SettingsEmpty))
+#15 C:\xampp\htdocs\telebot\index.php(7): danog\MadelineProto\API->__construct('bot.madeline')
+#16 C:\xampp\htdocs\YadakShop-APP\callcenter\report\init.php(2): require_once('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\YadakShop-APP\callcenter\report\index.php(2): require_once('C:\\xampp\\htdocs...')
+#18 {main}
+Server:         	Starting IPC server C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline (web)
+Server:         	Amp\Parallel\Context\ContextException: Mismatch between absolute root dir (C:\xampp\htdocs\YadakShop-APP\callcenter\report\) and URI dir (\yadakShop-APP\callcenter\report\) in C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php:95
+Stack trace:
+#0 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Runner\WebRunner.php(43): danog\MadelineProto\Ipc\Runner\WebRunner::getAbsoluteRootDir()
+#1 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Ipc\Server.php(119): danog\MadelineProto\Ipc\Runner\WebRunner::start('C:\\xampp\\htdocs...', 733205956)
+#2 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\Serialization.php(183): danog\MadelineProto\Ipc\Server::startMe(Object(danog\MadelineProto\SessionPaths))
+#3 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\functions.php(34): danog\MadelineProto\Serialization::unserialize(Object(danog\MadelineProto\SessionPaths), Object(danog\MadelineProto\SettingsEmpty), false)
+#4 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(422): Amp\{closure}(NULL, NULL, Array)
+#5 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(558): Revolt\EventLoop\Internal\AbstractDriver->invokeMicrotasks()
+#6 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#7 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(495): Fiber->start()
+#8 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(534): Revolt\EventLoop\Internal\AbstractDriver->invokeCallbacks()
+#9 [internal function]: Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#10 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\AbstractDriver.php(93): Fiber->start()
+#11 C:\xampp\htdocs\telebot\vendor\revolt\event-loop\src\EventLoop\Internal\DriverSuspension.php(99): Revolt\EventLoop\Internal\AbstractDriver->Revolt\EventLoop\Internal\{closure}()
+#12 C:\xampp\htdocs\telebot\vendor\amphp\amp\src\Future.php(251): Revolt\EventLoop\Internal\DriverSuspension->suspend()
+#13 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(320): Amp\Future->await(Object(Amp\Internal\WrappedCancellation))
+#14 C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php(213): danog\MadelineProto\API->connectToMadelineProto(Object(danog\MadelineProto\SettingsEmpty))
+#15 C:\xampp\htdocs\telebot\index.php(7): danog\MadelineProto\API->__construct('bot.madeline')
+#16 C:\xampp\htdocs\YadakShop-APP\callcenter\report\init.php(2): require_once('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\YadakShop-APP\callcenter\report\index.php(2): require_once('C:\\xampp\\htdocs...')
+#18 {main}
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	Got exclusive session lock!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Disconnecting all before reconnect!
+DataCenter:     	Reconnecting to DC 1 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.54:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 1.0
+Session:        	Resetting session in DC 1.0...
+DataCenter:     	Reconnecting to DC 2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.41:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 2.0
+Session:        	Resetting session in DC 2.0...
+DataCenter:     	Reconnecting to DC -2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC -2.0
+Session:        	Resetting session in DC -2.0...
+DataCenter:     	Reconnecting to DC 3 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 3.0
+Session:        	Resetting session in DC 3.0...
+DataCenter:     	Reconnecting to DC 4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.92:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 4.0
+Session:        	Resetting session in DC 4.0...
+DataCenter:     	Reconnecting to DC -4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC -4.0
+Session:        	Resetting session in DC -4.0...
+DataCenter:     	Reconnecting to DC 5 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://91.108.56.159:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+Connection:     	Connecting to DC 5.0
+Session:        	Resetting session in DC 5.0...
+Connection:     	Connected to DC 1.0!
+DataCenterConnection: 	Restoring 0 messages to DC 1
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenter:     	OK!
+Connection:     	Connected to DC 2.0!
+DataCenterConnection: 	Restoring 0 messages to DC 2
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenter:     	OK!
+Connection:     	Connected to DC -2.0!
+DataCenterConnection: 	Restoring 0 messages to DC -2
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenter:     	OK!
+Connection:     	Connected to DC 3.0!
+DataCenterConnection: 	Restoring 0 messages to DC 3
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenter:     	OK!
+Connection:     	Connected to DC 4.0!
+DataCenterConnection: 	Restoring 0 messages to DC 4
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenter:     	OK!
+Connection:     	Connected to DC -4.0!
+DataCenterConnection: 	Restoring 0 messages to DC -4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenter:     	OK!
+Connection:     	Connected to DC 5.0!
+DataCenterConnection: 	Restoring 0 messages to DC 5
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	OK!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+DataCenter:     	Reconnecting to DC 2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.41:443 main DC 2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 1 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.54:443 main DC 1, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC -2 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 3 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.175.100:443 main DC 3, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.92:443 main DC 4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC -4 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+DataCenter:     	Reconnecting to DC 5 (-1) from existing
+DataCenterConnection: 	Trying shared connection via tcp://91.108.56.159:443 main DC 5, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (-1)
+DataCenterConnection: 	Already connected!
+DataCenter:     	OK!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+MTProto:        	AUTH_KEY_UNREGISTERED
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+APIWrapper:     	MadelineProto is ready!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\ipcState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\ipcState.php.lock...
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+MTProto:        	Initing auth 2
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 0 Mb
+Session:        	Garbage collected 5 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 3 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 3 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 3 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 2 left
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 4 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 0 left
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 0 Mb
+Serialization:  	It seems like the session is busy.
+Serialization:  	Telegram does not support starting multiple instances of the same session, make sure no other instance of the session is running.
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	Still waiting for exclusive session lock...
+Connection:     	Connecting to DC -2.1
+Session:        	Resetting session in DC -2.1...
+Connection:     	Connecting to DC -4.1
+Session:        	Resetting session in DC -4.1...
+Connection:     	Connected to DC -2.1!
+Connection:     	Connecting to DC -2.2
+Session:        	Resetting session in DC -2.2...
+Connection:     	Connected to DC -4.1!
+Connection:     	Connecting to DC -4.2
+Session:        	Resetting session in DC -4.2...
+Connection:     	Connected to DC -2.2!
+Connection:     	Connected to DC -4.2!
+Serialization:  	Still waiting for exclusive session lock...
+Serialization:  	Still waiting for exclusive session lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Exception:      	Could not connect to MadelineProto, please enable proc_open or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in API.php:331
+entry:          	\danog\MadelineProto\Exception: Could not connect to MadelineProto, please enable proc_open or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php:331
+Revision: 8.0.0-beta130
+TL Trace:
+
+API.php(213):       	connectToMadelineProto({})
+entry.php(114):     	__construct("C:\\xampp\\htdocs\\YadakShop-APP\\callcenter\\report\\bot.madeline",{})
+entry.php(152):     	danog\MadelineProto\Ipc\Runner\{closure}()
+entry:          	Got exception in IPC server, exiting...
+entry:          	Not reporting error!
+ProcessRunner:  	Got message from worker: \danog\MadelineProto\Exception: Could not connect to MadelineProto, please enable proc_open or disable webserver path rewrites to fix! If you already did that, make sure the CLI version of PHP is exactly the same as the web version (same version, extensions, et cetera) and check out the MadelineProto.log file for more info about the error that prevented the IPC server from starting. in C:\xampp\htdocs\telebot\vendor\danog\madelineproto\src\API.php:331
+ProcessRunner:  	Got message from worker: Revision: 8.0.0-beta130
+ProcessRunner:  	Got message from worker: TL Trace:
+ProcessRunner:  	Got message from worker: 
+ProcessRunner:  	Got message from worker: API.php(213):       	connectToMadelineProto({})
+ProcessRunner:  	Got message from worker: entry.php(114):     	__construct("C:\\xampp\\htdocs\\YadakShop-APP\\callcenter\\report\\bot.madeline",{})
+ProcessRunner:  	Got final message from worker: entry.php(152):     	danog\MadelineProto\Ipc\Runner\{closure}()Got exception in IPC server, exiting...
+ProcessRunner:  	Got final message from worker: 
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Connection:     	Connecting to DC -2.3
+Session:        	Resetting session in DC -2.3...
+Connection:     	Connecting to DC -4.3
+Session:        	Resetting session in DC -4.3...
+Connection:     	Connected to DC -2.3!
+Connection:     	Connecting to DC -2.4
+Session:        	Resetting session in DC -2.4...
+Connection:     	Connected to DC -4.3!
+Connection:     	Connecting to DC -4.4
+Session:        	Resetting session in DC -4.4...
+Connection:     	Connected to DC -2.4!
+Connection:     	Connected to DC -4.4!
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Login:          	Sending code...
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+DataCenterConnection: 	Flushing pending messages, DC 4
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Login:          	Code sent successfully! Once you receive the code you should use the completePhoneLogin function.
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Connection:     	Connecting to DC -2.5
+Session:        	Resetting session in DC -2.5...
+Connection:     	Connecting to DC -4.5
+Session:        	Resetting session in DC -4.5...
+Connection:     	Connected to DC -2.5!
+Connection:     	Connecting to DC -2.6
+Session:        	Resetting session in DC -2.6...
+Connection:     	Connected to DC -4.5!
+Connection:     	Connecting to DC -4.6
+Session:        	Resetting session in DC -4.6...
+Connection:     	Connected to DC -2.6!
+Connection:     	Connected to DC -4.6!
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Login:          	Logging in as a normal user...
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 4.0
+PingLoop:       	Ping DC 5.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+MTProto:        	Initing authorization...
+DataCenterConnection: 	Initing auth for DC 2
+DataCenterConnection: 	Trying to copy authorization from DC 4 to DC 2
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 5, 0 left
+DataCenterConnection: 	Initing auth for DC 1
+DataCenterConnection: 	Trying to copy authorization from DC 4 to DC 1
+DataCenterConnection: 	Initing auth for DC 3
+DataCenterConnection: 	Trying to copy authorization from DC 4 to DC 3
+DataCenterConnection: 	Initing auth for DC 4
+DataCenterConnection: 	Initing auth for DC 5
+DataCenterConnection: 	Trying to copy authorization from DC 4 to DC 5
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 4.0
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 4 left
+PingLoop:       	Ping DC 3.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 6 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 4 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+PingLoop:       	Ping DC 5.0
+DataCenterConnection: 	Initing auth for DC -2
+DataCenterConnection: 	Initing auth for DC -4
+MTProto:        	Done initing authorization!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+Login:          	Logged in successfully!
+MTProto:        	Starting update system
+DataCenterConnection: 	Flushing pending messages, DC 2
+DataCenterConnection: 	Flushing pending messages, DC 1
+DataCenterConnection: 	Flushing pending messages, DC -2
+DataCenterConnection: 	Flushing pending messages, DC 3
+DataCenterConnection: 	Flushing pending messages, DC 4
+DataCenterConnection: 	Flushing pending messages, DC -4
+DataCenterConnection: 	Flushing pending messages, DC 5
+PingLoop:       	Ping DC 1.0
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 4 left
+Session:        	Garbage collected 2 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 3 outgoing messages in DC 5, 0 left
+PeerHandler:    	Try fetching -907362775 with access hash 0
+FeedLoop:       	Resumed update feed loop generic
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 13 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 14 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Connection:     	Connecting to DC -2.7
+Session:        	Resetting session in DC -2.7...
+Connection:     	Connecting to DC -4.7
+Session:        	Resetting session in DC -4.7...
+Connection:     	Connected to DC -2.7!
+Connection:     	Connecting to DC -2.8
+Session:        	Resetting session in DC -2.8...
+Connection:     	Connected to DC -4.7!
+Connection:     	Connecting to DC -4.8
+Session:        	Resetting session in DC -4.8...
+Connection:     	Connected to DC -2.8!
+Connection:     	Connected to DC -4.8!
+Logger:         	MadelineProto 8.0.0-beta130
+Logger:         	Copyright (C) 2016-2023 Daniil Gentili
+Logger:         	Licensed under AGPLv3
+Logger:         	https://github.com/danog/MadelineProto
+Serialization:  	MadelineProto is starting, please wait...
+Serialization:  	For Windows users: please switch to Linux if this fails.
+MTProto:        	Accepted IPC client connection!
+Serialization:  	Connected to IPC socket!
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+Connection:     	Connecting to DC -2.9
+Session:        	Resetting session in DC -2.9...
+Connection:     	Connecting to DC -4.9
+Session:        	Resetting session in DC -4.9...
+Connection:     	Connected to DC -2.9!
+Connection:     	Connecting to DC -2.10
+Session:        	Resetting session in DC -2.10...
+Connection:     	Connected to DC -4.9!
+Connection:     	Connecting to DC -4.10
+Session:        	Resetting session in DC -4.10...
+Connection:     	Connected to DC -2.10!
+Connection:     	Connected to DC -4.10!
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection:     	Reconnecting DC -2.2
+Connection:     	Disconnecting from DC -2.2
+Connection:     	Disconnected from DC -2.2
+DataCenter:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection:     	Connecting to DC -2.2
+Connection:     	Connected to DC -2.2!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423862638807024 sent 3 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423862638807024 sent 4 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 4.0
+GarbageCollector: 	gc_collect_cycles done. Cleaned memory: 1 Mb
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423862638807024 sent 5 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 2 left
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 5.0
+PingLoop:       	Ping DC 1.0
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423862638807024 sent 6 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 2 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818804608 sent 3 seconds ago in DC 2, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423862638807024 sent 7 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 3 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 2 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114351104 sent 3 seconds ago in DC 1, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818804608 sent 4 seconds ago in DC 2, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884113825504 sent 3 seconds ago in DC 3, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 4 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 3 seconds ago in DC 5, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114351104 sent 4 seconds ago in DC 1, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818804608 sent 5 seconds ago in DC 2, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884113825504 sent 4 seconds ago in DC 3, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 5 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 4 seconds ago in DC 5, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114351104 sent 5 seconds ago in DC 1, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818804608 sent 6 seconds ago in DC 2, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 2, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884113825504 sent 5 seconds ago in DC 3, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 6 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 5 seconds ago in DC 5, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114351104 sent 6 seconds ago in DC 1, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884113825504 sent 6 seconds ago in DC 3, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 7 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 6 seconds ago in DC 5, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
