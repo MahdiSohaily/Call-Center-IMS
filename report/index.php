@@ -1,5 +1,4 @@
 <?php
-require_once './init.php';
 require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');

@@ -1,4 +1,5 @@
 <?php
+require_once '../../../telebot/index.php';
 require_once './database/connect.php';
 require_once('./app/Controllers/GivenPriceControllerTelegram.php');
 require_once('./views/Layouts/header.php');
