@@ -5,18 +5,22 @@ $finalResult = [];
 
 
 if (!empty($messagesBySender)) {
+    $isValidCustomer = true;
     // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
     $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
 
     $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
 
     foreach ($messagesBySender as $sender => $message) {
-        $finalResult[$sender] = setup_loading($conn, $customer, $completeCode, $notification_id);
+
+        $explodedCodes = implode("\n", $message);
+        $finalResult[$sender] = setup_loading($conn, $customer, $explodedCodes, $notification_id);
     }
 }
 
 function setup_loading($conn, $customer, $completeCode, $notification = null)
 {
+
     $explodedCodes = explode("\n", $completeCode);
 
     $results_array = [
@@ -24,17 +28,18 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         'existing' => [],
     ];
 
+    $explodedCodes = array_filter($explodedCodes, function ($code) {
+        if (strlen($code) > 5) {
+            return  $code;
+        }
+    });
+
     $explodedCodes = array_map(function ($code) {
         if (strlen($code) > 0) {
             return  preg_replace('/[^a-z0-9]/i', '', $code);
         }
     }, $explodedCodes);
 
-    $explodedCodes = array_filter($explodedCodes, function ($code) {
-        if (strlen($code) > 5) {
-            return  $code;
-        }
-    });
 
     // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
@@ -268,7 +273,11 @@ function givenPrice($conn, $codes, $relation_exist = null)
 
     if ($relation_exist) {
         usort($unsortedData, function ($a, $b) {
-            return $a['created_at'] < $b['created_at'];
+            if ($a['created_at'] === $b['created_at']) {
+                return 0;
+            }
+
+            return ($a['created_at'] < $b['created_at']) ? -1 : 1;
         });
     }
     $final_data = $relation_exist ? $unsortedData : $givenPrices;

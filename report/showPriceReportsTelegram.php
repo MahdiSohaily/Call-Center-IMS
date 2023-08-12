@@ -113,9 +113,7 @@ if ($isValidCustomer) {
                 bottom: 15px;
             }
         </style>
-        <a class="toTop" href="#">
-            <i class="material-icons">arrow_drop_up</i>
-        </a>
+
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -655,6 +653,9 @@ if ($isValidCustomer) {
                 ! ذخیره سازی اطلاعات ناموفق بود
             </p>
         </div>
+        <a class="toTop" href="#">
+            <i class="material-icons">arrow_drop_up</i>
+        </a>
         <script>
             // Global controllers for operations messages
             const form_success = document.getElementById('form_success');
@@ -916,7 +917,7 @@ if ($isValidCustomer) {
 <?php
     }
 } else {
-    echo "<p class='rtl col-6 mx-auto flex items-center justify-center h-full'>کاربر درخواست دهنده و یا مشتری مشخص شده معتبر نمی باشد</p>";
+    echo "<p class='rtl col-6 mx-auto flex items-center justify-center pt-10'>کد جدیدی در گروه جهت گزارش ارائه نگردیده است</p>";
 }
 
 require_once('./views/Layouts/footer.php');
