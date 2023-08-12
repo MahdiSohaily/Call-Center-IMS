@@ -1426,3 +1426,110 @@ Session:        	Can't garbage collect ping_delay_disconnect with message ID 726
 Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
 Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 6 seconds ago in DC 5, no response has been received or it wasn't yet handled!
 Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114351104 sent 7 seconds ago in DC 1, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 1, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 3, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 3, 0 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 8 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 7 seconds ago in DC 5, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 9 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423884114182004 sent 8 seconds ago in DC 5, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+Session:        	Can't garbage collect ping_delay_disconnect with message ID 7266423879818948708 sent 10 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+Session:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+ResponseHandler: 	Got a reponse incoming message pong with message ID 7266423879818948708, but there is no request!
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+ReadLoop:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection:     	Reconnecting DC -4.0
+Connection:     	Disconnecting from DC -4.0
+Connection:     	Disconnected from DC -4.0
+DataCenter:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.165.111:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -4.0
+Connection:     	Connected to DC -4.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection:     	Reconnecting DC -2.6
+Connection:     	Disconnecting from DC -2.6
+Connection:     	Disconnected from DC -2.6
+DataCenter:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection:     	Connecting to DC -2.6
+Connection:     	Connected to DC -2.6!
+DataCenter:     	OK!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.3, reconnecting...
+Connection:     	Reconnecting DC -2.3
+Connection:     	Disconnecting from DC -2.3
+Connection:     	Disconnected from DC -2.3
+DataCenter:     	Reconnecting to DC -2 (3) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (3)
+Connection:     	Connecting to DC -2.3
+Connection:     	Connected to DC -2.3!
+DataCenter:     	OK!
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423935653849756 sent 3 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
+ReadLoop:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection:     	Reconnecting DC -2.4
+Connection:     	Disconnecting from DC -2.4
+Connection:     	Disconnected from DC -2.4
+DataCenter:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection:     	Connecting to DC -2.4
+Connection:     	Connected to DC -2.4!
+DataCenter:     	OK!
+Session:        	Can't garbage collect updates.getDifference with message ID 7266423935653849756 sent 4 seconds ago in DC 4, no response has been received or it wasn't yet handled!
+Session:        	Garbage collected 0 outgoing messages in DC 4, 1 left
