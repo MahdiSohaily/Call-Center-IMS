@@ -1,0 +1,21 @@
+{
+    "name": "yadakshop/telegram_bot",
+    "description": "Project description",
+    "type": "project",
+    "minimum-stability": "beta",
+    "require": {
+        "danog/madelineproto": "^8"
+    },
+    "license": "AGPL-3.0-only",
+    "authors": [
+        {
+            "name": "Mahdi Rezaei",
+            "email": "mahdi.sohaily4030@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Your\\Project\\": "src/"
+        }
+    }
+}

@@ -188,18 +188,15 @@ if ($isValidCustomer) {
                     // Defining a params instance to be attached to the axios request
                     const params = new URLSearchParams();
                     params.append('sendMessage', 'sendMessage');
-                    params.append('customer', customer);
-                    params.append('price', goodPrice);
+                    params.append('customer', receiver);
+                    params.append('price', price);
                     params.append('code', code);
-
-                    console.log(params);
-
                     axios.post("../../../telebot/index.php", params)
                         .then(function(response) {
                             console.log(response.data);
                         })
                         .catch(function(error) {
-
+                            console.log(error);
                         });
                 }
 
@@ -737,7 +734,6 @@ if ($isValidCustomer) {
             <a class="toTop" href="#">
                 <i class="material-icons">arrow_drop_up</i>
             </a>
-
 <?php
         }
     }

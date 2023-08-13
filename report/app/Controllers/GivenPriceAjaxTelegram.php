@@ -8,13 +8,6 @@ $customer_id = $_POST['customer_id'];
 $notification_id = $_POST['notification_id'];
 $code = $_POST['code'];
 
-
-// Send Message using MadelineProto
-$MadelineProto->message->sendMessage(peer: $customer_id, message: "$code : $price");
-
-
-
-
 store($conn, $partNumber, $price, $customer_id, $notification_id);
 
 $sql = "SELECT id, partnumber FROM yadakshop1402.nisha WHERE partnumber = '$partNumber'";
