@@ -296,6 +296,12 @@ $title = '';
                                 تاریخچه
                             </a>
                         </li>
+                        <li>
+                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/showPriceReportsTelegram.php">
+                                <i class="fas fa-history"></i>
+                                تلگرام
+                            </a>
+                        </li>
                     </ul>
 
                     <div class=" flex items-top p-2">
