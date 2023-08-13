@@ -1,10 +1,11 @@
 <?php
-require_once '../vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 use danog\MadelineProto\API;
 
 $MadelineProto = new API('bot.madeline');
 
+define('BOT', $MadelineProto);
 // Works OK with both bots and userbots
 $MadelineProto->start();
 
@@ -79,4 +80,3 @@ if (filter_has_var(INPUT_POST, 'sendMessage')) {
         setcookie('last_read_message_id', $lastUnreadMessageId, time() + 86400); // Store for one day
     }
 }
-
