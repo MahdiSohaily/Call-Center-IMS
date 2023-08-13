@@ -1568,3 +1568,32 @@ DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 ma
 Connection:     	Connecting to DC -2.1
 Connection:     	Connected to DC -2.1!
 DataCenter:     	OK!
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\telegram\bot.madeline\safe.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\telegram\bot.madeline\safe.php.lock...
+SessionPaths:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\telegram\bot.madeline\lightState.php.lock...
+SessionPaths:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\telegram\bot.madeline\lightState.php.lock...
+APIWrapper:     	Saved session!
+ReadLoop:       	Got nothing in the socket in DC -2.0, reconnecting...
+Connection:     	Reconnecting DC -2.0
+Connection:     	Disconnecting from DC -2.0
+Connection:     	Disconnected from DC -2.0
+DataCenter:     	Reconnecting to DC -2 (0) from existing
+DataCenterConnection: 	Trying shared connection via tcp://149.154.167.223:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection:     	Connecting to DC -2.0
+Connection:     	Connected to DC -2.0!
+DataCenter:     	OK!
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 2.0
+PingLoop:       	Ping DC 4.0
+Session:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+PingLoop:       	Ping DC 3.0
+PingLoop:       	Ping DC 1.0
+PingLoop:       	Ping DC 5.0
+Session:        	Garbage collected 1 incoming messages in DC 1, 0 left
+Session:        	Garbage collected 1 outgoing messages in DC 1, 0 left
+Session:        	Garbage collected 0 outgoing messages in DC 3, 1 left
+Session:        	Garbage collected 0 outgoing messages in DC 5, 1 left
