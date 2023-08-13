@@ -860,7 +860,7 @@ if ($isValidCustomer) {
                 var sibling1HTML = sibling1.innerHTML;
                 var sibling2HTML = sibling2.innerHTML;
 
-                let text = sibling2HTML + ' : ' + (sibling1HTML === 'موجود نیست' ? '-' : tdElements[i].textContent);
+                let text = sibling2HTML + ' : ' + (sibling1HTML === 'موجود نیست' ? '-' : sibling1HTML);
 
                 copyToClipboard(text);
 
