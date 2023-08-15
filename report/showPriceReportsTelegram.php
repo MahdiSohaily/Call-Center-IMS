@@ -1,5 +1,5 @@
 <?php
-require_once './telegram.php';
+require_once '../../telegram/index.php';
 require_once './database/connect.php';
 require_once('./app/Controllers/GivenPriceControllerTelegram.php');
 require_once('./views/Layouts/header.php');
@@ -79,6 +79,8 @@ if ($isValidCustomer) {
             $completeCode = $reportResult['completeCode'];
             $notification = $reportResult['notification'];
             $rates = $reportResult['rates'];
+            $messages = $reportResult['messages'];
+            $fullName = $reportResult['fullName'];
 ?>
             <style>
                 #deleteGivenPrice {
@@ -144,7 +146,7 @@ if ($isValidCustomer) {
 
                     // Accessing the form fields to get thier value for an ajax store operation
                     const partNumber = e.getAttribute('data-part');
-                    const customer_id = document.getElementById('customer_id').value;
+                    const customer_id = e.getAttribute('data-customer');
                     const notification_id = document.getElementById('notification_id').value;
                     const code = e.getAttribute('data-code');
 
@@ -159,6 +161,8 @@ if ($isValidCustomer) {
                     params.append('notification_id', notification_id);
                     params.append('price', goodPrice);
                     params.append('code', code);
+
+                    console.log(customer_id);
 
                     sendMessage(customer_id, code, goodPrice);
 
@@ -188,10 +192,10 @@ if ($isValidCustomer) {
                     // Defining a params instance to be attached to the axios request
                     const params = new URLSearchParams();
                     params.append('sendMessage', 'sendMessage');
-                    params.append('customer', receiver);
+                    params.append('receiver', receiver);
                     params.append('price', price);
                     params.append('code', code);
-                    axios.post("../../../telebot/index.php", params)
+                    axios.post("../../telegram/index.php", params)
                         .then(function(response) {
                             console.log(response.data);
                         })
@@ -356,8 +360,9 @@ if ($isValidCustomer) {
                 foreach ($explodedCodes as $code_index => $code) {
                 ?>
                     <input type="checkbox" checked="true" name="panel" id="<?= $code ?>" class="hidden">
-                    <label for="<?= $code ?>" class="relative flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
-                        <?= $code ?>
+                    <label for="<?= $code ?>" class="relative justify-between flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
+                        <span> <?= $code ?></span>
+                        <span><?= $fullName ?></span>
                     </label>
                     <div class="accordion__content overflow-hidden bg-grey-lighter">
                         <?php
@@ -712,6 +717,25 @@ if ($isValidCustomer) {
                                     <!-- END GIVEN PRICE SECTION -->
                                     <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
 
+                                        <div class="p-3">
+                                            <table class=" min-w-full text-sm font-light">
+                                                <thead>
+                                                    <tr class="min-w-full bg-green-600">
+                                                        <td class="text-white bold text-center py-2 px-2 ">پیام دریافتی</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php foreach ($messages as $message) : ?>
+                                                        <tr class="min-w-full mb-4 border-b-2 border-white">
+                                                            <td class="text-gray-800 py-2 text-center bg-indigo-300">
+                                                                <?= nl2br($message) ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
                                 </div>
                             <?php }

@@ -4,7 +4,7 @@ $customer_info = null;
 $finalResult = [];
 
 
-if (!empty($messagesBySender)) {
+if (count($messagesBySender) > 0) {
     $isValidCustomer = true;
     // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
     $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
@@ -13,12 +13,14 @@ if (!empty($messagesBySender)) {
 
     foreach ($messagesBySender as $sender => $message) {
 
-        $explodedCodes = implode("\n", $message);
-        $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $notification_id);
+        $explodedCodes = implode("\n", $message['code']);
+        $userMessage = $message['message'];
+        $fullName = $message['name'][0];
+        $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage,  $fullName, $notification_id);
     }
 }
 
-function setup_loading($conn, $customer, $completeCode, $notification = null)
+function setup_loading($conn, $customer, $completeCode,  $userMessage,  $fullName, $notification = null)
 {
 
     $explodedCodes = explode("\n", $completeCode);
@@ -100,7 +102,9 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         'customer' => $customer,
         'completeCode' => $completeCode,
         'notification' => $notification,
-        'rates' => getSelectedRates($conn)
+        'rates' => getSelectedRates($conn),
+        'messages' => $userMessage,
+        'fullName' => $fullName,
     ]);
 }
 
