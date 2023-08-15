@@ -16,11 +16,13 @@ if (count($messagesBySender) > 0) {
         $explodedCodes = implode("\n", $message['code']);
         $userMessage = $message['message'];
         $fullName = $message['name'][0];
-        $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage,  $fullName, $notification_id);
+        $username = $message['userName'][0];
+        $profile = $message['profile'][0];
+        $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id);
     }
 }
 
-function setup_loading($conn, $customer, $completeCode,  $userMessage,  $fullName, $notification = null)
+function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null)
 {
 
     $explodedCodes = explode("\n", $completeCode);
@@ -105,6 +107,8 @@ function setup_loading($conn, $customer, $completeCode,  $userMessage,  $fullNam
         'rates' => getSelectedRates($conn),
         'messages' => $userMessage,
         'fullName' => $fullName,
+        'profile' =>  $profile,
+        'username' =>  $username,
     ]);
 }
 
