@@ -119,11 +119,16 @@ if ($isValidCustomer) {
                 }
 
                 .account_info {
-                    min-width: 300px;
+                    min-width: 200px;
                     display: flex;
                     align-items: center;
                     justify-items: start;
                     gap: 5px;
+                }
+
+                .socialMedia {
+                    font-size: 12px;
+                    color: lightgray;
                 }
             </style>
 
@@ -165,7 +170,8 @@ if ($isValidCustomer) {
                         <span> <?= $code ?></span>
                         <div class="account_info">
                             <img class="userImage" src="./img/telegram/<?= $profile ?>" alt="user Profile">
-                            <?= $username ?>
+                            <?= $fullName ?>
+                            <a class="socialMedia" href="https://t.me/<?= $username ?>"> (<?= $username ?>)</a>
                         </div>
                     </label>
                     <div class="accordion__content overflow-hidden bg-grey-lighter">
@@ -410,12 +416,20 @@ if ($isValidCustomer) {
                                                             <?php if ($price['price'] !== null && $price['price'] !== '') {
                                                                 if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
                                                                     <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer">
-                                                                    <?php } else { ?>
+                                                                    <?php } elseif (array_key_exists("ordered", $price) || $price['customerID'] == 2) { ?>
+                                                                    <tr class="min-w-full mb-1 bg-slate-300 hover:cursor-pointer">
+                                                                    <?php  } else {
+                                                                    ?>
                                                                     <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer">
-                                                                    <?php  } ?>
-                                                                    <td data-part="<?= $partNumber ?>" data-code="<?= $code ?>" onclick="deleteGivenPrice(this)" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
-                                                                        <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
-                                                                    </td>
+                                                                    <?php
+                                                                }
+                                                                if (array_key_exists("id", $price)) : ?>
+                                                                        <td onclick="deleteGivenPrice(this)" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                            <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
+                                                                        </td>
+                                                                        <?php else : ?>?
+                                                                        <td></td>
+                                                                    <?php endif; ?>
                                                                     <td onclick="setPrice(this)" data-code="<?= $code ?>" data-price="<?= $price['price'] ?>" data-part="<?= $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                         <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                                                     </td>
@@ -439,49 +453,134 @@ if ($isValidCustomer) {
                                                                         ?>
                                                                     </td>
                                                                     </tr>
-                                                                    <tr class="min-w-full mb-1 border-b-2 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'bg-red-500' : 'bg-indigo-300' ?>" data-price='<?= $price['price'] ?>'>
-                                                                        <td></td>
-                                                                        <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
-                                                                            <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
-                                                                                <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
-                                                                                <?php
-                                                                                $create = date($price['created_at']);
+                                                                    <?php if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
+                                                                        <tr class="min-w-full mb-1 border-b-2 bg-red-500">
+                                                                            <td></td>
+                                                                            <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
+                                                                                <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
+                                                                                    <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
+                                                                                    <?php
+                                                                                    $create = date($price['created_at']);
 
 
-                                                                                $now = new DateTime(); // current date time
-                                                                                $date_time = new DateTime($create); // date time from string
-                                                                                $interval = $now->diff($date_time); // difference between two date times
-                                                                                $days = $interval->format('%a'); // difference in days
-                                                                                $hours = $interval->format('%h'); // difference in hours
-                                                                                $minutes = $interval->format('%i'); // difference in minutes
-                                                                                $seconds = $interval->format('%s'); // difference in seconds
+                                                                                    $now = new DateTime(); // current date time
+                                                                                    $date_time = new DateTime($create); // date time from string
+                                                                                    $interval = $now->diff($date_time); // difference between two date times
+                                                                                    $days = $interval->format('%a'); // difference in days
+                                                                                    $hours = $interval->format('%h'); // difference in hours
+                                                                                    $minutes = $interval->format('%i'); // difference in minutes
+                                                                                    $seconds = $interval->format('%s'); // difference in seconds
 
-                                                                                $text = '';
+                                                                                    $text = '';
 
-                                                                                if ($days) {
-                                                                                    $text .= " $days روز و ";
-                                                                                }
+                                                                                    if ($days) {
+                                                                                        $text .= " $days روز و ";
+                                                                                    }
 
-                                                                                if ($hours) {
-                                                                                    $text .= "$hours ساعت ";
-                                                                                }
+                                                                                    if ($hours) {
+                                                                                        $text .= "$hours ساعت ";
+                                                                                    }
 
-                                                                                if (!$days && $minutes) {
-                                                                                    $text .= "$minutes دقیقه ";
-                                                                                }
+                                                                                    if (!$days && $minutes) {
+                                                                                        $text .= "$minutes دقیقه ";
+                                                                                    }
 
-                                                                                if (!$days && !$hours && $seconds) {
-                                                                                    $text .= "$seconds ثانیه ";
-                                                                                }
+                                                                                    if (!$days && !$hours && $seconds) {
+                                                                                        $text .= "$seconds ثانیه ";
+                                                                                    }
 
-                                                                                echo "$text قبل";
-                                                                                ?>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
+                                                                                    echo "$text قبل";
+                                                                                    ?>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php } elseif (array_key_exists("ordered", $price) || $price['customerID'] == 2) { ?>
+                                                                        <tr class="min-w-full mb-1 bg-slate-400 hover:cursor-pointer">
+                                                                            <td></td>
+                                                                            <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
+                                                                                <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
+                                                                                    <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
+                                                                                    <?php
+                                                                                    $create = date($price['created_at']);
 
-                                                            <?php }
-                                                        } ?>
+
+                                                                                    $now = new DateTime(); // current date time
+                                                                                    $date_time = new DateTime($create); // date time from string
+                                                                                    $interval = $now->diff($date_time); // difference between two date times
+                                                                                    $days = $interval->format('%a'); // difference in days
+                                                                                    $hours = $interval->format('%h'); // difference in hours
+                                                                                    $minutes = $interval->format('%i'); // difference in minutes
+                                                                                    $seconds = $interval->format('%s'); // difference in seconds
+
+                                                                                    $text = '';
+
+                                                                                    if ($days) {
+                                                                                        $text .= " $days روز و ";
+                                                                                    }
+
+                                                                                    if ($hours) {
+                                                                                        $text .= "$hours ساعت ";
+                                                                                    }
+
+                                                                                    if (!$days && $minutes) {
+                                                                                        $text .= "$minutes دقیقه ";
+                                                                                    }
+
+                                                                                    if (!$days && !$hours && $seconds) {
+                                                                                        $text .= "$seconds ثانیه ";
+                                                                                    }
+
+                                                                                    echo "$text قبل";
+                                                                                    ?>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php  } else {
+                                                                    ?>
+                                                                        <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer">
+                                                                            <td></td>
+                                                                            <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
+                                                                                <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
+                                                                                    <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
+                                                                                    <?php
+                                                                                    $create = date($price['created_at']);
+
+
+                                                                                    $now = new DateTime(); // current date time
+                                                                                    $date_time = new DateTime($create); // date time from string
+                                                                                    $interval = $now->diff($date_time); // difference between two date times
+                                                                                    $days = $interval->format('%a'); // difference in days
+                                                                                    $hours = $interval->format('%h'); // difference in hours
+                                                                                    $minutes = $interval->format('%i'); // difference in minutes
+                                                                                    $seconds = $interval->format('%s'); // difference in seconds
+
+                                                                                    $text = '';
+
+                                                                                    if ($days) {
+                                                                                        $text .= " $days روز و ";
+                                                                                    }
+
+                                                                                    if ($hours) {
+                                                                                        $text .= "$hours ساعت ";
+                                                                                    }
+
+                                                                                    if (!$days && $minutes) {
+                                                                                        $text .= "$minutes دقیقه ";
+                                                                                    }
+
+                                                                                    if (!$days && !$hours && $seconds) {
+                                                                                        $text .= "$seconds ثانیه ";
+                                                                                    }
+
+                                                                                    echo "$text قبل";
+                                                                                    ?>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                            <?php
+                                                                    }
+                                                                }
+                                                            } ?>
                                                         <?php } else { ?>
                                                             <tr class="min-w-full mb-4 border-b-2 border-white">
                                                                 <td colspan="3" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
@@ -602,7 +701,7 @@ if ($isValidCustomer) {
                     const params = new URLSearchParams();
                     params.append('store_price', 'store_price');
                     params.append('partNumber', partNumber);
-                    params.append('customer_id', 1);
+                    params.append('customer_id', 2);
                     params.append('notification_id', notification_id);
                     params.append('price', goodPrice);
                     params.append('code', code);
