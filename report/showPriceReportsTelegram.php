@@ -537,7 +537,7 @@ if ($isValidCustomer) {
                                                                         </tr>
                                                                     <?php  } else {
                                                                     ?>
-                                                                        <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer">
+                                                                        <tr class="min-w-full mb-1  bg-indigo-300 hover:cursor-pointer">
                                                                             <td></td>
                                                                             <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
                                                                                 <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
@@ -705,8 +705,6 @@ if ($isValidCustomer) {
                     params.append('notification_id', notification_id);
                     params.append('price', goodPrice);
                     params.append('code', code);
-
-                    console.log(customer_id);
 
                     sendMessage(customer_id, code, goodPrice);
 
