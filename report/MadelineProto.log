@@ -7581,3 +7581,28 @@ APIWrapper, AfgDeveloper:     	Saved session!
 Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 3 left
 Session, AfgDeveloper:        	Garbage collected 5 incoming messages in DC 4, 0 left
 Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.1
+Connection, AfgDeveloper:     	Disconnecting from DC -2.1
+Connection, AfgDeveloper:     	Disconnected from DC -2.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -2.1
+Connection, AfgDeveloper:     	Connected to DC -2.1!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.6, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.6
+Connection, AfgDeveloper:     	Disconnecting from DC -2.6
+Connection, AfgDeveloper:     	Disconnected from DC -2.6
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (6) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (6)
+Connection, AfgDeveloper:     	Connecting to DC -2.6
+Connection, AfgDeveloper:     	Connected to DC -2.6!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
