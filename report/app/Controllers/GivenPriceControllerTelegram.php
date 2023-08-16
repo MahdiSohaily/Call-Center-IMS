@@ -285,7 +285,7 @@ function givenPrice($conn, $codes, $relation_exist = null)
                 return 0;
             }
 
-            return ($a['created_at'] < $b['created_at']) ? -1 : 1;
+            return ($b['created_at'] < $a['created_at']) ? -1 : 1;
         });
     }
     $final_data = $relation_exist ? $unsortedData : $givenPrices;

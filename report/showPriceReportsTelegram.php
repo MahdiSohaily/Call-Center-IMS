@@ -120,7 +120,7 @@ function convertToPersian($number)
 <?php
 
 if ($isValidCustomer) {
-    foreach ($finalResult as $reportResult) {
+    foreach ($finalResult as $reportResult) :
         if ($reportResult) {
             $explodedCodes = $reportResult['explodedCodes'];
             $not_exist = $reportResult['not_exist'];
@@ -134,37 +134,6 @@ if ($isValidCustomer) {
             $profile = $reportResult['profile'];
             $username = $reportResult['username'];
 ?>
-
-
-            <div class="grid grid-cols-6">
-                <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
-                    <table class="min-w-full text-sm font-light p-2">
-                        <thead class="font-medium">
-                            <tr>
-                                <th class="text-left px-3 py-2">کد فنی</th>
-                                <th class="text-left px-3 py-2">قیمت</th>
-                                <th class="text-right  py-2" onclick="closeTab()">
-                                    <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="priceReport">
-                            <?php
-                            foreach ($explodedCodes as $code) { ?>
-                                <tr class="odd:bg-gray-400">
-                                    <td class="px-3 py-2 text-left text-white"><?= $code ?></td>
-                                    <td class="px-3 py-2 text-left text-white" id="<?= $code . '-append' ?>"></td>
-                                    <td class="text-right  py-2" onclick="closeTab()">
-                                        <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
-                                    </td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
             <div class="accordion mb-10">
                 <?php
                 foreach ($explodedCodes as $code_index => $code) {
@@ -415,9 +384,8 @@ if ($isValidCustomer) {
                                                 </thead>
                                                 <tbody id="price-<?= $partNumber ?>">
                                                     <?php if ($givenPrice !== null) {
-                                                    ?>
-                                                        <?php foreach ($givenPrice as $price) { ?>
-                                                            <?php if ($price['price'] !== null && $price['price'] !== '') {
+                                                        foreach ($givenPrice as $price) {
+                                                            if ($price['price'] !== null && $price['price'] !== '') {
                                                                 if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
                                                                     <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer">
                                                                     <?php } elseif (array_key_exists("ordered", $price) || $price['customerID'] == 2) { ?>
@@ -431,7 +399,7 @@ if ($isValidCustomer) {
                                                                         <td onclick="deleteGivenPrice(this)" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                             <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
                                                                         </td>
-                                                                        <?php else : ?>?
+                                                                    <?php else : ?>
                                                                         <td></td>
                                                                     <?php endif; ?>
                                                                     <td onclick="setPrice(this)" data-code="<?= $code ?>" data-price="<?= $price['price'] ?>" data-part="<?= $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
@@ -596,9 +564,7 @@ if ($isValidCustomer) {
                                             </table>
                                             <br>
                                             <form action="" method="post" onsubmit="event.preventDefault()">
-
-                                                <?php
-                                                date_default_timezone_set("Asia/Tehran"); ?>
+                                                <?php date_default_timezone_set("Asia/Tehran"); ?>
                                                 <input type="text" hidden name="store_price" value="store_price">
                                                 <input type="text" hidden name="partNumber" value="<?= $partNumber ?>">
                                                 <input type="text" hidden id="customer_id" name="customer_id" value="<?= $customer ?>">
@@ -668,7 +634,7 @@ if ($isValidCustomer) {
 
 <?php
         }
-    }
+    endforeach;
 } else {
     echo "<p class='rtl col-6 mx-auto flex items-center justify-center pt-10'>کد جدیدی در گروه جهت گزارش ارائه نگردیده است</p>";
 }

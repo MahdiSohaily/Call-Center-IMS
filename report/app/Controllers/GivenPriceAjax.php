@@ -35,7 +35,7 @@ if (isset($_POST['store_price'])) {
                         <td onclick="deleteGivenPrice(this)" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                             <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
                         </td>
-                        <?php else : ?>?
+                    <?php else : ?>
                         <td></td>
                     <?php endif; ?>
                     <td onclick="setPrice(this)" data-code="<?= $code ?>" data-price="<?= $price['price'] ?>" data-part="<?= $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
@@ -188,8 +188,8 @@ if (isset($_POST['store_price'])) {
             <?php
                     }
                 }
-            } ?>
-        <?php } else { ?>
+            }
+        } else { ?>
             <tr class="min-w-full mb-4 border-b-2 border-white">
                 <td colspan="3" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
                     !! موردی برای نمایش وجود ندارد
