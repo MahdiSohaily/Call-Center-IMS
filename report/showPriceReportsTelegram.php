@@ -598,13 +598,16 @@ if ($isValidCustomer) {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach ($messages as $message) : ?>
-                                                        <tr class="min-w-full mb-4 border-b-2 border-white">
-                                                            <td class="text-gray-800 py-2 text-center bg-indigo-300">
-                                                                <?= nl2br($message) ?>
-                                                            </td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
+                                                    <?php foreach ($messages as $message) :
+                                                        $pattern = $partNumber;
+                                                        if (preg_match("/$pattern/i", $message)) { ?>
+                                                            <tr class="min-w-full mb-4 border-b-2 border-white">
+                                                                <td class="text-gray-800 py-2 text-center bg-indigo-300">
+                                                                    <?= nl2br($message); ?>
+                                                                </td>
+                                                            </tr>
+                                                    <?php  }
+                                                    endforeach; ?>
                                                 </tbody>
                                             </table>
 
