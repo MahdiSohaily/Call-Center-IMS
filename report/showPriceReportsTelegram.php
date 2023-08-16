@@ -69,6 +69,56 @@ function convertToPersian($number)
     return $persianNumber;
 }
 
+?>
+<style>
+    #deleteGivenPrice {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    #deleteGivenPrice:hover {
+        color: black;
+    }
+
+    .toTop {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .toTop i {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .toTop:hover {
+        bottom: 15px;
+    }
+
+    .account_info {
+        min-width: 200px;
+        display: flex;
+        align-items: center;
+        justify-items: start;
+        gap: 5px;
+    }
+
+    .socialMedia {
+        font-size: 12px;
+        color: lightgray;
+    }
+</style>
+<?php
+
 if ($isValidCustomer) {
     foreach ($finalResult as $reportResult) {
         if ($reportResult) {
@@ -84,53 +134,7 @@ if ($isValidCustomer) {
             $profile = $reportResult['profile'];
             $username = $reportResult['username'];
 ?>
-            <style>
-                #deleteGivenPrice {
-                    font-size: 14px;
-                    font-weight: bold;
-                }
 
-                #deleteGivenPrice:hover {
-                    color: black;
-                }
-
-                .toTop {
-                    position: fixed;
-                    bottom: 10px;
-                    right: 10px;
-                    width: 40px;
-                    height: 40px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: white;
-                    border-radius: 5px;
-                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-                    transition: all 0.2s ease-in-out;
-                }
-
-                .toTop i {
-                    font-size: 28px;
-                    font-weight: bold;
-                }
-
-                .toTop:hover {
-                    bottom: 15px;
-                }
-
-                .account_info {
-                    min-width: 200px;
-                    display: flex;
-                    align-items: center;
-                    justify-items: start;
-                    gap: 5px;
-                }
-
-                .socialMedia {
-                    font-size: 12px;
-                    color: lightgray;
-                }
-            </style>
 
             <div class="grid grid-cols-6">
                 <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
@@ -661,212 +665,7 @@ if ($isValidCustomer) {
             <a class="toTop" href="#">
                 <i class="material-icons">arrow_drop_up</i>
             </a>
-            <script>
-                // Global controllers for operations messages
-                const form_success = document.getElementById('form_success');
-                const form_error = document.getElementById('form_error');
-                // Global price variable
-                let price = null;
 
-                // A function to update the global price while typing in the input feild
-                function update_price(element) {
-                    price = element.value;
-                    const partNumber = element.getAttribute('data-code').split('-')[0];
-                    const target = document.getElementById(partNumber + '-append');
-
-                    target.innerHTML = price;
-                }
-
-                // A function to create the relationship
-                function registerPrice(e) {
-                    e.disabled = true;
-
-                    setTimeout(() => {
-                        e.disabled = false;
-                        e.innerHTML = `
-                        ثبت قیمت
-                        <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`
-                    }, 5000);
-
-                    // Accessing the form fields to get thier value for an ajax store operation
-                    const partNumber = e.getAttribute('data-part');
-                    const customer_id = e.getAttribute('data-customer');
-                    const notification_id = document.getElementById('notification_id').value;
-                    const code = e.getAttribute('data-code');
-
-                    const goodPrice = document.getElementById(partNumber + '-price').value;
-                    const resultBox = document.getElementById('price-' + partNumber);
-
-                    // Defining a params instance to be attached to the axios request
-                    const params = new URLSearchParams();
-                    params.append('store_price', 'store_price');
-                    params.append('partNumber', partNumber);
-                    params.append('customer_id', 2);
-                    params.append('notification_id', notification_id);
-                    params.append('price', goodPrice);
-                    params.append('code', code);
-
-                    sendMessage(customer_id, code, goodPrice);
-
-                    axios.post("./app/Controllers/GivenPriceAjax.php", params)
-                        .then(function(response) {
-                            if (response.data) {
-                                form_success.style.bottom = '10px';
-                                goodPrice.value = null;
-                                setTimeout(() => {
-                                    form_success.style.bottom = '-300px';
-                                    resultBox.innerHTML = (response.data);
-                                }, 2000)
-                            } else {
-                                form_error.style.bottom = '10px';
-                                setTimeout(() => {
-                                    form_error.style.bottom = '-300px';
-                                    location.reload();
-                                }, 2000)
-                            }
-                        })
-                        .catch(function(error) {
-
-                        });
-                }
-
-                function sendMessage(receiver, code, price) {
-                    // Defining a params instance to be attached to the axios request
-                    const params = new URLSearchParams();
-                    params.append('sendMessage', 'sendMessage');
-                    params.append('receiver', receiver);
-                    params.append('price', price);
-                    params.append('code', code);
-                    axios.post("../../telegram/index.php", params)
-                        .then(function(response) {
-                            console.log(response.data);
-                        })
-                        .catch(function(error) {
-                            console.log(error);
-                        });
-                }
-
-                // A function to set the price while clicking on the prices table
-                function setPrice(element) {
-                    newPrice = element.getAttribute('data-price');
-                    part = element.getAttribute('data-part');
-                    const input = document.getElementById(part + '-price');
-                    input.value = newPrice;
-                    price = newPrice;
-
-
-                    const partNumber = element.getAttribute('data-code').split('-')[0];
-
-                    const target = document.getElementById(partNumber + '-append');
-                    target.innerHTML = price;
-                }
-
-                // A function to copy content to cliboard
-                function copyPrice(elem) {
-                    // Get the text field
-                    let parentElement = document.getElementById("priceReport");
-
-                    let tdElements = parentElement.getElementsByTagName('td');
-                    let tdTextContent = [];
-
-                    const elementLenght = tdElements.length;
-
-                    for (let i = 0; i < elementLenght; i++) {
-                        if (tdElements[i].textContent.trim() !== 'content_copy') {
-                            let text = tdElements[i].textContent === 'موجود نیست' ? '-' : tdElements[i].textContent;
-                            tdTextContent.push(text);
-                        }
-                    }
-
-                    const chunkSize = 2;
-
-                    let finalResult = []
-                    const size = tdTextContent.length;
-                    for (let i = 0; i < size; i += chunkSize) {
-                        finalResult.push(tdTextContent.slice(i, i + chunkSize));
-                    }
-
-                    // Copy the text inside the text field
-
-                    let text = '';
-                    for (let item of finalResult) {
-                        text += item.join(' : ');
-                        text += '\n';
-                    }
-                    copyToClipboard(text);
-
-                    // Alert the copied text
-                    elem.innerHTML = `done`;
-                    setTimeout(() => {
-                        elem.innerHTML = `content_copy`;
-                    }, 1500);
-
-                }
-
-                function copyItemPrice(elem) {
-                    // Get the parent <td> element
-                    var parentTd = elem.parentNode;
-
-                    // Get the siblings <td> elements
-                    var sibling1 = parentTd.previousElementSibling;
-                    var sibling2 = sibling1.previousElementSibling;
-
-                    // Retrieve the innerHTML of the sibling <td> elements
-                    var sibling1HTML = sibling1.innerHTML;
-                    var sibling2HTML = sibling2.innerHTML;
-
-                    let text = sibling2HTML + ' : ' + (sibling1HTML === 'موجود نیست' ? '-' : sibling1HTML);
-
-                    copyToClipboard(text);
-
-                    // Alert the copied text
-                    elem.innerHTML = `done`;
-                    setTimeout(() => {
-                        elem.innerHTML = `content_copy`;
-                    }, 1500);
-                }
-
-                function deleteGivenPrice(element) {
-                    const partNumber = element.getAttribute('data-part');
-                    const id = element.getAttribute('data-del');
-
-                    // Accessing the form fields to get thier value for an ajax store operation
-                    const customer_id = document.getElementById('customer_id').value;
-                    const notification_id = document.getElementById('notification_id').value;
-                    const code = element.getAttribute('data-code');
-                    const resultBox = document.getElementById('price-' + partNumber);
-                    // Defining a params instance to be attached to the axios request
-                    const params = new URLSearchParams();
-                    params.append('delete_price', 'delete_price');
-                    params.append('partNumber', partNumber);
-                    params.append('customer_id', customer_id);
-                    params.append('notification_id', notification_id);
-                    params.append('code', code);
-                    params.append('id', id);
-
-                    axios.post("./app/Controllers/deleteGivenPrice.php", params)
-                        .then(function(response) {
-                            if (response.data) {
-                                console.log(response.data);
-                                resultBox.innerHTML = (response.data);
-                            } else {
-                                console.log(response.data);
-                            }
-                        })
-                        .catch(function(error) {
-
-                        });
-                }
-
-                function closeTab() {
-                    // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
-                    setTimeout(function() {
-                        // Try to close the window (tab)
-                        // This may not work if the window was not opened by a script or if the browser blocks the action.
-                        window.close();
-                    }, 60000);
-                }
-            </script>
 <?php
         }
     }
@@ -874,4 +673,212 @@ if ($isValidCustomer) {
     echo "<p class='rtl col-6 mx-auto flex items-center justify-center pt-10'>کد جدیدی در گروه جهت گزارش ارائه نگردیده است</p>";
 }
 
+?>
+<script>
+    // Global controllers for operations messages
+    const form_success = document.getElementById('form_success');
+    const form_error = document.getElementById('form_error');
+    // Global price variable
+    let price = null;
+
+    // A function to update the global price while typing in the input feild
+    function update_price(element) {
+        price = element.value;
+        const partNumber = element.getAttribute('data-code').split('-')[0];
+        const target = document.getElementById(partNumber + '-append');
+
+        target.innerHTML = price;
+    }
+
+    // A function to create the relationship
+    function registerPrice(e) {
+        e.disabled = true;
+
+        setTimeout(() => {
+            e.disabled = false;
+            e.innerHTML = `
+                        ثبت قیمت
+                        <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`
+        }, 5000);
+
+        // Accessing the form fields to get thier value for an ajax store operation
+        const partNumber = e.getAttribute('data-part');
+        const customer_id = e.getAttribute('data-customer');
+        const notification_id = document.getElementById('notification_id').value;
+        const code = e.getAttribute('data-code');
+
+        const goodPrice = document.getElementById(partNumber + '-price').value;
+        const resultBox = document.getElementById('price-' + partNumber);
+
+        // Defining a params instance to be attached to the axios request
+        const params = new URLSearchParams();
+        params.append('store_price', 'store_price');
+        params.append('partNumber', partNumber);
+        params.append('customer_id', 2);
+        params.append('notification_id', notification_id);
+        params.append('price', goodPrice);
+        params.append('code', code);
+
+        sendMessage(customer_id, code, goodPrice);
+
+        axios.post("./app/Controllers/GivenPriceAjax.php", params)
+            .then(function(response) {
+                if (response.data) {
+                    form_success.style.bottom = '10px';
+                    goodPrice.value = null;
+                    setTimeout(() => {
+                        form_success.style.bottom = '-300px';
+                        resultBox.innerHTML = (response.data);
+                    }, 2000)
+                } else {
+                    form_error.style.bottom = '10px';
+                    setTimeout(() => {
+                        form_error.style.bottom = '-300px';
+                        location.reload();
+                    }, 2000)
+                }
+            })
+            .catch(function(error) {
+
+            });
+    }
+
+    function sendMessage(receiver, code, price) {
+        // Defining a params instance to be attached to the axios request
+        const params = new URLSearchParams();
+        params.append('sendMessage', 'sendMessage');
+        params.append('receiver', receiver);
+        params.append('price', price);
+        params.append('code', code);
+        axios.post("../../telegram/index.php", params)
+            .then(function(response) {
+                console.log(response.data);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    // A function to set the price while clicking on the prices table
+    function setPrice(element) {
+        newPrice = element.getAttribute('data-price');
+        part = element.getAttribute('data-part');
+        const input = document.getElementById(part + '-price');
+        input.value = newPrice;
+        price = newPrice;
+
+
+        const partNumber = element.getAttribute('data-code').split('-')[0];
+
+        const target = document.getElementById(partNumber + '-append');
+        target.innerHTML = price;
+    }
+
+    // A function to copy content to cliboard
+    function copyPrice(elem) {
+        // Get the text field
+        let parentElement = document.getElementById("priceReport");
+
+        let tdElements = parentElement.getElementsByTagName('td');
+        let tdTextContent = [];
+
+        const elementLenght = tdElements.length;
+
+        for (let i = 0; i < elementLenght; i++) {
+            if (tdElements[i].textContent.trim() !== 'content_copy') {
+                let text = tdElements[i].textContent === 'موجود نیست' ? '-' : tdElements[i].textContent;
+                tdTextContent.push(text);
+            }
+        }
+
+        const chunkSize = 2;
+
+        let finalResult = []
+        const size = tdTextContent.length;
+        for (let i = 0; i < size; i += chunkSize) {
+            finalResult.push(tdTextContent.slice(i, i + chunkSize));
+        }
+
+        // Copy the text inside the text field
+
+        let text = '';
+        for (let item of finalResult) {
+            text += item.join(' : ');
+            text += '\n';
+        }
+        copyToClipboard(text);
+
+        // Alert the copied text
+        elem.innerHTML = `done`;
+        setTimeout(() => {
+            elem.innerHTML = `content_copy`;
+        }, 1500);
+
+    }
+
+    function copyItemPrice(elem) {
+        // Get the parent <td> element
+        var parentTd = elem.parentNode;
+
+        // Get the siblings <td> elements
+        var sibling1 = parentTd.previousElementSibling;
+        var sibling2 = sibling1.previousElementSibling;
+
+        // Retrieve the innerHTML of the sibling <td> elements
+        var sibling1HTML = sibling1.innerHTML;
+        var sibling2HTML = sibling2.innerHTML;
+
+        let text = sibling2HTML + ' : ' + (sibling1HTML === 'موجود نیست' ? '-' : sibling1HTML);
+
+        copyToClipboard(text);
+
+        // Alert the copied text
+        elem.innerHTML = `done`;
+        setTimeout(() => {
+            elem.innerHTML = `content_copy`;
+        }, 1500);
+    }
+
+    function deleteGivenPrice(element) {
+        const partNumber = element.getAttribute('data-part');
+        const id = element.getAttribute('data-del');
+
+        // Accessing the form fields to get thier value for an ajax store operation
+        const customer_id = document.getElementById('customer_id').value;
+        const notification_id = document.getElementById('notification_id').value;
+        const code = element.getAttribute('data-code');
+        const resultBox = document.getElementById('price-' + partNumber);
+        // Defining a params instance to be attached to the axios request
+        const params = new URLSearchParams();
+        params.append('delete_price', 'delete_price');
+        params.append('partNumber', partNumber);
+        params.append('customer_id', customer_id);
+        params.append('notification_id', notification_id);
+        params.append('code', code);
+        params.append('id', id);
+
+        axios.post("./app/Controllers/deleteGivenPrice.php", params)
+            .then(function(response) {
+                if (response.data) {
+                    console.log(response.data);
+                    resultBox.innerHTML = (response.data);
+                } else {
+                    console.log(response.data);
+                }
+            })
+            .catch(function(error) {
+
+            });
+    }
+
+    function closeTab() {
+        // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
+        setTimeout(function() {
+            // Try to close the window (tab)
+            // This may not work if the window was not opened by a script or if the browser blocks the action.
+            window.close();
+        }, 60000);
+    }
+</script>
+<?php
 require_once('./views/Layouts/footer.php');
