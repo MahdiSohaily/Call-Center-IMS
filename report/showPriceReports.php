@@ -2,71 +2,7 @@
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceController.php');
-
-function displayTimePassed($datetimeString)
-{
-    if ($datetimeString) {
-        $date_parts = explode('/', $datetimeString);
-        $datetimeString = jalali_to_gregorian(abs($date_parts[0]), abs($date_parts[1]), abs($date_parts[2]));
-        $month_days_num = [30, 29, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30];
-        date_default_timezone_set('Asia/Tehran');
-        $datetime = new DateTime(join('-', $datetimeString));
-        $month = $datetime->format("m");
-        $now = new DateTime();
-
-        $interval = $now->diff($datetime);
-
-        $totalDays = $interval->days;
-
-        $passedYears = floor($totalDays / 365);
-        $remainingDays = $totalDays % 365;
-
-        $passedMonths = floor($remainingDays / $month_days_num[$month - 1]);
-        $passedDays = $remainingDays % $month_days_num[$month - 1];
-
-        $persianYears = convertToPersian($passedYears);
-        $persianMonths = convertToPersian($passedMonths);
-        $persianDays = convertToPersian($passedDays);
-
-        $result = "";
-
-        if ($passedYears > 0) {
-            $result .= "$persianYears سال";
-        }
-
-        if ($passedMonths > 0) {
-            if ($passedYears > 0) {
-                $result .= " و ";
-            }
-            $result .= "$persianMonths ماه";
-        }
-
-        if ($passedDays > 0) {
-            if ($passedYears > 0 || $passedMonths > 0) {
-                $result .= " و ";
-            }
-            $result .= "$persianDays روز";
-        }
-        return $result;
-    }
-
-    return 'تاریخ ورود موجود نیست';
-}
-
-
-function convertToPersian($number)
-{
-    $persianDigits = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
-    $persianNumber = '';
-
-    while ($number > 0) {
-        $digit = $number % 10;
-        $persianNumber = $persianDigits[$digit] . $persianNumber;
-        $number = (int)($number / 10);
-    }
-
-    return $persianNumber;
-}
+require_once './utilities/helper.php';
 
 if ($isValidCustomer) {
     if ($finalResult) {
@@ -166,12 +102,11 @@ if ($isValidCustomer) {
             <?php
             foreach ($explodedCodes as $code_index => $code) {
             ?>
-                <input type="checkbox" checked="true" name="panel" id="<?php echo $code ?>" class="hidden">
-                <label for="<?php echo $code ?>" class="relative flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
+                <div class="accordion-header bg-slate-500">
                     <?php echo $code ?>
                     <span class="accordion-icon">+</span>
-                </label>
-                <div class="accordion__content overflow-hidden bg-grey-lighter">
+                </div>
+                <div class="accordion-content bg-grey-lighter">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {
