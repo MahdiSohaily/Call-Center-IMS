@@ -8587,3 +8587,11 @@ Connection, AfgDeveloper:     	Connected to DC -4.2!
 DataCenter, AfgDeveloper:     	OK!
 Session, AfgDeveloper:        	Garbage collected 6 incoming messages in DC 4, 0 left
 Session, AfgDeveloper:        	Garbage collected 6 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewMessage
+UpdateHandler, AfgDeveloper:  	Saving update of type updateReadHistoryInbox
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 0 left
