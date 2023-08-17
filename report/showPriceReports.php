@@ -13,11 +13,9 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
-
 ?>
-        <a class="toTop" href="#">
-            <i class="material-icons">arrow_drop_up</i>
-        </a>
+
+
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -102,12 +100,31 @@ if ($isValidCustomer) {
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
-            ?>
-                <div class="accordion-header bg-slate-500">
-                    <?php echo $code ?>
-                    <span class="accordion-icon">+</span>
+                $max = 0;
+                if (array_key_exists($code, $existing)) {
+                    foreach ($existing[$code] as $item) {
+                        $max  += max($item['relation']['sorted']);
+                    }
+                }
+
+            ?><div class="accordion-header bg-slate-500">
+                    <p class="flex items-center gap-2">
+                        <?php echo "<span class='text-white'>{$code}</span>";
+                        if ($max > 0) {
+                            echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
+                        } else {
+                            echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
+                        } ?>
+
+                    </p>
+                    <?php
+                    if ($max > 0) {
+                        echo '<span class="accordion-icon text-white">+</span>';
+                    } else {
+                        echo '<span class="accordion-icon text-white">-</span>';
+                    } ?>
                 </div>
-                <div class="accordion-content bg-grey-lighter">
+                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 200vh' : 'max-height: 0vh' ?>">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {
@@ -124,7 +141,6 @@ if ($isValidCustomer) {
                             $completeCode = $completeCode;
                     ?>
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-2 lg:p-2 overflow-auto">
-
                                 <!-- Start the code info section -->
                                 <div class="min-w-full bg-white rounded-lg overflow-auto shadow-md mt-2">
                                     <div class="rtl p-3">
@@ -443,7 +459,7 @@ if ($isValidCustomer) {
                                                 <label class="block font-medium text-sm text-gray-700">
                                                     قیمت
                                                 </label>
-                                                <input onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
+                                                <input value="<?= current($givenPrice)['price'] ?>" onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
                                                 <p class="mt-2"></p>
                                             </div>
 
@@ -557,6 +573,9 @@ if ($isValidCustomer) {
                 ! ذخیره سازی اطلاعات ناموفق بود
             </p>
         </div>
+        <a class="toTop" href="#">
+            <i class="material-icons">arrow_drop_up</i>
+        </a>
         <script src="./public/js/givePrice.js"></script>
 <?php
     }

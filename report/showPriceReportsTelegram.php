@@ -22,17 +22,31 @@ if ($isValidCustomer) {
             <div class="accordion mb-10">
                 <?php
                 foreach ($explodedCodes as $code_index => $code) {
+                    $max = 0;
+                    if (array_key_exists($code, $existing)) {
+                        foreach ($existing[$code] as $item) {
+                            $max  += max($item['relation']['sorted']);
+                        }
+                    }
                 ?>
-                    <input type="checkbox" checked="true" name="panel" id="<?= $code ?>" class="hidden">
-                    <label for="<?= $code ?>" class="relative justify-between flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
-                        <span> <?= $code ?></span>
-                        <div class="account_info">
-                            <img class="userImage" src="./img/telegram/<?= $profile ?>" alt="user Profile">
-                            <?= $fullName ?>
-                            <a class="socialMedia" href="https://t.me/<?= $username ?>"> (<?= $username ?>)</a>
-                        </div>
-                    </label>
-                    <div class="accordion__content overflow-hidden bg-grey-lighter">
+                    <div class="accordion-header bg-slate-500">
+                        <p class="flex items-center gap-2">
+                            <?php echo "<span class='text-white'>{$code}</span>";
+                            if ($max > 0) {
+                                echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
+                            } else {
+                                echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
+                            } ?>
+
+                        </p>
+                        <?php
+                        if ($max > 0) {
+                            echo '<span class="accordion-icon text-white">+</span>';
+                        } else {
+                            echo '<span class="accordion-icon text-white">-</span>';
+                        } ?>
+                    </div>
+                    <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 200vh' : 'max-height: 0vh' ?>">
                         <?php
                         if (array_key_exists($code, $existing)) {
                             foreach ($existing[$code] as $index => $item) {

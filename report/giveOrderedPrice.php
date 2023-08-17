@@ -124,7 +124,7 @@ if ($isValidCustomer) {
                         echo '<span class="accordion-icon text-white">-</span>';
                     } ?>
                 </div>
-                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 100vh' : 'max:height: 0vh' ?>">
+                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 200vh' : 'max-height: 0vh' ?>">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {
@@ -499,7 +499,7 @@ if ($isValidCustomer) {
         <a class="toTop" href="#">
             <i class="material-icons">arrow_drop_up</i>
         </a>
-        <script src="./public/js/givePrice.js"></script>
+        <script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
 <?php
     }
 } else {

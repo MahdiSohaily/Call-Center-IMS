@@ -267,17 +267,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const icon = header.querySelector(".accordion-icon");
 
     header.addEventListener("click", function () {
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
+      if (content.style.maxHeight !== "200vh") {
+        content.style = "max-height:200vh";
         icon.textContent = "+";
       } else {
-        content.style.maxHeight = content.scrollHeight + "px";
+        content.style.maxHeight = "0vh";
         icon.textContent = "-";
       }
     });
-
-    // Show content of each section by default
-    // content.style.maxHeight = content.scrollHeight + "px";
-    icon.textContent = "-";
   });
 });
