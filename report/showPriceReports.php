@@ -13,6 +13,7 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
+
 ?>
         <a class="toTop" href="#">
             <i class="material-icons">arrow_drop_up</i>

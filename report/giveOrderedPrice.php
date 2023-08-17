@@ -13,7 +13,6 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
-
 ?>
 
 
@@ -101,11 +100,31 @@ if ($isValidCustomer) {
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
+                $max = 0;
+                if (array_key_exists($code, $existing)) {
+                    foreach ($existing[$code] as $item) {
+                        $max  += max($item['relation']['sorted']);
+                    }
+                }
+
             ?><div class="accordion-header bg-slate-500">
-                    <?php echo $code ?>
-                    <span class="accordion-icon">+</span>
+                    <p class="flex items-center gap-2">
+                        <?php echo "<span class='text-white'>{$code}</span>";
+                        if ($max > 0) {
+                            echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
+                        } else {
+                            echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
+                        } ?>
+
+                    </p>
+                    <?php
+                    if ($max > 0) {
+                        echo '<span class="accordion-icon text-white">+</span>';
+                    } else {
+                        echo '<span class="accordion-icon text-white">-</span>';
+                    } ?>
                 </div>
-                <div class="accordion-content overflow-hidden bg-grey-lighter">
+                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 100vh' : 'max:height: 0vh' ?>">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {

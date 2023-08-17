@@ -580,7 +580,6 @@ input[name="panel"]:checked ~ .accordion__content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
   padding-block: 20px;
 }
 

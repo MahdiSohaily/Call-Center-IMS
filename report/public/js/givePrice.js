@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Show content of each section by default
-    content.style.maxHeight = content.scrollHeight + "px";
+    // content.style.maxHeight = content.scrollHeight + "px";
     icon.textContent = "-";
   });
 });
