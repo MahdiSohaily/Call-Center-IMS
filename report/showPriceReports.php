@@ -203,6 +203,7 @@ if ($isValidCustomer) {
                 <input type="checkbox" checked="true" name="panel" id="<?php echo $code ?>" class="hidden">
                 <label for="<?php echo $code ?>" class="relative flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
                     <?php echo $code ?>
+                    <span class="accordion-icon">+</span>
                 </label>
                 <div class="accordion__content overflow-hidden bg-grey-lighter">
                     <?php

@@ -111,6 +111,40 @@ if ($isValidCustomer) {
             .toTop:hover {
                 bottom: 15px;
             }
+
+            .account_info {
+                min-width: 200px;
+                display: flex;
+                align-items: center;
+                justify-items: start;
+                gap: 5px;
+            }
+
+            .socialMedia {
+                font-size: 12px;
+                color: lightgray;
+            }
+
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin-bottom: 1px;
+            }
+
+            .accordion-header {
+                padding: 10px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+                padding-block: 20px;
+            }
+
+            .accordion-icon {
+                font-size: 18px;
+            }
         </style>
 
         <a class="toTop" href="#">
@@ -200,12 +234,11 @@ if ($isValidCustomer) {
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
-            ?>
-                <input type="checkbox" checked="true" name="panel" id="<?php echo $code ?>" class="hidden">
-                <label for="<?php echo $code ?>" class="relative flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
+            ?><div class="accordion-header bg-slate-500">
                     <?php echo $code ?>
-                </label>
-                <div class="accordion__content overflow-hidden bg-grey-lighter">
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content overflow-hidden bg-grey-lighter">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {
@@ -540,7 +573,7 @@ if ($isValidCustomer) {
                                                 <label class="block font-medium text-sm text-gray-700">
                                                     قیمت
                                                 </label>
-                                                <input onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
+                                                <input value="<?= current($givenPrice)['price'] ?>" onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
                                                 <p class="mt-2"></p>
                                             </div>
 
@@ -841,6 +874,29 @@ if ($isValidCustomer) {
                 const input = document.getElementById(part + '-price');
                 input.value += " " + brand;
             }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+                accordionHeaders.forEach(header => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector(".accordion-icon");
+
+                    header.addEventListener("click", function() {
+                        if (content.style.maxHeight) {
+                            content.style.maxHeight = null;
+                            icon.textContent = "+";
+                        } else {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                            icon.textContent = "-";
+                        }
+                    });
+
+                    // Show content of each section by default
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.textContent = "-";
+                });
+            });
         </script>
 <?php
     }
