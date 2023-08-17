@@ -302,7 +302,7 @@ if ($isValidCustomer) {
                                                                         if (array_sum($exist[$index]) > 0) {
                                                                             foreach ($exist[$index] as $brand => $amount) {
                                                                                 if ($amount > 0) { ?>
-                                                                                    <th scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
+                                                                                    <th onclick="appendBrand(this)" scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-part="<?= $partNumber ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
                                                                                         <?php echo $brand ?>
                                                                                         <div class="custome-tooltip" id="<?php echo $index . '-' . $brand ?>">
                                                                                             <table class="rtl min-w-full text-sm font-light p-2">
@@ -833,6 +833,13 @@ if ($isValidCustomer) {
                     // This may not work if the window was not opened by a script or if the browser blocks the action.
                     window.close();
                 }, 60000);
+            }
+
+            function appendBrand(element) {
+                const brand = element.getAttribute('data-brand');
+                const part = element.getAttribute('data-part');
+                const input = document.getElementById(part + '-price');
+                input.value += " " + brand;
             }
         </script>
 <?php
