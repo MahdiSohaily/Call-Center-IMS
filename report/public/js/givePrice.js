@@ -159,7 +159,7 @@ function copyPrice(elem) {
       let text =
         tdElements[i].textContent === "موجود نیست"
           ? "-"
-          : tdElements[i].textContent;
+          : tdElements[i].textContent.trim();
       tdTextContent.push(text);
     }
   }
@@ -201,7 +201,9 @@ function copyItemPrice(elem) {
   var sibling2HTML = sibling2.innerHTML;
 
   let text =
-    sibling2HTML + " : " + (sibling1HTML === "موجود نیست" ? "-" : sibling1HTML);
+    sibling2HTML +
+    " : " +
+    (sibling1HTML === "موجود نیست" ? "-" : sibling1HTML).trim();
 
   copyToClipboard(text);
 

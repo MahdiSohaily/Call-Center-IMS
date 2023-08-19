@@ -30,11 +30,16 @@ if ($isValidCustomer) {
                     </thead>
                     <tbody id="priceReport">
                         <?php
-                        foreach ($explodedCodes as $code) { ?>
+                        foreach ($explodedCodes as $code) {
+                            if (in_array($code, $not_exist)) {
+                                continue;
+                            }
+                        ?>
                             <tr class="odd:bg-gray-400">
                                 <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
-                                    <?= current($existing[$code])['givenPrice'] ? current(current($existing[$code])['givenPrice'])['price'] : '' ?>
+                                    <?=
+                                    current($existing[$code])['givenPrice'] ? current(current($existing[$code])['givenPrice'])['price'] : '' ?>
                                 </td>
                                 <td class="text-right  py-2" onclick="closeTab()">
                                     <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
@@ -112,7 +117,9 @@ if ($isValidCustomer) {
             ?><div class="accordion-header bg-slate-500">
                     <p class="flex items-center gap-2">
                         <?php echo "<span class='text-white'>{$code}</span>";
-                        if ($max > 0) {
+                        if (in_array($code, $not_exist)) {
+                            echo '<i class="material-icons text-neutral-400 bg-white rounded-circle">block</i>';
+                        } else if ($max > 0) {
                             echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
                         } else {
                             echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
