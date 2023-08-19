@@ -472,7 +472,7 @@ if ($isValidCustomer) {
                                                     <label class="block font-medium text-sm text-gray-700">
                                                         قیمت
                                                     </label>
-                                                    <input onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?= $partNumber ?>-price" data-code="<?= $code ?>" type="text" />
+                                                    <input value="<?= current($givenPrice) ? current($givenPrice)['price'] : '' ?>" onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?= $partNumber ?>-price" data-code="<?= $code ?>" type="text" />
                                                     <p class="mt-2"></p>
                                                 </div>
 

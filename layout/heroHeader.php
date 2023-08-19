@@ -12,49 +12,57 @@ $title = '';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./public/img/YadakShop.png">
+    <!-- <link rel="shortcut icon" href="./public/img/YadakShop.png"> -->
     <meta name="description" content="This is a simple CMS for tracing goods based on thier serail or part number.">
     <meta name="author" content="Mahdi Rezaei">
-
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <?php
     // Swith the page title based on the files name
     switch (basename($_SERVER['PHP_SELF'])) {
         case 'cartable.php':
             $title = "کارتابل";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             break;
         case 'cartable-personal.php':
             $title = "کارتابل شخصی";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             break;
         case 'shomarefaktor.php':
             $title = "شماره فاکتور";
             $rand = rand();
+            echo ' <link rel="shortcut icon" href="./img/bill.jpg">';
             echo "<link rel='stylesheet' href='./css/factor/factorStyles.css?v=$rand' type='text/css' media='all' />";
             break;
         case 'main.php':
             $rand = rand();
             $title = "اطلاعات مشتری";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             echo "<link rel='stylesheet' href='./css/main/mainStyle.css?v=$rand' type='text/css' media='all' />";
             break;
         case 'customer-list.php':
             $title = "لیست مشتریان";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             break;
         case 'last-calling-time.php':
             $title = "آخرین مکالمات";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             break;
         case 'index.php':
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             $title = "صفحه اصلی";
             break;
         case 'inquery-list.php':
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             $title = "قیمت های داده شده";
             break;
         case 'tv.php':
             $title = "تلویزیون";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             $rand = rand();
             echo "<link rel='stylesheet' href='./css/tv.css?v=$rand' type='text/css' media='all' />";
             break;
         case 'estelam-list.php':
             $title = "قیمت های گرفته شده";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             break;
 
         default:
