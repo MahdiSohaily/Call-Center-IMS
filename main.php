@@ -27,6 +27,11 @@
     }
     ?>
 
+ <style>
+     textarea {
+         line-height: 2;
+     }
+ </style>
  <div class="customer_info px-5">
      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-6 lg:p-2 overflow-auto items-start">
          <div class="col-span-3">

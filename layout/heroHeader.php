@@ -29,7 +29,7 @@ $title = '';
         case 'shomarefaktor.php':
             $title = "شماره فاکتور";
             $rand = rand();
-            echo ' <link rel="shortcut icon" href="./img/bill.jpg">';
+            echo ' <link rel="shortcut icon" href="./img/bill.png">';
             echo "<link rel='stylesheet' href='./css/factor/factorStyles.css?v=$rand' type='text/css' media='all' />";
             break;
         case 'main.php':
@@ -67,6 +67,7 @@ $title = '';
 
         default:
             $title = "صفحه اصلی";
+            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
             break;
     }
     ?>

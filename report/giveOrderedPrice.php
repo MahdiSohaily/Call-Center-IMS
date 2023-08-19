@@ -13,8 +13,6 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
-
-        print_r(json_encode($finalResult));
 ?>
 
 
@@ -32,7 +30,14 @@ if ($isValidCustomer) {
                     </thead>
                     <tbody id="priceReport">
                         <?php
-                        foreach ($explodedCodes as $code) { ?>
+                        foreach ($explodedCodes as $code) {
+                            $max = 0;
+                            if (array_key_exists($code, $existing)) {
+                                foreach ($existing[$code] as $item) {
+                                    $max  += max($item['relation']['sorted']);
+                                }
+                            } ?>
+
                             <tr class="odd:bg-gray-400">
                                 <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
@@ -40,9 +45,11 @@ if ($isValidCustomer) {
                                     if (in_array($code, $not_exist)) {
                                         echo '';
                                     } else {
-                                        
-                                        if ($existing[$code] && current($existing[$code])['givenPrice']) {
+
+                                        if ($max && current($existing[$code])['givenPrice']) {
                                             echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : '-';
+                                        } else if ($max == 0) {
+                                            echo '-';
                                         }
                                     }
                                     ?>
@@ -118,8 +125,8 @@ if ($isValidCustomer) {
                         $max  += max($item['relation']['sorted']);
                     }
                 }
-
-            ?><div class="accordion-header bg-slate-500">
+            ?>
+                <div class="accordion-header bg-slate-500">
                     <p class="flex items-center gap-2">
                         <?php echo "<span class='text-white'>{$code}</span>";
                         if (in_array($code, $not_exist)) {

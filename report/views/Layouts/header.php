@@ -44,7 +44,7 @@ switch (basename($_SERVER['PHP_SELF'])) {
         break;
     case 'giveOrderedPrice.php':
         $title = "قیمت دستوری";
-        echo ' <link rel="shortcut icon" href="./public/img/ordered.png">';
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
         break;
     case 'showPriceReports.php':
         $title = "اطلاعات کد فنی";

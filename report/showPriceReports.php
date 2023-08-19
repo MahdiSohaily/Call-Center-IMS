@@ -14,8 +14,6 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
 ?>
-
-
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -31,7 +29,12 @@ if ($isValidCustomer) {
                     <tbody id="priceReport">
                         <?php
                         foreach ($explodedCodes as $code) {
-
+                            $max = 0;
+                            if (array_key_exists($code, $existing)) {
+                                foreach ($existing[$code] as $item) {
+                                    $max  += max($item['relation']['sorted']);
+                                }
+                            }
                         ?>
                             <tr class="odd:bg-gray-400">
                                 <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
@@ -40,8 +43,11 @@ if ($isValidCustomer) {
                                     if (in_array($code, $not_exist)) {
                                         echo '';
                                     } else {
-                                        if ($existing[$code] && current($existing[$code])['givenPrice']) {
+
+                                        if ($max && current($existing[$code])['givenPrice']) {
                                             echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : '-';
+                                        } else if ($max == 0) {
+                                            echo '-';
                                         }
                                     }
                                     ?>
