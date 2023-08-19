@@ -15,36 +15,44 @@ $_SESSION["user_id"] = $_SESSION["id"];
 switch (basename($_SERVER['PHP_SELF'])) {
     case 'index.php':
         $title = "جستجوی اجناس";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
         break;
     case 'GivenPriceHistory.php':
         $title = "تاریخچه";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
         break;
     case 'givePrice.php':
         $title = "قیمت دهی دستوری";
-        echo ' <link rel="shortcut icon" href="./public/img/ordered.jpg">';
+        echo ' <link rel="shortcut icon" href="./public/img/ordered.png">';
         break;
     case 'showGoods.php':
         $title = "لیست اجناس";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+
         break;
     case 'showRates.php':
         $title = "لیست نرخ های ارز";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
         break;
     case 'relationships.php':
         $title = "تعریف رابطه اجناس";
         break;
     case 'notification.php':
         $title = "نوتیفیکشن ها";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+
         break;
     case 'giveOrderedPrice.php':
         $title = "قیمت دستوری";
+        echo ' <link rel="shortcut icon" href="./public/img/ordered.png">';
         break;
     case 'showPriceReports.php':
         $title = "اطلاعات کد فنی";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
         break;
-
-
     default:
         $title = "سامانه یدک شاپ";
+        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
         break;
 }
 ?>

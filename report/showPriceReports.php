@@ -31,14 +31,20 @@ if ($isValidCustomer) {
                     <tbody id="priceReport">
                         <?php
                         foreach ($explodedCodes as $code) {
-                            if (in_array($code, $not_exist)) {
-                                continue;
-                            }
+
                         ?>
                             <tr class="odd:bg-gray-400">
                                 <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
-                                    <?= current($existing[$code])['givenPrice'] ? current(current($existing[$code])['givenPrice'])['price'] : '' ?>
+                                    <?php
+                                    if (in_array($code, $not_exist)) {
+                                        echo '';
+                                    } else {
+                                        if (current($existing[$code])['givenPrice']) {
+                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : '-';
+                                        }
+                                    }
+                                    ?>
                                 </td>
                                 <td class="text-right  py-2" onclick="closeTab()">
                                     <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
