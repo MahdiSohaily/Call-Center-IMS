@@ -40,7 +40,7 @@ if ($isValidCustomer) {
                                     if (in_array($code, $not_exist)) {
                                         echo '';
                                     } else {
-                                        if (current($existing[$code])['givenPrice']) {
+                                        if ($existing[$code] && current($existing[$code])['givenPrice']) {
                                             echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : '-';
                                         }
                                     }
