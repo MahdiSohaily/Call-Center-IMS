@@ -11,58 +11,60 @@ require_once('./views/Layouts/jdf.php');
 
 date_default_timezone_set("Asia/Tehran");
 $_SESSION["user_id"] = $_SESSION["id"];
-
-switch (basename($_SERVER['PHP_SELF'])) {
-    case 'index.php':
-        $title = "جستجوی اجناس";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    case 'GivenPriceHistory.php':
-        $title = "تاریخچه";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    case 'givePrice.php':
-        $title = "قیمت دهی دستوری";
-        echo ' <link rel="shortcut icon" href="./public/img/ordered.png">';
-        break;
-    case 'showGoods.php':
-        $title = "لیست اجناس";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    case 'showRates.php':
-        $title = "لیست نرخ های ارز";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    case 'relationships.php':
-        $title = "تعریف رابطه اجناس";
-        break;
-    case 'notification.php':
-        $title = "نوتیفیکشن ها";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    case 'giveOrderedPrice.php':
-        $title = "قیمت دستوری";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    case 'showPriceReports.php':
-        $title = "اطلاعات کد فنی";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-    default:
-        $title = "سامانه یدک شاپ";
-        echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-        break;
-}
 ?>
 <!DOCTYPE html>
 <html lang="fe">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="This is a simple CMS for tracing goods based on thier serail or part number.">
     <meta name="author" content="Mahdi Rezaei">
+    <?php
+    switch (basename($_SERVER['PHP_SELF'])) {
+        case 'index.php':
+            $title = "جستجوی اجناس";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'GivenPriceHistory.php':
+            $title = "تاریخچه";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'givePrice.php':
+            $title = "قیمت دهی دستوری";
+            echo ' <link rel="shortcut icon" href="./public/img/ordered.png">';
+            break;
+        case 'showGoods.php':
+            $title = "لیست اجناس";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'showRates.php':
+            $title = "لیست نرخ های ارز";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'relationships.php':
+            $title = "تعریف رابطه اجناس";
+            break;
+        case 'notification.php':
+            $title = "نوتیفیکشن ها";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'giveOrderedPrice.php':
+            $title = "قیمت دستوری";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'showPriceReports.php':
+            $title = "اطلاعات کد فنی";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        default:
+            $title = "سامانه یدک شاپ";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+    }
+    ?>
     <title><?php echo $title ?></title>
-    <title inertia>Yadak Shop</title>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

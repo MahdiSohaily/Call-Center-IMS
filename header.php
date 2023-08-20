@@ -9,49 +9,61 @@ if (!$con) {
 mysqli_set_charset($con, "utf8");
 require_once './php/jdf.php';
 
-$title = '';
-
-switch (basename($_SERVER['PHP_SELF'])) {
-    case 'cartable.php':
-        $title = "کارتابل";
-        break;
-    case 'cartable-personal.php':
-        $title = "کارتابل شخصی";
-        break;
-    case 'shomarefaktor.php':
-        $title = "شماره فاکتور";
-        break;
-    case 'main.php':
-        $title = "اطلاعات مشتری";
-        break;
-    case 'customer-list.php':
-        $title = "لیست مشتریان";
-        break;
-    case 'last-calling-time.php':
-        $title = "آخرین مکالمات";
-        break;
-    case 'index.php':
-        $title = "صفحه اصلی";
-        break;
-    case 'inquery-list.php':
-        $title = "قیمت های داده شده";
-        break;
-    case 'tv.php':
-        $title = "تلویزیون";
-        break;
-
-    default:
-        $title = "صفحه اصلی";
-        break;
-}
-echo "<title>$title</title>";
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="fe">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <?php
+    $title = '';
+    switch (basename($_SERVER['PHP_SELF'])) {
+        case 'cartable.php':
+            $title = "کارتابل";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'cartable-personal.php':
+            $title = "کارتابل شخصی";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'shomarefaktor.php':
+            $title = "شماره فاکتور";
+            echo ' <link rel="shortcut icon" href="./public/img/bill.png">';
+            break;
+        case 'main.php':
+            $title = "اطلاعات مشتری";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'customer-list.php':
+            $title = "لیست مشتریان";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'last-calling-time.php':
+            $title = "آخرین مکالمات";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'index.php':
+            $title = "صفحه اصلی";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'inquery-list.php':
+            $title = "قیمت های داده شده";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+        case 'tv.php':
+            $title = "تلویزیون";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+
+        default:
+            $title = "صفحه اصلی";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
+    }
+    echo "<title>$title</title>";
+    ?>
+
     <link rel="stylesheet" href="css/jquery.tagselect.css?v=<?php echo (rand()) ?>" type="text/css" media="all" />
     <link rel="stylesheet" href="css/jquery.tagselect2.css?v=<?php echo (rand()) ?>" type="text/css" media="all" />
     <link type="text/css" rel="stylesheet" href="css/persianDatepicker.css" />
