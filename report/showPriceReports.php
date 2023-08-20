@@ -37,7 +37,7 @@ if ($isValidCustomer) {
                             }
                         ?>
                             <tr class="odd:bg-gray-400">
-                                <td class="px-3 py-2 text-left text-white"><?php echo $code ?></td>
+                            <td class="px-3 py-2 text-left text-white"><a href="<?= $_SERVER['PHP_SELF'] . '#' . $code ?>"><?php echo $code ?></a></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
                                     <?php
                                     if (in_array($code, $not_exist)) {
@@ -125,7 +125,7 @@ if ($isValidCustomer) {
                     }
                 }
 
-            ?><div class="accordion-header bg-slate-500">
+            ?><div id="<?= $code ?>" class="accordion-header bg-slate-500">
                     <p class="flex items-center gap-2">
                         <?php echo "<span class='text-white'>{$code}</span>";
                         if (in_array($code, $not_exist)) {
