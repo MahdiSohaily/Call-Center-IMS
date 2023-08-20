@@ -1,5 +1,6 @@
 <?php
 require_once './php/function.php';
+require_once './php/jdf.php';
 
 global $con;
 $con = mysqli_connect('localhost', 'root', '', 'callcenter');
@@ -7,7 +8,6 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 mysqli_set_charset($con, "utf8");
-require_once './php/jdf.php';
 
 ?>
 <!DOCTYPE html>
