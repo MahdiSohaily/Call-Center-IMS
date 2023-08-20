@@ -15,7 +15,6 @@ if ($isValidCustomer) {
         $rates = $finalResult['rates'];
 ?>
 
-
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-500 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -145,7 +144,7 @@ if ($isValidCustomer) {
                         echo '<span class="accordion-icon text-white">-</span>';
                     } ?>
                 </div>
-                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 200vh' : 'max-height: 0vh' ?>">
+                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh' : 'max-height: 0vh' ?>">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {

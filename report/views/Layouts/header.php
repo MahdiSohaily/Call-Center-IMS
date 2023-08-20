@@ -28,7 +28,6 @@ switch (basename($_SERVER['PHP_SELF'])) {
     case 'showGoods.php':
         $title = "لیست اجناس";
         echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-
         break;
     case 'showRates.php':
         $title = "لیست نرخ های ارز";
@@ -40,7 +39,6 @@ switch (basename($_SERVER['PHP_SELF'])) {
     case 'notification.php':
         $title = "نوتیفیکشن ها";
         echo ' <link rel="shortcut icon" href="./public/img/report.png">';
-
         break;
     case 'giveOrderedPrice.php':
         $title = "قیمت دستوری";
@@ -58,17 +56,13 @@ switch (basename($_SERVER['PHP_SELF'])) {
 ?>
 <!DOCTYPE html>
 <html lang="fe">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
     <meta name="description" content="This is a simple CMS for tracing goods based on thier serail or part number.">
     <meta name="author" content="Mahdi Rezaei">
-
     <title><?php echo $title ?></title>
     <title inertia>Yadak Shop</title>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

@@ -269,8 +269,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const icon = header.querySelector(".accordion-icon");
 
     header.addEventListener("click", function () {
-      if (content.style.maxHeight !== "200vh") {
-        content.style = "max-height:200vh";
+      if (content.style.maxHeight !== "1000vh") {
+        content.style = "max-height:1000vh";
         icon.textContent = "+";
       } else {
         content.style.maxHeight = "0vh";
