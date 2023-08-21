@@ -50,7 +50,7 @@ if ($isValidCustomer) {
                             } ?>
                         </div>
                     </div>
-                    <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh' : 'max-height: 0vh' ?>">
+                    <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh;' : 'max-height: 0vh;' ?>">
                         <?php
                         if (array_key_exists($code, $existing)) {
                             foreach ($existing[$code] as $index => $item) {
@@ -502,7 +502,6 @@ if ($isValidCustomer) {
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($messages as $message) :
-                                                        echo $code;
                                                         if (preg_match("/$code/i", $message)) { ?>
                                                             <tr class="min-w-full mb-4 border-b-2 border-white">
                                                                 <td class="text-gray-800 py-2 text-center bg-indigo-300">

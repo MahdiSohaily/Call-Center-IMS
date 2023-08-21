@@ -270,11 +270,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     header.addEventListener("click", function () {
       if (content.style.maxHeight !== "1000vh") {
-        content.style = "max-height:1000vh";
-        icon.textContent = "+";
+        content.style = "max-height:1000vh;";
+        // icon.innerHTML = "+";
       } else {
-        content.style.maxHeight = "0vh";
-        icon.textContent = "-";
+        content.style = "max-height:0vh;";
+        // icon.innerHTML = "-";
       }
     });
   });
