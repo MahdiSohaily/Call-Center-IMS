@@ -8460,3 +8460,122 @@ FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
 UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
 Session, AfgDeveloper:        	Garbage collected 6 incoming messages in DC 4, 0 left
 Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateUserStatus
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+PingLoop, AfgDeveloper:       	Ping DC 2.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+PingLoop, AfgDeveloper:       	Ping DC 5.0
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 2, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 5, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 5, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.0, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.0
+Connection, AfgDeveloper:     	Disconnecting from DC -4.0
+Connection, AfgDeveloper:     	Disconnected from DC -4.0
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (0) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (0)
+Connection, AfgDeveloper:     	Connecting to DC -4.0
+Connection, AfgDeveloper:     	Connected to DC -4.0!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 1 left
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 3 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+Session, AfgDeveloper:        	Garbage collected 6 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+SessionPaths, AfgDeveloper:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths, AfgDeveloper:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\safe.php.lock...
+SessionPaths, AfgDeveloper:   	Waiting for exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+SessionPaths, AfgDeveloper:   	Got exclusive lock of C:\xampp\htdocs\YadakShop-APP\callcenter\report\bot.madeline\lightState.php.lock...
+APIWrapper, AfgDeveloper:     	Saved session!
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 1 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+Session, AfgDeveloper:        	Garbage collected 3 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.4, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.4
+Connection, AfgDeveloper:     	Disconnecting from DC -2.4
+Connection, AfgDeveloper:     	Disconnected from DC -2.4
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (4) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (4)
+Connection, AfgDeveloper:     	Connecting to DC -2.4
+Connection, AfgDeveloper:     	Connected to DC -2.4!
+DataCenter, AfgDeveloper:     	OK!
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+SeqLoop, AfgDeveloper:        	Was fed updates of type updates...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop channel 1147515146
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewChannelMessage
+Session, AfgDeveloper:        	Garbage collected 6 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 5 outgoing messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+UpdateHandler, AfgDeveloper:  	Parsing updates (updateShort) received via the socket...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop generic
+UpdateHandler, AfgDeveloper:  	Saving update of type updateChannelUserTyping
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+UpdateHandler, AfgDeveloper:  	Parsing updates (updates) received via the socket...
+SeqLoop, AfgDeveloper:        	Was fed updates of type updates...
+FeedLoop, AfgDeveloper:       	Resumed update feed loop channel 1147515146
+UpdateHandler, AfgDeveloper:  	Saving update of type updateNewChannelMessage
+Session, AfgDeveloper:        	Garbage collected 1 incoming messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.1
+Connection, AfgDeveloper:     	Disconnecting from DC -4.1
+Connection, AfgDeveloper:     	Disconnected from DC -4.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -4.1
+Connection, AfgDeveloper:     	Connected to DC -4.1!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.1, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.1
+Connection, AfgDeveloper:     	Disconnecting from DC -2.1
+Connection, AfgDeveloper:     	Disconnected from DC -2.1
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (1) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (1)
+Connection, AfgDeveloper:     	Connecting to DC -2.1
+Connection, AfgDeveloper:     	Connected to DC -2.1!
+DataCenter, AfgDeveloper:     	OK!
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -4.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -4.2
+Connection, AfgDeveloper:     	Disconnecting from DC -4.2
+Connection, AfgDeveloper:     	Disconnected from DC -4.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -4 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.165.120:443 main DC -4, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -4.2
+Connection, AfgDeveloper:     	Connected to DC -4.2!
+DataCenter, AfgDeveloper:     	OK!
+FeedLoop, AfgDeveloper:       	Resumed update feed loop channel 1147515146
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+ReadLoop, AfgDeveloper:       	Got nothing in the socket in DC -2.2, reconnecting...
+Connection, AfgDeveloper:     	Reconnecting DC -2.2
+Connection, AfgDeveloper:     	Disconnecting from DC -2.2
+Connection, AfgDeveloper:     	Disconnected from DC -2.2
+DataCenter, AfgDeveloper:     	Reconnecting to DC -2 (2) from existing
+DataCenterConnection, AfgDeveloper: 	Trying shared connection via tcp://149.154.167.151:443 main DC -2, via ipv4 using AbridgedStream => BufferedRawStream => DefaultStream (2)
+Connection, AfgDeveloper:     	Connecting to DC -2.2
+Connection, AfgDeveloper:     	Connected to DC -2.2!
+DataCenter, AfgDeveloper:     	OK!
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 3 left
+Session, AfgDeveloper:        	Garbage collected 5 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 3 outgoing messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 1 outgoing messages in DC 4, 2 left
+Session, AfgDeveloper:        	Garbage collected 2 incoming messages in DC 4, 0 left
+Session, AfgDeveloper:        	Garbage collected 2 outgoing messages in DC 4, 0 left
