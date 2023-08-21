@@ -3,24 +3,29 @@ $isValidCustomer = false;
 $customer_info = null;
 $finalResult = [];
 
+if (isset($_POST['jsonData'])) {
+    $jsonData = $_POST['jsonData'];
+    $messagesBySender = json_decode($jsonData, true); // Decodes as an associative array
+    if (count($messagesBySender) > 0) {
+        $isValidCustomer = true;
+        // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
+        $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
 
-if (count($messagesBySender) > 0) {
-    $isValidCustomer = true;
-    // check if a customer is already specified or not !!!! 1 is the ID of the ordered customer!!!
-    $customer = empty($_POST['customer']) ? 1 : $_POST['customer'];
+        $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
 
-    $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
+        foreach ($messagesBySender as $sender => $message) {
 
-    foreach ($messagesBySender as $sender => $message) {
-
-        $explodedCodes = implode("\n", $message['code']);
-        $userMessage = $message['message'];
-        $fullName = $message['name'][0];
-        $username = $message['userName'][0];
-        $profile = $message['profile'][0];
-        $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id);
+            $explodedCodes = implode("\n", $message['code']);
+            $userMessage = $message['message'];
+            $fullName = $message['name'][0];
+            $username = $message['userName'][0];
+            $profile = $message['profile'][0];
+            $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id);
+        }
     }
 }
+
+
 
 function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null)
 {
