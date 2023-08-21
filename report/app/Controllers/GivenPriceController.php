@@ -284,8 +284,12 @@ function givenPrice($conn, $codes, $relation_exist = null)
         });
     }
     $final_data = $relation_exist ? $unsortedData : $givenPrices;
+    
+    $filtered_data = array_filter($final_data, function($item) {
+        return is_array($item) && isset($item['price']) && $item['price'] !== '';
+    });
 
-    return  $final_data;
+    return  $filtered_data;
 }
 
 function estelam($conn, $code)
