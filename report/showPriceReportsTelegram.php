@@ -38,12 +38,17 @@ if ($isValidCustomer) {
                             } ?>
 
                         </p>
-                        <?php
-                        if ($max > 0) {
-                            echo '<span class="accordion-icon text-white">+</span>';
-                        } else {
-                            echo '<span class="accordion-icon text-white">-</span>';
-                        } ?>
+                        <div>
+                            <span class="text-white"><?= $fullName ?></span>
+                            <a target="_blank" href="https://t.me/<?= $username ?>" class="px-2 text-gray-300 hover:text-gray-400 text-xs">(<?= $username ?>)</a>
+                            <img class='userImage inline' src="http://telegram.om-dienstleistungen.de/img/telegram/<?= $profile ?>" alt="" srcset="">
+                            <?php
+                            if ($max > 0) {
+                                echo '<span class="accordion-icon text-white">+</span>';
+                            } else {
+                                echo '<span class="accordion-icon text-white">-</span>';
+                            } ?>
+                        </div>
                     </div>
                     <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh' : 'max-height: 0vh' ?>">
                         <?php
@@ -477,7 +482,7 @@ if ($isValidCustomer) {
 
 
                                                 <div class="rtl">
-                                                    <button onclick="registerPrice(this)" data-customer="<?= $customer ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
+                                                    <button onclick="telegram(this)" data-customer="<?= $customer ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
                                                         ثبت قیمت
                                                     </button>
                                                 </div>
@@ -540,7 +545,7 @@ if ($isValidCustomer) {
 }
 
 ?>
-<script src="./public/js/givePrice.js"></script>
+<script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
 
 <script>
     // Create a new XMLHttpRequest object
@@ -553,7 +558,6 @@ if ($isValidCustomer) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             var response = xhr.responseText;
-            console.log('we are sending');
             if (response.length > 2) {
                 // Create a hidden input field to store the JSON data
                 const jsonInput = document.createElement('input');

@@ -279,3 +279,71 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+function telegram(e) {
+  console.log("here we are");
+  setTimeout(() => {
+    e.disabled = false;
+    e.innerHTML = `
+            ثبت قیمت
+            <i class="material-icons text-green-500 font-sm px-1">check_circle</i>`;
+  }, 5000);
+
+  // Accessing the form fields to get thier value for an ajax store operation
+  const partNumber = e.getAttribute("data-part");
+  const customer_id = document.getElementById("customer_id").value;
+  const notification_id = document.getElementById("notification_id").value;
+  const code = e.getAttribute("data-code");
+
+  const goodPrice = document.getElementById(partNumber + "-price").value;
+  const resultBox = document.getElementById("price-" + partNumber);
+
+  // Defining a params instance to be attached to the axios request
+  const params = new URLSearchParams();
+  params.append("store_price", "store_price");
+  params.append("partNumber", partNumber);
+  params.append("customer_id", 2);
+  params.append("notification_id", notification_id);
+  params.append("price", goodPrice);
+  params.append("code", code);
+
+  axios
+    .post("./app/Controllers/GivenPriceAjax.php", params)
+    .then(function (response) {
+      if (response.data) {
+        form_success.style.bottom = "10px";
+        goodPrice.value = null;
+        setTimeout(() => {
+          form_success.style.bottom = "-300px";
+          resultBox.innerHTML = response.data;
+        }, 2000);
+      } else {
+        form_error.style.bottom = "10px";
+        setTimeout(() => {
+          form_error.style.bottom = "-300px";
+          location.reload();
+        }, 2000);
+      }
+    })
+    .catch(function (error) {});
+  sendMessage(customer_id, code, goodPrice);
+}
+
+function sendMessage(receiver, code, price) {
+  // Defining a params instance to be attached to the axios request
+  const params = new URLSearchParams();
+  params.append("sendMessage", "sendMessage");
+  params.append("receiver", receiver);
+  params.append("code", code);
+  params.append("price", price);
+
+  axios
+    .post("http://telegram.om-dienstleistungen.de/", params)
+    .then(function (response) {
+      if (response.data) {
+        console.log(response.data);
+      } else {
+      }
+    })
+    .catch(function (error) {});
+}
