@@ -306,7 +306,7 @@ $title = '';
                             </a>
                         </li>
                         <li>
-                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/showPriceReportsTelegram.php">
+                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/telegramProcess.php">
                                 تلگرام
                             </a>
                         </li>
