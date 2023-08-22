@@ -291,7 +291,7 @@ function telegram(e) {
 
   // Accessing the form fields to get thier value for an ajax store operation
   const partNumber = e.getAttribute("data-part");
-  const customer_id = document.getElementById("customer_id").value;
+  const customer_id = e.getAttribute("data-customer");
   const notification_id = document.getElementById("notification_id").value;
   const code = e.getAttribute("data-code");
 
