@@ -23,7 +23,7 @@ if (filter_has_var(INPUT_POST, 'sendMessage')) {
     echo "$receiver => $code";
 } else {
     // Replace "GROUP_CHAT_ID" with the ID of the group chat you want to get messages from
-    $groupChatId = '-907362775';
+    $groupChatId = 'https://t.me/+P83Wt7C1421iZDU0';
 
     $index_file = fopen('index.txt', 'r+');
 
@@ -110,11 +110,11 @@ function getProfilePicture($MadelineProto, $username)
 
         $output_file_name = $MadelineProto->downloadToDir($info, './img/telegram');
 
-        $url = explode('\\', $output_file_name);
+        $url = explode('/', $output_file_name);
 
         return end($url);
     } catch (\Exception $e) {
-        return 'images.jpg';
+        return 'images.png';
     }
 }
 
