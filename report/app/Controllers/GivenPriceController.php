@@ -225,9 +225,14 @@ function relations($conn, $id, $condition)
 
     arsort($existing);
     $sorted = [];
+
+    $max = 0;
     foreach ($existing as $key => $value) {
         $sorted[$key] = getMax($value);
+        $max += $sorted[$key];
     }
+
+    ec
 
     arsort($sorted);
 
@@ -284,8 +289,8 @@ function givenPrice($conn, $codes, $relation_exist = null)
         });
     }
     $final_data = $relation_exist ? $unsortedData : $givenPrices;
-    
-    $filtered_data = array_filter($final_data, function($item) {
+
+    $filtered_data = array_filter($final_data, function ($item) {
         return is_array($item) && isset($item['price']) && $item['price'] !== '';
     });
 
