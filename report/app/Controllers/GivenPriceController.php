@@ -232,8 +232,6 @@ function relations($conn, $id, $condition)
         $max += $sorted[$key];
     }
 
-    ec
-
     arsort($sorted);
 
     return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo];
