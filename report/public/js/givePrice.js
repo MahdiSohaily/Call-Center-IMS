@@ -266,15 +266,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   accordionHeaders.forEach((header) => {
     const content = header.nextElementSibling;
-    const icon = header.querySelector(".accordion-icon");
 
     header.addEventListener("click", function () {
       if (content.style.maxHeight !== "1000vh") {
         content.style = "max-height:1000vh;";
-        // icon.innerHTML = "+";
       } else {
         content.style = "max-height:0vh;";
-        // icon.innerHTML = "-";
       }
     });
   });

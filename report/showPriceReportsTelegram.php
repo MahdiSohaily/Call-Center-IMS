@@ -6,23 +6,21 @@ require_once './utilities/helper.php';
 if ($isValidCustomer) :
 ?>
     <div class="py-10">
-        <?php
-        foreach ($finalResult as $reportResult) :
-            if ($reportResult) {
-                $explodedCodes = $reportResult['explodedCodes'];
-                $not_exist = $reportResult['not_exist'];
-                $existing = $reportResult['existing'];
-                $customer = $reportResult['customer'];
-                $completeCode = $reportResult['completeCode'];
-                $notification = $reportResult['notification'];
-                $rates = $reportResult['rates'];
-                $messages = $reportResult['messages'];
-                $fullName = $reportResult['fullName'];
-                $profile = $reportResult['profile'];
-                $username = $reportResult['username'];
-        ?>
-                <div class="accordion">
-                    <?php
+        <div class="accordion">
+            <?php
+            foreach ($finalResult as $reportResult) :
+                if ($reportResult) {
+                    $explodedCodes = $reportResult['explodedCodes'];
+                    $not_exist = $reportResult['not_exist'];
+                    $existing = $reportResult['existing'];
+                    $customer = $reportResult['customer'];
+                    $completeCode = $reportResult['completeCode'];
+                    $notification = $reportResult['notification'];
+                    $rates = $reportResult['rates'];
+                    $messages = $reportResult['messages'];
+                    $fullName = $reportResult['fullName'];
+                    $profile = $reportResult['profile'];
+
                     foreach ($explodedCodes as $code_index => $code) {
                         $max = 0;
                         if (array_key_exists($code, $existing)) {
@@ -30,11 +28,9 @@ if ($isValidCustomer) :
                                 $max  += max($item['relation']['sorted']);
                             }
                         }
-
-                        if ($max > 0) :
-                    ?>
+                        if ($max > 0) : ?>
                             <div class="accordion-header bg-slate-500">
-                                <p class="flex items-center gap-2">
+                                <p class="flex items-center gap-2 w-36">
                                     <?php
                                     if ($max > 0) {
                                         echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
@@ -45,7 +41,7 @@ if ($isValidCustomer) :
                                     ?>
 
                                 </p>
-                                <div class="px-5">
+                                <div class="px-7">
                                     <img class='userImage inline' src="http://telegram.om-dienstleistungen.de/img/telegram/<?= $profile ?>" alt="" srcset="">
                                     <span class="text-white"><?= $fullName ?></span>
                                 </div>
@@ -527,27 +523,28 @@ if ($isValidCustomer) :
                         endif;
                     }
                     ?>
-                    <p id="form_success" class="custome-alert success px-3 tiny-text">
-                        ! موفقانه در پایگاه داده ثبت شد
-                    </p>
-                    <p id="form_error" class=" custome-alert error px-3 tiny-text">
-                        ! ذخیره سازی اطلاعات ناموفق بود
-                    </p>
-                </div>
-                <a class="toTop" href="#">
-                    <i class="material-icons">arrow_drop_up</i>
-                </a>
 
-        <?php
-            }
-        endforeach;
-    else :
-        echo "<p class='rtl col-6 mx-auto flex items-center justify-center pt-10'>کد جدیدی در گروه جهت گزارش ارائه نگردیده است</p>"; ?>
+
+
+            <?php
+                }
+            endforeach;
+        else :
+            echo "<p class='rtl col-6 mx-auto flex items-center justify-center pt-10'>کد جدیدی در گروه جهت گزارش ارائه نگردیده است</p>"; ?>
+        </div>
+    <?php endif;
+    ?>
+    <p id="form_success" class="custome-alert success px-3 tiny-text">
+        ! موفقانه در پایگاه داده ثبت شد
+    </p>
+    <p id="form_error" class=" custome-alert error px-3 tiny-text">
+        ! ذخیره سازی اطلاعات ناموفق بود
+    </p>
     </div>
-<?php endif;
-?>
+    <a class="toTop" href="#">
+        <i class="material-icons">arrow_drop_up</i>
+    </a>
+    <script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
+    <?php
 
-<script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
-<?php
-
-require_once('./views/Layouts/footer.php');
+    require_once('./views/Layouts/footer.php');
