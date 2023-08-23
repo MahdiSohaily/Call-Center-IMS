@@ -46,8 +46,8 @@ if ($isValidCustomer) :
 
                                 </p>
                                 <div class="px-5">
-                                    <span class="text-white"><?= $fullName ?></span>
                                     <img class='userImage inline' src="http://telegram.om-dienstleistungen.de/img/telegram/<?= $profile ?>" alt="" srcset="">
+                                    <span class="text-white"><?= $fullName ?></span>
                                 </div>
                             </div>
                             <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh;' : 'max-height: 0vh;' ?>">
