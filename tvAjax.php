@@ -392,64 +392,6 @@ if ($status == 'on') :
                     </table>
                 </div>
             </div>
-            <div class="div4">
-                <h2 class="title">آخرین قیمت های گرفته شده از بازار</h2>
-                <div class="">
-
-                    <table class="border text-sm bg-white custom-table mb-2 p-3">
-                        <thead>
-                            <tr class="tiny-text bg-violet-800 text-white">
-                                <th class="p-2">کد فنی</th>
-                                <th class="p-2">فروشنده</th>
-                                <th style="text-align: center;" class="p-2">قیمت</th>
-                                <th class="p-2">زمان</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $sql2 = "SELECT * FROM estelam ORDER BY  time DESC LIMIT 40  ";
-                            $result2 = mysqli_query($con, $sql2);
-                            if (mysqli_num_rows($result2) > 0) {
-                                while ($row2 = mysqli_fetch_assoc($result2)) {
-
-                                    $code = $row2['codename'];
-                                    $seller = $row2['seller'];
-                                    $price = $row2['price'];
-                                    $user = $row2['user'];
-                                    $time = $row2['time'];
-                                    $sql = "SELECT * FROM users WHERE id=$user";
-                                    $result = mysqli_query(dbconnect2(), $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $id = $row['id'];
-                                            $name = $row['name'];
-                                            $family = $row['family'];
-                                            $sql3 = "SELECT * FROM seller WHERE id=$seller";
-                                            $result3 = mysqli_query(dbconnect2(), $sql3);
-                                            if (mysqli_num_rows($result3) > 0) {
-                                                while ($row3 = mysqli_fetch_assoc($result3)) {
-                                                    $sellername = $row3['name'];
-                            ?>
-
-                                                    <tr class="tiny-text">
-                                                        <td style="font-size: 8px !important;" class="p-2"><?php echo $code ?></td>
-                                                        <td class="p-2"><?php echo getFirstLetters($sellername) ?></td>
-                                                        <td class="ltr p-2"><?php echo $price ?></td>
-                                                        <td class="p-2"><?php echo date('H:i', strtotime($time)) ?></td>
-                                                    </tr>
-
-                            <?php
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
     <script>

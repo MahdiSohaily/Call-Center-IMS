@@ -1,9 +1,9 @@
 * {
-  font-size: 7px !important;
+  font-size: 10px !important;
 }
 
 th {
-  font-size: 7px !important;
+  font-size: 10px !important;
   padding-inline: 5px !important;
   text-align: right;
 }
@@ -23,7 +23,7 @@ img.user-img {
 }
 .d-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 5px;
   grid-row-gap: 3px;
