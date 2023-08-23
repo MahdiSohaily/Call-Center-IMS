@@ -15,8 +15,8 @@ if (isset($_POST['jsonData'])) {
 
         foreach ($messagesBySender as $sender => $message) {
 
-            $explodedCodes = implode("\n", $message['code']);
-            $userMessage = $message['message'];
+            $explodedCodes = implode("\n", $message['info']['code']);
+            $userMessage = $message['info']['message'];
             $fullName = $message['name'][0];
             $username = $message['userName'][0];
             $profile = $message['profile'][0];
