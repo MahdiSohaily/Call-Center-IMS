@@ -35,17 +35,18 @@ if ($isValidCustomer) :
                     ?>
                             <div class="accordion-header bg-slate-500">
                                 <p class="flex items-center gap-2">
-                                    <?php echo "<span class='text-white'>{$code}</span>";
+                                    <?php
                                     if ($max > 0) {
                                         echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
                                     } else {
                                         echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
-                                    } ?>
+                                    }
+                                    echo "<span class='text-white'>{$code}</span>"
+                                    ?>
 
                                 </p>
-                                <div>
+                                <div class="px-5">
                                     <span class="text-white"><?= $fullName ?></span>
-                                    <a target="_blank" href="https://t.me/<?= $username ?>" class="px-2 text-gray-300 hover:text-gray-400 text-xs">(<?= $username ?>)</a>
                                     <img class='userImage inline' src="http://telegram.om-dienstleistungen.de/img/telegram/<?= $profile ?>" alt="" srcset="">
                                 </div>
                             </div>

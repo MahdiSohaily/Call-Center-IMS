@@ -577,7 +577,6 @@ input[name="panel"]:checked ~ .accordion__content {
   padding: 10px;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-block: 20px;
 }
