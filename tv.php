@@ -145,6 +145,7 @@
                                      <td>
                                          <i style="color: red" class="material-icons">cancel</i>
                                      </td>
+                                     <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
                                      <td class="p-2">
                                          <?php
                                             $gphone = substr($phone, 1);

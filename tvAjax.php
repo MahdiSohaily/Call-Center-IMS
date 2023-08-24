@@ -75,6 +75,7 @@ if ($status == 'on') :
                     <thead>
                         <tr>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">مشخصات</th>
+                            <th class="bg-violet-800 text-white tiny-text px-2 py-2">شماره تماس</th>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">نیایش</th>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">محک</th>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">زمان</th>
@@ -108,6 +109,7 @@ if ($status == 'on') :
 
                                         <tr class="">
                                             <td class=" p-2"><?php echo $name ?> <?php echo $family ?></td>
+                                            <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
                                             <td class=" small-font tiny-text p-2">
                                                 <?php
                                                 $gphone = substr($phone, 1);
@@ -155,7 +157,6 @@ if ($status == 'on') :
                                                 }
                                                 ?></td>
                                             <td class=" tiny-text p-2"><?php echo $jalali_time ?></td>
-                                            <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
                                         </tr>
                                     <?php
 
@@ -166,6 +167,7 @@ if ($status == 'on') :
                                         <td>
                                             <i style="color: red" class="material-icons">cancel</i>
                                         </td>
+                                        <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
                                         <td class="p-2">
                                             <?php
                                             $gphone = substr($phone, 1);
