@@ -36,7 +36,7 @@
      }
 
      * {
-         line-height: 0.5 !important;
+         line-height: 1 !important;
      }
 
      .small-font {
@@ -324,7 +324,7 @@
 
                                  <tr class="pin">
                                      <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                     <td class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                     <td class="p-2" style="line-height: 1.3 !important;"><?php echo nl2br($callinfo) ?></td>
                                      <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                          <?php
 
@@ -363,7 +363,7 @@
 
                                  <tr>
                                      <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                     <td class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                     <td class="p-2" style="line-height: 1.3 !important;"><?php echo nl2br($callinfo) ?></td>
                                      <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                          <?php
 
