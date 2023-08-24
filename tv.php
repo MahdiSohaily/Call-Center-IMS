@@ -34,6 +34,14 @@
          padding: 0 !important;
          margin: 10px !important;
      }
+
+     * {
+         line-height: 0.5 !important;
+     }
+
+     .small-font {
+         font-size: 7px !important;
+     }
  </style>
  <div style="width: 854px;background-color: white !important; margin-inline:auto; font-size: 8px;" id="fullpage" data-user='<?php echo $user ?>'>
      <i onclick="openFullscreen()" class="large material-icons">aspect_ratio</i>
@@ -47,7 +55,6 @@
                          <th class="bg-violet-800 text-white tiny-text px-2 py-2">نیایش</th>
                          <th class="bg-violet-800 text-white tiny-text px-2 py-2">محک</th>
                          <th class="bg-violet-800 text-white tiny-text px-2 py-2">زمان</th>
-                         <!-- <th>تاریخ</th> -->
                      </tr>
                  </thead>
                  <tbody>
@@ -77,8 +84,8 @@
                         ?>
 
                                      <tr class="">
-                                         <td class=" tiny-text p-2"><?php echo $name ?> <?php echo $family ?></td>
-                                         <td class=" tiny-text p-2">
+                                         <td class=" p-2"><?php echo $name ?> <?php echo $family ?></td>
+                                         <td class=" small-font tiny-text p-2">
                                              <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
@@ -101,7 +108,7 @@
                                                 }
                                                 ?>
                                          </td>
-                                         <td class=" tiny-text p-2">
+                                         <td class=" small-font tiny-text p-2">
                                              <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
@@ -247,8 +254,8 @@
                                 ?>
                                  <tr class="mb-1 ?> odd:bg-gray-200">
                                  <?php  } ?>
-                                 <td class="tiny-text bold px-1">
-                                     <p style="font-size: 8px !important;" class="text-right bold text-gray-700 px-2 py-1">
+                                 <td class=" bold px-1">
+                                     <p class="text-right bold text-gray-700 px-2 py-1">
                                          <?php echo $price['partnumber']; ?>
                                      </p>
                                  </td>
@@ -259,8 +266,8 @@
                                          <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                      </p>
                                  </td>
-                                 <td class="tiny-text bold px-1">
-                                     <p class="text-right bold text-gray-700 px-2 py-1">
+                                 <td class="small-font bold px-1">
+                                     <p class="small-font text-right bold text-gray-700 px-2 py-1">
                                          <?php echo $price['name'] . ' ' . $price['family'] ?>
                                      </p>
                                  </td>
@@ -317,7 +324,7 @@
 
                                  <tr class="pin">
                                      <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                     <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                     <td class="p-2"><?php echo nl2br($callinfo) ?></td>
                                      <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                          <?php
 
@@ -328,7 +335,6 @@
                                             $interval = $datetime1->diff($datetime2);
                                             ?>
                                      </td>
-                                     <!-- <td class="record-date"><?php echo $time ?></td> -->
                                  </tr>
 
                          <?php
@@ -357,7 +363,7 @@
 
                                  <tr>
                                      <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                     <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                     <td class="p-2"><?php echo nl2br($callinfo) ?></td>
                                      <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                          <?php
 
@@ -368,7 +374,6 @@
                                             $interval = $datetime1->diff($datetime2);
                                             ?>
                                      </td>
-                                     <!-- <td class="record-date"><?php echo $time ?></td> -->
                                  </tr>
 
                          <?php

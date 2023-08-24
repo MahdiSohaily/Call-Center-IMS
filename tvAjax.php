@@ -261,7 +261,7 @@ if ($status == 'on') :
                                     <tr class="mb-1 ?> odd:bg-gray-200">
                                     <?php  } ?>
                                     <td class="tiny-text bold px-1">
-                                        <p style="font-size: 8px !important;" class="text-right bold text-gray-700 px-2 py-1">
+                                        <p class="text-right bold text-gray-700 px-2 py-1">
                                             <?php echo $price['partnumber']; ?>
                                         </p>
                                     </td>
@@ -330,7 +330,7 @@ if ($status == 'on') :
 
                                     <tr class="pin">
                                         <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                        <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                        <td class="p-2"><?php echo nl2br($callinfo) ?></td>
                                         <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                             <?php
 
@@ -370,7 +370,7 @@ if ($status == 'on') :
 
                                     <tr>
                                         <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                        <td style="font-size: 8px !important;" class="p-2"><?php echo nl2br($callinfo) ?></td>
+                                        <td class="p-2"><?php echo nl2br($callinfo) ?></td>
                                         <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
                                             <?php
 
@@ -381,7 +381,6 @@ if ($status == 'on') :
                                             $interval = $datetime1->diff($datetime2);
                                             ?>
                                         </td>
-                                        <!-- <td class="record-date"><?php echo $time ?></td> -->
                                     </tr>
 
                             <?php
@@ -418,10 +417,11 @@ else :
     <style>
         body,
         html {
+            height: 100vh !important;
             padding: 0 !important;
             margin: 0 !important;
-            background: url(https://images.pexels.com/photos/10987310/pexels-photo-10987310.jpeg?auto=compress&cs=tinysrgb&w=600)no-repeat center;
-            background-size: cover;
+            background: url(https://www.topgear.com/sites/default/files/cars-car/carousel/2021/06/1_cupra_formentor.jpg?w=892&h=502)no-repeat center;
+            background-size: cover !important;
         }
     </style>
 <?php
