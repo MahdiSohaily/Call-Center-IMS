@@ -14,17 +14,18 @@ if (isset($_POST['jsonData'])) {
         $notification_id = filter_has_var(INPUT_POST, 'notification') ? $_POST['notification'] : null;
 
         foreach ($messagesBySender as $sender => $message) {
+            $fullName = current($message['name']);
+            $username = current($message['userName']);
+            $profile = current($message['profile']);
 
-            $explodedCodes = implode("\n", $message['info']['code']);
-            $userMessage = $message['info']['message'];
-            $fullName = $message['name'][0];
-            $username = $message['userName'][0];
-            $profile = $message['profile'][0];
-            $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id);
+            foreach ($message['info'] as $info) {
+                $explodedCodes = $info['code'];
+                $userMessage = $info['message'];
+                $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id);
+            }
         }
     }
 }
-
 
 
 function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null)
