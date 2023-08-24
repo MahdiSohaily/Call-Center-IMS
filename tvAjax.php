@@ -78,7 +78,6 @@ if ($status == 'on') :
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">نیایش</th>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">محک</th>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">زمان</th>
-                            <!-- <th>تاریخ</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -108,8 +107,8 @@ if ($status == 'on') :
                         ?>
 
                                         <tr class="">
-                                            <td class=" tiny-text p-2"><?php echo $name ?> <?php echo $family ?></td>
-                                            <td class=" tiny-text p-2">
+                                            <td class=" p-2"><?php echo $name ?> <?php echo $family ?></td>
+                                            <td class=" small-font tiny-text p-2">
                                                 <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
@@ -132,7 +131,7 @@ if ($status == 'on') :
                                                 }
                                                 ?>
                                             </td>
-                                            <td class=" tiny-text p-2">
+                                            <td class=" small-font tiny-text p-2">
                                                 <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
@@ -251,8 +250,6 @@ if ($status == 'on') :
                     <tbody>
                         <?php
                         $givenPrice = givenPrice($con);
-
-
                         if (count($givenPrice) > 0) {
                         ?>
                             <?php foreach ($givenPrice as $price) { ?>
@@ -260,7 +257,7 @@ if ($status == 'on') :
                                 ?>
                                     <tr class="mb-1 ?> odd:bg-gray-200">
                                     <?php  } ?>
-                                    <td class="tiny-text bold px-1">
+                                    <td class=" bold px-1">
                                         <p class="text-right bold text-gray-700 px-2 py-1">
                                             <?php echo $price['partnumber']; ?>
                                         </p>
@@ -272,8 +269,8 @@ if ($status == 'on') :
                                             <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                         </p>
                                     </td>
-                                    <td class="tiny-text bold px-1">
-                                        <p class="text-right bold text-gray-700 px-2 py-1">
+                                    <td class="small-font bold px-1">
+                                        <p class="small-font text-right bold text-gray-700 px-2 py-1">
                                             <?php echo $price['name'] . ' ' . $price['family'] ?>
                                         </p>
                                     </td>
@@ -341,7 +338,6 @@ if ($status == 'on') :
                                             $interval = $datetime1->diff($datetime2);
                                             ?>
                                         </td>
-                                        <!-- <td class="record-date"><?php echo $time ?></td> -->
                                     </tr>
 
                             <?php
