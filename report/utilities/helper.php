@@ -17,14 +17,21 @@ function filterCode($message)
 
     $finalCodes = array_filter($filteredCodes, function ($item) {
         $data = explode(" ", $item);
-        if (strlen($data[0]) > 6) {
+        if (strlen($data[0]) > 4) {
             return $item;
         }
     });
 
     $finalCodes = array_map(function ($item) {
-        $item = explode(' ', $item)[0];
-        return $item;
+        $item = explode(' ', $item);
+        if (count($item) >=2) {
+            $partOne = $item[0];
+            $partTwo = $item[1];
+            if (!preg_match('/[a-zA-Z]{4,}/i', $partOne) && !preg_match('/[a-zA-Z]{4,}/i', $partTwo)) {
+                return $partOne . $partTwo;
+            }
+        }
+        return $item[0];
     }, $finalCodes);
 
     $finalCodes = array_filter($finalCodes, function ($item) {
