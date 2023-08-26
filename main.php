@@ -135,28 +135,52 @@
      </div>
  </div>
  <script>
-     function filterCode(element) {
-         if (!element.value) return;
+      function filterCode(element) {
+        const message = element.value;
+        if (!message) {
+            return '';
+        }
 
-         const codes = element.value.split("\n").filter(code => code.length > 0);
+        const codes = message.split("\n");
 
-         const filteredCodes = codes.map(code => {
-             const removedText = code.replace(/\[[^\]]*\]/g, "");
-             const parts = removedText.includes(":") ? removedText.split(":") : removedText.split(",");
-             const rightSide = parts[1] ? parts[1].trim().replace(/[^a-zA-Z0-9 ]/g, "") : "";
-             return rightSide || removedText.replace(/[^a-zA-Z0-9 ]/g, "");
-         }).filter(item => item && !/[^a-zA-Z0-9 ]/g.test(item));
+        const filteredCodes = codes.map(function(code) {
+            code = code.replace(/\[[^\]]*\]/g, '');
+            const parts = code.split(/[:,]/, 2);
+            const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+            return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+        }).filter(Boolean);
 
+        const finalCodes = filteredCodes.filter(function(item) {
+            const data = item.split(" ");
+            if (data[0].length > 4) {
+                return item;
+            }
+        });
 
-         let finalCodes = filteredCodes.filter(item => item.split(" ")[0].length > 6);
-         finalCodes = finalCodes.map(item => item.split(" ")[0]);
-         finalCodes = finalCodes.filter(item => {
-             const consecutiveChars = item.match(/[a-zA-Z]{4,}/g);
-             return !consecutiveChars;
-         });
+        const mappedFinalCodes = finalCodes.map(function(item) {
+            const parts = item.split(' ');
+            if (parts.length >= 2) {
+                const partOne = parts[0];
+                const partTwo = parts[1];
+                if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
+                    return partOne + partTwo;
+                }
+            }
+            return parts[0];
+        });
 
-         element.value = finalCodes.join("\n");
-     }
+        const nonConsecutiveCodes = mappedFinalCodes.filter(function(item) {
+            const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
+            return !consecutiveChars;
+        });
+
+        console.log(nonConsecutiveCodes);
+
+        element.value = nonConsecutiveCodes.map(function(item) {
+            return item.split(' ')[0];
+        }).join("\n") + "\n";
+    }
+
 
 
      const price_textarea = document.getElementById('givenCode');
