@@ -353,7 +353,7 @@ else :
             height: 100vh !important;
             padding: 0 !important;
             margin: 0 !important;
-            background: url(https://www.topgear.com/sites/default/files/cars-car/carousel/2021/06/1_cupra_formentor.jpg?w=892&h=502)no-repeat center;
+            background: url('./public/img/tv-wallpaper-2.jpg')no-repeat center;
             background-size: cover !important;
         }
     </style>
