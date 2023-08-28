@@ -2,30 +2,11 @@
 require_once './php/function.php';
 require_once './php/jdf.php';
 require_once './config/database.php';
+require_once './utilities/helpers.php';
 if (isset($_POST['user'])) {
     $user = $_POST['user'];
 } else {
     $user  = getinternal($_SESSION["id"]);
-}
-
-function givenPrice($con)
-{
-    $sql = "SELECT 
- prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family
- FROM ((shop.prices 
- INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
- INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
- ORDER BY prices.created_at DESC LIMIT 40";
-    $result = mysqli_query($con, $sql);
-
-
-    $givenPrices = [];
-    if (mysqli_num_rows($result) > 0) {
-        while ($item = mysqli_fetch_assoc($result)) {
-            array_push($givenPrices, $item);
-        }
-    }
-    return  $givenPrices;
 }
 
 $sql = "SELECT * FROM shop.tv WHERE id='1'";
@@ -33,24 +14,6 @@ $factor_result = mysqli_query($con, $sql);
 $tv = mysqli_fetch_assoc($factor_result);
 $status = $tv['status'];
 if ($status == 'on') :
-    function getFirstLetters($string)
-    {
-        // Trim the string and remove special characters
-        $string = trim(preg_replace('/[^a-zA-Z0-9\sآ-ی]/u', '', $string));
-
-        $words = preg_split('/\s+/u', $string);
-        $firstLetters = '';
-
-        if (count($words) === 1) {
-            $firstLetters = mb_substr($words[0], 0, 2);
-        } else {
-            foreach ($words as $word) {
-                $firstLetters .= mb_substr($word, 0, 1) . ' ';
-            }
-        }
-
-        return trim($firstLetters);
-    }
 ?>
     <script>
         function closeFullscreen() {
@@ -250,26 +213,6 @@ if ($status == 'on') :
                     <tbody>
                         <?php
                         $givenPrice = givenPrice($con);
-                        function givenPrice($con)
-                        {
-                            $sql = "SELECT 
-                         prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family
-                         FROM ((shop.prices 
-                         INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
-                         INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
-                         ORDER BY prices.created_at DESC LIMIT 40";
-                            $result = mysqli_query($con, $sql);
-
-
-                            $givenPrices = [];
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($item = mysqli_fetch_assoc($result)) {
-                                    array_push($givenPrices, $item);
-                                }
-                            }
-                            return  $givenPrices;
-                        }
-
                         if (count($givenPrice) > 0) {
                         ?>
                             <?php foreach ($givenPrice as $price) { ?>
@@ -401,24 +344,6 @@ if ($status == 'on') :
             </div>
         </div>
     </div>
-    <script>
-        /* Get the element you want displayed in fullscreen mode (a video in this example): */
-        var elem = document.getElementById("fullpage");
-
-        /* When the openFullscreen() function is executed, open the video in fullscreen.
-        Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
-        function openFullscreen() {
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                /* Safari */
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                /* IE11 */
-                elem.msRequestFullscreen();
-            }
-        }
-    </script>
 <?php
 else :
 ?>
