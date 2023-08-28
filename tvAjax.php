@@ -66,12 +66,12 @@ if ($status == 'on') :
         }
     </script>
     <div class="bg-white">
-        <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons">aspect_ratio</i>
-        <i style="cursor: pointer;" onclick="closeFullscreen()" class="material-icons">border_clear</i>
+        <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>
+        <i style="cursor: pointer;" onclick="closeFullscreen()" class="material-icons handler">border_clear</i>
         <div class="d-grid">
             <div class="div1">
-                <h2 class="title">تماس های ورودی</h2>
-                <table class="border text-sm bg-white custom-table mb-2 p-3">
+                <h2 class="section_heading">تماس های ورودی</h2>
+                <table>
                     <thead>
                         <tr>
                             <th class="bg-violet-800 text-white tiny-text px-2 py-2">مشخصات</th>
@@ -83,7 +83,6 @@ if ($status == 'on') :
                     </thead>
                     <tbody>
                         <?php
-                        global  $repeat;
                         $sql = "SELECT * FROM incoming WHERE user = $user ORDER BY  time DESC LIMIT 40";
                         $result = mysqli_query($con, $sql);
                         if (mysqli_num_rows($result) > 0) {
@@ -106,10 +105,11 @@ if ($status == 'on') :
                                         $name = $row2['name'];
                                         $family = $row2['family'];
                         ?>
-                                        <tr class="">
-                                            <td class=" p-2"><?php echo $name ?> <?php echo $family ?></td>
-                                            <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
-                                            <td class=" small-font tiny-text p-2">
+
+                                        <tr>
+                                            <td><?php echo $name ?> <?php echo $family ?></td>
+                                            <td><?php echo $name ?> <?= $phone ?></td>
+                                            <td>
                                                 <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
@@ -132,7 +132,7 @@ if ($status == 'on') :
                                                 }
                                                 ?>
                                             </td>
-                                            <td class=" small-font tiny-text p-2">
+                                            <td>
                                                 <?php
                                                 $gphone = substr($phone, 1);
                                                 $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
@@ -155,7 +155,7 @@ if ($status == 'on') :
                                                     }
                                                 }
                                                 ?></td>
-                                            <td class=" tiny-text p-2"><?php echo $jalali_time ?></td>
+                                            <td><?php echo $jalali_time ?></td>
                                         </tr>
                                     <?php
 
@@ -166,8 +166,8 @@ if ($status == 'on') :
                                         <td>
                                             <i style="color: red" class="material-icons">cancel</i>
                                         </td>
-                                        <td class=" p-2"><?= $phone ?></td>
-                                        <td class="p-2">
+                                        <td><?= $phone ?></td>
+                                        <td>
                                             <?php
                                             $gphone = substr($phone, 1);
                                             $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
@@ -190,7 +190,7 @@ if ($status == 'on') :
                                             }
                                             ?>
                                         </td>
-                                        <td class="p-2">
+                                        <td>
                                             <?php
                                             $gphone = substr($phone, 1);
                                             $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
@@ -214,7 +214,7 @@ if ($status == 'on') :
                                             }
                                             ?>
                                         </td>
-                                        <td class="p-2"><?php echo $jalali_time ?></td>
+                                        <td><?php echo $jalali_time ?></td>
                                     </tr>
                         <?php
                                 }
@@ -228,21 +228,21 @@ if ($status == 'on') :
                 </table>
             </div>
             <div class="div2">
-                <h2 class="title">آخرین قیمت های داده شده</h2>
-                <table class="border text-sm bg-white custom-table mb-2 p-3">
-                    <thead class="font-medium bg-green-600">
+                <h2 class="section_heading">آخرین قیمت های داده شده</h2>
+                <table>
+                    <thead>
                         <tr>
-                            <th scope="col" class=" py-2 tiny-text text-white text-right">
+                            <th>
                                 کد فنی
                             </th>
-                            <th scope="col" class=" py-2 tiny-text text-white text-right">
+                            <th>
                                 قیمت
                             </th>
 
-                            <th scope="col" class=" py-2 tiny-text text-white text-right">
+                            <th>
                                 مشتری
                             </th>
-                            <th scope="col" class=" py-2 tiny-text text-white text-center">
+                            <th>
                                 کاربر
                             </th>
                         </tr>
@@ -250,41 +250,61 @@ if ($status == 'on') :
                     <tbody>
                         <?php
                         $givenPrice = givenPrice($con);
+                        function givenPrice($con)
+                        {
+                            $sql = "SELECT 
+                         prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family
+                         FROM ((shop.prices 
+                         INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
+                         INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
+                         ORDER BY prices.created_at DESC LIMIT 40";
+                            $result = mysqli_query($con, $sql);
+
+
+                            $givenPrices = [];
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($item = mysqli_fetch_assoc($result)) {
+                                    array_push($givenPrices, $item);
+                                }
+                            }
+                            return  $givenPrices;
+                        }
+
                         if (count($givenPrice) > 0) {
                         ?>
                             <?php foreach ($givenPrice as $price) { ?>
                                 <?php if ($price['price'] !== null) {
                                 ?>
-                                    <tr class="mb-1 ?> odd:bg-gray-200">
+                                    <tr>
                                     <?php  } ?>
-                                    <td class=" bold px-1">
-                                        <p class="text-right bold text-gray-700 px-2 py-1">
+                                    <td>
+                                        <p class="strong_content">
                                             <?php echo $price['partnumber']; ?>
                                         </p>
                                     </td>
 
 
-                                    <td class="tiny-text bold px-1">
-                                        <p class="text-right bold text-gray-700 px-2 py-1">
+                                    <td>
+                                        <p style="direction: ltr;">
                                             <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                         </p>
                                     </td>
-                                    <td class="small-font bold px-1">
-                                        <p class="small-font text-right bold text-gray-700 px-2 py-1">
+                                    <td>
+                                        <p>
                                             <?php echo $price['name'] . ' ' . $price['family'] ?>
                                         </p>
                                     </td>
                                     <td>
-                                        <p class="text-center bold text-gray-700 px-2 py-1">
-                                            <img title="<?php echo $price['username'] ?>" class="user-img mx-auto" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
+                                        <p>
+                                            <img title="<?php echo $price['username'] ?>" class="user-img" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
                                         </p>
                                     </td>
                                     </tr>
                                 <?php
                             } ?>
                             <?php } else { ?>
-                                <tr class="">
-                                    <td colspan="4" scope="col" class="not-exist">
+                                <tr>
+                                    <td colspan="4" scope="col">
                                         موردی برای نمایش وجود ندارد !!
                                     </td>
                                 </tr>
@@ -293,15 +313,15 @@ if ($status == 'on') :
                 </table>
             </div>
             <div class="div3">
-                <h2 class="title">آخرین استعلام ها</h2>
-                <div class="">
+                <h2 class="section_heading">آخرین استعلام ها</h2>
+                <div>
 
-                    <table class="border text-sm bg-white custom-table mb-2 p-3 ">
+                    <table>
                         <thead>
-                            <tr class="tiny-text bg-violet-800 text-white">
-                                <th class="p-2">مشتری</th>
-                                <th class="p-2">اطلاعات استعلام</th>
-                                <th class="p-2">کاربر</th>
+                            <tr>
+                                <th>مشتری</th>
+                                <th>اطلاعات استعلام</th>
+                                <th>کاربر</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -325,19 +345,10 @@ if ($status == 'on') :
                                     $family = $row2['family'];
                             ?>
 
-                                    <tr class="pin">
-                                        <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                        <td class="p-2"><?php echo nl2br($callinfo) ?></td>
-                                        <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
-                                            <?php
-
-                                            date_default_timezone_set('Asia/Tehran');
-
-                                            $datetime1 = new DateTime();
-                                            $datetime2 = new DateTime($time);
-                                            $interval = $datetime1->diff($datetime2);
-                                            ?>
-                                        </td>
+                                    <tr>
+                                        <td><?php echo ($name . " " . $family) ?></td>
+                                        <td><?php echo nl2br($callinfo) ?></td>
+                                        <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" /></td>
                                     </tr>
 
                             <?php
@@ -365,17 +376,18 @@ if ($status == 'on') :
                             ?>
 
                                     <tr>
-                                        <td class="tiny-text p-2"><?php echo ($name . " " . $family) ?></td>
-                                        <td class="p-2"><?php echo nl2br($callinfo) ?></td>
-                                        <td class="tiny-text p-2"><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
-                                            <?php
+                                        <td><?php echo ($name . " " . $family) ?></td>
+                                        <td><?php echo nl2br($callinfo) ?></td>
+                                        <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" />
+                                        </td>
+                                        <?php
 
-                                            date_default_timezone_set('Asia/Tehran');
+                                        date_default_timezone_set('Asia/Tehran');
 
-                                            $datetime1 = new DateTime();
-                                            $datetime2 = new DateTime($time);
-                                            $interval = $datetime1->diff($datetime2);
-                                            ?>
+                                        $datetime1 = new DateTime();
+                                        $datetime2 = new DateTime($time);
+                                        $interval = $datetime1->diff($datetime2);
+                                        ?>
                                         </td>
                                     </tr>
 

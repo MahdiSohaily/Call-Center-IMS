@@ -86,7 +86,7 @@ $title = '';
     <!-- Addon plugins JS files -->
     <script src="js/jquery.min.js?v=<?php echo (rand()) ?>"></script>
     <script src="js/save.js?v=<?php echo (rand()) ?>"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./public/js/axios/js"></script>
     <script src="js/jquery.tagselect.js?v=<?php echo (rand()) ?>"></script>
     <script src="js/jquery.tagselect2.js?v=<?php echo (rand()) ?>"></script>
     <script src="js/font.min.js"></script>

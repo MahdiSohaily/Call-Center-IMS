@@ -10,6 +10,7 @@
   width: 854px;
   margin-inline: auto;
   font-size: 8px;
+  background-color: white;
 }
 
 .user-img {
@@ -57,4 +58,9 @@ tr:nth-child(odd) {
 .strong_content {
   font-size: 10px;
   font-weight: bold;
+}
+
+.handler {
+  font-size: 12px;
+  cursor: pointer;
 }

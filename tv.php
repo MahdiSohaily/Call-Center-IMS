@@ -19,11 +19,12 @@
      <title>TV</title>
      <link rel="icon" type="image/x-icon" href="img/favicon.ico">
      <link rel='stylesheet' href='./public/css/tv.css?v=<?= rand() ?>' type='text/css' media='all' />
+     <script src="./public/js/axios.js"></script>
  </head>
 
  <body>
      <div id="fullPage" data-user='<?php echo $user ?>'>
-         <i onclick="openFullscreen()" class="large material-icons">aspect_ratio</i>
+         <i onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>
          <div class="d-grid">
              <div class="div1">
                  <h2 class="section_heading">تماس های ورودی</h2>
