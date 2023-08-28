@@ -56,9 +56,9 @@ $title = '';
             break;
         case 'tv.php':
             $title = "تلویزیون";
-            echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
+            echo '';
             $rand = rand();
-            echo "<link rel='stylesheet' href='./css/tv.css?v=$rand' type='text/css' media='all' />";
+            echo "";
             break;
         case 'estelam-list.php':
             $title = "قیمت های گرفته شده";

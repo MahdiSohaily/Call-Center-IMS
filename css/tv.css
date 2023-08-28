@@ -1,79 +1,112 @@
+/* fallback */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
 * {
-  font-size: 10px !important;
+  margin: 0;
+  padding: 0;
 }
 
-th {
-  font-size: 10px !important;
-  padding-inline: 5px !important;
-  text-align: right;
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
 }
 
-img.user-img {
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+#fullPage {
+  width: 854px;
+  background-color: white !important;
+  margin-inline: auto;
+  font-size: 8px;
+}
+
+.user-img {
   width: 10px;
   height: 10px;
   border: none;
 }
 
-.ltr {
-  direction: ltr !important;
-}
-
-.bg-white {
-  background-color: white !important;
-}
 .d-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  grid-column-gap: 5px;
+  grid-column-gap: 3px;
   grid-row-gap: 3px;
-}
-
-table {
-  width: 100% !important;
-  background-color: white !important;
-}
-
-thead {
-  background-color: rgb(92, 28, 126);
-}
-
-th {
-  color: white;
-  padding-block: 10px;
-}
-
-td {
-  padding: 3px 7px !important;
-  line-height: 2 !important;
-  border: none!important;
-}
-
-tr {
-  padding-block: 5px !important;
-}
-
-tr:nth-child(even) {
-  background-color: rgb(188, 222, 236);
-}
-
-tr.pin:nth-child(even) {
-  background-color: rgb(255 237 213) !important;
-}
-
-tr.pin:nth-child(odd) {
-  background-color: rgb(253 186 116) !important;
-}
-
-.phone_number {
-  font-size: 5px !important;
-  background-color: red;
-  text-decoration: none;
-  color: white;
-  border-radius: 10px;
-  padding: 0px 5px;
-}
-
-.phone_number:hover {
-  background-color: rgb(162, 1, 1);
 }
