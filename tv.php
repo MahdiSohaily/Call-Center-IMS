@@ -18,7 +18,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>TV</title>
      <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-     <link rel='stylesheet' href='./css/tv.css?v=$rand' type='text/css' media='all' />
+     <link rel='stylesheet' href='./public/css/tv.css?v=<?= rand() ?>' type='text/css' media='all' />
  </head>
 
  <body>
@@ -26,7 +26,7 @@
          <i onclick="openFullscreen()" class="large material-icons">aspect_ratio</i>
          <div class="d-grid">
              <div class="div1">
-                 <h2>تماس های ورودی</h2>
+                 <h2 class="section_heading">تماس های ورودی</h2>
                  <table>
                      <thead>
                          <tr>
@@ -184,7 +184,7 @@
                  </table>
              </div>
              <div class="div2">
-                 <h2>آخرین قیمت های داده شده</h2>
+                 <h2 class="section_heading">آخرین قیمت های داده شده</h2>
                  <table>
                      <thead>
                          <tr>
@@ -234,14 +234,14 @@
                                      <tr>
                                      <?php  } ?>
                                      <td>
-                                         <p>
+                                         <p class="strong_content">
                                              <?php echo $price['partnumber']; ?>
                                          </p>
                                      </td>
 
 
                                      <td>
-                                         <p>
+                                         <p style="direction: ltr;">
                                              <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                          </p>
                                      </td>
@@ -252,7 +252,7 @@
                                      </td>
                                      <td>
                                          <p>
-                                             <img title="<?php echo $price['username'] ?>" class="user-img mx-auto" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
+                                             <img title="<?php echo $price['username'] ?>" class="user-img" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
                                          </p>
                                      </td>
                                      </tr>
@@ -269,7 +269,7 @@
                  </table>
              </div>
              <div class="div3">
-                 <h2>آخرین استعلام ها</h2>
+                 <h2 class="section_heading">آخرین استعلام ها</h2>
                  <div>
 
                      <table>
@@ -304,16 +304,7 @@
                                      <tr>
                                          <td><?php echo ($name . " " . $family) ?></td>
                                          <td><?php echo nl2br($callinfo) ?></td>
-                                         <td><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
-                                             <?php
-
-                                                date_default_timezone_set('Asia/Tehran');
-
-                                                $datetime1 = new DateTime();
-                                                $datetime2 = new DateTime($time);
-                                                $interval = $datetime1->diff($datetime2);
-                                                ?>
-                                         </td>
+                                         <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" /></td>
                                      </tr>
 
                              <?php
@@ -343,15 +334,16 @@
                                      <tr>
                                          <td><?php echo ($name . " " . $family) ?></td>
                                          <td><?php echo nl2br($callinfo) ?></td>
-                                         <td><img class="user-img mx-auto" src="../userimg/<?php echo $user ?>.jpg" />
-                                             <?php
+                                         <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" />
+                                         </td>
+                                         <?php
 
-                                                date_default_timezone_set('Asia/Tehran');
+                                            date_default_timezone_set('Asia/Tehran');
 
-                                                $datetime1 = new DateTime();
-                                                $datetime2 = new DateTime($time);
-                                                $interval = $datetime1->diff($datetime2);
-                                                ?>
+                                            $datetime1 = new DateTime();
+                                            $datetime2 = new DateTime($time);
+                                            $interval = $datetime1->diff($datetime2);
+                                            ?>
                                          </td>
                                      </tr>
 

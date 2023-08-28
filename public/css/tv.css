@@ -1,0 +1,60 @@
+@import url("utilities/reset_styles.css");
+@import url("utilities/material_icons.css");
+@import url("utilities/iran_sans_font.css");
+
+/* custom styles */
+* {
+  direction: rtl;
+}
+#fullPage {
+  width: 854px;
+  margin-inline: auto;
+  font-size: 8px;
+}
+
+.user-img {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+}
+
+.d-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+}
+
+.section_heading {
+  font-size: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: blueviolet;
+  padding-block: 5px;
+  color: white;
+}
+
+td {
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(179, 221, 241);
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(215, 237, 212);
+}
+
+.strong_content {
+  font-size: 10px;
+  font-weight: bold;
+}
