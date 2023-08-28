@@ -36,7 +36,7 @@
      }
 
      * {
-         line-height: 1 !important;
+         line-height: 0.8 !important;
      }
 
      .small-font {
@@ -134,7 +134,6 @@
                                                 }
                                                 ?></td>
                                          <td class=" tiny-text p-2"><?php echo $jalali_time ?></td>
-                                         <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
                                      </tr>
                                  <?php
 
@@ -145,7 +144,7 @@
                                      <td>
                                          <i style="color: red" class="material-icons">cancel</i>
                                      </td>
-                                     <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
+                                     <td class=" p-2"><?= $phone ?></td>
                                      <td class="p-2">
                                          <?php
                                             $gphone = substr($phone, 1);
@@ -194,7 +193,6 @@
                                             ?>
                                      </td>
                                      <td class="p-2"><?php echo $jalali_time ?></td>
-                                     <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
                                  </tr>
                      <?php
                                 }

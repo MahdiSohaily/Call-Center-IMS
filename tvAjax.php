@@ -106,7 +106,6 @@ if ($status == 'on') :
                                         $name = $row2['name'];
                                         $family = $row2['family'];
                         ?>
-
                                         <tr class="">
                                             <td class=" p-2"><?php echo $name ?> <?php echo $family ?></td>
                                             <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
@@ -167,7 +166,7 @@ if ($status == 'on') :
                                         <td>
                                             <i style="color: red" class="material-icons">cancel</i>
                                         </td>
-                                        <td class=" p-2"><?php echo $name ?> <?= $phone ?></td>
+                                        <td class=" p-2"><?= $phone ?></td>
                                         <td class="p-2">
                                             <?php
                                             $gphone = substr($phone, 1);
@@ -216,7 +215,6 @@ if ($status == 'on') :
                                             ?>
                                         </td>
                                         <td class="p-2"><?php echo $jalali_time ?></td>
-                                        <!-- <td class="date-info"><?php echo $jalali_date ?></td> -->
                                     </tr>
                         <?php
                                 }
