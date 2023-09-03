@@ -280,13 +280,11 @@
                                         $name = $row2['name'];
                                         $family = $row2['family'];
                                 ?>
-
-                                     <tr>
+                                     <tr class="pin">
                                          <td><?= ($name . " " . $family) ?></td>
                                          <td><?= nl2br($callinfo) ?></td>
                                          <td><img class="user-img" src="../userimg/<?= $user ?>.jpg" /></td>
                                      </tr>
-
                              <?php
                                     }
                                 }
@@ -310,7 +308,6 @@
                                         $name = $row2['name'];
                                         $family = $row2['family'];
                                 ?>
-
                                      <tr>
                                          <td><?= ($name . " " . $family) ?></td>
                                          <td><?= nl2br($callinfo) ?></td>
@@ -326,7 +323,6 @@
                                             ?>
                                          </td>
                                      </tr>
-
                              <?php
                                     }
                                 }

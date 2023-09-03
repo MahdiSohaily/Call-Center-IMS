@@ -68,10 +68,8 @@ function format_interval(DateInterval $interval)
                                     </a>
                                 </p>
                             </td>
-                            <td class=" px-1">
-                                <p class="text-right text-gray-700 px-2 py-1">
+                            <td class="pl-3">
                                     <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
-                                </p>
                             </td>
                             <td class=" px-1">
                                 <p class="text-right text-gray-700 px-2 py-1">
@@ -177,7 +175,7 @@ function format_interval(DateInterval $interval)
                     $name = $row2['name'];
                     $family = $row2['family'];
             ?>
-                    <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
+                    <tr class=" min-w-full mb-1 odd:bg-orange-300 even:bg-orange-100">
                         <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                         <td>
                             <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">

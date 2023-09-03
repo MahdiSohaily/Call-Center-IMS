@@ -287,7 +287,7 @@ if ($status == 'on') :
                                     $family = $row2['family'];
                             ?>
 
-                                    <tr>
+                                    <tr class="pin">
                                         <td><?= ($name . " " . $family) ?></td>
                                         <td><?= nl2br($callinfo) ?></td>
                                         <td><img class="user-img" src="../userimg/<?= $user ?>.jpg" /></td>
@@ -316,7 +316,6 @@ if ($status == 'on') :
                                     $name = $row2['name'];
                                     $family = $row2['family'];
                             ?>
-
                                     <tr>
                                         <td><?= ($name . " " . $family) ?></td>
                                         <td><?= nl2br($callinfo) ?></td>
