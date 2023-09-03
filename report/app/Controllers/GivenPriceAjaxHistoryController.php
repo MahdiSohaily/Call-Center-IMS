@@ -37,26 +37,24 @@ if (isset($_POST['historyAjax'])) {
                             <?php  } ?>
                             <td class=" px-1">
                                 <p class="text-right text-indigo-600 px-1 py-1">
-                                    <a class="flex items-center" href="../main.php?phone=<?php echo $price['phone'] ?>">
+                                    <a class="flex items-center" href="../main.php?phone=<?= $price['phone'] ?>">
                                         <i class="small material-icons px-2">attachment</i>
-                                        <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                        <?= $price['name'] . ' ' . $price['family'] ?>
                                     </a>
                                 </p>
                             </td>
-                            <td class=" px-1">
-                                <p class="text-right text-gray-700 px-2 py-1">
-                                    <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
-                                </p>
+                            <td class="pl-5">
+                                <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                             </td>
                             <td class=" px-1">
                                 <p class="text-right text-gray-700 px-2 py-1">
-                                    <a class="text-indigo-600" href="./givePrice.php?phone=<?php echo $price['partnumber']; ?>">
-                                        <?php echo $price['partnumber']; ?>
+                                    <a class="text-indigo-600" href="./givePrice.php?phone=<?= $price['partnumber']; ?>">
+                                        <?= $price['partnumber']; ?>
                                     </a>
                                 </p>
                             </td>
                             <td class=" record-user">
-                                <img title="<?php echo $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?php echo $price['userID'] ?>.jpg" alt="userimage" />
+                                <img title="<?= $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?= $price['userID'] ?>.jpg" alt="userimage" />
                             </td>
                             <td class=" time">
                                 <p class="text-right text-gray-700 px-2 py-1">
@@ -153,16 +151,16 @@ if (isset($_POST['historyAjax'])) {
                     $family = $row2['family'];
             ?>
                     <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
-                        <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
+                        <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?= $phone ?>"><?= ($name . " " . $family) ?></a></td>
                         <td>
-                            <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
-                                <?php echo $phone ?></a>
+                            <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?= $phone ?>">
+                                <?= $phone ?></a>
                         </td>
-                        <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
+                        <td class="px-2 py-2"><?= nl2br($callinfo) ?></td>
                         <td class="px-2 py-2">
-                            <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>" checked>
+                            <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?= $recordID ?>" checked>
                         </td>
-                        <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
+                        <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?= $user ?>.jpg" /> </td>
                         <?php
                         date_default_timezone_set('Asia/Tehran');
                         $now = new DateTime(); // current date time
@@ -194,7 +192,7 @@ if (isset($_POST['historyAjax'])) {
                         $text = "$text قبل";
 
                         ?>
-                        <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
+                        <td style=" width: 150px;" class="px-2 py-2"><?= $text; ?></td>
                     </tr>
                 <?php
 
@@ -219,16 +217,16 @@ if (isset($_POST['historyAjax'])) {
                     $family = $row2['family'];
                 ?>
                     <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
-                        <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
+                        <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?= $phone ?>"><?= ($name . " " . $family) ?></a></td>
                         <td>
-                            <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
-                                <?php echo $phone ?></a>
+                            <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?= $phone ?>">
+                                <?= $phone ?></a>
                         </td>
-                        <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
+                        <td class="px-2 py-2"><?= nl2br($callinfo) ?></td>
                         <td class="px-2 py-2">
-                            <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>">
+                            <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?= $recordID ?>">
                         </td>
-                        <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
+                        <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?= $user ?>.jpg" /> </td>
                         <?php
                         date_default_timezone_set('Asia/Tehran');
                         $now = new DateTime(); // current date time
@@ -260,7 +258,7 @@ if (isset($_POST['historyAjax'])) {
                         $text = "$text قبل";
 
                         ?>
-                        <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
+                        <td style=" width: 150px;" class="px-2 py-2"><?= $text; ?></td>
                     </tr>
             <?php
 
@@ -279,7 +277,7 @@ function givenPrice($conn)
     FROM ((shop.prices 
     INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
     INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
-    ORDER BY prices.created_at DESC LIMIT 600";
+    ORDER BY prices.created_at DESC LIMIT 100";
     $result = mysqli_query($conn, $sql);
 
 
@@ -334,26 +332,26 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                                 <?php  } ?>
                                 <td class=" px-1">
                                     <p class="text-right text-indigo-600 px-1 py-1">
-                                        <a class="flex items-center" href="../main.php?phone=<?php echo $price['phone'] ?>">
+                                        <a class="flex items-center" href="../main.php?phone=<?= $price['phone'] ?>">
                                             <i class="small material-icons px-2">attachment</i>
-                                            <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                            <?= $price['name'] . ' ' . $price['family'] ?>
                                         </a>
                                     </p>
                                 </td>
                                 <td class=" px-1">
                                     <p class="text-right text-gray-700 px-2 py-1">
-                                        <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                                        <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                     </p>
                                 </td>
                                 <td class=" px-1">
                                     <p class="text-right text-gray-700 px-2 py-1">
-                                        <a class="text-indigo-600" href="./givePrice.php?phone=<?php echo $price['partnumber']; ?>">
-                                            <?php echo $price['partnumber']; ?>
+                                        <a class="text-indigo-600" href="./givePrice.php?phone=<?= $price['partnumber']; ?>">
+                                            <?= $price['partnumber']; ?>
                                         </a>
                                     </p>
                                 </td>
                                 <td class=" record-user">
-                                    <img title="<?php echo $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?php echo $price['userID'] ?>.jpg" alt="userimage" />
+                                    <img title="<?= $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?= $price['userID'] ?>.jpg" alt="userimage" />
                                 </td>
                                 <td class=" time">
                                     <p class="text-right text-gray-700 px-2 py-1">
@@ -372,7 +370,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                                         $text = '';
 
                                         if ($days) {
-                                            $text .= " $days روز و ";
+                                            $text .= " $days روز ";
                                         }
 
                                         if ($hours) {
@@ -436,8 +434,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                         INNER JOIN callcenter.customer ON record.phone = customer.phone)
                         INNER JOIN yadakshop1402.users ON record.user = users.id)
                         WHERE record.pin = 'pin'
-                        ORDER BY record.time DESC
-                        LIMIT 350";
+                        ORDER BY record.time DESC";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -450,16 +447,16 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                         $family = $row2['family'];
                 ?>
                         <tr class=" min-w-full mb-1 ?> odd:bg-orange-300 even:bg-orange-100">
-                            <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
+                            <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?= $phone ?>"><?= ($name . " " . $family) ?></a></td>
                             <td>
-                                <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
-                                    <?php echo $phone ?></a>
+                                <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?= $phone ?>">
+                                    <?= $phone ?></a>
                             </td>
-                            <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
+                            <td class="px-2 py-2"><?= nl2br($callinfo) ?></td>
                             <td class="px-2 py-2">
-                                <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>" checked>
+                                <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?= $recordID ?>" checked>
                             </td>
-                            <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
+                            <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?= $user ?>.jpg" /> </td>
                             <?php
                             date_default_timezone_set('Asia/Tehran');
                             $now = new DateTime(); // current date time
@@ -491,7 +488,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                             $text = "$text قبل";
 
                             ?>
-                            <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
+                            <td style=" width: 150px;" class="px-2 py-2"><?= $text; ?></td>
                         </tr>
                     <?php
 
@@ -503,7 +500,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
             INNER JOIN yadakshop1402.users ON record.user = users.id)
             WHERE record.pin = 'unpin'
             ORDER BY record.time DESC
-            LIMIT 350";
+            LIMIT 30";
                 $result2 = mysqli_query($conn, $sql2);
                 if (mysqli_num_rows($result2) > 0) {
                     while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -516,16 +513,16 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                         $family = $row2['family'];
                     ?>
                         <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
-                            <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
+                            <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?= $phone ?>"><?= ($name . " " . $family) ?></a></td>
                             <td>
-                                <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
-                                    <?php echo $phone ?></a>
+                                <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?= $phone ?>">
+                                    <?= $phone ?></a>
                             </td>
-                            <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
+                            <td class="px-2 py-2"><?= nl2br($callinfo) ?></td>
                             <td class="px-2 py-2">
-                                <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?php echo $recordID ?>">
+                                <input onclick="togglePin(this)" type="checkbox" name="pin" data-id="<?= $recordID ?>">
                             </td>
-                            <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?php echo $user ?>.jpg" /> </td>
+                            <td class="px-2 py-2"><img class="userImage mt-1" src="../../userimg/<?= $user ?>.jpg" /> </td>
                             <?php
                             date_default_timezone_set('Asia/Tehran');
                             $now = new DateTime(); // current date time
@@ -557,7 +554,7 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                             $text = "$text قبل";
 
                             ?>
-                            <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
+                            <td style=" width: 150px;" class="px-2 py-2"><?= $text; ?></td>
                         </tr>
                 <?php
 

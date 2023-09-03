@@ -8,7 +8,7 @@ function givenPrice($conn)
         FROM ((shop.prices 
         INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
         INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
-        ORDER BY prices.created_at DESC LIMIT 600";
+        ORDER BY prices.created_at DESC LIMIT 50";
     $result = mysqli_query($conn, $sql);
 
 

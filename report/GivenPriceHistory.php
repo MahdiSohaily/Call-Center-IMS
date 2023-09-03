@@ -68,7 +68,7 @@ function format_interval(DateInterval $interval)
                                     </a>
                                 </p>
                             </td>
-                            <td class="pl-3">
+                            <td class="pl-5">
                                     <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                             </td>
                             <td class=" px-1">
@@ -98,7 +98,7 @@ function format_interval(DateInterval $interval)
                                     $text = '';
 
                                     if ($days) {
-                                        $text .= " $days روز و ";
+                                        $text .= " $days روز ";
                                     }
 
                                     if ($hours) {
@@ -162,8 +162,7 @@ function format_interval(DateInterval $interval)
                         INNER JOIN callcenter.customer ON record.phone = customer.phone)
                         INNER JOIN yadakshop1402.users ON record.user = users.id)
                         WHERE record.pin = 'pin'
-                        ORDER BY record.time DESC
-                        LIMIT 350";
+                        ORDER BY record.time DESC";
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -229,7 +228,7 @@ function format_interval(DateInterval $interval)
             INNER JOIN yadakshop1402.users ON record.user = users.id)
             WHERE record.pin = 'unpin'
             ORDER BY record.time DESC
-            LIMIT 350";
+            LIMIT 30";
             $result2 = mysqli_query($conn, $sql2);
             if (mysqli_num_rows($result2) > 0) {
                 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -286,7 +285,6 @@ function format_interval(DateInterval $interval)
                         <td style=" width: 150px;" class="px-2 py-2"><?php echo $text; ?></td>
                     </tr>
             <?php
-
                 }
             } else {
                 echo '<td colspan="4">هیچ اطلاعاتی موجود نیست</td>';
@@ -295,6 +293,7 @@ function format_interval(DateInterval $interval)
         </table>
     </div>
 </div>
+<div class=""></div>
 <script>
     const resultBox = document.getElementById('resultBox');
     setInterval(() => {
