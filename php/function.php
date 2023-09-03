@@ -1,351 +1,387 @@
 <?php
- 
+
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-header("location:/YadakShop-APP/index.php");    exit;
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location:/YadakShop-APP/index.php");
+    exit;
 }
 
 
 function dbconnect()
 {
-    
-     $con = mysqli_connect('localhost','root','','callcenter');
+
+    $con = mysqli_connect('localhost', 'root', '', 'callcenter');
 
     if (!$con) {
         die('Could not connect: ' . mysqli_error($con));
     }
-    
+
     return $con;
-    
 }
 
 
 
 function dbconnect2()
 {
-    
-     $con = mysqli_connect('localhost','root','','yadakshop1402');
+
+    $con = mysqli_connect('localhost', 'root', '', 'yadakshop1402');
 
     if (!$con) {
         die('Could not connect: ' . mysqli_error($con));
     }
-    
+
     return $con;
-    
 }
 
 
-function getip($x) {
-   
-    
-    
-    $sql="SELECT * FROM users WHERE id=$x";
-    $result = mysqli_query(dbconnect2(),$sql);
+function getip($x)
+{
+
+
+
+    $sql = "SELECT * FROM users WHERE id='$x'";
+    $result = mysqli_query(dbconnect2(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $ip = $row['ip'];
- 
+
             return $ip;
-    }}
-    
-    
-    
+        }
+    }
 }
 
-function getinternal($x) {
-   
-    
-    
-    $sql="SELECT * FROM users WHERE id=$x";
-    $result = mysqli_query(dbconnect2(),$sql);
+function getinternal($x)
+{
+
+
+
+    $sql = "SELECT * FROM users WHERE id='$x'";
+    $result = mysqli_query(dbconnect2(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $internal = $row['internal'];
- 
+
             return $internal;
-    }}
-    
-    
-    
+        }
+    }
 }
-function getnamebyinternal($x) {
-   
-    
-    
-    $sql="SELECT * FROM users WHERE internal=$x";
-    $result = mysqli_query(dbconnect2(),$sql);
+function getnamebyinternal($x)
+{
+
+
+
+    $sql = "SELECT * FROM users WHERE internal='$x'";
+    $result = mysqli_query(dbconnect2(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $name = $row['name'];
             $family = $row['family'];
- 
-            return $name ." ". $family;
-    }}
-    
-    
-    
+
+            return $name . " " . $family;
+        }
+    }
 }
-function getfamilybyid($x) {
-   
-    
-    
-    $sql="SELECT * FROM users WHERE id=$x";
-    $result = mysqli_query(dbconnect2(),$sql);
+function getfamilybyid($x)
+{
+
+
+
+    $sql = "SELECT * FROM users WHERE id='$x'";
+    $result = mysqli_query(dbconnect2(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $family = $row['family'];
- 
+
             return $family;
-    }}
-    
-    
-    
+        }
+    }
 }
-function getidbyinternal($x) {
-   
-    
-    
-    $sql="SELECT * FROM users WHERE internal=$x";
-    $result = mysqli_query(dbconnect2(),$sql);
+function getidbyinternal($x)
+{
+
+
+
+    $sql = "SELECT * FROM users WHERE internal='$x'";
+    $result = mysqli_query(dbconnect2(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['id'];
- 
+
             return $id;
-    }}
-    
-    
-    
+        }
+    }
 }
-function nishatimedef($x,$y) {
-            
-    
+function nishatimedef($x, $y)
+{
+
+
     date_default_timezone_set('Asia/Tehran');
 
-$datetime1 = new DateTime($x);
-$datetime2 = new DateTime($y);
-$interval = $datetime1->diff($datetime2);
- return $interval;
-    
-    
+    $datetime1 = new DateTime($x);
+    $datetime2 = new DateTime($y);
+    $interval = $datetime1->diff($datetime2);
+    return $interval;
 }
- 
-function format_interval(DateInterval $interval) {
+
+function format_interval(DateInterval $interval)
+{
     $result = "";
-    if ($interval->y) { $result .= $interval->format("%y سال "); }
-    if ($interval->m) { $result .= $interval->format("%m ماه "); }
-    if ($interval->d) { $result .= $interval->format("%d روز "); }
-    if ($interval->h) { $result .= $interval->format("%h ساعت "); }
-    if ($interval->i) { $result .= $interval->format("%i دقیقه "); }
-    if ($interval->s) { $result .= $interval->format("%s ثانیه "); }
+    if ($interval->y) {
+        $result .= $interval->format("%y سال ");
+    }
+    if ($interval->m) {
+        $result .= $interval->format("%m ماه ");
+    }
+    if ($interval->d) {
+        $result .= $interval->format("%d روز ");
+    }
+    if ($interval->h) {
+        $result .= $interval->format("%h ساعت ");
+    }
+    if ($interval->i) {
+        $result .= $interval->format("%i دقیقه ");
+    }
+    if ($interval->s) {
+        $result .= $interval->format("%s ثانیه ");
+    }
     $result .= "قبل";
     return $result;
 }
-function format_calling_time(DateInterval $interval) {
+function format_calling_time(DateInterval $interval)
+{
     $result = "";
-    if ($interval->y) { $result .= $interval->format("%y سال "); }
-    if ($interval->m) { $result .= $interval->format("%m ماه "); }
-    if ($interval->d) { $result .= $interval->format("%d روز "); }
-    if ($interval->h) { $result .= $interval->format("%h ساعت "); }
-    if ($interval->i) { $result .= $interval->format("%i دقیقه "); }
-    if ($interval->s) { $result .= $interval->format("%s ثانیه "); }
+    if ($interval->y) {
+        $result .= $interval->format("%y سال ");
+    }
+    if ($interval->m) {
+        $result .= $interval->format("%m ماه ");
+    }
+    if ($interval->d) {
+        $result .= $interval->format("%d روز ");
+    }
+    if ($interval->h) {
+        $result .= $interval->format("%h ساعت ");
+    }
+    if ($interval->i) {
+        $result .= $interval->format("%i دقیقه ");
+    }
+    if ($interval->s) {
+        $result .= $interval->format("%s ثانیه ");
+    }
     $result .= "";
     return $result;
 }
- 
 
 
 
 
-function taglabellist() {
-    $sql="SELECT * FROM label";
-    $result = mysqli_query(dbconnect(),$sql);
+
+function taglabellist()
+{
+    $sql = "SELECT * FROM label";
+    $result = mysqli_query(dbconnect(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['id'];
             $name = $row['name'];
             $class = $row['class'];
-            echo "<option value='".$id."' class='$class'>".$name."</option>";
+            echo "<option value='" . $id . "' class='$class'>" . $name . "</option>";
         }
     }
-     
 }
-function userlabellist() {
-    $sql="SELECT * FROM userlabel";
-    $result = mysqli_query(dbconnect(),$sql);
+function userlabellist()
+{
+    $sql = "SELECT * FROM userlabel";
+    $result = mysqli_query(dbconnect(), $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['id'];
             $name = $row['name'];
             $class = $row['class'];
-            echo "<option value='".$id."' class='$class'>".$name."</option>";
+            echo "<option value='" . $id . "' class='$class'>" . $name . "</option>";
         }
     }
-     
 }
-function taglabelshow($x) {
-    if(empty($x)){ return;}
+function taglabelshow($x)
+{
+    if (empty($x)) {
+        return;
+    }
     $myString = substr($x, 0, -1);
-    $myArray = explode(',',$myString);                    
+    $myArray = explode(',', $myString);
     foreach ($myArray as $ttt) {
-        $sql="SELECT * FROM label WHERE id=$ttt";
-        $result = mysqli_query(dbconnect(),$sql);
+        $sql = "SELECT * FROM label WHERE id='$ttt'";
+        $result = mysqli_query(dbconnect(), $sql);
         if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $name = $row['name'];
                 $class = $row['class'];
-                echo "<span class='labeltag $class'>".$name."</span>";            }
+                echo "<span class='labeltag $class'>" . $name . "</span>";
+            }
         }
     }
- 
 }
-function userlabelshow($x) {
-    if(empty($x)){ return;}
+function userlabelshow($x)
+{
+    if (empty($x)) {
+        return;
+    }
     $myString = substr($x, 0, -1);
-    $myArray = explode(',',$myString);                    
+    $myArray = explode(',', $myString);
     foreach ($myArray as $ttt) {
-        $sql="SELECT * FROM userlabel WHERE id=$ttt";
-        $result = mysqli_query(dbconnect(),$sql);
+        $sql = "SELECT * FROM userlabel WHERE id='$ttt'";
+        $result = mysqli_query(dbconnect(), $sql);
         if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 $name = $row['name'];
                 $class = $row['class'];
-                echo "<span class='labeltag $class'>".$name."</span>";            }
+                echo "<span class='labeltag $class'>" . $name . "</span>";
+            }
         }
     }
- 
 }
 
 
 
-function createfile($x) {
+function createfile($x)
+{
 
-   $myfile = fopen("mirror.html", "w") or die("Unable to open file!");
-$txt = $x;
-fwrite($myfile, $txt);
+    $myfile = fopen("mirror.html", "w") or die("Unable to open file!");
+    $txt = $x;
+    fwrite($myfile, $txt);
 
-fclose($myfile); 
-    
+    fclose($myfile);
 }
 
 
 
-function jalalitime($x){
+function jalalitime($x)
+{
 
-        $date = $x;
-        $array = explode(' ', $date);
-        list($year, $month, $day) = explode('-', $array[0]);
-        list($hour, $minute, $second) = explode(':', $array[1]);
-        $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
-        $jalali_time = jdate("H:i", $timestamp,"","Asia/Tehran","en");
-        return $jalali_time;
-        
+    $date = $x;
+    $array = explode(' ', $date);
+    list($year, $month, $day) = explode('-', $array[0]);
+    list($hour, $minute, $second) = explode(':', $array[1]);
+    $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
+    $jalali_time = jdate("H:i", $timestamp, "", "Asia/Tehran", "en");
+    return $jalali_time;
 }
-function jalalidate($x){
+function jalalidate($x)
+{
 
-        $date = $x;
-        $array = explode(' ', $date);
-        list($year, $month, $day) = explode('-', $array[0]);
-        list($hour, $minute, $second) = explode(':', $array[1]);
-        $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
-        $jalali_date = jdate("Y/m/d", $timestamp,"","Asia/Tehran","en");
-        return $jalali_date;
-
+    $date = $x;
+    $array = explode(' ', $date);
+    list($year, $month, $day) = explode('-', $array[0]);
+    list($hour, $minute, $second) = explode(':', $array[1]);
+    $timestamp = mktime($hour, $minute, $second, $month, $day, $year);
+    $jalali_date = jdate("Y/m/d", $timestamp, "", "Asia/Tehran", "en");
+    return $jalali_date;
 }
 
-function mahak($x) {
-        $gphone = substr($x,1);
-        $sql4="SELECT * FROM mahak WHERE mob1 LIKE '%".$gphone."%' OR mob2 LIKE '%".$gphone."%'   ";
-        $result4 = mysqli_query(dbconnect(),$sql4);
-        if (mysqli_num_rows($result4) > 0) {
-            $n = 1;
-            while($row4 = mysqli_fetch_assoc($result4)) {
-                $mname1 = $row4['name1'];
-                $mname2 = $row4['name2'];
+function mahak($x)
+{
+    $gphone = substr($x, 1);
+    $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
+    $result4 = mysqli_query(dbconnect(), $sql4);
+    if (mysqli_num_rows($result4) > 0) {
+        $n = 1;
+        while ($row4 = mysqli_fetch_assoc($result4)) {
+            $mname1 = $row4['name1'];
+            $mname2 = $row4['name2'];
 
-                if(strlen($phone) < 5){break;}
-    
-                if ($n > 1) {echo ("<br>");}    
-
-                echo $mname1." ".$mname2;
-             
-
-                $n++;
+            if (strlen($phone) < 5) {
+                break;
             }
-        }
-          
-}
-function mahakcontact($x) {
-        $gphone = substr($x,1);
-        $sql4="SELECT * FROM mahak WHERE mob1 LIKE '%".$gphone."%' OR mob2 LIKE '%".$gphone."%'   ";
-        $result4 = mysqli_query(dbconnect(),$sql4);
-        if (mysqli_num_rows($result4) > 0) {
-            $n = 1;
-            while($row4 = mysqli_fetch_assoc($result4)) {
-                $mname1 = $row4['name1'];
-                $mname2 = $row4['name2'];
 
-                if(strlen($x) < 5){break;}
-                if ($n > 1) {echo ("<br>");}    
-                echo $mname1." ".$mname2;
-             
-
-                $n++;
+            if ($n > 1) {
+                echo ("<br>");
             }
+
+            echo $mname1 . " " . $mname2;
+
+
+            $n++;
         }
-          
+    }
+}
+function mahakcontact($x)
+{
+    $gphone = substr($x, 1);
+    $sql4 = "SELECT * FROM mahak WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%'   ";
+    $result4 = mysqli_query(dbconnect(), $sql4);
+    if (mysqli_num_rows($result4) > 0) {
+        $n = 1;
+        while ($row4 = mysqli_fetch_assoc($result4)) {
+            $mname1 = $row4['name1'];
+            $mname2 = $row4['name2'];
+
+            if (strlen($x) < 5) {
+                break;
+            }
+            if ($n > 1) {
+                echo ("<br>");
+            }
+            echo $mname1 . " " . $mname2;
+
+
+            $n++;
+        }
+    }
 }
 
-function googlecontact($x) {
- 
-        $gphone = substr($x,1);
-        $sql3="SELECT * FROM google WHERE mob1 LIKE '%".$gphone."%' OR mob2 LIKE '%".$gphone."%' OR mob3 LIKE '%".$gphone."%'  ";
-        $result3 = mysqli_query(dbconnect(),$sql3);
-        if (mysqli_num_rows($result3) > 0) {
-            $n = 1;
-            while($row3 = mysqli_fetch_assoc($result3)) {
+function googlecontact($x)
+{
+
+    $gphone = substr($x, 1);
+    $sql3 = "SELECT * FROM google WHERE mob1 LIKE '%" . $gphone . "%' OR mob2 LIKE '%" . $gphone . "%' OR mob3 LIKE '%" . $gphone . "%'  ";
+    $result3 = mysqli_query(dbconnect(), $sql3);
+    if (mysqli_num_rows($result3) > 0) {
+        $n = 1;
+        while ($row3 = mysqli_fetch_assoc($result3)) {
             $gname1 = $row3['name1'];
             $gname2 = $row3['name2'];
             $gname3 = $row3['name3'];
-                
-            if(strlen($x) < 5){break;}
-            if ($n > 1) {echo ("<br>");}    
-            echo $gname1." ".$gname2." ".$gname3; 
-            
-            $n++;
-    
+
+            if (strlen($x) < 5) {
+                break;
             }
+            if ($n > 1) {
+                echo ("<br>");
+            }
+            echo $gname1 . " " . $gname2 . " " . $gname3;
+
+            $n++;
         }
-           
+    }
 }
 
 
 
 
-function ifreconnect($x) {
-     $sql="SELECT * FROM outgoing WHERE phone LIKE '".$x."%' ORDER BY  time DESC ";
-        $result = mysqli_query(dbconnect(),$sql);
-            if (mysqli_num_rows($result) > 0) {
-                $n=0;
-                while($row = mysqli_fetch_assoc($result)) {
-                 $n=$n+1;
-                    
-                    $internal = $row['user'];
+function ifreconnect($x)
+{
+    $sql = "SELECT * FROM outgoing WHERE phone LIKE '" . $x . "%' ORDER BY  time DESC ";
+    $result = mysqli_query(dbconnect(), $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $n = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $n = $n + 1;
 
-                    if ($n > 1){break;}
-                    
-                    echo '<img src=".././userimg/'.getidbyinternal($internal).'.jpg" />';
-                    
-                }
-               
+            $internal = $row['user'];
+
+            if ($n > 1) {
+                break;
             }
-     else {
-                    echo '<div class="no-reconnect">
+
+            echo '<img src=".././userimg/' . getidbyinternal($internal) . '.jpg" />';
+        }
+    } else {
+        echo '<div class="no-reconnect">
                     <p>عدم ارتباط مجدد</p>
                     <i class="fas fa-window-close"></i>
                     </div>';
-                }
+    }
 }

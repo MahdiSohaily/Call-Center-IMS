@@ -80,21 +80,21 @@ $result = mysqli_query(dbconnect(), $sql);
 
     ?>
 
-                        <a href="main.php?phone=<?php echo $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
+                        <a href="main.php?phone=<?= $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
                                                                                                                             echo 'this-capsol-answer';
                                                                                                                         } ?> <?php if ($internal > 150) {
-                                                                                                                                echo 'capsol-bazar';
-                                                                                                                            } ?>">
-                            <div class="call-capsol-phone"><?php echo $phone ?></div>
-                            <div class="call-capsol-name"><?php echo $name ?> <?php echo $family ?></div>
+                                                                                                                                    echo 'capsol-bazar';
+                                                                                                                                } ?>">
+                            <div class="call-capsol-phone"><?= $phone ?></div>
+                            <div class="call-capsol-name"><?= $name ?> <?= $family ?></div>
                             <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
                             <div class="call-capsol-extra-info"><?php googlecontact($phone); ?></div>
-                            <div class="call-capsol-user-img"><?php echo $img ?></div>
+                            <div class="call-capsol-user-img"><?= $img ?></div>
                             <div class="call-capsol-taglabel"> <?php taglabelshow($taglabel)  ?></div>
                             <div class="call-capsol-userlabel"> <?php userlabelshow($userlabel)  ?></div>
                             <div class="call-capsol-if-reconnect"><?php ifreconnect($phone) ?></div>
-                            <div class="call-capsol-time-info"><?php echo $jalali_time ?></div>
-                            <div class="call-capsol-time-ago"><?php echo $jalali_time_ago ?></div>
+                            <div class="call-capsol-time-info"><?= $jalali_time ?></div>
+                            <div class="call-capsol-time-ago"><?= $jalali_time_ago ?></div>
                             <div class="overlay rounded-lg text-sm">آخرین استعلام نمایش داده می شود</div>
                         </a>
 
@@ -108,21 +108,21 @@ $result = mysqli_query(dbconnect(), $sql);
                     ?>
 
 
-                    <a href="main.php?phone=<?php echo $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
-                                                                                    echo 'this-capsol-answer';
-                                                                                } ?>  <?php if ($internal > 150) {
+                    <a href="main.php?phone=<?= $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
+                                                                                                                        echo 'this-capsol-answer';
+                                                                                                                    } ?>  <?php if ($internal > 150) {
                                                                                             echo 'capsol-bazar';
                                                                                         } ?>">
-                        <div class="call-capsol-phone"><?php echo $phone ?></div>
+                        <div class="call-capsol-phone"><?= $phone ?></div>
                         <div class="call-capsol-name no-save">این شماره ذخیره نشده است</div>
                         <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
                         <div class="call-capsol-extra-info"><?php googlecontact($phone); ?></div>
-                        <div class="call-capsol-user-img"><?php echo $img ?></div>
+                        <div class="call-capsol-user-img"><?= $img ?></div>
                         <div class="call-capsol-taglabel"> <?php taglabelshow($taglabel)  ?></div>
                         <div class="call-capsol-userlabel"> <?php userlabelshow($userlabel)  ?></div>
                         <div class="call-capsol-if-reconnect"><?php ifreconnect($phone) ?></div>
-                        <div class="call-capsol-time-info"><?php echo $jalali_time ?></div>
-                        <div class="call-capsol-time-ago"><?php echo $jalali_time_ago ?></div>
+                        <div class="call-capsol-time-info"><?= $jalali_time ?></div>
+                        <div class="call-capsol-time-ago"><?= $jalali_time_ago ?></div>
                         <div class="overlay rounded-lg text-sm">آخرین استعلام نمایش داده می شود</div>
                     </a>
 
