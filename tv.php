@@ -23,7 +23,7 @@
  </head>
 
  <body>
-     <div id="fullPage" data-user='<?php echo $user ?>'>
+     <div id="fullPage" data-user='<?= $user ?>'>
          <i onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>
          <div class="d-grid">
              <div class="div1">
@@ -62,10 +62,9 @@
                                             $name = $row2['name'];
                                             $family = $row2['family'];
                             ?>
-
                                          <tr>
-                                             <td><?php echo $name ?> <?php echo $family ?></td>
-                                             <td><?php echo $name ?> <?= $phone ?></td>
+                                             <td><?= $name . " " . $family ?></td>
+                                             <td> <?= $phone ?></td>
                                              <td>
                                                  <?php
                                                     $gphone = substr($phone, 1);
@@ -112,10 +111,9 @@
                                                         }
                                                     }
                                                     ?></td>
-                                             <td><?php echo $jalali_time ?></td>
+                                             <td><?= $jalali_time ?></td>
                                          </tr>
                                      <?php
-
                                         }
                                     } else {
                                         ?>
@@ -171,7 +169,7 @@
                                                 }
                                                 ?>
                                          </td>
-                                         <td><?php echo $jalali_time ?></td>
+                                         <td><?= $jalali_time ?></td>
                                      </tr>
                          <?php
                                     }
@@ -207,7 +205,7 @@
                      <tbody>
                          <?php
                             $givenPrice = givenPrice($con);
-                           
+
                             if (count($givenPrice) > 0) {
                             ?>
                              <?php foreach ($givenPrice as $price) { ?>
@@ -217,24 +215,24 @@
                                      <?php  } ?>
                                      <td>
                                          <p class="strong_content">
-                                             <?php echo $price['partnumber']; ?>
+                                             <?= $price['partnumber']; ?>
                                          </p>
                                      </td>
 
 
                                      <td>
                                          <p style="direction: ltr;">
-                                             <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
+                                             <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                          </p>
                                      </td>
                                      <td>
                                          <p>
-                                             <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                             <?= $price['name'] . ' ' . $price['family'] ?>
                                          </p>
                                      </td>
                                      <td>
                                          <p>
-                                             <img title="<?php echo $price['username'] ?>" class="user-img" src="../userimg/<?php echo $price['userID'] ?>.jpg" alt="user-img">
+                                             <img title="<?= $price['username'] ?>" class="user-img" src="../userimg/<?= $price['userID'] ?>.jpg" alt="user-img">
                                          </p>
                                      </td>
                                      </tr>
@@ -284,9 +282,9 @@
                                 ?>
 
                                      <tr>
-                                         <td><?php echo ($name . " " . $family) ?></td>
-                                         <td><?php echo nl2br($callinfo) ?></td>
-                                         <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" /></td>
+                                         <td><?= ($name . " " . $family) ?></td>
+                                         <td><?= nl2br($callinfo) ?></td>
+                                         <td><img class="user-img" src="../userimg/<?= $user ?>.jpg" /></td>
                                      </tr>
 
                              <?php
@@ -314,9 +312,9 @@
                                 ?>
 
                                      <tr>
-                                         <td><?php echo ($name . " " . $family) ?></td>
-                                         <td><?php echo nl2br($callinfo) ?></td>
-                                         <td><img class="user-img" src="../userimg/<?php echo $user ?>.jpg" />
+                                         <td><?= ($name . " " . $family) ?></td>
+                                         <td><?= nl2br($callinfo) ?></td>
+                                         <td><img class="user-img" src="../userimg/<?= $user ?>.jpg" />
                                          </td>
                                          <?php
 
