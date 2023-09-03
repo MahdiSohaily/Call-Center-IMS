@@ -14,10 +14,11 @@
 }
 
 .user-img {
-  width: 15px;
+  width: 15px !important;
   height: 15px;
   border: none;
   border-radius: 50%;
+  margin: 3px;
 }
 
 .d-grid {
@@ -45,6 +46,13 @@ th {
 
 td {
   padding: 5px;
+}
+
+td.pic {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 tr:nth-child(even) {

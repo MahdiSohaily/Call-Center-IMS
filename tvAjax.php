@@ -236,7 +236,7 @@ if ($status == 'on') :
                                             <?= $price['name'] . ' ' . $price['family'] ?>
                                         </p>
                                     </td>
-                                    <td>
+                                    <td class="pic">
                                         <p>
                                             <img title="<?= $price['username'] ?>" class="user-img" src="../userimg/<?= $price['userID'] ?>.jpg" alt="user-img">
                                         </p>
@@ -290,7 +290,7 @@ if ($status == 'on') :
                                     <tr class="pin">
                                         <td><?= ($name . " " . $family) ?></td>
                                         <td><?= nl2br($callinfo) ?></td>
-                                        <td><img class="user-img" src="../userimg/<?= $user ?>.jpg" /></td>
+                                        <td class="pic"><img class="user-img" src="../userimg/<?= $user ?>.jpg" /></td>
                                     </tr>
 
                             <?php
@@ -319,7 +319,7 @@ if ($status == 'on') :
                                     <tr>
                                         <td><?= ($name . " " . $family) ?></td>
                                         <td><?= nl2br($callinfo) ?></td>
-                                        <td><img class="user-img" src="../userimg/<?= $user ?>.jpg" />
+                                        <td class="pic"><img class="user-img" src="../userimg/<?= $user ?>.jpg" />
                                         </td>
                                         <?php
 
