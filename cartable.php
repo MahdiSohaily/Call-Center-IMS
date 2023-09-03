@@ -81,10 +81,10 @@ $result = mysqli_query(dbconnect(), $sql);
     ?>
 
                         <a href="main.php?phone=<?= $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
-                                                                                                                            echo 'this-capsol-answer';
-                                                                                                                        } ?> <?php if ($internal > 150) {
-                                                                                                                                    echo 'capsol-bazar';
-                                                                                                                                } ?>">
+                                                                                                                        echo 'this-capsol-answer';
+                                                                                                                    } ?> <?php if ($internal > 150) {
+                                                                                                                                echo 'capsol-bazar';
+                                                                                                                            } ?>">
                             <div class="call-capsol-phone"><?= $phone ?></div>
                             <div class="call-capsol-name"><?= $name ?> <?= $family ?></div>
                             <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
@@ -109,10 +109,10 @@ $result = mysqli_query(dbconnect(), $sql);
 
 
                     <a href="main.php?phone=<?= $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {
-                                                                                                                        echo 'this-capsol-answer';
-                                                                                                                    } ?>  <?php if ($internal > 150) {
-                                                                                            echo 'capsol-bazar';
-                                                                                        } ?>">
+                                                                                                                    echo 'this-capsol-answer';
+                                                                                                                } ?>  <?php if ($internal > 150) {
+                                                                                                                            echo 'capsol-bazar';
+                                                                                                                        } ?>">
                         <div class="call-capsol-phone"><?= $phone ?></div>
                         <div class="call-capsol-name no-save">این شماره ذخیره نشده است</div>
                         <div class="call-capsol-extra-info"><?php mahakcontact($phone); ?></div>
