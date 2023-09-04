@@ -339,16 +339,18 @@ if (filter_has_var(INPUT_POST, 'togglePin')) {
                                     </p>
                                 </td>
                                 <td class=" px-1">
-                                    <p class="text-right text-gray-700 px-2 py-1">
+                                    <p class="text-left text-gray-700 px-2 py-1">
                                         <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                     </p>
                                 </td>
                                 <td class=" px-1">
-                                    <p class="text-right text-gray-700 px-2 py-1">
-                                        <a class="text-indigo-600" href="./givePrice.php?phone=<?= $price['partnumber']; ?>">
-                                            <?= $price['partnumber']; ?>
-                                        </a>
-                                    </p>
+                                    <form target="_blank" action="giveOrderedPrice.php" method="post">
+                                        <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
+                                        <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
+                                        <input type="text" name="customer" value="1" id="target_customer" hidden>
+                                        <input type="text" name="code" value=" <?= $price['partnumber']; ?>" hidden>
+                                        <input class="text-indigo-600" type="submit" value=" <?= $price['partnumber']; ?>">
+                                    </form>
                                 </td>
                                 <td class=" record-user">
                                     <img title="<?= $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?= $price['userID'] ?>.jpg" alt="userimage" />

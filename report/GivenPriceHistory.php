@@ -44,7 +44,7 @@ function format_interval(DateInterval $interval)
                         کد فنی
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-center">
-                         کاربر
+                        کاربر
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-right">
                         زمان
@@ -62,24 +62,28 @@ function format_interval(DateInterval $interval)
                             <?php  } ?>
                             <td class=" px-1">
                                 <p class="text-right text-indigo-600 px-1 py-1">
-                                    <a class="flex items-center" href="../main.php?phone=<?php echo $price['phone'] ?>">
+                                    <a class="flex items-center" href="../main.php?phone=<?= $price['phone'] ?>">
                                         <i class="small material-icons px-2">attachment</i>
-                                        <?php echo $price['name'] . ' ' . $price['family'] ?>
+                                        <?= $price['name'] . ' ' . $price['family'] ?>
                                     </a>
                                 </p>
-                            </td>
-                            <td class="pl-5">
-                                    <?php echo $price['price'] === null ? 'ندارد' : $price['price']  ?>
                             </td>
                             <td class=" px-1">
-                                <p class="text-right text-gray-700 px-2 py-1">
-                                    <a class="text-indigo-600" href="./givePrice.php?phone=<?php echo $price['partnumber']; ?>">
-                                        <?php echo $price['partnumber']; ?>
-                                    </a>
+                                <p class="text-left text-gray-700 px-2 py-1">
+                                    <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                 </p>
                             </td>
+                            <td class=" px-1">
+                                <form target="_blank" action="giveOrderedPrice.php" method="post">
+                                    <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
+                                    <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
+                                    <input type="text" name="customer" value="1" id="target_customer" hidden>
+                                    <input type="text" name="code" value=" <?= $price['partnumber']; ?>" hidden>
+                                    <input class="text-indigo-600" type="submit" value=" <?= $price['partnumber']; ?>">
+                                </form>
+                            </td>
                             <td class=" record-user">
-                                <img title="<?php echo $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?php echo $price['userID'] ?>.jpg" alt="userimage" />
+                                <img title="<?= $price['username'] ?>" class="userImage mx-auto mt-1" src="../../userimg/<?= $price['userID'] ?>.jpg" alt="userimage" />
                             </td>
                             <td class=" time">
                                 <p class="text-right text-gray-700 px-2 py-1">
@@ -178,7 +182,7 @@ function format_interval(DateInterval $interval)
                         <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                         <td>
                             <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
-                                <?php echo $phone ?></a>
+                                <?= $phone ?></a>
                         </td>
                         <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
                         <td class="px-2 py-2">
@@ -244,7 +248,7 @@ function format_interval(DateInterval $interval)
                         <td class="px-2 py-2"><a target="_blank" href="../main.php?phone=<?php echo $phone ?>"><?php echo ($name . " " . $family) ?></a></td>
                         <td>
                             <a class="text-indigo-600" target="_blank" href="../main.php?phone=<?php echo $phone ?>">
-                                <?php echo $phone ?></a>
+                                <?= $phone ?></a>
                         </td>
                         <td class="px-2 py-2"><?php echo nl2br($callinfo) ?></td>
                         <td class="px-2 py-2">
