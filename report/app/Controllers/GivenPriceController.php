@@ -100,15 +100,25 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         }
     }
 
-    foreach ($itemDetails as $index => $record) {
-        foreach ($record as $key => $item) {
-            $max = 0;
+    // Custom comparison function to sort inner arrays by values in descending order
+    function customSort($a, $b)
+    {
+        $sumA = array_sum($a['relation']['sorted']); // Calculate the sum of values in $a
+        $sumB = array_sum($b['relation']['sorted']); // Calculate the sum of values in $b
 
-            $max  += array_sum($item['relation']['sorted']);
-
-            echo $max . "<br />";
+        // Compare the sums in descending order
+        if ($sumA == $sumB) {
+            return 0;
         }
+        return ($sumA > $sumB) ? -1 : 1;
     }
+
+
+    foreach ($itemDetails as &$record) {
+
+        uasort($record, 'customSort'); // Sort the inner array by values
+    }
+
 
 
     return ([
