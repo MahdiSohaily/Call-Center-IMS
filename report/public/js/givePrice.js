@@ -154,18 +154,15 @@ function copyPrice(elem) {
 
   const elementLength = tdElements.length;
 
+  const notAllowed = ["موجود نیست", "نیاز به بررسی", "کد اشتباه"];
+
   for (let i = 0; i < elementLength; i++) {
     if (tdElements[i].textContent.trim() !== "content_copy") {
-      let text =
-        tdElements[i].textContent === "موجود نیست"
-          ? "-"
-          : tdElements[i].textContent.trim();
+      let text = notAllowed.includes(tdElements[i].textContent.trim())
+        ? "-"
+        : tdElements[i].textContent.trim();
 
-      if (tdElements[i].textContent.trim() !== "کد اشتباه") {
-        tdTextContent.push(text);
-      } else {
-        tdTextContent.pop();
-      }
+      tdTextContent.push(text);
     }
   }
 
@@ -185,7 +182,7 @@ function copyPrice(elem) {
     text += item.join(" : ");
     text += "\n";
   }
-  copyToClipboard(text);
+  copyToClipboard(text.trim());
 
   // Alert the copied text
   elem.innerHTML = `done`;

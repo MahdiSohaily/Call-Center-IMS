@@ -37,11 +37,11 @@ if ($isValidCustomer) {
                             } ?>
 
                             <tr class="odd:bg-gray-400">
-                                <td class="px-3 py-2 text-left <?= in_array($code, $not_exist) ? 'text-rose-300' : 'text-white' ?> "><a href="<?= $_SERVER['PHP_SELF'] . '#' . $code ?>"><?php echo $code ?></a></td>
+                                <td class="px-3 py-2 text-left <?= in_array($code, $not_exist) ? 'text-rose-500' : 'text-white' ?> "><a href="<?= $_SERVER['PHP_SELF'] . '#' . $code ?>"><?php echo $code ?></a></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
                                     <?php
                                     if (in_array($code, $not_exist)) {
-                                        echo "<p class ='text-rose-300'>کد اشتباه</p>";
+                                        echo "<p class ='text-rose-500'>کد اشتباه</p>";
                                         echo " </td>";
                                     ?>
                                 <td class="text-right  py-2" onclick="closeTab()">
@@ -50,7 +50,7 @@ if ($isValidCustomer) {
                                     } else {
 
                                         if ($max && current($existing[$code])['givenPrice']) {
-                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : '';
+                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : 'نیاز به بررسی';
                                         } else if ($max == 0) {
                                             echo '-' . " </td>";
                                         }
