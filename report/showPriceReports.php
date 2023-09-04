@@ -145,12 +145,6 @@ if ($isValidCustomer) {
                         } ?>
 
                     </p>
-                    <?php
-                    if ($max > 0) {
-                        echo '<span class="accordion-icon text-white">+</span>';
-                    } else {
-                        echo '<span class="accordion-icon text-white">-</span>';
-                    } ?>
                 </div>
                 <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 200vh' : 'max-height: 0vh' ?>">
                     <?php

@@ -530,3 +530,4 @@ if ($isValidCustomer) {
 }
 
 require_once('./views/Layouts/footer.php');
+
