@@ -18,7 +18,7 @@ if ($isValidCustomer) {
             <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
                     <thead class="font-medium">
-                        <tr>
+                        <tr class="border">
                             <th class="text-left px-3 py-2">کد فنی</th>
                             <th class="text-left px-3 py-2">قیمت</th>
                             <th class="text-right  py-2" onclick="closeTab()">
@@ -36,8 +36,8 @@ if ($isValidCustomer) {
                                 }
                             } ?>
 
-                            <tr class="odd:border">
-                                <td class="px-3 py-2 text-left text-white"><a href="<?= $_SERVER['PHP_SELF'] . '#' . $code ?>"><?php echo $code ?></a></td>
+                            <tr class="border">
+                                <td class="px-3 py-2 text-left text-white hover:cursor-pointer" data-move="<?= $code ?>" onclick="onScreen(this)"><?php echo $code ?></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
                                     <?php
                                     if (in_array($code, $not_exist)) {

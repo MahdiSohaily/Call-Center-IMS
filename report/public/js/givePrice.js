@@ -207,7 +207,7 @@ function copyItemPrice(elem) {
 
   // Retrieve the innerHTML of the sibling <td> elements
   var sibling1HTML = sibling1.firstElementChild.innerHTML;
-  var sibling2HTML = sibling2.firstElementChild.innerHTML;
+  var sibling2HTML = sibling2.innerHTML;
 
   const dash = ["موجود نیست", "نیاز به بررسی"];
   const space = ["کد اشتباه", "نیاز به قیمت"];
@@ -366,4 +366,9 @@ function sendMessage(receiver, code, price) {
       }
     })
     .catch(function (error) {});
+}
+
+function onScreen(element) {
+  const section = document.getElementById(element.getAttribute("data-move"));
+  window.scrollTo(0, section.getBoundingClientRect().top - 70);
 }
