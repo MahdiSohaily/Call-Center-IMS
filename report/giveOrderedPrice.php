@@ -36,26 +36,23 @@ if ($isValidCustomer) {
                                 }
                             } ?>
 
-                            <tr class="odd:bg-gray-400">
-                                <td class="px-3 py-2 text-left font-bold <?= in_array($code, $not_exist) ? 'text-orange-600' : 'text-white' ?> "><a href="<?= $_SERVER['PHP_SELF'] . '#' . $code ?>"><?php echo $code ?></a></td>
+                            <tr class="odd:border">
+                                <td class="px-3 py-2 text-left text-white"><a href="<?= $_SERVER['PHP_SELF'] . '#' . $code ?>"><?php echo $code ?></a></td>
                                 <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
                                     <?php
                                     if (in_array($code, $not_exist)) {
-                                        echo "<p class ='font-bold text-orange-600 text-'>کد اشتباه</p>";
-                                        echo " </td>";
-                                    ?>
-
-                                    <?php
+                                        echo "<p class ='text-red-600'>کد اشتباه</p>";
                                     } else {
-
                                         if ($max && current($existing[$code])['givenPrice']) {
-                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : 'نیاز به بررسی';
+                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : "<p class ='text-yellow-400'>نیاز به بررسی</p>";
+                                        } else if ($max) {
+                                            echo "<p class ='text-green-400'>نیاز به قیمت</p>";
                                         } else if ($max == 0) {
-                                            echo '-' . " </td>";
+                                            echo 'موجود نیست';
                                         }
                                     ?>
                                 </td>
-                                <td class="text-right font-bold py-2" onclick="closeTab()">
+                                <td class="text-right py-2" onclick="closeTab()">
                                     <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
                                 </td>
                             <?php

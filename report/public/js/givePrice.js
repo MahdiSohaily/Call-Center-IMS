@@ -154,13 +154,19 @@ function copyPrice(elem) {
 
   const elementLength = tdElements.length;
 
-  const notAllowed = ["موجود نیست", "نیاز به بررسی", "کد اشتباه"];
+  const dash = ["موجود نیست", "نیاز به بررسی"];
+  const space = ["کد اشتباه", "نیاز به قیمت"];
 
   for (let i = 0; i < elementLength; i++) {
     if (tdElements[i].textContent.trim() !== "content_copy") {
-      let text = notAllowed.includes(tdElements[i].textContent.trim())
-        ? "-"
-        : tdElements[i].textContent.trim();
+      let text = "";
+      if (dash.includes(tdElements[i].textContent.trim())) {
+        text = "-";
+      } else if (space.includes(tdElements[i].textContent.trim())) {
+        text = " ";
+      } else {
+        text = tdElements[i].textContent.trim();
+      }
 
       tdTextContent.push(text);
     }
@@ -200,13 +206,22 @@ function copyItemPrice(elem) {
   var sibling2 = sibling1.previousElementSibling;
 
   // Retrieve the innerHTML of the sibling <td> elements
-  var sibling1HTML = sibling1.innerHTML;
+  var sibling1HTML = sibling1.firstElementChild.innerHTML;
   var sibling2HTML = sibling2.firstElementChild.innerHTML;
 
-  let text =
-    sibling2HTML +
-    " : " +
-    (sibling1HTML === "موجود نیست" ? "-" : sibling1HTML).trim();
+  const dash = ["موجود نیست", "نیاز به بررسی"];
+  const space = ["کد اشتباه", "نیاز به قیمت"];
+
+  let value = "";
+  if (dash.includes(sibling1HTML)) {
+    value = "-";
+  } else if (space.includes(sibling1HTML)) {
+    value = " ";
+  } else {
+    value = sibling1HTML;
+  }
+
+  let text = sibling2HTML + " : " + value;
 
   copyToClipboard(text);
 
