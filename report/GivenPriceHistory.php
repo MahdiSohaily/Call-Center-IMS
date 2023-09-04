@@ -77,7 +77,7 @@ function format_interval(DateInterval $interval)
                                 <form target="_blank" action="giveOrderedPrice.php" method="post">
                                     <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
                                     <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
-                                    <input type="text" name="customer" value="1" id="target_customer" hidden>
+                                    <input type="text" name="customer" value="<?= $price['customerID'] ?>" id="target_customer" hidden>
                                     <input type="text" name="code" value=" <?= $price['partnumber']; ?>" hidden>
                                     <input class="text-indigo-600" type="submit" value=" <?= $price['partnumber']; ?>">
                                 </form>
