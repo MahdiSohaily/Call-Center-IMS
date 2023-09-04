@@ -196,7 +196,6 @@ function copyItemPrice(elem) {
   var sibling1 = parentTd.previousElementSibling;
   var sibling2 = sibling1.previousElementSibling;
 
-  
   // Retrieve the innerHTML of the sibling <td> elements
   var sibling1HTML = sibling1.innerHTML;
   var sibling2HTML = sibling2.firstElementChild.innerHTML;
@@ -246,20 +245,25 @@ function deleteGivenPrice(element) {
     .catch(function (error) {});
 }
 
-// function closeTab() {
-//   // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
-//   setTimeout(function () {
-//     // Try to close the window (tab)
-//     // This may not work if the window was not opened by a script or if the browser blocks the action.
-//     window.close();
-//   }, 60000);
-// }
+function closeTab() {
+  // Set up a timeout to close the tab after 2 minutes (120,000 milliseconds)
+  setTimeout(function () {
+    // Try to close the window (tab)
+    // This may not work if the window was not opened by a script or if the browser blocks the action.
+    window.close();
+  }, 60000);
+}
 
 function appendBrand(element) {
   const brand = element.getAttribute("data-brand");
   const part = element.getAttribute("data-part");
   const input = document.getElementById(part + "-price");
   input.value += " " + brand;
+
+  const partNumber = element.getAttribute("data-code").split("-")[0];
+
+  const target = document.getElementById(partNumber + "-append");
+  target.innerHTML += " " + brand;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
