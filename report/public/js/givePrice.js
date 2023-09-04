@@ -152,19 +152,25 @@ function copyPrice(elem) {
   let tdElements = parentElement.getElementsByTagName("td");
   let tdTextContent = [];
 
-  const elementLenght = tdElements.length;
+  const elementLength = tdElements.length;
 
-  for (let i = 0; i < elementLenght; i++) {
+  for (let i = 0; i < elementLength; i++) {
     if (tdElements[i].textContent.trim() !== "content_copy") {
       let text =
         tdElements[i].textContent === "موجود نیست"
           ? "-"
           : tdElements[i].textContent.trim();
-      tdTextContent.push(text);
+
+      if (tdElements[i].textContent.trim() !== "کد اشتباه") {
+        tdTextContent.push(text);
+      } else {
+        tdTextContent.pop();
+      }
     }
   }
 
   const chunkSize = 2;
+  tdTextContent = tdTextContent.filter((td) => td.length > 0);
 
   let finalResult = [];
   const size = tdTextContent.length;
