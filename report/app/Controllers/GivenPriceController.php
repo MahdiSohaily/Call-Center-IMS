@@ -100,6 +100,17 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         }
     }
 
+    foreach ($itemDetails as $index => $record) {
+        foreach ($record as $key => $item) {
+            $max = 0;
+
+            $max  += array_sum($item['relation']['sorted']);
+
+            echo $max . "<br />";
+        }
+    }
+
+
     return ([
         'explodedCodes' => $explodedCodes,
         'not_exist' => $results_array['not_exist'],

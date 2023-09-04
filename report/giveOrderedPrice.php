@@ -113,7 +113,7 @@ if ($isValidCustomer) {
                     </tbody>
                 </table>
             </div>
-        </div> 
+        </div>
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
@@ -136,7 +136,7 @@ if ($isValidCustomer) {
                         } ?>
 
                     </p>
-                    
+
                 </div>
                 <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh' : 'max-height: 0vh' ?>">
                     <?php
