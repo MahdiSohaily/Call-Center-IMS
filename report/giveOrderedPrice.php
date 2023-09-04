@@ -38,17 +38,17 @@ if ($isValidCustomer) {
 
                             <tr class="border">
                                 <td class="px-3 py-2 text-left text-white hover:cursor-pointer" data-move="<?= $code ?>" onclick="onScreen(this)"><?php echo $code ?></td>
-                                <td class="px-3 py-2 text-left text-white" id="<?php echo $code . '-append' ?>">
+                                <td class="px-3 py-2 text-left text-white">
                                     <?php
                                     if (in_array($code, $not_exist)) {
-                                        echo "<p class ='text-red-600'>کد اشتباه</p>";
+                                        echo "<p class ='text-red-600' id='" . $code . '-append' . "'>کد اشتباه</p>";
                                     } else {
                                         if ($max && current($existing[$code])['givenPrice']) {
-                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? current(current($existing[$code])['givenPrice'])['price'] : "<p class ='text-yellow-400'>نیاز به بررسی</p>";
+                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? "<p id='" . $code . '-append' . "'>" . current(current($existing[$code])['givenPrice'])['price'] . "</p>" : "<p id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
                                         } else if ($max) {
-                                            echo "<p class ='text-green-400'>نیاز به قیمت</p>";
+                                            echo "<p id='" . $code . '-append' . "'class ='text-green-400'>نیاز به قیمت</p>";
                                         } else if ($max == 0) {
-                                            echo 'موجود نیست';
+                                            echo "<p id='" . $code . '-append' . "'>" . 'موجود نیست' . "</p>";
                                         }
                                     ?>
                                 </td>
