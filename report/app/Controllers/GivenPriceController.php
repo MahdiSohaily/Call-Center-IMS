@@ -479,3 +479,61 @@ function sortArrayByNumericPropertyDescending($array, $property)
     });
     return $array;
 }
+
+
+function getStockInfo($codes)
+{
+    $statement = CONN->prepare("SELECT id FROM yadakshop1402.nisha WHERE partnumber = ?");
+    foreach ($codes as $code) {
+        echo $code;
+        echo "<br />";
+        $statement->bind_param('s', $code);
+        $statement->execute();
+        $result = $statement->get_result();
+        $result = $result->fetch_all();
+        getEntranceRecord(array_merge(...$result));
+    }
+}
+
+function getEntranceRecord($partNumbers)
+{
+
+    $statement = CONN->prepare("SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+    FROM (( yadakshop1402.qtybank 
+    INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
+    INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
+    WHERE codeid = ?");
+
+    $data = array();
+    foreach ($partNumbers as $partNumber) {
+        $statement->bind_param('i', $partNumber);
+        $statement->execute();
+        $result = $statement->get_result();
+        $result = $result->fetch_all();
+        array_push($data, $result);
+    }
+
+    getExitRecords($data);
+}
+
+
+function getExitRecords($entrance)
+{
+    $statement = CONN->prepare("SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = ?");
+
+    $data = array();
+    foreach ($entrance as $record) {
+        print_r($record);
+        $statement->bind_param('i', $record['id']);
+        $statement->execute();
+        $result = $statement->get_result();
+        $result = $result->fetch_all();
+        // getFinalAmount($result, $record['qty']);
+    }
+    print_r($data);
+    echo "<br />";
+}
+
+function getFinalAmount($exit, $amount)
+{
+}
