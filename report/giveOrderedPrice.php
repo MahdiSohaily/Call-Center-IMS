@@ -19,8 +19,8 @@ if ($isValidCustomer) {
                 <table class="min-w-full text-sm font-light p-2">
                     <thead class="font-medium">
                         <tr class="border">
-                            <th class="text-left px-3 py-2">کد فنی</th>
-                            <th class="text-left px-3 py-2">قیمت</th>
+                            <th class="text-center px-3 py-2">کد فنی</th>
+                            <th class="text-center px-3 py-2">قیمت</th>
                             <th class="text-right  py-2" onclick="closeTab()">
                                 <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                             </th>
