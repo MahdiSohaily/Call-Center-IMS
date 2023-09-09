@@ -100,20 +100,6 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         }
     }
 
-    // Custom comparison function to sort inner arrays by values in descending order
-    function customSort($a, $b)
-    {
-        $sumA = array_sum($a['relation']['sorted']); // Calculate the sum of values in $a
-        $sumB = array_sum($b['relation']['sorted']); // Calculate the sum of values in $b
-
-        // Compare the sums in descending order
-        if ($sumA == $sumB) {
-            return 0;
-        }
-        return ($sumA > $sumB) ? -1 : 1;
-    }
-
-
     foreach ($itemDetails as &$record) {
 
         uasort($record, 'customSort'); // Sort the inner array by values
@@ -131,6 +117,19 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         'rates' => getSelectedRates($conn)
     ]);
 }
+// Custom comparison function to sort inner arrays by values in descending order
+function customSort($a, $b)
+{
+    $sumA = array_sum($a['relation']['sorted']); // Calculate the sum of values in $a
+    $sumB = array_sum($b['relation']['sorted']); // Calculate the sum of values in $b
+
+    // Compare the sums in descending order
+    if ($sumA == $sumB) {
+        return 0;
+    }
+    return ($sumA > $sumB) ? -1 : 1;
+}
+
 
 /**
  * @param Connection to the database
