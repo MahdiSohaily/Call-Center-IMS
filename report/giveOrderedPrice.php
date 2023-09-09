@@ -14,6 +14,110 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
 ?>
+        <div class="grid grid-cols-6">
+            <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
+                <table class="min-w-full text-sm font-light p-2">
+                    <thead class="font-medium">
+                        <tr class="border">
+                            <th class="text-center px-3 py-2">کد فنی</th>
+                            <th class="text-center px-3 py-2">قیمت</th>
+                            <th class="text-right  py-2" onclick="closeTab()">
+                                <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="priceReport">
+                        <?php
+                        foreach ($explodedCodes as $code) {
+                            $max = 0;
+                            if (array_key_exists($code, $existing)) {
+                                foreach ($existing[$code] as $item) {
+                                    $max  += $item['relation']['amount'];
+                                }
+                            } ?>
+
+                            <tr class="border">
+                                <td class="px-3 py-2 text-left text-white hover:cursor-pointer" data-move="<?= $code ?>" onclick="onScreen(this)"><?php echo $code ?></td>
+                                <td class="px-3 py-2 text-left text-white">
+                                    <?php
+                                    if (in_array($code, $not_exist)) {
+                                        echo "<p class ='text-red-600' id='" . $code . '-append' . "'>کد اشتباه</p>";
+                                    } else {
+                                        if ($max && current($existing[$code])['givenPrice']) {
+                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? "<p id='" . $code . '-append' . "'>" . current(current($existing[$code])['givenPrice'])['price'] . "</p>" : "<p id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
+                                        } else if ($max) {
+                                            echo "<p id='" . $code . '-append' . "'class ='text-green-400'>نیاز به قیمت</p>";
+                                        } else if ($max == 0) {
+                                            echo "<p id='" . $code . '-append' . "'>" . 'موجود نیست' . "</p>";
+                                        }
+                                    ?>
+                                </td>
+                                <td class="text-right py-2" onclick="closeTab()">
+                                    <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
+                                </td>
+                            <?php
+                                    }
+                            ?>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="rtl col-span-4 flext justify-end">
+                <table class="mx-auto col-6 text-sm font-light custom-table mb-2">
+                    <thead class="font-medium bg-green-600">
+                        <tr>
+                            <th scope="col" class="px-3 py-3 text-white text-center">
+                                نام
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-white text-center">
+                                نام خانوادگی
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-white text-center">
+                                شماره تماس
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-white text-center">
+                                ماشین
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-white text-center">
+                                آدرس
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        <tr class="odd:bg-gray-500relative">
+                            <td class="px-1">
+                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                    <?php echo $customer_info['name'] ?>
+                                </p>
+                            </td>
+                            <td class=" px-1">
+                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                    <?php echo $customer_info['family'] ?>
+                                </p>
+                            </td>
+                            <td class=" px-1">
+                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                    <?php echo $customer_info['phone'] ?>
+                                </p>
+                            </td>
+                            <td class=" px-1">
+                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                    <?php echo $customer_info['car'] ?>
+                                </p>
+                            </td>
+                            <td class=" px-1">
+                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                    <?php echo $customer_info['address'] ?>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
