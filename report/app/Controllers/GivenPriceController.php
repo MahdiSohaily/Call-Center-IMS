@@ -480,10 +480,16 @@ function sortArrayByNumericPropertyDescending($array, $property)
     return $array;
 }
 
+function sortGoods($a, $b)
+{
+    return  $b["allOver"] - $a["allOver"];
+}
+
 
 function getStockInfo($codes)
 {
     $statement = CONN->prepare("SELECT id FROM yadakshop1402.nisha WHERE partnumber = ?");
+    $goods = array();
     foreach ($codes as $code) {
         echo $code;
         echo "<br />";
@@ -491,14 +497,17 @@ function getStockInfo($codes)
         $statement->execute();
         $result = $statement->get_result();
         $result = $result->fetch_all();
-        getEntranceRecord(array_merge(...$result));
+        $goods[$code] = getEntranceRecord(array_merge(...$result));
     }
+    uasort($goods, "sortGoods");
+
+    return $goods;
 }
 
 function getEntranceRecord($partNumbers)
 {
 
-    $statement = CONN->prepare("SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+    $statement = CONN->prepare("SELECT yadakshop1402.qtybank.id, codeid, brand.name AS brand_name, qty, invoice_date, seller.name As seller_name
     FROM (( yadakshop1402.qtybank 
     INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
     INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
@@ -508,12 +517,13 @@ function getEntranceRecord($partNumbers)
     foreach ($partNumbers as $partNumber) {
         $statement->bind_param('i', $partNumber);
         $statement->execute();
-        $result = $statement->get_result();
-        $result = $result->fetch_all();
-        array_push($data, $result);
+        $records = $statement->get_result();
+        while ($result = $records->fetch_assoc()) {
+            array_push($data, $result);
+        }
     }
 
-    getExitRecords($data);
+    return getExitRecords($data);
 }
 
 
@@ -523,17 +533,38 @@ function getExitRecords($entrance)
 
     $data = array();
     foreach ($entrance as $record) {
-        print_r($record);
         $statement->bind_param('i', $record['id']);
         $statement->execute();
-        $result = $statement->get_result();
-        $result = $result->fetch_all();
+        $records = $statement->get_result();
+        $quantity = 0;
+        while ($result = $records->fetch_assoc()) {
+            $quantity += $result['qty'];
+        }
+        $record['qty'] -= $quantity;
+        if ($record['qty'] > 0) {
+            array_push($data, $record);
+        }
         // getFinalAmount($result, $record['qty']);
     }
-    print_r($data);
-    echo "<br />";
+    $derived = getFinalAmount($data);
+    return ['ExistDetails' => $data, 'finalAmount' => $derived, 'allOver' => array_sum($derived)];
 }
 
-function getFinalAmount($exit, $amount)
+function getFinalAmount($data)
 {
+    // Create an associative array to store the sum of qty for each brand_name
+    $brandQtySum = array();
+
+    // Iterate through the data and sum the qty for each brand_name
+    foreach ($data as $record) {
+        $brandName = $record["brand_name"];
+        $qty = $record["qty"];
+        if (array_key_exists($brandName, $brandQtySum)) {
+            $brandQtySum[$brandName] += $qty;
+        } else {
+            $brandQtySum[$brandName] = $qty;
+        }
+    }
+
+    return $brandQtySum;
 }

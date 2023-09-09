@@ -138,9 +138,7 @@ if ($isValidCustomer) {
                         } else {
                             echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
                         } ?>
-
                     </p>
-
                 </div>
                 <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh' : 'max-height: 0vh' ?>">
                     <?php
@@ -159,8 +157,8 @@ if ($isValidCustomer) {
                             $completeCode = $completeCode;
 
 
-                            $goodsCode = array_keys($goods);
-                            getStockInfo($goodsCode);
+                            $goodsCode = array_keys($exist);
+                            print_r(json_encode(getStockInfo($goodsCode)));
                     ?>
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-9 gap-6 lg:gap-2 lg:p-2 overflow-auto">
                                 <!-- Start the code info section -->
