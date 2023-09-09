@@ -13,6 +13,7 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
+        print_r(json_encode($finalResult));
 ?>
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
@@ -155,10 +156,6 @@ if ($isValidCustomer) {
                             $estelam = $item['estelam'];
                             $customer = $customer;
                             $completeCode = $completeCode;
-
-
-                            $goodsCode = array_keys($exist);
-                            print_r(json_encode(getStockInfo($goodsCode)));
                     ?>
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-9 gap-6 lg:gap-2 lg:p-2 overflow-auto">
                                 <!-- Start the code info section -->
@@ -233,6 +230,7 @@ if ($isValidCustomer) {
                                                                 </a>
                                                             </div>
                                                         </td>
+
 
                                                         <td class="px-1 pt-2">
                                                             <table class="min-w-full text-left text-sm font-light">

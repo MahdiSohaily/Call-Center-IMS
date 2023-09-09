@@ -100,27 +100,6 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         }
     }
 
-    // Custom comparison function to sort inner arrays by values in descending order
-    function customSort($a, $b)
-    {
-        $sumA = array_sum($a['relation']['sorted']); // Calculate the sum of values in $a
-        $sumB = array_sum($b['relation']['sorted']); // Calculate the sum of values in $b
-
-        // Compare the sums in descending order
-        if ($sumA == $sumB) {
-            return 0;
-        }
-        return ($sumA > $sumB) ? -1 : 1;
-    }
-
-
-    foreach ($itemDetails as &$record) {
-
-        uasort($record, 'customSort'); // Sort the inner array by values
-    }
-
-
-
     return ([
         'explodedCodes' => $explodedCodes,
         'not_exist' => $results_array['not_exist'],
@@ -232,30 +211,9 @@ function relations($conn, $id, $condition)
         }
     }
 
+    $goods = array_column($relations, 'partnumber');
 
-    $existing = [];
-    $stockInfo = [];
-    $sortedGoods = [];
-
-    foreach ($relations as $relation) {
-        $data = exist($conn, $relation['id']);
-        $existing[$relation['partnumber']] = $data['brands_info'];
-        $stockInfo[$relation['partnumber']] = $data['stockInfo'];
-        $sortedGoods[$relation['partnumber']] = $relation;
-    }
-
-    arsort($existing);
-    $sorted = [];
-
-    $max = 0;
-    foreach ($existing as $key => $value) {
-        $sorted[$key] = getMax($value);
-        $max += $sorted[$key];
-    }
-
-    arsort($sorted);
-
-    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo];
+    return ['goods' => getStockInfo($goods)];
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
@@ -482,22 +440,25 @@ function sortArrayByNumericPropertyDescending($array, $property)
 
 function sortGoods($a, $b)
 {
-    return  $b["allOver"] - $a["allOver"];
+    return  $b['relations']["allOver"] - $a['relations']["allOver"];
 }
 
 
 function getStockInfo($codes)
 {
-    $statement = CONN->prepare("SELECT id FROM yadakshop1402.nisha WHERE partnumber = ?");
+    $statement = CONN->prepare("SELECT * FROM yadakshop1402.nisha WHERE partnumber = ?");
     $goods = array();
     foreach ($codes as $code) {
-        echo $code;
-        echo "<br />";
         $statement->bind_param('s', $code);
         $statement->execute();
-        $result = $statement->get_result();
-        $result = $result->fetch_all();
-        $goods[$code] = getEntranceRecord(array_merge(...$result));
+        $record = $statement->get_result();
+        $ids = array();
+        $item = null;
+        while ($result = $record->fetch_assoc()) {
+            array_push($ids, $result['id']);
+            $item = $result;
+        }
+        $goods[$code] = ['information' => $item, 'relations' => getEntranceRecord($ids)];
     }
     uasort($goods, "sortGoods");
 
