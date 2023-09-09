@@ -229,7 +229,7 @@ function relations($conn, $id, $condition)
     }
 
     $goods = array_column($relations, 'partnumber');
-    $existing = getStockInfo($goods);
+    $existing = getStockInfo($conn, $goods);
 
     $amount = 0;
     foreach ($existing as $record) {
@@ -318,10 +318,9 @@ function sortGoods($a, $b)
     return  $b['details']["allOver"] - $a['details']["allOver"];
 }
 
-
-function getStockInfo($codes)
+function getStockInfo($conn, $codes)
 {
-    $statement = CONN->prepare("SELECT * FROM yadakshop1402.nisha WHERE partnumber = ?");
+    $statement = $conn->prepare("SELECT * FROM yadakshop1402.nisha WHERE partnumber = ?");
     $goods = array();
     foreach ($codes as $code) {
         $statement->bind_param('s', $code);
@@ -333,17 +332,17 @@ function getStockInfo($codes)
             array_push($ids, $result['id']);
             $item = $result;
         }
-        $goods[$code] = ['information' => $item, 'details' => getEntranceRecord($ids)];
+        $goods[$code] = ['information' => $item, 'details' => getEntranceRecord($conn, $ids)];
     }
     uasort($goods, "sortGoods");
 
     return $goods;
 }
 
-function getEntranceRecord($partNumbers)
+function getEntranceRecord($conn, $partNumbers)
 {
 
-    $statement = CONN->prepare("SELECT yadakshop1402.qtybank.id, codeid, brand.name AS brand_name, qty, invoice_date, seller.name As seller_name
+    $statement = $conn->prepare("SELECT yadakshop1402.qtybank.id, codeid, brand.name AS brand_name, qty, invoice_date, seller.name As seller_name
     FROM (( yadakshop1402.qtybank 
     INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
     INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
@@ -359,13 +358,12 @@ function getEntranceRecord($partNumbers)
         }
     }
 
-    return getExitRecords($data);
+    return getExitRecords($conn, $data);
 }
 
-
-function getExitRecords($entrance)
+function getExitRecords($conn, $entrance)
 {
-    $statement = CONN->prepare("SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = ?");
+    $statement = $conn->prepare("SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = ?");
 
     $data = array();
     foreach ($entrance as $record) {
