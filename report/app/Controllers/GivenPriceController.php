@@ -295,153 +295,6 @@ function estelam($conn, $code)
     return $estelam;
 }
 
-function out($conn, $id)
-{
-    $out_sql = "SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = '" . $id . "'";
-    $out_result = mysqli_query($conn, $out_sql);
-
-    $result = null;
-    if (mysqli_num_rows($out_result) > 0) {
-        while ($row = mysqli_fetch_assoc($out_result)) {
-            $result += $row['qty'];
-        }
-    }
-    return $result;
-}
-
-function stockInfo($conn, $id, $brand)
-{
-
-    $stockInfo_sql = "SELECT id FROM yadakshop1402.brand WHERE brand.name = '" . $brand . "'";
-    $out_result = mysqli_query($conn, $stockInfo_sql);
-
-    $brand_id = null;
-    if (mysqli_num_rows($out_result) > 0) {
-        $brand_id = mysqli_fetch_assoc($out_result);
-    }
-
-    $qtybank_sql = "SELECT qtybank.id, qtybank.qty, seller.name FROM yadakshop1402.qtybank INNER JOIN yadakshop1402.seller ON qtybank.seller = seller.id WHERE codeid = '" . $id . "' AND brand= '" . $brand_id['id'] . "'";
-    $qtybank_data = mysqli_query($conn, $qtybank_sql);
-
-    $result = [];
-
-    if (mysqli_num_rows($qtybank_data) > 0) {
-        while ($item = mysqli_fetch_assoc($qtybank_data)) {
-            array_push($result, $item);
-        }
-    }
-
-    $existing_record = [];
-    $customers = [];
-    foreach ($result as $key => $item) {
-
-        $out_data = out($conn, $item['id']);
-        $out =  $out_data ? (int) $out_data : 0;
-
-        $item['qty'] = (int)($item['qty']) - $out;
-
-        array_push($existing_record, $item);
-        array_push($customers, $item['name']);
-    }
-
-    $customers = array_unique($customers);
-
-    $final_result = [];
-
-    foreach ($customers as $customer) {
-        $total = 0;
-        foreach ($existing_record as $record) {
-            if ($customer === $record['name']) {
-                $total += $record['qty'];
-            }
-        }
-        $final_result[$customer] = $total;
-    }
-
-
-    return $final_result;
-}
-
-function exist($conn, $id)
-{
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
-                FROM (( yadakshop1402.qtybank 
-                INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
-                INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
-                WHERE codeid = '" . $id . "'";
-
-    $data_result = mysqli_query($conn, $data_sql);
-
-    $incoming = [];
-    if (mysqli_num_rows($data_result) > 0) {
-        while ($item = mysqli_fetch_assoc($data_result)) {
-            array_push($incoming, $item);
-        }
-    };
-
-    $brands = [];
-    $amount = [];
-    $stockInfo = [];
-
-    $modifiedResult = [];
-
-    $incoming = array_map(function ($item) {
-        global $conn;
-        $out_data = out($conn, $item['id']);
-        $out =  $out_data;
-        $item['qty'] -= $out;
-
-        if ($item['qty'] !== 0) return $item;
-    }, $incoming);
-
-    $incoming = array_filter($incoming, function ($item) {
-        if ($item !== null) {
-            return $item;
-        }
-    });
-
-    foreach ($incoming as $item) {
-        array_push($brands, $item['name']);
-    }
-
-    $brands = array_unique($brands);
-    usort($incoming, function ($a, $b) {
-        return $b['qty'] - $a['qty'];
-    });
-
-    $brands_info = [];
-    foreach ($brands as $item) {
-        $total = 0;
-        foreach ($incoming as $value) {
-            if ($item == $value['name']) {
-                $total += $value['qty'];
-            }
-        }
-
-        $brands_info[$item] = $total;
-    }
-
-    arsort($brands_info);
-    return ['stockInfo' => $incoming, 'brands_info' => $brands_info];
-}
-
-function getMax($array)
-{
-    $max = 0;
-    foreach ($array as $k => $v) {
-        $max = $max < $v ? $v : $max;
-    }
-    return $max;
-}
-
-function sortArrayByNumericPropertyDescending($array, $property)
-{
-    usort($array, function ($a, $b) use ($property) {
-        return $b->$property - $a->$property;
-    });
-    return $array;
-}
-
 function sortGoods($a, $b)
 {
     return  $b['details']["allOver"] - $a['details']["allOver"];
@@ -531,5 +384,12 @@ function getFinalAmount($data)
         }
     }
 
+    uasort($brandQtySum, "sortByBrandNameQTY");
+
     return $brandQtySum;
+}
+
+function sortByBrandNameQTY($a, $b)
+{
+    return $b - $a;
 }
