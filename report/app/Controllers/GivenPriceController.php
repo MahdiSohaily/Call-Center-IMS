@@ -195,8 +195,7 @@ function relations($conn, $id, $condition)
     $relations = [];
 
     if ($condition) {
-
-        $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
+        $sql = "SELECT yadakshop1402.nisha.partnumber FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($info = mysqli_fetch_assoc($result)) {
@@ -204,7 +203,7 @@ function relations($conn, $id, $condition)
             }
         }
     } else {
-        $sql = "SELECT * FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
+        $sql = "SELECT partnumber FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $relations[0] = mysqli_fetch_assoc($result);
@@ -212,8 +211,13 @@ function relations($conn, $id, $condition)
     }
 
     $goods = array_column($relations, 'partnumber');
+    $existing = getStockInfo($goods);
 
-    return ['goods' => getStockInfo($goods)];
+    $amount = 0;
+    foreach ($existing as $record) {
+        $amount += $record['details']['allOver'];
+    }
+    return ['goods' => $existing, 'amount' => $amount];
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
@@ -440,7 +444,7 @@ function sortArrayByNumericPropertyDescending($array, $property)
 
 function sortGoods($a, $b)
 {
-    return  $b['relations']["allOver"] - $a['relations']["allOver"];
+    return  $b['details']["allOver"] - $a['details']["allOver"];
 }
 
 
@@ -458,7 +462,7 @@ function getStockInfo($codes)
             array_push($ids, $result['id']);
             $item = $result;
         }
-        $goods[$code] = ['information' => $item, 'relations' => getEntranceRecord($ids)];
+        $goods[$code] = ['information' => $item, 'details' => getEntranceRecord($ids)];
     }
     uasort($goods, "sortGoods");
 

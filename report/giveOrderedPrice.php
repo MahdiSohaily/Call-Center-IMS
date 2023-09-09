@@ -13,119 +13,14 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
-        print_r(json_encode($finalResult));
 ?>
-        <div class="grid grid-cols-6">
-            <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
-                <table class="min-w-full text-sm font-light p-2">
-                    <thead class="font-medium">
-                        <tr class="border">
-                            <th class="text-center px-3 py-2">کد فنی</th>
-                            <th class="text-center px-3 py-2">قیمت</th>
-                            <th class="text-right  py-2" onclick="closeTab()">
-                                <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="priceReport">
-                        <?php
-                        foreach ($explodedCodes as $code) {
-                            $max = 0;
-                            if (array_key_exists($code, $existing)) {
-                                foreach ($existing[$code] as $item) {
-                                    $max  += max($item['relation']['sorted']);
-                                }
-                            } ?>
-
-                            <tr class="border">
-                                <td class="px-3 py-2 text-left text-white hover:cursor-pointer" data-move="<?= $code ?>" onclick="onScreen(this)"><?php echo $code ?></td>
-                                <td class="px-3 py-2 text-left text-white">
-                                    <?php
-                                    if (in_array($code, $not_exist)) {
-                                        echo "<p class ='text-red-600' id='" . $code . '-append' . "'>کد اشتباه</p>";
-                                    } else {
-                                        if ($max && current($existing[$code])['givenPrice']) {
-                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? "<p id='" . $code . '-append' . "'>" . current(current($existing[$code])['givenPrice'])['price'] . "</p>" : "<p id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
-                                        } else if ($max) {
-                                            echo "<p id='" . $code . '-append' . "'class ='text-green-400'>نیاز به قیمت</p>";
-                                        } else if ($max == 0) {
-                                            echo "<p id='" . $code . '-append' . "'>" . 'موجود نیست' . "</p>";
-                                        }
-                                    ?>
-                                </td>
-                                <td class="text-right py-2" onclick="closeTab()">
-                                    <i title="کاپی کردن مقادیر" onclick="copyItemPrice(this)" class="px-4 text-white text-sm material-icons hover:cursor-pointer">content_copy</i>
-                                </td>
-                            <?php
-                                    }
-                            ?>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-            <div class="rtl col-span-4 flext justify-end">
-                <table class="mx-auto col-6 text-sm font-light custom-table mb-2">
-                    <thead class="font-medium bg-green-600">
-                        <tr>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                نام
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                نام خانوادگی
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                شماره تماس
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                ماشین
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                آدرس
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                        <tr class="odd:bg-gray-500relative">
-                            <td class="px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['name'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['family'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['phone'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['car'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['address'] ?>
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
                 $max = 0;
                 if (array_key_exists($code, $existing)) {
                     foreach ($existing[$code] as $item) {
-                        $max  += max($item['relation']['sorted']);
+                        $max  += $item['relation']['amount'];
                     }
                 }
             ?>
@@ -149,9 +44,6 @@ if ($isValidCustomer) {
                             $information = $item['information'];
                             $relation = $item['relation'];
                             $goods =  $relation['goods'];
-                            $exist =  $relation['existing'];
-                            $sorted =  $relation['sorted'];
-                            $stockInfo =  $relation['stockInfo'];
                             $givenPrice =  $item['givenPrice'];
                             $estelam = $item['estelam'];
                             $customer = $customer;
@@ -214,18 +106,18 @@ if ($isValidCustomer) {
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                foreach ($sorted as $index => $element) {
+                                                foreach ($goods as $index => $element) {
                                                 ?>
                                                     <tr>
-                                                        <td class="relative px-1 hover:cursor-pointer" data-part="<?php echo $goods[$index]['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
+                                                        <td class="relative px-1 hover:cursor-pointer" data-part="<?php echo $goods[$index]['information']['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
                                                             <p class="text-center bold bg-gray-600 text-white px-2 py-3">
-                                                                <?php echo $goods[$index]['partnumber'] ?>
+                                                                <?php echo $goods[$index]['information']['partnumber'] ?>
                                                             </p>
-                                                            <div class="custome-tooltip-2" id="<?php echo $goods[$index]['partnumber'] . '-google' ?>">
-                                                                <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?php echo $goods[$index]['partnumber'] ?>'>
+                                                            <div class="custome-tooltip-2" id="<?php echo $goods[$index]['information']['partnumber'] . '-google' ?>">
+                                                                <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?php echo $goods[$index]['information']['partnumber'] ?>'>
                                                                     <img class="w-5 h-auto" src="./public/img/google.png" alt="google">
                                                                 </a>
-                                                                <a target='_blank' href='https://partsouq.com/en/search/all?q=<?php echo $goods[$index]['partnumber'] ?>'>
+                                                                <a target='_blank' href='https://partsouq.com/en/search/all?q=<?php echo $goods[$index]['information']['partnumber'] ?>'>
                                                                     <img class="w-5 h-auto" src="./public/img/part.png" alt="part">
                                                                 </a>
                                                             </div>
@@ -249,7 +141,7 @@ if ($isValidCustomer) {
                                                                     <tr class="py-3">
                                                                         <?php
                                                                         foreach ($rates as $rate) {
-                                                                            $price = doubleval($goods[$index]['price']);
+                                                                            $price = doubleval($goods[$index]['information']['price']);
                                                                             $price = str_replace(",", "", $price);
                                                                             $avgPrice = round(($price * 110) / 243.5);
                                                                             $finalPrice = round($avgPrice * $rate['amount'] * 1.2 * 1.2 * 1.3);
@@ -259,11 +151,11 @@ if ($isValidCustomer) {
                                                                             </td>
                                                                         <?php } ?>
                                                                     </tr>
-                                                                    <?php if ($goods[$index]['mobis'] > 0 && $goods[$index]['mobis'] !== '-') { ?>
+                                                                    <?php if ($goods[$index]['information']['mobis'] > 0 && $goods[$index]['information']['mobis'] !== '-') { ?>
                                                                         <tr class="bg-neutral-400">
                                                                             <?php
                                                                             foreach ($rates as $rate) {
-                                                                                $price = doubleval($goods[$index]['mobis']);
+                                                                                $price = doubleval($goods[$index]['information']['mobis']);
                                                                                 $price = str_replace(",", "", $price);
                                                                                 $avgPrice = round(($price * 110) / 243.5);
                                                                                 $finalPrice = round($avgPrice * $rate['amount'] * 1.25 * 1.3)
@@ -276,11 +168,11 @@ if ($isValidCustomer) {
                                                                             <?php } ?>
                                                                         </tr>
                                                                     <?php } ?>
-                                                                    <?php if ($goods[$index]['korea'] > 0 && $goods[$index]['mobis'] !== '-') { ?>
+                                                                    <?php if ($goods[$index]['information']['korea'] > 0 && $goods[$index]['information']['mobis'] !== '-') { ?>
                                                                         <tr class="bg-amber-600" v-if="props.relation.goods[key].korea > 0">
                                                                             <?php
                                                                             foreach ($rates as $rate) {
-                                                                                $price = doubleval($goods[$index]['korea']);
+                                                                                $price = doubleval($goods[$index]['information']['korea']);
                                                                                 $price = str_replace(",", "", $price);
                                                                                 $avgPrice = round(($price * 110) / 243.5);
                                                                                 $finalPrice = round($avgPrice * $rate['amount'] * 1.25 * 1.3)
