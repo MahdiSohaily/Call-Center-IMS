@@ -213,7 +213,7 @@ function relations($conn, $id, $condition)
     $relations = [];
 
     if ($condition) {
-        $sql = "SELECT yadakshop1402.nisha.partnumber FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
+        $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($info = mysqli_fetch_assoc($result)) {
@@ -221,7 +221,7 @@ function relations($conn, $id, $condition)
             }
         }
     } else {
-        $sql = "SELECT partnumber FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
+        $sql = "SELECT * FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $relations[0] = mysqli_fetch_assoc($result);
