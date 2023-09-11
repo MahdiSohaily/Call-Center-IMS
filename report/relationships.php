@@ -90,14 +90,6 @@ $status = $conn->query($status_sql);
                     <p class="mt-2"></p>
                 </div>
                 <div class="col-span-12 sm:col-span-4 mb-3">
-                    <label class="block font-medium text-sm text-gray-700">
-                        قیمت
-                    </label>
-                    <input name="price" value="" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="price" type="text" />
-                    <p class="mt-2"></p>
-                </div>
-
-                <div class="col-span-12 sm:col-span-4 mb-3">
                     <label for="cars">
                         خودرو های مرتبط
                     </label>
@@ -131,6 +123,21 @@ $status = $conn->query($status_sql);
                         <?php }
                         } ?>
                     </select>
+                </div>
+                <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
+
+                    <div class="flex-grow">
+                        <label for="original" class="block font-medium text-sm text-gray-700">
+                            مقدار اصلی
+                        </label>
+                        <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
+                    </div>
+                    <div class="flex-grow">
+                        <label for="fake" class="block font-medium text-sm text-gray-700">
+                            مقدار کپی
+                        </label>
+                        <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
+                    </div>
                 </div>
                 <div class="col-span-12 sm:col-span-4 mb-3">
                     <label for="description">
@@ -262,7 +269,8 @@ $status = $conn->query($status_sql);
                 <p class="text-sm font-semibold text-gray-600">
                     ` + good.partNumber + `
                 </p>
-                    <i data-id="` + good.id + `" data-partNumber="` + good.partNumber + `" onclick="remove_selected(` + good.id + `)"
+                    <i data-id="` + good.id + `" data-partNumber="` + good.partNumber + `" onclick="remove_selected(` +
+                good.id + `)"
                             class="material-icons add text-red-600 cursor-pointer rounded-circle hover:bg-gray-200">do_not_disturb_on
                     </i>
                 </div>
