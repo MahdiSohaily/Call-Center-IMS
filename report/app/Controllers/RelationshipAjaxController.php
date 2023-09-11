@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once('../../database/connect.php');
+
 if (isset($_POST['search_goods_for_relation'])) {
     $pattern = $_POST['pattern'];
     $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $pattern . "%'";
@@ -80,9 +82,11 @@ if (isset($_POST['search_goods_for_relation'])) {
 if (isset($_POST['store_relation'])) {
 
     $relation_name = $_POST['relation_name'];
-    $price = $_POST['price'];
+    $price = null;
     $cars = json_decode($_POST['cars']);
     $status = $_POST['status'];
+    $original = $_POST['original'];
+    $fake = $_POST['fake'];
     $description = $_POST['description'];
     $mode = $_POST['mode'];
     $pattern_id = $_POST['pattern_id'];
@@ -102,14 +106,24 @@ if (isset($_POST['store_relation'])) {
         if ($conn->query($pattern_sql) === TRUE) {
             $last_id = $conn->insert_id;
 
+            $limit_sql = $conn->prepare("INSERT INTO good_limit (nisha_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
+            $similar_sql = $conn->prepare("INSERT INTO similars (pattern_id, nisha_id) VALUES (? , ?)");
+
             foreach ($selected_index as $value) {
-                $similar_sql = "INSERT INTO similars (pattern_id, nisha_id) VALUES ('" . $last_id . "', '" . $value . "')";
-                $conn->query($similar_sql);
+                $nisha_id = intval($value);
+
+                $limit_sql->bind_param('iiii', $nisha_id, $original, $fake, $_SESSION['user_id']);
+                $limit_sql->execute();
+
+                $similar_sql->bind_param('ii', $last_id, $nisha_id);
+                $similar_sql->execute();
             }
 
+            $car_sql = $conn->prepare("INSERT INTO patterncars (pattern_id, car_id) VALUES (?, ?)");
             foreach ($selectedCars as $car) {
-                $car_sql = "INSERT INTO patterncars (pattern_id, car_id) VALUES ('" . $last_id . "', '" . $car . "')";
-                $conn->query($car_sql);
+                $car_id = intval($car);
+                $car_sql->bind_param('ii', $last_id, $car_id);
+                $car_sql->execute();
             }
             echo 'true';
         } else {
@@ -205,7 +219,13 @@ if (isset($_POST['load_relation'])) {
             array_push($final_result, ['id' =>  $data['id'], 'partNumber' => $data['partnumber'], 'pattern' => $item['nisha_id']]);
         }
 
-        print_r(json_encode($final_result));
+        $getLimit = current($final_result)['pattern'];
+
+        $limit_sql = "SELECT original, fake FROM good_limit WHERE nisha_id = '" . $getLimit . "'";
+        $limit = $conn->query($limit_sql);
+        $limit = $limit->fetch_assoc();
+
+        print_r(json_encode([$limit, $final_result]));
     }
 }
 

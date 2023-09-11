@@ -362,7 +362,9 @@ $status = $conn->query($status_sql);
 
             axios.post("./app/Controllers/RelationshipAjaxController.php", params)
                 .then(function(response) {
-                    push_data(response.data);
+                    document.getElementById('original').value = response.data[0]['original'];
+                    document.getElementById('fake').value = response.data[0]['fake'];
+                    push_data(response.data[1]);
                     displaySelectedGoods();
                     load_pattern_ifo(pattern_id);
                 })
@@ -407,7 +409,7 @@ $status = $conn->query($status_sql);
 
                 relation_name.value = pattern_info.name;
                 mode.value = 'update';
-                price.value = pattern_info.price;
+                // price.value = pattern_info.price;
                 description.value = pattern_info.description;
 
                 setSelectedItems('cars', pattern_info_cars);
