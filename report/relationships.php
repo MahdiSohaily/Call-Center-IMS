@@ -146,8 +146,6 @@ $status = $conn->query($status_sql);
                     <textarea class="border-1 p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 
                                      focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="description" rows="5"></textarea>
                 </div>
-
-
         </div>
         <p id="form_success" class="px-3 tiny-text text-green-500 hidden">
             رابطه جدید اجناس موفقانه در پایگاه داده ثبت شد!
@@ -298,10 +296,12 @@ $status = $conn->query($status_sql);
         // Accessing the form fields to get thier value for an ajax store operation
         const relation_name = document.getElementById('relation_name').value;
         const mode = document.getElementById('mode').value;
-        const price = document.getElementById('price').value;
+        const price = null;
         const cars = getSelectedItems('cars');
         const status = document.getElementById('status').value;
         const description = document.getElementById('description').value;
+        const original = document.getElementById('original').value;
+        const fake = document.getElementById('fake').value;
 
         // Defining a params instance to be attached to the axios request
         const params = new URLSearchParams();
@@ -311,6 +311,8 @@ $status = $conn->query($status_sql);
         params.append('cars', JSON.stringify(cars));
         params.append('status', status);
         params.append('description', description);
+        params.append('original', original);
+        params.append('fake', fake);
 
         // Side effects data
         params.append('mode', mode);
