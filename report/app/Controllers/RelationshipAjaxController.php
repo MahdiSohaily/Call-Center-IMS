@@ -162,6 +162,11 @@ if (isset($_POST['store_relation'])) {
             $toAdd = toBeAdded($current, $selected_index);
             $toDelete = toBeDeleted($current, $selected_index);
 
+
+            $subtractNew = array_diff($current, $toAdd);
+            $updateRemaining = array_diff($subtractNew, $toDelete);
+
+
             $selectedCars =  $cars;
             $carsToAdd = toBeAdded($current_cars, $selectedCars);
             $carsToDelete = toBeDeleted($current_cars, $selectedCars);
@@ -173,15 +178,37 @@ if (isset($_POST['store_relation'])) {
             $conn->query($update_pattern_sql);
 
             if (count($toAdd) > 0) {
+                $limit_sql = $conn->prepare("INSERT INTO good_limit (nisha_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
+
                 foreach ($toAdd as $value) {
+                    $nisha_id = intval($value);
+                    $limit_sql->bind_param('iiii', $nisha_id, $original, $fake, $_SESSION['user_id']);
+                    $limit_sql->execute();
+
                     $similar_sql = "INSERT INTO similars (pattern_id, nisha_id) VALUES ('" . $pattern_id . "', '" . $value . "')";
                     $conn->query($similar_sql);
                 }
             }
             if (count($toDelete)) {
+                $limit_sql = $conn->prepare("DELETE FROM good_limit WHERE nisha_id = ?");
+
                 foreach ($toDelete as $value) {
+                    $nisha_id = intval($value);
+                    $limit_sql->bind_param('i', $nisha_id);
+                    $limit_sql->execute();
+
                     $delete_similar_sql = "DELETE FROM similars WHERE nisha_id= '" . $value . "'";
                     $conn->query($delete_similar_sql);
+                }
+            }
+
+            if (sizeof($updateRemaining)) {
+                $limit_sql = $conn->prepare("UPDATE good_limit SET original= ?,  fake = ?,  user_id= ? WHERE nisha_id = ?");
+
+                foreach ($updateRemaining as $item) {
+                    $nisha_id = intval($item);
+                    $limit_sql->bind_param('iiii', $original, $fake, $_SESSION['user_id'], $nisha_id);
+                    $limit_sql->execute();
                 }
             }
 
