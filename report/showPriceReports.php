@@ -13,15 +13,14 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
-        print_r(json_encode($finalResult));
 ?>
-        <div class="grid grid-cols-6">
+         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
                     <thead class="font-medium">
                         <tr class="border">
-                            <th class="text-center px-3 py-2">کد فنی</th>
-                            <th class="text-center px-3 py-2">قیمت</th>
+                            <th class="text-left px-3 py-2">کد فنی</th>
+                            <th class="text-left px-3 py-2">قیمت</th>
                             <th class="text-right  py-2" onclick="closeTab()">
                                 <i title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-5 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                             </th>
@@ -33,7 +32,7 @@ if ($isValidCustomer) {
                             $max = 0;
                             if (array_key_exists($code, $existing)) {
                                 foreach ($existing[$code] as $item) {
-                                    $max  += $item['relation']['amount'];
+                                    $max  += max($item['relation']['sorted']);
                                 }
                             } ?>
 
@@ -125,11 +124,11 @@ if ($isValidCustomer) {
                 $max = 0;
                 if (array_key_exists($code, $existing)) {
                     foreach ($existing[$code] as $item) {
-                        $max  += $item['relation']['amount'];
+                        $max  += max($item['relation']['sorted']);
                     }
                 }
-            ?>
-                <div id="<?= $code ?>" class="accordion-header bg-slate-500">
+
+            ?><div id="<?= $code ?>" class="accordion-header bg-slate-500">
                     <p class="flex items-center gap-2">
                         <?php echo "<span class='text-white'>{$code}</span>";
                         if (in_array($code, $not_exist)) {
@@ -139,9 +138,10 @@ if ($isValidCustomer) {
                         } else {
                             echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
                         } ?>
+
                     </p>
                 </div>
-                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh' : 'max-height: 0vh' ?>">
+                <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 200vh' : 'max-height: 0vh' ?>">
                     <?php
                     if (array_key_exists($code, $existing)) {
                         foreach ($existing[$code] as $index => $item) {
@@ -149,6 +149,9 @@ if ($isValidCustomer) {
                             $information = $item['information'];
                             $relation = $item['relation'];
                             $goods =  $relation['goods'];
+                            $exist =  $relation['existing'];
+                            $sorted =  $relation['sorted'];
+                            $stockInfo =  $relation['stockInfo'];
                             $givenPrice =  $item['givenPrice'];
                             $estelam = $item['estelam'];
                             $customer = $customer;
@@ -211,33 +214,29 @@ if ($isValidCustomer) {
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                foreach ($goods as $index => $element) {
-                                                    $allOver = $element['details']['allOver'];
-                                                    $ExistDetails = $element['details']['ExistDetails'];
-                                                    $finalAmount = $element['details']['finalAmount'];
+                                                foreach ($sorted as $index => $element) {
                                                 ?>
                                                     <tr>
-                                                        <td class="relative px-1 hover:cursor-pointer" data-part="<?php echo $goods[$index]['information']['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
+                                                        <td class="relative px-1 hover:cursor-pointer" data-part="<?php echo $goods[$index]['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
                                                             <p class="text-center bold bg-gray-600 text-white px-2 py-3">
-                                                                <?php echo $goods[$index]['information']['partnumber'] ?>
+                                                                <?php echo $goods[$index]['partnumber'] ?>
                                                             </p>
-                                                            <div class="custome-tooltip-2" id="<?php echo $goods[$index]['information']['partnumber'] . '-google' ?>">
-                                                                <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?php echo $goods[$index]['information']['partnumber'] ?>'>
+                                                            <div class="custome-tooltip-2" id="<?php echo $goods[$index]['partnumber'] . '-google' ?>">
+                                                                <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?php echo $goods[$index]['partnumber'] ?>'>
                                                                     <img class="w-5 h-auto" src="./public/img/google.png" alt="google">
                                                                 </a>
-                                                                <a target='_blank' href='https://partsouq.com/en/search/all?q=<?php echo $goods[$index]['information']['partnumber'] ?>'>
+                                                                <a target='_blank' href='https://partsouq.com/en/search/all?q=<?php echo $goods[$index]['partnumber'] ?>'>
                                                                     <img class="w-5 h-auto" src="./public/img/part.png" alt="part">
                                                                 </a>
                                                             </div>
                                                         </td>
-
                                                         <td class="px-1 pt-2">
                                                             <table class="min-w-full text-sm font-light p-2">
                                                                 <thead class="font-medium">
                                                                     <tr>
                                                                         <?php
-                                                                        if ($allOver > 0) {
-                                                                            foreach ($finalAmount as $brand => $amount) {
+                                                                        if (array_sum($exist[$index]) > 0) {
+                                                                            foreach ($exist[$index] as $brand => $amount) {
                                                                                 if ($amount > 0) { ?>
                                                                                     <th onclick="appendBrand(this)" data-code="<?php echo $code ?>" data-price="<?php echo $brand ?>" data-part="<?php echo $partNumber ?>" scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-part="<?= $partNumber ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
                                                                                         <?php echo $brand ?>
@@ -253,9 +252,9 @@ if ($isValidCustomer) {
                                                                                                 </thead>
                                                                                                 <tbody>
                                                                                                     <?php
-                                                                                                    foreach ($ExistDetails as $item) {
+                                                                                                    foreach ($stockInfo[$index] as $item) {
                                                                                                     ?>
-                                                                                                        <?php if ($item !== 0 && $item['brand_name'] === $brand) { ?>
+                                                                                                        <?php if ($item !== 0 && $item['name'] === $brand) { ?>
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
@@ -279,7 +278,7 @@ if ($isValidCustomer) {
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr class="py-3">
-                                                                        <?php foreach ($finalAmount as $brand => $amount) {
+                                                                        <?php foreach ($exist[$index] as $brand => $amount) {
                                                                             if ($amount > 0) { ?>
                                                                                 <td class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> whitespace-nowrap text-white px-3 py-2 text-center">
                                                                                     <?php echo $amount;
@@ -291,7 +290,6 @@ if ($isValidCustomer) {
                                                                 </tbody>
                                                             </table>
                                                         </td>
-
                                                         <td class="px-1 pt-2">
                                                             <table class="min-w-full text-left text-sm font-light">
                                                                 <thead class="font-medium">
@@ -309,7 +307,7 @@ if ($isValidCustomer) {
                                                                     <tr class="py-3">
                                                                         <?php
                                                                         foreach ($rates as $rate) {
-                                                                            $price = doubleval($goods[$index]['information']['price']);
+                                                                            $price = doubleval($goods[$index]['price']);
                                                                             $price = str_replace(",", "", $price);
                                                                             $avgPrice = round(($price * 110) / 243.5);
                                                                             $finalPrice = round($avgPrice * $rate['amount'] * 1.2 * 1.2 * 1.3);
@@ -319,11 +317,11 @@ if ($isValidCustomer) {
                                                                             </td>
                                                                         <?php } ?>
                                                                     </tr>
-                                                                    <?php if ($goods[$index]['information']['mobis'] > 0 && $goods[$index]['information']['mobis'] !== '-') { ?>
+                                                                    <?php if ($goods[$index]['mobis'] > 0 && $goods[$index]['mobis'] !== '-') { ?>
                                                                         <tr class="bg-neutral-400">
                                                                             <?php
                                                                             foreach ($rates as $rate) {
-                                                                                $price = doubleval($goods[$index]['information']['mobis']);
+                                                                                $price = doubleval($goods[$index]['mobis']);
                                                                                 $price = str_replace(",", "", $price);
                                                                                 $avgPrice = round(($price * 110) / 243.5);
                                                                                 $finalPrice = round($avgPrice * $rate['amount'] * 1.25 * 1.3)
@@ -336,11 +334,11 @@ if ($isValidCustomer) {
                                                                             <?php } ?>
                                                                         </tr>
                                                                     <?php } ?>
-                                                                    <?php if ($goods[$index]['information']['korea'] > 0 && $goods[$index]['information']['mobis'] !== '-') { ?>
+                                                                    <?php if ($goods[$index]['korea'] > 0 && $goods[$index]['mobis'] !== '-') { ?>
                                                                         <tr class="bg-amber-600" v-if="props.relation.goods[key].korea > 0">
                                                                             <?php
                                                                             foreach ($rates as $rate) {
-                                                                                $price = doubleval($goods[$index]['information']['korea']);
+                                                                                $price = doubleval($goods[$index]['korea']);
                                                                                 $price = str_replace(",", "", $price);
                                                                                 $avgPrice = round(($price * 110) / 243.5);
                                                                                 $finalPrice = round($avgPrice * $rate['amount'] * 1.25 * 1.3)
@@ -497,6 +495,7 @@ if ($isValidCustomer) {
                                         </form>
                                     </div>
                                 </div>
+
                                 <!-- END GIVEN PRICE SECTION -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
                                     <div class="p-3">
@@ -594,7 +593,7 @@ if ($isValidCustomer) {
         <a class="toTop" href="#">
             <i class="material-icons">arrow_drop_up</i>
         </a>
-        <script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
+        <script src="./public/js/givePrice.js"></script>
 <?php
     }
 } else {
