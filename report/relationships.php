@@ -336,6 +336,9 @@ $status = $conn->query($status_sql);
         const original = document.getElementById('original').value;
         const fake = document.getElementById('fake').value;
 
+        const original_all = document.getElementById('original_all').value;
+        const fake_all = document.getElementById('fake_all').value;
+
         // Defining a params instance to be attached to the axios request
         const params = new URLSearchParams();
         params.append('store_relation', 'store_relation');
@@ -346,6 +349,9 @@ $status = $conn->query($status_sql);
         params.append('description', description);
         params.append('original', original);
         params.append('fake', fake);
+
+        params.append('original_all', original_all);
+        params.append('fake_all', fake_all);
 
         // Side effects data
         params.append('mode', mode);
@@ -395,8 +401,15 @@ $status = $conn->query($status_sql);
 
             axios.post("./app/Controllers/RelationshipAjaxController.php", params)
                 .then(function(response) {
-                    document.getElementById('original').value = response.data[0]['original'];
-                    document.getElementById('fake').value = response.data[0]['fake'];
+                    console.log(response.data);
+                    let original = 0;
+                    let fake = 0;
+                    if (response.data[0] !== null) {
+                        original = response.data[0]['original'];
+                        fake = response.data[0]['fake'];
+                    }
+                    document.getElementById('original').value = original;
+                    document.getElementById('fake').value = fake;
                     push_data(response.data[1]);
                     displaySelectedGoods();
                     load_pattern_ifo(pattern_id);
@@ -411,6 +424,7 @@ $status = $conn->query($status_sql);
 
     //This function helps to add all relations of a relationship into the selected items list
     const push_data = (data) => {
+        console.log(data);
         for (const item of data) {
             remove(item.id);
             selected_goods.push({

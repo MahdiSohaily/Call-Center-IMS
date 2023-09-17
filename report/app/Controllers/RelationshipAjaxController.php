@@ -85,8 +85,18 @@ if (isset($_POST['store_relation'])) {
     $price = null;
     $cars = json_decode($_POST['cars']);
     $status = $_POST['status'];
+
+    // This values are for to set an alert for goods in specific relation 
+    // for specific inventory
     $original = $_POST['original'];
     $fake = $_POST['fake'];
+
+    // This values are for to set an alert for goods in specific relation 
+    // for over all goods in all inventories
+    $original_all = $_POST['original_all'];
+    $fake_all = $_POST['fake_all'];
+
+
     $description = $_POST['description'];
     $mode = $_POST['mode'];
     $pattern_id = $_POST['pattern_id'];
@@ -104,27 +114,37 @@ if (isset($_POST['store_relation'])) {
             VALUES ('" . $relation_name . "', '" . $price . "', '" . $serial . "', '" . $status . "', '" . $created_at . "','" . $description . "')";
 
         if ($conn->query($pattern_sql) === TRUE) {
-            $last_id = $conn->insert_id;
+            $last_id = $conn->insert_id; // latest pattern ID
 
-            $limit_sql = $conn->prepare("INSERT INTO good_limit (nisha_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
+            // INSERT INVENTORY ALERT FOR SPECIFIC INVENTORY
+            $stock_id = 1;
+            $limit_sql = $conn->prepare("INSERT INTO good_limit_inventory (pattern_id, original, fake, user_id, stock_id) VALUES (?, ?, ?, ?, ?)");
+            $limit_sql->bind_param('iiiii', $last_id, $original, $fake, $_SESSION['user_id'], $stock_id);
+            $limit_sql->execute();
+
+
+            // INSERT GOODS ALERT WITHIN ALL THE AVAILABLE STOCKS (GENERAL GOODS AMOUNT ALERT)
+            $limit_sql = $conn->prepare("INSERT INTO good_limit_all (pattern_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
+            $limit_sql->bind_param('iiii', $last_id, $original_all, $fake_all, $_SESSION['user_id']);
+            $limit_sql->execute();
+
+
+            // LOOP OVER THE SELECTED GOODS FOR SPECIFIC RELATION AND ADD TO THE SPECIFIC PATTERN ID INSERTED ABOVE
             $similar_sql = $conn->prepare("INSERT INTO similars (pattern_id, nisha_id) VALUES (? , ?)");
-
             foreach ($selected_index as $value) {
                 $nisha_id = intval($value);
-
-                $limit_sql->bind_param('iiii', $nisha_id, $original, $fake, $_SESSION['user_id']);
-                $limit_sql->execute();
-
                 $similar_sql->bind_param('ii', $last_id, $nisha_id);
                 $similar_sql->execute();
             }
 
+            // LOOP OVER THE SELECTED BRAND OF CARS WHICH THE SELECTED GOODS ARE FIT FOR THEM
             $car_sql = $conn->prepare("INSERT INTO patterncars (pattern_id, car_id) VALUES (?, ?)");
             foreach ($selectedCars as $car) {
                 $car_id = intval($car);
                 $car_sql->bind_param('ii', $last_id, $car_id);
                 $car_sql->execute();
             }
+
             echo 'true';
         } else {
             echo 'false';
@@ -178,7 +198,7 @@ if (isset($_POST['store_relation'])) {
             $conn->query($update_pattern_sql);
 
             if (count($toAdd) > 0) {
-                $limit_sql = $conn->prepare("INSERT INTO good_limit (nisha_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
+                $limit_sql = $conn->prepare("INSERT INTO good_limit_inventory (nisha_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
 
                 foreach ($toAdd as $value) {
                     $nisha_id = intval($value);
@@ -190,7 +210,7 @@ if (isset($_POST['store_relation'])) {
                 }
             }
             if (count($toDelete)) {
-                $limit_sql = $conn->prepare("DELETE FROM good_limit WHERE nisha_id = ?");
+                $limit_sql = $conn->prepare("DELETE FROM good_limit_inventory WHERE nisha_id = ?");
 
                 foreach ($toDelete as $value) {
                     $nisha_id = intval($value);
@@ -203,7 +223,7 @@ if (isset($_POST['store_relation'])) {
             }
 
             if (sizeof($updateRemaining)) {
-                $limit_sql = $conn->prepare("UPDATE good_limit SET original= ?,  fake = ?,  user_id= ? WHERE nisha_id = ?");
+                $limit_sql = $conn->prepare("UPDATE good_limit_inventory SET original= ?,  fake = ?,  user_id= ? WHERE nisha_id = ?");
 
                 foreach ($updateRemaining as $item) {
                     $nisha_id = intval($item);
@@ -248,7 +268,7 @@ if (isset($_POST['load_relation'])) {
 
         $getLimit = current($final_result)['pattern'];
 
-        $limit_sql = "SELECT original, fake FROM good_limit WHERE nisha_id = '" . $getLimit . "'";
+        $limit_sql = "SELECT original, fake FROM good_limit_inventory WHERE nisha_id = '" . $getLimit . "'";
         $limit = $conn->query($limit_sql);
         $limit = $limit->fetch_assoc();
 
