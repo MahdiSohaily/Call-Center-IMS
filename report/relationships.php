@@ -93,7 +93,7 @@ $status = $conn->query($status_sql);
         </div>
 
         <div class="p-3">
-            <form action="" method="post" onsubmit="event.preventDefault();createRelation()">
+            <form action="" method="post" onsubmit="event.preventDefault();createRelation()" id="myForm">
                 <input id="mode" type="text" name="operation" value="create" hidden>
                 <div class="col-span-12 sm:col-span-4 mb-3">
                     <label class="block font-medium text-sm text-gray-700">
@@ -289,6 +289,24 @@ $status = $conn->query($status_sql);
         relation_active = false;
         displaySelectedGoods();
         duplicate_relation.classList.add('hidden');
+
+
+        var form = document.getElementById('myForm');
+
+        for (var i = 0; i < form.elements.length; i++) {
+            var element = form.elements[i];
+
+            // Check if the element is an input element (text, password, email, etc.)
+            if (element.tagName === 'INPUT' && element.type !== 'button' && element.type !== 'submit') {
+                element.value = ''; // Set the value to an empty string
+            } else if (element.tagName === 'TEXTAREA') {
+                element.value = ''; // Clear textarea values
+            } else if (element.tagName === 'SELECT') {
+                element.selectedIndex = -1; // Clear selected option in a dropdown
+            }
+        }
+
+        $('#cars').select2(null);
     }
 
     // A function to display the selected goods in the relation box
