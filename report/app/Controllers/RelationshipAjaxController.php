@@ -160,6 +160,20 @@ if (isset($_POST['store_relation'])) {
             $similar_sql = "SELECT nisha_id  FROM similars WHERE pattern_id ='" . $pattern_id . "'";
             $all_simillers = $conn->query($similar_sql);
 
+
+            // Update the Inventories limit for goods alert for specific pattern
+            $updateInventoryLimit = $conn->prepare("UPDATE good_limit_inventory SET original= ?, fake = ? WHERE pattern_id = ?");
+            $updateInventoryLimit->bind_param('iii', $original, $fake, $pattern_id);
+            $updateInventoryLimit->execute();
+
+
+            // Update the over all alert for goods in specific relation
+            $updateAllLimit = $conn->prepare("UPDATE good_limit_all SET original= ?, fake = ? WHERE pattern_id = ?");
+            $updateAllLimit->bind_param('iii', $original, $fake, $pattern_id);
+            $updateAllLimit->execute();
+
+
+            // Get the id of all goods in a specific relation
             $selected_index = extract_id($selected_goods);
 
             $current = [];
@@ -198,37 +212,17 @@ if (isset($_POST['store_relation'])) {
             $conn->query($update_pattern_sql);
 
             if (count($toAdd) > 0) {
-                $limit_sql = $conn->prepare("INSERT INTO good_limit_inventory (nisha_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
-
                 foreach ($toAdd as $value) {
                     $nisha_id = intval($value);
-                    $limit_sql->bind_param('iiii', $nisha_id, $original, $fake, $_SESSION['user_id']);
-                    $limit_sql->execute();
-
                     $similar_sql = "INSERT INTO similars (pattern_id, nisha_id) VALUES ('" . $pattern_id . "', '" . $value . "')";
                     $conn->query($similar_sql);
                 }
             }
             if (count($toDelete)) {
-                $limit_sql = $conn->prepare("DELETE FROM good_limit_inventory WHERE nisha_id = ?");
-
                 foreach ($toDelete as $value) {
                     $nisha_id = intval($value);
-                    $limit_sql->bind_param('i', $nisha_id);
-                    $limit_sql->execute();
-
                     $delete_similar_sql = "DELETE FROM similars WHERE nisha_id= '" . $value . "'";
                     $conn->query($delete_similar_sql);
-                }
-            }
-
-            if (sizeof($updateRemaining)) {
-                $limit_sql = $conn->prepare("UPDATE good_limit_inventory SET original= ?,  fake = ?,  user_id= ? WHERE nisha_id = ?");
-
-                foreach ($updateRemaining as $item) {
-                    $nisha_id = intval($item);
-                    $limit_sql->bind_param('iiii', $original, $fake, $_SESSION['user_id'], $nisha_id);
-                    $limit_sql->execute();
                 }
             }
 
