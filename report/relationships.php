@@ -401,15 +401,27 @@ $status = $conn->query($status_sql);
 
             axios.post("./app/Controllers/RelationshipAjaxController.php", params)
                 .then(function(response) {
-                    console.log(response.data);
+                    // VALUES OF THE ORIGINAL GOODS FOR SPECIFIC INVENTORY
                     let original = 0;
                     let fake = 0;
+
+                    // VALUES OF THE GOODS FOR THE OVER ALL INVENTORIES
+                    let original_all = 0;
+                    let fake_all = 0;
+
                     if (response.data[0] !== null) {
                         original = response.data[0]['original'];
                         fake = response.data[0]['fake'];
+
+                        original_all = response.data[0]['original_all'];
+                        fake_all = response.data[0]['fake_all'];
                     }
                     document.getElementById('original').value = original;
                     document.getElementById('fake').value = fake;
+
+                    document.getElementById('original_all').value = original_all;
+                    document.getElementById('fake_all').value = fake_all;
+
                     push_data(response.data[1]);
                     displaySelectedGoods();
                     load_pattern_ifo(pattern_id);
@@ -424,7 +436,6 @@ $status = $conn->query($status_sql);
 
     //This function helps to add all relations of a relationship into the selected items list
     const push_data = (data) => {
-        console.log(data);
         for (const item of data) {
             remove(item.id);
             selected_goods.push({
