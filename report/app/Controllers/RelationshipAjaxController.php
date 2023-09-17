@@ -169,7 +169,7 @@ if (isset($_POST['store_relation'])) {
 
             // Update the over all alert for goods in specific relation
             $updateAllLimit = $conn->prepare("UPDATE good_limit_all SET original= ?, fake = ? WHERE pattern_id = ?");
-            $updateAllLimit->bind_param('iii', $original, $fake, $pattern_id);
+            $updateAllLimit->bind_param('iii', $original_all, $fake_all, $pattern_id);
             $updateAllLimit->execute();
 
 
@@ -260,13 +260,15 @@ if (isset($_POST['load_relation'])) {
             array_push($final_result, ['id' =>  $data['id'], 'partNumber' => $data['partnumber'], 'pattern' => $item['nisha_id']]);
         }
 
-        $getLimit = current($final_result)['pattern'];
-
-        $limit_sql = "SELECT original, fake FROM good_limit_inventory WHERE nisha_id = '" . $getLimit . "'";
+        $limit_sql = "SELECT original, fake FROM good_limit_inventory WHERE pattern_id = '" . $pattern . "'";
         $limit = $conn->query($limit_sql);
         $limit = $limit->fetch_assoc();
 
-        print_r(json_encode([$limit, $final_result]));
+        $limit_sql_all = "SELECT original AS original_all, fake As fake_all FROM good_limit_all WHERE pattern_id = '" . $pattern . "'";
+        $limit_all = $conn->query($limit_sql_all);
+        $limit_all = $limit_all->fetch_assoc();
+
+        print_r(json_encode([[...$limit, ...$limit_all], $final_result]));
     }
 }
 
