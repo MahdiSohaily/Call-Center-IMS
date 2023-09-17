@@ -148,7 +148,7 @@ $status = $conn->query($status_sql);
                         </div>
                         <div class="flex-grow">
                             <label for="fake" class="block font-medium text-sm text-gray-700">
-                                مقدار کپی
+                                مقدار غیر اصلی
                             </label>
                             <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
                         </div>
@@ -165,7 +165,7 @@ $status = $conn->query($status_sql);
                         </div>
                         <div class="flex-grow">
                             <label for="fake" class="block font-medium text-sm text-gray-700">
-                                مقدار کپی
+                                مقدار غیر اصلی
                             </label>
                             <input name="fake_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
                         </div>
