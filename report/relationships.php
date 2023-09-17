@@ -8,6 +8,19 @@ $cars = $conn->query($sql);
 $status_sql = "SELECT * FROM status";
 $status = $conn->query($status_sql);
 ?>
+<style>
+    fieldset {
+        background-color: lightgray;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    legend {
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
 <div class="rtl h-70S grid grid-cols-1 my-8 md:grid-cols-3 gap-6 lg:gap-8 p-6 lg:p-8">
     <div class="bg-white rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
@@ -90,14 +103,6 @@ $status = $conn->query($status_sql);
                     <p class="mt-2"></p>
                 </div>
                 <div class="col-span-12 sm:col-span-4 mb-3">
-                    <label class="block font-medium text-sm text-gray-700">
-                        قیمت
-                    </label>
-                    <input name="price" value="" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="price" type="text" />
-                    <p class="mt-2"></p>
-                </div>
-
-                <div class="col-span-12 sm:col-span-4 mb-3">
                     <label for="cars">
                         خودرو های مرتبط
                     </label>
@@ -132,6 +137,41 @@ $status = $conn->query($status_sql);
                         } ?>
                     </select>
                 </div>
+                <fieldset>
+                    <legend> هشدار موجودی انبار یدک شاپ:</legend>
+                    <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
+                        <div class="flex-grow">
+                            <label for="original" class="block font-medium text-sm text-gray-700">
+                                مقدار اصلی
+                            </label>
+                            <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
+                        </div>
+                        <div class="flex-grow">
+                            <label for="fake" class="block font-medium text-sm text-gray-700">
+                                مقدار کپی
+                            </label>
+                            <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend> هشدار موجودی کلی:</legend>
+                    <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
+                        <div class="flex-grow">
+                            <label for="original" class="block font-medium text-sm text-gray-700">
+                                مقدار اصلی
+                            </label>
+                            <input name="original_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original_all" type="number" min='0' />
+                        </div>
+                        <div class="flex-grow">
+                            <label for="fake" class="block font-medium text-sm text-gray-700">
+                                مقدار کپی
+                            </label>
+                            <input name="fake_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
+                        </div>
+                    </div>
+                </fieldset>
+
                 <div class="col-span-12 sm:col-span-4 mb-3">
                     <label for="description">
                         توضیحات رابطه
@@ -139,8 +179,6 @@ $status = $conn->query($status_sql);
                     <textarea class="border-1 p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 
                                      focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="description" rows="5"></textarea>
                 </div>
-
-
         </div>
         <p id="form_success" class="px-3 tiny-text text-green-500 hidden">
             رابطه جدید اجناس موفقانه در پایگاه داده ثبت شد!
@@ -262,7 +300,8 @@ $status = $conn->query($status_sql);
                 <p class="text-sm font-semibold text-gray-600">
                     ` + good.partNumber + `
                 </p>
-                    <i data-id="` + good.id + `" data-partNumber="` + good.partNumber + `" onclick="remove_selected(` + good.id + `)"
+                    <i data-id="` + good.id + `" data-partNumber="` + good.partNumber + `" onclick="remove_selected(` +
+                good.id + `)"
                             class="material-icons add text-red-600 cursor-pointer rounded-circle hover:bg-gray-200">do_not_disturb_on
                     </i>
                 </div>
@@ -290,10 +329,15 @@ $status = $conn->query($status_sql);
         // Accessing the form fields to get thier value for an ajax store operation
         const relation_name = document.getElementById('relation_name').value;
         const mode = document.getElementById('mode').value;
-        const price = document.getElementById('price').value;
+        const price = null;
         const cars = getSelectedItems('cars');
         const status = document.getElementById('status').value;
         const description = document.getElementById('description').value;
+        const original = document.getElementById('original').value;
+        const fake = document.getElementById('fake').value;
+
+        const original_all = document.getElementById('original_all').value;
+        const fake_all = document.getElementById('fake_all').value;
 
         // Defining a params instance to be attached to the axios request
         const params = new URLSearchParams();
@@ -303,6 +347,11 @@ $status = $conn->query($status_sql);
         params.append('cars', JSON.stringify(cars));
         params.append('status', status);
         params.append('description', description);
+        params.append('original', original);
+        params.append('fake', fake);
+
+        params.append('original_all', original_all);
+        params.append('fake_all', fake_all);
 
         // Side effects data
         params.append('mode', mode);
@@ -352,7 +401,28 @@ $status = $conn->query($status_sql);
 
             axios.post("./app/Controllers/RelationshipAjaxController.php", params)
                 .then(function(response) {
-                    push_data(response.data);
+                    // VALUES OF THE ORIGINAL GOODS FOR SPECIFIC INVENTORY
+                    let original = 0;
+                    let fake = 0;
+
+                    // VALUES OF THE GOODS FOR THE OVER ALL INVENTORIES
+                    let original_all = 0;
+                    let fake_all = 0;
+
+                    if (response.data[0] !== null) {
+                        original = response.data[0]['original'];
+                        fake = response.data[0]['fake'];
+
+                        original_all = response.data[0]['original_all'];
+                        fake_all = response.data[0]['fake_all'];
+                    }
+                    document.getElementById('original').value = original;
+                    document.getElementById('fake').value = fake;
+
+                    document.getElementById('original_all').value = original_all;
+                    document.getElementById('fake_all').value = fake_all;
+
+                    push_data(response.data[1]);
                     displaySelectedGoods();
                     load_pattern_ifo(pattern_id);
                 })
@@ -397,7 +467,7 @@ $status = $conn->query($status_sql);
 
                 relation_name.value = pattern_info.name;
                 mode.value = 'update';
-                price.value = pattern_info.price;
+                // price.value = pattern_info.price;
                 description.value = pattern_info.description;
 
                 setSelectedItems('cars', pattern_info_cars);

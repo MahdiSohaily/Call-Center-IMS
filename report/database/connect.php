@@ -12,4 +12,4 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-define('CONN', $conn);
+// define('conn', $conn);
