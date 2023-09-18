@@ -268,7 +268,10 @@ if (isset($_POST['load_relation'])) {
         $limit_all = $conn->query($limit_sql_all);
         $limit_all = $limit_all->fetch_assoc();
 
-        print_r(json_encode([[...$limit, ...$limit_all], $final_result]));
+        $yadakLimit = !empty($limit) > 0 ? $limit : ['original' => 0, 'fake' => 0];
+        $allLimit = !empty($limit_all) > 0 ? $limit_all : ['original_all' => 0, 'fake_all' => 0];
+
+        print_r(json_encode([$yadakLimit + $allLimit, $final_result]));
     }
 }
 
