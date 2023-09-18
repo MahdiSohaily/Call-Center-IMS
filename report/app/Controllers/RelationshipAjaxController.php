@@ -96,7 +96,6 @@ if (isset($_POST['store_relation'])) {
     $original_all = $_POST['original_all'];
     $fake_all = $_POST['fake_all'];
 
-
     $description = $_POST['description'];
     $mode = $_POST['mode'];
     $pattern_id = $_POST['pattern_id'];
@@ -152,7 +151,6 @@ if (isset($_POST['store_relation'])) {
     }
 
     if ($mode === 'update') {
-
         $pattern_sql = "SELECT *  FROM patterns WHERE id ='" . $pattern_id . "'";
         $is_exist = $conn->query($pattern_sql);
 
@@ -160,17 +158,33 @@ if (isset($_POST['store_relation'])) {
             $similar_sql = "SELECT nisha_id  FROM similars WHERE pattern_id ='" . $pattern_id . "'";
             $all_simillers = $conn->query($similar_sql);
 
+            if (existLimit($conn, $pattern_id)) {
 
-            // Update the Inventories limit for goods alert for specific pattern
-            $updateInventoryLimit = $conn->prepare("UPDATE good_limit_inventory SET original= ?, fake = ? WHERE pattern_id = ?");
-            $updateInventoryLimit->bind_param('iii', $original, $fake, $pattern_id);
-            $updateInventoryLimit->execute();
+                // Update the Inventories limit for goods alert for specific pattern
+                $updateInventoryLimit = $conn->prepare("UPDATE good_limit_inventory SET original= ?, fake = ? WHERE pattern_id = ?");
+                $updateInventoryLimit->bind_param('iii', $original, $fake, $pattern_id);
+                $updateInventoryLimit->execute();
 
 
-            // Update the over all alert for goods in specific relation
-            $updateAllLimit = $conn->prepare("UPDATE good_limit_all SET original= ?, fake = ? WHERE pattern_id = ?");
-            $updateAllLimit->bind_param('iii', $original_all, $fake_all, $pattern_id);
-            $updateAllLimit->execute();
+                // Update the over all alert for goods in specific relation
+                $updateAllLimit = $conn->prepare("UPDATE good_limit_all SET original= ?, fake = ? WHERE pattern_id = ?");
+                $updateAllLimit->bind_param('iii', $original_all, $fake_all, $pattern_id);
+                $updateAllLimit->execute();
+            } else {
+
+                $stock_id = 1;
+                $limit_sql = $conn->prepare("INSERT INTO good_limit_inventory (pattern_id, original, fake, user_id, stock_id) VALUES (?, ?, ?, ?, ?)");
+                $limit_sql->bind_param('iiiii', $pattern_id, $original, $fake, $_SESSION['user_id'], $stock_id);
+                $limit_sql->execute();
+
+
+                // INSERT GOODS ALERT WITHIN ALL THE AVAILABLE STOCKS (GENERAL GOODS AMOUNT ALERT)
+                $limit_sql = $conn->prepare("INSERT INTO good_limit_all (pattern_id, original, fake, user_id) VALUES (?, ?, ?, ?)");
+                $limit_sql->bind_param('iiii', $pattern_id, $original_all, $fake_all, $_SESSION['user_id']);
+                $limit_sql->execute();
+            }
+
+
 
 
             // Get the id of all goods in a specific relation
@@ -294,6 +308,18 @@ if (isset($_POST['load_pattern_ifo'])) {
     $pattern_info =  mysqli_fetch_assoc($pattern_result);
 
     print_r(json_encode(['pattern' => $pattern_info, 'cars' => $cars_id]));
+}
+
+function existLimit($conn, $pattern_id)
+{
+    $updateInventoryLimit = $conn->prepare("SELECT * from good_limit_inventory WHERE pattern_id = ?");
+    $updateInventoryLimit->bind_param('i', $pattern_id);
+    $updateInventoryLimit->execute();
+
+    $limitRecord = $updateInventoryLimit->get_result();
+    $limitRecord = $limitRecord->fetch_assoc();
+
+    return $limitRecord ? true : false;
 }
 
 function extract_id($array)
