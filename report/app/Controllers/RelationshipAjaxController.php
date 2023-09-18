@@ -183,10 +183,6 @@ if (isset($_POST['store_relation'])) {
                 $limit_sql->bind_param('iiii', $pattern_id, $original_all, $fake_all, $_SESSION['user_id']);
                 $limit_sql->execute();
             }
-
-
-
-
             // Get the id of all goods in a specific relation
             $selected_index = extract_id($selected_goods);
 
