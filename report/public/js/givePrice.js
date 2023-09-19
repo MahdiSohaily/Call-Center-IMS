@@ -398,3 +398,25 @@ function onScreen(element) {
   const section = document.getElementById(element.getAttribute("data-move"));
   window.scrollTo(0, section.getBoundingClientRect().top - 70);
 }
+
+const elementsWithDataTarget = document.querySelectorAll("[data-relation]");
+
+// Get all elements with the data-relation attribute
+const elementsWithDataRelation = document.querySelectorAll("[data-relation]");
+
+// Create an object to store the HTML content by relation
+const htmlByRelation = {};
+
+// Loop through the selected elements
+elementsWithDataRelation.forEach((element) => {
+  const relation = element.getAttribute("data-relation");
+  const innerHTML = element.innerHTML;
+
+  if (!htmlByRelation[relation]) {
+    // Store the inner HTML of the first element in the group
+    htmlByRelation[relation] = innerHTML;
+  } else {
+    // Set the inner HTML of subsequent elements in the group
+    element.innerHTML = htmlByRelation[relation];
+  }
+});
