@@ -70,6 +70,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     $itemDetails = [];
     $relation_id = [];
+    $codeRelationId = [];
     foreach ($explodedCodes as $code) {
         if (!in_array($code, $results_array['not_exist'])) {
             $itemDetails[$code] = [];
@@ -80,7 +81,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
                 $relation_exist = isInRelation($conn, $item['id']);
 
                 if ($relation_exist) {
-
+                    $codeRelationId[$code] =  $relation_exist;
                     if (!in_array($relation_exist, $relation_id)) {
 
                         array_push($relation_id, $relation_exist); // if a new relation exists -> put it in the result array
@@ -91,6 +92,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
                         $itemDetails[$code][$item['partnumber']]['estelam'] =  estelam($conn, $item['partnumber']);
                     }
                 } else {
+                    $codeRelationId[$code] =  'not' . rand();
                     $itemDetails[$code][$item['partnumber']]['information'] = info($conn);
                     $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id'], false);
                     $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']));
@@ -126,7 +128,8 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
         'customer' => $customer,
         'completeCode' => $completeCode,
         'notification' => $notification,
-        'rates' => getSelectedRates($conn)
+        'rates' => getSelectedRates($conn),
+        'relation_id' => $codeRelationId
     ]);
 }
 

@@ -13,6 +13,7 @@ if ($isValidCustomer) {
         $completeCode = $finalResult['completeCode'];
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
+        $relation_ids = $finalResult['relation_id'];
 ?>
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
@@ -29,6 +30,7 @@ if ($isValidCustomer) {
                     <tbody id="priceReport">
                         <?php
                         foreach ($explodedCodes as $code) {
+                            $relation_id =  $relation_ids[$code];
                             $max = 0;
                             if (array_key_exists($code, $existing)) {
                                 foreach ($existing[$code] as $item) {
@@ -41,14 +43,14 @@ if ($isValidCustomer) {
                                 <td class="px-3 py-2 text-left text-white">
                                     <?php
                                     if (in_array($code, $not_exist)) {
-                                        echo "<p class ='text-red-600' id='" . $code . '-append' . "'>کد اشتباه</p>";
+                                        echo "<p class ='text-red-600' data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>کد اشتباه</p>";
                                     } else {
                                         if ($max && current($existing[$code])['givenPrice']) {
-                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? "<p id='" . $code . '-append' . "'>" . current(current($existing[$code])['givenPrice'])['price'] . "</p>" : "<p id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
+                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . current(current($existing[$code])['givenPrice'])['price'] . "</p>" : "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
                                         } else if ($max) {
-                                            echo "<p id='" . $code . '-append' . "'class ='text-green-400'>نیاز به قیمت</p>";
+                                            echo "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'class ='text-green-400'>نیاز به قیمت</p>";
                                         } else if ($max == 0) {
-                                            echo "<p id='" . $code . '-append' . "'>" . 'موجود نیست' . "</p>";
+                                            echo "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . 'موجود نیست' . "</p>";
                                         }
                                     ?>
                                 </td>
@@ -121,6 +123,7 @@ if ($isValidCustomer) {
         <div class="accordion mb-10">
             <?php
             foreach ($explodedCodes as $code_index => $code) {
+                $relation_id =  $relation_ids[$code];
                 $max = 0;
                 if (array_key_exists($code, $existing)) {
                     foreach ($existing[$code] as $item) {
@@ -239,7 +242,7 @@ if ($isValidCustomer) {
                                                                         if (array_sum($exist[$index]) > 0) {
                                                                             foreach ($exist[$index] as $brand => $amount) {
                                                                                 if ($amount > 0) { ?>
-                                                                                    <th onclick="appendBrand(this)" data-code="<?php echo $code ?>" data-price="<?php echo $brand ?>" data-part="<?php echo $partNumber ?>" scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-part="<?= $partNumber ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
+                                                                                    <th onclick="appendBrand(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?php echo $brand ?>" data-part="<?php echo $partNumber ?>" scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-part="<?= $partNumber ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
                                                                                         <?php echo $brand ?>
                                                                                         <div class="custome-tooltip" id="<?php echo $index . '-' . $brand ?>">
                                                                                             <table class="rtl min-w-full text-sm font-light p-2">
@@ -313,7 +316,7 @@ if ($isValidCustomer) {
                                                                             $avgPrice = round(($price * 110) / 243.5);
                                                                             $finalPrice = round($avgPrice * $rate['amount'] * 1.2 * 1.2 * 1.3);
                                                                         ?>
-                                                                            <td class="text-bold whitespace-nowrap px-3 py-2 text-center hover:cursor-pointer <?php echo $rate['status'] !== 'N' ? $rate['status'] : 'bg-gray-100' ?>" onclick="setPrice(this)" data-code="<?php echo $code ?>" data-price="<?php echo $finalPrice ?>" data-part="<?php echo $partNumber ?>">
+                                                                            <td class="text-bold whitespace-nowrap px-3 py-2 text-center hover:cursor-pointer <?php echo $rate['status'] !== 'N' ? $rate['status'] : 'bg-gray-100' ?>" onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?php echo $finalPrice ?>" data-part="<?php echo $partNumber ?>">
                                                                                 <?php echo $finalPrice ?>
                                                                             </td>
                                                                         <?php } ?>
@@ -477,7 +480,7 @@ if ($isValidCustomer) {
                                                 <label class="block font-medium text-sm text-gray-700">
                                                     قیمت
                                                 </label>
-                                                <input value="<?= current($givenPrice) ? current($givenPrice)['price'] : '' ?>" onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
+                                                <input value="<?= current($givenPrice) ? current($givenPrice)['price'] : '' ?>" onkeyup="update_price(this)" data-target="<?= $relation_id ?>" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
                                                 <p class="mt-2"></p>
                                             </div>
 
