@@ -138,10 +138,18 @@ function setPrice(element) {
   input.value = newPrice;
   price = newPrice;
 
-  const partNumber = element.getAttribute("data-code").split("-")[0];
+  const targetRelation = element.getAttribute("data-target");
 
-  const target = document.getElementById(partNumber + "-append");
-  target.innerHTML = price;
+  // Step 2: Select all elements with the same data-relation attribute
+  const elementsWithSameDataRelation = document.querySelectorAll(
+    `[data-relation="${targetRelation}"]`
+  );
+
+  // Step 3: Iterate through the selected elements and update their innerHTML
+  elementsWithSameDataRelation.forEach((element) => {
+    // Update the innerHTML as needed
+    element.innerHTML = price; // Replace with your desired content
+  });
 }
 
 // A function to copy content to cliboard
@@ -278,10 +286,18 @@ function appendBrand(element) {
   const input = document.getElementById(part + "-price");
   input.value += " " + brand;
 
-  const partNumber = element.getAttribute("data-code").split("-")[0];
+  const targetRelation = element.getAttribute("data-target");
 
-  const target = document.getElementById(partNumber + "-append");
-  target.innerHTML += " " + brand;
+  // Step 2: Select all elements with the same data-relation attribute
+  const elementsWithSameDataRelation = document.querySelectorAll(
+    `[data-relation="${targetRelation}"]`
+  );
+
+  // Step 3: Iterate through the selected elements and update their innerHTML
+  elementsWithSameDataRelation.forEach((element) => {
+    // Update the innerHTML as needed
+    element.innerHTML += " " + brand; // Replace with your desired content
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
