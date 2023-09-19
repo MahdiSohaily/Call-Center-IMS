@@ -8,9 +8,19 @@ let price = null;
 function update_price(element) {
   price = element.value;
   const partNumber = element.getAttribute("data-code").split("-")[0];
-  const target = document.getElementById(partNumber + "-append");
 
-  target.innerHTML = price;
+  const targetRelation = element.getAttribute("data-target");
+
+  // Step 2: Select all elements with the same data-relation attribute
+  const elementsWithSameDataRelation = document.querySelectorAll(
+    `[data-relation="${targetRelation}"]`
+  );
+
+  // Step 3: Iterate through the selected elements and update their innerHTML
+  elementsWithSameDataRelation.forEach((element) => {
+    // Update the innerHTML as needed
+    element.innerHTML = price; // Replace with your desired content
+  });
 }
 
 // A function to set the price to we don't have
