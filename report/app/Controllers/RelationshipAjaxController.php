@@ -116,7 +116,7 @@ if (isset($_POST['store_relation'])) {
             $last_id = $conn->insert_id; // latest pattern ID
 
             // INSERT INVENTORY ALERT FOR SPECIFIC INVENTORY
-            $stock_id = 1;
+            $stock_id = 9;
             $limit_sql = $conn->prepare("INSERT INTO good_limit_inventory (pattern_id, original, fake, user_id, stock_id) VALUES (?, ?, ?, ?, ?)");
             $limit_sql->bind_param('iiiii', $last_id, $original, $fake, $_SESSION['user_id'], $stock_id);
             $limit_sql->execute();
@@ -172,7 +172,7 @@ if (isset($_POST['store_relation'])) {
                 $updateAllLimit->execute();
             } else {
 
-                $stock_id = 1;
+                $stock_id = 9;
                 $limit_sql = $conn->prepare("INSERT INTO good_limit_inventory (pattern_id, original, fake, user_id, stock_id) VALUES (?, ?, ?, ?, ?)");
                 $limit_sql->bind_param('iiiii', $pattern_id, $original, $fake, $_SESSION['user_id'], $stock_id);
                 $limit_sql->execute();
