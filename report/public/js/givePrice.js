@@ -1,4 +1,4 @@
-// Global controllers for operations messages
+﻿// Global controllers for operations messages
 const form_success = document.getElementById("form_success");
 const form_error = document.getElementById("form_error");
 // Global price variable

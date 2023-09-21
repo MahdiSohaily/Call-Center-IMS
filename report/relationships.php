@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
@@ -222,6 +222,8 @@ $status = $conn->query($status_sql);
             pattern = pattern.replace(/-/g, "");
             pattern = pattern.replace(/_/g, "");
 
+            console.log(pattern.length);
+
             resultBox.innerHTML = `<tr class=''>
                                         <div class='w-full h-96 flex justify-center items-center'>
                                             <img class=' block w-10 mx-auto h-auto' src='./public/img/loading.png' alt='google'>
@@ -379,19 +381,20 @@ $status = $conn->query($status_sql);
         if (selected_goods.length > 0) {
             axios.post("./app/Controllers/RelationshipAjaxController.php", params)
                 .then(function(response) {
-                    if (response.data == true) {
-                        form_success.classList.remove('hidden');
-                        setTimeout(() => {
+                    
+                     if (response.data == true) {
+                         form_success.classList.remove('hidden');
+                         setTimeout(() => {
                             form_success.classList.add('hidden');
-                            location.reload();
-                        }, 2000)
+                             location.reload();
+                         }, 2000)
                     } else {
-                        form_error.classList.remove('hidden');
-                        setTimeout(() => {
-                            form_error.classList.add('hidden');
+                         form_error.classList.remove('hidden');
+                         setTimeout(() => {
+                             form_error.classList.add('hidden');
                             location.reload();
-                        }, 2000)
-                    }
+                         }, 2000)
+                     }
                 })
                 .catch(function(error) {
 
