@@ -222,8 +222,6 @@ $status = $conn->query($status_sql);
             pattern = pattern.replace(/-/g, "");
             pattern = pattern.replace(/_/g, "");
 
-            console.log(pattern.length);
-
             resultBox.innerHTML = `<tr class=''>
                                         <div class='w-full h-96 flex justify-center items-center'>
                                             <img class=' block w-10 mx-auto h-auto' src='./public/img/loading.png' alt='google'>
@@ -381,20 +379,19 @@ $status = $conn->query($status_sql);
         if (selected_goods.length > 0) {
             axios.post("./app/Controllers/RelationshipAjaxController.php", params)
                 .then(function(response) {
-                    console.log(response.data);
-                    // if (response.data == true) {
-                    //     form_success.classList.remove('hidden');
-                    //     setTimeout(() => {
-                    //         form_success.classList.add('hidden');
-                    //         location.reload();
-                    //     }, 2000)
-                    // } else {
-                    //     form_error.classList.remove('hidden');
-                    //     setTimeout(() => {
-                    //         form_error.classList.add('hidden');
-                    //         location.reload();
-                    //     }, 2000)
-                    // }
+                    if (response.data == true) {
+                        form_success.classList.remove('hidden');
+                        setTimeout(() => {
+                            form_success.classList.add('hidden');
+                            location.reload();
+                        }, 2000)
+                    } else {
+                        form_error.classList.remove('hidden');
+                        setTimeout(() => {
+                            form_error.classList.add('hidden');
+                            location.reload();
+                        }, 2000)
+                    }
                 })
                 .catch(function(error) {
 
