@@ -508,7 +508,7 @@ if ($isValidCustomer) :
                                                             <tr class="min-w-full mb-1 border-b-2 bg-red-400">
                                                                 <td>
                                                                     <i class="px-1 material-icons tiny-text text-white">access_time</i>
-                                                                    <span class="text-white px-2"><?= date('Y-m-d H:m:i', $message_date) ?></span>
+                                                                    <span class="text-white px-1 py-2"><?= date('Y-m-d H:m:i', $message_date) ?></span>
                                                                 </td>
 
                                                             </tr>
