@@ -28,8 +28,6 @@ require_once './utilities/helper.php';
     axios
         .get("http://telegram.om-dienstleistungen.de/")
         .then(function(response) {
-            console.log(response.data);
-
             if (typeof response.data === 'object' && Object.keys(response.data).length !== 0) {
                 console.log('Here we are');
                 try {
