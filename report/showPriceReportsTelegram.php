@@ -19,6 +19,7 @@ if ($isValidCustomer) :
                     $notification = $reportResult['notification'];
                     $rates = $reportResult['rates'];
                     $messages = $reportResult['messages'];
+                    $message_date = $reportResult['message_date'];
                     $fullName = $reportResult['fullName'];
                     $profile = $reportResult['profile'];
 
@@ -494,7 +495,8 @@ if ($isValidCustomer) :
                                                     <table class=" min-w-full text-sm font-light">
                                                         <thead>
                                                             <tr class="min-w-full bg-green-600">
-                                                                <td class="text-white bold text-center py-2 px-2 ">پیام دریافتی</td>
+                                                                <td class="text-white bold text-center py-2 px-2 ">پیام دریافتی
+                                                                </td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -502,6 +504,13 @@ if ($isValidCustomer) :
                                                                 <td class="text-gray-800 py-2 text-center bg-indigo-300">
                                                                     <?= nl2br($messages); ?>
                                                                 </td>
+                                                            </tr>
+                                                            <tr class="min-w-full mb-1 border-b-2 bg-red-400">
+                                                                <td>
+                                                                    <i class="px-1 material-icons tiny-text text-white">access_time</i>
+                                                                    <span class="text-white px-2"><?= date('Y-m-d H:m:i', $message_date) ?></span>
+                                                                </td>
+
                                                             </tr>
                                                         </tbody>
                                                     </table>
