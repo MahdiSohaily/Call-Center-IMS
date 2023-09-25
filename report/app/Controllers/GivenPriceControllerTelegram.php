@@ -21,7 +21,8 @@ if (isset($_POST['jsonData'])) {
             foreach ($message['info'] as $info) {
                 $explodedCodes = $info['code'];
                 $userMessage = $info['message'];
-                $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id);
+                $messageDate = $info['date'];
+                $finalResult[$sender] = setup_loading($conn, $sender, $explodedCodes, $userMessage, $username, $profile, $fullName, $notification_id, $messageDate);
             }
         }
     }
@@ -112,6 +113,7 @@ function setup_loading($conn, $customer, $completeCode,  $userMessage, $username
         'notification' => $notification,
         'rates' => getSelectedRates($conn),
         'messages' => $userMessage,
+        'message_date' => $messageDate,
         'fullName' => $fullName,
         'profile' =>  $profile,
         'username' =>  $username,

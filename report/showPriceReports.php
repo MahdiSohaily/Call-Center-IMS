@@ -30,7 +30,7 @@ if ($isValidCustomer) {
                     <tbody id="priceReport">
                         <?php
                         foreach ($explodedCodes as $code) {
-                            $relation_id =  $relation_ids[$code];
+                            $relation_id =  array_key_exists($code, $relation_ids) ? $relation_ids[$code] : 'xxx';
                             $max = 0;
                             if (array_key_exists($code, $existing)) {
                                 foreach ($existing[$code] as $item) {
