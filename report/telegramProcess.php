@@ -13,24 +13,26 @@ require_once './utilities/helper.php';
         align-items: center;
     }
 </style>
-<div class="full">
-    <h1 class="text-6xl text-gray-600">لطفا صبور باشید</h1>
-    <br>
-    <img src="./public/img/loading.png" class="w-20">
+<div id="full" class="full">
+
 </div>
 <script>
-    // Create a new XMLHttpRequest object
-    var xhr = new XMLHttpRequest();
+    const container = document.getElementById('full');
 
-    // Configure the request
-    xhr.open("GET", "http://telegram.om-dienstleistungen.de/", true); // Change the URL to the external site's API endpoint
+    container.innerHTML = `
+                            <h1 class="text-6xl text-gray-600">لطفا صبور باشید</h1>
+                            <br>
+                            <img src="./public/img/loading.png" class="w-20">
+                            `;
 
-    // Set up a callback function to handle the response
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var response = xhr.responseText;
-            if (response.length > 2) {
-                // Create a hidden input field to store the JSON data
+    axios
+        .get("http://telegram.om-dienstleistungen.de/")
+        .then(function(response) {
+            console.log(response.data);
+            if (typeof response.data === 'object') {
+                alert('OK');
+            }
+            if (typeof response.data === 'object' && Object.keys(response.data).length !== 0) {
                 const jsonInput = document.createElement('input');
                 jsonInput.type = 'hidden';
                 jsonInput.name = 'jsonData';
@@ -45,12 +47,15 @@ require_once './utilities/helper.php';
                 // Append the form to the body and submit it
                 document.body.appendChild(form);
                 form.submit();
+            } else {
+                container.innerHTML = `
+                            <h1 class="text-4xl text-gray-600">پیام جدیدی موجود نیست</h1>
+                            <br>
+                            <h3 class="text-3xl text-gray-600">لطفا بعدا تلاش نمایید</h3>
+                            `;
             }
-        }
-    };
-
-    // Send the request
-    xhr.send();
+        })
+        .catch(function(error) {});
 </script>
 <?php
 

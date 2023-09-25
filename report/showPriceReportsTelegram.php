@@ -3,6 +3,7 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GivenPriceControllerTelegram.php');
 require_once './utilities/helper.php';
+
 if ($isValidCustomer) :
 ?>
     <div class="py-10">
@@ -519,9 +520,6 @@ if ($isValidCustomer) :
                         endif;
                     }
                     ?>
-
-
-
             <?php
                 }
             endforeach;
