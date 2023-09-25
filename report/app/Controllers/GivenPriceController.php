@@ -237,11 +237,21 @@ function relations($conn, $id, $condition)
     $stockInfo = [];
     $sortedGoods = [];
 
+    $unique_goods = [];
+
     foreach ($relations as $relation) {
-        $data = exist($conn, $relation['id']);
-        $existing[$relation['partnumber']] = $data['brands_info'];
-        $stockInfo[$relation['partnumber']] = $data['stockInfo'];
+        if (!array_key_exists($relation['partnumber'], $unique_goods)) {
+            $unique_goods[$relation['partnumber']] = [$relation['id']];
+        } else {
+            $unique_goods[$relation['partnumber']][count($unique_goods[$relation['partnumber']])] = $relation['id'];
+        }
         $sortedGoods[$relation['partnumber']] = $relation;
+    }
+
+    foreach ($unique_goods as $key => $relation) {
+        $data = exist($conn, $relation);
+        $existing[$key] = $data['brands_info'];
+        $stockInfo[$key] = $data['stockInfo'];
     }
 
     arsort($existing);
@@ -255,7 +265,7 @@ function relations($conn, $id, $condition)
 
     arsort($sorted);
 
-    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo];
+    return ((['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo]));
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
@@ -403,11 +413,19 @@ function stockInfo($conn, $id, $brand)
 function exist($conn, $id)
 {
 
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+    if (count($id) == 1) {
+        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
                 FROM (( yadakshop1402.qtybank 
                 INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
                 INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
-                WHERE codeid = '" . $id . "'";
+                WHERE codeid = '" . current($id) . "'";
+    } else {
+        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+                FROM (( yadakshop1402.qtybank 
+                INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
+                INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
+                WHERE codeid IN ('" . implode("','", $id) . "')";
+    }
 
     $data_result = mysqli_query($conn, $data_sql);
 
