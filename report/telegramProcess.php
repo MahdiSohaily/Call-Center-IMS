@@ -29,24 +29,27 @@ require_once './utilities/helper.php';
         .get("http://telegram.om-dienstleistungen.de/")
         .then(function(response) {
             console.log(response.data);
-            if (typeof response.data === 'object') {
-                alert('OK');
-            }
+
             if (typeof response.data === 'object' && Object.keys(response.data).length !== 0) {
-                const jsonInput = document.createElement('input');
-                jsonInput.type = 'hidden';
-                jsonInput.name = 'jsonData';
-                jsonInput.value = JSON.stringify(JSON.parse(response));
+                console.log('Here we are');
+                try {
+                    const jsonInput = document.createElement('input');
+                    jsonInput.type = 'hidden';
+                    jsonInput.name = 'jsonData';
+                    jsonInput.value = JSON.stringify(response.data);
 
-                // Append the input field to the form
-                const form = document.createElement('form');
-                form.method = 'post';
-                form.action = './showPriceReportsTelegram.php'; // Leave empty to post to the same page
-                form.appendChild(jsonInput);
+                    // Append the input field to the form
+                    const form = document.createElement('form');
+                    form.method = 'post';
+                    form.action = './showPriceReportsTelegram.php'; // Leave empty to post to the same page
+                    form.appendChild(jsonInput);
 
-                // Append the form to the body and submit it
-                document.body.appendChild(form);
-                form.submit();
+                    // Append the form to the body and submit it
+                    document.body.appendChild(form);
+                    form.submit();
+                } catch (error) {
+                    console.log(error);
+                }
             } else {
                 container.innerHTML = `
                             <h1 class="text-4xl text-gray-600">پیام جدیدی موجود نیست</h1>
