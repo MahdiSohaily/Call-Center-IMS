@@ -29,7 +29,7 @@ if (isset($_POST['jsonData'])) {
 }
 
 
-function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null)
+function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null, $messageDate)
 {
 
     $explodedCodes = explode("\n", $completeCode);
