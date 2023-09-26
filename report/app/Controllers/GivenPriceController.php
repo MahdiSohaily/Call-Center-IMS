@@ -43,7 +43,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
     }, $explodedCodes);
 
     $explodedCodes = array_filter($explodedCodes, function ($code) {
-        if (strlen($code) > 5) {
+        if (strlen($code) > 6) {
             return  $code;
         }
     });
