@@ -327,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function telegram(e) {
-  console.log("here we are");
   setTimeout(() => {
     e.disabled = false;
     e.innerHTML = `
