@@ -14,7 +14,7 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
         $relation_ids = $finalResult['relation_id'];
-?> 
+?>
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
@@ -158,8 +158,9 @@ if ($isValidCustomer) {
                             $stockInfo =  $relation['stockInfo'];
                             $givenPrice =  $item['givenPrice'];
                             $estelam = $item['estelam'];
-                            $customer = $customer;
-                            $completeCode = $completeCode;
+                            $limit_id = $relation['limit_alert'];
+                            // $customer = $customer;
+                            // $completeCode = $completeCode;
                     ?>
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-9 gap-6 lg:gap-2 lg:p-2 overflow-auto">
                                 <!-- Start the code info section -->
@@ -364,6 +365,54 @@ if ($isValidCustomer) {
                                             </tbody>
                                         </table>
                                     </div>
+                                    <?php if ($limit_id) :
+                                        $fraction = explode($limit_id, '-');
+                                        $id = $fraction[0];
+                                        $type = $fraction[1];
+                                        getLimitAlertSpecification($conn, $id, $type);
+                                    ?>
+                                        <div class="p-3 rtl ">
+                                            <form action="#" class="bg-gray-200 rounded-md p-3" method="post">
+                                                <div class="flex gap-2">
+                                                    <fieldset class="flex-grow">
+                                                        <legend> هشدار موجودی انبار یدک شاپ:</legend>
+                                                        <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
+                                                            <div class="flex-grow">
+                                                                <label for="original" class="block font-medium text-sm text-gray-700">
+                                                                    مقدار اصلی
+                                                                </label>
+                                                                <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
+                                                            </div>
+                                                            <div class="flex-grow">
+                                                                <label for="fake" class="block font-medium text-sm text-gray-700">
+                                                                    مقدار غیر اصلی
+                                                                </label>
+                                                                <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset class="flex-grow">
+                                                        <legend> هشدار موجودی کلی:</legend>
+                                                        <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
+                                                            <div class="flex-grow">
+                                                                <label for="original" class="block font-medium text-sm text-gray-700">
+                                                                    مقدار اصلی
+                                                                </label>
+                                                                <input name="original_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original_all" type="number" min='0' />
+                                                            </div>
+                                                            <div class="flex-grow">
+                                                                <label for="fake" class="block font-medium text-sm text-gray-700">
+                                                                    مقدار غیر اصلی
+                                                                </label>
+                                                                <input name="fake_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <button class="button bg-blue-400 px-5 py-2 rounded-md text-white" type="submit">ذخیره</button>
+                                            </form>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
 
                                 <!-- Given Price section -->

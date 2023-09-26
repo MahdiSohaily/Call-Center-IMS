@@ -502,3 +502,43 @@ function sortArrayByNumericPropertyDescending($array, $property)
     });
     return $array;
 }
+
+function getLimitAlertSpecification($conn, $id, $type)
+{
+}
+
+function inventorySpecification($conn, $id, $type)
+{
+    $sql = '';
+    switch ($type) {
+        case 'r':
+            $sql = "SELECT original, fake FROM good_limit_inventory WHERE pattern_id = '" . $id . "'";
+            break;
+        case 's':
+            $sql = "SELECT original, fake FROM good_limit_inventory WHERE nisha_id = '" . $id . "'";
+            break;
+    }
+
+    $limit = $conn->query($sql);
+    $limit = $limit->fetch_assoc();
+    $yadakLimit = !empty($limit) > 0 ? $limit : false;
+
+    return $yadakLimit;
+}
+
+function overallSpecification($conn, $id, $type)
+{
+    $sql = '';
+    switch ($type) {
+        case 'r':
+            $sql = "SELECT original AS original_all, fake As fake_all FROM good_limit_all WHERE pattern_id = '" . $id . "'";
+            break;
+        case 's':
+            $sql = "SELECT original AS original_all, fake As fake_all FROM good_limit_all WHERE nisha_id = '" . $id . "'";
+            break;
+    }
+    $limit_all = $conn->query($sql);
+    $limit_all = $limit_all->fetch_assoc();
+    $allLimit = !empty($limit_all) > 0 ? $limit_all : false;
+    return $allLimit;
+}
