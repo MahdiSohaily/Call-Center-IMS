@@ -14,7 +14,7 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
         $relation_ids = $finalResult['relation_id'];
-?>
+?> 
         <div class="grid grid-cols-6">
             <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
