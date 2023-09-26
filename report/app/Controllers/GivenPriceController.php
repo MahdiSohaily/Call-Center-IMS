@@ -215,22 +215,26 @@ function info($conn, $relation_exist = null)
 function relations($conn, $id, $condition)
 {
     $relations = [];
+    $limit_id = $id;
 
     if ($condition) {
 
         $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
+
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($info = mysqli_fetch_assoc($result)) {
                 array_push($relations, $info);
             }
         }
+        $limit_id .= '-r';
     } else {
         $sql = "SELECT * FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $relations[0] = mysqli_fetch_assoc($result);
         }
+        $limit_id .= '-s';
     }
 
     $existing = [];
@@ -265,7 +269,7 @@ function relations($conn, $id, $condition)
 
     arsort($sorted);
 
-    return ((['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo]));
+    return ((['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo, 'limit_alert' => $limit_id]));
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
