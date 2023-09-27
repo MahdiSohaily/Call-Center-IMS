@@ -365,14 +365,16 @@ if ($isValidCustomer) {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <?php if ($limit_id && $_SESSION['username'] === 'niyayesh') :
-                                        $fraction = explode($limit_id, '-');
+                                    <?php if ($limit_id && $_SESSION['username'] === 'amirdost') :
+                                        $fraction = explode('-', $limit_id);
                                         $id = $fraction[0];
                                         $type = $fraction[1];
-                                        getLimitAlertSpecification($conn, $id, $type);
+                                        $overall = overallSpecification($conn, $id, $type);
+                                        $inventory = inventorySpecification($conn, $id, $type);
                                     ?>
                                         <div class="p-3 rtl ">
                                             <form action="#" class="bg-gray-200 rounded-md p-3" method="post">
+                                                <input type="hidden" name="id">
                                                 <div class="flex gap-2">
                                                     <fieldset class="flex-grow">
                                                         <legend> هشدار موجودی انبار یدک شاپ:</legend>
@@ -381,13 +383,13 @@ if ($isValidCustomer) {
                                                                 <label for="original" class="block font-medium text-sm text-gray-700">
                                                                     مقدار اصلی
                                                                 </label>
-                                                                <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
+                                                                <input name="original" value="<?= $inventory['original'] ? $inventory['original'] : 0 ?>" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
                                                             </div>
                                                             <div class="flex-grow">
                                                                 <label for="fake" class="block font-medium text-sm text-gray-700">
                                                                     مقدار غیر اصلی
                                                                 </label>
-                                                                <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
+                                                                <input name="fake" value="<?= $inventory['fake'] ? $inventory['fake'] : 0 ?>" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
                                                             </div>
                                                         </div>
                                                     </fieldset>
@@ -398,13 +400,13 @@ if ($isValidCustomer) {
                                                                 <label for="original" class="block font-medium text-sm text-gray-700">
                                                                     مقدار اصلی
                                                                 </label>
-                                                                <input name="original_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original_all" type="number" min='0' />
+                                                                <input name="original_all" value="<?= $overall['original_all'] ? $overall['original_all'] : 0 ?>" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original_all" type="number" min='0' />
                                                             </div>
                                                             <div class="flex-grow">
                                                                 <label for="fake" class="block font-medium text-sm text-gray-700">
                                                                     مقدار غیر اصلی
                                                                 </label>
-                                                                <input name="fake_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
+                                                                <input name="fake_all" value="<?= $overall['fake_all'] ? $overall['fake_all'] : 0 ?>" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
                                                             </div>
                                                         </div>
                                                     </fieldset>

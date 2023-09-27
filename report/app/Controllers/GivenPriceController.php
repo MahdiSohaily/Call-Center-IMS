@@ -523,7 +523,7 @@ function inventorySpecification($conn, $id, $type)
 
     $limit = $conn->query($sql);
     $limit = $limit->fetch_assoc();
-    $yadakLimit = !empty($limit) > 0 ? $limit : false;
+    $yadakLimit = !empty($limit) ? $limit : 'false';
 
     return $yadakLimit;
 }
@@ -541,6 +541,6 @@ function overallSpecification($conn, $id, $type)
     }
     $limit_all = $conn->query($sql);
     $limit_all = $limit_all->fetch_assoc();
-    $allLimit = !empty($limit_all) > 0 ? $limit_all : false;
+    $allLimit = !empty($limit_all) ? $limit_all : 'false';
     return $allLimit;
 }
