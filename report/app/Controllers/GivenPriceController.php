@@ -94,7 +94,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
                 } else {
                     $codeRelationId[$code] =  'not' . rand();
                     $itemDetails[$code][$item['partnumber']]['information'] = info($conn);
-                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id'], false);
+                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['partnumber'], false);
                     $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']));
                     $itemDetails[$code][$item['partnumber']]['estelam'] = estelam($conn, $item['partnumber']);
                 }
@@ -229,10 +229,12 @@ function relations($conn, $id, $condition)
         }
         $limit_id .= '-r';
     } else {
-        $sql = "SELECT * FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
+        $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
-            $relations[0] = mysqli_fetch_assoc($result);
+            while ($info = mysqli_fetch_assoc($result)) {
+                array_push($relations, $info);
+            }
         }
         $limit_id .= '-s';
     }
