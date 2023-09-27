@@ -215,7 +215,7 @@ function info($conn, $relation_exist = null)
 function relations($conn, $id, $condition)
 {
     $relations = [];
-    $limit_id = $id;
+    $limit_id = '';
 
     if ($condition) {
 
@@ -226,8 +226,8 @@ function relations($conn, $id, $condition)
             while ($info = mysqli_fetch_assoc($result)) {
                 array_push($relations, $info);
             }
+            $limit_id = $id . '-r';
         }
-        $limit_id .= '-r';
     } else {
         $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
@@ -236,8 +236,9 @@ function relations($conn, $id, $condition)
                 array_push($relations, $info);
             }
         }
-        $limit_id .= '-s';
+        $limit_id = end($relations)['id'] . '-s';
     }
+
 
     $existing = [];
     $stockInfo = [];
@@ -523,7 +524,7 @@ function inventorySpecification($conn, $id, $type)
 
     $limit = $conn->query($sql);
     $limit = $limit->fetch_assoc();
-    $yadakLimit = !empty($limit) ? $limit : 'false';
+    $yadakLimit = !empty($limit) ? $limit : false;
 
     return $yadakLimit;
 }
@@ -541,6 +542,6 @@ function overallSpecification($conn, $id, $type)
     }
     $limit_all = $conn->query($sql);
     $limit_all = $limit_all->fetch_assoc();
-    $allLimit = !empty($limit_all) ? $limit_all : 'false';
+    $allLimit = !empty($limit_all) ? $limit_all : false;
     return $allLimit;
 }

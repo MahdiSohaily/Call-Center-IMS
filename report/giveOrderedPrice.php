@@ -369,12 +369,23 @@ if ($isValidCustomer) {
                                         $fraction = explode('-', $limit_id);
                                         $id = $fraction[0];
                                         $type = $fraction[1];
+
                                         $overall = overallSpecification($conn, $id, $type);
                                         $inventory = inventorySpecification($conn, $id, $type);
+                                        $mode = 'create';
+
+                                        if ($overall) :
+                                            $mode = 'update';
+                                        else :
+                                            $overall = ['original_all' => 0, 'fake_all' => 0];
+                                            $inventory = ['original' => 0, 'fake' => 0];
+                                        endif;
                                     ?>
                                         <div class="p-3 rtl ">
-                                            <form action="#" class="bg-gray-200 rounded-md p-3" method="post">
-                                                <input type="hidden" name="id">
+                                            <form action="./test.php" class="bg-gray-200 rounded-md p-3" method="post">
+                                                <input type="hidden" name="id" value="<?= $id ?>" />
+                                                <input type="hidden" name="type" value="<?= $type ?>" />
+                                                <input type="hidden" name="operation" value="<?= $mode ?>" />
                                                 <div class="flex gap-2">
                                                     <fieldset class="flex-grow">
                                                         <legend> هشدار موجودی انبار یدک شاپ:</legend>
