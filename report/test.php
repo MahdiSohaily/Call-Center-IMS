@@ -14,9 +14,6 @@ if (isset($_POST['operation'])) {
 
         $original_all = $_POST['original_all'];
         $fake_all = $_POST['fake_all'];
-
-
-
         switch ($type) {
             case 's':
                 createStockLimitSingle($id, $original, $fake);
@@ -27,6 +24,8 @@ if (isset($_POST['operation'])) {
                 createOverallLimitRelation($id, $original_all, $fake_all);
                 break;
         }
+
+        echo true;
     }
 
 
@@ -51,6 +50,7 @@ if (isset($_POST['operation'])) {
                 updateOverallLimitRelation($id, $original_all, $fake_all);
                 break;
         }
+        echo true;
     }
 }
 

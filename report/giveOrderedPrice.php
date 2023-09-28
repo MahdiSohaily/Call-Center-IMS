@@ -382,10 +382,10 @@ if ($isValidCustomer) {
                                         endif;
                                     ?>
                                         <div class="p-3 rtl ">
-                                            <form action="./test.php" class="bg-gray-200 rounded-md p-3" method="post">
-                                                <input type="hidden" name="id" value="<?= $id ?>" />
-                                                <input type="hidden" name="type" value="<?= $type ?>" />
-                                                <input type="hidden" name="operation" value="<?= $mode ?>" />
+                                            <form action="" class="bg-gray-200 rounded-md p-3" method="post">
+                                                <input id="id" type="hidden" name="id" value="<?= $id ?>" />
+                                                <input id="type" type="hidden" name="type" value="<?= $type ?>" />
+                                                <input id="operation" type="hidden" name="operation" value="<?= $mode ?>" />
                                                 <div class="flex gap-2">
                                                     <fieldset class="flex-grow">
                                                         <legend> هشدار موجودی انبار یدک شاپ:</legend>
@@ -422,11 +422,50 @@ if ($isValidCustomer) {
                                                         </div>
                                                     </fieldset>
                                                 </div>
-                                                <button class="button bg-blue-400 px-5 py-2 rounded-md text-white" type="submit">ذخیره</button>
+                                                <button onclick="setLimitAlert(event)" class="button bg-blue-400 px-5 py-2 rounded-md text-white" type="submit">ذخیره</button>
                                             </form>
                                         </div>
                                     <?php endif; ?>
                                 </div>
+                                <script>
+                                    function setLimitAlert(e) {
+                                        e.preventDefault();
+                                        const id = document.getElementById('id').value;
+                                        const type = document.getElementById('type').value;
+                                        const operation = document.getElementById('operation').value;
+                                        const original = document.getElementById('original').value;
+                                        const fake = document.getElementById('fake').value;
+                                        const original_all = document.getElementById('original_all').value;
+                                        const fake_all = document.getElementById('fake_all').value;
+
+                                        const params = new URLSearchParams();
+                                        params.append('id', id);
+                                        params.append('type', type);
+                                        params.append('operation', operation);
+                                        params.append('original', original);
+                                        params.append('fake', fake);
+                                        params.append('original_all', original_all);
+                                        params.append('fake_all', fake_all);
+
+                                        axios
+                                            .post("./test.php", params)
+                                            .then(function(response) {
+                                                if (response.data == true) {
+                                                    form_success.style.bottom = "10px";
+                                                    setTimeout(() => {
+                                                        form_success.style.bottom = "-300px";
+                                                    }, 2000);
+                                                } else {
+                                                    form_error.style.bottom = "10px";
+                                                    setTimeout(() => {
+                                                        form_error.style.bottom = "-300px";
+                                                    }, 2000);
+                                                }
+                                            })
+                                            .catch(function(error) {});
+
+                                    }
+                                </script>
 
                                 <!-- Given Price section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
