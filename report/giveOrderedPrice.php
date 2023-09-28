@@ -448,7 +448,7 @@ if ($isValidCustomer) {
                                         params.append('fake_all', fake_all);
 
                                         axios
-                                            .post("./test.php", params)
+                                            .post("./saveGoodLimitAJAX.php", params)
                                             .then(function(response) {
                                                 if (response.data == true) {
                                                     form_success.style.bottom = "10px";
