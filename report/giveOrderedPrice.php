@@ -365,7 +365,7 @@ if ($isValidCustomer) {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <?php if ($limit_id && $_SESSION['username'] === 'amirdost') :
+                                    <?php if ($limit_id && $_SESSION['username'] === 'niyayesh') :
                                         $fraction = explode('-', $limit_id);
                                         $id = $fraction[0];
                                         $type = $fraction[1];
