@@ -382,7 +382,7 @@ if ($isValidCustomer) {
                                         endif;
                                     ?>
                                         <div class="p-3 rtl ">
-                                            <form action="" class="bg-gray-200 rounded-md p-3" method="post">
+                                            <form id="<?= $partNumber ?>" action="" class="bg-gray-200 rounded-md p-3" method="post">
                                                 <input id="id" type="hidden" name="id" value="<?= $id ?>" />
                                                 <input id="type" type="hidden" name="type" value="<?= $type ?>" />
                                                 <input id="operation" type="hidden" name="operation" value="<?= $mode ?>" />
@@ -422,7 +422,7 @@ if ($isValidCustomer) {
                                                         </div>
                                                     </fieldset>
                                                 </div>
-                                                <button onclick="setLimitAlert(event)" class="button bg-blue-400 px-5 py-2 rounded-md text-white" type="submit">ذخیره</button>
+                                                <button onclick="setLimitAlert(event)" data-form="<?= $partNumber ?>" class="button bg-blue-400 px-5 py-2 rounded-md text-white" type="submit">ذخیره</button>
                                             </form>
                                         </div>
                                     <?php endif; ?>
@@ -430,13 +430,16 @@ if ($isValidCustomer) {
                                 <script>
                                     function setLimitAlert(e) {
                                         e.preventDefault();
-                                        const id = document.getElementById('id').value;
-                                        const type = document.getElementById('type').value;
-                                        const operation = document.getElementById('operation').value;
-                                        const original = document.getElementById('original').value;
-                                        const fake = document.getElementById('fake').value;
-                                        const original_all = document.getElementById('original_all').value;
-                                        const fake_all = document.getElementById('fake_all').value;
+                                        const formId = e.target.getAttribute('data-form');
+                                        const targetForm = document.getElementById(formId);
+
+                                        const id = targetForm.querySelector('#id').value;
+                                        const type = targetForm.querySelector('#type').value;
+                                        const operation = targetForm.querySelector('#operation').value;
+                                        const original = targetForm.querySelector('#original').value;
+                                        const fake = targetForm.querySelector('#fake').value;
+                                        const original_all = targetForm.querySelector('#original_all').value;
+                                        const fake_all = targetForm.querySelector('#fake_all').value;
 
                                         const params = new URLSearchParams();
                                         params.append('id', id);
@@ -447,15 +450,19 @@ if ($isValidCustomer) {
                                         params.append('original_all', original_all);
                                         params.append('fake_all', fake_all);
 
+                                        console.log(JSON.stringify(params));
+
                                         axios
                                             .post("./saveGoodLimitAJAX.php", params)
                                             .then(function(response) {
                                                 if (response.data == true) {
+                                                    const form_success = document.getElementById('form_success');
                                                     form_success.style.bottom = "10px";
                                                     setTimeout(() => {
                                                         form_success.style.bottom = "-300px";
                                                     }, 2000);
                                                 } else {
+                                                    const form_error = document.getElementById('form_error');
                                                     form_error.style.bottom = "10px";
                                                     setTimeout(() => {
                                                         form_error.style.bottom = "-300px";
@@ -463,9 +470,9 @@ if ($isValidCustomer) {
                                                 }
                                             })
                                             .catch(function(error) {});
-
                                     }
                                 </script>
+
 
                                 <!-- Given Price section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
