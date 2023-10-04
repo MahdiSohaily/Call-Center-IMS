@@ -41,7 +41,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
 
 
     <form class="shomare-faktor-form" action="php/shomare-faktor-form-save.php" method="get" autocomplete="off">
-        <input id="kharidar" class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
+        <input minlength="3" id="kharidar" class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
         <button onclick="copiedEffect(this)" class="save-shomare-faktor-form hover:cursor-pointer" type="submit"> گرفتن شماره فاکتور</button>
     </form>
 
