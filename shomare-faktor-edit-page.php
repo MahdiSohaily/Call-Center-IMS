@@ -1,5 +1,5 @@
 <?php
-require_once './layout/heroHeader.php';
+require_once './header.php';
 
 
 
@@ -45,8 +45,8 @@ if (mysqli_num_rows($result) > 0) {
                 <form class="shomare-faktor-form-edit" action="php/shomare-faktor-form-edit-save.php" method="get" autocomplete="off">
 
                     <td> <input value="<?php echo $q ?>" type="hidden" name="id"></td>
-                    <td> <input class="e-f-kharidar" name="kharidar" type="text" value="<?php echo $kharidar ?>"></td>
-                    <td> <select class="e-f-userlist" name="user" data="<?php echo $user ?>">
+                    <td> خریدار <input style="border:1px solid gray" class="e-f-kharidar" name="kharidar" type="text" value="<?php echo $kharidar ?>"></td>
+                    <td> کاربر <select style="border:1px solid gray" class="e-f-userlist" name="user" data="<?php echo $user ?>">
 
                             <?php include("php/alluserdata.php") ?> </select></td>
 

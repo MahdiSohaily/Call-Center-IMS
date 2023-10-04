@@ -60,10 +60,10 @@ if (!$result) {
         setTimeout(() => {
             element.innerHTML = '<i class="fas fa-check" style="color:red"></i> ' + billNumber;
         }, 1500);
-        
+
         const date = ($("#invoice_time").attr("data-gdate"));
         var params = new URLSearchParams();
-        params.append('getFactor', 'getFactor');
+        params.append('getNewFactor', 'getNewFactor');
         params.append('date', date);
         axios.post("./factorAjax.php", params)
             .then(function(response) {

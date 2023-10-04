@@ -119,7 +119,10 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                 ?>
                         <tr>
                             <td>
-                                <div class="jadval-shomare-blue"><?php echo $shomare ?></div>
+                                <div title="کپی کردن شماره فاکتور" style="cursor: pointer;" data-billNumber="<?= $shomare ?>" class="jadval-shomare-blue" onClick='copyBillNumberSingle(this)'>
+                                    <i class="fas fa-paste"></i>
+                                    <?php echo $shomare ?>
+                                </div>
                             </td>
                             <td>
                                 <div class="jadval-shomare-kharidar"><?php echo $kharidar ?></div>
@@ -224,11 +227,20 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     function copiedEffect(element) {
         const kharidar_value = document.getElementById('kharidar').value;
 
-        if (!kharidar_value) {
+        console.log(kharidar_value.length);
+
+        if (kharidar_value.length < 3) {
             element.innerHTML = 'گرفتن شماره فاکتور <i class="fas fa-ban" style="color:red; margin-inline:5px"></i>';
             return;
         }
         element.innerHTML = 'انجام شد<i class="fas fa-check" style="color:red; margin-inline:5px"></i>';
+    }
+
+    function copyBillNumberSingle(element) {
+        const billNumber = element.getAttribute('data-billNumber');
+        copyToClipboard(billNumber);
+
+        element.innerHTML = '<i class="fas fa-check" style="color:red; margin-inline:5px"></i>' + billNumber;
     }
 </script>
 

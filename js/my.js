@@ -8,6 +8,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $(".edit-shomare-faktor-btn").click(function () {
+    alert("edit shomare faktor");
     $(".modal").css("display", "block");
     $(this).attr("id");
     $("iframe").attr(
