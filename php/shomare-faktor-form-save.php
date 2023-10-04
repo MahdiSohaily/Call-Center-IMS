@@ -54,10 +54,13 @@ if (!$result) {
 <script>
     function copyBillNumber(element) {
         const billNumber = element.getAttribute('data-bill');
+        copyToClipboard(billNumber);
+
         element.innerHTML = '<i class="fas fa-check"></i> ' + 'انجام شد';
         setTimeout(() => {
             element.innerHTML = '<i class="fas fa-check" style="color:red"></i> ' + billNumber;
         }, 1500);
+        
         const date = ($("#invoice_time").attr("data-gdate"));
         var params = new URLSearchParams();
         params.append('getFactor', 'getFactor');

@@ -41,8 +41,8 @@ $factor_result = mysqli_query(dbconnect(), $sql);
 
 
     <form class="shomare-faktor-form" action="php/shomare-faktor-form-save.php" method="get" autocomplete="off">
-        <input class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
-        <input class="save-shomare-faktor-form hover:cursor-pointer" type="submit" value=" گرفتن شماره فاکتور">
+        <input id="kharidar" class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
+        <button onclick="copiedEffect(this)" class="save-shomare-faktor-form hover:cursor-pointer" type="submit"> گرفتن شماره فاکتور</button>
     </form>
 
     <div class="shomare-faktor-result">
@@ -219,6 +219,16 @@ $factor_result = mysqli_query(dbconnect(), $sql);
             .catch(function(error) {
                 console.log(error);
             });
+    }
+
+    function copiedEffect(element) {
+        const kharidar_value = document.getElementById('kharidar').value;
+
+        if (!kharidar_value) {
+            element.innerHTML = 'گرفتن شماره فاکتور <i class="fas fa-ban" style="color:red; margin-inline:5px"></i>';
+            return;
+        }
+        element.innerHTML = 'انجام شد<i class="fas fa-check" style="color:red; margin-inline:5px"></i>';
     }
 </script>
 

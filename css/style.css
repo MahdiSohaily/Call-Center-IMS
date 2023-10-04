@@ -992,7 +992,7 @@ a.remove-from-estelam-form {
 .shomare-faktor-error {
   display: inline-block;
   background: #fd0018;
-  padding: 16px;
+  padding: 8px 16px;
   font-size: 20px;
   color: #ffffff;
   border-radius: 5px;
@@ -1000,7 +1000,7 @@ a.remove-from-estelam-form {
   border: 1px solid #b3b3b3;
 }
 
-input.save-shomare-faktor-form {
+button.save-shomare-faktor-form {
   font-family: "SDF";
   margin: 10px;
   border-radius: 5px;
