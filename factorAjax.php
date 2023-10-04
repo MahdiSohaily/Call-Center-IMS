@@ -94,7 +94,7 @@ if (isset($_POST['getNewFactor'])) {
                                 <div class="jadval-shomare-kharidar"><?php echo $kharidar ?></div>
                             </td>
                             <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" src="../userimg/<?php echo $user ?>.jpg" /></td>
-                            <td class="edit"><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
+                            <td class="edit"><a onclick="updateBill(this)" id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
                         </tr>
                 <?php
 

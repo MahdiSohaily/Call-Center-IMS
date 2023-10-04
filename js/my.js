@@ -8,7 +8,6 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $(".edit-shomare-faktor-btn").click(function () {
-    alert("edit shomare faktor");
     $(".modal").css("display", "block");
     $(this).attr("id");
     $("iframe").attr(
@@ -49,3 +48,9 @@ $(document).ready(function () {
     $(".manual-add-customer a").attr("href", "main.php?phone=" + x);
   });
 });
+function updateBill(element) {
+  $(".modal").css("display", "block");
+  const id = element.getAttribute("id");
+  $("iframe").attr("src", "shomare-faktor-edit-page.php?q=" + id);
+  $(".e-f-userlist").val($(".e-f-userlist").attr("data")).change();
+}
