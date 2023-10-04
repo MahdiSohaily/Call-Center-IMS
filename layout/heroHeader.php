@@ -96,6 +96,7 @@ $title = '';
 
     <!-- Our custome defined JS file -->
     <script src="js/my.js?v=<?php echo (rand()) ?>"></script>
+    <script src="./public/js/copyToClipboard.js"></script>
 
 
     <script>
