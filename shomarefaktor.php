@@ -102,12 +102,14 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     </div>
     <div>
         <table class="customer-list jadval-shomare">
-            <tr class="table-heading">
-                <th>شماره فاکتور</th>
-                <th>خریدار</th>
-                <th>کاربر</th>
-                <th class="edit">ویرایش</th>
-            </tr>
+            <thead>
+                <tr class="table-heading">
+                    <th>شماره فاکتور</th>
+                    <th>خریدار</th>
+                    <th>کاربر</th>
+                    <th class="edit">ویرایش</th>
+                </tr>
+            </thead>
             <tbody>
                 <?php
 

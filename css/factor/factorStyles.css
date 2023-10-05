@@ -1,4 +1,10 @@
 @media print {
+  .table-heading:last-child {
+    display: none !important;
+  }
+  .jadval-shomare-blue SVG {
+    display: none !important;
+  }
   @page :footer {
     display: none !important;
   }
