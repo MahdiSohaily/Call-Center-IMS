@@ -183,6 +183,12 @@ $_SESSION["user_id"] = $_SESSION["id"];
                         <i class="px-2 material-icons hover:cursor-pointer">sync</i>
                         تعریف رابطه اجناس
                     </a>
+                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
+                    font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white
+                     focus:outline-none transition duration-150 ease-in-out" href="./usersManagement.php">
+                        <i class="px-2 material-icons hover:cursor-pointer">verified_user</i>
+                        مدیریت کاربران
+                    </a>
                 </ul>
                 <!-- Authentication -->
                 <a class="rtl cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="../../1402/logout.php">
