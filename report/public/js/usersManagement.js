@@ -3,7 +3,20 @@ function updateUserAuthority(element) {
   const authority = element.getAttribute("data-authority");
   const isChecked = element.checked;
 
-  axios.post("./app/Controllers/GivenPriceAjax.php", params);
+  const params = new URLSearchParams();
+  params.append("operation", "update");
+  params.append("user", user);
+  params.append("authority", authority);
+  params.append("isChecked", isChecked);
+
+  axios
+    .post("./app/Controllers/UserManagementControllerAjax.php", params)
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
 }
 
 function deleteUser(element) {
