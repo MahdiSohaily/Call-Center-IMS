@@ -10,43 +10,76 @@ require_once './app/Controllers/UserManagementController.php';
         </h2>
     </div>
     <div class="p-3">
-        <table class="rtl min-w-full text-left text-sm font-light">
+        <table class="rtl min-w-full text-sm font-light">
             <thead class="font-medium dark:border-neutral-500">
                 <tr class="bg-violet-600">
-                    <th scope="col" class="px-3 py-3 text-white text-center">
-                        کاربر
+                    <th scope="col" class="text-white p-2">
+                        شماره
                     </th>
-                    <th scope="col" class="px-3 py-3 text-white">
-                        دلار پایه
+                    <th scope="col" class="text-white p-2">
+                        نام
                     </th>
-                    <th scope="col" class="px-3 py-3 text-white">
-                        +10%
+                    <th scope="col" class="text-white p-2">
+                        نام کاربری
                     </th>
-                    <th scope="col" class="px-3 py-3 text-white">
+                    <th scope="col" class="text-white p-2">
+                        مدیریت کاربران
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        ثبت خروج کالا
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        ثبت ورود کالا
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        گزارش خروج
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        گزارش ورود
+                    </th>
+                    <th scope="col" class="text-white p-2">
                         عملیات
                     </th>
                 </tr>
             </thead>
             <tbody id="results">
-                <?php foreach ($users as $user) : ?>
-                    <tr class="transition duration-300 ease-in-out hover:bg-neutral-200">
-                        <td class='rtl text-center px-3 py-3'>
+                <?php
+                $counter = 1;
+                foreach ($users as $user) : ?>
+                    <tr class="even:bg-gray-200">
+                        <td class='p-2 rtl'>
+                            <?= $counter ?>
+                        </td>
+                        <td class='p-2 rtl'>
                             <?= $user['name'] . ' ' . $user['family'] ?>
                         </td>
-                        <td class='rtl '>
+                        <td class='p-2 rtl '>
                             <?= $user['username'] ?>
                         </td>
 
-                        <td class='rtl  text-center px-3 py-3'>
+                        <td class='p-2 rtl'>
+                            <input type="checkbox" name="manageUsers" data-user='<?= $user['id'] ?>'>
                         </td>
 
-                        <td class='rtl w-24'>
-
+                        <td class='p-2 rtl'>
+                            <input type="checkbox" name="manageUsers" data-user='<?= $user['id'] ?>'>
                         </td>
-                        <td class='rtl px-3 py-3 kg'>
+                        <td class='p-2 rtl'>
+                            <input type="checkbox" name="manageUsers" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input type="checkbox" name="manageUsers" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input type="checkbox" name="manageUsers" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <i class="material-icons cursor-pointer text-red-600 hover:text-red-800">delete_forever</i>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php
+                    $counter++;
+                endforeach; ?>
             </tbody>
         </table>
     </div>
