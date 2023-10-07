@@ -1,20 +1,21 @@
 <?php
 // Initialize the session
 session_start();
+require_once './database/connect.php';
 
 // Check if the user is already logged in
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["not_allowed"]) {
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && isset($_SESSION["not_allowed"])) {
     // Check if the session has expired (current time > expiration time)
-    if (isset($_SESSION["expiration_time"]) && time() > $_SESSION["expiration_time"]) {
+    if ((isset($_SESSION["expiration_time"]) && time() > $_SESSION["expiration_time"]) || authModified(CONN, $_SESSION['id'])) {
         // Session has expired, destroy it and log the user out
         session_unset();
         session_destroy();
-        header("location: login.php"); // Redirect to the login page
+        header("location: ../../1402/login.php"); // Redirect to the login page
         exit;
     }
 } else {
     // User is not logged in, redirect them to the login page
-    header("location: login.php");
+    header("location: ../../1402/login.php");
     exit;
 }
 
@@ -24,8 +25,20 @@ if (in_array($current_page, $_SESSION['not_allowed'])) {
     header("location: ../../1402/notAllowed.php"); // Redirect to the login page  header("location: login.php"); // Redirect to the login page
 }
 
+function authModified($con, $id)
+{
+    $sql = "SELECT modified FROM yadakshop1402.authorities WHERE user_id = $id";
+
+    $result = $con->query($sql);
+
+    $isModified = $result->fetch_assoc()['modified'];
+
+    return $isModified;
+}
+
+
 require_once './config/config.php';
-require_once './database/connect.php';
+
 require_once('./views/Layouts/jdf.php');
 
 date_default_timezone_set("Asia/Tehran");

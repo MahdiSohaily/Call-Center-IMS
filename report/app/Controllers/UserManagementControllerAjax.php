@@ -8,8 +8,6 @@ if (isset($_POST['operation']) and $_POST['operation'] == 'update') :
         $user = $_POST['user'] ?? 0;
         $data = $_POST['data'] ?? null;
 
-        print_r(($_POST['data']));
-
         updateUserAuthorityList($user, $data);
     } catch (\Throwable $th) {
         return $th;
