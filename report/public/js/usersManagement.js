@@ -6,19 +6,20 @@ function updateUserAuthority(element) {
 
   const authorityList = document.querySelectorAll(".user-" + user);
 
+  const data = {};
+
   for (const node of authorityList) {
     const authority = node.getAttribute("data-authority");
     const isChecked = node.checked;
-    console.log(authority + ": " + isChecked);
+    data[authority] = isChecked;
   }
 
-  // const params = new URLSearchParams();
-  // params.append("operation", "update");
-  // params.append("user", user);
-  // params.append("authority", authority);
-  // params.append("isChecked", isChecked);
+  const params = new URLSearchParams();
+  params.append("operation", "update");
+  params.append("user", user);
+  params.append("data", data);
 
-  // sendAjaxRequest(address, params);
+  sendAjaxRequest(address, params);
 }
 
 function deleteUser(element) {
