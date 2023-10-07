@@ -17,7 +17,7 @@ function updateUserAuthority(element) {
   const params = new URLSearchParams();
   params.append("operation", "update");
   params.append("user", user);
-  params.append("data", data);
+  params.append("data", JSON.stringify(data));
 
   sendAjaxRequest(address, params);
 }
