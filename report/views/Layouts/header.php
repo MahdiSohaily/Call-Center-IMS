@@ -119,7 +119,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
             targetElement.style.gap = '5px';
         }
     </script>
-    <script src="./public/js/usersManagement.js"></script>
+    <script src="./public/js/usersManagement.js?v=<?= rand()?>"></script>
 </head>
 
 <body class="font-sans antialiased">

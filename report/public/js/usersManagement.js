@@ -1,22 +1,23 @@
 function updateUserAuthority(element) {
+  // the target URL to send the ajax request
+  const address = "./app/Controllers/UserManagementControllerAjax.php";
+
   const user = element.getAttribute("data-user");
-  const authority = element.getAttribute("data-authority");
-  const isChecked = element.checked;
 
-  const params = new URLSearchParams();
-  params.append("operation", "update");
-  params.append("user", user);
-  params.append("authority", authority);
-  params.append("isChecked", isChecked);
+  const authorityList = document.querySelectorAll(".user-" + user);
 
-  axios
-    .post("./app/Controllers/UserManagementControllerAjax.php", params)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.log(error.message);
-    });
+  for (const node of authorityList) {
+    const authority = node.getAttribute("data-authority");
+    console.log();
+  }
+
+  // const params = new URLSearchParams();
+  // params.append("operation", "update");
+  // params.append("user", user);
+  // params.append("authority", authority);
+  // params.append("isChecked", isChecked);
+
+  // sendAjaxRequest(address, params);
 }
 
 function deleteUser(element) {
@@ -28,4 +29,15 @@ function deleteUser(element) {
   }
 
   element.closest("tr").remove();
+}
+
+function sendAjaxRequest(address, params = null) {
+  axios
+    .post(address, params)
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
 }
