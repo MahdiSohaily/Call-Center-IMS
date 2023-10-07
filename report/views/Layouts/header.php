@@ -1,7 +1,9 @@
 <?php
+// Initialize the session
 session_start();
+
 // Check if the user is already logged in
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION["not_allowed"]) {
     // Check if the session has expired (current time > expiration time)
     if (isset($_SESSION["expiration_time"]) && time() > $_SESSION["expiration_time"]) {
         // Session has expired, destroy it and log the user out
@@ -15,6 +17,13 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: login.php");
     exit;
 }
+
+$current_page = explode(".", basename($_SERVER['PHP_SELF']))[0];
+
+if (in_array($current_page, $_SESSION['not_allowed'])) {
+    header("location: ../../1402/notAllowed.php"); // Redirect to the login page  header("location: login.php"); // Redirect to the login page
+}
+
 require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/jdf.php');

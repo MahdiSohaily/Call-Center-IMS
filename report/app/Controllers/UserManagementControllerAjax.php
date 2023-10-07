@@ -21,7 +21,7 @@ endif;
 
 function updateUserAuthorityList($id, $data)
 {
-    $stmt = CONN->prepare("UPDATE yadakshop1402.authorities SET user_authorities= ?  WHERE user_id = ?");
+    $stmt = CONN->prepare("UPDATE yadakshop1402.authorities SET user_authorities= ? , modified = 1  WHERE user_id = ?");
     $stmt->bind_param('si', $data, $id);
     $stmt->execute();
     return true;
