@@ -1,5 +1,4 @@
 <?php
-phpinfo();
 require_once('./views/Layouts/header.php');
 require_once './app/Controllers/UserManagementController.php';
 ?>

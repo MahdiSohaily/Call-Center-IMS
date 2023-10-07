@@ -8,7 +8,8 @@ function updateUserAuthority(element) {
 
   for (const node of authorityList) {
     const authority = node.getAttribute("data-authority");
-    console.log();
+    const isChecked = node.checked;
+    console.log(authority + ": " + isChecked);
   }
 
   // const params = new URLSearchParams();
