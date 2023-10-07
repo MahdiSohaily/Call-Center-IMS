@@ -45,7 +45,9 @@ require_once './app/Controllers/UserManagementController.php';
             <tbody id="results">
                 <?php
                 $counter = 1;
-                foreach ($users as $user) : ?>
+                foreach ($users as $user) :
+                    $auth = json_decode($user['auth'], true);
+                ?>
                     <tr class="even:bg-gray-200">
                         <td class='p-2 rtl'>
                             <?= $counter ?>
@@ -58,20 +60,20 @@ require_once './app/Controllers/UserManagementController.php';
                         </td>
 
                         <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="usersManagement" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['usersManagement'] ? 'checked' : '' ?> data-authority="usersManagement" data-user='<?= $user['id'] ?>'>
                         </td>
 
                         <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="khorojkala-index" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['khorojkala-index'] ? 'checked' : '' ?> data-authority="khorojkala-index" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="vorodkala-index" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['vorodkala-index'] ? 'checked' : '' ?> data-authority="vorodkala-index" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="khorojkala-report" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['khorojkala-report'] ? 'checked' : '' ?> data-authority="khorojkala-report" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="vorodkala-report" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['vorodkala-report'] ? 'checked' : '' ?> data-authority="vorodkala-report" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
                             <i onclick="deleteUser(this)" data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-red-600 hover:text-red-800">delete_forever</i>
