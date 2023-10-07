@@ -58,20 +58,20 @@ require_once './app/Controllers/UserManagementController.php';
                         </td>
 
                         <td class='p-2 rtl'>
-                            <input onclick="updateUserAuthority(this)" type="checkbox" data-authority="usersManagement" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="usersManagement" data-user='<?= $user['id'] ?>'>
                         </td>
 
                         <td class='p-2 rtl'>
-                            <input onclick="updateUserAuthority(this)" type="checkbox" data-authority="khorojkala-index" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="khorojkala-index" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
-                            <input onclick="updateUserAuthority(this)" type="checkbox" data-authority="vorodkala-index" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="vorodkala-index" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
-                            <input onclick="updateUserAuthority(this)" type="checkbox" data-authority="khorojkala-report" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="khorojkala-report" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
-                            <input onclick="updateUserAuthority(this)" type="checkbox" data-authority="vorodkala-report" data-user='<?= $user['id'] ?>'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" data-authority="vorodkala-report" data-user='<?= $user['id'] ?>'>
                         </td>
                         <td class='p-2 rtl'>
                             <i onclick="deleteUser(this)" data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-red-600 hover:text-red-800">delete_forever</i>
