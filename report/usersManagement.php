@@ -8,6 +8,7 @@ require_once './app/Controllers/UserManagementController.php';
             <i class="material-icons font-semibold text-orange-400">security</i>
             مدیریت دسترسی کاربران
         </h2>
+        <a href="./createUserProfile.php" class="bg-success text-white py-2 px-3 rounded-lg">ثبت کاربر جدید</a>
     </div>
     <div class="p-3">
         <table class="rtl min-w-full text-sm font-light">
