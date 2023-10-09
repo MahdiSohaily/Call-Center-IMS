@@ -1,4 +1,12 @@
 <?php
+if (isset($_POST['status'])) {
+
+    $status = $_POST['status'];
+    $sql = "UPDATE shop.dollarrate SET status = '$status' WHERE id = 1";
+    $conn->query($sql);
+    $status = true;
+}
+
 if (isset($_POST['rate'])) {
     try {
         $rate = $_POST['rate'];

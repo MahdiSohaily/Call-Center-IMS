@@ -60,7 +60,7 @@ require_once './app/Controllers/DollarRateController.php';
 </div>
 <div class="my-5  bg-white rounded-lg shadow-md w-1/2 mx-auto p-5">
     <div class="rtl">
-        <div class="rtl flex items-center justify-between">
+        <div class="rtl flex items-center justify-between mb-4">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 ویرایش درصد تغییر قیمت دلار
                 <i class="material-icons font-semibold text-indigo-400">create</i>
