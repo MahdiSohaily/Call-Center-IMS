@@ -1,6 +1,6 @@
 <?php
-$applyDate = "2023-11-02 20:52:41";
-$additionRate = 2;
+$applyDate = null;
+$additionRate = null;
 $rateSpecification  = getDollarRateInfo();
 
 if ($rateSpecification) {
