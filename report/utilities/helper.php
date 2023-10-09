@@ -1,4 +1,22 @@
 <?php
+$applyDate = "2023-11-02 20:52:41";
+$additionRate = 2;
+$rateSpecification  = getDollarRateInfo();
+print_r(getDollarRateInfo());
+if ($rateSpecification) {
+    // $applyDate = $rateSpecification['created_at'];
+    $additionRate = $rateSpecification['rate'];
+}
+
+echo $additionRate;
+function getDollarRateInfo()
+{
+    $statement = "SELECT * FROM shop.dollarrate WHERE status = 1";
+    $result = CONN->query($statement);
+    $rate = $result->fetch_assoc();
+    return $rate;
+}
+
 // helper functions function filterCode($elementValue)
 function filterCode($message)
 {
@@ -120,7 +138,7 @@ function applyDollarRate($price)
         $number = str_replace('/', '', $matches[1]);
 
         // Increase the matched number by 2%
-        $modifiedNumber = $number + ($number * 0.02); // Increase by 2%
+        $modifiedNumber = $number + (($number *  $GLOBALS['additionRate']) / 100); // Increase by 2%
 
         // Round the number to the nearest multiple of 10
         $roundedNumber = round($modifiedNumber / 10) * 10;
