@@ -147,8 +147,6 @@ function applyDollarRate($price)
     return $modifiedString;
 }
 
-
-
 function checkDateIfOkay($applyDate, $priceDate)
 {
     // Extract only the date part from the datetime strings
