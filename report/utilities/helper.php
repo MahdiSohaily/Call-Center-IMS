@@ -2,13 +2,11 @@
 $applyDate = "2023-11-02 20:52:41";
 $additionRate = 2;
 $rateSpecification  = getDollarRateInfo();
-print_r(getDollarRateInfo());
+
 if ($rateSpecification) {
-    // $applyDate = $rateSpecification['created_at'];
+    $applyDate = $rateSpecification['created_at'];
     $additionRate = $rateSpecification['rate'];
 }
-
-echo $additionRate;
 function getDollarRateInfo()
 {
     $statement = "SELECT * FROM shop.dollarrate WHERE status = 1";
@@ -153,7 +151,9 @@ function applyDollarRate($price)
 
 function checkDateIfOkay($applyDate, $priceDate)
 {
-    $applyDate = date($applyDate);
-    $priceDate = date($priceDate);
+    // Extract only the date part from the datetime strings
+    $applyDate = date('Y-m-d', strtotime($applyDate));
+    $priceDate = date('Y-m-d', strtotime($priceDate));
+
     return $priceDate <= $applyDate;
 }
