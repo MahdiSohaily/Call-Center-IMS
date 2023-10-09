@@ -1,6 +1,11 @@
 ﻿<?php
 session_start();
 require_once('../../database/connect.php');
+require_once('../../utilities/helper.php');
+
+$applyDate = "2023-11-02 20:52:41";
+$additionRate = 2;
+
 if (isset($_POST['store_price'])) {
     $partNumber = $_POST['partNumber'];
     $price = $_POST['price'];
@@ -20,8 +25,39 @@ if (isset($_POST['store_price'])) {
     $givenPrice = givenPrice($conn, $relations, $relation_exist);
 
     if ($givenPrice !== null) {
+        $target = current($givenPrice);
+        $priceDate = $target['created_at'];
+        if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
+            $rawGivenPrice = $target['price'];
+
+            $finalPrice = applyDollarRate($rawGivenPrice);
+?>
+            <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
+                <td>
+                </td>
+                <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                    <?php echo $target['price'] === null ? 'ندارد' :  $finalPrice ?>
+                </td>
+                <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                    افزایش قیمت <?= $additionRate ?> در صد
+                </td>
+                <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
+                    <?php echo array_key_exists("partnumber", $target) ? $target['partnumber'] : '' ?>
+                </td>
+                <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                    <?php if (!array_key_exists("ordered", $target)) {
+                    ?>
+                        <img class="userImage" src="../../userimg/<?php echo $target['userID'] ?>.jpg" alt="userimage">
+                    <?php
+                    }
+                    ?>
+                </td>
+            </tr>
+            <?php
+        endif;
         foreach ($givenPrice as $price) {
             if ($price['price'] !== null && $price['price'] !== '') {
+
                 if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
                     <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer">
                     <?php } elseif (array_key_exists("ordered", $price) || $price['customerID'] == 2) { ?>
