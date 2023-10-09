@@ -178,7 +178,7 @@ if ($isValidCustomer) {
                             // $customer = $customer;
                             // $completeCode = $completeCode;
                     ?>
-                            <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-9 gap-6 lg:gap-2 lg:p-2 overflow-auto">
+                            <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-2 lg:p-2 overflow-auto">
                                 <!-- Start the code info section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md mt-2">
                                     <div class="rtl p-3">
@@ -491,7 +491,7 @@ if ($isValidCustomer) {
 
 
                                 <!-- Given Price section -->
-                                <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md">
+                                <div class="min-w-full bg-white rounded-lg col-span-3 overflow-auto shadow-md">
                                     <div class="p-3">
                                         <table class=" min-w-full text-sm font-light">
                                             <thead>
