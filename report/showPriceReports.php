@@ -639,7 +639,7 @@ if ($isValidCustomer) {
         <a class="toTop" href="#">
             <i class="material-icons">arrow_drop_up</i>
         </a>
-        <script src="./public/js/givePrice.js"></script>
+        <script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
 <?php
     }
 } else {

@@ -11,6 +11,7 @@ if (isset($_POST['delete_price'])) {
     $partNumber = $_POST['partNumber'];
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
+    $relation_id = $_POST['relation_id'];
     $code = $_POST['code'];
     $sql = "DELETE FROM `prices` WHERE id = '$id'";
     mysqli_query($conn, $sql);

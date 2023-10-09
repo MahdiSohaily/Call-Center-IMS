@@ -105,6 +105,7 @@ function createRelation(e, button = null) {
   const partNumber = e.getAttribute("data-part");
   const customer_id = document.getElementById("customer_id").value;
   const notification_id = document.getElementById("notification_id").value;
+  const relation_id = e.getAttribute("data-target");
   const code = e.getAttribute("data-code");
 
   const goodPrice = document.getElementById(partNumber + "-price").value;
@@ -116,6 +117,7 @@ function createRelation(e, button = null) {
   params.append("partNumber", partNumber);
   params.append("customer_id", customer_id);
   params.append("notification_id", notification_id);
+  params.append("relation_id", relation_id);
   params.append("price", goodPrice);
   params.append("code", code);
 
@@ -253,6 +255,8 @@ function copyItemPrice(elem) {
 function deleteGivenPrice(element) {
   const partNumber = element.getAttribute("data-part");
   const id = element.getAttribute("data-del");
+  const relation_id = element.getAttribute("data-target");
+  console.log(relation_id);
 
   // Accessing the form fields to get thier value for an ajax store operation
   const customer_id = document.getElementById("customer_id").value;
@@ -265,20 +269,21 @@ function deleteGivenPrice(element) {
   params.append("partNumber", partNumber);
   params.append("customer_id", customer_id);
   params.append("notification_id", notification_id);
+  params.append("relation_id", relation_id);
   params.append("code", code);
   params.append("id", id);
 
-  axios
-    .post("./app/Controllers/deleteGivenPrice.php", params)
-    .then(function (response) {
-      if (response.data) {
-        console.log(response.data);
-        resultBox.innerHTML = response.data;
-      } else {
-        console.log(response.data);
-      }
-    })
-    .catch(function (error) {});
+  // axios
+  //   .post("./app/Controllers/deleteGivenPrice.php", params)
+  //   .then(function (response) {
+  //     if (response.data) {
+  //       console.log(response.data);
+  //       resultBox.innerHTML = response.data;
+  //     } else {
+  //       console.log(response.data);
+  //     }
+  //   })
+  //   .catch(function (error) {});
 }
 
 function closeTab() {

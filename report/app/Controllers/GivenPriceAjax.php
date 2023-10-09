@@ -11,6 +11,7 @@ if (isset($_POST['store_price'])) {
     $price = $_POST['price'];
     $customer_id = $_POST['customer_id'];
     $notification_id = $_POST['notification_id'];
+    $relation_id = $_POST['relation_id'];
     $code = $_POST['code'];
     store($conn, $partNumber, $price, $customer_id, $notification_id);
 
