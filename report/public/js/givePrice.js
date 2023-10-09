@@ -151,6 +151,7 @@ function setPrice(element) {
   price = newPrice;
 
   const targetRelation = element.getAttribute("data-target");
+  // console.log(element);
 
   // Step 2: Select all elements with the same data-relation attribute
   const elementsWithSameDataRelation = document.querySelectorAll(
@@ -256,8 +257,6 @@ function deleteGivenPrice(element) {
   const partNumber = element.getAttribute("data-part");
   const id = element.getAttribute("data-del");
   const relation_id = element.getAttribute("data-target");
-  console.log(relation_id);
-
   // Accessing the form fields to get thier value for an ajax store operation
   const customer_id = document.getElementById("customer_id").value;
   const notification_id = document.getElementById("notification_id").value;
@@ -273,17 +272,16 @@ function deleteGivenPrice(element) {
   params.append("code", code);
   params.append("id", id);
 
-  // axios
-  //   .post("./app/Controllers/deleteGivenPrice.php", params)
-  //   .then(function (response) {
-  //     if (response.data) {
-  //       console.log(response.data);
-  //       resultBox.innerHTML = response.data;
-  //     } else {
-  //       console.log(response.data);
-  //     }
-  //   })
-  //   .catch(function (error) {});
+  axios
+    .post("./app/Controllers/deleteGivenPrice.php", params)
+    .then(function (response) {
+      if (response.data) {
+        resultBox.innerHTML = response.data;
+      } else {
+        console.log(response.data);
+      }
+    })
+    .catch(function (error) {});
 }
 
 function closeTab() {
