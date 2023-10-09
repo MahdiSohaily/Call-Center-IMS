@@ -3,6 +3,8 @@ require_once('./views/Layouts/header.php');
 require_once './utilities/helper.php';
 require_once './database/connect.php';
 require_once('./app/Controllers/GivenPriceController.php');
+$applyDate = "2023-11-02 20:52:41";
+$additionRate = 2;
 
 if ($isValidCustomer) {
     if ($finalResult) {
@@ -46,7 +48,19 @@ if ($isValidCustomer) {
                                         echo "<p class ='text-red-600' data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>کد اشتباه</p>";
                                     } else {
                                         if ($max && current($existing[$code])['givenPrice']) {
-                                            echo trim(current(current($existing[$code])['givenPrice'])['price']) !== 'موجود نیست' ? "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . current(current($existing[$code])['givenPrice'])['price'] . "</p>" : "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
+
+                                            $target = current(current($existing[$code])['givenPrice']);
+                                            $priceDate = $target['created_at'];
+
+                                            $finalPrice = trim(current(current($existing[$code])['givenPrice'])['price']);
+
+
+                                            if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
+                                                $rawGivenPrice = $target['price'];
+                                                $finalPrice = applyDollarRate($rawGivenPrice);
+                                            endif; //
+
+                                            echo $finalPrice !== 'موجود نیست' ? "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . $finalPrice . "</p>" : "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
                                         } else if ($max) {
                                             echo "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'class ='text-green-400'>نیاز به قیمت</p>";
                                         } else if ($max == 0) {

@@ -24,7 +24,7 @@ function filterCode($message)
 
     $finalCodes = array_map(function ($item) {
         $item = explode(' ', $item);
-        if (count($item) >=2) {
+        if (count($item) >= 2) {
             $partOne = $item[0];
             $partTwo = $item[1];
             if (!preg_match('/[a-zA-Z]{4,}/i', $partOne) && !preg_match('/[a-zA-Z]{4,}/i', $partTwo)) {
@@ -107,4 +107,35 @@ function convertToPersian($number)
     }
 
     return $persianNumber;
+}
+
+function applyDollarRate($price)
+{
+    // Define a regular expression pattern to match numbers with optional forward slashes
+    $pattern = '/(\d+(?:\/\d+)?)/';
+
+    // Use preg_replace_callback to modify each matched number
+    $modifiedString = preg_replace_callback($pattern, function ($matches) {
+        // Extract the matched number, removing any forward slashes
+        $number = str_replace('/', '', $matches[1]);
+
+        // Increase the matched number by 2%
+        $modifiedNumber = $number + ($number * 0.02); // Increase by 2%
+
+        // Round the number to the nearest multiple of 10
+        $roundedNumber = round($modifiedNumber / 10) * 10;
+
+        return $roundedNumber;
+    }, $price);
+
+    return $modifiedString;
+}
+
+
+
+function checkDateIfOkay($applyDate, $priceDate)
+{
+    $applyDate = date($applyDate);
+    $priceDate = date($priceDate);
+    return $priceDate <= $applyDate;
 }
