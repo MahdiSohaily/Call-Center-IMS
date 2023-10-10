@@ -284,7 +284,38 @@ if ($isValidCustomer) :
                                                             </tr>
                                                         </thead>
                                                         <tbody id="price-<?= $partNumber ?>">
-                                                            <?php if ($givenPrice !== null) {
+                                                            <?php $finalPriceForm = null;
+                                                            if ($givenPrice !== null && count($givenPrice) > 0) {
+                                                                $target = current($givenPrice);
+                                                                $priceDate = $target['created_at'];
+                                                                if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
+                                                                    $rawGivenPrice = $target['price'];
+
+                                                                    $finalPriceForm = applyDollarRate($rawGivenPrice);
+                                                            ?>
+                                                                    <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
+                                                                        <td>
+                                                                        </td>
+                                                                        <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                            <?php echo $target['price'] === null ? 'ندارد' :  $finalPriceForm ?>
+                                                                        </td>
+                                                                        <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                            افزایش قیمت <?= $additionRate ?> در صد
+                                                                        </td>
+                                                                        <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
+                                                                            <?php echo array_key_exists("partnumber", $target) ? $target['partnumber'] : '' ?>
+                                                                        </td>
+                                                                        <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                            <?php if (!array_key_exists("ordered", $target)) {
+                                                                            ?>
+                                                                                <img class="userImage" src="../../userimg/<?php echo $target['userID'] ?>.jpg" alt="userimage">
+                                                                            <?php
+                                                                            }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php
+                                                                endif;
                                                                 foreach ($givenPrice as $price) {
                                                                     if ($price['price'] !== null && $price['price'] !== '') {
                                                                         if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
