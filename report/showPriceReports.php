@@ -391,27 +391,29 @@ if ($isValidCustomer) {
                                                 </tr>
                                             </thead>
                                             <tbody id="price-<?php echo $partNumber ?>">
-                                                <?php if ($givenPrice !== null && count($givenPrice) > 0) {
+                                                <?php
+                                                $finalPriceForm = null;
+                                                if ($givenPrice !== null && count($givenPrice) > 0) {
                                                     $target = current($givenPrice);
                                                     $priceDate = $target['created_at'];
                                                     if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                         $rawGivenPrice = $target['price'];
 
-                                                        $finalPrice = applyDollarRate($rawGivenPrice);
+                                                        $finalPriceForm = applyDollarRate($rawGivenPrice);
                                                 ?>
                                                         <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
                                                             <td>
                                                             </td>
-                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
-                                                                <?php echo $target['price'] === null ? 'ندارد' :  $finalPrice ?>
+                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                <?php echo $target['price'] === null ? 'ندارد' :  $finalPriceForm ?>
                                                             </td>
-                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                 افزایش قیمت <?= $additionRate ?> در صد
                                                             </td>
-                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
+                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
                                                                 <?php echo array_key_exists("partnumber", $target) ? $target['partnumber'] : '' ?>
                                                             </td>
-                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                 <?php if (!array_key_exists("ordered", $target)) {
                                                                 ?>
                                                                     <img class="userImage" src="../../userimg/<?php echo $target['userID'] ?>.jpg" alt="userimage">
@@ -520,7 +522,15 @@ if ($isValidCustomer) {
                                                 <label class="block font-medium text-sm text-gray-700">
                                                     قیمت
                                                 </label>
-                                                <input value="<?= $finalPrice ? $finalPrice : current($givenPrice)['price'] ?>" onkeyup="update_price(this)" data-target="<?= $relation_id ?>" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
+                                                <?php
+                                                $value = null;
+                                                if ($finalPriceForm) {
+                                                    $value = $finalPriceForm;
+                                                } else if (current($givenPrice)) {
+                                                    $value = current($givenPrice)['price'];
+                                                }
+                                                ?>
+                                                <input value="<?= $value ?>" onkeyup="update_price(this)" data-target="<?= $relation_id ?>" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
                                                 <p class="mt-2"></p>
                                             </div>
 
