@@ -15,7 +15,6 @@ function getDollarRateInfo()
     return $rate;
 }
 
-// helper functions function filterCode($elementValue)
 function filterCode($message)
 {
     if (empty($message)) {
