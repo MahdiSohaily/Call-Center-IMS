@@ -126,25 +126,41 @@ function convertToPersian($number)
 
 function applyDollarRate($price)
 {
-    // Define a regular expression pattern to match numbers with optional forward slashes
-    $pattern = '/(\d+(?:\/\d+)?)/';
+    // Split the input string into words using space as the delimiter
+    $words = explode(' ', $price);
 
-    // Use preg_replace_callback to modify each matched number
-    $modifiedString = preg_replace_callback($pattern, function ($matches) {
-        // Extract the matched number, removing any forward slashes
-        $number = str_replace('/', '', $matches[1]);
+    // Iterate through the words and modify numbers with optional forward slashes
+    foreach ($words as &$word) {
+        // Define a regular expression pattern to match numbers with optional forward slashes
+        $pattern = '/(\d+(?:\/\d+)?)/';
 
-        // Increase the matched number by 2%
-        $modifiedNumber = $number + (($number *  $GLOBALS['additionRate']) / 100); // Increase by 2%
+        // Check if the word matches the pattern
+        if (preg_match($pattern, $word)) {
+            // Extract the matched number, removing any forward slashes
+            $number = preg_replace('/\//', '', $word);
 
-        // Round the number to the nearest multiple of 10
-        $roundedNumber = round($modifiedNumber / 10) * 10;
+            // Check if the number contains only digits and optional slashes
+            if (ctype_digit($number)) {
+                // Increase the matched number by 2%
+                $modifiedNumber = $number + (($number * $GLOBALS['additionRate']) / 100); // Increase by 2%
 
-        return $roundedNumber;
-    }, $price);
+                // Round the number to the nearest multiple of 10
+                $roundedNumber = round($modifiedNumber / 10) * 10;
+
+                // Replace the word with the modified number
+                $word = str_replace($number, $roundedNumber, $word);
+            }
+        }
+    }
+
+    // Reconstruct the modified string by joining the words with spaces
+    $modifiedString = implode(' ', $words);
 
     return $modifiedString;
 }
+
+
+
 
 function checkDateIfOkay($applyDate, $priceDate)
 {
