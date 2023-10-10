@@ -104,22 +104,106 @@ if (isset($_POST['name'])) {
     $password = $_POST['password'];
     $type = $_POST['type'];
 
-    $authority = '{"usersManagement":false,"khorojkala-index":false,"vorodkala-index":false,"khorojkala-report":false,"vorodkala-report":false}';
+    $authority = '{
+        "usersManagement":false,
+        "khorojkala-index":false,
+        "vorodkala-index":false,
+        "khorojkala-report":false,
+        "vorodkala-report":false,
+        "transfer_index":false,
+        "transfer_report":false,
+        "goodLimitReport":false,
+        "goodLimitReportAll":false,
+        "shomaresh-index":false,
+        "telegramProcess":false,
+        "givePrice":false,
+        "showRates":false,
+        "relationships":false,
+        "defineExchangeRate":false,
+        "createUserProfile":false,
+    }';
     switch ($type) {
         case '1':
-            $authority = '{"usersManagement":false,"khorojkala-index":false,"vorodkala-index":false,"khorojkala-report":false,"vorodkala-report":false}';
+            $authority = '{
+                "usersManagement":false,
+                "khorojkala-index":false,
+                "vorodkala-index":false,
+                "khorojkala-report":true,
+                "vorodkala-report":true,
+                "transfer_index":false,
+                "transfer_report":false,
+                "goodLimitReport":false,
+                "goodLimitReportAll":false,
+                "shomaresh-index":false,
+                "telegramProcess":false,
+                "givePrice":true,
+                "showRates":false,
+                "relationships":false,
+                "defineExchangeRate":false,
+                "createUserProfile":false,
+            }';
             break;
         case '2':
-            $authority = '{"usersManagement":false,"khorojkala-index":false,"vorodkala-index":false,"khorojkala-report":false,"vorodkala-report":false}';
+            $authority = '
+            {
+                "usersManagement":false,
+                "khorojkala-index":true,
+                "vorodkala-index":true,
+                "khorojkala-report":true,
+                "vorodkala-report":true,
+                "transfer_index":false,
+                "transfer_report":false,
+                "goodLimitReport":false,
+                "goodLimitReportAll":false,
+                "shomaresh-index":false,
+                "telegramProcess":false,
+                "givePrice":false,
+                "showRates":false,
+                "relationships":false,
+                "defineExchangeRate":false,
+                "createUserProfile":false,
+            }';
             break;
         case '3':
-            $authority = '{"usersManagement":false,"khorojkala-index":false,"vorodkala-index":false,"khorojkala-report":false,"vorodkala-report":false}';
+            $authority = '
+            {
+                "usersManagement":false,
+                "khorojkala-index":true,
+                "vorodkala-index":true,
+                "khorojkala-report":true,
+                "vorodkala-report":true,
+                "transfer_index":true,
+                "transfer_report":true,
+                "goodLimitReport":true,
+                "goodLimitReportAll":true,
+                "shomaresh-index":true,
+                "telegramProcess":false,
+                "givePrice":false,
+                "showRates":false,
+                "relationships":false,
+                "defineExchangeRate":false,
+                "createUserProfile":false,
+            }';
             break;
         case '4':
-            $authority = '{"usersManagement":false,"khorojkala-index":false,"vorodkala-index":false,"khorojkala-report":false,"vorodkala-report":false}';
-            break;
-        case '5':
-            $authority = '{"usersManagement":true,"khorojkala-index":true,"vorodkala-index":true,"khorojkala-report":true,"vorodkala-report":true}';
+            $authority = '{
+                "usersManagement":true,
+                "khorojkala-index":true,
+                "vorodkala-index":true,
+                "khorojkala-report":true,
+                "vorodkala-report":true,
+                "transfer_index":true,
+                "transfer_report":true,
+                "goodLimitReport":true,
+                "goodLimitReportAll":true,
+                "shomaresh-index":true,
+                "telegramProcess":true,
+                "givePrice":true,
+                "showRates":true,
+                "relationships":true,
+                "defineExchangeRate":true,
+                "createUserProfile":true,
+            }';
             break;
     }
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);

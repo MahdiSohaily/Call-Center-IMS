@@ -39,6 +39,36 @@ require_once './app/Controllers/UserManagementController.php';
                         گزارش ورود
                     </th>
                     <th scope="col" class="text-white p-2">
+                        انتقال به انبار
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        گزارش انتقالات
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        نیاز به انتقال
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        گزارش کسرات
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        انبار گردانی
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        تلگرام
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        قیمت دستوری
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        نرخ ارز
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        رابطه اجناس
+                    </th>
+                    <th scope="col" class="text-white p-2">
+                        دلار جدید
+                    </th>
+                    <th scope="col" class="text-white p-2">
                         عملیات
                     </th>
                 </tr>
@@ -63,7 +93,6 @@ require_once './app/Controllers/UserManagementController.php';
                         <td class='p-2 rtl'>
                             <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['usersManagement'] ? 'checked' : '' ?> data-authority="usersManagement" data-user='<?= $user['id'] ?>'>
                         </td>
-
                         <td class='p-2 rtl'>
                             <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['khorojkala-index'] ? 'checked' : '' ?> data-authority="khorojkala-index" data-user='<?= $user['id'] ?>'>
                         </td>
@@ -76,6 +105,37 @@ require_once './app/Controllers/UserManagementController.php';
                         <td class='p-2 rtl'>
                             <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['vorodkala-report'] ? 'checked' : '' ?> data-authority="vorodkala-report" data-user='<?= $user['id'] ?>'>
                         </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['transfer_index'] ? 'checked' : '' ?> data-authority="transfer_index" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['transfer_report'] ? 'checked' : '' ?> data-authority="transfer_report" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['goodLimitReport'] ? 'checked' : '' ?> data-authority="goodLimitReport" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['goodLimitReportAll'] ? 'checked' : '' ?> data-authority="goodLimitReportAll" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['shomaresh-index'] ? 'checked' : '' ?> data-authority="shomaresh-index" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['telegramProcess'] ? 'checked' : '' ?> data-authority="telegramProcess" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['givePrice'] ? 'checked' : '' ?> data-authority="givePrice" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['showRates'] ? 'checked' : '' ?> data-authority="showRates" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['relationships'] ? 'checked' : '' ?> data-authority="relationships" data-user='<?= $user['id'] ?>'>
+                        </td>
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['defineExchangeRate'] ? 'checked' : '' ?> data-authority="defineExchangeRate" data-user='<?= $user['id'] ?>'>
+                        </td>
+
                         <td class='p-2 rtl'>
                             <i onclick="deleteUser(this)" data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-red-600 hover:text-red-800">delete_forever</i>
                         </td>

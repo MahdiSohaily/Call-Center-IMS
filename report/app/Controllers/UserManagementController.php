@@ -12,9 +12,3 @@ if ($result->num_rows > 0) {
         array_push($users, $row);
     }
 }
-
-// $data = '{"usersManagement":true,"khorojkala-index":true,"vorodkala-index":true,"khorojkala-report":true,"vorodkala-report":true}';
-// foreach ($users as $user) {
-//     $users_sql = "INSERT INTO yadakshop1402.authorities (user_id, user_authorities) VALUES ('" . $user['id'] . "', '" . $data . "')";
-//     $result = $conn->query($users_sql);
-// }
