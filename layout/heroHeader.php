@@ -327,7 +327,13 @@ $title = '';
 
                     <div class=" flex items-top p-2">
                         <i onclick="toggleTV()" class="material-icons hover:cursor-pointer text-gray-500">branding_watermark</i>
-                        <img class="userImage mx-2" src="../userimg/<?php echo $_SESSION['id'] ?>.jpg" alt="userimage">
+                        <?php
+                        $profile = '../userimg/default.png';
+                        if (file_exists("../userimg/" . $_SESSION['id'] . ".jpg")) {
+                            $profile = "../userimg/" . $_SESSION['id'] . ".jpg";
+                        }
+                        ?>
+                        <img class="userImage mx-2" src="<?= $profile ?>" alt="userimage">
                         <a id="active" class="hidden" href="./report/notification.php">
                             <i class="material-icons hover:cursor-pointer notify ">notifications_active</i>
                         </a>
