@@ -9,7 +9,7 @@ require_once('./views/Layouts/header.php');
         </h2>
     </div>
     <div class="rtl">
-        <form action="" method="post">
+        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
             <div class="grid grid-cols-6 gap-6">
                 <div class="col-span-6 sm:col-span-4">
@@ -43,7 +43,7 @@ require_once('./views/Layouts/header.php');
                         <span class="text-red-500">*</span>
                     </label>
                     <i onclick="togglePass(this)" class="material-icons cursor-pointer" style="position: absolute; left:5px; top: 50%">remove_red_eye</i>
-                    <input required name="mobis" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="mobis" type="password" />
+                    <input required name="mobis" minlength="5" maxlength="20" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="mobis" type="password" />
                 </div>
                 <!-- Korea section -->
                 <div class="col-span-6 sm:col-span-4">
