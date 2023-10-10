@@ -487,7 +487,7 @@ if ($isValidCustomer) :
                                                                     } ?>
                                                                 <?php } else { ?>
                                                                     <tr class="min-w-full mb-4 border-b-2 border-white">
-                                                                        <td colspan="3" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
+                                                                        <td colspan="5" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
                                                                             !! موردی برای نمایش وجود ندارد
                                                                         </td>
                                                                     </tr>
@@ -505,7 +505,15 @@ if ($isValidCustomer) :
                                                             <label class="block font-medium text-sm text-gray-700">
                                                                 قیمت
                                                             </label>
-                                                            <input value="<?= current($givenPrice) ? current($givenPrice)['price'] : '' ?>" onkeyup="update_price(this)" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?= $partNumber ?>-price" data-code="<?= $code ?>" type="text" />
+                                                            <?php
+                                                            $value = null;
+                                                            if ($finalPriceForm) {
+                                                                $value = $finalPriceForm;
+                                                            } else if (current($givenPrice)) {
+                                                                $value = current($givenPrice)['price'];
+                                                            }
+                                                            ?>
+                                                            <input value="<?= $value ?>" onkeyup="update_price(this)" data-target="<?= $relation_id ?>" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
                                                             <p class="mt-2"></p>
                                                         </div>
 
