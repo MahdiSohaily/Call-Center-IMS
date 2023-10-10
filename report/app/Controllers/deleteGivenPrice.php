@@ -3,9 +3,6 @@ session_start();
 require_once('../../database/connect.php');
 require_once('../../utilities/helper.php');
 
-$applyDate = "2023-11-02 20:52:41";
-$additionRate = 2;
-
 if (isset($_POST['delete_price'])) {
     $id = $_POST['id'];
     $partNumber = $_POST['partNumber'];
@@ -69,7 +66,7 @@ if (isset($_POST['delete_price'])) {
                     <?php
                 }
                 if (array_key_exists("id", $price)) : ?>
-                        <td onclick="deleteGivenPrice(this)"  data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                        <td onclick="deleteGivenPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
                             <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
                         </td>
                     <?php else : ?>

@@ -3,9 +3,6 @@ session_start();
 require_once('../../database/connect.php');
 require_once('../../utilities/helper.php');
 
-$applyDate = "2023-11-02 20:52:41";
-$additionRate = 2;
-
 if (isset($_POST['store_price'])) {
     $partNumber = $_POST['partNumber'];
     $price = $_POST['price'];
