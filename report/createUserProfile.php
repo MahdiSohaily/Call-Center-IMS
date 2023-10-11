@@ -104,122 +104,135 @@ if (isset($_POST['name'])) {
     $password = $_POST['password'];
     $type = $_POST['type'];
 
-    $authority = '{
-        "usersManagement":false,
-        "khorojkala-index":false,
-        "vorodkala-index":false,
-        "khorojkala-report":false,
-        "vorodkala-report":false,
-        "transfer_index":false,
-        "transfer_report":false,
-        "goodLimitReport":false,
-        "goodLimitReportAll":false,
-        "shomaresh-index":false,
-        "telegramProcess":false,
-        "givePrice":false,
-        "showRates":false,
-        "relationships":false,
-        "defineExchangeRate":false,
-        "createUserProfile":false,
-    }';
+    $authority = [
+        "usersManagement" => false,
+        "khorojkala-index" => false,
+        "vorodkala-index" => false,
+        "khorojkala-report" => false,
+        "vorodkala-report" => false,
+        "transfer_index" => false,
+        "transfer_report" => false,
+        "goodLimitReport" => false,
+        "goodLimitReportAll" => false,
+        "shomaresh-index" => false,
+        "telegramProcess" => false,
+        "givePrice" => false,
+        "showRates" => false,
+        "relationships" => false,
+        "defineExchangeRate" => false,
+        "createUserProfile" => false,
+    ];
     switch ($type) {
         case '1':
-            $authority = '{
-                "usersManagement":false,
-                "khorojkala-index":false,
-                "vorodkala-index":false,
-                "khorojkala-report":true,
-                "vorodkala-report":true,
-                "transfer_index":false,
-                "transfer_report":false,
-                "goodLimitReport":false,
-                "goodLimitReportAll":false,
-                "shomaresh-index":false,
-                "telegramProcess":false,
-                "givePrice":true,
-                "showRates":false,
-                "relationships":false,
-                "defineExchangeRate":false,
-                "createUserProfile":false,
-            }';
+            $authority = [
+                "usersManagement" => false,
+                "khorojkala-index" => false,
+                "vorodkala-index" => false,
+                "khorojkala-report" => true,
+                "vorodkala-report" => true,
+                "transfer_index" => false,
+                "transfer_report" => false,
+                "goodLimitReport" => false,
+                "goodLimitReportAll" => false,
+                "shomaresh-index" => false,
+                "telegramProcess" => false,
+                "givePrice" => true,
+                "showRates" => false,
+                "relationships" => false,
+                "defineExchangeRate" => false,
+                "createUserProfile" => false,
+            ];
             break;
         case '2':
-            $authority = '
-            {
-                "usersManagement":false,
-                "khorojkala-index":true,
-                "vorodkala-index":true,
-                "khorojkala-report":true,
-                "vorodkala-report":true,
-                "transfer_index":false,
-                "transfer_report":false,
-                "goodLimitReport":false,
-                "goodLimitReportAll":false,
-                "shomaresh-index":false,
-                "telegramProcess":false,
-                "givePrice":false,
-                "showRates":false,
-                "relationships":false,
-                "defineExchangeRate":false,
-                "createUserProfile":false,
-            }';
+            $authority = [
+                "usersManagement" => false,
+                "khorojkala-index" => true,
+                "vorodkala-index" => true,
+                "khorojkala-report" => true,
+                "vorodkala-report" => true,
+                "transfer_index" => false,
+                "transfer_report" => false,
+                "goodLimitReport" => false,
+                "goodLimitReportAll" => false,
+                "shomaresh-index" => false,
+                "telegramProcess" => false,
+                "givePrice" => false,
+                "showRates" => false,
+                "relationships" => false,
+                "defineExchangeRate" => false,
+                "createUserProfile" => false,
+            ];
             break;
         case '3':
-            $authority = '
-            {
-                "usersManagement":false,
-                "khorojkala-index":true,
-                "vorodkala-index":true,
-                "khorojkala-report":true,
-                "vorodkala-report":true,
-                "transfer_index":true,
-                "transfer_report":true,
-                "goodLimitReport":true,
-                "goodLimitReportAll":true,
-                "shomaresh-index":true,
-                "telegramProcess":false,
-                "givePrice":false,
-                "showRates":false,
-                "relationships":false,
-                "defineExchangeRate":false,
-                "createUserProfile":false,
-            }';
+            $authority = [
+                "usersManagement" => false,
+                "khorojkala-index" => true,
+                "vorodkala-index" => true,
+                "khorojkala-report" => true,
+                "vorodkala-report" => true,
+                "transfer_index" => true,
+                "transfer_report" => true,
+                "goodLimitReport" => true,
+                "goodLimitReportAll" => true,
+                "shomaresh-index" => true,
+                "telegramProcess" => false,
+                "givePrice" => false,
+                "showRates" => false,
+                "relationships" => false,
+                "defineExchangeRate" => false,
+                "createUserProfile" => false,
+            ];
             break;
         case '4':
-            $authority = '{
-                "usersManagement":true,
-                "khorojkala-index":true,
-                "vorodkala-index":true,
-                "khorojkala-report":true,
-                "vorodkala-report":true,
-                "transfer_index":true,
-                "transfer_report":true,
-                "goodLimitReport":true,
-                "goodLimitReportAll":true,
-                "shomaresh-index":true,
-                "telegramProcess":true,
-                "givePrice":true,
-                "showRates":true,
-                "relationships":true,
-                "defineExchangeRate":true,
-                "createUserProfile":true,
-            }';
+            $authority = [
+                "usersManagement" => true,
+                "khorojkala-index" => true,
+                "vorodkala-index" => true,
+                "khorojkala-report" => true,
+                "vorodkala-report" => true,
+                "transfer_index" => true,
+                "transfer_report" => true,
+                "goodLimitReport" => true,
+                "goodLimitReportAll" => true,
+                "shomaresh-index" => true,
+                "telegramProcess" => true,
+                "givePrice" => true,
+                "showRates" => true,
+                "relationships" => true,
+                "defineExchangeRate" => true,
+                "createUserProfile" => true,
+            ];
             break;
     }
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+    try {
+        $result = false;
+        $conn->begin_transaction();
+        try {
+            $sql = "INSERT INTO yadakshop1402.users (username, password, roll, internal, ip, name, family, isLogin) 
+        VALUES ('$username', '$hash_pass', '10', '', '', '$name', 'family', '0')";
 
-    $sql = "INSERT INTO yadakshop1402.users (username, password, roll, internal, ip, name, family, isLogin) 
-            VALUES ('$username', '$hash_pass', '10', '', '', '$name', 'family', '0')";
-    if ($conn->query($sql) === TRUE) {
-        $last_id = $conn->insert_id;
+            $result = $conn->query($sql);
+        } catch (\Throwable $th) {
+            echo "نام کاربری تکرای است";
+        }
 
-        $authority_sql = "INSERT INTO yadakshop1402.authorities (user_id, user_authorities, modified) 
-                        VALUES ('$last_id', '$authority', '0')";
-        $conn->query($authority_sql);
+        if ($result === TRUE) {
+            $last_id = $conn->insert_id;
+            // Convert the array to a JSON string
+            $userAuthoritiesJson = json_encode($authority);
+            $authority_sql = "INSERT INTO yadakshop1402.authorities (user_id, user_authorities, modified) 
+                        VALUES ('$last_id', '$userAuthoritiesJson', 0)";
 
-        uploadFile($last_id, $_FILES['profile']);
+            $conn->query($authority_sql);
 
-        $success = true;
+            isset($_FILES['profile']) ?? uploadFile($last_id, $_FILES['profile']);
+
+            $success = true;
+        }
+        $conn->commit();
+    } catch (\Throwable $th) {
+        throw $th;
     }
 }
 
