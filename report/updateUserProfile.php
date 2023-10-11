@@ -3,6 +3,8 @@ require_once('./views/Layouts/header.php');
 $user_id = $_GET['user'];
 $user = getUser($conn, $user_id);
 
+$success = $_GET['success'] ?? false;
+
 function getUser($conn, int $id)
 {
     $sql = "SELECT * FROM yadakshop1402.users WHERE id = $id";
@@ -96,6 +98,8 @@ if ($user) {
                     <img class="w-32" src="<?= $profile ?>" alt="userimage">
                 </div>
             </form>
+            <?php if ($success)
+                echo 'عملیات موفقانه صورت گرفت' ?>
         </div>
     </div>
     <script>

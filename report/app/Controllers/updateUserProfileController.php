@@ -138,6 +138,7 @@ if (isset($_POST['name']) && !empty($_POST['name'])) {
     } catch (\Throwable $th) {
         throw $th;
     }
+    header('Location: ../../updateUserProfile.php?user=' . $id . '&success=true');
 }
 
 
