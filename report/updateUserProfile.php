@@ -95,7 +95,7 @@ if ($user) {
                         $profile = "../../userimg/" . $user_id . ".jpg";
                     }
                     ?>
-                    <img class="w-32" src="<?= $profile ?>" alt="userimage">
+                    <img id="imagePreview" class="w-48" src="<?= $profile ?>" alt="userimage">
                 </div>
             </form>
             <?php if ($success)
@@ -114,6 +114,34 @@ if ($user) {
 
             target.type = 'password';
         }
+
+        // Get references to the input and image elements
+        const imageInput = document.getElementById('profile');
+        const imagePreview = document.getElementById('imagePreview');
+
+        // Add an event listener to the input element
+        imageInput.addEventListener('change', function() {
+            // Check if a file is selected
+            if (imageInput.files && imageInput.files[0]) {
+                // Get the selected file
+                const selectedImage = imageInput.files[0];
+
+                // Create a FileReader to read the image file
+                const reader = new FileReader();
+
+                // Define a callback function to be executed when the image is loaded
+                reader.onload = function(e) {
+                    // Set the source of the image element to the loaded image data
+                    imagePreview.src = e.target.result;
+                };
+
+                // Read the selected image file as a data URL
+                reader.readAsDataURL(selectedImage);
+            } else {
+                // Clear the image preview if no file is selected
+                imagePreview.src = '';
+            }
+        });
     </script>
 <?php
 } else {
