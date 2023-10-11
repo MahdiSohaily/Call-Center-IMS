@@ -85,11 +85,11 @@ if ($user) {
                     </div>
                     <?php
                     $profile = '../../userimg/default.png';
-                    if (file_exists("../../userimg/" . $_SESSION['id'] . ".jpg")) {
-                        $profile = "../../userimg/" . $_SESSION['id'] . ".jpg";
+                    if (file_exists("../../userimg/" . $user_id . ".jpg")) {
+                        $profile = "../../userimg/" . $user_id . ".jpg";
                     }
                     ?>
-                    <img class=" mx-2" src="<?= $profile ?>" alt="userimage">
+                    <img class="w-32" src="<?= $profile ?>" alt="userimage">
                 </div>
             </form>
         </div>
