@@ -139,7 +139,10 @@ require_once './app/Controllers/UserManagementController.php';
                         </td>
 
                         <td class='p-2 rtl'>
-                            <i onclick="deleteUser(this)" data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-red-600 hover:text-red-800">delete_forever</i>
+                            <a href="./updateUserProfile.php?user=<?= $user['id'] ?>">
+                                <i data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-indigo-600 hover:text-indigo-800">edit</i>
+                            </a>
+                            <i onclick="deleteUser(this)" data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-red-600 hover:text-red-800">do_not_disturb_on</i>
                         </td>
                     </tr>
                 <?php
