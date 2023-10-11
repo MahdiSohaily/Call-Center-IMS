@@ -2,6 +2,8 @@
 require_once('./views/Layouts/header.php');
 require_once './app/Controllers/UserManagementController.php';
 ?>
+<style>
+</style>
 <div class="bg-white rounded-lg shadow-md m-5">
     <div class="rtl flex items-center justify-between p-3">
         <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
@@ -10,70 +12,70 @@ require_once './app/Controllers/UserManagementController.php';
         </h2>
         <a href="./createUserProfile.php" class="bg-success text-white py-2 px-3 rounded-lg">ثبت کاربر جدید</a>
     </div>
-    <div class="p-3">
-        <table class="rtl min-w-full text-sm font-light">
-            <thead class="font-medium dark:border-neutral-500">
+    <div class="p-3 table-wrapper">
+        <table class="table-fixed rtl min-w-full text-sm font-light">
+            <thead id="blur" class="font-medium sticky top-20 dark:border-neutral-500" style="z-index: 99999999999999999999999999;">
                 <tr class="bg-violet-600">
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         شماره
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         نام
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         نام کاربری
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         مدیریت کاربران
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         ثبت خروج کالا
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         ثبت ورود کالا
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         گزارش خروج
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         گزارش ورود
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         انتقال به انبار
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         گزارش انتقالات
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         نیاز به انتقال
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         گزارش کسرات
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         انبار گردانی
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         تلگرام
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         قیمت دستوری
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         نرخ ارز
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         رابطه اجناس
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         دلار جدید
                     </th>
-                    <th scope="col" class="text-white p-2">
+                    <th scope="col" class="text-white px-2 py-3">
                         عملیات
                     </th>
                 </tr>
             </thead>
-            <tbody id="results">
+            <tbody id="results" class="divide-y divide-gray-300">
                 <?php
                 $counter = 1;
                 foreach ($users as $user) :
