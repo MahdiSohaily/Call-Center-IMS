@@ -37,9 +37,8 @@ if ($user) {
                         <div class="col-span-6 sm:col-span-4">
                             <label class="block font-medium text-sm text-gray-700">
                                 نام کاربری
-                                <span class="text-red-500">*</span>
                             </label>
-                            <input value="<?= $user['username'] ?>" required name="username" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="weight" type="text" />
+                            <input value="<?= $user['username'] ?>" name="username" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="weight" type="text" />
                             <p class="mt-2"> </p>
                         </div>
                         <div class="col-span-6 sm:col-span-4">
@@ -53,16 +52,14 @@ if ($user) {
                         <div class="col-span-6 sm:col-span-4 relative">
                             <label class="block font-medium text-sm text-gray-700">
                                 رمزعبور
-                                <span class="text-red-500">*</span>
                             </label>
                             <i onclick="togglePass(this)" class="material-icons cursor-pointer" style="position: absolute; left:5px; top: 50%">remove_red_eye</i>
-                            <input required name="password" minlength="5" maxlength="20" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="mobis" type="password" />
+                            <input name="password" minlength="5" maxlength="20" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="mobis" type="password" />
                         </div>
                         <!-- Korea section -->
                         <div class="col-span-6 sm:col-span-4">
                             <label class="block font-medium text-sm text-gray-700">
                                 نوعیت حساب کاربری
-                                <span class="text-red-500">*</span>
                             </label>
                             <select name="type" class="border-1 p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="status">
                                 <option value="1" class="text-sm">
@@ -118,6 +115,7 @@ if (isset($_POST['name'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $type = $_POST['type'];
+    $roll = 10;
 
     $authority = [
         "usersManagement" => false,
@@ -199,6 +197,7 @@ if (isset($_POST['name'])) {
             ];
             break;
         case '4':
+            $roll = 1;
             $authority = [
                 "usersManagement" => true,
                 "khorojkala-index" => true,
@@ -224,9 +223,8 @@ if (isset($_POST['name'])) {
         $result = false;
         $conn->begin_transaction();
         try {
-            $sql = "INSERT INTO yadakshop1402.users (username, password, roll, internal, ip, name, family, isLogin) 
-        VALUES ('$username', '$hash_pass', '10', '', '', '$name', 'family', '0')";
-
+            $sql = "UPDATE yadakshop1402.users SET username ='$username', password = '$hash_pass', roll = $roll,
+                    name = '$name', family = '$family') WHERE id = '$id";
             $result = $conn->query($sql);
         } catch (\Throwable $th) {
             echo "نام کاربری تکرای است";
