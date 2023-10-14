@@ -394,7 +394,7 @@ if ($isValidCustomer) {
                                         endif;
                                     ?>
                                         <div class="p-3 rtl ">
-                                            <form id="<?= $partNumber ?>" action="" class="bg-gray-200 rounded-md p-3" method="post">
+                                            <form id="f-<?= $partNumber ?>" action="" class="bg-gray-200 rounded-md p-3" method="post">
                                                 <input id="id" type="hidden" name="id" value="<?= $id ?>" />
                                                 <input id="type" type="hidden" name="type" value="<?= $type ?>" />
                                                 <input id="operation" type="hidden" name="operation" value="<?= $mode ?>" />
@@ -442,10 +442,11 @@ if ($isValidCustomer) {
                                 <script>
                                     function setLimitAlert(e) {
                                         e.preventDefault();
-                                        const formId = e.target.getAttribute('data-form');
+                                        const formId = 'f-' + e.target.getAttribute('data-form');
                                         const targetForm = document.getElementById(formId);
 
                                         const id = targetForm.querySelector('#id').value;
+
                                         const type = targetForm.querySelector('#type').value;
                                         const operation = targetForm.querySelector('#operation').value;
                                         const original = targetForm.querySelector('#original').value;
@@ -461,8 +462,6 @@ if ($isValidCustomer) {
                                         params.append('fake', fake);
                                         params.append('original_all', original_all);
                                         params.append('fake_all', fake_all);
-
-                                        console.log(JSON.stringify(params));
 
                                         axios
                                             .post("./saveGoodLimitAJAX.php", params)
