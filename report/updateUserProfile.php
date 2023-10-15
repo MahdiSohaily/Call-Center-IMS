@@ -16,10 +16,10 @@ if ($user) {
 
 ?>
     <div class="bg-white rounded-lg shadow-md m-5 w-1/2 mx-auto p-5">
-        <div class="rtl flex items-center justify-between p-3">
+        <div class="rtl flex items-center justify-between py-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <i class="material-icons font-semibold text-cyan-600">person_add</i>
-                ایجاد حساب کاربری
+                ویرایش حساب کاربری
             </h2>
         </div>
         <div class="rtl">
