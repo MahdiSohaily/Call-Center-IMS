@@ -25,10 +25,16 @@
                         continue;
                     }
             ?>
+                 <?php
+                    $profile = '../userimg/default.png';
+                    if (file_exists("../userimg/" . $id . ".jpg")) {
+                        $profile = "../userimg/" . $id . ".jpg";
+                    }
+                    ?>
                  <tr>
-                     <td><?php echo $name ?> <?php echo $family ?><img class="user-img" src="../userimg/<?php echo $id ?>.jpg" /></td>
-                     <td class="user-table-internal"><span><?php echo $internal ?></span></td>
-                     <td class="user-table-ip"><span><?php echo $ip ?></span></td>
+                     <td><?= $name ?> <?= $family ?><img class="user-img" src="<?= $profile ?>" /></td>
+                     <td class="user-table-internal"><span><?= $internal ?></span></td>
+                     <td class="user-table-ip"><span><?= $ip ?></span></td>
                  </tr>
          <?php
 
@@ -99,35 +105,35 @@
          </tr>
 
          <tr>
-             <td> <img class="user-img" src="../userimg/<?php echo getidbyinternal(101) ?>.jpg" /></td>
+             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(101) ?>.jpg" /></td>
 
-             <td><?php echo format_calling_time($total101) ?></td>
-
-         </tr>
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?php echo getidbyinternal(102) ?>.jpg" /></td>
-
-             <td><?php echo format_calling_time($total102) ?></td>
+             <td><?= format_calling_time($total101) ?></td>
 
          </tr>
          <tr>
-             <td> <img class="user-img" src="../userimg/<?php echo getidbyinternal(103) ?>.jpg" /></td>
-             <td><?php echo format_calling_time($total103) ?></td>
+             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(102) ?>.jpg" /></td>
+
+             <td><?= format_calling_time($total102) ?></td>
 
          </tr>
          <tr>
-             <td> <img class="user-img" src="../userimg/<?php echo getidbyinternal(104) ?>.jpg" /></td>
-             <td><?php echo format_calling_time($total104) ?></td>
+             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(103) ?>.jpg" /></td>
+             <td><?= format_calling_time($total103) ?></td>
 
          </tr>
          <tr>
-             <td> <img class="user-img" src="../userimg/<?php echo getidbyinternal(106) ?>.jpg" /></td>
-             <td><?php echo format_calling_time($total106) ?></td>
+             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(104) ?>.jpg" /></td>
+             <td><?= format_calling_time($total104) ?></td>
 
          </tr>
          <tr>
-             <td> <img class="user-img" src="../userimg/<?php echo getidbyinternal(107) ?>.jpg" /></td>
-             <td><?php echo format_calling_time($total107) ?></td>
+             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(106) ?>.jpg" /></td>
+             <td><?= format_calling_time($total106) ?></td>
+
+         </tr>
+         <tr>
+             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(107) ?>.jpg" /></td>
+             <td><?= format_calling_time($total107) ?></td>
 
          </tr>
 
