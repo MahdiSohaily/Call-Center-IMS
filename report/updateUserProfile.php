@@ -86,7 +86,7 @@ if ($user) {
                             <p class="mt-2"> </p>
                         </div>
                         <div class="col-span-6 sm:col-span-4">
-                            <button class="button bg-green-700 text-white py-2 px-3 rounded-lg hover:bg-green-600" type="submit">ایجاد حساب کاربری</button>
+                            <button class="button bg-green-700 text-white py-2 px-3 rounded-lg hover:bg-green-600" type="submit">ویرایش حساب کاربری</button>
                         </div>
                     </div>
                     <?php

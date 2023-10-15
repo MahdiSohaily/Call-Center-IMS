@@ -1,11 +1,11 @@
 <?php
 require_once '../../database/connect.php';
 
-if (isset($_POST['name']) && !empty($_POST['name'])) {
-    $name = $_POST['name'];
-    $family = $_POST['family'];
+if (isset($_POST['username']) && !empty($_POST['username'])) {
+    $name = trim($_POST['name']);
+    $family = trim($_POST['family']);
     $username = strtolower(trim($_POST['username']));
-    $password = $_POST['password'];
+    $password = trim($_POST['password']);
     $type = $_POST['type'];
     $id = $_POST['id'];
     $roll = 10;
@@ -119,10 +119,10 @@ if (isset($_POST['name']) && !empty($_POST['name'])) {
             if (!empty($password)) {
 
                 $sql = "UPDATE yadakshop1402.users SET username ='$username', password = '$hash_pass', roll = $roll,
-                    name = '$name', family = '$family' WHERE id = '$id'";
+                        name = '$name', family = '$family' WHERE id = '$id'";
             } else {
-                $sql = "UPDATE yadakshop1402.users SET username ='$username',roll = $roll,
-                name = '$name', family = '$family' WHERE id = '$id'";
+                $sql = "UPDATE yadakshop1402.users SET username ='$username', roll = $roll,
+                        name = '$name', family = '$family' WHERE id = '$id'";
             }
             $result = $conn->query($sql);
         } catch (\Throwable $th) {
@@ -139,16 +139,18 @@ if (isset($_POST['name']) && !empty($_POST['name'])) {
         throw $th;
     }
     header('Location: ../../updateUserProfile.php?user=' . $id . '&success=true');
+} else {
+    echo 'Error: ';
 }
 
 
 function uploadFile($last_id, $file)
 {
-    $allowed = ['png', 'jpg', 'jpeg'];
+    $allowedType = ['png', 'jpg', 'jpeg'];
 
 
     $type = explode('/', $file['type'])[1];
-    if (!in_array($type, $allowed)) {
+    if (!in_array($type, $allowedType)) {
         return false;
     }
 

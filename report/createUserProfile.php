@@ -98,10 +98,10 @@ $success = false;
 require_once('./views/Layouts/footer.php');
 
 if (isset($_POST['name'])) {
-    $name = $_POST['name'];
-    $family = $_POST['family'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $name = trim($_POST['name']) ?? '';
+    $family = trim($_POST['family']) ?? '';
+    $username = strtolower(trim($_POST['username']));
+    $password = trim($_POST['password']);
     $type = $_POST['type'];
 
     $authority = [
@@ -205,12 +205,13 @@ if (isset($_POST['name'])) {
             break;
     }
     $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+
     try {
         $result = false;
         $conn->begin_transaction();
         try {
             $sql = "INSERT INTO yadakshop1402.users (username, password, roll, internal, ip, name, family, isLogin) 
-        VALUES ('$username', '$hash_pass', '10', '', '', '$name', 'family', '0')";
+                    VALUES ('$username', '$hash_pass', '10', '', '', '$name', '$family', '0')";
 
             $result = $conn->query($sql);
         } catch (\Throwable $th) {
@@ -222,7 +223,7 @@ if (isset($_POST['name'])) {
             // Convert the array to a JSON string
             $userAuthoritiesJson = json_encode($authority);
             $authority_sql = "INSERT INTO yadakshop1402.authorities (user_id, user_authorities, modified) 
-                        VALUES ('$last_id', '$userAuthoritiesJson', 0)";
+                                VALUES ('$last_id', '$userAuthoritiesJson', 0)";
 
             $conn->query($authority_sql);
 
