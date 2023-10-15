@@ -4,7 +4,7 @@ require_once '../../database/connect.php';
 if (isset($_POST['name']) && !empty($_POST['name'])) {
     $name = $_POST['name'];
     $family = $_POST['family'];
-    $username = $_POST['username'];
+    $username = strtolower(trim($_POST['username']));
     $password = $_POST['password'];
     $type = $_POST['type'];
     $id = $_POST['id'];
