@@ -97,7 +97,7 @@ $success = false;
 <?php
 require_once('./views/Layouts/footer.php');
 
-if (isset($_POST['name'])) {
+if (isset($_POST['username'])) {
     $name = trim($_POST['name']) ?? '';
     $family = trim($_POST['family']) ?? '';
     $username = strtolower(trim($_POST['username']));
