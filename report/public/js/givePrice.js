@@ -149,7 +149,7 @@ function setPrice(element) {
   const input = document.getElementById(part + "-price");
   input.value = newPrice;
   price = newPrice;
- 
+
   const targetRelation = element.getAttribute("data-target");
   // console.log(element);
 
@@ -342,6 +342,7 @@ function telegram(e) {
   const customer_id = e.getAttribute("data-customer");
   const notification_id = document.getElementById("notification_id").value;
   const code = e.getAttribute("data-code");
+  const relation_id = e.getAttribute("data-target");
 
   const goodPrice = document.getElementById(partNumber + "-price").value;
   const resultBox = document.getElementById("price-" + partNumber);
@@ -354,6 +355,7 @@ function telegram(e) {
   params.append("notification_id", notification_id);
   params.append("price", goodPrice);
   params.append("code", code);
+  params.append("relation_id", relation_id);
 
   axios
     .post("./app/Controllers/GivenPriceAjax.php", params)
@@ -374,7 +376,7 @@ function telegram(e) {
       }
     })
     .catch(function (error) {});
-  sendMessage(customer_id, code, goodPrice);
+  // sendMessage(customer_id, code, goodPrice);
 }
 
 function sendMessage(receiver, code, price) {
