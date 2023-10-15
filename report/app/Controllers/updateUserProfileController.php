@@ -139,10 +139,7 @@ if (isset($_POST['username']) && !empty($_POST['username'])) {
         throw $th;
     }
     header('Location: ../../updateUserProfile.php?user=' . $id . '&success=true');
-} else {
-    echo 'Error: ';
 }
-
 
 function uploadFile($last_id, $file)
 {
