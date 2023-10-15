@@ -22,6 +22,7 @@ if ($isValidCustomer) :
                     $message_date = $reportResult['message_date'];
                     $fullName = $reportResult['fullName'];
                     $profile = $reportResult['profile'];
+                    $relation_ids = $finalResult['relation_id'];
 
                     foreach ($explodedCodes as $code_index => $code) {
                         $max = 0;
@@ -519,7 +520,7 @@ if ($isValidCustomer) :
 
 
                                                         <div class="rtl">
-                                                            <button onclick="telegram(this)" data-customer="<?= $customer ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
+                                                            <button onclick="telegram(this)" data-target="<?= $relation_id ?>" data-customer="<?= $customer ?>" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" type="submit" class="disabled:cursor-not-allowed  disabled:bg-gray-500 tiny-txt inline-flex items-center bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 px-2 py-2">
                                                                 ثبت قیمت
                                                             </button>
                                                         </div>

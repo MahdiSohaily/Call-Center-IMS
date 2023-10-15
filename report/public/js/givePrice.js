@@ -149,7 +149,7 @@ function setPrice(element) {
   const input = document.getElementById(part + "-price");
   input.value = newPrice;
   price = newPrice;
-
+ 
   const targetRelation = element.getAttribute("data-target");
   // console.log(element);
 

@@ -70,7 +70,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     $itemDetails = [];
     $relation_id = [];
-    $codeRelationId = [];
+    $codeRelationId = []; 
     foreach ($explodedCodes as $code) {
         if (!in_array($code, $results_array['not_exist'])) {
             $itemDetails[$code] = [];
