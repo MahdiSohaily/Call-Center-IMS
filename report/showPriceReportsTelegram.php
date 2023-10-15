@@ -22,9 +22,10 @@ if ($isValidCustomer) :
                     $message_date = $reportResult['message_date'];
                     $fullName = $reportResult['fullName'];
                     $profile = $reportResult['profile'];
-                    $relation_ids = $finalResult['relation_id'];
+                    $relation_ids = $reportResult['relation_id'];
 
                     foreach ($explodedCodes as $code_index => $code) {
+                        $relation_id =  array_key_exists($code, $relation_ids) ? $relation_ids[$code] : 'xxx';
                         $max = 0;
                         if (array_key_exists($code, $existing)) {
                             foreach ($existing[$code] as $item) {
