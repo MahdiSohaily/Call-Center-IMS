@@ -3,7 +3,7 @@ require_once('./views/Layouts/header.php');
 $success = false;
 $username_error = false;
 $type_error = false;
-$exist_file_error = true;
+$exist_file_error = false;
 
 if (isset($_POST['username'])) {
     $name = trim($_POST['name']) ?? '';
@@ -139,10 +139,11 @@ if (isset($_POST['username'])) {
             $conn->query($authority_sql);
 
             if (isset($_FILES['profile'])) {
-                uploadFile($last_id, $_FILES['profile']);
-            }
-
-            $success = true;
+                if (uploadFile($last_id, $_FILES['profile'])) {
+                    $success = true;
+                }
+            } else
+                $success = true;
         }
         $conn->commit();
     } catch (\Throwable $th) {
@@ -159,22 +160,21 @@ function uploadFile($last_id, $file)
 
         $type = explode('/', $file['type'])[1];
         if (!in_array($type, $allowed)) {
-            $type_error = true;
-           
-        }
-
-        $targetDirectory = "../../userimg/"; // Directory where you want to store the uploaded files
-        $targetFile = $targetDirectory . $last_id . "." . $type;
-
-        // Check if the file already exists
-        if (file_exists($targetFile)) {
-            $exist_file_error = true;
-        }
-        // Upload the file
-        if (move_uploaded_file($_FILES["profile"]["tmp_name"], $targetFile)) {
-            echo "File uploaded successfully.";
+            $GLOBALS['type_error'] = true;
         } else {
-            echo "Error uploading file.";
+            $targetDirectory = "../../userimg/"; // Directory where you want to store the uploaded files
+            $targetFile = $targetDirectory . $last_id . "." . $type;
+
+            // Check if the file already exists
+            if (file_exists($targetFile)) {
+                $GLOBALS['exist_file_error'] = true;
+            } else {
+                if (!move_uploaded_file($_FILES["profile"]["tmp_name"], $targetFile)) {
+                    echo "Error uploading file.";
+                }
+            }
+            // Upload the file
+
         }
     } catch (\Throwable $th) {
         throw $th;
@@ -225,7 +225,7 @@ function uploadFile($last_id, $file)
                     </label>
                     <input name="profile" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="profile" type="file" />
                     <p class="mt-2"> <?= $type_error ? '<P class="text-red-600"> تنها فایل های jpg قابل آپلود می باشد</P>' : '' ?></p>
-                    <p class="mt-2"> <?= $exist_file_error ? '<P class="text-red-600"> تنها فایل های jpg قابل آپلود می باشد</P>' : '' ?></p>
+                    <p class="mt-2"> <?= $exist_file_error ? '<P class="text-red-600">فایلی با این اسم از قبل موجود است</P>' : '' ?></p>
                 </div>
                 <!-- Mobis -->
                 <div class="col-span-6 sm:col-span-4 relative">
@@ -259,6 +259,7 @@ function uploadFile($last_id, $file)
                 </div>
                 <div class="col-span-6 sm:col-span-4">
                     <button class="button bg-green-700 text-white py-2 px-3 rounded-lg hover:bg-green-600" type="submit">ایجاد حساب کاربری</button>
+                    <?= $success ? '<p class="text-green-600">حساب کاربری موفقانه ایجاد شد</p>' : ''; ?>
                 </div>
             </div>
         </form>
