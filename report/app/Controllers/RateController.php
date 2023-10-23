@@ -14,7 +14,7 @@ if (isset($_GET['form'], $_GET['id'])) {
 if (isset($_POST['rate_price']) && ($_POST['form'] == 'create')) {
     $rate_price = $_POST['rate_price'];
     $status = $_POST['status'];
-    $selected = $_POST['selected'];
+    $selected = $_POST['selected'] ?? null;
 
     $selected = $selected == 'on' ? 1 : 0;
 
