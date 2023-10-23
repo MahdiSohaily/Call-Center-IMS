@@ -41,7 +41,7 @@ if ($isValidCustomer) :
                                     } else {
                                         echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
                                     }
-                                    echo "<span class='text-white'>{$code}</span>"
+                                    echo "<span class='text-white'>" . strtoupper($code) . "</span>"
                                     ?>
 
                                 </p>
@@ -72,7 +72,7 @@ if ($isValidCustomer) :
                                             <div class="min-w-full bg-white rounded-lg overflow-auto shadow-md mt-2">
                                                 <div class="rtl p-3">
                                                     <p style="font-size: 0.8rem;" class="text-left bg-gray-600 text-white p-2 my-3 rounded-md">
-                                                        <?= $index; ?>
+                                                        <?= strtoupper($index); ?>
                                                     </p>
                                                     <?php if ($information) { ?>
                                                         <div>
@@ -129,7 +129,7 @@ if ($isValidCustomer) :
                                                                 <tr>
                                                                     <td class="relative px-1 hover:cursor-pointer" data-part="<?= $goods[$index]['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
                                                                         <p class="text-center bold bg-gray-600 text-white px-2 py-3">
-                                                                            <?= $goods[$index]['partnumber'] ?>
+                                                                            <?= strtoupper($goods[$index]['partnumber']) ?>
                                                                         </p>
                                                                         <div class="custome-tooltip-2" id="<?= $goods[$index]['partnumber'] . '-google' ?>">
                                                                             <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?= $goods[$index]['partnumber'] ?>'>

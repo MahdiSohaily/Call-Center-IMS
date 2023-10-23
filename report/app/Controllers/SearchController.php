@@ -12,8 +12,8 @@ if (isset($_POST['pattern'])) {
 
             $partNumber = $item['partnumber'];
             $price = $item['price'];
-            $avgPrice = round(($price * 110) / 243.5);
-            $weight = round($item['weight'], 2);
+            $avgPrice = round((intval($price) * 110) / 243.5);
+            $weight = round(intval($item['weight']), 2);
             $mobis = $item['mobis'];
             $korea = $item['korea'];
             $status = null;
