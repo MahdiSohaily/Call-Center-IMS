@@ -43,7 +43,7 @@ if (isset($_POST['pattern'])) {
                         <?php
                         } else { ?> <span class='ml-11'></span>
                         <?php } ?>
-                        <?php echo $partNumber ?>
+                        <?= strtoupper($partNumber) ?>
                     </div>
                 </td>
                 <td class='whitespace-nowrap text-center px-3 py-3'>
