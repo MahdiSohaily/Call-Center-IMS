@@ -421,13 +421,13 @@ function exist($conn, $id)
 {
 
     if (count($id) == 1) {
-        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time as invoice_date,seller.name As seller_name
                 FROM (( yadakshop1402.qtybank 
                 INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
                 INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
                 WHERE codeid = '" . current($id) . "'";
     } else {
-        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time as invoice_date,seller.name As seller_name
                 FROM (( yadakshop1402.qtybank 
                 INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
                 INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)

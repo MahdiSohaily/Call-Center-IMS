@@ -62,48 +62,71 @@ function filterCode($message)
 function displayTimePassed($datetimeString)
 {
     if ($datetimeString) {
-        $date_parts = explode('/', $datetimeString);
-        $datetimeString = jalali_to_gregorian(abs($date_parts[0]), abs($date_parts[1]), abs($date_parts[2]));
-        $month_days_num = [30, 29, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30];
-        date_default_timezone_set('Asia/Tehran');
-        $datetime = new DateTime(join('-', $datetimeString));
-        $month = $datetime->format("m");
-        $now = new DateTime();
+        // $date_parts = explode('/', $datetimeString);
+        // $datetimeString = jalali_to_gregorian(abs($date_parts[0]), abs($date_parts[1]), abs($date_parts[2]));
+        // $month_days_num = [30, 29, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30];
+        // date_default_timezone_set('Asia/Tehran');
+        // $datetime = new DateTime(join('-', $datetimeString));
+        // $month = $datetime->format("m");
+        // $now = new DateTime();
 
-        $interval = $now->diff($datetime);
+        // $interval = $now->diff($datetime);
 
-        $totalDays = $interval->days;
+        // $totalDays = $interval->days;
 
-        $passedYears = floor($totalDays / 365);
-        $remainingDays = $totalDays % 365;
+        // $passedYears = floor($totalDays / 365);
+        // $remainingDays = $totalDays % 365;
 
-        $passedMonths = floor($remainingDays / $month_days_num[$month - 1]);
-        $passedDays = $remainingDays % $month_days_num[$month - 1];
+        // $passedMonths = floor($remainingDays / $month_days_num[$month - 1]);
+        // $passedDays = $remainingDays % $month_days_num[$month - 1];
 
-        $persianYears = convertToPersian($passedYears);
-        $persianMonths = convertToPersian($passedMonths);
-        $persianDays = convertToPersian($passedDays);
+        // $persianYears = convertToPersian($passedYears);
+        // $persianMonths = convertToPersian($passedMonths);
+        // $persianDays = convertToPersian($passedDays);
 
-        $result = "";
+        // $result = "";
 
-        if ($passedYears > 0) {
-            $result .= "$persianYears سال";
+        // if ($passedYears > 0) {
+        //     $result .= "$persianYears سال";
+        // }
+
+        // if ($passedMonths > 0) {
+        //     if ($passedYears > 0) {
+        //         $result .= " و ";
+        //     }
+        //     $result .= "$persianMonths ماه";
+        // }
+
+        // if ($passedDays > 0) {
+        //     if ($passedYears > 0 || $passedMonths > 0) {
+        //         $result .= " و ";
+        //     }
+        //     $result .= "$persianDays روز";
+        // }
+        // return $result;
+
+        $now = new DateTime(); // current date time
+        $date_time = new DateTime($datetimeString); // date time from string
+        $interval = $now->diff($date_time); // difference between two date times
+
+        $months = $interval->format('%m'); // difference in months
+        $days = $interval->format('%d'); // difference in days
+
+        $text = '';
+
+        if ($months) {
+            $text .= "$months ماه ";
         }
 
-        if ($passedMonths > 0) {
-            if ($passedYears > 0) {
-                $result .= " و ";
-            }
-            $result .= "$persianMonths ماه";
+        if ($days) {
+            $text .= "و $days روز ";
         }
 
-        if ($passedDays > 0) {
-            if ($passedYears > 0 || $passedMonths > 0) {
-                $result .= " و ";
-            }
-            $result .= "$persianDays روز";
+        if (empty($text)) {
+            $text = "0 روز"; // If the difference is less than a month
         }
-        return $result;
+
+        return $text . "قبل";
     }
 
     return 'تاریخ ورود موجود نیست';
