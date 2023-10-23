@@ -11,11 +11,11 @@ if (isset($_POST['pattern'])) {
             $rates = mysqli_query($conn, $rates_sql);
 
             $partNumber = $item['partnumber'];
-            $price = $item['price'];
+            $price = floatval($item['price']);
             $avgPrice = round((intval($price) * 110) / 243.5);
             $weight = round(intval($item['weight']), 2);
-            $mobis = $item['mobis'];
-            $korea = $item['korea'];
+            $mobis = floatval($item['mobis']);
+            $korea = floatval($item['korea']);
             $status = null;
 
             if ($mobis == "0.00") {

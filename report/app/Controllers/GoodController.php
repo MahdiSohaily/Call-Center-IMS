@@ -14,7 +14,7 @@ if (isset($_GET['form'], $_GET['id'])) {
 
 // Create a new good IN THE 
 if (isset($_POST['partNumber']) && ($_POST['form'] == 'create')) {
-    $partNumber = $_POST['partNumber'];
+    $partNumber = strtoupper(trim($_POST['partNumber']));
     $price = $_POST['price'];
     $weight = $_POST['weight'];
     $mobis = $_POST['mobis'];
@@ -31,7 +31,7 @@ if (isset($_POST['partNumber']) && ($_POST['form'] == 'create')) {
 }
 
 if (isset($_POST['partNumber']) && ($_POST['form'] == 'update')) {
-    $partNumber = $_POST['partNumber'];
+    $partNumber = strtoupper(trim($_POST['partNumber']));
     $price = $_POST['price'];
     $weight = $_POST['weight'];
     $mobis = $_POST['mobis'];
