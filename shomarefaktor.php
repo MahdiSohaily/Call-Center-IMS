@@ -76,9 +76,13 @@ $factor_result = mysqli_query(dbconnect(), $sql);
             if (mysqli_num_rows($result) > 0) {
                 $n = 1;
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $profile = '../userimg/default.png';
+                    if (file_exists("../userimg/" . $row['user'] . ".jpg")) {
+                        $profile = "../userimg/" . $row['user'] . ".jpg";
+                    }
             ?>
                     <div class="ranking mb-2">
-                        <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="../userimg/<?php echo $row['user']; ?>.jpg" />
+                        <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="<?= $profile ?>.jpg" />
                         <?php if ($n == 1) {
                             echo '<i class="fas ranking-icon fa-star golden"></i>';
                         }
