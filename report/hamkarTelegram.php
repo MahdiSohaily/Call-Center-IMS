@@ -48,9 +48,9 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                                 <td class="p-2 text-center"> <?= $partner['name'] ?></td>
                                 <td class="p-2 text-center" style="text-decoration:ltr"> <?= $partner['username'] ?></td>
                                 <td class="p-2 text-center"> <img class="userImage mx-2 mx-auto d-block" src='<?= $partner['profile'] ?>' /> </td>
-                                <td class="p-2 text-center"> <input class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="honda" onclick="updateContactGroup(this)" /> </td>
-                                <td class="p-2 text-center"> <input class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="kia" onclick="updateContactGroup(this)" /> </td>
-                                <td class="p-2 text-center"> <input class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="chaines" onclick="updateContactGroup(this)" /> </td>
+                                <td class="p-2 text-center"> <input <?= $partner['honda']  == 1 ? 'checked' : '' ?> class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="honda" onclick="updateContactGroup(this)" /> </td>
+                                <td class="p-2 text-center"> <input <?= $partner['kia']  == 1 ? 'checked' : '' ?> class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="kia" onclick="updateContactGroup(this)" /> </td>
+                                <td class="p-2 text-center"> <input <?= $partner['chines']  == 1 ? 'checked' : '' ?> class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="chaines" onclick="updateContactGroup(this)" /> </td>
                             </tr>
                         <?php
                             $index += 1;
