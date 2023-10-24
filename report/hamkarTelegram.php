@@ -19,8 +19,36 @@ require_once('./app/Controllers/GoodController.php');
         </div>
         <div id="tab2" class="tab-content hidden">
             <h1 class="text-xl py-2">مخاطبین اخیر تلگرام</h1>
-            <div class="bg-indigo-100">
-                content
+            <div class="my-3">
+                <table class="table-fixed rtl min-w-full text-sm font-light">
+                    <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
+                        <tr>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                شماره
+                            </th>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                نام
+                            </th>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                نام کاربری
+                            </th>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                پروفایل
+                            </th>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                هیوندا
+                            </th>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                کیا
+                            </th>
+                            <th scope="col" class="text-gray-900 p-3 text-center">
+                                چینی
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="results_new" class="divide-y divide-gray-300">
+                    </tbody>
+                </table>
             </div>
         </div>
         <div id="tab3" class="tab-content hidden">
@@ -45,13 +73,42 @@ require_once('./app/Controllers/GoodController.php');
     }
 </script>
 <script>
+    const contact = document.getElementById('results_new');
+    contact.innerHTML = `
+            <tr>
+                <td colspan="7" class="py-5">
+                    <img class=' block w-10 mx-auto h-auto' src="./public/img/loading.png" />
+                </td>
+            </tr>
+            `;
     axios.post("http://localhost/telegram/")
         .then(function(response) {
-            console.log(response.data);
+
+            displayData(response.data)
         })
         .catch(function(error) {
 
         });
+
+
+    function displayData(data) {
+        let template = ``;
+        let counter = 1;
+        for (let user of data) {
+            template += `
+            <tr class="even:bg-indigo-100" data-user=" ${user.chat_id}">
+                <td class="p-2 text-center"> ${counter}</td>
+                <td class="p-2 text-center"> ${user.title}</td>
+                <td class="p-2 text-center" style="text-decoration:ltr"> ${user.username}</td>
+                <td class="p-2 text-center"> <img class="userImage mx-2 mx-auto d-block" src='${user.profile_path}' /> </td>
+                <td class="p-2 text-center"> <input type="checkbox" name="honda" /> </td>
+                <td class="p-2 text-center"> <input type="checkbox" name="kia" /> </td>
+                <td class="p-2 text-center"> <input type="checkbox" name="chaines" /> </td>
+            </tr>`;
+            counter += 1;
+        }
+        contact.innerHTML = template;
+    }
 
     const tabs = document.querySelectorAll('[data-tab]');
     tabs.forEach(tab => {
