@@ -4,124 +4,57 @@ require_once('./database/connect.php');
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/GoodController.php');
 ?>
-<div class="bg-white rounded-lg shadow-md m-5">
-    <div class="rtl flex items-center justify-between p-3">
-        <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
-            <i class="material-icons font-semibold text-orange-400">security</i>
-            مدیریت دسترسی کاربران
-        </h2>
-        <a href="./createUserProfile.php" class="bg-success text-white py-2 px-3 rounded-lg">ثبت کاربر جدید</a>
+<div class="max-w-7xl my-5 mx-auto bg-white rounded-lg shadow-lg ">
+    <div class="flex rtl bg-gray-600  rounded-t-lg p-2">
+        <button class="px-4 py-2 rounded-lg bg-orange-100 text-orange-600 hover:bg-orange-300 ml-2 focus:outline-none" onclick="openTab('tab1')">لیست مخاطبین</button>
+        <button class="px-4 py-2 rounded-lg bg-orange-100 text-orange-600 hover:bg-orange-300 ml-2 focus:outline-none" onclick="openTab('tab2')">بروزرسانی لیست مخاطبین</button>
+        <button class="px-4 py-2 rounded-lg bg-orange-100 text-orange-600 hover:bg-orange-300 ml-2 focus:outline-none" onclick="openTab('tab3')">ارسال پیام</button>
     </div>
-    <div class="p-3 table-wrapper">
-        <table class="table-fixed rtl min-w-full text-sm font-light">
-            <thead id="blur" class="font-medium sticky top-20 dark:border-neutral-500" style="z-index: 99999999999999999999999999;">
-                <tr class="bg-violet-600">
-                    <th scope="col" class="text-white px-2 py-3">
-                        شماره
-                    </th>
-                    <th scope="col" class="text-white px-2 py-3">
-                        نام
-                    </th>
-                    <th scope="col" class="text-white px-2 py-3">
-                        پروفایل
-                    </th>
-                    <th scope="col" class="text-white px-2 py-3">
-                        هیوندا
-                    </th>
-                    <th scope="col" class="text-white px-2 py-3">
-                        کیا
-                    </th>
-
-                    <th scope="col" class="text-white px-2 py-3">
-                        عملیات
-                    </th>
-                </tr>
-            </thead>
-            <!-- <tbody id="results" class="divide-y divide-gray-300">
-                <?php
-                $counter = 1;
-                foreach ($users as $user) :
-                    $auth = json_decode($user['auth'], true);
-                ?>
-                    <tr class="even:bg-gray-200">
-                        <td class='p-2 rtl'>
-                            <?= $counter ?>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <?= $user['name'] . ' ' . $user['family'] ?>
-                        </td>
-                        <td class='p-2 rtl '>
-                            <?= $user['username'] ?>
-                        </td>
-
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['usersManagement'] ? 'checked' : '' ?> data-authority="usersManagement" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['khorojkala-index'] ? 'checked' : '' ?> data-authority="khorojkala-index" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['vorodkala-index'] ? 'checked' : '' ?> data-authority="vorodkala-index" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['khorojkala-report'] ? 'checked' : '' ?> data-authority="khorojkala-report" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['vorodkala-report'] ? 'checked' : '' ?> data-authority="vorodkala-report" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['transfer_index'] ? 'checked' : '' ?> data-authority="transfer_index" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['transfer_report'] ? 'checked' : '' ?> data-authority="transfer_report" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['goodLimitReport'] ? 'checked' : '' ?> data-authority="goodLimitReport" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['goodLimitReportAll'] ? 'checked' : '' ?> data-authority="goodLimitReportAll" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['shomaresh-index'] ? 'checked' : '' ?> data-authority="shomaresh-index" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['telegramProcess'] ? 'checked' : '' ?> data-authority="telegramProcess" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['givePrice'] ? 'checked' : '' ?> data-authority="givePrice" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['showRates'] ? 'checked' : '' ?> data-authority="showRates" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['relationships'] ? 'checked' : '' ?> data-authority="relationships" data-user='<?= $user['id'] ?>'>
-                        </td>
-                        <td class='p-2 rtl'>
-                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['defineExchangeRate'] ? 'checked' : '' ?> data-authority="defineExchangeRate" data-user='<?= $user['id'] ?>'>
-                        </td>
-
-                        <td class='p-2 rtl'>
-                            <a href="./updateUserProfile.php?user=<?= $user['id'] ?>">
-                                <i data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-indigo-600 hover:text-indigo-800">edit</i>
-                            </a>
-                            <i onclick="deleteUser(this)" data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-red-600 hover:text-red-800">do_not_disturb_on</i>
-                        </td>
-                    </tr>
-                <?php
-                    $counter++;
-                endforeach; ?>
-            </tbody> -->
-        </table>
+    <div class="p-4 rtl">
+        <div id="tab1" class="tab-content">
+            <p>Content for Tab 1 goes here.</p>
+        </div>
+        <div id="tab2" class="tab-content hidden">
+            <p>Content for Tab 2 goes here.</p>
+        </div>
+        <div id="tab3" class="tab-content hidden">
+            <p>Content for Tab 2 goes here.</p>
+        </div>
     </div>
 </div>
-<script>
-    axios.post("http://localhost/telegram/", params)
-        .then(function(response) {
-            location.reload();
-        })
-        .catch(function(error) {
 
+<script>
+    function openTab(tabId) {
+        const tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => {
+            if (tab.id === tabId) {
+                tab.classList.remove('hidden');
+            } else {
+                tab.classList.add('hidden');
+            }
         });
+    }
+</script>
+<script>
+    // axios.post("http://localhost/telegram/")
+    //     .then(function(response) {
+    //         location.reload();
+    //     })
+    //     .catch(function(error) {
+
+    //     });
+
+    const tabs = document.querySelectorAll('[data-tab]');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const target = document.querySelector(tab.dataset.target);
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => pane.classList.add('hidden'));
+            target.classList.remove('hidden');
+        });
+    });
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
