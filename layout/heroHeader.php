@@ -298,6 +298,11 @@ $title = '';
                                 تماس با بازار
                             </a>
                         </li>
+                        <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/hamkarTelegram.php">
+                                <i class="fas fa-phone-volume"></i>
+                                 همکار تلگرام
+                            </a>
+                        </li>
                         <li>
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="estelam-list.php">
                                 قیمت های گرفته شده
