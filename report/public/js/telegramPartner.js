@@ -27,8 +27,6 @@ function sendMessage() {
     return self.indexOf(item) === index;
   });
 
-  console.log(receivers);
-
   if (message_content.length > 0 && receivers.length > 0) {
     const params = new URLSearchParams();
     params.append("action", "sendMessage");
@@ -48,8 +46,21 @@ function sendMessage() {
     axios
       .post(address, logParams.toString())
       .then(function (response) {
-        message_content.value = null;
+        document.getElementById("message_content").value = null;
         const message = document.getElementById("success");
+
+        const target_partners = document.querySelectorAll(".target_partner");
+
+        const category_identifier = document.querySelectorAll(
+          ".category_identifier"
+        );
+        for (const node of target_partners) {
+          node.parentNode.removeChild(node);
+        }
+        for (const node of category_identifier) {
+          node.checked = false;
+        }
+
         message.style.opacity = 1;
         setTimeout(() => {
           message.style.opacity = 0;

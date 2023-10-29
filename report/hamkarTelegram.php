@@ -10,6 +10,10 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         opacity: 0;
         transition: all 0.5s linear;
     }
+
+    #message_content {
+        direction: ltr;
+    }
 </style>
 <div class="grid grid-cols-7 gap-2">
     <div class="col-span-2 my-5 mx-2 container rounded-lg shadow-lg bg-gray-900 text-white p-4">
