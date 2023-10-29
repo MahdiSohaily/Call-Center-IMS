@@ -24,3 +24,4 @@ function updateUserAuthorityList($id, $data)
     $stmt->execute();
     return true;
 }
+ 

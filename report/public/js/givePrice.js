@@ -376,7 +376,7 @@ function telegram(e) {
       }
     })
     .catch(function (error) {});
-  // sendMessage(customer_id, code, goodPrice);
+   sendMessage(customer_id, code, goodPrice);
 }
 
 function sendMessage(receiver, code, price) {

@@ -82,7 +82,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                     }
             ?>
                     <div class="ranking mb-2">
-                        <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="<?= $profile ?>.jpg" />
+                        <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="<?= $profile ?>" />
                         <?php if ($n == 1) {
                             echo '<i class="fas ranking-icon fa-star golden"></i>';
                         }

@@ -4,194 +4,218 @@ require_once('./database/connect.php');
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/TelegramPartnerController.php');
 ?>
-<div class="max-w-7xl my-5 mx-auto bg-white rounded-lg shadow-lg ">
-    <div class="flex rtl bg-violet-600  rounded-t-lg p-2">
-        <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab1')">لیست مخاطبین</button>
-        <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab2'); getContacts()">بروزرسانی لیست مخاطبین</button>
-        <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab3')">ارسال پیام</button>
+<div class="grid grid-cols-7 gap-2">
+    <div class="col-span-2 my-5 mx-2 container rounded-lg shadow-lg bg-gray-900 text-white p-4">
+        <h1 class="text-2xl font-bold mb-4">Console Log</h1>
+        <div class="bg-black p-4 border rounded border-gray-600 h-60 overflow-y-auto" id="logContainer">
+            <?php
+            $logFile = './app/Controllers/telegram_partner_log.txt';
+            $lines = [];
+
+            // Open the log file for reading
+            if ($file = fopen($logFile, 'r')) {
+                // Read each line and keep track of the last 10 lines
+                while (($line = fgets($file)) !== false) {
+                    $lines[] = $line;
+                    if (count($lines) > 10) {
+                        array_shift($lines); // Remove the first line to keep 10 lines
+                    }
+                }
+                fclose($file);
+            }
+            ?>
+
+            <!-- PHP generates JSON lines as HTML data attributes -->
+            <?php foreach ($lines as $line) : ?>
+                <div class="mb-2 line" data-line="<?= htmlspecialchars(json_encode(json_decode($line), JSON_UNESCAPED_UNICODE)) ?>"></div>
+            <?php endforeach; ?>
+        </div>
     </div>
-    <div class="p-4 rtl">
-        <div id="tab1" class="tab-content">
-            <h1 class="text-xl py-2">لیست مخاطبین موجود در سیستم</h1>
-            <div class="my-3">
-                <table class="table-fixed rtl min-w-full text-sm font-light">
-                    <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
-                        <tr>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                شماره
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                نام
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                نام کاربری
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                پروفایل
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                هیوندا
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                کیا
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                چینی
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-300">
-                        <?php $index = 1;
-                        foreach ($current_partners as $partner) : ?>
-                            <tr class="even:bg-indigo-100" data-chat="<?= $partner['chat_id'] ?>" data-name=" <?= $partner['name'] ?>" data-username="<?= $partner['username'] ?>" data-profile="<?= $partner['profile'] ?>">
-                                <td class="p-2 text-center"> <?= $index; ?> </td>
-                                <td class="p-2 text-center"> <?= $partner['name'] ?></td>
-                                <td class="p-2 text-center" style="text-decoration:ltr"> <?= $partner['username'] ?></td>
-                                <td class="p-2 text-center"> <img class="userImage mx-2 mx-auto d-block" src='<?= $partner['profile'] ?>' /> </td>
-                                <td class="p-2 text-center"> <input <?= $partner['honda']  == 1 ? 'checked' : '' ?> class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="honda" onclick="updateContactGroup(this)" /> </td>
-                                <td class="p-2 text-center"> <input <?= $partner['kia']  == 1 ? 'checked' : '' ?> class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="kia" onclick="updateContactGroup(this)" /> </td>
-                                <td class="p-2 text-center"> <input <?= $partner['chines']  == 1 ? 'checked' : '' ?> class="cursor-pointer <?= 'user-' . $partner['chat_id'] ?> " data-user="<?= $partner['chat_id'] ?>" type="checkbox" name="chaines" onclick="updateContactGroup(this)" /> </td>
+
+    <script>
+        // Reverse and display the log lines on the client side
+        document.addEventListener('DOMContentLoaded', function() {
+            const logContainer = document.getElementById('logContainer');
+            const lines = logContainer.querySelectorAll('.line');
+
+            // Reverse and display the lines
+            for (let i = lines.length - 1; i >= 0; i--) {
+                const lineData = JSON.parse(lines[i].getAttribute('data-line'));
+                const lineText = Object.entries(lineData)
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join('<br>');
+
+                const lineElement = document.createElement('div');
+                lineElement.innerHTML = `<span class="text-red-600">$</span> <code class="text-green-600">${lineText}</code>`;
+                logContainer.appendChild(lineElement);
+
+                if (i > 0) {
+                    const separatorElement = document.createElement('p');
+                    separatorElement.classList.add('text-green-600');
+                    separatorElement.innerText = '----------------------------------------------------------------';
+                    logContainer.appendChild(separatorElement);
+                }
+            }
+
+            // Remove the original lines
+            lines.forEach(line => line.remove());
+        });
+    </script>
+
+    <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
+        <div class="flex rtl bg-violet-600  rounded-t-lg p-2">
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab1')">
+                ارسال پیام
+            </button>
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab3'); displayLocalData();">
+                لیست مخاطبین
+            </button>
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab2'); getContacts()">بروزرسانی لیست مخاطبین</button>
+        </div>
+        <div class="p-4 rtl">
+            <div id="tab1" class="tab-content">
+                <h1 class="text-xl py-2">ارسال پیام به گروه مخاطبین</h1>
+                <form action="post" id="message" class="flex flex-column">
+                    <textarea class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="1" placeholder="متن پیام خود را وارد کنید..."></textarea>
+                    <div class="py-3">
+                        <label class="cursor-pointer pl-5" for="honda">
+                            <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="honda" id="honda">
+                            هیوندا
+                        </label>
+
+                        <label class="cursor-pointer pl-5" for="kia">
+                            <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="kia" id="kia">
+                            کیا
+                        </label>
+                        <label class="cursor-pointer pl-5" for="chines">
+                            <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="chines" id="chines">
+                            چینی
+                        </label>
+                    </div>
+                </form>
+                <div class="my-3 flex gap-3">
+                    <div class="flex-1">
+                        <table class="w-full">
+                            <tbody>
+                                <tr>
+                                    <td class="py-4">هیوندا</td>
+                                    <td class="py-4">
+                                        <div id="honda_result" class=" flex"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4">کیا</td>
+                                    <td class="py-4">
+                                        <div id="kia_result" class=" flex"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-4">چینی</td>
+                                    <td class="py-4">
+                                        <div id="chines_result" class=" flex"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <span class="cursor-pointer rounded-md bg-green-400 w-32 text-white px-3 py-2 text-center" onclick="sendMessage()">ارسال پیام</span>
+            </div>
+            <div id="tab2" class="tab-content hidden">
+                <div class="flex justify-between">
+                    <h1 class="text-xl py-2">مخاطبین اخیر تلگرام</h1>
+                    <span class="flex items-center cursor-pointer text-white bg-violet-600 rounded-md px-3" onclick="hardRefresh()">
+                        بروزرسانی
+                        <i class="material-icons ">sync</i>
+                    </span>
+                </div>
+                <div class="my-3">
+                    <table class="table-fixed rtl min-w-full text-sm font-light">
+                        <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
+                            <tr>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    شماره
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    نام
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    نام کاربری
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    پروفایل
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    هیوندا
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    کیا
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    چینی
+                                </th>
                             </tr>
-                        <?php
-                            $index += 1;
-                        endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody id="contact" class="divide-y divide-gray-300">
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-        <div id="tab2" class="tab-content hidden">
-            <div class="flex justify-between">
-                <h1 class="text-xl py-2">مخاطبین اخیر تلگرام</h1>
-                <span class="flex items-center cursor-pointer text-white bg-violet-600 rounded-md px-3" onclick="hardRefresh()">
-                    بروزرسانی
-                    <i class="material-icons ">sync</i>
-                </span>
-            </div>
-            <div class="my-3">
-                <table class="table-fixed rtl min-w-full text-sm font-light">
-                    <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
-                        <tr>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                شماره
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                نام
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                نام کاربری
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                پروفایل
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                هیوندا
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                کیا
-                            </th>
-                            <th scope="col" class="text-gray-900 p-3 text-center">
-                                چینی
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="results_new" class="divide-y divide-gray-300">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div id="tab3" class="tab-content hidden">
-            <h1 class="text-xl py-2">ارسال پیام به گروه مخاطبین</h1>
-            <div class="bg-indigo-100">
-                content
+            <div id="tab3" class="tab-content hidden">
+                <h1 class="text-xl py-2">لیست مخاطبین موجود در سیستم</h1>
+                <div class="my-3">
+                    <table class="table-fixed rtl min-w-full text-sm font-light">
+                        <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
+                            <tr>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    شماره
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    نام
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    نام کاربری
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    پروفایل
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    هیوندا
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    کیا
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    چینی
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="initial_data" class="divide-y divide-gray-300">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <script>
-    const contact = document.getElementById('results_new');
-    let isLoadedTelegramContacts = false;
+    const partners_json = null;
 
-    function updateContactGroup(element) {
-        // the target URL to send the ajax request
-        const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
 
-        const user = element.getAttribute("data-user");
 
-        const authorityList = document.querySelectorAll(".user-" + user);
 
-        const data = {};
-
-        for (const node of authorityList) {
-            const authority = node.getAttribute("name");
-            const isChecked = node.checked;
-            data[authority] = isChecked;
-        }
-
-        const params = new URLSearchParams();
-        params.append("operation", "update");
-        params.append("user", user);
-        params.append("data", JSON.stringify(data));
-
-        axios.post(address, params)
-            .then(function(response) {
-                console.log(response.data);
-            })
-            .catch(function(error) {
-
-            });
+    function displayInitialData(data) {
+        console.log(data);
     }
 
 
-    function hardRefresh() {
-        isLoadedTelegramContacts = false;
-        getContacts();
-    }
 
-    function getContacts() {
-        if (!isLoadedTelegramContacts) {
-            contact.innerHTML = `
-            <tr>
-                <td colspan="7" class="py-5">
-                    <img class=' block w-10 mx-auto h-auto' src="./public/img/loading.png" />
-                </td>
-            </tr>
-            `;
-            axios.post("http://localhost/telegram/")
-                .then(function(response) {
 
-                    displayTelegramData(response.data);
-                    isLoadedTelegramContacts = true;
-                })
-                .catch(function(error) {
 
-                });
-        }
-    }
 
-    function displayTelegramData(data) {
-        let template = ``;
-        let counter = 1;
-        for (let user of data) {
-            template += `
-            <tr class="even:bg-indigo-100" 
-                data-chat=" ${user.chat_id}"
-                data-name=" ${user.title}"
-                data-username=" ${user.username}"
-                data-profile=" ${user.profile_path}"
-                >
-                <td class="p-2 text-center"> ${counter}</td>
-                <td class="p-2 text-center"> ${user.title}</td>
-                <td class="p-2 text-center" style="text-decoration:ltr"> ${user.username}</td>
-                <td class="p-2 text-center"> <img class="userImage mx-2 mx-auto d-block" src='${user.profile_path}' /> </td>
-                <td class="p-2 text-center"> <input class="cursor-pointer" type="checkbox" name="honda" /> </td>
-                <td class="p-2 text-center"> <input class="cursor-pointer" type="checkbox" name="kia" /> </td>
-                <td class="p-2 text-center"> <input class="cursor-pointer" type="checkbox" name="chaines" /> </td>
-            </tr>`;
-            counter += 1;
-        }
-        contact.innerHTML = template;
-    }
 
     function openTab(tabId) {
         const tabs = document.querySelectorAll('.tab-content');
@@ -204,5 +228,6 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         });
     }
 </script>
+<script src="./public/js/telegramPartner.js"></script>
 <?php
 require_once('./views/Layouts/footer.php');
