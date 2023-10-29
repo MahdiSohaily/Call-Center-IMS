@@ -172,7 +172,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                         </thead>
                         <tbody id="contact" class="divide-y divide-gray-300">
                         </tbody>
-                    </table>
+                    </table> 
                 </div>
             </div>
             <div id="tab3" class="tab-content hidden">

@@ -212,53 +212,79 @@ function displayTelegramData(data) {
   let template = ``;
   let counter = 1;
 
-  data.forEach(function (user) {
-    const isHondaChecked = user.honda === "1";
-    const isKiaChecked = user.kia === "1";
-    const isChinesChecked = user.chines === "1";
+  fetchLocalPartnersData().then(function (items) {
+    // Convert chat_id to integers
+    const itemsWithIntChatId = items.map((item) => {
+      return {
+        ...item,
+        chat_id: parseInt(item.chat_id, 10),
+      };
+    });
 
-    template += `
-      <tr class="even:bg-indigo-100" 
-        data-chat="${user.chat_id}"
-        data-name="${user.title}"
-        data-username="${user.username}"
-        data-profile="${user.profile_path}"
-        data-operation="check">
-        <td class="p-2 text-center">${counter}</td>
-        <td class="p-2 text-center">${user.title}</td>
-        <td class="p-2 text-center" style="text-decoration:ltr">${
-          user.username
-        }</td>
-        <td class="p-2 text-center"><img class="userImage mx-2 mx-auto d-block" src="${
-          user.profile_path
-        }" /></td>
-        <td class="p-2 text-center">
-          <input data-section="telegram" class="cursor-pointer telegram user-${
-            user.chat_id
-          }" data-user="${user.chat_id}" onclick="addPartner(this)"
-            type="checkbox" name="honda" ${isHondaChecked ? "checked" : ""} />
-        </td>
-        <td class="p-2 text-center">
-          <input data-section="telegram" class="cursor-pointer telegram user-${
-            user.chat_id
-          }" data-user="${user.chat_id}" onclick="addPartner(this)"
-            type="checkbox" name="kia" ${isKiaChecked ? "checked" : ""} />
-        </td>
-        <td class="p-2 text-center">
-          <input data-section="telegram" class="cursor-pointer telegram user-${
-            user.chat_id
-          }" data-user="${user.chat_id}" onclick="addPartner(this)"
-            type="checkbox" name="chines" ${isChinesChecked ? "checked" : ""} />
-        </td>
-      </tr>`;
-    counter += 1;
+    // Create a map to store items by their chat_id for faster lookups
+    const itemsMap = new Map(
+      itemsWithIntChatId.map((item) => [item.chat_id, item])
+    );
+
+    // Merge properties from the items array into the data array
+    const mergedData = data.map((item) => {
+      const existingItem = itemsMap.get(item.chat_id);
+      if (existingItem) {
+        // Merge properties from the 'items' array into 'data'
+        const mergedItem = { ...item, ...existingItem };
+        return mergedItem;
+      }
+      return item;
+    });
+
+    mergedData.forEach(function (user) {
+      const isHondaChecked = user.honda === "1";
+      const isKiaChecked = user.kia === "1";
+      const isChinesChecked = user.chines === "1";
+      template += `
+        <tr class="even:bg-indigo-100" 
+          data-chat="${user.chat_id}"
+          data-name="${user.title}"
+          data-username="${user.username}"
+          data-profile="${user.profile_path}"
+          data-operation="check">
+          <td class="p-2 text-center">${counter}</td>
+          <td class="p-2 text-center">${user.title}</td>
+          <td class="p-2 text-center" style="text-decoration:ltr">${
+            user.username
+          }</td>
+          <td class="p-2 text-center"><img class="userImage mx-2 mx-auto d-block" src="${
+            user.profile_path
+          }" /></td>
+          <td class="p-2 text-center">
+            <input data-section="telegram" class="cursor-pointer telegram user-${
+              user.chat_id
+            }" data-user="${user.chat_id}" onclick="addPartner(this)"
+              type="checkbox" name="honda" ${isHondaChecked ? "checked" : ""} />
+          </td>
+          <td class="p-2 text-center">
+            <input data-section="telegram" class="cursor-pointer telegram user-${
+              user.chat_id
+            }" data-user="${user.chat_id}" onclick="addPartner(this)"
+              type="checkbox" name="kia" ${isKiaChecked ? "checked" : ""} />
+          </td>
+          <td class="p-2 text-center">
+            <input data-section="telegram" class="cursor-pointer telegram user-${
+              user.chat_id
+            }" data-user="${user.chat_id}" onclick="addPartner(this)"
+              type="checkbox" name="chines" ${
+                isChinesChecked ? "checked" : ""
+              } />
+          </td>
+        </tr>`;
+      counter += 1;
+    });
+    // Assuming you have an element with the ID 'contact' to display the data
+    const contact = document.getElementById("contact");
+    if (contact) {
+      contact.innerHTML = template;
+    }
   });
-
-  // Assuming you have an element with the ID 'contact' to display the data
-  const contact = document.getElementById("contact");
-  if (contact) {
-    contact.innerHTML = template;
-  }
 }
 
 // Define a function to get and display contacts
@@ -295,9 +321,6 @@ async function getContacts() {
     }
   }
 }
-
-// Call the getContacts function to load contact data initially
-getContacts();
 
 function hardRefresh() {
   isLoadedTelegramContacts = false;
