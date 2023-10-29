@@ -252,6 +252,7 @@ async function getContacts() {
     try {
       // Make the Axios request to fetch contact data
       const response = await axios.post("http://telegram.yadak.center/");
+      console.log(response.data);
       displayTelegramData(response.data);
       isLoadedTelegramContacts = true;
     } catch (error) {

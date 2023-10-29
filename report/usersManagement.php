@@ -3,6 +3,21 @@ require_once('./views/Layouts/header.php');
 require_once './app/Controllers/UserManagementController.php';
 ?>
 <style>
+    table {
+        border-collapse: collapse;
+    }
+
+    tr {
+        transition: filter 0.3s;
+    }
+
+    tr:hover {
+        filter: none;
+    }
+
+    tr:not(:hover) {
+        /* filter: blur(3px); */
+    }
 </style>
 <div class="bg-white rounded-lg shadow-md m-5">
     <div class="rtl flex items-center justify-between p-3">
@@ -15,7 +30,7 @@ require_once './app/Controllers/UserManagementController.php';
     <div class="p-3 table-wrapper">
         <table class="table-fixed rtl min-w-full text-sm font-light">
             <thead id="blur" class="font-medium sticky top-20 dark:border-neutral-500" style="z-index: 99999999999999999999999999;">
-                <tr class="bg-violet-600">
+                <tr class="bg-violet-600" style="filter: none;">
                     <th scope="col" class="text-white px-2 py-3">
                         شماره
                     </th>
@@ -69,6 +84,9 @@ require_once './app/Controllers/UserManagementController.php';
                     </th>
                     <th scope="col" class="text-white px-2 py-3">
                         دلار جدید
+                    </th>
+                    <th scope="col" class="text-white px-2 py-3">
+                        تلگرام بازار
                     </th>
                     <th scope="col" class="text-white px-2 py-3">
                         عملیات
@@ -137,7 +155,9 @@ require_once './app/Controllers/UserManagementController.php';
                         <td class='p-2 rtl'>
                             <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= $auth['defineExchangeRate'] ? 'checked' : '' ?> data-authority="defineExchangeRate" data-user='<?= $user['id'] ?>'>
                         </td>
-
+                        <td class='p-2 rtl'>
+                            <input class="user-<?= $user['id'] ?>" onclick="updateUserAuthority(this)" type="checkbox" <?= (isset($auth['hamkarTelegram']) ? $auth['hamkarTelegram'] : '') ? 'checked' : '' ?> data-authority="hamkarTelegram" data-user='<?= $user['id'] ?>'>
+                        </td>
                         <td class='p-2 rtl'>
                             <a href="./updateUserProfile.php?user=<?= $user['id'] ?>">
                                 <i data-user="<?= $user['id'] ?>" class="material-icons cursor-pointer text-indigo-600 hover:text-indigo-800">edit</i>
@@ -152,5 +172,23 @@ require_once './app/Controllers/UserManagementController.php';
         </table>
     </div>
 </div>
+<script>
+    const rows = document.querySelectorAll('tbody tr'); // Select only <tr> elements in the tbody
+
+    rows.forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            rows.forEach(otherRow => {
+                if (otherRow !== row) {
+                    otherRow.style.filter = 'blur(10px)';
+                }
+            });
+        });
+        row.addEventListener('mouseleave', () => {
+            rows.forEach(otherRow => {
+                otherRow.style.filter = 'none';
+            });
+        });
+    });
+</script>
 <?php
 require_once('./views/Layouts/footer.php');
