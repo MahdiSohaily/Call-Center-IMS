@@ -27,30 +27,45 @@ function sendMessage() {
     return self.indexOf(item) === index;
   });
 
-  const params = new URLSearchParams();
-  params.append("action", "sendMessage");
-  params.append("message_content", message_content);
-  params.append("data", JSON.stringify(receivers));
+  console.log(receivers);
 
-  axios
-    .post("http://telegram.yadak.center/", params)
-    .then(function (response) {})
-    .catch(function (error) {});
+  if (message_content.length > 0 && receivers.length > 0) {
+    const params = new URLSearchParams();
+    params.append("action", "sendMessage");
+    params.append("message_content", message_content);
+    params.append("data", JSON.stringify(receivers));
 
-  const logParams = new URLSearchParams();
-  logParams.append("logAction", "log");
-  logParams.append("message_content", message_content);
-  logParams.append("receivers", JSON.stringify(names));
+    axios
+      .post("http://telegram.yadak.center/", params)
+      .then(function (response) {})
+      .catch(function (error) {});
 
-  axios
-    .post(address, logParams.toString())
-    .then(function (response) {
-      alert("Success");
-    })
-    .catch(function (error) {
-      console.log(error);
-      // window.location.reload();
-    });
+    const logParams = new URLSearchParams();
+    logParams.append("logAction", "log");
+    logParams.append("message_content", message_content);
+    logParams.append("receivers", JSON.stringify(names));
+
+    axios
+      .post(address, logParams.toString())
+      .then(function (response) {
+        message_content.value = null;
+        const message = document.getElementById("success");
+        message.style.opacity = 1;
+        setTimeout(() => {
+          message.style.opacity = 0;
+        }, 2000);
+      })
+      .catch(function (error) {
+        console.log(error);
+        // window.location.reload();
+      });
+  } else {
+    const message = document.getElementById("error");
+    message.style.opacity = 1;
+    setTimeout(() => {
+      message.style.opacity = 0;
+    }, 2000);
+  }
   // window.location.reload();
 }
 

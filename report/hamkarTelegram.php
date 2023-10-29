@@ -4,6 +4,13 @@ require_once('./database/connect.php');
 require_once('./views/Layouts/header.php');
 require_once('./app/Controllers/TelegramPartnerController.php');
 ?>
+<style>
+    #success,
+    #error {
+        opacity: 0;
+        transition: all 0.5s linear;
+    }
+</style>
 <div class="grid grid-cols-7 gap-2">
     <div class="col-span-2 my-5 mx-2 container rounded-lg shadow-lg bg-gray-900 text-white p-4">
         <h1 class="text-2xl font-bold mb-4">Console Log</h1>
@@ -76,7 +83,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             <div id="tab1" class="tab-content">
                 <h1 class="text-xl py-2">ارسال پیام به گروه مخاطبین</h1>
                 <form action="post" id="message" class="flex flex-column">
-                    <textarea class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="1" placeholder="متن پیام خود را وارد کنید..."></textarea>
+                    <textarea required class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="1" placeholder="متن پیام خود را وارد کنید..."></textarea>
                     <div class="py-3">
                         <label class="cursor-pointer pl-5" for="honda">
                             <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="honda" id="honda">
@@ -121,6 +128,8 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                 </div>
 
                 <span class="cursor-pointer rounded-md bg-green-400 w-32 text-white px-3 py-2 text-center" onclick="sendMessage()">ارسال پیام</span>
+                <p id="success" class="text-green-700 my-3">پیام ارسال شد !!</p>
+                <p id="error" class="text-red-700 my-3"> لطفا متن پیام و دریافت کنندگان پیام را مشخص کنید!</p>
             </div>
             <div id="tab2" class="tab-content hidden">
                 <div class="flex justify-between">
