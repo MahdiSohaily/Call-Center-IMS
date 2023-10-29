@@ -48,9 +48,10 @@ function sendMessage() {
       console.log(response.data);
     })
     .catch(function (error) {
-      window.location.reload();
+      console.log(error);
+      // window.location.reload();
     });
-  window.location.reload();
+  // window.location.reload();
 }
 
 function updateCategory(element) {
