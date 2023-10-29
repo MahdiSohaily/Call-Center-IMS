@@ -45,7 +45,7 @@ function sendMessage() {
   axios
     .post(address, logParams.toString())
     .then(function (response) {
-      console.log(response.data);
+      alert("Success");
     })
     .catch(function (error) {
       console.log(error);
@@ -253,7 +253,6 @@ async function getContacts() {
     try {
       // Make the Axios request to fetch contact data
       const response = await axios.post("http://telegram.yadak.center/");
-      console.log(response.data);
       displayTelegramData(response.data);
       isLoadedTelegramContacts = true;
     } catch (error) {
@@ -295,7 +294,6 @@ function addPartner(element) {
   const authorityList = document.querySelectorAll(
     "." + section + ".user-" + chat_id
   );
-  console.log(authorityList);
 
   const data = {};
 
@@ -304,8 +302,6 @@ function addPartner(element) {
     const isChecked = node.checked;
     data[authority] = isChecked;
   }
-
-  console.log(data);
 
   const params = new URLSearchParams();
   params.append("operation", operation);
