@@ -7,7 +7,7 @@
   direction: rtl;
 }
 #fullPage {
-  width: 854px;
+  width: 854px !important;
   margin-inline: auto;
   font-size: 8px;
   background-color: white;
