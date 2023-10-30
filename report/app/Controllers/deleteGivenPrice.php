@@ -23,9 +23,9 @@ if (isset($_POST['delete_price'])) {
 
     $givenPrice = givenPrice($conn, $relations, $relation_exist);
 
-    if ($givenPrice !== null) {
+    if (count($givenPrice) > 0) {
         $target = current($givenPrice);
-        $priceDate = $target['created_at'];
+        $priceDate = $target['created_at'] ?? '';
         if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
             $rawGivenPrice = $target['price'];
 
@@ -225,7 +225,7 @@ if (isset($_POST['delete_price'])) {
             }
         } else { ?>
             <tr class="min-w-full mb-4 border-b-2 border-white">
-                <td colspan="3" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
+                <td colspan="5" scope="col" class="text-gray-800 py-2 text-center bg-indigo-300">
                     !! موردی برای نمایش وجود ندارد
                 </td>
             </tr>

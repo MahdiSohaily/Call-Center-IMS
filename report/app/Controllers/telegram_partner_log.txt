@@ -13,3 +13,4 @@
 {"logAction":"log","message_content":"sdds","receivers":"[\"Mahdi Rezaei\"]"}
 {"logAction":"log","message_content":"asdsadsad","receivers":"[\"Mahdi Rezaei\"]"}
 {"logAction":"log","message_content":"asas","receivers":"[\"Mahdi Rezaei\"]"}
+{"logAction":"log","message_content":"oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii","receivers":"[\"Mahdi Rezaei\"]"}
