@@ -110,9 +110,11 @@ function updateCategory(element) {
         category.innerHTML = null;
         for (let item of data[brand]) {
           category.innerHTML += `
-                    <span class="flex items-center target_partner rounded-lg bg-green-500 text-white p-1 mx-2" data_id ="${item.chat_id}">
-                    ${item.name}
-                    <i class="cursor-pointer material-icons text-red-500 pr-1" onclick="removePartner(this)">close</i>
+                    <span class="text-sm flex items-center target_partner rounded-lg bg-green-700 text-white p-2 my-1 mx-2" data_id ="${
+                      item.chat_id
+                    }">
+                    ${item.name.toLowerCase()}
+                    <i class="cursor-pointer material-icons text-red-500 pr-1 text-sm" onclick="removePartner(this)">close</i>
                     </span>`;
         }
       }

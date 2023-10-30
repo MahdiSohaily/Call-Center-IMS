@@ -111,19 +111,19 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                                 <tr>
                                     <td class="py-4">هیوندا</td>
                                     <td class="py-4">
-                                        <div id="honda_result" class=" flex"></div>
+                                        <div id="honda_result" class="flex flex-wrap"></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="py-4">کیا</td>
                                     <td class="py-4">
-                                        <div id="kia_result" class=" flex"></div>
+                                        <div id="kia_result" class="flex flex-wrap"></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="py-4">چینی</td>
                                     <td class="py-4">
-                                        <div id="chines_result" class=" flex"></div>
+                                        <div id="chines_result" class="flex flex-wrap"></div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -172,7 +172,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                         </thead>
                         <tbody id="contact" class="divide-y divide-gray-300">
                         </tbody>
-                    </table> 
+                    </table>
                 </div>
             </div>
             <div id="tab3" class="tab-content hidden">
