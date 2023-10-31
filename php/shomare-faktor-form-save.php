@@ -1,5 +1,6 @@
 <?php
-
+// Initialize the session
+session_name("MyAppSession");
 require_once("db.php");
 
 $value1 = $_GET['kharidar'];
