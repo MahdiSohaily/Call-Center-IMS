@@ -1,6 +1,4 @@
 <?php
-// Initialize the session
-session_name("MyAppSession");
 $notifications = getNotification($conn, $_SESSION['user_id']);
 
 function getNotification($conn, $id)

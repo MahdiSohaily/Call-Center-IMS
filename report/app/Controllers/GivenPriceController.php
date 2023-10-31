@@ -1,6 +1,4 @@
 <?php
-// Initialize the session
-session_name("MyAppSession");
 $isValidCustomer = false;
 $customer_info = null;
 $finalResult = null;
