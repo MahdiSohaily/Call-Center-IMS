@@ -87,7 +87,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             <div id="tab1" class="tab-content">
                 <h1 class="text-xl py-2">ارسال پیام به گروه مخاطبین</h1>
                 <form action="post" id="message" class="flex flex-column">
-                    <textarea required class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="1" placeholder="متن پیام خود را وارد کنید..."></textarea>
+                    <textarea required class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="3" placeholder="متن پیام خود را وارد کنید..."></textarea>
                     <div class="py-3">
                         <label class="cursor-pointer pl-5" for="honda">
                             <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="honda" id="honda">
