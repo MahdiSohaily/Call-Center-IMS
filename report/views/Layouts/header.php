@@ -90,6 +90,15 @@ $_SESSION["user_id"] = $_SESSION["id"];
             $title = "اطلاعات کد فنی";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
+        case 'hamkarTelegram.php':
+            $title = "همکار تلگرام";
+            echo ' <link rel="shortcut icon" href="../public/img/o-t.png">';
+            break;
+        case 'telegramProcess.php':
+        case 'showPriceReportsTelegram.php':
+            $title = "تلگرام قیمت";
+            echo ' <link rel="shortcut icon" href="../public/img/b-t.png">';
+            break;
         default:
             $title = "سامانه یدک شاپ";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
@@ -260,7 +269,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
                         </li>
                         <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./hamkarTelegram.php">
                                 <i class="fas fa-phone-volume"></i>
-                                 همکار تلگرام
+                                همکار تلگرام
                             </a>
                         </li>
                         <li>

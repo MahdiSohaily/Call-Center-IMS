@@ -55,6 +55,10 @@ mysqli_set_charset($con, "utf8");
             $title = "تلویزیون";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
+        case 'hamkarTelegram.php':
+            $title = "همکار تلگرام";
+            echo ' <link rel="shortcut icon" href="./public/img/o-t.png">';
+            break;
 
         default:
             $title = "صفحه اصلی";

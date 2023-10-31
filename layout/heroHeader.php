@@ -56,13 +56,14 @@ $title = '';
             break;
         case 'tv.php':
             $title = "تلویزیون";
-            echo '';
-            $rand = rand();
-            echo "";
             break;
         case 'estelam-list.php':
             $title = "قیمت های گرفته شده";
             echo '<link rel="icon" type="image/x-icon" href="img/favicon.ico">';
+            break;
+        case 'hamkarTelegram.php':
+            $title = "همکار تلگرام";
+            echo ' <link rel="shortcut icon" href="./public/img/o-t.png">';
             break;
 
         default:
@@ -300,7 +301,7 @@ $title = '';
                         </li>
                         <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/hamkarTelegram.php">
                                 <i class="fas fa-phone-volume"></i>
-                                 همکار تلگرام
+                                همکار تلگرام
                             </a>
                         </li>
                         <li>
