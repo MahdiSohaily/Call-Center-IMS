@@ -1,5 +1,6 @@
 <?php
 // Initialize the session
+date_default_timezone_set("Asia/Tehran");
 session_name("MyAppSession");
 session_start();
 

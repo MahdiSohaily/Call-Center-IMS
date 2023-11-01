@@ -1,4 +1,6 @@
 <?php
+// Initialize the session
+date_default_timezone_set("Asia/Tehran");
 require_once './php/function.php';
 require_once './php/jdf.php';
 
