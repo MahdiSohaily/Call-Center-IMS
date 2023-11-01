@@ -246,7 +246,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
                 </a>
             </nav>
             <!-- Page Content -->
-            <main class="pt-20">
+            <main class="pt-28">
                 <div class="rtl flex justify-between bg-gray-200 fixed w-full shadow-lg" style="top: 0; z-index:100">
                     <i class="p-2 right-0 material-icons hover:cursor-pointer fixed my-3" onclick="toggleNav()">menu</i>
                     <ul class="flex flex-wrap mr-20 py-3">
