@@ -24,10 +24,10 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab3'); displayLocalData();">
                 لیست مخاطبین
             </button>
-            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab2'); getContacts()">
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab2'); getContacts();">
                 بروزرسانی لیست مخاطبین
             </button>
-            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab4'); getCategories()">
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab4'); displayCategories();">
                 مدیریت دسته بندی ها
             </button>
         </div>
@@ -162,6 +162,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                     <h1 class="text-xl py-2">دسته بندی های موجود</h1>
                     <div>
                         <form action="#" id="save_category">
+                            <input type="hidden" name= "create"  >
                             <input class="border border-2 p-2 mx-2" type="text" name="category_name" id="category_name" placeholder="اسم کتگوری...">
                             <input class="text-white bg-green-600 py-2 px-4 rounded-md" type="submit" value="افزودن">
                         </form>
@@ -253,19 +254,6 @@ require_once('./app/Controllers/TelegramPartnerController.php');
 <script>
     const partners_json = null;
 
-
-
-
-    function displayInitialData(data) {
-        console.log(data);
-    }
-
-
-
-
-
-
-
     function openTab(tabId) {
         const tabs = document.querySelectorAll('.tab-content');
         tabs.forEach(tab => {
@@ -277,6 +265,6 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         });
     }
 </script>
-<script src="./public/js/telegramPartner.js"></script>
+<script src="./public/js/telegramPartner.js?v=<?= rand() ?>"></script>
 <?php
 require_once('./views/Layouts/footer.php');

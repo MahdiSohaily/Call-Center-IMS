@@ -86,6 +86,28 @@ if (isset($_POST['getInitialData'])) {
     echo json_encode(getExistingTelegramPartners());
 }
 
+if (isset($_POST['getExistingCategories'])) {
+    echo json_encode(getCategories());
+}
+
+function getCategories()
+{
+    $sql = "SELECT * FROM shop.partner_categories";
+
+    $result = CONN->query($sql);
+
+    // Initialize an array to store all the rows
+    $data = [];
+
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        $result->close();
+    }
+
+    return $data;
+}
 function getPartners($key)
 {
     $sql = "SELECT name, chat_id FROM shop.telegram_partner WHERE $key = 1";
@@ -102,10 +124,6 @@ function getPartners($key)
     }
 
     return $data;
-}
-
-function getCategories($data)
-{
 }
 
 function partnerExist($id)

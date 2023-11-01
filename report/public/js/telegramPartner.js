@@ -368,4 +368,40 @@ function addPartner(element) {
     .catch(function (error) {});
 }
 
-function getCategories() {}
+function displayCategories() {
+  getExistingCategories().then(function (data) {
+    let counter = 1;
+    let template = "";
+    const resultBox = document.getElementById("category_data");
+    for (const item of data) {
+      template += `
+      <tr class="even:bg-indigo-100" data-cat="${item.id}">
+        <td class="p-2 text-center text-bold">${counter}</td>
+        <td class="p-2 text-center text-bold">${item.name}</td>
+        <td class="p-2 text-center">
+        <i data-cat-id="${item.id}" data-value="${item.name}" onclick="editCategory(this)" class="cursor-pointer material-icons font-semibold text-blue-400">edit</i>
+        </td>
+      </tr>
+      `;
+      counter += 1;
+    }
+
+    resultBox.innerHTML = template;
+  });
+}
+
+async function getExistingCategories() {
+  const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
+  const params = new URLSearchParams();
+  params.append("getExistingCategories", "getExistingCategories");
+
+  try {
+    const response = await axios.post(address, params);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error; // Rethrow the error to be caught by the caller
+  }
+}
+
+function editCategory(element) {}
