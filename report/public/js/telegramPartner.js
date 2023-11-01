@@ -367,3 +367,5 @@ function addPartner(element) {
     .then(function (response) {})
     .catch(function (error) {});
 }
+
+function getCategories() {}

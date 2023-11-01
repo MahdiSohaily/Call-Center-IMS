@@ -81,7 +81,12 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab3'); displayLocalData();">
                 لیست مخاطبین
             </button>
-            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab2'); getContacts()">بروزرسانی لیست مخاطبین</button>
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab2'); getContacts()">
+                بروزرسانی لیست مخاطبین
+            </button>
+            <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab4'); getCategories()">
+                مدیریت دسته بندی ها
+            </button>
         </div>
         <div class="p-4 rtl">
             <div id="tab1" class="tab-content">
@@ -205,6 +210,37 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                             </tr>
                         </thead>
                         <tbody id="initial_data" class="divide-y divide-gray-300">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="tab4" class="tab-content hidden">
+                <div class="flex justify-between px-1">
+                    <h1 class="text-xl py-2">دسته بندی های موجود</h1>
+                    <div>
+                        <form action="#" id="save_category">
+                            <input class="border border-2 p-2 mx-2" type="text" name="category_name" id="category_name" placeholder="اسم کتگوری...">
+                            <input class="text-white bg-green-600 py-2 px-4 rounded-md" type="submit" value="افزودن">
+                        </form>
+                        <p class="text-green-500 text-xs p-2">دسته بندی با موفقیت ثبت شد.</p>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <table class="table-fixed rtl min-w-full text-sm font-light">
+                        <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
+                            <tr>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    شماره
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    اسم دسته بندی
+                                </th>
+                                <th scope="col" class="text-gray-900 p-3 text-center">
+                                    عملیات
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="category_data" class="divide-y divide-gray-300">
                         </tbody>
                     </table>
                 </div>
