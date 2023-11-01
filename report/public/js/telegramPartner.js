@@ -404,4 +404,48 @@ async function getExistingCategories() {
   }
 }
 
-function editCategory(element) {}
+let previous_id = null;
+
+function editCategory(element) {
+  const id = element.getAttribute("data-cat-id");
+  const value = element.getAttribute("data-value");
+
+  const editForm = document.getElementById("edit_category");
+  const saveForm = document.getElementById("save_category");
+
+  if (previous_id !== id) {
+    previous_id = id;
+    editForm.classList.remove("hidden");
+    saveForm.classList.add("hidden");
+    document.getElementById("edit_category_name").value = value;
+    document.getElementById("category_id").value = id;
+  } else {
+    if (editForm.classList.contains("hidden")) {
+      editForm.classList.remove("hidden");
+      document.getElementById("edit_category_name").value = value;
+      document.getElementById("category_id").value = id;
+      saveForm.classList.add("hidden");
+    } else {
+      editForm.classList.add("hidden");
+      saveForm.classList.remove("hidden");
+    }
+  }
+}
+
+function editCategoryForm() {
+  const id = document.getElementById("category_id").value;
+  const value = document.getElementById("edit_category_name").value;
+  const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
+
+  const params = new URLSearchParams();
+  params.append("id", id);
+  params.append("value", value);
+
+  try {
+    const response = axios.post(address, params);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

@@ -14,6 +14,10 @@ require_once('./app/Controllers/TelegramPartnerController.php');
     #message_content {
         direction: ltr;
     }
+
+    .hidden {
+        display: none;
+    }
 </style>
 <div class="grid md:grid-cols-7 gap-2 rtl">
     <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
@@ -162,9 +166,15 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                     <h1 class="text-xl py-2">دسته بندی های موجود</h1>
                     <div>
                         <form action="#" id="save_category">
-                            <input type="hidden" name= "create"  >
                             <input class="border border-2 p-2 mx-2" type="text" name="category_name" id="category_name" placeholder="اسم کتگوری...">
                             <input class="text-white bg-green-600 py-2 px-4 rounded-md" type="submit" value="افزودن">
+                        </form>
+                        <form action="#" id="edit_category" class="hidden">
+                            <input type="hidden" id="category_id" value="" />
+                            <input class="border border-2 p-2 mx-2" type="text" name="category_name" id="edit_category_name" placeholder="اسم کتگوری...">
+                            <button class="text-white bg-green-600 py-2 px-4 rounded-md" onclick="editCategoryForm()">
+                                ویرایش
+                            </button>
                         </form>
                         <p class="text-green-500 text-xs p-2">دسته بندی با موفقیت ثبت شد.</p>
                     </div>
@@ -211,7 +221,6 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                 fclose($file);
             }
             ?>
-
             <!-- PHP generates JSON lines as HTML data attributes -->
             <?php foreach ($lines as $line) : ?>
                 <div class="mb-2 line" data-line="<?= htmlspecialchars(json_encode(json_decode($line), JSON_UNESCAPED_UNICODE)) ?>"></div>
