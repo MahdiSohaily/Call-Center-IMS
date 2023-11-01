@@ -283,7 +283,7 @@ $title = '';
             <!-- Page Content -->
             <main class="lg:pt-20 pt-32">
                 <div id="topNav" class="flex justify-between bg-gray-200 fixed w-full shadow-lg" style="top: 0; z-index:100">
-                    <i class="p-2 right-0 material-icons hover:cursor-pointer fixed py-3" onclick="toggleNav()">menu</i>
+                    <i class="p-2 right-0 material-icons hover:cursor-pointer fixed my-3" onclick="toggleNav()">menu</i>
                     <ul class="flex flex-wrap mr-20 py-3">
                         <li class="my-3">
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="cartable.php">
@@ -331,7 +331,7 @@ $title = '';
                         </li>
                     </ul>
 
-                    <div class=" flex items-top p-2">
+                    <div class=" flex flex-wrap items-top p-2 my-3">
                         <i onclick="toggleTV()" class="material-icons hover:cursor-pointer text-gray-500">branding_watermark</i>
                         <?php
                         $profile = '../userimg/default.png';
