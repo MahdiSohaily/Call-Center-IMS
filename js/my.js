@@ -17,6 +17,7 @@ $(document).ready(function () {
   });
   $(".e-f-userlist").val($(".e-f-userlist").attr("data")).change();
 });
+
 $(document).ready(function () {
   // Get the modal
   var modal = document.getElementById("myModal");
