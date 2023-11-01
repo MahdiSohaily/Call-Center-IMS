@@ -207,7 +207,7 @@ $title = '';
         <div class="min-h-screen ">
             <nav id="nav" ref="nav" class="main-nav bg-white shadow-lg flex flex-col justify-between overflow-auto">
                 <i id="close" onclick="toggleNav()" class="material-icons absolute m-3  left-0 hover:cursor-pointer">close</i>
-                <ul class="rtl flex flex-col pt-5 mt-5">
+                <ul class="rtl flex flex-wrap flex-col pt-5 mt-5">
                     <a style="font-size: 12px;" class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="index.php">
                         <i style="font-size:14px" class="px-2 material-icons hover:cursor-pointer">account_balance</i>
                         صفحه اصلی
@@ -281,50 +281,50 @@ $title = '';
                 };
             </script>
             <!-- Page Content -->
-            <main class="pt-20">
+            <main class="lg:pt-20 pt-32">
                 <div id="topNav" class="flex justify-between bg-gray-200 fixed w-full shadow-lg" style="top: 0; z-index:100">
-                    <i class="p-2 right-0 material-icons hover:cursor-pointer fixed" onclick="toggleNav()">menu</i>
-                    <ul class="flex mr-20 py-3">
-                        <li>
+                    <i class="p-2 right-0 material-icons hover:cursor-pointer fixed py-3" onclick="toggleNav()">menu</i>
+                    <ul class="flex flex-wrap mr-20 py-3">
+                        <li class="my-3">
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="cartable.php">
                                 کارتابل
                             </a>
                         </li>
-                        <li>
+                        <li class="my-3">
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="bazar.php">
                                 تماس عمومی
                             </a>
                         </li>
-                        <li><a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="bazar2.php">
+                        <li class="my-3"><a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="bazar2.php">
                                 تماس با بازار
                             </a>
                         </li>
-                        <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/hamkarTelegram.php">
+                        <li class="my-3"><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/hamkarTelegram.php">
                                 <i class="fas fa-phone-volume"></i>
                                 همکار تلگرام
                             </a>
                         </li>
-                        <li>
+                        <li class="my-3">
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="estelam-list.php">
                                 قیمت های گرفته شده
                             </a>
                         </li>
-                        <li>
+                        <li class="my-3">
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" href="shomarefaktor.php">
                                 شماره فاکتور
                             </a>
                         </li>
-                        <li>
+                        <li class="my-3">
                             <a style="font-size: 10px;" target="_self" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./report/givePrice.php">
                                 قیمت دهی دستوری
                             </a>
                         </li>
-                        <li>
+                        <li class="my-3">
                             <a style="font-size: 10px;" class="px-4 py-2 bg-violet-600 lg:ml-2 ml-1 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/GivenPriceHistory.php">
                                 تاریخچه
                             </a>
                         </li>
-                        <li>
+                        <li class="my-3">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../callcenter/report/telegramProcess.php">
                                 تلگرام
                             </a>

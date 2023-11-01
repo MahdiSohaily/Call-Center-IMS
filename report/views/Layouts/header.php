@@ -169,7 +169,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
         <div class="min-h-screen bg-gray-100">
             <nav id="nav" ref="nav" class="main-nav bg-white shadow-lg flex flex-col justify-between">
                 <i id="close" onclick="toggleNav()" class="material-icons absolute m-3 left-0 hover:cursor-pointer">close</i>
-                <ul class="rtl flex flex-col pt-5 ">
+                <ul class="rtl flex flex-wrap flex-col pt-5 ">
                     <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium 
                     leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none
                      transition duration-150 ease-in-out" href="../index.php">
@@ -248,56 +248,56 @@ $_SESSION["user_id"] = $_SESSION["id"];
             <!-- Page Content -->
             <main class="pt-14">
                 <div class="rtl flex justify-between bg-gray-200 fixed w-full shadow-lg" style="top: 0; z-index:100">
-                    <i class="p-2 right-0 material-icons hover:cursor-pointer fixed" onclick="toggleNav()">menu</i>
-                    <ul class="flex mr-20 py-3">
-                        <li>
+                    <i class="p-2 right-0 material-icons hover:cursor-pointer fixed my-3" onclick="toggleNav()">menu</i>
+                    <ul class="flex flex-wrap mr-20 py-3">
+                        <li class="my-2">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="../cartable.php">
                                 <i class="fas fa-layer-group"></i>
                                 کارتابل
                             </a>
                         </li>
-                        <li>
+                        <li class="my-2">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="../bazar.php">
                                 <i class="fas fa-phone-volume"></i>
                                 تماس عمومی
                             </a>
                         </li>
-                        <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="../bazar2.php">
+                        <li class="my-2"><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="../bazar2.php">
                                 <i class="fas fa-phone-volume"></i>
                                 تماس با بازار
                             </a>
                         </li>
-                        <li><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./hamkarTelegram.php">
+                        <li class="my-2"><a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./hamkarTelegram.php">
                                 <i class="fas fa-phone-volume"></i>
                                 همکار تلگرام
                             </a>
                         </li>
-                        <li>
+                        <li class="my-2">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="../estelam-list.php">
                                 <i class="fas fa-arrow-down"></i>
                                 <i class="fas fa-dollar-sign"></i>
                                 قیمت های گرفته شده
                             </a>
                         </li>
-                        <li>
+                        <li class="my-2">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="../shomarefaktor.php">
                                 <i class="fas fa-feather-alt"></i>
                                 شماره فاکتور
                             </a>
                         </li>
-                        <li>
+                        <li class="my-2">
                             <a target="_blank" class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" href="./givePrice.php">
                                 <i class="fas fa-feather-alt"></i>
                                 قیمت دهی دستوری
                             </a>
                         </li>
-                        <li>
+                        <li class="my-2">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="./GivenPriceHistory.php">
                                 <i class="fas fa-history"></i>
                                 تاریخچه
                             </a>
                         </li>
-                        <li>
+                        <li class="my-2">
                             <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="./telegramProcess.php">
                                 <i class="fas fa-history"></i>
                                 تلگرام
@@ -305,7 +305,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
                         </li>
                     </ul>
 
-                    <div class=" flex items-top p-2">
+                    <div class="my-2 flex flex-wrap items-top p-2">
                         <?php
                         $profile = '../../userimg/default.png';
                         if (file_exists("../../userimg/" . $_SESSION['id'] . ".jpg")) {

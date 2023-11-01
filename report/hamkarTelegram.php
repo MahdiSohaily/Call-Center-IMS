@@ -15,64 +15,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         direction: ltr;
     }
 </style>
-<div class="grid grid-cols-7 gap-2">
-    <div class="col-span-2 my-5 mx-2 container rounded-lg shadow-lg bg-gray-900 text-white p-4">
-        <h1 class="text-2xl font-bold mb-4">Console Log</h1>
-        <div class="bg-black p-4 border rounded border-gray-600 h-60 overflow-y-auto" id="logContainer">
-            <?php
-            $logFile = './app/Controllers/telegram_partner_log.txt';
-            $lines = [];
-
-            // Open the log file for reading
-            if ($file = fopen($logFile, 'r')) {
-                // Read each line and keep track of the last 10 lines
-                while (($line = fgets($file)) !== false) {
-                    $lines[] = $line;
-                    if (count($lines) > 10) {
-                        array_shift($lines); // Remove the first line to keep 10 lines
-                    }
-                }
-                fclose($file);
-            }
-            ?>
-
-            <!-- PHP generates JSON lines as HTML data attributes -->
-            <?php foreach ($lines as $line) : ?>
-                <div class="mb-2 line" data-line="<?= htmlspecialchars(json_encode(json_decode($line), JSON_UNESCAPED_UNICODE)) ?>"></div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-
-    <script>
-        // Reverse and display the log lines on the client side
-        document.addEventListener('DOMContentLoaded', function() {
-            const logContainer = document.getElementById('logContainer');
-            const lines = logContainer.querySelectorAll('.line');
-
-            // Reverse and display the lines
-            for (let i = lines.length - 1; i >= 0; i--) {
-                const lineData = JSON.parse(lines[i].getAttribute('data-line'));
-                const lineText = Object.entries(lineData)
-                    .map(([key, value]) => `${key}: ${value}`)
-                    .join('<br>');
-
-                const lineElement = document.createElement('div');
-                lineElement.innerHTML = `<span class="text-red-600">$</span> <code class="text-green-600">${lineText}</code>`;
-                logContainer.appendChild(lineElement);
-
-                if (i > 0) {
-                    const separatorElement = document.createElement('p');
-                    separatorElement.classList.add('text-green-600');
-                    separatorElement.innerText = '----------------------------------------------------------------';
-                    logContainer.appendChild(separatorElement);
-                }
-            }
-
-            // Remove the original lines
-            lines.forEach(line => line.remove());
-        });
-    </script>
-
+<div class="grid md:grid-cols-7 gap-2 rtl">
     <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
         <div class="flex rtl bg-violet-600  rounded-t-lg p-2">
             <button class="px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-300 ml-2 focus:outline-none" onclick="openTab('tab1')">
@@ -247,6 +190,63 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             </div>
         </div>
     </div>
+
+    <div class="col-span-2 my-5 mx-2 container rounded-lg shadow-lg bg-gray-900 text-white p-4">
+        <h1 class="text-2xl font-bold mb-4">Console Log</h1>
+        <div class="bg-black p-4 border rounded border-gray-600 h-60 overflow-y-auto" id="logContainer">
+            <?php
+            $logFile = './app/Controllers/telegram_partner_log.txt';
+            $lines = [];
+
+            // Open the log file for reading
+            if ($file = fopen($logFile, 'r')) {
+                // Read each line and keep track of the last 10 lines
+                while (($line = fgets($file)) !== false) {
+                    $lines[] = $line;
+                    if (count($lines) > 10) {
+                        array_shift($lines); // Remove the first line to keep 10 lines
+                    }
+                }
+                fclose($file);
+            }
+            ?>
+
+            <!-- PHP generates JSON lines as HTML data attributes -->
+            <?php foreach ($lines as $line) : ?>
+                <div class="mb-2 line" data-line="<?= htmlspecialchars(json_encode(json_decode($line), JSON_UNESCAPED_UNICODE)) ?>"></div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <script>
+        // Reverse and display the log lines on the client side
+        document.addEventListener('DOMContentLoaded', function() {
+            const logContainer = document.getElementById('logContainer');
+            const lines = logContainer.querySelectorAll('.line');
+
+            // Reverse and display the lines
+            for (let i = lines.length - 1; i >= 0; i--) {
+                const lineData = JSON.parse(lines[i].getAttribute('data-line'));
+                const lineText = Object.entries(lineData)
+                    .map(([key, value]) => `${key}: ${value}`)
+                    .join('<br>');
+
+                const lineElement = document.createElement('div');
+                lineElement.innerHTML = `<span class="text-red-600">$</span> <code class="text-green-600">${lineText}</code>`;
+                logContainer.appendChild(lineElement);
+
+                if (i > 0) {
+                    const separatorElement = document.createElement('p');
+                    separatorElement.classList.add('text-green-600');
+                    separatorElement.innerText = '----------------------------------------------------------------';
+                    logContainer.appendChild(separatorElement);
+                }
+            }
+
+            // Remove the original lines
+            lines.forEach(line => line.remove());
+        });
+    </script>
 
 </div>
 
