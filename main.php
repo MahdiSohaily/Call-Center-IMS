@@ -45,11 +45,12 @@
                          <input onkeyup="convertToEnglish(this)" id="phone" name="phone" type="text" value="<?php echo $phone ?>" readonly>
                      </div>
                      <div class="bg-gray-200 p-3">
-                         <p>نام</p> <input id="name" name="name" type="text" value="<?php echo  !empty($name) ?  $name :  '';  ?>">
+                         <p>نام</p>
+                         <input onkeyup="convertToPersian(this)" id="name" name="name" type="text" value="<?php echo  !empty($name) ?  $name :  '';  ?>">
                      </div>
                      <div class="bg-gray-200 p-3">
                          <p>نام خانوادگی</p>
-                         <input id="last_name" name="family" type="text" value="<?php echo !empty($family) ? $family : ''; ?>">
+                         <input onkeyup="convertToPersian(this)" id="last_name" name="family" type="text" value="<?php echo !empty($family) ? $family : ''; ?>">
                      </div>
                      <div class="bg-gray-200 p-3">
                          <p>شماره شاسی</p>

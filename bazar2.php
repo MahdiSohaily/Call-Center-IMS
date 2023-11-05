@@ -72,14 +72,14 @@
 <div class="bazar-click-to-cancell" href="">قطع تماس جاری</div>
 <form class="estelam-form" action="php/estelam-form-save.php" method="get" autocomplete="off">
     <div class="input-keeper">
-        <input type="text" name="code[]" class="text-gray-500 estelam-form-code" placeholder="کد فنی">
+        <input type="text" onkeyup="convertToEnglish(this)" name="code[]" class="text-gray-500 estelam-form-code" placeholder="کد فنی">
         <input type="text" name="price[]" class="text-gray-500 estelam-form-price" placeholder="قیمت">
         <a class="remove-from-estelam-form" href="#">
             <i class="material-icons bold">close</i>
         </a>
     </div>
     <div class="estelam-form-box">
-        <input type="text" class="sellername-input" placeholder="فروشنده">
+        <input type="text" onkeyup="convertToPersian(this)" class="sellername-input" placeholder="فروشنده">
         <input type="text" name="sellerid" class="sellerid-input" hidden>
 
         <div style="clear: both;"></div>
