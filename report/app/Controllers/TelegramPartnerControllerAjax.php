@@ -10,24 +10,52 @@ if (isset($_POST['operation'])) {
     $profile = $_POST["profile"];
     $data = json_decode($_POST['data'], true);
 
-    $honda = $data['honda'];
-    $kia = $data['kia'];
-    $chines = $data['chines'];
+
 
     if ($_POST['operation'] == 'update') {
-        if ($honda == null && $kia == null && $chines == null) {
+        if ($data == null) {
+            $match = "DELETE FROM shop.partner_category_match WHERE partner_id = '$chat_id'";
+            CONN->query($match);
+
             $sql = "DELETE FROM shop.telegram_partner WHERE chat_id = '$chat_id'";
             CONN->query($sql);
         } else {
-            updatePartner($chat_id, $data);
+            $existing_category = "SELECT cat_id  FROM partner_category_match WHERE partner_id = '$chat_id'";
+            $result = CONN->query($existing_category);
+            // Initialize an array to store all the rows
+            $current_cat = [];
+
+            if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                    $current_cat[] = $row;
+                }
+                $result->close();
+            }
+
+            updatePartner($chat_id, $current_cat, $data);
         }
     } else {
         if (partnerExist($chat_id)) {
-            if ($honda == null && $kia == null && $chines == null) {
+            if ($data == null) {
+                $match = "DELETE FROM shop.partner_category_match WHERE partner_id = '$chat_id'";
+                CONN->query($match);
+
                 $sql = "DELETE FROM shop.telegram_partner WHERE chat_id = '$chat_id'";
                 CONN->query($sql);
             }
-            updatePartner($chat_id, $data);
+            $existing_category = "SELECT cat_id  FROM partner_category_match WHERE partner_id = '$chat_id'";
+            $result = CONN->query($existing_category);
+            // Initialize an array to store all the rows
+            $current_cat = [];
+
+            if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                    $current_cat[] = $row;
+                }
+                $result->close();
+            }
+
+            updatePartner($chat_id, $current_cat, $data);
         } else {
             createPartner($chat_id, $name, $username, $profile, $data);
         }
@@ -153,11 +181,17 @@ function partnerExist($id)
     return !empty($data);
 }
 
-function updatePartner($chat_id, $data)
+function updatePartner($chat_id, $current_cat, $data)
 {
     $honda = $data['honda'];
     $kia = $data['kia'];
     $chines = $data['chines'];
+
+    try {
+        $sql = "UPDATE shop.telegram_partner SET honda = '$honda', kia = '$kia', chines = '$chines' WHERE chat_id = '$chat_id'";
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
 
     $sql = "UPDATE shop.telegram_partner SET honda = '$honda', kia = '$kia', chines = '$chines' WHERE chat_id = '$chat_id'";
 
@@ -179,7 +213,7 @@ function createPartner($chat_id, $name, $username, $profile, $data)
 function getExistingTelegramPartners()
 {
     $sql = "SELECT
-                tp.chat_id AS telegram_partner_id,
+                tp.chat_id AS chat_id,
                 tp.name AS telegram_partner_name,
                 tp.username,
                 tp.profile,

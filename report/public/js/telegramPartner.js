@@ -130,7 +130,6 @@ function removePartner(element) {
 
 function displayLocalData() {
   fetchLocalPartnersData().then(function (data) {
-    console.log(data);
     const initial_data = document.getElementById("initial_data");
     let template = "";
     let counter = 1;
@@ -154,13 +153,11 @@ function displayLocalData() {
           template += ` 
                   <td class="p-2 text-center">
                       <input ${
-                        related_cats.includes(cat.name) == 1
-                          ? "checked"
-                          : ""
+                        related_cats.includes(cat.name) == 1 ? "checked" : ""
                       } data-section="exist" class="cursor-pointer 
                       exist user-${user.chat_id}" data-user="${
             user.chat_id
-          }" type="checkbox" name="honda" 
+          }" type="checkbox" name="${cat.id}" 
                       onclick="addPartner(this)" />
                   </td>
                   `;
@@ -206,33 +203,11 @@ function displayTelegramData(data) {
 
   fetchLocalPartnersData().then(function (items) {
     // Convert chat_id to integers
-    const itemsWithIntChatId = items.map((item) => {
-      return {
-        ...item,
-        chat_id: parseInt(item.chat_id, 10),
-      };
-    });
+    const partners = items["partners"];
+    const categories = items["categories"];
 
-    // Create a map to store items by their chat_id for faster lookups
-    const itemsMap = new Map(
-      itemsWithIntChatId.map((item) => [item.chat_id, item])
-    );
-
-    // Merge properties from the items array into the data array
-    const mergedData = data.map((item) => {
-      const existingItem = itemsMap.get(item.chat_id);
-      if (existingItem) {
-        // Merge properties from the 'items' array into 'data'
-        const mergedItem = { ...item, ...existingItem };
-        return mergedItem;
-      }
-      return item;
-    });
-
-    mergedData.forEach(function (user) {
-      const isHondaChecked = user.honda === "1";
-      const isKiaChecked = user.kia === "1";
-      const isChinesChecked = user.chines === "1";
+    data.forEach(function (user) {
+      const foundObject = partners.find((item) => item.chat_id == user.chat_id);
       template += `
         <tr class="even:bg-indigo-100" 
           data-chat="${user.chat_id}"
@@ -242,33 +217,24 @@ function displayTelegramData(data) {
           data-operation="check">
           <td class="p-2 text-center">${counter}</td>
           <td class="p-2 text-center">${user.title}</td>
-          <td class="p-2 text-center" style="text-decoration:ltr">${
-            user.username
-          }</td>
-          <td class="p-2 text-center"><img class="userImage mx-2 mx-auto d-block" src="${
-            user.profile_path
-          }" /></td>
-          <td class="p-2 text-center">
-            <input data-section="telegram" class="cursor-pointer telegram user-${
-              user.chat_id
-            }" data-user="${user.chat_id}" onclick="addPartner(this)"
-              type="checkbox" name="honda" ${isHondaChecked ? "checked" : ""} />
-          </td>
-          <td class="p-2 text-center">
-            <input data-section="telegram" class="cursor-pointer telegram user-${
-              user.chat_id
-            }" data-user="${user.chat_id}" onclick="addPartner(this)"
-              type="checkbox" name="kia" ${isKiaChecked ? "checked" : ""} />
-          </td>
-          <td class="p-2 text-center">
-            <input data-section="telegram" class="cursor-pointer telegram user-${
-              user.chat_id
-            }" data-user="${user.chat_id}" onclick="addPartner(this)"
-              type="checkbox" name="chines" ${
-                isChinesChecked ? "checked" : ""
-              } />
-          </td>
-        </tr>`;
+          <td class="p-2 text-center" style="text-decoration:ltr">${user.username}</td>
+          <td class="p-2 text-center"><img class="userImage mx-2 mx-auto d-block" src="${user.profile_path}" /></td>`;
+      for (let cat of categories) {
+        related_cats = foundObject ? foundObject.category_names.split(",") : [];
+        template += ` 
+                    <td class="p-2 text-center">
+                        <input ${
+                          related_cats.includes(cat.name) == 1 ? "checked" : ""
+                        } data-section="exist" class="cursor-pointer 
+                        exist user-${user.chat_id}" data-user="${
+          user.chat_id
+        }" type="checkbox" name="${cat.id}" 
+                        onclick="addPartner(this)" />
+                    </td>
+                    `;
+      }
+
+      template += `</tr>`;
       counter += 1;
     });
     // Assuming you have an element with the ID 'contact' to display the data
@@ -343,6 +309,8 @@ function addPartner(element) {
     const isChecked = node.checked;
     data[authority] = isChecked;
   }
+
+  console.log(data);
 
   const params = new URLSearchParams();
   params.append("operation", operation);
