@@ -15,3 +15,4 @@
 {"logAction":"log","message_content":"asas","receivers":"[\"Mahdi Rezaei\"]"}
 {"logAction":"log","message_content":"oiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii","receivers":"[\"Mahdi Rezaei\"]"}
 {"logAction":"log","message_content":"uiguyguy","receivers":"[\"mahdi rezaei\"]"}
+{"logAction":"log","message_content":"ewere","receivers":"[\"dfgdf\",\"dfgdf\"]"}

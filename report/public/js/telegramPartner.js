@@ -107,6 +107,7 @@ function updateCategory(element) {
       const data = response.data;
       for (let brand in data) {
         const category = document.getElementById(brand + "_result");
+        console.log(category);
         category.innerHTML = null;
         for (let item of data[brand]) {
           category.innerHTML += `

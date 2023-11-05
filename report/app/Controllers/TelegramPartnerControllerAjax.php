@@ -166,7 +166,9 @@ function getCategories()
 }
 function getPartners($key)
 {
-    $sql = "SELECT name, chat_id FROM shop.telegram_partner WHERE $key = 1";
+    $sql = "SELECT name, chat_id FROM shop.partner_category_match 
+    INNER JOIN telegram_partner ON telegram_partner.chat_id = partner_category_match.partner_id
+    WHERE partner_category_match.cat_id = '$key'";
 
     $result = CONN->query($sql);
 
@@ -257,7 +259,7 @@ function getExistingTelegramPartners()
         $result->close();
     }
     return $data;
-
+}
 function editCategory($id, $value)
 {
     $sql = "UPDATE shop.partner_categories SET name= '$value' WHERE id = '$id'";
@@ -274,6 +276,7 @@ function createCategory($value)
 
     return $result;
 }
+
 
 function deleteCategory($id)
 {

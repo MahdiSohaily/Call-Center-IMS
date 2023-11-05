@@ -47,43 +47,34 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                 <form action="post" id="message" class="flex flex-column">
                     <textarea required class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="3" placeholder="متن پیام خود را وارد کنید..."></textarea>
                     <div class="py-3">
-                        <label class="cursor-pointer pl-5" for="honda">
-                            <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="honda" id="honda">
-                            هیوندا
-                        </label>
-
-                        <label class="cursor-pointer pl-5" for="kia">
-                            <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="kia" id="kia">
-                            کیا
-                        </label>
-                        <label class="cursor-pointer pl-5" for="chines">
-                            <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="chines" id="chines">
-                            چینی
-                        </label>
+                        <?php
+                        foreach ($categories as $category) :
+                        ?>
+                            <label class="cursor-pointer pl-5" for="honda">
+                                <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="<?= $category['id'] ?>" id="<?= $category['id'] ?>">
+                                <?= $category['name'] ?>
+                            </label>
+                        <?php
+                        endforeach;
+                        ?>
                     </div>
                 </form>
                 <div class="my-3 flex gap-3">
                     <div class="flex-1">
                         <table class="w-full">
                             <tbody>
-                                <tr>
-                                    <td class="py-4">هیوندا</td>
-                                    <td class="py-4">
-                                        <div id="honda_result" class="flex flex-wrap"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4">کیا</td>
-                                    <td class="py-4">
-                                        <div id="kia_result" class="flex flex-wrap"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-4">چینی</td>
-                                    <td class="py-4">
-                                        <div id="chines_result" class="flex flex-wrap"></div>
-                                    </td>
-                                </tr>
+                                <?php
+                                foreach ($categories as $category) :
+                                ?>
+                                    <tr>
+                                        <td class="py-4"><?= $category['name'] ?></td>
+                                        <td class="py-4">
+                                            <div id="<?= $category['id'] ?>_result" class="flex flex-wrap"></div>
+                                        </td>
+                                    </tr>
+                                <?php
+                                endforeach;
+                                ?>
                             </tbody>
                         </table>
                     </div>
