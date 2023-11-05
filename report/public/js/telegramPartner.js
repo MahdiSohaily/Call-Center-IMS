@@ -310,8 +310,6 @@ function addPartner(element) {
     data[authority] = isChecked;
   }
 
-  console.log(data);
-
   const params = new URLSearchParams();
   params.append("operation", operation);
   params.append("chat_id", chat_id);
@@ -322,8 +320,12 @@ function addPartner(element) {
 
   axios
     .post(address, params)
-    .then(function (response) {})
-    .catch(function (error) {});
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 function displayCategories() {
