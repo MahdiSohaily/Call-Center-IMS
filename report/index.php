@@ -9,7 +9,7 @@ $rates = $conn->query($sql);
     <div class="max-w-full mx-auto sm:px-6 lg:px-8">
         <div>
             <div class="p-6 lg:p-8 flex justify-center">
-                <input type="text" name="serial" id="serial" class="rounded-md p-3 text-center w-96 border-2 bg-gray-100" min="0" max="30" onkeyup="search(this.value)" placeholder="... کد فنی قطعه را وارد کنید" />
+                <input onkeyup="convertToEnglish(this)" type="text" name="serial" id="serial" class="rounded-md p-3 text-center w-96 border-2 bg-gray-100" min="0" max="30" onkeyup="search(this.value)" placeholder="... کد فنی قطعه را وارد کنید" />
             </div>
             <div class="flex justify-center items-center pb-6">
                 <label for="mode" class="px-2">جستجوی پیشرفته</label>

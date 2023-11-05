@@ -6,7 +6,7 @@ require_once('./views/Layouts/header.php');
     <form target="_blank" action="giveOrderedPrice.php" method="post">
         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
         <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
-        <input type="text" name="customer" value="1" id="target_customer" hidden> 
+        <input type="text" name="customer" value="1" id="target_customer" hidden>
         <div class="">
             <div class="col-span-12 sm:col-span-4 mb-3 relative">
                 <label for="customer">
@@ -27,7 +27,7 @@ require_once('./views/Layouts/header.php');
                 <label for="code" class="block font-medium text-sm text-gray-700">
                     کدهای مدنظر
                 </label>
-                <textarea onchange="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                <textarea onchange="filterCode(this)" onkeyup="convertToEnglish(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
             </div>
         </div>
 

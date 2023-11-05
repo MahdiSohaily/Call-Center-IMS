@@ -22,7 +22,7 @@ $goods = $conn->query($sql);
             ثبت جنس جدید
             <i class="px-2 material-icons hover:cursor-pointer">add_circle_outline</i>
         </a>
-        <input type="text" name="serial" id="serial" class="rtl rounded-md py-2 w-96 border-2 bg-gray-100 px-3" min="0" max="30" @keyup="search($event.target.value, rates)" placeholder="جستجو به اساس شماره فنی ..." />
+        <input onkeyup="convertToEnglish(this)" type="text" name="serial" id="serial" class="rtl rounded-md py-2 w-96 border-2 bg-gray-100 px-3" min="0" max="30" @keyup="search($event.target.value, rates)" placeholder="جستجو به اساس شماره فنی ..." />
     </div>
     <div class="bg-gray-100 bg-opacity-25">
         <div class="max-w-7xl overflow-x-auto mx-auto">

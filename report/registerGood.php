@@ -36,7 +36,7 @@ if (isset($_GET['form'])) {
                                     <label class="block font-medium text-sm text-gray-700">
                                         شماره فنی
                                     </label>
-                                    <input name="partNumber" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="serial" type="text" />
+                                    <input onkeyup="convertToEnglish(this)" name="partNumber" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="serial" type="text" />
                                     <p class="mt-2"></p>
                                 </div>
 
