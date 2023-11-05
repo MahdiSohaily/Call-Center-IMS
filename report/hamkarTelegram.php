@@ -19,11 +19,11 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         display: none;
     }
 </style>
-<input type="text" id="customInput" placeholder="Type in English (using Persian layout)">
+<input type="text" onkeyup="convertToPersian(this)" id="customInput" placeholder="Type in English (using Persian layout)">
 
 <script>
     // Define a mapping of English keyboard keys to Persian characters
-    const charMap = {
+    const persianCharMap = {
         'a': 'ش',
         'b': 'ذ',
         'c': 'ز',
@@ -66,9 +66,65 @@ require_once('./app/Controllers/TelegramPartnerController.php');
     };
 
 
-    const customInput = document.getElementById('customInput');
+    function convertToPersian(element) {
+        const customInput = element;
+        let customText = '';
+        const inputText = customInput.value.toLowerCase();
+        for (let i = 0; i < inputText.length; i++) {
+            const char = inputText[i];
+            if (char in persianCharMap) {
+                customText += persianCharMap[char];
+            } else {
+                customText += char;
+            }
+        }
+        customInput.value = customText;
+    }
 
-    customInput.addEventListener('input', function() {
+    function convertToEnglish(element) {
+        const englishCharMap = {
+            'ش': 'a',
+            'ذ': 'b',
+            'ز': 'c',
+            'ی': 'd',
+            'ث': 'e',
+            'ب': 'f',
+            'ل': 'g',
+            'ا': 'h',
+            'ه': 'i',
+            'ت': 'j',
+            'ن': 'k',
+            'م': 'l',
+            'پ': 'm',
+            'د': 'n',
+            'خ': 'o',
+            'ح': 'p',
+            'ض': 'q',
+            'ق': 'r',
+            'س': 's',
+            'ف': 't',
+            'ع': 'u',
+            'ر': 'v',
+            'ص': 'w',
+            'ط': 'x',
+            'غ': 'y',
+            'ظ': 'z',
+            'و': ':',
+            'گ': "'",
+            'چ': "]",
+            '۱': '1',
+            '۲': '2',
+            '۳': '3',
+            '۴': '4',
+            '۵': '5',
+            '۶': '6',
+            '۷': '7',
+            '۸': '8',
+            '۹': '9',
+            '۰': '0'
+        };
+
+        const customInput = element;
         let customText = '';
         const inputText = customInput.value.toLowerCase();
         for (let i = 0; i < inputText.length; i++) {
@@ -80,7 +136,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             }
         }
         customInput.value = customText;
-    });
+    }
 </script>
 <div class="grid md:grid-cols-7 gap-2 rtl">
     <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
