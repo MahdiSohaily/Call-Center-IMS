@@ -90,6 +90,12 @@ if (isset($_POST['getExistingCategories'])) {
     echo json_encode(getCategories());
 }
 
+if (isset($_POST['editCategory'])) {
+
+    $id = $_POST['id'];
+    $value = $_POST['value'];
+}
+
 function getCategories()
 {
     $sql = "SELECT * FROM shop.partner_categories";
@@ -135,7 +141,6 @@ function partnerExist($id)
     return !empty($data);
 }
 
-
 function updatePartner($chat_id, $data)
 {
     $honda = $data['honda'];
@@ -176,4 +181,14 @@ function getExistingTelegramPartners()
     }
 
     return $data;
+}
+
+
+function editCategory($id, $value)
+{
+    $sql = "UPDATE shop.partner_categories SET name= '$value' WHERE id = '$id'";
+
+    $result = CONN->query($sql);
+
+    return $result;
 }

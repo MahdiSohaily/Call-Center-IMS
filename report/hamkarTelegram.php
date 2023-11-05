@@ -19,6 +19,69 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         display: none;
     }
 </style>
+<input type="text" id="customInput" placeholder="Type in English (using Persian layout)">
+
+<script>
+    // Define a mapping of English keyboard keys to Persian characters
+    const charMap = {
+        'a': 'ش',
+        'b': 'ذ',
+        'c': 'ز',
+        'd': 'ی',
+        'e': 'ث',
+        'f': 'ب',
+        'g': 'ل',
+        'h': 'ا',
+        'i': 'ه',
+        'j': 'ت',
+        'k': 'ن',
+        'l': 'م',
+        'm': 'پ',
+        'n': 'د',
+        'o': 'خ',
+        'p': 'ح',
+        'q': 'ض',
+        'r': 'ق',
+        's': 'س',
+        't': 'ف',
+        'u': 'ع',
+        'v': 'ر',
+        'w': 'ص',
+        'x': 'ط',
+        'y': 'غ',
+        'z': 'ظ',
+        ',': 'و',
+        "'": 'گ',
+        "]": 'چ',
+        '1': '۱',
+        '2': '۲',
+        '3': '۳',
+        '4': '۴',
+        '5': '۵',
+        '6': '۶',
+        '7': '۷',
+        '8': '۸',
+        '9': '۹',
+        '0': '۰'
+    };
+
+
+    const customInput = document.getElementById('customInput');
+
+    customInput.addEventListener('input', function() {
+        let customText = '';
+        const inputText = customInput.value.toLowerCase();
+        for (let i = 0; i < inputText.length; i++) {
+            const char = inputText[i];
+            if (char in charMap) {
+                customText += charMap[char];
+            } else {
+                customText += char;
+            }
+        }
+        customInput.value = customText;
+    });
+</script>
 <div class="grid md:grid-cols-7 gap-2 rtl">
     <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
         <div class="flex rtl bg-violet-600  rounded-t-lg p-2">

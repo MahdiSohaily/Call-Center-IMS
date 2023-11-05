@@ -438,6 +438,7 @@ function editCategoryForm() {
   const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
 
   const params = new URLSearchParams();
+  params.append("editCategory", "editCategory");
   params.append("id", id);
   params.append("value", value);
 
