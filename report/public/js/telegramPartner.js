@@ -130,53 +130,42 @@ function removePartner(element) {
 
 function displayLocalData() {
   fetchLocalPartnersData().then(function (data) {
+    console.log(data);
     const initial_data = document.getElementById("initial_data");
     let template = "";
     let counter = 1;
-    if (data.length > 0) {
-      for (let user of data["partners"]) {
-
+    const partners = data["partners"];
+    const categories = data["categories"];
+    if (partners.length > 0) {
+      for (let user of partners) {
+        const related_cats = user.category_names.split(",");
         template += `
         <tr class="even:bg-indigo-100" 
             data-operation='update'
             data-chat="${user.chat_id}" 
-            data-name=" ${user.name}" 
+            data-name=" ${user.telegram_partner_name}" 
             data-username="${user.username}" 
             data-profile="${user.profile}">
                 <td class="p-2 text-center">${counter} </td>
-                <td class="p-2 text-center">${user.name}</td>
-                <td class="p-2 text-center" style="text-decoration:ltr">${
-                  user.username
-                }</td>
-                <td class="p-2 text-center"> <img class="userImage mx-2 mx-auto d-block" src='${
-                  user.profile
-                }' /> </td>
-                <td class="p-2 text-center"> 
-                        <input ${
-                          user.honda == 1 ? "checked" : ""
-                        } data-section="exist" class="cursor-pointer exist user-${
-          user.chat_id
-        }" data-user="${
-          user.chat_id
-        }" type="checkbox" name="honda" onclick="addPartner(this)" /> 
-        </td>
-                <td class="p-2 text-center">
-                <input ${
-                  user.kia == 1 ? "checked" : ""
-                } data-section="exist" class="cursor-pointer exist user-${
-          user.chat_id
-        } " data-user="${
-          user.chat_id
-        }" type="checkbox" name="kia" onclick="addPartner(this)" /> </td>
-                <td class="p-2 text-center"> <input ${
-                  user.chines == 1 ? "checked" : ""
-                } data-section="exist" class="cursor-pointer exist user-${
-          user.chat_id
-        }" data-user=${
-          user.chat_id
-        }" type="checkbox" name="chines" onclick="addPartner(this)" /> </td>
-        </tr>
-        `;
+                <td class="p-2 text-center">${user.telegram_partner_name}</td>
+                <td class="p-2 text-center" style="text-decoration:ltr">${user.username}</td>
+                <td class="p-2 text-center"> <img class="userImage mx-2 mx-auto d-block" src='${user.profile}' /> </td>`;
+        for (let cat of categories) {
+          template += ` 
+                  <td class="p-2 text-center">
+                      <input ${
+                        related_cats.includes(cat.name) == 1
+                          ? "checked"
+                          : ""
+                      } data-section="exist" class="cursor-pointer 
+                      exist user-${user.chat_id}" data-user="${
+            user.chat_id
+          }" type="checkbox" name="honda" 
+                      onclick="addPartner(this)" />
+                  </td>
+                  `;
+        }
+        template += "  </tr>";
         counter += 1;
       }
     } else {

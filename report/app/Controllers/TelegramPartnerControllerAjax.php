@@ -181,6 +181,8 @@ function getExistingTelegramPartners()
     $sql = "SELECT
                 tp.chat_id AS telegram_partner_id,
                 tp.name AS telegram_partner_name,
+                tp.username,
+                tp.profile,
                 GROUP_CONCAT(pc.name) AS category_names
             FROM
                 telegram_partner tp
