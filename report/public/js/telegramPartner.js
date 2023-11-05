@@ -379,6 +379,7 @@ function displayCategories() {
         <td class="p-2 text-center text-bold">${counter}</td>
         <td class="p-2 text-center text-bold" id="target-${item.id}">${item.name}</td>
         <td class="p-2 text-center">
+        <i data-cat-id="${item.id}" data-value="${item.name}" onclick="deleteCategory(this)" class="cursor-pointer material-icons font-semibold text-red-600">delete</i>
         <i data-cat-id="${item.id}" data-value="${item.name}" onclick="editCategory(this)" class="cursor-pointer material-icons font-semibold text-blue-400">edit</i>
         </td>
       </tr>
@@ -455,5 +456,57 @@ function editCategoryForm() {
   } catch (error) {
     console.log(error);
     return null;
+  }
+}
+
+function createCategoryForm() {
+  event.preventDefault();
+  const value = document.getElementById("category_name").value;
+  const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
+
+  const params = new URLSearchParams();
+  params.append("createCategory", "createCategory");
+  params.append("value", value);
+
+  try {
+    const response = axios.post(address, params).then((response) => {
+      document.getElementById("success_create").style.opacity = 1;
+      displayCategories();
+
+      setTimeout(() => {
+        document.getElementById("success_edit").style.opacity = 0;
+      }, 1000);
+    });
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+function deleteCategory(element) {
+  // Display a confirmation dialog
+  const isConfirmed = confirm(
+    "آیا مطمين هستید که میخواهید این دسته بندی را حذف کنید ؟"
+  );
+
+  // Check the user's choice
+  if (isConfirmed) {
+    const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
+    const id = element.getAttribute("data-cat-id");
+    const params = new URLSearchParams();
+    params.append("delete_category", "delete_category");
+    params.append("id", id);
+
+    try {
+      axios.post(address, params).then((response) => {
+        displayCategories();
+        setTimeout(() => {
+          document.getElementById("success_edit").style.opacity = 0;
+        }, 1000);
+      });
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
 }

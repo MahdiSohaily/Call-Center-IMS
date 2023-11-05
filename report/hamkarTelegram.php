@@ -173,7 +173,10 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                     <div>
                         <form action="#" id="save_category">
                             <input class="border border-2 p-2 mx-2" type="text" name="category_name" id="category_name" placeholder="اسم کتگوری...">
-                            <input class="text-white bg-green-600 py-2 px-4 rounded-md" type="submit" value="افزودن">
+                            <button class="text-white bg-green-600 py-2 px-4 rounded-md" onclick="createCategoryForm()">
+                                افزودن
+                            </button>
+
                         </form>
                         <form action="#" id="edit_category" class="hidden">
                             <input type="hidden" id="category_id" value="" />

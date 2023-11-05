@@ -98,6 +98,16 @@ if (isset($_POST['editCategory'])) {
     editCategory($id, $value);
 }
 
+if (isset($_POST['createCategory'])) {
+    $value = $_POST['value'];
+
+    createCategory($value);
+}
+if (isset($_POST['delete_category'])) {
+    $id = $_POST['id'];
+    deleteCategory($id);
+}
+
 function getCategories()
 {
     $sql = "SELECT * FROM shop.partner_categories";
@@ -189,6 +199,24 @@ function getExistingTelegramPartners()
 function editCategory($id, $value)
 {
     $sql = "UPDATE shop.partner_categories SET name= '$value' WHERE id = '$id'";
+
+    $result = CONN->query($sql);
+
+    return $result;
+}
+function createCategory($value)
+{
+    $sql = "INSERT INTO shop.partner_categories (name) VALUES ('$value')";
+
+    $result = CONN->query($sql);
+
+    return $result;
+}
+
+
+function deleteCategory($id)
+{
+    $sql = "DELETE FROM shop.partner_categories WHERE id = '$id'";
 
     $result = CONN->query($sql);
 
