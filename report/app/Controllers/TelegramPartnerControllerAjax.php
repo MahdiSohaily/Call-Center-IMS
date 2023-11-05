@@ -83,7 +83,7 @@ if (isset($_POST['logAction'])) {
 }
 
 if (isset($_POST['getInitialData'])) {
-    echo json_encode(getExistingTelegramPartners());
+    echo json_encode(['partners' => getExistingTelegramPartners(), 'categories' => getCategories()]);
 }
 
 if (isset($_POST['getExistingCategories'])) {
@@ -178,7 +178,18 @@ function createPartner($chat_id, $name, $username, $profile, $data)
 
 function getExistingTelegramPartners()
 {
-    $sql = "SELECT * FROM shop.telegram_partner";
+    $sql = "SELECT
+                tp.chat_id AS telegram_partner_id,
+                tp.name AS telegram_partner_name,
+                GROUP_CONCAT(pc.name) AS category_names
+            FROM
+                telegram_partner tp
+            JOIN
+                partner_category_match pcm ON tp.chat_id = pcm.partner_id
+            JOIN
+                partner_categories pc ON pcm.cat_id = pc.id
+            GROUP BY
+                tp.chat_id, tp.name;";
 
     $result = CONN->query($sql);
 
@@ -191,7 +202,6 @@ function getExistingTelegramPartners()
         }
         $result->close();
     }
-
     return $data;
 }
 

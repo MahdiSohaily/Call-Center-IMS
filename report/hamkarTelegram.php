@@ -117,15 +117,15 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                                 <th scope="col" class="text-gray-900 p-3 text-center">
                                     پروفایل
                                 </th>
-                                <th scope="col" class="text-gray-900 p-3 text-center">
-                                    هیوندا
-                                </th>
-                                <th scope="col" class="text-gray-900 p-3 text-center">
-                                    کیا
-                                </th>
-                                <th scope="col" class="text-gray-900 p-3 text-center">
-                                    چینی
-                                </th>
+                                <?php
+                                foreach ($categories as $category) :
+                                ?>
+                                    <th scope="col" class="text-gray-900 p-3 text-center">
+                                        <?= $category['name'] ?>
+                                    </th>
+                                <?php
+                                endforeach;
+                                ?>
                             </tr>
                         </thead>
                         <tbody id="contact" class="divide-y divide-gray-300">
@@ -151,15 +151,15 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                                 <th scope="col" class="text-gray-900 p-3 text-center">
                                     پروفایل
                                 </th>
-                                <th scope="col" class="text-gray-900 p-3 text-center">
-                                    هیوندا
-                                </th>
-                                <th scope="col" class="text-gray-900 p-3 text-center">
-                                    کیا
-                                </th>
-                                <th scope="col" class="text-gray-900 p-3 text-center">
-                                    چینی
-                                </th>
+                                <?php
+                                foreach ($categories as $category) :
+                                ?>
+                                    <th scope="col" class="text-gray-900 p-3 text-center">
+                                        <?= $category['name'] ?>
+                                    </th>
+                                <?php
+                                endforeach;
+                                ?>
                             </tr>
                         </thead>
                         <tbody id="initial_data" class="divide-y divide-gray-300">

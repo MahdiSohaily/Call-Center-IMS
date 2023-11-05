@@ -134,7 +134,8 @@ function displayLocalData() {
     let template = "";
     let counter = 1;
     if (data.length > 0) {
-      for (let user of data) {
+      for (let user of data["partners"]) {
+
         template += `
         <tr class="even:bg-indigo-100" 
             data-operation='update'
