@@ -433,6 +433,7 @@ function editCategory(element) {
 }
 
 function editCategoryForm() {
+  event.preventDefault();
   const id = document.getElementById("category_id").value;
   const value = document.getElementById("edit_category_name").value;
   const address = "./app/Controllers/TelegramPartnerControllerAjax.php";
@@ -443,8 +444,9 @@ function editCategoryForm() {
   params.append("value", value);
 
   try {
-    const response = axios.post(address, params);
-    return response.data;
+    const response = axios.post(address, params).then((response) => {
+      document.getElementById("success_edit").style.opacity = 1;
+    });
   } catch (error) {
     console.log(error);
     return null;

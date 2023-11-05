@@ -94,6 +94,8 @@ if (isset($_POST['editCategory'])) {
 
     $id = $_POST['id'];
     $value = $_POST['value'];
+
+    editCategory($id, $value);
 }
 
 function getCategories()

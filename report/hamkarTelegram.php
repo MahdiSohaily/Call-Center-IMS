@@ -18,8 +18,13 @@ require_once('./app/Controllers/TelegramPartnerController.php');
     .hidden {
         display: none;
     }
+
+    #success_edit,
+    #success_create {
+        opacity: 0;
+        transition: all 0.5s linear;
+    }
 </style>
-<input type="text" onkeyup="convertToEnglish(this)" id="customInput" placeholder="Type in English (using Persian layout)">
 <div class="grid md:grid-cols-7 gap-2 rtl">
     <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
         <div class="flex rtl bg-violet-600  rounded-t-lg p-2">
@@ -177,7 +182,8 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                                 ویرایش
                             </button>
                         </form>
-                        <p class="text-green-500 text-xs p-2">دسته بندی با موفقیت ثبت شد.</p>
+                        <p id="success_create" class="text-green-500 text-xs p-2">دسته بندی با موفقیت ثبت شد.</p>
+                        <p id="success_edit" class="text-green-500 text-xs p-2">دسته بندی با موفقیت ویرایش شد.</p>
                     </div>
                 </div>
                 <div class="my-3">
