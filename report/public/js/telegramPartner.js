@@ -377,7 +377,7 @@ function displayCategories() {
       template += `
       <tr class="even:bg-indigo-100" data-cat="${item.id}">
         <td class="p-2 text-center text-bold">${counter}</td>
-        <td class="p-2 text-center text-bold">${item.name}</td>
+        <td class="p-2 text-center text-bold" id="target-${item.id}">${item.name}</td>
         <td class="p-2 text-center">
         <i data-cat-id="${item.id}" data-value="${item.name}" onclick="editCategory(this)" class="cursor-pointer material-icons font-semibold text-blue-400">edit</i>
         </td>
@@ -446,6 +446,11 @@ function editCategoryForm() {
   try {
     const response = axios.post(address, params).then((response) => {
       document.getElementById("success_edit").style.opacity = 1;
+      document.getElementById("target-" + id).innerHTML = value;
+
+      setTimeout(() => {
+        document.getElementById("success_edit").style.opacity = 0;
+      }, 1000);
     });
   } catch (error) {
     console.log(error);
