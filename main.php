@@ -42,7 +42,7 @@
                          <p>
                              شماره تماس
                          </p>
-                         <input id="phone" name="phone" type="text" value="<?php echo $phone ?>" readonly>
+                         <input onkeyup="convertToEnglish(this)" id="phone" name="phone" type="text" value="<?php echo $phone ?>" readonly>
                      </div>
                      <div class="bg-gray-200 p-3">
                          <p>نام</p> <input id="name" name="name" type="text" value="<?php echo  !empty($name) ?  $name :  '';  ?>">
@@ -55,7 +55,7 @@
                          <p>شماره شاسی</p>
 
 
-                         <input name="vin" type="text" value="<?php echo !empty($vin) ? $vin : '' ?>">
+                         <input onkeyup="convertToEnglish(this)" name="vin" type="text" value="<?php echo !empty($vin) ? $vin : '' ?>">
                      </div>
                      <div class="bg-gray-200 p-3">
                          <p>ماشین</p>
@@ -118,7 +118,7 @@
                      <input hidden name="customer" required id="givenCustomer" type="number" value="<?php echo $id ?>" />
                      <div class="bg-gray-200  p-3">
 
-                         <textarea onchange="filterCode(this)" style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
+                         <textarea onkeyup="convertToEnglish(this)" onchange="filterCode(this)" style="border: 1px solid lightgray;" class="p-2 w-full ltr" id="givenCode" rows="7" name="code" required placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
                          <div class="flex justify-between items-center">
                              <button type="submit" class="give-search-button"> جستجو</button>
                              <i onclick="toEstelam()" title='انتقال کد به بخش استعلام' class="material-icons bg-indigo-500 text-white rounded-md py-3 px-5 hover:cursor-pointer hover:bg-indigo-600">arrow_forward</i>
@@ -135,51 +135,51 @@
      </div>
  </div>
  <script>
-      function filterCode(element) {
-        const message = element.value;
-        if (!message) {
-            return '';
-        }
+     function filterCode(element) {
+         const message = element.value;
+         if (!message) {
+             return '';
+         }
 
-        const codes = message.split("\n");
+         const codes = message.split("\n");
 
-        const filteredCodes = codes.map(function(code) {
-            code = code.replace(/\[[^\]]*\]/g, '');
-            const parts = code.split(/[:,]/, 2);
-            const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-            return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-        }).filter(Boolean);
+         const filteredCodes = codes.map(function(code) {
+             code = code.replace(/\[[^\]]*\]/g, '');
+             const parts = code.split(/[:,]/, 2);
+             const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+             return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+         }).filter(Boolean);
 
-        const finalCodes = filteredCodes.filter(function(item) {
-            const data = item.split(" ");
-            if (data[0].length > 4) {
-                return item;
-            }
-        });
+         const finalCodes = filteredCodes.filter(function(item) {
+             const data = item.split(" ");
+             if (data[0].length > 4) {
+                 return item;
+             }
+         });
 
-        const mappedFinalCodes = finalCodes.map(function(item) {
-            const parts = item.split(' ');
-            if (parts.length >= 2) {
-                const partOne = parts[0];
-                const partTwo = parts[1];
-                if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
-                    return partOne + partTwo;
-                }
-            }
-            return parts[0];
-        });
+         const mappedFinalCodes = finalCodes.map(function(item) {
+             const parts = item.split(' ');
+             if (parts.length >= 2) {
+                 const partOne = parts[0];
+                 const partTwo = parts[1];
+                 if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
+                     return partOne + partTwo;
+                 }
+             }
+             return parts[0];
+         });
 
-        const nonConsecutiveCodes = mappedFinalCodes.filter(function(item) {
-            const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
-            return !consecutiveChars;
-        });
+         const nonConsecutiveCodes = mappedFinalCodes.filter(function(item) {
+             const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
+             return !consecutiveChars;
+         });
 
-        console.log(nonConsecutiveCodes);
+         console.log(nonConsecutiveCodes);
 
-        element.value = nonConsecutiveCodes.map(function(item) {
-            return item.split(' ')[0];
-        }).join("\n") + "\n";
-    }
+         element.value = nonConsecutiveCodes.map(function(item) {
+             return item.split(' ')[0];
+         }).join("\n") + "\n";
+     }
 
 
 
@@ -687,7 +687,7 @@
                              <td class="tiny-text record-user">
                                  <?php
 
-                                    $con2 = mysqli_connect('localhost', 'root', '', 'yadakshop1401');
+                                    $con2 = mysqli_connect('localhost', 'root', '', 'yadakshop1402');
 
                                     if (!$con2) {
                                         die('Could not connect: ' . mysqli_error($con2));
