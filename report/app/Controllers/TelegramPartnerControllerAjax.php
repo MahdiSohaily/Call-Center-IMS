@@ -257,8 +257,6 @@ function getExistingTelegramPartners()
         $result->close();
     }
     return $data;
-}
-
 
 function editCategory($id, $value)
 {
@@ -276,7 +274,6 @@ function createCategory($value)
 
     return $result;
 }
-
 
 function deleteCategory($id)
 {
