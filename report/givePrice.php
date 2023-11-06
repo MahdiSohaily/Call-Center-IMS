@@ -27,7 +27,7 @@ require_once('./views/Layouts/header.php');
                 <label for="code" class="block font-medium text-sm text-gray-700">
                     کدهای مدنظر
                 </label>
-                <textarea onchange="filterCode(this)" onkeyup="convertToEnglish(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                <textarea onchange="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
             </div>
         </div>
 

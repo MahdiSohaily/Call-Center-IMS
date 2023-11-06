@@ -31,7 +31,7 @@ $status = $conn->query($status_sql);
         </div>
 
         <div class="flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" onkeyup="search(this.value)" placeholder="شماره فنی ..." />
+            <input onkeyup="convertToEnglish(this); search(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="شماره فنی ..." />
         </div>
         <div class="hidden sm:block">
             <div class="py-2">
