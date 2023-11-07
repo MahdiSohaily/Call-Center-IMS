@@ -108,8 +108,10 @@ function createRelation(e, button = null) {
   const relation_id = e.getAttribute("data-target");
   const code = e.getAttribute("data-code");
 
-  const goodPrice = document.getElementById(partNumber + "-price").value;
+  let goodPrice = document.getElementById(partNumber + "-price").value;
   const resultBox = document.getElementById("price-" + partNumber);
+
+  goodPrice = goodPrice.replace(/\\/g, "/");
 
   // Defining a params instance to be attached to the axios request
   const params = new URLSearchParams();
@@ -356,6 +358,7 @@ function telegram(e) {
   params.append("price", goodPrice);
   params.append("code", code);
   params.append("relation_id", relation_id);
+  goodPrice = goodPrice.replace(/\\/g, "/");
 
   axios
     .post("./app/Controllers/GivenPriceAjax.php", params)
@@ -376,7 +379,7 @@ function telegram(e) {
       }
     })
     .catch(function (error) {});
-   sendMessage(customer_id, code, goodPrice);
+  sendMessage(customer_id, code, goodPrice);
 }
 
 function sendMessage(receiver, code, price) {
