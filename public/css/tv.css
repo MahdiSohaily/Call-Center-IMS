@@ -80,3 +80,11 @@ tr.pin:nth-child(even) {
 tr.pin:nth-child(odd) {
   background-color: rgb(253 186 116);
 }
+
+.user-imgs {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: block;
+  margin-inline: auto;
+}

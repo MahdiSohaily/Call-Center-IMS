@@ -29,6 +29,24 @@ if ($status == 'on') :
         }
     </script>
     <div class="bg-white">
+        <table>
+            <tr>
+                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(101) ?>.jpg" /></td>
+                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(102) ?>.jpg" /></td>
+                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(103) ?>.jpg" /></td>
+                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(104) ?>.jpg" /></td>
+                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(106) ?>.jpg" /></td>
+                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(107) ?>.jpg" /></td>
+            </tr>
+            <tr>
+                <td><?= format_calling_time($total101) ?></td>
+                <td><?= format_calling_time($total102) ?></td>
+                <td><?= format_calling_time($total103) ?></td>
+                <td><?= format_calling_time($total104) ?></td>
+                <td><?= format_calling_time($total106) ?></td>
+                <td><?= format_calling_time($total107) ?></td>
+            </tr>
+        </table>
         <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>
         <i style="cursor: pointer;" onclick="closeFullscreen()" class="material-icons handler">border_clear</i>
         <div class="d-grid">

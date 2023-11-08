@@ -130,9 +130,6 @@ function getfamilybyid($x)
 }
 function getidbyinternal($x)
 {
-
-
-
     $sql = "SELECT * FROM users WHERE internal='$x'";
     $result = mysqli_query(dbconnect2(), $sql);
     if (mysqli_num_rows($result) > 0) {

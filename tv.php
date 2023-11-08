@@ -11,6 +11,7 @@
     ?>
  <!DOCTYPE html>
  <html lang="en">
+
  <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,24 @@
 
  <body>
      <div id="fullPage" data-user='<?= $user ?>'>
+         <table>
+             <tr>
+                 <?php
+                    foreach ($sortedData as $key => $value) : ?>
+                     <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                 <?php
+                    endforeach;
+                    ?>
+             </tr>
+             <tr>
+                 <?php
+                    foreach ($sortedData as $key => $value) : ?>
+                     <td><?= format_calling_time($value) ?></td>
+                 <?php
+                    endforeach;
+                    ?>
+             </tr>
+         </table>
          <i onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>
          <div class="d-grid">
              <div class="div1">
