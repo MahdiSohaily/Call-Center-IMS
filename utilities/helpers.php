@@ -48,6 +48,7 @@ $datetimeMarjae = new DateTime('2019-09-30 00:00:00');
 
 $sql = "SELECT * FROM incoming WHERE starttime IS NOT NULL AND time >= CURDATE() ";
 $result = mysqli_query($con, $sql);
+
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $user = $row['user'];
