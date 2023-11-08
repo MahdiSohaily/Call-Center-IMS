@@ -31,20 +31,20 @@ if ($status == 'on') :
     <div class="bg-white">
         <table>
             <tr>
-                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(101) ?>.jpg" /></td>
-                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(102) ?>.jpg" /></td>
-                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(103) ?>.jpg" /></td>
-                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(104) ?>.jpg" /></td>
-                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(106) ?>.jpg" /></td>
-                <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal(107) ?>.jpg" /></td>
+                <?php
+                foreach ($sortedData as $key => $value) : ?>
+                    <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                <?php
+                endforeach;
+                ?>
             </tr>
             <tr>
-                <td><?= format_calling_time($total101) ?></td>
-                <td><?= format_calling_time($total102) ?></td>
-                <td><?= format_calling_time($total103) ?></td>
-                <td><?= format_calling_time($total104) ?></td>
-                <td><?= format_calling_time($total106) ?></td>
-                <td><?= format_calling_time($total107) ?></td>
+                <?php
+                foreach ($sortedData as $key => $value) : ?>
+                    <td style='text-align: center;'><?= format_calling_time($value) ?></td>
+                <?php
+                endforeach;
+                ?>
             </tr>
         </table>
         <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>

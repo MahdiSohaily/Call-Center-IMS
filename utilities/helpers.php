@@ -79,11 +79,16 @@ if (mysqli_num_rows($result) > 0) {
 }
 function compareDateIntervals($a, $b)
 {
-    if ($a->s == $b->s) {
+    $aTotalSeconds = $a->s + $a->i * 60 + $a->h * 3600 + $a->d * 86400 + $a->m * 2629746 + $a->y * 31556952;
+    $bTotalSeconds = $b->s + $b->i * 60 + $b->h * 3600 + $b->d * 86400 + $b->m * 2629746 + $b->y * 31556952;
+
+    if ($aTotalSeconds == $bTotalSeconds) {
         return 0;
     }
-    return ($a->s < $b->s) ? -1 : 1;
+
+    return ($aTotalSeconds > $bTotalSeconds) ? -1 : 1;
 }
+
 
 $total101 = $datetimeMarjae->diff($datetime101);
 $total102 = $datetimeMarjae->diff($datetime102);

@@ -35,7 +35,7 @@
              <tr>
                  <?php
                     foreach ($sortedData as $key => $value) : ?>
-                     <td><?= format_calling_time($value) ?></td>
+                     <td style='text-align: center;'><?= format_calling_time($value) ?></td>
                  <?php
                     endforeach;
                     ?>
