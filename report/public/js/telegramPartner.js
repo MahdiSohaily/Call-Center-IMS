@@ -254,7 +254,7 @@ async function getContacts() {
     if (contact) {
       contact.innerHTML = `
         <tr>
-          <td colspan="7" class="py-5">
+          <td colspan="9" class="py-5">
             <img class='block w-10 mx-auto h-auto' src="./public/img/loading.png" />
           </td>
         </tr>
@@ -272,7 +272,7 @@ async function getContacts() {
       if (contact) {
         contact.innerHTML = `
           <tr>
-            <td colspan="7" class="py-5">
+            <td colspan="9" class="py-5">
               <p class="text-center text-bold text-red-500 ">اطلاعاتی دریافت نشد, لطفا لحظاتی بعد تلاش نمایید</p>
             </td>
           </tr>`;

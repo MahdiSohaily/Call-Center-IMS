@@ -72,7 +72,6 @@ if (isset($_POST['operation'])) {
     }
 }
 
-
 if (isset($_POST['getCategories'])) {
     $categories = json_decode($_POST['data'], true);
     // Use array_filter to keep only items with a value of 1
@@ -141,6 +140,7 @@ if (isset($_POST['createCategory'])) {
 
     createCategory($value);
 }
+
 if (isset($_POST['delete_category'])) {
     $id = $_POST['id'];
     deleteCategory($id);
@@ -183,7 +183,6 @@ function getPartners($key)
 
     return $data;
 }
-
 function partnerExist($id)
 {
     $sql = "SELECT * FROM shop.telegram_partner WHERE chat_id = '$id'";
@@ -192,7 +191,6 @@ function partnerExist($id)
     $data = $result->fetch_assoc();
     return !empty($data);
 }
-
 function updatePartner($chat_id, $current_cat, $data)
 {
     $toDelete = array_diff($current_cat, $data);
@@ -216,7 +214,6 @@ function updatePartner($chat_id, $current_cat, $data)
         }
     }
 }
-
 function createPartner($chat_id, $name, $username, $profile, $data)
 {
 
@@ -229,7 +226,6 @@ function createPartner($chat_id, $name, $username, $profile, $data)
         CONN->query($sql);
     }
 }
-
 function getExistingTelegramPartners()
 {
     $sql = "SELECT
@@ -276,8 +272,6 @@ function createCategory($value)
 
     return $result;
 }
-
-
 function deleteCategory($id)
 {
     $sql = "DELETE FROM shop.partner_categories WHERE id = '$id'";

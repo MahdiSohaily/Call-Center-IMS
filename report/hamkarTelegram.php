@@ -24,6 +24,11 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         opacity: 0;
         transition: all 0.5s linear;
     }
+
+    #sticky_nav {
+        position: sticky;
+        top: 10px;
+    }
 </style>
 <div class="grid md:grid-cols-7 gap-2 rtl">
     <div class="col-span-5 my-5 mx-2 bg-white rounded-lg shadow-lg h-full">
@@ -129,7 +134,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                 <div class="my-3">
                     <table class="table-fixed rtl min-w-full text-sm font-light">
                         <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
-                            <tr>
+                            <tr id="sticky_nav">
                                 <th scope="col" class="text-gray-900 p-3 text-center">
                                     شماره
                                 </th>
