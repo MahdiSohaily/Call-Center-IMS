@@ -25,9 +25,12 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         transition: all 0.5s linear;
     }
 
-    #sticky_nav {
+    .sticky_nav {
         position: sticky;
-        top: 10px;
+        top: 100px;
+        /* Set your desired background color */
+        z-index: 100;
+        /* Set a higher z-index to make sure it's on top of other elements */
     }
 </style>
 <div class="grid md:grid-cols-7 gap-2 rtl">
@@ -99,7 +102,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                 </div>
                 <div class="my-3">
                     <table class="table-fixed rtl min-w-full text-sm font-light">
-                        <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
+                        <thead class="sticky_nav font-medium sticky dark:border-neutral-500 bg-violet-200">
                             <tr>
                                 <th scope="col" class="text-gray-900 p-3 text-center">
                                     شماره
@@ -133,8 +136,8 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                 <h1 class="text-xl py-2">لیست مخاطبین موجود در سیستم</h1>
                 <div class="my-3">
                     <table class="table-fixed rtl min-w-full text-sm font-light">
-                        <thead class="font-medium sticky dark:border-neutral-500 bg-violet-200">
-                            <tr id="sticky_nav">
+                        <thead class="sticky_nav font-medium sticky dark:border-neutral-500 bg-violet-200">
+                            <tr>
                                 <th scope="col" class="text-gray-900 p-3 text-center">
                                     شماره
                                 </th>
