@@ -346,7 +346,7 @@ function telegram(e) {
   const code = e.getAttribute("data-code");
   const relation_id = e.getAttribute("data-target");
 
-  const goodPrice = document.getElementById(partNumber + "-price").value;
+  let goodPrice = document.getElementById(partNumber + "-price").value;
   const resultBox = document.getElementById("price-" + partNumber);
 
   // Defining a params instance to be attached to the axios request
