@@ -58,7 +58,7 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                         <?php
                         foreach ($categories as $category) :
                         ?>
-                            <label class="cursor-pointer pl-5" for="honda">
+                            <label class="cursor-pointer pl-5" for="<?= $category['id'] ?>">
                                 <input type="checkbox" class="category_identifier" onclick="updateCategory(this)" name="<?= $category['id'] ?>" id="<?= $category['id'] ?>">
                                 <?= $category['name'] ?>
                             </label>
@@ -67,6 +67,8 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                         ?>
                     </div>
                 </form>
+                <span class="d-block cursor-pointer rounded-md bg-green-400 w-32 text-white px-3 py-2 my-2 text-center" onclick="sendMessage()">ارسال پیام</span>
+
                 <div class="my-3 flex gap-3">
                     <div class="flex-1">
                         <table class="w-full">
@@ -88,7 +90,6 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                     </div>
                 </div>
 
-                <span class="cursor-pointer rounded-md bg-green-400 w-32 text-white px-3 py-2 text-center" onclick="sendMessage()">ارسال پیام</span>
                 <p id="success" class="text-green-700 my-3">پیام ارسال شد !!</p>
                 <p id="error" class="text-red-700 my-3"> لطفا متن پیام و دریافت کنندگان پیام را مشخص کنید!</p>
             </div>
