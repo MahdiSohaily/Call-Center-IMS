@@ -142,10 +142,7 @@ function getidbyinternal($x)
 }
 function nishatimedef($x, $y)
 {
-
-
     date_default_timezone_set('Asia/Tehran');
-
     $datetime1 = new DateTime($x);
     $datetime2 = new DateTime($y);
     $interval = $datetime1->diff($datetime2);
@@ -176,34 +173,47 @@ function format_interval(DateInterval $interval)
     $result .= "قبل";
     return $result;
 }
-function format_calling_time(DateInterval $interval)
+
+function format_calling_time_seconds($seconds)
 {
     $result = "";
-    if ($interval->y) {
-        $result .= $interval->format("%y سال ");
+
+    $years = floor($seconds / (365 * 24 * 60 * 60));
+    $seconds -= $years * 365 * 24 * 60 * 60;
+
+    $months = floor($seconds / (30 * 24 * 60 * 60));
+    $seconds -= $months * 30 * 24 * 60 * 60;
+
+    $days = floor($seconds / (24 * 60 * 60));
+    $seconds -= $days * 24 * 60 * 60;
+
+    $hours = floor($seconds / (60 * 60));
+    $seconds -= $hours * 60 * 60;
+
+    $minutes = floor($seconds / 60);
+    $seconds -= $minutes * 60;
+
+    if ($years) {
+        $result .= "$years سال ";
     }
-    if ($interval->m) {
-        $result .= $interval->format("%m ماه ");
+    if ($months) {
+        $result .= "$months ماه ";
     }
-    if ($interval->d) {
-        $result .= $interval->format("%d روز ");
+    if ($days) {
+        $result .= "$days روز ";
     }
-    if ($interval->h) {
-        $result .= $interval->format("%h ساعت ");
+    if ($hours) {
+        $result .= "$hours ساعت ";
     }
-    if ($interval->i) {
-        $result .= $interval->format("%i دقیقه ");
+    if ($minutes) {
+        $result .= "$minutes دقیقه ";
     }
-    if ($interval->s) {
-        $result .= $interval->format("%s ثانیه ");
+    if ($seconds) {
+        $result .= "$seconds ثانیه ";
     }
-    $result .= "";
-    return $result;
+
+    return trim($result);
 }
-
-
-
-
 
 function taglabellist()
 {

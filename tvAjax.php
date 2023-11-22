@@ -32,16 +32,22 @@ if ($status == 'on') :
         <table>
             <tr>
                 <?php
-                foreach ($sortedData as $key => $value) : ?>
-                    <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                foreach ($datetimeData as $key => $value) :
+                    $file = "../userimg/" . getidbyinternal($key) . ".jpg";
+                    if (file_exists($file)) :
+                ?>
+                        <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                    <?php else : ?>
+                        <td><?= $key ?></td>
                 <?php
+                    endif;
                 endforeach;
                 ?>
             </tr>
             <tr>
                 <?php
-                foreach ($sortedData as $key => $value) : ?>
-                    <td style='text-align: center;'><?= format_calling_time($value) ?></td>
+                foreach ($datetimeData as $key => $value) : ?>
+                    <td style='text-align: center;'><?= format_calling_time_seconds($value['total']) ?></td>
                 <?php
                 endforeach;
                 ?>

@@ -19,6 +19,20 @@
      <link rel="icon" type="image/x-icon" href="img/favicon.ico">
      <link rel='stylesheet' href='./public/css/tv.css?v=<?= rand() ?>' type='text/css' media='all' />
      <script src="./public/js/axios.js"></script>
+     <style>
+         .circle-frame {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             border-radius: 50%;
+             background-color: black;
+             color: white;
+             font-weight: bold;
+             width: 30px;
+             height: 30px;
+             margin-inline: auto;
+         }
+     </style>
  </head>
 
  <body>
@@ -26,16 +40,26 @@
          <table>
              <tr>
                  <?php
-                    foreach ($sortedData as $key => $value) : ?>
-                     <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                    foreach ($datetimeData as $key => $value) :
+                        $file = "../userimg/" . getidbyinternal($key) . ".jpg";
+                        if (file_exists($file)) :
+                    ?>
+                         <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                     <?php else : ?>
+                         <td>
+                             <p class="circle-frame">
+                                 <?= $key ?>
+                             </p>
+                         </td>
                  <?php
+                        endif;
                     endforeach;
                     ?>
              </tr>
              <tr>
                  <?php
-                    foreach ($sortedData as $key => $value) : ?>
-                     <td style='text-align: center;'><?= format_calling_time($value) ?></td>
+                    foreach ($datetimeData as $key => $value) : ?>
+                     <td style='text-align: center;'><?= format_calling_time_seconds($value['total']) ?></td>
                  <?php
                     endforeach;
                     ?>

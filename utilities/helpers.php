@@ -37,73 +37,100 @@ ORDER BY prices.created_at DESC LIMIT 40";
     }
     return  $givenPrices;
 }
+// Assuming you have a database connection ($con) established
 
-$datetime101 = new DateTime('2019-09-30 00:00:00');
-$datetime102 = new DateTime('2019-09-30 00:00:00');
-$datetime103 = new DateTime('2019-09-30 00:00:00');
-$datetime104 = new DateTime('2019-09-30 00:00:00');
-$datetime106 = new DateTime('2019-09-30 00:00:00');
-$datetime107 = new DateTime('2019-09-30 00:00:00');
-$datetimeMarjae = new DateTime('2019-09-30 00:00:00');
+// Fetch distinct users from the database
+$sqlDistinctUsers = "SELECT DISTINCT user FROM incoming";
+$resultDistinctUsers = mysqli_query($con, $sqlDistinctUsers);
 
-$sql = "SELECT * FROM incoming WHERE starttime IS NOT NULL AND time >= CURDATE() ";
-$result = mysqli_query($con, $sql);
+$users = [];
+if ($resultDistinctUsers) {
+    while ($row = mysqli_fetch_assoc($resultDistinctUsers)) {
+        $users[] = $row['user'];
+    }
+}
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
+$datetimeData = [];
+
+// Initialize datetime data array for each user
+foreach ($users as $user) {
+    $datetimeData[$user] = [
+        'total' => 0,
+        'currentHour' => 0,
+    ];
+}
+
+$sqlTotal = "SELECT * FROM incoming 
+             WHERE starttime IS NOT NULL 
+             AND time >= CURDATE()";
+$resultTotal = mysqli_query($con, $sqlTotal);
+
+if ($resultTotal) {
+    while ($row = mysqli_fetch_assoc($resultTotal)) {
         $user = $row['user'];
-        $phone = $row['phone'];
-        $starttime = $row['starttime'];
-        $endtime = $row['endtime'];
-        $xxx =   nishatimedef($starttime, $endtime);
+        $starttime = strtotime($row['starttime']);
+        $endtime = strtotime($row['endtime']);
 
-        if ($user == 101) {
-            $datetime101->add($xxx);
-        }
-        if ($user == 102) {
-            $datetime102->add($xxx);
-        }
-        if ($user == 103) {
-            $datetime103->add($xxx);
-        }
-        if ($user == 104) {
-            $datetime104->add($xxx);
-        }
-        if ($user == 106) {
-            $datetime106->add($xxx);
-        }
-        if ($user == 107) {
-            $datetime107->add($xxx);
+        // Ensure valid start and end times
+        if ($starttime !== false && $endtime !== false) {
+            // Check if the array key exists before accessing it
+            if (array_key_exists($user, $datetimeData) && array_key_exists('total', $datetimeData[$user])) {
+                $datetimeData[$user]['total'] += ($endtime - $starttime);
+            }
         }
     }
 }
-function compareDateIntervals($a, $b)
-{
-    $aTotalSeconds = $a->s + $a->i * 60 + $a->h * 3600 + $a->d * 86400 + $a->m * 2629746 + $a->y * 31556952;
-    $bTotalSeconds = $b->s + $b->i * 60 + $b->h * 3600 + $b->d * 86400 + $b->m * 2629746 + $b->y * 31556952;
 
-    if ($aTotalSeconds == $bTotalSeconds) {
+$sqlCurrentHour = "SELECT * FROM incoming 
+                   WHERE starttime IS NOT NULL 
+                   AND time >= CURDATE() 
+                   AND HOUR(starttime) = " . (int)date('G');
+$resultCurrentHour = mysqli_query($con, $sqlCurrentHour);
+
+if ($resultCurrentHour) {
+    while ($row = mysqli_fetch_assoc($resultCurrentHour)) {
+        $user = $row['user'];
+        $starttime = strtotime($row['starttime']);
+        $endtime = strtotime($row['endtime']);
+
+        // Ensure valid start and end times
+        if ($starttime !== false && $endtime !== false) {
+            // Check if the array key exists before accessing it
+            if (array_key_exists($user, $datetimeData) && array_key_exists('currentHour', $datetimeData[$user])) {
+                $datetimeData[$user]['currentHour'] += ($endtime - $starttime);
+            }
+        }
+    }
+}
+
+// Sort the users based on total call times
+uasort($datetimeData, 'compareTotalCallTimes');
+
+function compareTotalCallTimes($a, $b)
+{
+    if ($a['total'] == $b['total']) {
         return 0;
     }
 
-    return ($aTotalSeconds > $bTotalSeconds) ? -1 : 1;
+    return ($a['total'] > $b['total']) ? -1 : 1;
 }
 
+function formatTimeWithUnits($seconds)
+{
+    $hours = floor($seconds / 3600);
+    $minutes = floor(($seconds % 3600) / 60);
+    $seconds = $seconds % 60;
 
-$total101 = $datetimeMarjae->diff($datetime101);
-$total102 = $datetimeMarjae->diff($datetime102);
-$total103 = $datetimeMarjae->diff($datetime103);
-$total104 = $datetimeMarjae->diff($datetime104);
-$total106 = $datetimeMarjae->diff($datetime106);
-$total107 = $datetimeMarjae->diff($datetime107);
+    $formattedTime = '';
+    if ($hours > 0) {
+        $formattedTime .= $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ';
+    }
+    if ($minutes > 0) {
+        $formattedTime .= $minutes . ' minute' . ($minutes > 1 ? 's' : '') . ' ';
+    }
+    if ($seconds > 0) {
+        $formattedTime .= $seconds . ' second' . ($seconds > 1 ? 's' : '');
+    }
 
-$sortedData = [
-    '101' => $total101,
-    '102' => $total102,
-    '103' => $total103,
-    '104' => $total104,
-    '106' => $total106,
-    '107' => $total107
-];
-
-uasort($sortedData, 'compareDateIntervals');
+    return trim($formattedTime);
+}
