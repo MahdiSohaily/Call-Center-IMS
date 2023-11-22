@@ -39,11 +39,13 @@
      <div id="fullPage" data-user='<?= $user ?>'>
          <table>
              <tr>
+                 <td></td>
                  <?php
                     foreach ($datetimeData as $key => $value) :
                         $file = "../userimg/" . getidbyinternal($key) . ".jpg";
                         if (file_exists($file)) :
                     ?>
+
                          <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
                      <?php else : ?>
                          <td>
@@ -57,6 +59,24 @@
                     ?>
              </tr>
              <tr>
+                 <td>
+                     <b>
+                         فعلا
+                     </b>
+                 </td>
+                 <?php
+                    foreach ($datetimeData as $key => $value) : ?>
+                     <td style='text-align: center;'><?= format_calling_time_seconds($value['currentHour']) ?></td>
+                 <?php
+                    endforeach;
+                    ?>
+             </tr>
+             <tr>
+                 <td>
+                     <b>
+                         زمان کلی
+                     </b>
+                 </td>
                  <?php
                     foreach ($datetimeData as $key => $value) : ?>
                      <td style='text-align: center;'><?= format_calling_time_seconds($value['total']) ?></td>
