@@ -1,5 +1,29 @@
- <?php require_once './layout/heroHeader.php'; ?>
+ <?php
+    require_once './layout/heroHeader.php';
+    require_once './utilities/helpers.php';
+    ?>
+ <style>
+     .user-imgs {
+         display: inline-block;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         margin-inline: auto;
+     }
 
+     .circle-frame {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         border-radius: 50%;
+         background-color: black;
+         color: white;
+         font-weight: bold;
+         width: 40px;
+         height: 40px;
+         margin-inline: auto;
+     }
+ </style>
  <div class="box user-table">
 
      <h2 class="title">لیست داخلی کاربران</h2>
@@ -48,54 +72,6 @@
 
  <div class="box user-table">
      <h2 class="title">مدت زمان مکالمه</h2>
-     <?php
-        $datetime101 = new DateTime('2019-09-30 00:00:00');
-        $datetime102 = new DateTime('2019-09-30 00:00:00');
-        $datetime103 = new DateTime('2019-09-30 00:00:00');
-        $datetime104 = new DateTime('2019-09-30 00:00:00');
-        $datetime106 = new DateTime('2019-09-30 00:00:00');
-        $datetime107 = new DateTime('2019-09-30 00:00:00');
-        $datetimeMarjae = new DateTime('2019-09-30 00:00:00');
-
-        $sql = "SELECT * FROM incoming WHERE starttime IS NOT NULL AND time >= CURDATE() ";
-        $result = mysqli_query($con, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $user = $row['user'];
-                $phone = $row['phone'];
-                $starttime = $row['starttime'];
-                $endtime = $row['endtime'];
-                $xxx =   nishatimedef($starttime, $endtime);
-
-                if ($user == 101) {
-                    $datetime101->add($xxx);
-                }
-                if ($user == 102) {
-                    $datetime102->add($xxx);
-                }
-                if ($user == 103) {
-                    $datetime103->add($xxx);
-                }
-                if ($user == 104) {
-                    $datetime104->add($xxx);
-                }
-                if ($user == 106) {
-                    $datetime106->add($xxx);
-                }
-                if ($user == 107) {
-                    $datetime107->add($xxx);
-                }
-            }
-        }
-        $total101 = $datetimeMarjae->diff($datetime101);
-        $total102 = $datetimeMarjae->diff($datetime102);
-        $total103 = $datetimeMarjae->diff($datetime103);
-        $total104 = $datetimeMarjae->diff($datetime104);
-        $total106 = $datetimeMarjae->diff($datetime106);
-        $total107 = $datetimeMarjae->diff($datetime107);
-
-
-        ?>
      <table class="customer-list user-time-dur-table">
          <tr>
              <th>کاربر</th>
@@ -104,43 +80,31 @@
 
          </tr>
 
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(101) ?>.jpg" /></td>
-
-             <td><?= format_calling_time($total101) ?></td>
-
-         </tr>
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(102) ?>.jpg" /></td>
-
-             <td><?= format_calling_time($total102) ?></td>
-
-         </tr>
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(103) ?>.jpg" /></td>
-             <td><?= format_calling_time($total103) ?></td>
-
-         </tr>
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(104) ?>.jpg" /></td>
-             <td><?= format_calling_time($total104) ?></td>
-
-         </tr>
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(106) ?>.jpg" /></td>
-             <td><?= format_calling_time($total106) ?></td>
-
-         </tr>
-         <tr>
-             <td> <img class="user-img" src="../userimg/<?= getidbyinternal(107) ?>.jpg" /></td>
-             <td><?= format_calling_time($total107) ?></td>
-
-         </tr>
+         <?php
+            foreach ($datetimeData as $key => $value) :
+                $file = "../userimg/" . getidbyinternal($key) . ".jpg";
+                if (file_exists($file)) :
+            ?>
+                 <tr>
+                     <td> <img class="user-imgs" src="../userimg/<?= getidbyinternal($key) ?>.jpg" /></td>
+                 <?php else : ?>
+                     <td>
+                         <p class="circle-frame">
+                             <?= $key ?>
+                         </p>
+                     </td>
+                 <?php
+                endif;
+                    ?>
+                 <td style='text-align: center;'>
+                     <?= format_calling_time_seconds($value['total']) ?>
+                 </td>
+                 </tr>
+             <?php
+            endforeach;
+                ?>
 
      </table>
-
-
-
  </div>
 
  <?php
