@@ -34,7 +34,7 @@ function sendMessage() {
     params.append("data", JSON.stringify(receivers));
 
     axios
-      .post("http://telegram.yadak.center/", params)
+      .post("http://tel.yadak.center/", params)
       .then(function (response) {})
       .catch(function (error) {});
 
@@ -263,7 +263,7 @@ async function getContacts() {
 
     try {
       // Make the Axios request to fetch contact data
-      const response = await axios.post("http://telegram.yadak.center/");
+      const response = await axios.post("http://tel.yadak.center/");
       displayTelegramData(response.data);
       isLoadedTelegramContacts = true;
     } catch (error) {

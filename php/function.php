@@ -174,6 +174,31 @@ function format_interval(DateInterval $interval)
     return $result;
 }
 
+function format_calling_time(DateInterval $interval)
+{
+    $result = "";
+    if ($interval->y) {
+        $result .= $interval->format("%y سال ");
+    }
+    if ($interval->m) {
+        $result .= $interval->format("%m ماه ");
+    }
+    if ($interval->d) {
+        $result .= $interval->format("%d روز ");
+    }
+    if ($interval->h) {
+        $result .= $interval->format("%h ساعت ");
+    }
+    if ($interval->i) {
+        $result .= $interval->format("%i دقیقه ");
+    }
+    if ($interval->s) {
+        $result .= $interval->format("%s ثانیه ");
+    }
+    $result .= "قبل";
+    return $result;
+}
+
 function format_calling_time_seconds($seconds)
 {
     $result = "";
