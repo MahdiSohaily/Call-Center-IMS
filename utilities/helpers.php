@@ -105,6 +105,7 @@ if ($resultCurrentHour) {
 
 // Sort the users based on total call times
 uasort($datetimeData, 'compareTotalCallTimes');
+uasort($datetimeData, 'compareTotalCallTimes2');
 
 function compareTotalCallTimes($a, $b)
 {
@@ -113,6 +114,15 @@ function compareTotalCallTimes($a, $b)
     }
 
     return ($a['total'] > $b['total']) ? -1 : 1;
+}
+
+function compareTotalCallTimes2($a, $b)
+{
+    if ($a['currentHour'] == $b['currentHour']) {
+        return 0;
+    }
+
+    return ($a['currentHour'] > $b['currentHour']) ? -1 : 1;
 }
 
 function formatTimeWithUnits($seconds)
