@@ -1,24 +1,26 @@
 <?php
 include './database/connect.php';
 
-// remove all the special characters from the user input
-$code = htmlspecialchars($_POST['code']);
-$completeCode = $code;
-$finalResult = (setup_loading($completeCode));
+if (filter_var(INPUT_POST, $_POST['code'])) {
+    // remove all the special characters from the user input
+    $code = htmlspecialchars($_POST['code']);
+    $completeCode = $code;
+    $finalResult = (setup_loading($completeCode));
 
-if (!empty($finalResult)) {
-    // Assuming everything went well
-    $response = [
-        'success' => true,
-        'message' => 'Form data received successfully.',
-        'data' => $finalResult,
-    ];
+    if (!empty($finalResult)) {
+        // Assuming everything went well
+        $response = [
+            'success' => true,
+            'message' => 'Form data received successfully.',
+            'data' => $finalResult,
+        ];
 
-    // Set the Content-Type header to indicate JSON response
-    header('Content-Type: application/json');
+        // Set the Content-Type header to indicate JSON response
+        header('Content-Type: application/json');
 
-    // Send the JSON response
-    echo json_encode($response);
+        // Send the JSON response
+        echo json_encode($response);
+    }
 }
 
 
