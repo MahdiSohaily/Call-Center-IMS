@@ -1,11 +1,8 @@
 <?php
 include './database/connect.php';
 
-
-
-
 // remove all the special characters from the user input
-$code = htmlspecialchars('545512h000');
+$code = htmlspecialchars($_POST['code']);
 $completeCode = $code;
 $finalResult = (setup_loading($completeCode));
 
