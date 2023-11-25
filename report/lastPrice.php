@@ -1,5 +1,58 @@
 <?php
 include './database/connect.php';
+// Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow specified HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+// Allow specified headers
+header("Access-Control-Allow-Headers: Content-Type");
+
+// Allow credentials (cookies, authorization headers, etc.)
+header("Access-Control-Allow-Credentials: true");
+
+// Set content type to JSON
+header("Content-Type: application/json"); // Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow specified HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+// Allow specified headers
+header("Access-Control-Allow-Headers: Content-Type");
+
+// Allow credentials (cookies, authorization headers, etc.)
+header("Access-Control-Allow-Credentials: true");
+
+// Set content type to JSON
+header("Content-Type: application/json"); // Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow specified HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+// Allow specified headers
+header("Access-Control-Allow-Headers: Content-Type");
+
+// Allow credentials (cookies, authorization headers, etc.)
+header("Access-Control-Allow-Credentials: true");
+
+// Set content type to JSON
+header("Content-Type: application/json"); // Allow requests from any origin
+header("Access-Control-Allow-Origin: *");
+
+// Allow specified HTTP methods
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+// Allow specified headers
+header("Access-Control-Allow-Headers: Content-Type");
+
+// Allow credentials (cookies, authorization headers, etc.)
+header("Access-Control-Allow-Credentials: true");
+
+// Set content type to JSON
+header("Content-Type: application/json");
 
 if (filter_var(INPUT_POST, $_POST['code'])) {
     // remove all the special characters from the user input
@@ -15,20 +68,7 @@ if (filter_var(INPUT_POST, $_POST['code'])) {
             'data' => $finalResult,
         ];
 
-        // Allow requests from any origin
-        header("Access-Control-Allow-Origin: *");
 
-        // Allow specified HTTP methods
-        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-        // Allow specified headers
-        header("Access-Control-Allow-Headers: Content-Type");
-
-        // Allow credentials (cookies, authorization headers, etc.)
-        header("Access-Control-Allow-Credentials: true");
-
-        // Set content type to JSON
-        header("Content-Type: application/json");
 
         // Send the JSON response
         echo json_encode($response);
