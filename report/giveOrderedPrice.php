@@ -681,54 +681,6 @@ if ($isValidCustomer) {
         </a>
         <p id="copied_message" style="display:none;position: fixed; top:50%; left:50%; transform: translate(-50%, -50%); font-size: 60px;font-weight: bold; color:seagreen">کد ها کاپی شدند</p>
         <script src="./public/js/givePrice.js?v=<?= rand() ?>"></script>
-        <script>
-            function handleVisibilityChange() {
-                if (document.hidden) {
-                    // User switched away from the tab
-                    console.log("User switched away from the tab. Run your script here.");
-                } else {
-                    const copy_all = document.getElementById("copy_all");
-                    const value = copyToClipboard(copy_all);
-
-                    var textarea = document.createElement("textarea");
-                    textarea.value = value;
-
-                    // Set the position to be off-screen
-                    textarea.style.position = "absolute";
-                    textarea.style.left = "-9999px";
-
-                    document.body.appendChild(textarea);
-                    textarea.select();
-
-                    try {
-                        // Execute the copy command
-                        var success = document.execCommand("copy");
-                        if (success) {
-                            console.log("Text copied to clipboard:", text);
-                            alert("Text copied to clipboard!");
-                        } else {
-                            console.error("Copy to clipboard failed.");
-                            alert("Copy to clipboard failed. Please copy the text manually.");
-                        }
-                    } catch (err) {
-                        console.error("Copy to clipboard failed:", err);
-                        alert("Copy to clipboard failed. Please copy the text manually.");
-                    } finally {
-                        document.body.removeChild(textarea);
-                    }
-
-                    const message_element = document.getElementById("copied_message");
-                    message_element.style.display = "block";
-
-                    setTimeout(() => {
-                        message_element.style.display = "none";
-                    }, 500);
-                }
-            }
-
-            // Add event listener for visibility change
-            document.addEventListener("visibilitychange", handleVisibilityChange);
-        </script>
 <?php
     }
 } else {
