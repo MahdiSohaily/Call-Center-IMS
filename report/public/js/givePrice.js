@@ -169,55 +169,58 @@ function setPrice(element) {
 
 // A function to copy content to cliboard
 function copyPrice(elem) {
-  // Get the text field
-  let parentElement = document.getElementById("priceReport");
+  try {
+    // Get the text field
+    let parentElement = document.getElementById("priceReport");
 
-  let tdElements = parentElement.getElementsByTagName("td");
-  let tdTextContent = [];
+    let tdElements = parentElement.getElementsByTagName("td");
+    let tdTextContent = [];
 
-  const elementLength = tdElements.length;
+    const elementLength = tdElements.length;
 
-  const dash = ["موجود نیست", "نیاز به بررسی"];
-  const space = ["کد اشتباه", "نیاز به قیمت"];
+    const dash = ["موجود نیست", "نیاز به بررسی"];
+    const space = ["کد اشتباه", "نیاز به قیمت"];
 
-  for (let i = 0; i < elementLength; i++) {
-    if (tdElements[i].textContent.trim() !== "content_copy") {
-      let text = "";
-      if (dash.includes(tdElements[i].textContent.trim())) {
-        text = "-";
-      } else if (space.includes(tdElements[i].textContent.trim())) {
-        text = " ";
-      } else {
-        text = tdElements[i].textContent.trim();
+    for (let i = 0; i < elementLength; i++) {
+      if (tdElements[i].textContent.trim() !== "content_copy") {
+        let text = "";
+        if (dash.includes(tdElements[i].textContent.trim())) {
+          text = "-";
+        } else if (space.includes(tdElements[i].textContent.trim())) {
+          text = " ";
+        } else {
+          text = tdElements[i].textContent.trim();
+        }
+
+        tdTextContent.push(text);
       }
-
-      tdTextContent.push(text);
     }
+
+    const chunkSize = 2;
+    tdTextContent = tdTextContent.filter((td) => td.length > 0);
+
+    let finalResult = [];
+    const size = tdTextContent.length;
+    for (let i = 0; i < size; i += chunkSize) {
+      finalResult.push(tdTextContent.slice(i, i + chunkSize));
+    }
+
+    // Copy the text inside the text field
+    let text = "";
+    for (let item of finalResult) {
+      text += item.join(" : ");
+      text += "\n";
+    }
+    copyToClipboard(text.trim());
+    return text.trim();
+    // Alert the copied text
+    elem.innerHTML = `done`;
+    setTimeout(() => {
+      elem.innerHTML = `content_copy`;
+    }, 1500);
+  } catch (e) {
+    console.log(e);
   }
-
-  const chunkSize = 2;
-  tdTextContent = tdTextContent.filter((td) => td.length > 0);
-
-  let finalResult = [];
-  const size = tdTextContent.length;
-  for (let i = 0; i < size; i += chunkSize) {
-    finalResult.push(tdTextContent.slice(i, i + chunkSize));
-  }
-
-  // Copy the text inside the text field
-
-  let text = "";
-  for (let item of finalResult) {
-    text += item.join(" : ");
-    text += "\n";
-  }
-  copyToClipboard(text.trim());
-
-  // Alert the copied text
-  elem.innerHTML = `done`;
-  setTimeout(() => {
-    elem.innerHTML = `content_copy`;
-  }, 1500);
 }
 
 function copyItemPrice(elem) {
@@ -427,3 +430,5 @@ elementsWithDataRelation.forEach((element) => {
     element.innerHTML = htmlByRelation[relation];
   }
 });
+
+

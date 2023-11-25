@@ -28,25 +28,25 @@ function format_interval(DateInterval $interval)
 }
 ?>
 <!-- START NEWLY ADDED SECTION BY MAHDI REZAEI -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-2" id="resultBox">
-    <div class="rtl mb-5">
+<div class="rtl grid grid-cols-1 md:grid-cols-2 gap-6 px-2" id="resultBox">
+    <div class="mb-5">
         <h2 class="text-xl py-2">آخرین قیمت های داده شده</h2>
         <table class="min-w-full text-left text-sm bg-white custom-table mb-2 p-3">
             <thead class="font-medium bg-green-600">
                 <tr>
-                    <th scope="col" class="px-3 py-2 text-white text-right">
+                    <th scope="col" class="px-3 py-2 text-white text-right ">
                         مشتری
                     </th>
-                    <th scope="col" class="px-3 py-2 text-white text-right">
+                    <th scope="col" class="px-3 py-2 text-white text-center ">
                         قیمت
                     </th>
-                    <th scope="col" class="px-3 py-2 text-white text-right">
+                    <th scope="col" class="px-3 py-2 text-white text-center ">
                         کد فنی
                     </th>
-                    <th scope="col" class="px-3 py-2 text-white text-center">
+                    <th scope="col" class="px-3 py-2 text-white text-right">
                         کاربر
                     </th>
-                    <th scope="col" class="px-3 py-2 text-white text-right">
+                    <th scope="col" class="px-3 py-2 text-white text-right ">
                         زمان
                     </th>
                 </tr>
@@ -61,7 +61,7 @@ function format_interval(DateInterval $interval)
                             <tr class=" min-w-full mb-1 ?> odd:bg-gray-200">
                             <?php  } ?>
                             <td class=" px-1">
-                                <p class="text-right text-indigo-600 px-1 py-1">
+                                <p class="text-indigo-600 px-1 py-1">
                                     <a class="flex items-center" href="../main.php?phone=<?= $price['phone'] ?>">
                                         <i class="small material-icons px-2">attachment</i>
                                         <?= $price['name'] . ' ' . $price['family'] ?>
@@ -69,7 +69,7 @@ function format_interval(DateInterval $interval)
                                 </p>
                             </td>
                             <td class=" px-1">
-                                <p class="text-left text-gray-700 px-2 py-1">
+                                <p class="text-gray-700 px-2 py-1 text-center ltr">
                                     <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                                 </p>
                             </td>

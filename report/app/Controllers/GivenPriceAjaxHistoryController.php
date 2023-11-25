@@ -14,10 +14,10 @@ if (isset($_POST['historyAjax'])) {
                     <th scope="col" class="px-3 py-2 text-white text-right">
                         مشتری
                     </th>
-                    <th scope="col" class="px-3 py-2 text-white text-right">
+                    <th scope="col" class="px-3 py-2 text-white text-center">
                         قیمت
                     </th>
-                    <th scope="col" class="px-3 py-2 text-white text-right">
+                    <th scope="col" class="px-3 py-2 text-white text-center">
                         کد فنی
                     </th>
                     <th scope="col" class="px-3 py-2 text-white text-center">
@@ -45,7 +45,7 @@ if (isset($_POST['historyAjax'])) {
                                     </a>
                                 </p>
                             </td>
-                            <td class="pl-5">
+                            <td class="pl-5 ltr text-center">
                                 <?= $price['price'] === null ? 'ندارد' : $price['price']  ?>
                             </td>
                             <td class=" px-1">
