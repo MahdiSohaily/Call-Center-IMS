@@ -15,8 +15,20 @@ if (filter_var(INPUT_POST, $_POST['code'])) {
             'data' => $finalResult,
         ];
 
-        // Set the Content-Type header to indicate JSON response
-        header('Content-Type: application/json');
+        // Allow requests from any origin
+        header("Access-Control-Allow-Origin: *");
+
+        // Allow specified HTTP methods
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+        // Allow specified headers
+        header("Access-Control-Allow-Headers: Content-Type");
+
+        // Allow credentials (cookies, authorization headers, etc.)
+        header("Access-Control-Allow-Credentials: true");
+
+        // Set content type to JSON
+        header("Content-Type: application/json");
 
         // Send the JSON response
         echo json_encode($response);
