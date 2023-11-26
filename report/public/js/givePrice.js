@@ -212,7 +212,6 @@ function copyPrice(elem) {
       text += "\n";
     }
     copyToClipboard(text.trim());
-    return text.trim();
     // Alert the copied text
     elem.innerHTML = `done`;
     setTimeout(() => {
