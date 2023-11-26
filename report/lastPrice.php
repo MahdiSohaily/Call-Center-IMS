@@ -4,7 +4,7 @@ include './database/connect.php';
 header("Access-Control-Allow-Origin: *");
 
 // Allow specified HTTP methods
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Methods:POST");
 
 // Allow specified headers
 header("Access-Control-Allow-Headers: Content-Type");
@@ -14,47 +14,8 @@ header("Access-Control-Allow-Credentials: true");
 
 // Set content type to JSON
 header("Content-Type: application/json"); // Allow requests from any origin
-header("Access-Control-Allow-Origin: *");
 
-// Allow specified HTTP methods
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-// Allow specified headers
-header("Access-Control-Allow-Headers: Content-Type");
-
-// Allow credentials (cookies, authorization headers, etc.)
-header("Access-Control-Allow-Credentials: true");
-
-// Set content type to JSON
-header("Content-Type: application/json"); // Allow requests from any origin
-header("Access-Control-Allow-Origin: *");
-
-// Allow specified HTTP methods
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-// Allow specified headers
-header("Access-Control-Allow-Headers: Content-Type");
-
-// Allow credentials (cookies, authorization headers, etc.)
-header("Access-Control-Allow-Credentials: true");
-
-// Set content type to JSON
-header("Content-Type: application/json"); // Allow requests from any origin
-header("Access-Control-Allow-Origin: *");
-
-// Allow specified HTTP methods
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-
-// Allow specified headers
-header("Access-Control-Allow-Headers: Content-Type");
-
-// Allow credentials (cookies, authorization headers, etc.)
-header("Access-Control-Allow-Credentials: true");
-
-// Set content type to JSON
-header("Content-Type: application/json");
-
-if (filter_var(INPUT_POST, $_POST['code'])) {
+if (isset($_POST['code'])) {
     // remove all the special characters from the user input
     $code = htmlspecialchars($_POST['code']);
     $completeCode = $code;
@@ -67,9 +28,6 @@ if (filter_var(INPUT_POST, $_POST['code'])) {
             'message' => 'Form data received successfully.',
             'data' => $finalResult,
         ];
-
-
-
         // Send the JSON response
         echo json_encode($response);
     }
@@ -377,7 +335,10 @@ function givenPrice($conn, $codes, $relation_exist = null)
         return is_array($item) && isset($item['price']) && $item['price'] !== '';
     });
 
-    return  $filtered_data;
+    // Re-index the array sequentially starting from 0
+    $filtered_data = array_values($filtered_data);
+
+    return [...$filtered_data];
 }
 
 function estelam($conn, $code)
