@@ -27,6 +27,17 @@ if (isset($_POST['jsonData'])) {
         }
     }
 }
+function customSort($a, $b)
+{
+    $sumA = array_sum($a['relation']['sorted']); // Calculate the sum of values in $a
+    $sumB = array_sum($b['relation']['sorted']); // Calculate the sum of values in $b
+
+    // Compare the sums in descending order
+    if ($sumA == $sumB) {
+        return 0;
+    }
+    return ($sumA > $sumB) ? -1 : 1;
+}
 
 
 function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null, $messageDate)
@@ -39,18 +50,17 @@ function setup_loading($conn, $customer, $completeCode,  $userMessage, $username
         'existing' => [],
     ];
 
-    $explodedCodes = array_filter($explodedCodes, function ($code) {
-        if (strlen($code) > 5) {
-            return  $code;
-        }
-    });
-
     $explodedCodes = array_map(function ($code) {
         if (strlen($code) > 0) {
             return  preg_replace('/[^a-z0-9]/i', '', $code);
         }
     }, $explodedCodes);
 
+    $explodedCodes = array_filter($explodedCodes, function ($code) {
+        if (strlen($code) > 6) {
+            return  $code;
+        }
+    });
 
     // Remove duplicate codes from results array
     $explodedCodes = array_unique($explodedCodes);
@@ -71,6 +81,7 @@ function setup_loading($conn, $customer, $completeCode,  $userMessage, $username
             array_push($results_array['not_exist'], $code); //Adding nonexisting codes to the final result array's not_exist index Line NO: 34
         }
     }
+
 
     $itemDetails = [];
     $relation_id = [];
@@ -98,12 +109,20 @@ function setup_loading($conn, $customer, $completeCode,  $userMessage, $username
                 } else {
                     $codeRelationId[$code] =  'not' . rand();
                     $itemDetails[$code][$item['partnumber']]['information'] = info($conn);
-                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['id'], false);
+                    $itemDetails[$code][$item['partnumber']]['relation'] = relations($conn, $item['partnumber'], false);
                     $itemDetails[$code][$item['partnumber']]['givenPrice'] = givenPrice($conn, array_keys($itemDetails[$code][$item['partnumber']]['relation']['goods']));
                     $itemDetails[$code][$item['partnumber']]['estelam'] = estelam($conn, $item['partnumber']);
                 }
             }
         }
+    }
+    // Custom comparison function to sort inner arrays by values in descending order
+
+
+
+    foreach ($itemDetails as &$record) {
+
+        uasort($record, 'customSort'); // Sort the inner array by values
     }
 
     return ([
@@ -205,22 +224,28 @@ function info($conn, $relation_exist = null)
 function relations($conn, $id, $condition)
 {
     $relations = [];
+    $limit_id = '';
 
     if ($condition) {
 
         $sql = "SELECT yadakshop1402.nisha.* FROM yadakshop1402.nisha INNER JOIN similars ON similars.nisha_id = nisha.id WHERE similars.pattern_id = '" . $id . "'";
+
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            while ($info = mysqli_fetch_assoc($result)) {
+                array_push($relations, $info);
+            }
+            $limit_id = $id . '-r';
+        }
+    } else {
+        $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber = '" . $id . "'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             while ($info = mysqli_fetch_assoc($result)) {
                 array_push($relations, $info);
             }
         }
-    } else {
-        $sql = "SELECT * FROM yadakshop1402.nisha WHERE id = '" . $id . "'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            $relations[0] = mysqli_fetch_assoc($result);
-        }
+        $limit_id = end($relations)['id'] . '-s';
     }
 
 
@@ -228,22 +253,35 @@ function relations($conn, $id, $condition)
     $stockInfo = [];
     $sortedGoods = [];
 
+    $unique_goods = [];
+
     foreach ($relations as $relation) {
-        $data = exist($conn, $relation['id']);
-        $existing[$relation['partnumber']] = $data['brands_info'];
-        $stockInfo[$relation['partnumber']] = $data['stockInfo'];
+        if (!array_key_exists($relation['partnumber'], $unique_goods)) {
+            $unique_goods[$relation['partnumber']] = [$relation['id']];
+        } else {
+            $unique_goods[$relation['partnumber']][count($unique_goods[$relation['partnumber']])] = $relation['id'];
+        }
         $sortedGoods[$relation['partnumber']] = $relation;
+    }
+
+    foreach ($unique_goods as $key => $relation) {
+        $data = exist($conn, $relation);
+        $existing[$key] = $data['brands_info'];
+        $stockInfo[$key] = $data['stockInfo'];
     }
 
     arsort($existing);
     $sorted = [];
+
+    $max = 0;
     foreach ($existing as $key => $value) {
         $sorted[$key] = getMax($value);
+        $max += $sorted[$key];
     }
 
     arsort($sorted);
 
-    return ['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo];
+    return ((['goods' => $sortedGoods, 'existing' => $existing, 'sorted' => $sorted, 'stockInfo' => $stockInfo, 'limit_alert' => $limit_id]));
 }
 
 function givenPrice($conn, $codes, $relation_exist = null)
@@ -292,16 +330,16 @@ function givenPrice($conn, $codes, $relation_exist = null)
 
     if ($relation_exist) {
         usort($unsortedData, function ($a, $b) {
-            if ($a['created_at'] === $b['created_at']) {
-                return 0;
-            }
-
-            return ($b['created_at'] < $a['created_at']) ? -1 : 1;
+            return $a['created_at'] < $b['created_at'];
         });
     }
     $final_data = $relation_exist ? $unsortedData : $givenPrices;
 
-    return  $final_data;
+    $filtered_data = array_filter($final_data, function ($item) {
+        return is_array($item) && isset($item['price']) && $item['price'] !== '';
+    });
+
+    return  $filtered_data;
 }
 
 function estelam($conn, $code)
@@ -390,11 +428,20 @@ function stockInfo($conn, $id, $brand)
 
 function exist($conn, $id)
 {
-    $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, invoice_date,seller.name As seller_name
+
+    if (count($id) == 1) {
+        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time as invoice_date,seller.name As seller_name
                 FROM (( yadakshop1402.qtybank 
                 INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
                 INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
-                WHERE codeid = '" . $id . "'";
+                WHERE codeid = '" . current($id) . "'";
+    } else {
+        $data_sql = "SELECT yadakshop1402.qtybank.id, codeid, brand.name, qty, create_time as invoice_date,seller.name As seller_name
+                FROM (( yadakshop1402.qtybank 
+                INNER JOIN yadakshop1402.brand ON brand.id = qtybank.brand )
+                INNER JOIN yadakshop1402.seller ON seller.id = qtybank.seller)
+                WHERE codeid IN ('" . implode("','", $id) . "')";
+    }
 
     $data_result = mysqli_query($conn, $data_sql);
 
@@ -466,4 +513,44 @@ function sortArrayByNumericPropertyDescending($array, $property)
         return $b->$property - $a->$property;
     });
     return $array;
+}
+
+function getLimitAlertSpecification($conn, $id, $type)
+{
+}
+
+function inventorySpecification($conn, $id, $type)
+{
+    $sql = '';
+    switch ($type) {
+        case 'r':
+            $sql = "SELECT original, fake FROM good_limit_inventory WHERE pattern_id = '" . $id . "'";
+            break;
+        case 's':
+            $sql = "SELECT original, fake FROM good_limit_inventory WHERE nisha_id = '" . $id . "'";
+            break;
+    }
+
+    $limit = $conn->query($sql);
+    $limit = $limit->fetch_assoc();
+    $yadakLimit = !empty($limit) ? $limit : false;
+
+    return $yadakLimit;
+}
+
+function overallSpecification($conn, $id, $type)
+{
+    $sql = '';
+    switch ($type) {
+        case 'r':
+            $sql = "SELECT original AS original_all, fake As fake_all FROM good_limit_all WHERE pattern_id = '" . $id . "'";
+            break;
+        case 's':
+            $sql = "SELECT original AS original_all, fake As fake_all FROM good_limit_all WHERE nisha_id = '" . $id . "'";
+            break;
+    }
+    $limit_all = $conn->query($sql);
+    $limit_all = $limit_all->fetch_assoc();
+    $allLimit = !empty($limit_all) ? $limit_all : false;
+    return $allLimit;
 }

@@ -545,3 +545,4 @@ function overallSpecification($conn, $id, $type)
     $allLimit = !empty($limit_all) ? $limit_all : false;
     return $allLimit;
 }
+ 
