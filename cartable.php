@@ -1,9 +1,3 @@
-<div style="z-index: 100;" class="manual-add-customer">
-    <a href="#">کارتابل</a>
-    <div contenteditable="true"></div>
-
-</div>
-
 <?php
 require_once './layout/heroHeader.php';
 global  $repeatkeeper;
@@ -16,6 +10,12 @@ $sql = "SELECT * FROM incoming ORDER BY  time DESC LIMIT 200";
 $result = mysqli_query(dbconnect(), $sql);
 
 ?>
+<div style="z-index: 100;" class="manual-add-customer">
+    <a href="#">کارتابل</a>
+    <div contenteditable="true"></div>
+
+</div>
+
 <div class="grid lg:grid-cols-5 md:grid-cols-3  gap-6 px-4">
     <style>
         .overlay {
@@ -60,7 +60,13 @@ $result = mysqli_query(dbconnect(), $sql);
                         $answer = '';
                     }
 
-                    $img = $img . '<img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />';
+                    $file = ".././userimg/" . getidbyinternal($internal) . ".jpg";
+
+                    if (!file_exists($file)) {
+                        $file = ".././userimg/31.jpg";
+                    }
+
+                    $img = $img . "<img $answer   src='$file' />";
                     $taglabel = '';
                     $userlabel = '';
                     $jalali_time = '';
@@ -157,7 +163,13 @@ $result = mysqli_query(dbconnect(), $sql);
                     $answertime = '';
                 }
 
-                $img = $img . '<div><img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />' . $answertime . '</div>';
+                $file = ".././userimg/" . getidbyinternal($internal) . ".jpg";
+
+                if (!file_exists($file)) {
+                    $file = ".././userimg/31.jpg";
+                }
+
+                $img = $img . "<div><img $answer   src='$file' /> $answertime </div>";
 
                 $jalali_time = jalalitime($row["time"]);
                 $jalali_time_ago =  format_interval(nishatimedef(date('Y/m/d H:i:s'), $row["time"]));
@@ -192,7 +204,13 @@ $result = mysqli_query(dbconnect(), $sql);
                     $answertime = '';
                 }
 
-                $img = $img . '<div><img ' . $answer . ' src=".././userimg/' . getidbyinternal($internal) . '.jpg" />' . $answertime . '</div>';
+                $file = ".././userimg/" . getidbyinternal($internal) . ".jpg";
+
+                if (!file_exists($file)) {
+                    $file = ".././userimg/31.jpg";
+                }
+
+                $img = $img . "<div><img $answer   src='$file' /> $answertime </div>";
 
                 $jalali_time = jalalitime($row["time"]);
                 $jalali_time_ago =  format_interval(nishatimedef(date('Y/m/d H:i:s'), $row["time"]));
