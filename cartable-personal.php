@@ -78,8 +78,6 @@ $result = mysqli_query(dbconnect(), $sql);
                         $family = $row2['family'];
                         $userlabel = $row2['user'];
                         $taglabel = $row2['label'];
-
-
     ?>
 
                         <a href="main.php?phone=<?php echo $phone ?>" class="parent bg-gray-200 p-2 rounded-lg relative <?php if ($statuskeeper == 0) {

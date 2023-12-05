@@ -423,6 +423,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
                     </ul>
 
                     <div class="my-2 flex flex-wrap items-top p-2">
+                        <i onclick="toggleTV()" class="material-icons hover:cursor-pointer text-gray-500">branding_watermark</i>
                         <?php
                         $profile = '../../userimg/default.png';
                         if (file_exists("../../userimg/" . $_SESSION['id'] . ".jpg")) {
@@ -461,4 +462,17 @@ $_SESSION["user_id"] = $_SESSION["id"];
                                 console.log(error);
                             });
                     }, 30000);
+
+                    function toggleTV() {
+                        const params = new URLSearchParams();
+                        params.append('toggle', 'toggle');
+                        axios
+                            .post("./tvController.php", params)
+                            .then(function(response) {
+                                alert(response.data);
+                            })
+                            .catch(function(error) {
+                                console.log(error);
+                            });
+                    }
                 </script>
