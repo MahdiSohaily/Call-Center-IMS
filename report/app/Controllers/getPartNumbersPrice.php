@@ -43,7 +43,13 @@ function getPrice($codes)
         if (!empty($item['id'])) {
             $gen = $item['price'];
             $mobis = $item['mobis'];
-            $desiredValue = $gen > $mobis ? $mobis : $gen;
+            if (empty($gen)) {
+                $desiredValue = $mobis;
+            } elseif (empty($mobis)) {
+                $desiredValue = $gen;
+            } else {
+                $desiredValue = $gen > $mobis ? $mobis : $gen;
+            }
             array_push($prices, $desiredValue . "\n");
         } else {
             array_push($prices, "\n");

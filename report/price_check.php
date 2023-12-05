@@ -1,14 +1,14 @@
 <?php
 require_once('./views/Layouts/header.php');
 ?>
-<div class="rtl w-5/6 mx-auto bg-white p-5 rounded-lg d-flex">
+<div class="rtl w-5/6 mx-auto py-20 sm:px-6 lg:px-8 bg-white rounded-lg shadow-sm mt-11 d-flex">
     <div class="grow px-4">
         <!-- Korea section -->
         <div class="col-span-6 sm:col-span-4">
             <label for="code" class="block font-medium text-sm text-gray-700">
                 قیمت کد های ارائه شده
             </label>
-            <textarea id="results_box" readonly rows="10" class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
+            <textarea onclick="copyOperation(this.value)" id="results_box" readonly rows="10" class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
         </div>
     </div>
     <form id="partNumbers" class="grow px-4" target="_blank" action="giveOrderedPrice.php" method="post">
@@ -27,9 +27,15 @@ require_once('./views/Layouts/header.php');
             </button>
         </div>
     </form>
+</div>
+<div id="copied_message" class="flex justify-center text-green-500 p-4">
+    <span>
+        ! قیمت ها موفقانه کپی شد
+    </span>
 
 </div>
 <script>
+    document.getElementById('copied_message').style.display = 'none';
     const textArea = document.getElementById('code');
     const form = document.getElementById('partNumbers');
     const results_box = document.getElementById('results_box');
@@ -98,6 +104,17 @@ require_once('./views/Layouts/header.php');
                 console.log(error);
             });
     })
+
+    function copyOperation(text) {
+        const textArea = document.getElementById('results_box');
+        textArea.value = text;
+        textArea.select();
+        document.execCommand('copy');
+        document.getElementById('copied_message').style.display = 'flex';
+        setTimeout(function() {
+            document.getElementById('copied_message').style.display = 'none';
+        }, 2000);
+    }
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
