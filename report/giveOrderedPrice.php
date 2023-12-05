@@ -271,7 +271,7 @@ if ($isValidCustomer) {
                                                                                                     <?php
                                                                                                     foreach ($stockInfo[$index] as $item) {
                                                                                                     ?>
-                                                                                                        <?php if ($item !== 0 && $item['name'] === $brand) { ?>
+                                                                                                        <?php if ($item !== 0 && $item['name'] === $brand && $item['qty'] > 0) { ?>
                                                                                                             <tr class="odd:bg-gray-500 bg-gray-600">
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['seller_name'] ?></td>
                                                                                                                 <td class="px-3 py-2 tiny-text text-right"><?php echo $item['qty'] ?></td>
