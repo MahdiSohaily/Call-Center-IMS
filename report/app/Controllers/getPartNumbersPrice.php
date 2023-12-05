@@ -39,15 +39,14 @@ function getPrice($codes)
         $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber = '$code'";
         $result = CONN->query($sql);
         $item = mysqli_fetch_assoc($result);
-        $gen = $item['price'];
-        $mobis = $item['mobis'];
 
         if (!empty($item['id'])) {
-
+            $gen = $item['price'];
+            $mobis = $item['mobis'];
             $desiredValue = $gen > $mobis ? $mobis : $gen;
-            array_push($prices, $desiredValue);
+            array_push($prices, $desiredValue . "\n");
         } else {
-            array_push($prices, '');
+            array_push($prices, "\n");
         }
     }
     return $prices;

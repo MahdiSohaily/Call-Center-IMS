@@ -8,7 +8,7 @@ require_once('./views/Layouts/header.php');
             <label for="code" class="block font-medium text-sm text-gray-700">
                 قیمت کد های ارائه شده
             </label>
-            <textarea readonly rows="10" class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
+            <textarea id="results_box" readonly rows="10" class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
         </div>
     </div>
     <form id="partNumbers" class="grow px-4" target="_blank" action="giveOrderedPrice.php" method="post">
@@ -32,6 +32,7 @@ require_once('./views/Layouts/header.php');
 <script>
     const textArea = document.getElementById('code');
     const form = document.getElementById('partNumbers');
+    const results_box = document.getElementById('results_box');
     textArea.focus();
 
     function filterCode(element) {
@@ -87,7 +88,11 @@ require_once('./views/Layouts/header.php');
         axios
             .post("./app/Controllers/getPartNumbersPrice.php", params)
             .then(function(response) {
-                console.log(response.data);
+                data = response.data;
+
+                for (const item of data) {
+                    results_box.value += item;
+                }
             })
             .catch(function(error) {
                 console.log(error);
