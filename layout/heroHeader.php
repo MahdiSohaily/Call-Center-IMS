@@ -381,6 +381,12 @@ $title = '';
                         <i class="px-2 material-icons hover:cursor-pointer">attach_money</i>
                         تعریف دلار جدید
                     </a>
+                    <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm 
+                    font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white 
+                    focus:outline-none transition duration-150 ease-in-out" href="./report/price_check.php">
+                        <i class="px-2 material-icons hover:cursor-pointer">call_end</i>
+                        بررسی قیمت کدفنی
+                    </a>
                 </ul>
                 <!-- Authentication -->
                 <a style="font-size:12px" class="rtl cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none transition duration-150 ease-in-out" href="../1402/logout.php">
