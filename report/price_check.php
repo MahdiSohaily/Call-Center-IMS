@@ -8,10 +8,10 @@ require_once('./views/Layouts/header.php');
             <label for="code" class="block font-medium text-sm text-gray-700">
                 قیمت کد های ارائه شده
             </label>
-            <textarea readonly rows="10"  class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
+            <textarea readonly rows="10" class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
         </div>
     </div>
-    <form class="grow px-4" target="_blank" action="giveOrderedPrice.php" method="post">
+    <form id="partNumbers" class="grow px-4" target="_blank" action="giveOrderedPrice.php" method="post">
         <!-- Korea section -->
         <div class="col-span-6 sm:col-span-4">
             <label for="code" class="block font-medium text-sm text-gray-700">
@@ -30,6 +30,10 @@ require_once('./views/Layouts/header.php');
 
 </div>
 <script>
+    const textArea = document.getElementById('code');
+    const form = document.getElementById('partNumbers');
+    textArea.focus();
+
     function filterCode(element) {
         const message = element.value;
         if (!message) {
@@ -69,64 +73,26 @@ require_once('./views/Layouts/header.php');
             return !consecutiveChars;
         });
 
-        console.log(nonConsecutiveCodes);
-
         element.value = nonConsecutiveCodes.map(function(item) {
             return item.split(' ')[0];
         }).join("\n") + "\n";
     }
 
-    const searchCustomer = (val) => {
-        let pattern = val;
-        let superMode = 0;
-        const resultBox = document.getElementById("search_result");
-        pattern = pattern.replace(/-_\s/g, "");
-        var params = new URLSearchParams();
-        params.append('pattern', pattern);
-        if (pattern.length > 3) {
-            resultBox.classList.remove("hidden");
-            resultBox.innerHTML = `<li class=''>
-                                    <img class='block w-7 mx-auto h-auto' src='./public/img/loading.png' alt='loading'>
-                                </li>`;
 
-            axios.post("./app/Controllers/SearchCustomerController.php", params)
-                .then(function(response) {
-                    resultBox.innerHTML = response.data;
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-        }
-    };
-
-    const selectCustomer = (element) => {
-        id = element.getAttribute('data-customer-id');
-        name = element.getAttribute('data-customer-name');
-        family = element.getAttribute('data-customer-family');
-
-        document.getElementById('customer_info').innerHTML = name + " " + family;
-        document.getElementById('customer').value = name + " " + family;
-
-
-
-        document.getElementById('target_customer').value = id;
-        document.getElementById('search_result').classList.add("hidden");
-    }
-
-    // Get the current page URL query string
-    const queryString = window.location.search;
-
-    // Remove the leading '?phone=' from the query string
-    const phoneValue = queryString.replace('?phone=', '');
-
-    // Get the text area element
-    const textArea = document.getElementById('code');
-
-    // Set the phone value as the value of the text area with cursor in a new line
-    if (phoneValue) {
-        textArea.value += phoneValue + '\n';
-    }
-    textArea.focus();
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const code = document.getElementById('code').value;
+        const params = new URLSearchParams();
+        params.append('codes', code);
+        axios
+            .post("./app/Controllers/getPartNumbersPrice.php", params)
+            .then(function(response) {
+                console.log(response.data);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    })
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
