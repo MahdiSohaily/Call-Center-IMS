@@ -44,11 +44,19 @@ function getPrice($codes)
             $gen = $item['price'];
             $mobis = $item['mobis'];
             if (empty($gen)) {
-                $desiredValue = $mobis;
+                $avgPrice = round((intval($mobis) * 110) / 243.5);
+                $desiredValue =  round($avgPrice * 1.1);
             } elseif (empty($mobis)) {
-                $desiredValue = $gen;
+                $avgPrice = round((intval($gen) * 110) / 243.5);
+                $desiredValue = round($avgPrice * 1.1);
             } else {
-                $desiredValue = $gen > $mobis ? $mobis : $gen;
+                if ($gen > $mobis) {
+                    $avgPrice = round((intval($mobis) * 110) / 243.5);
+                    $desiredValue =  round($avgPrice * 1.1);
+                } else {
+                    $avgPrice = round((intval($gen) * 110) / 243.5);
+                    $desiredValue = round($avgPrice * 1.1);
+                }
             }
             array_push($prices, $desiredValue . "\n");
         } else {
