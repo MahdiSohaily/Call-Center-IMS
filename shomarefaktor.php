@@ -16,6 +16,21 @@ $sql = "SELECT * FROM shomarefaktor WHERE time < '$end' AND time >= '$start' ORD
 $factor_result = mysqli_query(dbconnect(), $sql);
 
 ?>
+<style>
+    .btn {
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        background-color: #4CcF70;
+    }
+
+    .btn:hover {
+        background-color: #45a049;
+    }
+</style>
 <div class="shomare-faktor-date">
     <?php echo jdate('Y/m/d')  ?> -
     <?php echo jdate('l J F'); ?>
@@ -43,8 +58,8 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     <form class="shomare-faktor-form" action="php/shomare-faktor-form-save.php" method="get" autocomplete="off">
         <input minlength="3" id="kharidar" class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
         <button onclick="copiedEffect(this)" class="save-shomare-faktor-form hover:cursor-pointer" type="submit"> گرفتن شماره فاکتور</button>
+        <a href="./report/generateBill.php" class="btn" type="submit">صدور فاکتو</a>
     </form>
-
     <div class="shomare-faktor-result">
     </div>
 </div>
@@ -111,7 +126,11 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                     <th>شماره فاکتور</th>
                     <th>خریدار</th>
                     <th>کاربر</th>
-                    <th class="edit">ویرایش</th>
+                    <?php
+                    $isAdmin = $_SESSION['username'] === 'niyayesh' || $_SESSION['username'] === 'babak' ? true : false;
+                    if ($isAdmin) : ?>
+                        <th class="edit">ویرایش</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -135,7 +154,10 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                             </td>
                             <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" src="../userimg/<?php echo $user ?>.jpg" /></td>
 
-                            <td class="edit"><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
+                            <?php
+                            if ($isAdmin) : ?>
+                                <td class="edit"><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
+                            <?php endif; ?>
 
                         </tr>
                 <?php
