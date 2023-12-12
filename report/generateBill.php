@@ -20,9 +20,16 @@ $status = $conn->query($status_sql);
         font-size: 18px;
         font-weight: bold;
     }
+
+    .bill_icon {
+        width: 30px;
+        height: 30px;
+        max-width: 30px !important;
+        cursor: pointer;
+    }
 </style>
-<div class="rtl h-40S grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-    <div class="bg-white rounded-lg shadow-md">
+<div style="min-height: 500px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8  px-4 mb-4">
+    <div class="bg-white min-h-full rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <img src="./public/img/customer.svg" alt="customer icon">
@@ -42,7 +49,7 @@ $status = $conn->query($status_sql);
         </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-md">
+    <div class="bg-white min-h-full rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <img src="./public/img/barcode.svg" alt="customer icon">
@@ -65,7 +72,7 @@ $status = $conn->query($status_sql);
         </div>
     </div>
 
-    <div class="bg-white rounded-lg shadow-md">
+    <div class="bg-white min-h-full rounded-lg shadow-md">
         <div class="p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <img src="./public/img/inventory.svg" alt="inventory icon">
@@ -86,6 +93,43 @@ $status = $conn->query($status_sql);
         <div class="p-3">
         </div>
         <div id="output"></div>
+    </div>
+</div>
+<div class="rtl h-70 px-4">
+    <div class="bg-white rounded-lg shadow-md py-4">
+        <div class="container mx-auto">
+            <table class="min-w-full border border-gray-300 text-gray-400">
+                <thead>
+                    <tr class="bg-gray-800">
+                        <th class="py-2 px-4 border-b text-white">ردیف</th>
+                        <th class="py-2 px-4 border-b text-white">کد فنی</th>
+                        <th class="py-2 px-4 border-b text-white">نام قطعه</th>
+                        <th class="py-2 px-4 border-b text-white"> تعداد</th>
+                        <th class="py-2 px-4 border-b text-white"> قیمت</th>
+                        <th class="py-2 px-4 border-b text-white"> قیمت کل</th>
+                        <th class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/setting.svg" alt="settings icon">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example rows -->
+                    <tr>
+                        <td class="py-2 px-4 border-b">Data 1</td>
+                        <td class="py-2 px-4 border-b">Data 2</td>
+                        <td class="py-2 px-4 border-b">Data 3</td>
+                        <td class="py-2 px-4 border-b">Data 4</td>
+                        <td class="py-2 px-4 border-b">Data 5</td>
+                        <td class="py-2 px-4 border-b">Data 6</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 <script>
