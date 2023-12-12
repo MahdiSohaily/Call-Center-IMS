@@ -22,13 +22,13 @@ $status = $conn->query($status_sql);
     }
 
     .bill_icon {
-        width: 30px;
-        height: 30px;
-        max-width: 30px !important;
+        width: 25px;
+        height: 25px;
+        max-width: 25px !important;
         cursor: pointer;
     }
 </style>
-<div style="min-height: 500px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8  px-4 mb-4">
+<div style="min-height: 450px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8  px-4 mb-4">
     <div class="bg-white min-h-full rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
@@ -95,13 +95,13 @@ $status = $conn->query($status_sql);
         <div id="output"></div>
     </div>
 </div>
-<div class="rtl h-70 px-4">
+<div class="rtl h-70 px-4 mb-2">
     <div class="bg-white rounded-lg shadow-md py-4">
         <div class="container mx-auto">
             <table class="min-w-full border border-gray-300 text-gray-400">
                 <thead>
                     <tr class="bg-gray-800">
-                        <th class="py-2 px-4 border-b text-white">ردیف</th>
+                        <th class="py-2 px-4 border-b text-white w-10">ردیف</th>
                         <th class="py-2 px-4 border-b text-white">کد فنی</th>
                         <th class="py-2 px-4 border-b text-white">نام قطعه</th>
                         <th class="py-2 px-4 border-b text-white"> تعداد</th>
@@ -113,24 +113,131 @@ $status = $conn->query($status_sql);
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Example rows -->
-                    <tr>
-                        <td class="py-2 px-4 border-b">Data 1</td>
-                        <td class="py-2 px-4 border-b">Data 2</td>
-                        <td class="py-2 px-4 border-b">Data 3</td>
-                        <td class="py-2 px-4 border-b">Data 4</td>
-                        <td class="py-2 px-4 border-b">Data 5</td>
-                        <td class="py-2 px-4 border-b">Data 6</td>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۱</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
                         <td class="py-2 px-4 border-b w-12 h-12 font-medium">
                             <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
                         </td>
                     </tr>
-                    <!-- Add more rows as needed -->
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۲</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۳</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۴</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۵</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۱</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۲</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۳</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۴</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
+                    <tr class="even:bg-gray-100">
+                        <td class="py-2 px-4 border-b">۵</td>
+                        <td class="py-2 px-4 border-b">553113f650</td>
+                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
+                        <td class="py-2 px-4 border-b">4</td>
+                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
+                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-
     </div>
+</div>
+<div class="h-16"></div>
+<div class="rtl fixed flex items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
+    <ul>
+        <li>
+            <p class="bg-white rounded text-gray-800 px-2 py-1 cursor-pointer" onclick="">
+                 صدور فاکتور
+            </p>
+        </li>
+        </li>
+    </ul>
 </div>
 <script>
     // Container Global Variables
