@@ -95,10 +95,47 @@ $status = $conn->query($status_sql);
         <div id="output"></div>
     </div>
 </div>
-<div class="rtl h-70 px-4 mb-2">
-    <div class="bg-white rounded-lg shadow-md py-4">
+<div class="rtl grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 px-4 mb-4">
+    <div id="1" class="bg-white rounded-lg shadow-md p-4 w-full">
+        <table class="min-w-full border border-gray-800 text-gray-400">
+            <thead>
+                <tr class="bg-gray-800 text-white text-center border-b mb-2">
+                    <th colspan="2" class="py-2">
+                        مشخصات خریدار
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">نام کامل</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border" placeholder="اسم کامل مشتری را وارد کنید..." type="text" name="" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">تلفون</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border" placeholder="093000000000" type="text" name="" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">آدرس</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border" placeholder="آدرس مشتری را وارد کنید" type="text" name="" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">ماشین</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="" id="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="2" class="bg-white rounded-lg shadow-md py-4 w-full col-span-3">
         <div class="container mx-auto">
-            <table class="min-w-full border border-gray-300 text-gray-400">
+            <table class="min-w-full border border-gray-800 text-gray-400">
                 <thead>
                     <tr class="bg-gray-800">
                         <th class="py-2 px-4 border-b text-white w-10">ردیف</th>
@@ -228,12 +265,13 @@ $status = $conn->query($status_sql);
         </div>
     </div>
 </div>
+
 <div class="h-16"></div>
 <div class="rtl fixed flex items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
     <ul>
         <li>
             <p class="bg-white rounded text-gray-800 px-2 py-1 cursor-pointer" onclick="">
-                 صدور فاکتور
+                صدور فاکتور
             </p>
         </li>
         </li>

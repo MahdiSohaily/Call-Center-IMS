@@ -19,7 +19,7 @@ function index($conn, $id)
     if ($similar->num_rows > 0) {
         $data = mysqli_fetch_array($similar);
     }
-
+ 
 
     $adminNotification = [];
     if ($data['roll'] == 1) {
@@ -31,7 +31,7 @@ function index($conn, $id)
             }
         }
     }
-
+ 
     $hasNotification = [];
 
     $similar_sql = "SELECT * FROM ask_price WHERE user_id = '" . $id . "'  AND notify='received'";
