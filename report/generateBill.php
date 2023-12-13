@@ -311,25 +311,102 @@ $status = $conn->query($status_sql);
         const quantity = element.getAttribute('data-quantity');
         const partNumber = element.getAttribute('data-partNumber');
 
-        billItems.push([id, name, price, quantity, partNumber]);
+        billItems.push({
+            id,
+            name,
+            price,
+            quantity,
+            partNumber
+        });
         displayBill();
     }
 
     function displayBill() {
+        let counter = 1;
+        let template = ``;
         for (const item of billItems) {
-            template = `
-                    <tr id="item-" class="even:bg-gray-100">
-                        <td class="py-2 px-4 border-b">۱</td>
-                        <td class="py-2 px-4 border-b">553113f650</td>
-                        <td class="py-2 px-4 border-b">سپر جلوی سانتافه</td>
-                        <td class="py-2 px-4 border-b">4</td>
-                        <td class="py-2 px-4 border-b">۴۰۰۰۰۰۰۰</td>
-                        <td class="py-2 px-4 border-b">۱۶۰۰۰۰۰۰۰۰۰۰۰۰۰</td>
-                        <td class="py-2 px-4 border-b w-12 h-12 font-medium">
-                            <img class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
-                        </td>
-                    </tr> `;
+            template += `
+            <tr id="${item.id}" class="even:bg-gray-100">
+                <td class="py-2 px-4 border-b">
+                    <span>${counter}</span>
+                </td>
+                <td class="py-2 px-4 border-b">
+                    <span>${item.partNumber}</span>
+                </td>
+                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'name', '${item.id}', '${item.name}')">
+                    <span>${item.name}</span>
+                    <input type="text" class="p-2 border hidden" value="${item.name}" />
+                </td>
+                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
+                    <span>${item.quantity}</span>
+                    <input type="text" class="p-2 border hidden" value="${item.quantity}" />
+                </td>
+                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price', '${item.id}', '${item.price}')">
+                    <span>${item.price}</span>
+                    <input type="text" class="p-2 border hidden" value="${item.price}" />
+                </td>
+                <td class="py-2 px-4 border-b">${Number(item.quantity) * Number(item.price)}</td>
+                <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                    <img onclick="deleteItem(${item.id})" class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                </td>
+            </tr> `;
+            counter++;
         }
+        bill_body.innerHTML = template;
+    }
+
+    function editCell(cell, property, itemId, originalValue) {
+        const input = cell.querySelector('input');
+        const span = cell.querySelector('span');
+
+        // Make input visible and set focus
+        input.classList.remove('hidden');
+        input.focus();
+
+        // Hide the span
+        span.classList.add('hidden');
+
+        // Update input value with the original value
+        input.value = originalValue;
+
+        // Handle changes when the input loses focus
+        input.addEventListener('blur', function() {
+            const newValue = input.value;
+
+            // Update the span with the new value
+            span.innerText = newValue;
+
+            // Make the span visible again
+            span.classList.remove('hidden');
+
+            // Hide the input
+            input.classList.add('hidden');
+
+            // Update the corresponding item in your data structure (billItems)
+            updateItemProperty(itemId, property, newValue);
+        });
+    }
+
+    function updateItemProperty(itemId, property, newValue) {
+        for (let i = 0; i < billItems.length; i++) {
+            if (billItems[i].id == itemId) {
+                billItems[i][property] = newValue;
+                break;
+            }
+        }
+        displayBill();
+    }
+
+
+
+    function deleteItem(id) {
+        for (let i = 0; i < billItems.length; i++) {
+            if (billItems[i].id == id) {
+                billItems.splice(i, 1);
+                break;
+            }
+        }
+        displayBill();
     }
 </script>
 <?php
