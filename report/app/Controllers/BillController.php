@@ -55,13 +55,31 @@ if (isset($_POST['searchInStock'])) {
 
 function searchPartNumberInStock($pattern)
 {
-    $sql = "SELECT nisha.partnumber , stock.name AS stn,stock.id AS sti, nisha.id , seller.name , brand.name AS brn , qtybank.qty ,qtybank.des,qtybank.id AS qtyid,  qtybank.qty AS entqty 
-            FROM qtybank 
-            LEFT JOIN nisha ON qtybank.codeid=nisha.id
-            LEFT JOIN seller ON qtybank.seller=seller.id
-            LEFT JOIN stock ON qtybank.stock_id=stock.id
-            LEFT JOIN brand ON qtybank.brand=brand.id
-            WHERE partnumber LIKE '$pattern%'";
+    $sql = "SELECT
+            qtybank.id AS exist_id,
+            nisha.id AS nisha_id,
+            nisha.partnumber,
+            stock.id AS stock_id,
+            stock.name AS stock_name,
+            seller.name AS seller_name,
+            brand.name AS brand_name,
+            qtybank.qty AS existing,
+            qtybank.des AS description
+        FROM
+            yadakshop1402.qtybank
+        LEFT JOIN
+            yadakshop1402.nisha ON qtybank.codeid = nisha.id
+        LEFT JOIN
+            yadakshop1402.seller ON qtybank.seller = seller.id
+        LEFT JOIN
+            yadakshop1402.stock ON qtybank.stock_id = stock.id
+        LEFT JOIN
+            yadakshop1402.brand ON qtybank.brand = brand.id
+        WHERE
+            partnumber LIKE '$pattern%'
+        ORDER BY
+            nisha.partnumber DESC";
+
 
     $result = CONN->query($sql);
 
@@ -72,24 +90,25 @@ function searchPartNumberInStock($pattern)
         }
     }
 
-    array_filter($data, function ($item) {
-        $finalQuantity = $item["entqty"];
-        $sql2 = "SELECT qty FROM exitrecord WHERE qtyid = '" . $item["qtyid"] . "'";
+    $sanitized = [];
+
+    foreach ($data as $item) {
+        $finalQuantity = $item["existing"];
+
+        $sql2 = "SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = '" . $item["exist_id"] . "'";
         $fetchedData = CONN->query($sql2);
 
 
         if (mysqli_num_rows($fetchedData) > 0) {
             while ($row2 = mysqli_fetch_assoc($fetchedData)) {
-
-                $finalQuantity =  $finalQuantity - $row2["qty"];
+                $finalQuantity -= $row2["qty"];
             }
         }
-
         if ($finalQuantity > 0) {
-            return $item;
+            array_push($sanitized, $item);
         }
-    });
+    }
 
 
-    return [...$data];
+    return $sanitized;
 }

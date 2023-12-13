@@ -94,9 +94,6 @@ $status = $conn->query($status_sql);
                 <div class="border-t border-gray-200"></div>
             </div>
         </div>
-
-        <div class="p-3">
-        </div>
         <div id="stock_result" class="p-3" style="overflow-y: auto; height:300px"></div>
     </div>
 </div>
@@ -180,7 +177,7 @@ $status = $conn->query($status_sql);
                 </tr>
                 <tr>
                     <td colspan="2" class="bg-gray-800 text-white h-10 border-top">
-                        <p id="total_in_word" class="px-3"></p>
+                        <p id="total_in_word" class="px-3 text-sm"></p>
                     </td>
                 </tr>
             </tbody>
@@ -223,6 +220,7 @@ $status = $conn->query($status_sql);
 <script>
     const customer_results = document.getElementById('customer_results');
     const resultBox = document.getElementById("selected_box");
+    const stock_result = document.getElementById("stock_result");
     const bill_body = document.getElementById("bill_body");
 
     const billItems = [];
@@ -334,7 +332,7 @@ $status = $conn->query($status_sql);
             pattern = pattern.replace(/-/g, "");
             pattern = pattern.replace(/_/g, "");
 
-            resultBox.innerHTML = `<tr class=''>
+            stock_result.innerHTML = `<tr class=''>
                                             <div class='w-full h-52 flex justify-center items-center'>
                                                 <img class=' block w-10 mx-auto h-auto' src='./public/img/loading.png' alt='google'>
                                             </div>
@@ -345,13 +343,14 @@ $status = $conn->query($status_sql);
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
                     const data = response.data;
-                    resultBox.innerHTML = createPartNumberTemplate(data);
+                    console.log(data);
+                    stock_result.innerHTML = createPartNumberTemplate(data);
                 })
                 .catch(function(error) {
                     console.log(error);
                 });
         } else {
-            resultBox.innerHTML = "";
+            stock_result.innerHTML = "";
         }
     }
 
