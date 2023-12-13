@@ -102,7 +102,7 @@ $status = $conn->query($status_sql);
 </div>
 <div class="rtl grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 px-4 mb-4">
     <div class="bg-white rounded-lg shadow-md p-2 w-full">
-        <table class="min-w-full border border-gray-800 text-gray-400">
+        <table class="min-w-full border border-gray-800 text-gray-400 mb-5">
             <thead>
                 <tr class="bg-gray-800 text-white text-center border-b mb-2">
                     <th colspan="2" class="py-2">
@@ -135,6 +135,52 @@ $status = $conn->query($status_sql);
                     <td class="py-2 px-4 text-white bg-gray-800">ماشین</td>
                     <td class="py-2 px-4">
                         <input class="w-full p-2 border text-gray-500" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="" id="car">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="min-w-full border border-gray-800 text-gray-400 mb-5">
+            <thead>
+                <tr class="bg-gray-800 text-white text-center border-b mb-2">
+                    <th colspan="2" class="py-2">
+                        اطلاعات فاکتور
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">تعداد اقلام</td>
+                    <td class="py-2 px-4">
+                        <input readonly class="w-full p-2 border text-gray-500" placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">جمع کل</td>
+                    <td class="py-2 px-4">
+                        <input readonly class="w-full p-2 border text-gray-500" placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">تخفیف</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="discount" id="discount">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">مالبات (۰٪)</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="tax" id="tax">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">عوارض</td>
+                    <td class="py-2 px-4">
+                        <input class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="withdraw" id="withdraw">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="bg-gray-800 text-white h-10 border-top">
+                        <p id="total_in_word" class="px-3"></p>
                     </td>
                 </tr>
             </tbody>
@@ -329,7 +375,13 @@ $status = $conn->query($status_sql);
     function displayBill() {
         let counter = 1;
         let template = ``;
+        let totalPrice = 0;
+
         for (const item of billItems) {
+
+            const payPrice = Number(item.quantity) * Number(item.price);
+            totalPrice += payPrice;
+
             template += `
             <tr id="${item.id}" class="even:bg-gray-100">
                 <td class="py-2 px-4 border-b">
@@ -350,7 +402,7 @@ $status = $conn->query($status_sql);
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price))}</span>
                     <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price)}" />
                 </td>
-                <td class="py-2 px-4 border-b">${formatAsMoney(Number(item.quantity) * Number(item.price))}</td>
+                <td class="py-2 px-4 border-b">${formatAsMoney(payPrice)}</td>
                 <td class="py-2 px-4 border-b w-12 h-12 font-medium">
                     <img onclick="deleteItem(${item.id})" class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
                 </td>
@@ -358,6 +410,10 @@ $status = $conn->query($status_sql);
             counter++;
         }
         bill_body.innerHTML = template;
+
+        document.getElementById('quantity').value = billItems.length;
+        document.getElementById('totalPrice').value = formatAsMoney(totalPrice);
+        document.getElementById('total_in_word').innerHTML = numberToPersianWords(totalPrice);
     }
 
     function editCell(cell, property, itemId, originalValue) {
