@@ -86,7 +86,7 @@ $status = $conn->query($status_sql);
         </div>
 
         <div class="flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); search(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
         </div>
 
         <div class="hidden sm:block">
@@ -97,7 +97,7 @@ $status = $conn->query($status_sql);
 
         <div class="p-3">
         </div>
-        <div id="output"></div>
+        <div id="stock_result" class="p-3" style="overflow-y: auto; height:300px"></div>
     </div>
 </div>
 <div class="rtl grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 px-4 mb-4">
@@ -317,32 +317,7 @@ $status = $conn->query($status_sql);
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
                     const data = response.data;
-                    let template = ``;
-                    for (const item of data) {
-                        template += `
-                                    <div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
-                                        <div class="w-full py-3 flex justify-between items-center">      
-                                            <p class="text-sm font-semibold text-white">
-                                                   ${item.partnumber}
-                                            </p>
-                                            <p class="text-sm text-white">اسم قطعه بعدا اضافه می شود</p>
-                                        </div>
-                                        <div class="w-full flex justify-between items-center">
-                                                <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
-                                                <input type="number" onkeyup="updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
-                                            <i id="${item.id}"
-                                                data-quantity= "0"
-                                                data-price= "0"
-                                                data-partNumber = "${item.partnumber}"
-                                                data-name = "بعدا اضافه می شود"
-                                                onclick="selectGood(this)"
-                                                    class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
-                                            </i>
-                                        </div>
-                                    </div>
-                        `;
-                    }
-                    resultBox.innerHTML = template;
+                    resultBox.innerHTML = createPartNumberTemplate(data);
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -350,6 +325,64 @@ $status = $conn->query($status_sql);
         } else {
             resultBox.innerHTML = "";
         }
+    }
+
+    function searchInStock(pattern) {
+
+        if (pattern.length > 6) {
+            pattern = pattern.replace(/\s/g, "");
+            pattern = pattern.replace(/-/g, "");
+            pattern = pattern.replace(/_/g, "");
+
+            resultBox.innerHTML = `<tr class=''>
+                                            <div class='w-full h-52 flex justify-center items-center'>
+                                                <img class=' block w-10 mx-auto h-auto' src='./public/img/loading.png' alt='google'>
+                                            </div>
+                                        </tr>`;
+            var params = new URLSearchParams();
+            params.append('searchInStock', pattern);
+
+            axios.post("./app/Controllers/BillController.php", params)
+                .then(function(response) {
+                    const data = response.data;
+                    resultBox.innerHTML = createPartNumberTemplate(data);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        } else {
+            resultBox.innerHTML = "";
+        }
+    }
+
+    function createPartNumberTemplate(data) {
+        let template = ``;
+        for (const item of data) {
+            template += `
+                        <div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                            <div class="w-full py-3 flex justify-between items-center">      
+                                <p class="text-sm font-semibold text-white">
+                                       ${item.partnumber}
+                                </p>
+                                <p class="text-sm text-white">اسم قطعه بعدا اضافه می شود</p>
+                            </div>
+                            <div class="w-full flex justify-between items-center">
+                                    <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
+                                    <input type="number" onkeyup="updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
+                                <i id="${item.id}"
+                                    data-quantity= "0"
+                                    data-price= "0"
+                                    data-partNumber = "${item.partnumber}"
+                                    data-name = "بعدا اضافه می شود"
+                                    onclick="selectGood(this)"
+                                        class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
+                                </i>
+                            </div>
+                        </div>
+                        `;
+        }
+
+        return template;
     }
 
     function updateCredential(property, specifier, value) {
