@@ -3,86 +3,46 @@
 session_name("MyAppSession");
 session_start();
 require_once('../../database/connect.php');
-if (isset($_POST['check_notification'])) {
+if (isset($_POST['customer_search'])) {
 
-    $user_id = $_SESSION['user_id'];
+    $pattern = $_POST['pattern'];
 
-    echo index($conn, $user_id);
+
+    echo json_encode(search_customer($pattern));
 }
 
-function index($conn, $id)
+function search_customer($pattern)
 {
-    $similar_sql = "SELECT roll FROM yadakshop1402.users WHERE id = ' $id' ";
+    $similar_sql = "SELECT id, name, family, phone, address, car FROM callcenter.customer WHERE name LIKE '%$pattern%' OR family LIKE '%$pattern%' OR phone LIKE '%$pattern%'";
 
-    $similar = mysqli_query($conn, $similar_sql);
-
+    $similar = CONN->query($similar_sql);
+    $data = [];
     if ($similar->num_rows > 0) {
-        $data = mysqli_fetch_array($similar);
-    }
- 
-
-    $adminNotification = [];
-    if ($data['roll'] == 1) {
-        $similar_sql = "SELECT * FROM ask_price WHERE status = 'pending' ";
-        $similar = mysqli_query($conn, $similar_sql);
-        if ($similar->num_rows > 0) {
-            while ($row = mysqli_fetch_array($similar)) {
-                array_push($adminNotification, $row);
-            }
+        while ($row = $similar->fetch_assoc()) {
+            array_push($data, $row);
         }
     }
- 
-    $hasNotification = [];
-
-    $similar_sql = "SELECT * FROM ask_price WHERE user_id = '" . $id . "'  AND notify='received'";
-    $similar = mysqli_query($conn, $similar_sql);
-    if ($similar->num_rows > 0) {
-        while ($row = mysqli_fetch_array($similar)) {
-            array_push($hasNotification, $row);
-        }
-    }
-    return count($hasNotification) + count($adminNotification);
+    return $data;
 }
 
-if (isset($_POST['weDontHave'])) {
-    $id = $_POST['id'];
-    $code = $_POST['code'];
-    $customer = $_POST['customer'];
-    echo clearNotification($conn, $id, $code, $customer);
+if (isset($_POST['pattern'])) {
+
+    $pattern = $_POST['pattern'];
+    echo json_encode(searchPartNumber($pattern));
 }
 
-function clearNotification($conn, $id, $code, $customer)
+
+function searchPartNumber($pattern)
 {
+    $sql = "SELECT * FROM yadakshop1402.nisha WHERE partnumber LIKE '" . $pattern . "%'";
+    $result = CONN->query($sql);
 
-    if ($id) {
-        $sql = "UPDATE ask_price SET status= 'done' , notify = 'received',
-             price = 'نداریم' 
-             WHERE id = '$id'";
-
-        $conn->query($sql);
-    }
-
-    if ($customer) {
-        $created_at = date("Y-m-d H:i:s");
-        $pattern_sql = "INSERT INTO prices (partnumber, price, user_id, customer_id, created_at, updated_at)
-            VALUES ('" . $code . "', 'نداریم', '" . $_SESSION['id'] . "','" .  $customer . "','" . $created_at . "','" . $created_at . "')";
-
-        if ($conn->query($pattern_sql) === TRUE) {
-            return 'true';
+    $data = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($data, $row);
         }
     }
-}
 
-if (isset($_POST['markUsRead'])) {
-    $id = $_POST['id'];
-    echo readNotification($conn, $id);
-}
-
-function readNotification($conn, $id)
-{
-    $sql = "UPDATE ask_price SET status= 'done' , notify = 'done',
-             status = 'done' 
-             WHERE id = '$id'";
-
-    $conn->query($sql);
+    return $data;
 }
