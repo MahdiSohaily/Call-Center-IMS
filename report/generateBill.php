@@ -334,18 +334,18 @@ $status = $conn->query($status_sql);
                     <span>${item.partNumber}</span>
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'name', '${item.id}', '${item.name}')">
-                    <span>${item.name}</span>
+                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.name}</span>
                     <input type="text" class="p-2 border hidden" value="${item.name}" />
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
-                    <span>${item.quantity}</span>
-                    <input type="text" class="p-2 border hidden" value="${item.quantity}" />
+                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
+                    <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price', '${item.id}', '${item.price}')">
-                    <span>${item.price}</span>
-                    <input type="text" class="p-2 border hidden" value="${item.price}" />
+                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price))}</span>
+                    <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price)}" />
                 </td>
-                <td class="py-2 px-4 border-b">${Number(item.quantity) * Number(item.price)}</td>
+                <td class="py-2 px-4 border-b">${formatAsMoney(Number(item.quantity) * Number(item.price))}</td>
                 <td class="py-2 px-4 border-b w-12 h-12 font-medium">
                     <img onclick="deleteItem(${item.id})" class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
                 </td>
@@ -397,8 +397,6 @@ $status = $conn->query($status_sql);
         displayBill();
     }
 
-
-
     function deleteItem(id) {
         for (let i = 0; i < billItems.length; i++) {
             if (billItems[i].id == id) {
@@ -407,6 +405,10 @@ $status = $conn->query($status_sql);
             }
         }
         displayBill();
+    }
+
+    function formatAsMoney(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
     }
 </script>
 <?php
