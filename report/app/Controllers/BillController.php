@@ -25,9 +25,9 @@ function search_customer($pattern)
     return $data;
 }
 
-if (isset($_POST['pattern'])) {
+if (isset($_POST['partNumber'])) {
 
-    $pattern = $_POST['pattern'];
+    $pattern = $_POST['partNumber'];
     echo json_encode(searchPartNumber($pattern));
 }
 

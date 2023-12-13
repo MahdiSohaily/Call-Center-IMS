@@ -37,7 +37,7 @@ $status = $conn->query($status_sql);
             </h2>
         </div>
         <div class="flex justify-center px-3">
-            <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
         </div>
         <div class="hidden sm:block">
             <div class="py-2">
@@ -295,6 +295,7 @@ $status = $conn->query($status_sql);
         document.getElementById('phone').value = customer.getAttribute('data-phone');
         document.getElementById('car').value = customer.getAttribute('data-car');
         document.getElementById('address').value = customer.getAttribute('data-address');
+        document.getElementById('customer_name').value = '';
         customer_results.innerHTML = "";
     }
 
@@ -311,7 +312,7 @@ $status = $conn->query($status_sql);
                                             </div>
                                         </tr>`;
             var params = new URLSearchParams();
-            params.append('pattern', pattern);
+            params.append('partNumber', pattern);
 
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
