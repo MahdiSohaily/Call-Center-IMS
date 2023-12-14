@@ -56,7 +56,7 @@ if (isset($_POST['searchInStock'])) {
 function searchPartNumberInStock($pattern)
 {
     $sql = "SELECT
-            qtybank.id AS exist_id,
+            qtybank.id AS id,
             nisha.id AS nisha_id,
             nisha.partnumber,
             stock.id AS stock_id,
@@ -95,7 +95,7 @@ function searchPartNumberInStock($pattern)
     foreach ($data as $item) {
         $finalQuantity = $item["existing"];
 
-        $sql2 = "SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = '" . $item["exist_id"] . "'";
+        $sql2 = "SELECT qty FROM yadakshop1402.exitrecord WHERE qtyid = '" . $item["id"] . "'";
         $fetchedData = CONN->query($sql2);
 
 

@@ -436,7 +436,7 @@ $status = $conn->query($status_sql);
                             </div>
                             <div class="w-full flex justify-between items-center">
                                     <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
-                                    <input type="number" onkeyup="updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
+                                    <input type="number" onkeyup="checkExisting(this, ${item.existing},${item.id});updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
                                 <i id="${item.id}"
                                     data-quantity= "0"
                                     data-price= "0"
@@ -446,12 +446,28 @@ $status = $conn->query($status_sql);
                                         class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
                                 </i>
                             </div>
+                            <div class="w-full h-6 flex justify-between items-center">
+                            <p id="error-${item.id}" class="d-none text-sm text-red-600 pt-3">انتخاب قیمت بیشتر از موجودی امکان پذیر نمی باشد</p>
+                            </div>
                         </div>
                         `;
         }
 
         return template;
     }
+
+    function checkExisting(element, max, specidier) {
+        if (element.value > max) {
+            element.value = max;
+            console.log(document.getElementById("error-" + specidier));
+            document.getElementById("error-" + specidier).classList.toggle("d-none");
+
+            setTimeout(() => {
+                document.getElementById("error-" + specidier).classList.toggle("d-none");
+            }, 2000);
+        }
+    }
+
 
     function updateCredential(property, specifier, value) {
         document.getElementById(specifier).setAttribute(property, value);
