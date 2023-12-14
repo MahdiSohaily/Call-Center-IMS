@@ -408,6 +408,11 @@ $status = $conn->query($status_sql);
                                         class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
                                 </i>
                             </div>
+                            <div class="w-full h-6 flex justify-between items-center">
+                                <p id="error-${item.id}" class="d-none text-sm text-red-600 pt-3">
+                                انتخاب قیمت بیشتر از موجودی امکان پذیر نمی باشد
+                                </p>
+                            </div>
                         </div>
                         `;
         }
@@ -442,12 +447,15 @@ $status = $conn->query($status_sql);
                                     data-price= "0"
                                     data-partNumber = "${item.partnumber}"
                                     data-name = "بعدا اضافه می شود"
+                                    data-max = "${item.existing}"
                                     onclick="selectGood(this)"
                                         class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
                                 </i>
                             </div>
                             <div class="w-full h-6 flex justify-between items-center">
-                            <p id="error-${item.id}" class="d-none text-sm text-red-600 pt-3">انتخاب قیمت بیشتر از موجودی امکان پذیر نمی باشد</p>
+                            <p id="error-${item.id}" class="d-none text-sm text-red-600 pt-3">
+                            انتخاب قیمت بیشتر از موجودی امکان پذیر نمی باشد
+                            </p>
                             </div>
                         </div>
                         `;
@@ -459,8 +467,8 @@ $status = $conn->query($status_sql);
     function checkExisting(element, max, specidier) {
         if (element.value > max) {
             element.value = max;
-            console.log(document.getElementById("error-" + specidier));
             document.getElementById("error-" + specidier).classList.toggle("d-none");
+            document.getElementById("error-" + specidier).innerHTML = "انتخاب مقدار بیشتر از موجودی امکان پذیر نیست.";
 
             setTimeout(() => {
                 document.getElementById("error-" + specidier).classList.toggle("d-none");
@@ -479,12 +487,25 @@ $status = $conn->query($status_sql);
         const price = element.getAttribute('data-price');
         const quantity = element.getAttribute('data-quantity');
         const partNumber = element.getAttribute('data-partNumber');
+        const max = element.getAttribute('data-max') ?? 'undefined';
+
+        if (price <= 0 || quantity <= 0) {
+            document.getElementById("error-" + id).classList.toggle("d-none");
+            document.getElementById("error-" + id).innerHTML = "لطفا مقادیر وارده را درست بررسی نمایید";
+
+            setTimeout(() => {
+                document.getElementById("error-" + id).classList.toggle("d-none");
+            }, 2000);
+
+            return false;
+        }
 
         billItems.push({
             id,
             name,
             price,
             quantity,
+            max,
             partNumber
         });
         displayBill();
