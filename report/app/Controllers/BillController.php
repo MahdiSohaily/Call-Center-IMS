@@ -104,6 +104,8 @@ function searchPartNumberInStock($pattern)
                 $finalQuantity -= $row2["qty"];
             }
         }
+
+        $item['existing'] = $finalQuantity;
         if ($finalQuantity > 0) {
             array_push($sanitized, $item);
         }

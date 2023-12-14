@@ -36,8 +36,13 @@ $status = $conn->query($status_sql);
                 انتخاب مشتری
             </h2>
         </div>
-        <div class="flex justify-center px-3">
+        <div class="relative flex justify-center px-3">
             <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
+                                                                                    searchCustomer('');
+                                                                                    document.getElementById('customer_name').value = '';
+                                                                                })();" src="./public/img/clear.svg" alt="customer icon">
+
         </div>
         <div class="hidden sm:block">
             <div class="py-2">
@@ -85,8 +90,13 @@ $status = $conn->query($status_sql);
             </h2>
         </div>
 
-        <div class="flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+        <div class="relative flex justify-center px-3">
+            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
+                                                                                    searchInStock('');
+                                                                                    document.getElementById('stock_partNumber').value = '';
+                                                                                })();" src="./public/img/clear.svg" alt="customer icon">
+
         </div>
 
         <div class="hidden sm:block">
@@ -315,7 +325,18 @@ $status = $conn->query($status_sql);
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
                     const data = response.data;
-                    resultBox.innerHTML = createPartNumberTemplate(data);
+                    if (response.data.length > 0) {
+
+                        resultBox.innerHTML = createPartNumberTemplate(data);
+                    } else {
+                        resultBox.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                            <div class="w-full py-3 flex justify-between items-center">      
+                                <p class="text-sm font-semibold text-white">
+                                      کد مد نظر شما موجود نیست.
+                                </p>
+                            </div>
+                        </div>`;
+                    }
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -343,8 +364,18 @@ $status = $conn->query($status_sql);
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
                     const data = response.data;
-                    console.log(data);
-                    stock_result.innerHTML = createPartNumberTemplate(data);
+                    if (response.data.length > 0) {
+
+                        stock_result.innerHTML = createStockTemplate(data);
+                    } else {
+                        stock_result.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                                                    <div class="w-full py-3 flex justify-between items-center">      
+                                                        <p class="text-sm font-semibold text-white">
+                                                            کد مد نظر شما موجود نیست.
+                                                        </p>
+                                                    </div>
+                                                </div>`;
+                    }
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -362,6 +393,44 @@ $status = $conn->query($status_sql);
                             <div class="w-full py-3 flex justify-between items-center">      
                                 <p class="text-sm font-semibold text-white">
                                        ${item.partnumber}
+                                </p>
+                                <p class="text-sm text-white">اسم قطعه بعدا اضافه می شود</p>
+                            </div>
+                            <div class="w-full flex justify-between items-center">
+                                    <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
+                                    <input type="number" onkeyup="updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
+                                <i id="${item.id}"
+                                    data-quantity= "0"
+                                    data-price= "0"
+                                    data-partNumber = "${item.partnumber}"
+                                    data-name = "بعدا اضافه می شود"
+                                    onclick="selectGood(this)"
+                                        class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
+                                </i>
+                            </div>
+                        </div>
+                        `;
+        }
+
+        return template;
+    }
+
+    function createStockTemplate(data) {
+        let template = ``;
+        for (const item of data) {
+            template += `
+                        <div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                            <div class="w-full py-3 flex justify-between items-center">      
+                                <p class="text-sm font-semibold text-white">
+                                    ${item.partnumber}
+                                </p>
+                                <p class="text-sm font-semibold text-white">
+                                برند : 
+                                    ${item.brand_name}
+                                </p>
+                                <p class="text-sm font-semibold text-white">
+                                موجودی :‌  
+                                    ${item.existing}
                                 </p>
                                 <p class="text-sm text-white">اسم قطعه بعدا اضافه می شود</p>
                             </div>
