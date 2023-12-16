@@ -597,15 +597,15 @@ require_once('./views/Layouts/header.php');
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'name', '${item.id}', '${item.name}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.name}</span>
-                    <input type="text" class="p-2 border hidden" value="${item.name}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" value="${item.name}" />
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price', '${item.id}', '${item.price}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price))}</span>
-                    <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price)}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price)}" />
                 </td>
                 <td class="py-2 px-4 border-b">${formatAsMoney(payPrice)}</td>
                 <td class="py-2 px-4 border-b w-12 h-12 font-medium">
@@ -721,14 +721,13 @@ require_once('./views/Layouts/header.php');
         const chunks = numberStr.split(',');
 
         let words = [];
-
+        const size = chunks.length;
         for (let index in chunks) {
 
             let word = converter(removeLeadingZeros(chunks[index]));
             if (word.length > 0) {
-                if (units[chunks.length - (index + 1)]) {
-                    word += " " + units[chunks.length - (index + 1)];
-                }
+                console.log(size - (Number(index) + 1));
+                word += " " + units[size - (Number(index) + 1)];
 
                 words.push(word);
             }
@@ -784,8 +783,6 @@ require_once('./views/Layouts/header.php');
     }
 
     function generateBill() {
-
-
 
         if (customerInfo.name === null || BillInfo.billNO === null || billItems.length == 0) {
             modal.classList.remove("hidden");
