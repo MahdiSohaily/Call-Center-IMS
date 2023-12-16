@@ -229,7 +229,7 @@ require_once('./views/Layouts/header.php');
     </ul>
 </div>
 
-<div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm bg-white/30">
+<div id="popup-modal" tabindex="-1" class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm bg-white/30">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <button id="close-modal" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
@@ -240,7 +240,9 @@ require_once('./views/Layouts/header.php');
             </button>
             <div class="p-4 md:p-5 text-center">
                 <img class="mx-auto mb-4 text-gray-400 w-16 h-16 dark:text-gray-200" src="./public/img/warning.svg" alt="warning sign icon">
-                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">مقدار انتخاب شده بیشتر از مقداری موجودی در انبار بوده نمیتواند.</h3>
+                <h3 id="message" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+
+                </h3>
             </div>
         </div>
     </div>
@@ -255,6 +257,7 @@ require_once('./views/Layouts/header.php');
 
     const modal = document.getElementById("popup-modal");
     const btn_close_modal = document.getElementById("close-modal");
+    const error_message = document.getElementById("message");
 
     btn_close_modal.addEventListener("click", function() {
         modal.classList.remove("flex");
@@ -671,6 +674,7 @@ require_once('./views/Layouts/header.php');
                         } else {
                             modal.classList.remove("hidden");
                             modal.classList.add("flex");
+                            message.innerHTML = " مقدار انتخاب شده بیشتر از مقداری موجودی در انبار بوده نمیتواند.";
 
                             setTimeout(() => {
                                 modal.classList.remove("flex");
@@ -780,12 +784,20 @@ require_once('./views/Layouts/header.php');
     }
 
     function generateBill() {
+
+
+
+        if (customerInfo.name === null || BillInfo.billNO === null || billItems.length == 0) {
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            message.innerHTML = "لطفا برای  ثبت فاکتور , مشتری مد نظر , شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید";
+            return false
+        }
         // Convert the object to a JSON string and store it in local storage
         localStorage.setItem('customer_info', JSON.stringify(customerInfo));
         localStorage.setItem('bill_info', JSON.stringify(BillInfo));
         localStorage.setItem('bill_items', JSON.stringify(billItems));
 
-        // Redirect to the next page
         window.location.href = './displayBill.php';
     }
 </script>

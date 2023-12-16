@@ -8,22 +8,8 @@ require_once('./views/Layouts/header.php');
         width: 800px;
         margin-inline: auto;
         padding: 20px;
-        min-height: 80vh !important;
-        position: relative;
-        /* Added position relative */
-    }
-
-    .bill::before {
-        content: '';
-        /* Added content for pseudo-element */
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         background-color: white;
-        z-index: -1;
-        /* Place behind the content */
+        min-height: 80vh;
     }
 
     .bill_header {
@@ -31,10 +17,6 @@ require_once('./views/Layouts/header.php');
         justify-content: space-between;
         flex-wrap: wrap;
         padding: 10px;
-        position: relative;
-        /* Added position relative */
-        z-index: 1;
-        /* Ensure it's above the pseudo-element */
     }
 
     .bill_info,
@@ -49,7 +31,7 @@ require_once('./views/Layouts/header.php');
 
     .log_section {
         display: flex;
-        justify-content: flex-end;
+        justify-content: end;
     }
 
     .logo {
@@ -90,8 +72,13 @@ require_once('./views/Layouts/header.php');
     th {
         padding: 10px;
     }
-    td {
+
+    .bill_items>table td {
         padding: 10px;
+    }
+
+    .bill_footer>table td {
+        padding: 3px 10px;
     }
 
     @media print {
@@ -99,20 +86,18 @@ require_once('./views/Layouts/header.php');
             font-size: 14px;
         }
 
+        main,
+        body,
+        #wrapper {
+            background-color: white !important;
+        }
+
         .bill {
             width: 100% !important;
-            padding: 0 !important;
         }
 
-        .bill::before {
+        #page_header {
             display: none;
-            /* Hide the pseudo-element in print */
-        }
-
-        #page_header,
-        #nav,
-        #side_nav {
-            display: none !important;
         }
 
         * {
@@ -136,9 +121,21 @@ require_once('./views/Layouts/header.php');
             padding-block: 10px !important;
             margin: 0 !important;
         }
+
+        #nav {
+            display: none !important;
+        }
+
+        #side_nav {
+            display: none !important;
+        }
+
+        .bill {
+            padding: 0 !important;
+        }
+
     }
 </style>
-
 <div class="rtl bill">
     <div class="bill_header">
         <div class="bill_info">
@@ -202,7 +199,7 @@ require_once('./views/Layouts/header.php');
         <table>
             <thead>
                 <tr>
-                    <th colspan="2">
+                    <th colspan="4">
                         اطلاعات فاکتور
                     </th>
                 </tr>
@@ -213,40 +210,35 @@ require_once('./views/Layouts/header.php');
                     <td>
                         <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
                     </td>
-                </tr>
-                <tr>
                     <td>جمع کل</td>
                     <td>
                         <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
                     </td>
                 </tr>
+
                 <tr>
                     <td>تخفیف</td>
                     <td>
                         <input readonly placeholder="0" type="number" name="discount" id="discount">
                     </td>
-                </tr>
-                <tr>
                     <td>مالبات (۰٪)</td>
                     <td>
                         <input readonly placeholder="0" type="number" name="tax" id="tax">
                     </td>
                 </tr>
-                <tr>
-                    <td>عوارض</td>
-                    <td>
-                        <input readonly placeholder="0" type="number" name="withdraw" id="withdraw">
-                    </td>
-                </tr>
                 <tr style="background-color: gray; color:white">
                     <td style="padding:10px;">مبلغ قابل پرداخت</td>
-                    <td style="padding:10px;">
+                    <td colspan="3" style="padding:10px;">
                         <p id="total_in_word" class="px-3 text-sm"></p>
                     </td>
-
                 </tr>
             </tbody>
         </table>
+    </div>
+    <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
+    <div style="display: flex; margin-top: 20px;">
+        <p style="flex: 1;">امضاء خریدار</p>
+        <p style="flex: 1;">امضاء فروشنده</p>
     </div>
 </div>
 <script>
@@ -310,7 +302,6 @@ require_once('./views/Layouts/header.php');
         document.getElementById('totalPrice').value = BillInfo.totalPrice;
         document.getElementById('discount').value = BillInfo.discount;
         document.getElementById('tax').value = BillInfo.tax;
-        document.getElementById('withdraw').value = BillInfo.withdraw;
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 </script>
