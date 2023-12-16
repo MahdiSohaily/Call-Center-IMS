@@ -3,6 +3,52 @@ require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 ?>
+<style>
+    @media print {
+        #page_header {
+            display: none;
+        }
+
+        @page :footer {
+            display: none !important;
+        }
+
+        @page :header {
+            display: none !important;
+        }
+
+        @page {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        main {
+            padding-block: 10px !important;
+            margin: 0 !important;
+        }
+
+        * {
+            box-shadow: none !important;
+        }
+
+        #nav {
+            display: none !important;
+        }
+
+        #side_nav {
+            display: none !important;
+        }
+
+        #print_container {
+            width: 100vw !important;
+            height: 100vh !important;
+        }
+
+        #print_modal {
+            background-color: white;
+        }
+    }
+</style>
 <div class="container bg-white rounded-lg shadow-md p-2 mb-5">
     <div class="rtl grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 px-4 mb-4 p-2 w-full">
         <table class="min-w-full border border-gray-800 text-gray-400 mb-5">
