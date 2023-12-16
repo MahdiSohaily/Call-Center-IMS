@@ -4,6 +4,7 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/html2pdf.js"></script>
+
 <style>
     .bill {
         width: 800px;
@@ -199,6 +200,7 @@ require_once('./views/Layouts/header.php');
                 </li>
                 <li>
                     تاریخ:
+                    <span id="date"></span>
                 </li>
             </ul>
         </div>
@@ -296,7 +298,7 @@ require_once('./views/Layouts/header.php');
 </div>
 <ul class="action_menu">
     <li style="position: relative;">
-        <img class="action_button print" onclick="window.print();" src="./public/img/print.svg" alt="print icon">
+        <img class="action_button print" onclick="saveInvoice();" src="./public/img/print.svg" alt="print icon">
         <p class="action_tooltip">پرینت</p>
     </li>
     <li style="position: relative;">
@@ -312,8 +314,6 @@ require_once('./views/Layouts/header.php');
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
     const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
     const billItems = JSON.parse(localStorage.getItem('bill_items'));
-
-    console.log(billItems);
     displayBill();
     displayCustomer();
     displayBillDetails();
@@ -367,6 +367,7 @@ require_once('./views/Layouts/header.php');
 
     function displayBillDetails() {
         document.getElementById('billNO').innerHTML = BillInfo.billNO;
+        document.getElementById('date').innerHTML = BillInfo.date;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = BillInfo.totalPrice;
         document.getElementById('discount').value = BillInfo.discount;
@@ -407,6 +408,19 @@ require_once('./views/Layouts/header.php');
             }
         };
         html2pdf().set(opt).from(content).save();
+    }
+
+
+    function saveInvoice() {
+        window.print();
+
+        var params = new URLSearchParams();
+        params.append('action', 'saveInvoice');
+        params.append('customerInfo', customerInfo);
+        params.append('BillInfo', BillInfo);
+        params.append('billItems', billItems);
+
+        axios.post("./app/Controllers/BillController.php", params)
     }
 </script>
 <?php

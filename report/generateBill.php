@@ -3,6 +3,7 @@ require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 ?>
+<script src="./public/js/persianDate.js"></script>
 <style>
     fieldset {
         background-color: lightgray;
@@ -276,7 +277,7 @@ require_once('./views/Layouts/header.php');
 
     const BillInfo = {
         billNO: null,
-        date: null,
+        date: moment().locale('fa').format('YYYY/MM/DD'),
         totalPrice: 0,
         quantity: 0,
         tax: 0,
