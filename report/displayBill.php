@@ -365,11 +365,13 @@ require_once('./views/Layouts/header.php');
         document.getElementById('address').innerHTML = customerInfo.address;
     }
 
+    console.log(customerInfo);
+
     function displayBillDetails() {
         document.getElementById('billNO').innerHTML = BillInfo.billNO;
         document.getElementById('date').innerHTML = BillInfo.date;
         document.getElementById('quantity').value = BillInfo.quantity;
-        document.getElementById('totalPrice').value = BillInfo.totalPrice;
+        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('discount').value = BillInfo.discount;
         document.getElementById('tax').value = BillInfo.tax;
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
@@ -385,10 +387,10 @@ require_once('./views/Layouts/header.php');
         }
     });
 
-    // Prevent context menu on right-click (optional)
-    document.addEventListener('contextmenu', function(event) {
-        event.preventDefault();
-    });
+    // // Prevent context menu on right-click (optional)
+    // document.addEventListener('contextmenu', function(event) {
+    //     event.preventDefault();
+    // });
 
     function handleSaveAsPdfClick() {
         const content = document.getElementById('bill_body_pdf');
@@ -412,15 +414,20 @@ require_once('./views/Layouts/header.php');
 
 
     function saveInvoice() {
-        window.print();
+        // window.print();
 
         var params = new URLSearchParams();
-        params.append('action', 'saveInvoice');
-        params.append('customerInfo', customerInfo);
-        params.append('BillInfo', BillInfo);
-        params.append('billItems', billItems);
+        params.append('saveInvoice', 'saveInvoice');
+        params.append('customerInfo', JSON.stringify(customerInfo));
+        params.append('BillInfo', JSON.stringify(BillInfo));
+        params.append('billItems', JSON.stringify(billItems));
 
         axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                console.log(response);
+            }).catch(function(error) {
+                console.log(error);
+            });
     }
 </script>
 <?php

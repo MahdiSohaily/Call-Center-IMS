@@ -119,25 +119,25 @@ require_once('./views/Layouts/header.php');
                     <td class="py-2 px-4">
                         <input class="w-full p-2 border" type="hidden" name="id" id="id">
                         <input class="w-full p-2 border" type="hidden" name="type" id="mode" value='create'>
-                        <input class="w-full p-2 border text-gray-500" placeholder="اسم کامل مشتری را وارد کنید..." type="text" name="name" id="name">
+                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="اسم کامل مشتری را وارد کنید..." type="text" name="name" id="name">
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">تلفون</td>
                     <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="093000000000" type="text" name="" id="phone">
+                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="093000000000" type="text" name="phone" id="phone">
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">آدرس</td>
                     <td class="py-2 px-4">
-                        <textarea name="address" id="address" cols="30" rows="4" class="border p-2 w-full text-gray-500" placeholder="آدرس مشتری"></textarea>
+                        <textarea onkeyup="updateCustomerInfo(this)" name="address" id="address" cols="30" rows="4" class="border p-2 w-full text-gray-500" placeholder="آدرس مشتری"></textarea>
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">ماشین</td>
                     <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="" id="car">
+                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="car" id="car">
                     </td>
                 </tr>
             </tbody>
@@ -578,6 +578,15 @@ require_once('./views/Layouts/header.php');
         BillInfo[proprty] = element.value;
     }
 
+    function updateCustomerInfo(element) {
+        const proprty = element.getAttribute("name");
+        if (proprty !== "name") {
+            customerInfo[proprty] = element.value;
+            return true;
+        }
+        customerInfo[proprty] = element.value;
+    }
+
     function displayBill() {
         let counter = 1;
         let template = ``;
@@ -618,11 +627,11 @@ require_once('./views/Layouts/header.php');
         bill_body.innerHTML = template;
 
         BillInfo.quantity = billItems.length;
-        BillInfo.totalPrice = formatAsMoney(totalPrice);
+        BillInfo.totalPrice = (totalPrice);
         BillInfo.totalInWords = numberToPersianWords(totalPrice);
 
         document.getElementById('quantity').value = BillInfo.quantity;
-        document.getElementById('totalPrice').value = BillInfo.totalPrice;
+        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
@@ -727,9 +736,7 @@ require_once('./views/Layouts/header.php');
 
             let word = converter(removeLeadingZeros(chunks[index]));
             if (word.length > 0) {
-                console.log(size - (Number(index) + 1));
                 word += " " + units[size - (Number(index) + 1)];
-
                 words.push(word);
             }
         }
@@ -801,3 +808,13 @@ require_once('./views/Layouts/header.php');
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
+
+
+"<br />
+<b>Fatal error</b>:  Uncaught mysqli_sql_exception: Duplicate entry '09333346016' for key 'phone' in C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php:156
+Stack trace:
+#0 C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php(156): mysqli-&gt;query('INSERT INTO cal...')
+#1 C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php(126): createCustomer(Object(stdClass))
+#2 {main}
+  thrown in <b>C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php</b> on line <b>156</b><br />
+"

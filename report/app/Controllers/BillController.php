@@ -114,3 +114,119 @@ function searchPartNumberInStock($pattern)
 
     return $sanitized;
 }
+
+if (isset($_POST['saveInvoice'])) {
+    $billItems = json_decode($_POST['billItems']);
+    $BillInfo = json_decode($_POST['BillInfo']);
+    $customerInfo = json_decode($_POST['customerInfo']);
+
+    $customerId = $customerInfo->id ?? null;
+    try {
+
+        CONN->begin_transaction();
+        if ($customerId == null) {
+            $customerId = createCustomer($customerInfo);
+        } else {
+            updateCustomer($customerInfo);
+        }
+
+        if ($customerId == null) {
+            return false;
+            die("Invalid customer");
+        }
+
+        $billId = createBill($BillInfo, $customerId);
+
+        if ($billId == null) {
+            return false;
+            die("Invalid bill");
+        }
+
+        createBillItems($billId, $billItems);
+        CONN->commit();
+    } catch (Exception $e) {
+        // An error occurred, rollback the transaction
+        CONN->rollback();
+
+        echo "Transaction failed: " . $e->getMessage();
+    }
+
+    echo json_encode([$BillInfo, $customerInfo, $billItems]);
+}
+
+function createCustomer($customerInfo)
+{
+    $nameParts = explode(' ', $customerInfo->name);
+    $name = $nameParts[0] ?? '';
+    $family = $nameParts[1] ?? '';
+
+    $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 
+        ('$name', '$family', '$customerInfo->phone', '$customerInfo->address', '$customerInfo->car')";
+    CONN->query($sql);
+
+    // Retrieve the last inserted ID
+    $lastInsertedId = CONN->insert_id;
+
+    // Return the last inserted ID
+    return $lastInsertedId;
+}
+
+function updateCustomer($customerInfo)
+{
+    $nameParts = explode(' ', $customerInfo->name);
+    $name = $nameParts[0] ?? '';
+    $family = $nameParts[1] ?? '';
+
+    $sql = "UPDATE callcenter.customer SET name = '$name', family = '$family', 
+            phone = '$customerInfo->phone', address = '$customerInfo->address',
+            car = '$customerInfo->car' WHERE id = '$customerInfo->id'";
+    CONN->query($sql);
+}
+
+function createBill($billInfo, $customerId)
+{
+    $sql = "INSERT INTO callcenter.bill (customer_id, bill_number, quantity, discount, tax, withdraw, total, bill_date) VALUES 
+            ('$customerId','$billInfo->billNO', '$billInfo->quantity', '$billInfo->discount', '$billInfo->tax', '$billInfo->withdraw',
+            '$billInfo->totalPrice', '$billInfo->date')";
+    CONN->query($sql);
+
+    // Retrieve the last inserted ID
+    $lastInsertedId = CONN->insert_id;
+
+    // Return the last inserted ID
+    return $lastInsertedId;
+}
+
+function createBillItems($billId, $billItems)
+{
+    // Prepared statement
+    $sql = "INSERT INTO callcenter.bill_details (bill_id, nisha_id, partName, quantity, price_per) VALUES (?, ?, ?, ?, ?)";
+
+    // Create a prepared statement
+    $stmt = CONN->prepare($sql);
+
+    foreach ($billItems as $item) :
+        $id = getPartNumberId($item->partNumber);
+        $stmt->bind_param("iisid", $billId, $id, $item->name, $item->quantity, $item->price);
+        $stmt->execute();
+    endforeach;
+
+    // Close the statement
+    $stmt->close();
+}
+
+function getPartNumberId($partNumber)
+{
+    $sql = "SELECT id FROM yadakshop1402.nisha WHERE partnumber = '$partNumber'";
+    $result = CONN->query($sql);
+
+    // Check if there is a result
+    if ($result->num_rows > 0) {
+        // Fetch the first row and return the 'id' column as a number
+        $row = $result->fetch_assoc();
+        return (int)$row['id'];
+    } else {
+        // No result found
+        return null;
+    }
+}
