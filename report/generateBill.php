@@ -2,11 +2,6 @@
 require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
-$sql = "SELECT * FROM cars";
-$cars = $conn->query($sql);
-
-$status_sql = "SELECT * FROM status";
-$status = $conn->query($status_sql);
 ?>
 <style>
     fieldset {
