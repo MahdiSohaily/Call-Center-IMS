@@ -365,8 +365,6 @@ require_once('./views/Layouts/header.php');
         document.getElementById('address').innerHTML = customerInfo.address;
     }
 
-    console.log(customerInfo);
-
     function displayBillDetails() {
         document.getElementById('billNO').innerHTML = BillInfo.billNO;
         document.getElementById('date').innerHTML = BillInfo.date;
@@ -424,7 +422,14 @@ require_once('./views/Layouts/header.php');
 
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
-                console.log(response);
+                const data = response.data;
+                console.log(data);
+
+                if (data == 'error') {
+                    alert('خطایی رخ داده است');
+                } else {
+                    alert('فاکتور شما با موفقیت ثبت شد');
+                }
             }).catch(function(error) {
                 console.log(error);
             });

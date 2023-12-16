@@ -148,10 +148,10 @@ if (isset($_POST['saveInvoice'])) {
         // An error occurred, rollback the transaction
         CONN->rollback();
 
-        echo "Transaction failed: " . $e->getMessage();
+        echo "error";
     }
 
-    echo json_encode([$BillInfo, $customerInfo, $billItems]);
+    // echo json_encode([$BillInfo, $customerInfo, $billItems]);
 }
 
 function createCustomer($customerInfo)
