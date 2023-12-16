@@ -151,6 +151,12 @@ require_once('./views/Layouts/header.php');
             </thead>
             <tbody>
                 <tr>
+                    <td class="py-2 px-4 text-white bg-gray-800">شماره فاکتور</td>
+                    <td class="py-2 px-4">
+                        <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="شماره فاکتور را وارد نمایید" type="text" name="billNO" id="billNO">
+                    </td>
+                </tr>
+                <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">تعداد اقلام</td>
                     <td class="py-2 px-4">
                         <input readonly class="w-full p-2 border text-gray-500" placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
@@ -165,19 +171,19 @@ require_once('./views/Layouts/header.php');
                 <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">تخفیف</td>
                     <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="discount" id="discount">
+                        <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="discount" id="discount">
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">مالبات (۰٪)</td>
                     <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="tax" id="tax">
+                        <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="tax" id="tax">
                     </td>
                 </tr>
                 <tr>
                     <td class="py-2 px-4 text-white bg-gray-800">عوارض</td>
                     <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="withdraw" id="withdraw">
+                        <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="withdraw" id="withdraw">
                     </td>
                 </tr>
                 <tr>
@@ -215,7 +221,7 @@ require_once('./views/Layouts/header.php');
 <div class="rtl fixed flex items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
     <ul>
         <li>
-            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="">
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
                 صدور فاکتور
             </p>
         </li>
@@ -246,7 +252,6 @@ require_once('./views/Layouts/header.php');
     const stock_result = document.getElementById("stock_result");
     const bill_body = document.getElementById("bill_body");
 
-    const billItems = [];
 
     const modal = document.getElementById("popup-modal");
     const btn_close_modal = document.getElementById("close-modal");
@@ -255,6 +260,7 @@ require_once('./views/Layouts/header.php');
         modal.classList.remove("flex");
         modal.classList.add("hidden");
     })
+
     const customerInfo = {
         id: undefined,
         mode: 'create',
@@ -264,6 +270,19 @@ require_once('./views/Layouts/header.php');
         car: null,
         address: null,
     }
+
+    const BillInfo = {
+        billNO: null,
+        date: null,
+        totalPrice: 0,
+        quantity: 0,
+        tax: 0,
+        discount: 0,
+        withdraw: 0,
+        totalInWords: ''
+    }
+
+    const billItems = [];
 
     function searchCustomer(pattern) {
         pattern = pattern.trim();
@@ -343,8 +362,6 @@ require_once('./views/Layouts/header.php');
         document.getElementById('address').value = customerInfo.address;
         document.getElementById('customer_name').value = '';
         customer_results.innerHTML = "";
- 
-        console.log(customerInfo);
     }
 
     function searchPartNumber(pattern) {
@@ -548,8 +565,13 @@ require_once('./views/Layouts/header.php');
             max,
             partNumber
         });
-        console.log(billItems);
         displayBill();
+    }
+
+    function updateBillInfo(element) {
+
+        const proprty = element.getAttribute("name");
+        BillInfo[proprty] = element.value;
     }
 
     function displayBill() {
@@ -591,9 +613,13 @@ require_once('./views/Layouts/header.php');
         }
         bill_body.innerHTML = template;
 
-        document.getElementById('quantity').value = billItems.length;
-        document.getElementById('totalPrice').value = formatAsMoney(totalPrice);
-        document.getElementById('total_in_word').innerHTML = numberToPersianWords(totalPrice);
+        BillInfo.quantity = billItems.length;
+        BillInfo.totalPrice = formatAsMoney(totalPrice);
+        BillInfo.totalInWords = numberToPersianWords(totalPrice);
+
+        document.getElementById('quantity').value = BillInfo.quantity;
+        document.getElementById('totalPrice').value = BillInfo.totalPrice;
+        document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
     function editCell(cell, property, itemId, originalValue) {
@@ -751,6 +777,16 @@ require_once('./views/Layouts/header.php');
         } else {
             return '';
         }
+    }
+
+    function generateBill() {
+        // Convert the object to a JSON string and store it in local storage
+        localStorage.setItem('customer_info', JSON.stringify(customerInfo));
+        localStorage.setItem('bill_info', JSON.stringify(BillInfo));
+        localStorage.setItem('bill_items', JSON.stringify(billItems));
+
+        // Redirect to the next page
+        window.location.href = './displayBill.php';
     }
 </script>
 <?php
