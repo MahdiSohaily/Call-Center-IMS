@@ -423,7 +423,6 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
-                console.log(data);
 
                 if (data == 'error') {
                     alert('خطایی رخ داده است');
