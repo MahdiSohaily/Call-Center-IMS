@@ -4,9 +4,119 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 ?>
 <style>
+    .bill {
+        width: 800px;
+        margin-inline: auto;
+        padding: 20px;
+        min-height: 80vh !important;
+        position: relative;
+        /* Added position relative */
+    }
+
+    .bill::before {
+        content: '';
+        /* Added content for pseudo-element */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        z-index: -1;
+        /* Place behind the content */
+    }
+
+    .bill_header {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 10px;
+        position: relative;
+        /* Added position relative */
+        z-index: 1;
+        /* Ensure it's above the pseudo-element */
+    }
+
+    .bill_info,
+    .headline,
+    .log_section {
+        flex: 1;
+    }
+
+    .headline {
+        text-align: center;
+    }
+
+    .log_section {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .customer_info {
+        background-color: lightgray;
+        margin-block: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+    }
+
+    .customer_info>ul {
+        flex: 1;
+    }
+
+    .customer_info>ul>li:first-child {
+        padding-bottom: 10px;
+    }
+
+    .bill_items,
+    .bill_footer {
+        border: 1px solid gray;
+        margin-bottom: 10px;
+    }
+
+    .bill_items>table,
+    .bill_footer>table {
+        width: 100%;
+    }
+
+    thead {
+        background-color: gray;
+    }
+
+    th {
+        padding: 10px;
+    }
+    td {
+        padding: 10px;
+    }
+
     @media print {
-        #page_header {
+        * {
+            font-size: 14px;
+        }
+
+        .bill {
+            width: 100% !important;
+            padding: 0 !important;
+        }
+
+        .bill::before {
             display: none;
+            /* Hide the pseudo-element in print */
+        }
+
+        #page_header,
+        #nav,
+        #side_nav {
+            display: none !important;
+        }
+
+        * {
+            direction: rtl !important;
         }
 
         @page :footer {
@@ -26,140 +136,114 @@ require_once('./views/Layouts/header.php');
             padding-block: 10px !important;
             margin: 0 !important;
         }
-
-        * {
-            box-shadow: none !important;
-        }
-
-        #nav {
-            display: none !important;
-        }
-
-        #side_nav {
-            display: none !important;
-        }
-
-        #print_container {
-            width: 100vw !important;
-            height: 100vh !important;
-        }
-
-        #print_modal {
-            background-color: white;
-        }
     }
 </style>
-<div class="container bg-white rounded-lg shadow-md p-2 mb-5">
-    <div class="rtl grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 px-4 mb-4 p-2 w-full">
-        <table class="min-w-full border border-gray-800 text-gray-400 mb-5">
+
+<div class="rtl bill">
+    <div class="bill_header">
+        <div class="bill_info">
+            <ul>
+                <li>
+                    شماره فاکتور:
+                    <span id="billNO"></span>
+                </li>
+                <li>
+                    تاریخ:
+                </li>
+            </ul>
+        </div>
+        <div class="headline">
+            <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
+            <h2 style="margin-bottom: 7px;">یدک شاپ</h2>
+        </div>
+        <div class="log_section">
+            <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
+        </div>
+    </div>
+    <div class="customer_info">
+        <ul>
+            <li>
+                نام:
+                <span id="name"></span>
+            </li>
+            <li>
+                شماره تماس:
+                <span id="phone"></span>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                خودرو:
+                <span id="car"></span>
+            </li>
+            <li>
+                آدرس:
+                <span id="address"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="bill_items">
+        <table>
             <thead>
-                <tr class="bg-gray-800 text-white text-center border-b mb-2">
-                    <th colspan="2" class="py-2">
-                        مشخصات خریدار
-                    </th>
+                <tr style="padding: 10px !important;">
+                    <th>ردیف</th>
+                    <th>کد فنی</th>
+                    <th>نام قطعه</th>
+                    <th> تعداد</th>
+                    <th> قیمت</th>
+                    <th> قیمت کل</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">نام</td>
-                    <td class="py-2 px-4">
-                        <input class="w-full p-2 border" type="hidden" name="id" id="id">
-                        <input class="w-full p-2 border" type="hidden" name="type" id="mode" value='create'>
-                        <input class="w-full p-2 border text-gray-500" placeholder="اسم کامل مشتری را وارد کنید..." type="text" name="name" id="name">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">تلفون</td>
-                    <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="093000000000" type="text" name="" id="phone">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">آدرس</td>
-                    <td class="py-2 px-4">
-                        <textarea name="address" id="address" cols="30" rows="4" class="border p-2 w-full text-gray-500" placeholder="آدرس مشتری"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">ماشین</td>
-                    <td class="py-2 px-4">
-                        <input class="w-full p-2 border text-gray-500" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="" id="car">
-                    </td>
-                </tr>
+            <tbody id="bill_body">
             </tbody>
         </table>
     </div>
-    <div class="rtl p-2 w-full col-span-3">
-        <div class="container mx-auto">
-            <table class="min-w-full border border-gray-800 text-gray-400">
-                <thead>
-                    <tr class="bg-gray-800">
-                        <th class="py-2 px-4 border-b text-white w-10">ردیف</th>
-                        <th class="py-2 px-4 border-b text-white">کد فنی</th>
-                        <th class="py-2 px-4 border-b text-white">نام قطعه</th>
-                        <th class="py-2 px-4 border-b text-white"> تعداد</th>
-                        <th class="py-2 px-4 border-b text-white"> قیمت</th>
-                        <th class="py-2 px-4 border-b text-white"> قیمت کل</th>
-                        <th class="py-2 px-4 border-b w-12 h-12 font-medium">
-                            <img class="bill_icon" src="./public/img/setting.svg" alt="settings icon">
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="bill_body">
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="rtl grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 px-4 mb-4 p-2 w-full">
-        <table class="min-w-full border border-gray-800 text-gray-400 mb-5">
+    <div class="bill_footer">
+        <table>
             <thead>
-                <tr class="bg-gray-800 text-white text-center border-b mb-2">
-                    <th colspan="2" class="py-2">
+                <tr>
+                    <th colspan="2">
                         اطلاعات فاکتور
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">شماره فاکتور</td>
-                    <td class="py-2 px-4">
-                        <input readonly class="w-full p-2 border text-gray-500" placeholder="شماره فاکتور را وارد نمایید" type="text" name="billNO" id="billNO">
+                    <td>تعداد اقلام</td>
+                    <td>
+                        <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">تعداد اقلام</td>
-                    <td class="py-2 px-4">
-                        <input readonly class="w-full p-2 border text-gray-500" placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
+                    <td>جمع کل</td>
+                    <td>
+                        <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">جمع کل</td>
-                    <td class="py-2 px-4">
-                        <input readonly class="w-full p-2 border text-gray-500" placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
+                    <td>تخفیف</td>
+                    <td>
+                        <input readonly placeholder="0" type="number" name="discount" id="discount">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">تخفیف</td>
-                    <td class="py-2 px-4">
-                        <input readonly class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="discount" id="discount">
+                    <td>مالبات (۰٪)</td>
+                    <td>
+                        <input readonly placeholder="0" type="number" name="tax" id="tax">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">مالبات (۰٪)</td>
-                    <td class="py-2 px-4">
-                        <input readonly class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="tax" id="tax">
+                    <td>عوارض</td>
+                    <td>
+                        <input readonly placeholder="0" type="number" name="withdraw" id="withdraw">
                     </td>
                 </tr>
-                <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">عوارض</td>
-                    <td class="py-2 px-4">
-                        <input readonly class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="withdraw" id="withdraw">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="bg-gray-800 text-white h-10 border-top">
+                <tr style="background-color: gray; color:white">
+                    <td style="padding:10px;">مبلغ قابل پرداخت</td>
+                    <td style="padding:10px;">
                         <p id="total_in_word" class="px-3 text-sm"></p>
                     </td>
+
                 </tr>
             </tbody>
         </table>
@@ -184,28 +268,24 @@ require_once('./views/Layouts/header.php');
             totalPrice += payPrice;
 
             template += `
-            <tr id="${item.id}" class="even:bg-gray-100">
-                <td class="py-2 px-4 border-b">
+            <tr style="padding: 10px !important;" class="even:bg-gray-100">
+                <td>
                     <span>${counter}</span>
                 </td>
-                <td class="py-2 px-4 border-b">
+                <td>
                     <span>${item.partNumber}</span>
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'name', '${item.id}', '${item.name}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.name}</span>
-                    <input type="text" class="p-2 border hidden" value="${item.name}" />
+                <td>
+                    <span>${item.name}</span>
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                <td>
+                    <span>${item.quantity}</span>
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price', '${item.id}', '${item.price}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price))}</span>
-                    <input type="text" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price)}" />
+                <td>
+                    <span>${formatAsMoney(Number(item.price))}</span>
                 </td>
-                <td class="py-2 px-4 border-b">${formatAsMoney(payPrice)}</td>
-                <td class="py-2 px-4 border-b w-12 h-12 font-medium">
-                    <img onclick="deleteItem(${item.id})" class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
+                <td>
+                    <span>${formatAsMoney(payPrice)}</span>
                 </td>
             </tr> `;
             counter++;
@@ -218,16 +298,14 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
-        document.getElementById('id').value = customerInfo.id;
-        document.getElementById('mode').value = customerInfo.mode;
-        document.getElementById('name').value = customerInfo.name + " " + customerInfo.family;
-        document.getElementById('phone').value = customerInfo.phone;
-        document.getElementById('car').value = customerInfo.car;
-        document.getElementById('address').value = customerInfo.address;
+        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family;
+        document.getElementById('phone').innerHTML = customerInfo.phone;
+        document.getElementById('car').innerHTML = customerInfo.car;
+        document.getElementById('address').innerHTML = customerInfo.address;
     }
 
     function displayBillDetails() {
-        document.getElementById('billNO').value = BillInfo.billNO;
+        document.getElementById('billNO').innerHTML = BillInfo.billNO;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = BillInfo.totalPrice;
         document.getElementById('discount').value = BillInfo.discount;
