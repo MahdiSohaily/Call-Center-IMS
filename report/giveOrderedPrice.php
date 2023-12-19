@@ -15,8 +15,8 @@ if ($isValidCustomer) {
         $rates = $finalResult['rates'];
         $relation_ids = $finalResult['relation_id'];
 ?>
-        <div class="grid grid-cols-6">
-            <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
+        <div class="flex justify-between">
+            <div class="m-2 p-3 col-span-2 w-1/4 bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
                     <thead class="font-medium">
                         <tr class="border">
@@ -79,8 +79,8 @@ if ($isValidCustomer) {
                     </tbody>
                 </table>
             </div>
-            <div class="rtl col-span-4 flext justify-end">
-                <table class="mx-auto col-6 text-sm font-light custom-table mb-2">
+            <div class="rtl col-span-4 w-1/5 flex justify-start">
+                <table class="col-6 text-sm font-light custom-table mb-2 w-full">
                     <thead class="font-medium bg-green-600">
                         <tr>
                             <th scope="col" class="px-3 py-3 text-white text-center">
@@ -88,15 +88,6 @@ if ($isValidCustomer) {
                             </th>
                             <th scope="col" class="px-3 py-3 text-white text-center">
                                 نام خانوادگی
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                شماره تماس
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                ماشین
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                آدرس
                             </th>
                         </tr>
                     </thead>
@@ -110,21 +101,6 @@ if ($isValidCustomer) {
                             <td class=" px-1">
                                 <p class="text-center bold text-gray-700 px-2 py-3">
                                     <?php echo $customer_info['family'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['phone'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['car'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['address'] ?>
                                 </p>
                             </td>
                         </tr>
