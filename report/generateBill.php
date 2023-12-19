@@ -808,13 +808,3 @@ require_once('./views/Layouts/header.php');
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
-
-
-"<br />
-<b>Fatal error</b>:  Uncaught mysqli_sql_exception: Duplicate entry '09333346016' for key 'phone' in C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php:156
-Stack trace:
-#0 C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php(156): mysqli-&gt;query('INSERT INTO cal...')
-#1 C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php(126): createCustomer(Object(stdClass))
-#2 {main}
-  thrown in <b>C:\xampp\htdocs\YadakShop-APP\callcenter\report\app\Controllers\BillController.php</b> on line <b>156</b><br />
-"
