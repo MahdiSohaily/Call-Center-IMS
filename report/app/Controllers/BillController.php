@@ -185,9 +185,11 @@ function updateCustomer($customerInfo)
 
 function createBill($billInfo, $customerId)
 {
-    $sql = "INSERT INTO callcenter.bill (customer_id, bill_number, quantity, discount, tax, withdraw, total, bill_date) VALUES 
+    $user_id = $_SESSION['user_id'];
+
+    $sql = "INSERT INTO callcenter.bill (customer_id, bill_number, quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES 
             ('$customerId','$billInfo->billNO', '$billInfo->quantity', '$billInfo->discount', '$billInfo->tax', '$billInfo->withdraw',
-            '$billInfo->totalPrice', '$billInfo->date')";
+            '$billInfo->totalPrice', '$billInfo->date', '$user_id', 1)";
     CONN->query($sql);
 
     // Retrieve the last inserted ID

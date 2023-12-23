@@ -215,22 +215,12 @@ require_once('./views/Layouts/header.php');
     <div class="customer_info">
         <ul>
             <li>
-                نام:
+                نام و نام خانوادگی :
                 <span id="name"></span>
             </li>
             <li>
                 شماره تماس:
                 <span id="phone"></span>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                خودرو:
-                <span id="car"></span>
-            </li>
-            <li>
-                آدرس:
-                <span id="address"></span>
             </li>
         </ul>
     </div>
@@ -356,10 +346,10 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
-        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family;
+        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
         document.getElementById('phone').innerHTML = customerInfo.phone;
-        document.getElementById('car').innerHTML = customerInfo.car;
-        document.getElementById('address').innerHTML = customerInfo.address;
+        // document.getElementById('car').innerHTML = customerInfo.car;
+        // document.getElementById('address').innerHTML = customerInfo.address;
     }
 
     function displayBillDetails() {
@@ -382,7 +372,7 @@ require_once('./views/Layouts/header.php');
         }
     });
 
-    // // Prevent context menu on right-click (optional)
+    // Prevent context menu on right-click (optional)
     // document.addEventListener('contextmenu', function(event) {
     //     event.preventDefault();
     // });

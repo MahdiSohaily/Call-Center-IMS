@@ -269,11 +269,11 @@ require_once('./views/Layouts/header.php');
     const customerInfo = {
         id: undefined,
         mode: 'create',
-        name: null,
-        family: null,
-        phone: null,
-        car: null,
-        address: null,
+        name: '',
+        family: '',
+        phone: '',
+        car: '',
+        address: '',
     }
 
     const BillInfo = {
