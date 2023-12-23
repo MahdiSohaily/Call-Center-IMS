@@ -201,7 +201,7 @@ require_once('./views/Layouts/header.php');
                 <thead>
                     <tr class="bg-gray-800">
                         <th class="py-2 px-4 border-b text-white w-10">ردیف</th>
-                        <th class="py-2 px-4 border-b text-white">کد فنی</th>
+                        <!-- <th class="py-2 px-4 border-b text-white">کد فنی</th> -->
                         <th class="py-2 px-4 border-b text-white">نام قطعه</th>
                         <th class="py-2 px-4 border-b text-white"> تعداد</th>
                         <th class="py-2 px-4 border-b text-white"> قیمت</th>
@@ -214,6 +214,7 @@ require_once('./views/Layouts/header.php');
                 <tbody id="bill_body">
                 </tbody>
             </table>
+            <img class="cursor-pointer" onclick="addManually()" src="./public/img/add.svg" alt="add icon">
         </div>
     </div>
 </div>
@@ -572,6 +573,18 @@ require_once('./views/Layouts/header.php');
         displayBill();
     }
 
+    function addManually() {
+        billItems.push({
+            id: null,
+            name: "برای ویرایش دبل کلیک",
+            price: "",
+            quantity: "برای ویرایش دبل کلیک",
+            max: undefined,
+            partNumber: undefined
+        });
+        displayBill();
+    }
+
     function updateBillInfo(element) {
 
         const proprty = element.getAttribute("name");
@@ -601,9 +614,6 @@ require_once('./views/Layouts/header.php');
             <tr id="${item.id}" class="even:bg-gray-100">
                 <td class="py-2 px-4 border-b">
                     <span>${counter}</span>
-                </td>
-                <td class="py-2 px-4 border-b">
-                    <span>${item.partNumber}</span>
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'name', '${item.id}', '${item.name}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.name}</span>

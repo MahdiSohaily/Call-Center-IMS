@@ -9,8 +9,10 @@ require_once('./views/Layouts/header.php');
         <input type="text" name="customer" value="1" id="target_customer" hidden>
         <div class="">
             <div class="col-span-12 sm:col-span-4 mb-3 relative">
-
-                <input onkeyup="searchCustomer(this.value)" type="text" hidden name="search_input" id="customer" class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
+                <label for="code" class="block font-medium text-sm text-gray-700">
+                    انتخاب مشتری
+                </label>
+                <input onkeyup="searchCustomer(this.value)" type="text" name="search_input" id="customer" class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" />
                 <ul id="search_result" style="max-height: 350px; overflow: auto;" class="hidden border bg-white rounded-lg my-2 shadow-md p-2 absolute min-w-full">
                     <li onclick="selectCustomer()" title="انتخاب مشتری" class="odd:bg-indigo-100 rounded-sm p-2 hover:cursor-pointer flex justify-between">
                         <span>کاربر دستوری</span>
@@ -23,7 +25,7 @@ require_once('./views/Layouts/header.php');
                 <label for="code" class="block font-medium text-sm text-gray-700">
                     کدهای مدنظر
                 </label>
-                <textarea onchange="filterCode(this)" rows="4" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                <textarea onchange="filterCode(this)" rows="7" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
             </div>
         </div>
 
