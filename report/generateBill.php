@@ -575,12 +575,12 @@ require_once('./views/Layouts/header.php');
 
     function addManually() {
         billItems.push({
-            id: null,
+            id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
             name: "برای ویرایش دبل کلیک",
             price: "",
             quantity: "برای ویرایش دبل کلیک",
-            max: undefined,
-            partNumber: undefined
+            max: 'undefined',
+            partNumber: 'NOTPART'
         });
         displayBill();
     }

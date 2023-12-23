@@ -431,3 +431,46 @@ elementsWithDataRelation.forEach((element) => {
 });
 
 
+function filterCode(element) {
+  const message = element.value;
+  if (!message) {
+      return '';
+  }
+
+  const codes = message.split("\n");
+
+  const filteredCodes = codes.map(function(code) {
+      code = code.replace(/\[[^\]]*\]/g, '');
+      const parts = code.split(/[:,]/, 2);
+      const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+      return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+  }).filter(Boolean);
+
+  const finalCodes = filteredCodes.filter(function(item) {
+      const data = item.split(" ");
+      if (data[0].length > 4) {
+          return item;
+      }
+  });
+
+  const mappedFinalCodes = finalCodes.map(function(item) {
+      const parts = item.split(' ');
+      if (parts.length >= 2) {
+          const partOne = parts[0];
+          const partTwo = parts[1];
+          if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
+              return partOne + partTwo;
+          }
+      }
+      return parts[0];
+  });
+
+  const nonConsecutiveCodes = mappedFinalCodes.filter(function(item) {
+      const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
+      return !consecutiveChars;
+  });
+
+  element.value = nonConsecutiveCodes.map(function(item) {
+      return item.split(' ')[0];
+  }).join("\n") + "\n";
+}

@@ -239,7 +239,7 @@ require_once('./views/Layouts/header.php');
             <thead>
                 <tr style="padding: 10px !important;">
                     <th>ردیف</th>
-                    <th>کد فنی</th>
+                    <!-- <th>کد فنی</th> -->
                     <th>نام قطعه</th>
                     <th> تعداد</th>
                     <th> قیمت</th>
@@ -334,9 +334,6 @@ require_once('./views/Layouts/header.php');
                     <span>${counter}</span>
                 </td>
                 <td>
-                    <span>${item.partNumber}</span>
-                </td>
-                <td>
                     <span>${item.name}</span>
                 </td>
                 <td>
@@ -423,6 +420,8 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
+
+                console.log(response.data);
 
                 if (data == 'error') {
                     alert('خطایی رخ داده است');
