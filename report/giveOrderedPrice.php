@@ -16,7 +16,7 @@ if ($isValidCustomer) {
         $relation_ids = $finalResult['relation_id'];
 ?>
         <div class="flex justify-between">
-            <div class="m-2 p-3 col-span-2 w-1/4 bg-gray-600 relative">
+            <div class="m-2 p-3 w-1/4 bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
                     <thead class="font-medium">
                         <tr class="border">
@@ -79,7 +79,7 @@ if ($isValidCustomer) {
                     </tbody>
                 </table>
             </div>
-            <div class="rtl col-span-4 w-1/5 flex justify-start">
+            <div class="rtl w-1/5 flex justify-start">
                 <table class="col-6 text-sm font-light custom-table mb-2 w-full">
                     <thead class="font-medium bg-green-600">
                         <tr>

@@ -15,8 +15,8 @@ if ($isValidCustomer) {
         $rates = $finalResult['rates'];
         $relation_ids = $finalResult['relation_id'];
 ?>
-        <div class="grid grid-cols-6">
-            <div class="m-2 p-3 col-span-2 bg-gray-600 relative">
+        <div class="flex justify-between">
+            <div class="m-2 p-3 w-1/5  bg-gray-600 relative">
                 <table class="min-w-full text-sm font-light p-2">
                     <thead class="font-medium">
                         <tr class="border">
@@ -79,52 +79,28 @@ if ($isValidCustomer) {
                     </tbody>
                 </table>
             </div>
-            <div class="rtl col-span-4 flext justify-end">
-                <table class="mx-auto col-6 text-sm font-light custom-table mb-2">
+            <div class="m-2 w-1/5 rtl flex justify-end">
+                <table class="mx-auto w-full text-sm font-light custom-table mb-2">
                     <thead class="font-medium bg-green-600">
                         <tr>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
+                            <th scope="col" class="px-3 py-3 text-white text-right">
                                 نام
                             </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
+                            <th scope="col" class="px-3 py-3 text-white text-right">
                                 نام خانوادگی
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                شماره تماس
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                ماشین
-                            </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
-                                آدرس
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
                         <tr class="odd:bg-gray-500relative">
                             <td class="px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                <p class="text-right bold text-gray-700 px-2 py-3">
                                     <?php echo $customer_info['name'] ?>
                                 </p>
                             </td>
                             <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                <p class="text-right bold text-gray-700 px-2 py-3">
                                     <?php echo $customer_info['family'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['phone'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['car'] ?>
-                                </p>
-                            </td>
-                            <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
-                                    <?php echo $customer_info['address'] ?>
                                 </p>
                             </td>
                         </tr>
