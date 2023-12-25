@@ -49,10 +49,12 @@ require_once('./views/Layouts/header.php');
     let user_id = <?= $_SESSION['user_id'] ?>;
 
     function getUsers() {
+        const params = new URLSearchParams();
+        params.append('getUsers', 'getUsers');
+
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
-               
-               
+                console.log(response.data);
             })
             .catch(function(error) {
                 console.log(error);
@@ -66,6 +68,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function bootStrap(user) {
+        getUsers()
         getUserSavedBills(user);
         getUserIncompleteBills(user);
     }

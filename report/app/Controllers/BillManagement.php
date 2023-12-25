@@ -15,7 +15,8 @@ if (isset($_POST['getUsers'])) {
 
 function getUsers()
 {
-    $sql = "SELECT DISTINCT(user_id) FROM callcenter.bill ";
+    $sql = "SELECT DISTINCT(user_id), name, family FROM callcenter.bill
+            INNER JOIN yadakshop1402.users ON user_id = yadakshop1402.users.id";
     $result = CONN->query($sql);
 
     $data = [];
