@@ -46,19 +46,32 @@ require_once('./views/Layouts/header.php');
 </div>
 
 <script>
-    const user_id = <?= $_SESSION['user_id'] ?>;
+    let user_id = <?= $_SESSION['user_id'] ?>;
 
     function getUsers() {
-
+        axios.post("./app/Controllers/BillManagement.php", params)
+            .then(function(response) {
+               
+               
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
-    function getUserSavedBills(user = user_id) {}
+    function getUserSavedBills(user) {}
 
-    function getUserIncompleteBills(user = user_id) {
+    function getUserIncompleteBills(user) {
         alert(user);
     }
 
-    function bootStrap()
+    function bootStrap(user) {
+        getUserSavedBills(user);
+        getUserIncompleteBills(user);
+    }
+
+
+    bootStrap(user_id);
 </script>
 <?php
 require_once('./views/Layouts/footer.php');

@@ -538,7 +538,6 @@ require_once('./views/Layouts/header.php');
         }
     }
 
-
     function updateCredential(property, specifier, value) {
         document.getElementById(specifier).setAttribute(property, value);
     }
