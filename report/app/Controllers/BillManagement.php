@@ -45,7 +45,41 @@ function getUsersCompleteBills($user, $date)
     FROM callcenter.bill
     INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
     WHERE bill.user_id = '$user'
-      AND DATE(bill.created_at) = '$date'
+    AND DATE(bill.created_at) = '$date'
+    AND status = 1
+    ORDER BY bill.created_at DESC;
+    ";
+    $result = CONN->query($sql);
+
+    $data = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($data, $row);
+        }
+    }
+
+    return $data;
+}
+
+
+if (isset($_POST['getUserUnCompleteBills'])) {
+    $user = $_POST['user'];
+    $date = $_POST['date'];
+
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
+    echo json_encode(getUsersUnCompleteBills($user, $date));
+}
+
+function getUsersUnCompleteBills($user, $date)
+{
+    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total
+    FROM callcenter.bill
+    INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
+    WHERE bill.user_id = '$user'
+    AND DATE(bill.created_at) = '$date'
+    AND status = 0
     ORDER BY bill.created_at DESC;
     ";
     $result = CONN->query($sql);

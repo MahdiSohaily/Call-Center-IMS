@@ -29,7 +29,7 @@ require_once './app/Controllers/BillFilterController.php';
             </h2>
         </div>
         <div class="border-t border-gray-200"></div>
-        <div id="customer_results" style="overflow-y: auto; height:300px" class="p-3 overflow-y-auto">
+        <div id="unCompleted_bill" class="p-3 overflow-y-auto">
             <!-- Search Results are going to be appended here -->
         </div>
     </div>
@@ -308,8 +308,54 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
-    function getUserIncompleteBills() {
+    function getUserUnCompleteBills() {
+        const unCompleted_bill = document.getElementById('unCompleted_bill');
 
+        const params = new URLSearchParams();
+        params.append('getUserUnCompleteBills', 'getUserUnCompleteBills');
+        params.append('user', user_id);
+        params.append('date', now);
+
+        unCompleted_bill.innerHTML = '';
+
+        axios.post("./app/Controllers/BillManagement.php", params)
+            .then(function(response) {
+                const factors = response.data;
+                if (factors.length > 0) {
+                    for (const factor of factors) {
+                        unCompleted_bill.innerHTML += `
+                            <div class="flex flex-column justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2" >
+                                <div class ="flex justify-between">
+                                    <p class="text-sm">
+                                        شماره فاکتور:
+                                        ${factor.bill_number}
+                                    </p>
+                                    <p class="text-sm">
+                                        تاریخ فاکتور:
+                                        ${factor.bill_date}
+                                    </p>
+                                </div>
+                                <div class ="flex justify-between">
+                                    <p class="text-sm">
+                                        مشتری: 
+                                        ${factor.name} ${factor.family}</p>
+                                    <p class="text-sm">
+                                        قیمت کل:
+                                        ${factor.total}
+                                    </p>
+                                </div>
+                            </div>
+                            `;
+                    }
+                } else {
+                    unCompleted_bill.innerHTML = `<div class="flex justify-between">
+                <p>فاکتوری ثبت نشده است.</p>
+            </div>`;
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     function selectDay(element) {
@@ -330,7 +376,7 @@ require_once './app/Controllers/BillFilterController.php';
     function bootStrap() {
         active_date = now;
         getUserSavedBills();
-        getUserIncompleteBills();
+        getUserUnCompleteBills();
     }
 
     function sanitizeUsers(id) {
