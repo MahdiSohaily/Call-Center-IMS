@@ -27,11 +27,13 @@ require_once './app/Controllers/BillFilterController.php';
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
                 پیش فاکتور ها
             </h2>
+            <button class="bg-gray-600 text-white rounded px-3 py-2 mx-3">ایجاد پیش فاکتور جدید</button>
         </div>
         <div class="border-t border-gray-200"></div>
         <div id="unCompleted_bill" class="p-3 overflow-y-auto">
             <!-- Search Results are going to be appended here -->
         </div>
+
     </div>
 
     <div class="bg-white min-h-full rounded-lg shadow-md">
