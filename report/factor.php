@@ -2,7 +2,19 @@
 require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
+require_once './app/Controllers/BillFilterController.php';
 ?>
+<style>
+    .accordion__content {
+        max-height: 0em;
+        transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
+    }
+
+    input[name='panel']:checked~.accordion__content {
+        /* Get this as close to what height you expect */
+        max-height: 50em;
+    }
+</style>
 <script src="./public/js/jalaliMoment.js"></script>
 <div class="rtl min-h-screen grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-9  px-4 mb-4">
     <div class="bg-white min-h-full rounded-lg shadow-md">
@@ -42,6 +54,33 @@ require_once('./views/Layouts/header.php');
         <div class="border-t border-gray-200"></div>
 
         <div id="users_list" class="accordion flex flex-col min-h-screen p-3">
+            <label for="users" class="block mb-2 text-sm font-medium text-gray-900">کاربر:</label>
+            <select onchange="setUserId(this.value)" name="user_id" id="users" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <?php
+                foreach ($users as $user) : ?>
+                    <option <?= $user['id'] === $_SESSION['user_id'] ? 'checked' : '' ?> value="<?= $user['id'] ?>"><?= $user['name'] . " " . $user['family'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="accordion flex flex-col w-full py-3">
+                <?php foreach (MONTHS as $index => $month) : ?>
+                    <div class="">
+                        <input class="accordion_condition hidden" type="checkbox" name="panel" id="month-<?= $index ?>">
+                        <label for="month-<?= $index ?>" class="relative block bg-gray-600 text-white p-2 shadow border-b border-grey"><?= $month ?></label>
+                        <div class="accordion__content overflow-hidden bg-grey-lighter">
+                            <h2 class="accordion__header pt-4 pl-4">روز مد نظر خود را انتخاب کنید:</h2>
+                            <div class="flex justify-center items-center">
+                                <div class="grid grid-cols-7 bg-gray-200 p-2 my-2 gap-0">
+                                    <?php
+                                    for ($counter = 1; $counter <= DAYS[$index]; $counter++) : ?>
+                                        <div onclick="selectDay(this)" data-day="<?= $counter ?>" data-month="<?= $index + 1 ?>" id="<?= $index . '-' . $counter . '-day' ?>" class="border w-10 h-10 flex justify-center items-center text-sm cursor-pointer hover:bg-gray-300"><?= $counter; ?></div>
+                                    <?php endfor; ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
 
     </div>
@@ -55,6 +94,30 @@ require_once('./views/Layouts/header.php');
 
     let active_date = null;
     let active_user = null;
+
+    const current_month = Number(month) - 1;
+
+    document.getElementById('month-' + current_month).checked = 'checked';
+
+    document.getElementById(current_month + '-' + day + '-day').style.backgroundColor = 'red';
+    document.getElementById(current_month + '-' + day + '-day').style.color = 'white';
+
+    // Select all elements with the class '.accordion_condition'
+    const accordions = document.querySelectorAll('.accordion_condition');
+
+    // Attach a click event listener to each selected element
+    accordions.forEach(function(accordion) {
+        accordion.addEventListener('click', function(e) {
+
+            accordions.forEach(function(accordion) {
+                accordion.checked = false;
+            });
+
+            e.target.checked = 'checked'
+        });
+    });
+
+
 
     function getUsers() {
         const params = new URLSearchParams();
@@ -233,6 +296,12 @@ require_once('./views/Layouts/header.php');
 
     }
 
+    function selectDay(element) {
+        const selectedMonth = element.getAttribute('data-month');
+        const selectedDay = element.getAttribute('data-day');
+        
+    }
+
     function bootStrap() {
         active_date = now;
 
@@ -247,7 +316,7 @@ require_once('./views/Layouts/header.php');
 
 
     bootStrap();
-    getUsers()
+    // getUsers()
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
