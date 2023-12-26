@@ -3,37 +3,6 @@ require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 ?>
-<style>
-    label:after {
-        content: '';
-        position: absolute;
-        right: 1em;
-        color: #fff;
-    }
-
-    input:checked+label:after {
-        content: '';
-        line-height: .8em;
-    }
-
-    .accordion__content {
-        max-height: 0em;
-        transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
-    }
-
-    input[name='panel']:checked~.accordion__content {
-        /* Get this as close to what height you expect */
-        max-height: 50em;
-    }
-
-    .bordered_cell {
-        border: 2px solid gray;
-    }
-
-    .month_days td:hover {
-        border: 2px solid red !important;
-    }
-</style>
 <script src="./public/js/jalaliMoment.js"></script>
 <div class="rtl min-h-screen grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-9  px-4 mb-4">
     <div class="bg-white min-h-full rounded-lg shadow-md">
