@@ -16,8 +16,8 @@ if ($isValidCustomer) {
         $relation_ids = $finalResult['relation_id'];
 ?>
         <div class="flex justify-between">
-            <div class="m-2 p-3 w-1/4 bg-gray-600 relative">
-                <table class="min-w-full text-sm font-light p-2">
+            <div class="m-2 p-2 w-1/4 bg-gray-600 relative">
+                <table class="min-w-full h-full text-sm font-light p-2">
                     <thead class="font-medium">
                         <tr class="border">
                             <th class="text-left px-3 py-2">کد فنی</th>
@@ -79,39 +79,41 @@ if ($isValidCustomer) {
                     </tbody>
                 </table>
             </div>
-            <form class="rtl w-1/4 bg-white p-2 rounded flex" target="_blank" action="giveOrderedPrice.php" method="post">
-                <div>
-                    <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
-                    <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
-                    <input type="text" name="customer" value="1" id="target_customer" hidden>
-                    <textarea onchange="filterCode(this)" id="code" name="code" required class="border-1 border-gray-300 ltr shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
-                </div>
-                <button type="type" class="inline-flex mt-2 px-4 py-1 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                    <i class="rtl px-2 material-icons hover:cursor-pointer">search</i>
-                    جستجو
-                </button>
-            </form>
-            <div class="m-2 rtl w-1/5 flex justify-start">
-                <table class="col-6 text-sm font-light custom-table mb-2 w-full">
-                    <thead class="font-medium bg-gray-600">
+            <div class="m-2 p-2 w-1/4 bg-gray-600 relative">
+                <form class="rtl w-full h-full border border-white flex gap-2 p-2 " target="_blank" action="giveOrderedPrice.php" method="post">
+                    <div class="w-5/6 h-full">
+                        <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
+                        <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
+                        <input type="text" name="customer" value="1" id="target_customer" hidden>
+                        <textarea onchange="filterCode(this)" id="code" name="code" required 
+                        class="h-full bg-transparent border-1 border-white ltr w-full p-3 text-white placeholder-white" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                    </div>
+                    <button type="type" class="inline-flex self-end p-3 bg-indigo-500 border-indigo-700  rounded-md font-semibold text-xs text-white hover:bg-indigo-700">
+                        جستجو
+                    </button>
+                </form>
+            </div>
+            <div class="m-2 rtl w-1/5 flex justify-start bg-gray-600 p-2">
+                <table class="col-6 text-sm border border-white font-light mb-2 w-full h-full">
+                    <thead class="font-medium bg-gray-600 border-b border-white">
                         <tr>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
+                            <th scope="col" class="px-3 py-3 text-white text-right">
                                 نام
                             </th>
-                            <th scope="col" class="px-3 py-3 text-white text-center">
+                            <th scope="col" class="px-3 py-3 text-white text-right">
                                 نام خانوادگی
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white">
-                        <tr class="odd:bg-gray-500relative">
+                    <tbody class="text-white">
+                        <tr>
                             <td class="px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                <p class="text-right bold px-2 py-3">
                                     <?php echo $customer_info['name'] ?>
                                 </p>
                             </td>
                             <td class=" px-1">
-                                <p class="text-center bold text-gray-700 px-2 py-3">
+                                <p class="text-right bold px-2 py-3">
                                     <?php echo $customer_info['family'] ?>
                                 </p>
                             </td>
@@ -240,7 +242,7 @@ if ($isValidCustomer) {
                                                                 <thead class="font-medium">
                                                                     <tr>
                                                                         <?php
-                                                                        if (array_sum($exist[$index]) > 0) {
+                                                                        if (abs(array_sum($exist[$index])) > 0) {
                                                                             foreach ($exist[$index] as $brand => $amount) {
                                                                                 if ($amount > 0) { ?>
                                                                                     <th onclick="appendBrand(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?php echo $brand ?>" data-part="<?php echo $partNumber ?>" scope="col" class="<?php echo $brand == 'GEN' || $brand == 'MOB' ? $brand : 'brand-default' ?> text-white text-center py-2 relative hover:cursor-pointer" data-key="<?php echo $index ?>" data-part="<?= $partNumber ?>" data-brand="<?php echo $brand ?>" onmouseover="seekExist(this)" onmouseleave="closeSeekExist(this)">
