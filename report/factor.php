@@ -81,14 +81,11 @@ require_once('./views/Layouts/header.php');
 <script>
     let user_id = <?= $_SESSION['user_id'] ?>;
     let now = moment().locale('en').format('YYYY-MM-DD');
+    const month = (moment().locale('fa').format('M'));
+    const day = (moment().locale('fa').format('D'));
+
     let active_date = null;
     let active_user = null;
-
-    function setUserId(id) {
-        user_id = id;
-
-        bootStrap();
-    }
 
     function getUsers() {
         const params = new URLSearchParams();
@@ -124,73 +121,73 @@ require_once('./views/Layouts/header.php');
                                 <div class="flex-grow p-2 " >
                                     <table class="table">
                                         <tr>
-                                            <td id="m-1"> فروردین</td>
-                                            <td id="m-2"> اردیبهشت</td>
-                                            <td id="m-3">خرداد</td>
+                                            <td style="` + (month == 1 ? 'background-color:red; color:white' : '') + `" class="text-center">فروردین</td>
+                                            <td style="` + (month == 2 ? 'background-color:red; color:white' : '') + `" class="text-center">اردیبهشت</td>
+                                            <td style="` + (month == 3 ? 'background-color:red; color:white' : '') + `" class="text-center">خرداد</td>
                                         </tr>
                                         <tr>
-                                            <td id="m-4">تیر</td>
-                                            <td id="m-5">مرداد</td>
-                                            <td id="m-6">شهریور</td>
+                                            <td style="` + (month == 4 ? 'background-color:red; color:white' : '') + `" class="text-center">تیر</td>
+                                            <td style="` + (month == 5 ? 'background-color:red; color:white' : '') + `" class="text-center">مرداد</td>
+                                            <td style="` + (month == 6 ? 'background-color:red; color:white' : '') + `" class="text-center">شهریور</td>
                                         </tr>
                                         <tr>
-                                            <td id="m-7">مهر</td>
-                                            <td id="m-8">آبان</td>
-                                            <td id="m-9"> آذر</td>
+                                            <td style="` + (month == 7 ? 'background-color:red; color:white' : '') + `" class="text-center">مهر</td>
+                                            <td style="` + (month == 8 ? 'background-color:red; color:white' : '') + `" class="text-center">آبان</td>
+                                            <td style="` + (month == 9 ? 'background-color:red; color:white' : '') + `" class="text-center">آذر</td>
                                         </tr>
                                         <tr>
-                                            <td id="m-10">دی</td>
-                                            <td id="m-11">بهمن</td>
-                                            <td id="m-12">اسفند</td>
+                                            <td style="` + (month == 10 ? 'background-color:red; color:white' : '') + `" class="text-center">دی</td>
+                                            <td style="` + (month == 11 ? 'background-color:red; color:white' : '') + `" class="text-center">بهمن</td>
+                                            <td style="` + (month == 12 ? 'background-color:red; color:white' : '') + `" class="text-center">اسفند</td>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="flex-grow p-2 " >
                                 <table class="table month_days">
                                     <tr>
-                                        <td id="day-1" class="text-center bordered_cell hover:text-green-700 align-center">1</td>
-                                        <td id="day-2" class="text-center bordered_cell hover:text-green-700 align-center">2</td>
-                                        <td id="day-3" class="text-center bordered_cell hover:text-green-700 align-center">3</td>
-                                        <td id="day-4" class="text-center bordered_cell hover:text-green-700 align-center">4</td>
-                                        <td id="day-5" class="text-center bordered_cell hover:text-green-700 align-center">5</td>
-                                        <td id="day-6" class="text-center bordered_cell hover:text-green-700 align-center">6</td>
-                                        <td id="day-7" class="text-center bordered_cell hover:text-green-700 align-center">7</td>
+                                        <td id="day-1"  style="` + (day == 1 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">1</td>
+                                        <td id="day-2"  style="` + (day == 2 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">2</td>
+                                        <td id="day-3"  style="` + (day == 3 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">3</td>
+                                        <td id="day-4"  style="` + (day == 4 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">4</td>
+                                        <td id="day-5"  style="` + (day == 5 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">5</td>
+                                        <td id="day-6"  style="` + (day == 6 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">6</td>
+                                        <td id="day-7"  style="` + (day == 7 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">7</td>
                                     </tr>
                                     <tr>
-                                        <td id="day-8" class="text-center bordered_cell hover:text-green-700 align-center">8</td>
-                                        <td id="day-9" class="text-center bordered_cell hover:text-green-700 align-center">9</td>
-                                        <td id="day-10" class="text-center bordered_cell hover:text-green-700 align-center">10</td>
-                                        <td id="day-11" class="text-center bordered_cell hover:text-green-700 align-center">11</td>
-                                        <td id="day-12" class="text-center bordered_cell hover:text-green-700 align-center">12</td>
-                                        <td id="day-13" class="text-center bordered_cell hover:text-green-700 align-center">13</td>
-                                        <td id="day-14" class="text-center bordered_cell hover:text-green-700 align-center">14</td>
+                                        <td id="day-8"  style="` + (day == 8 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">8</td>
+                                        <td id="day-9"  style="` + (day == 9 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">9</td>
+                                        <td id="day-10"  style="` + (day == 10 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">10</td>
+                                        <td id="day-11"  style="` + (day == 11 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">11</td>
+                                        <td id="day-12"  style="` + (day == 12 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">12</td>
+                                        <td id="day-13"  style="` + (day == 13 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">13</td>
+                                        <td id="day-14"  style="` + (day == 14 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">14</td>
                                     </tr>
                                     <tr>
-                                        <td id="day-15" class="text-center bordered_cell hover:text-green-700 align-center">15</td>
-                                        <td id="day-16" class="text-center bordered_cell hover:text-green-700 align-center">16</td>
-                                        <td id="day-17" class="text-center bordered_cell hover:text-green-700 align-center">17</td>
-                                        <td id="day-18" class="text-center bordered_cell hover:text-green-700 align-center">18</td>
-                                        <td id="day-19" class="text-center bordered_cell hover:text-green-700 align-center">19</td>
-                                        <td id="day-20" class="text-center bordered_cell hover:text-green-700 align-center">20</td>
-                                        <td id="day-21" class="text-center bordered_cell hover:text-green-700 align-center">21</td>
+                                        <td id="day-15"  style="` + (day == 15 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">15</td>
+                                        <td id="day-16"  style="` + (day == 16 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">16</td>
+                                        <td id="day-17"  style="` + (day == 17 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">17</td>
+                                        <td id="day-18"  style="` + (day == 18 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">18</td>
+                                        <td id="day-19"  style="` + (day == 19 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">19</td>
+                                        <td id="day-20"  style="` + (day == 20 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">20</td>
+                                        <td id="day-21"  style="` + (day == 21 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">21</td>
                                     </tr>
                                     <tr>
-                                        <td id="day-22" class="text-center bordered_cell hover:text-green-700 align-center">22</td>
-                                        <td id="day-23" class="text-center bordered_cell hover:text-green-700 align-center">23</td>
-                                        <td id="day-24" class="text-center bordered_cell hover:text-green-700 align-center">24</td>
-                                        <td id="day-25" class="text-center bordered_cell hover:text-green-700 align-center">25</td>
-                                        <td id="day-26" class="text-center bordered_cell hover:text-green-700 align-center">26</td>
-                                        <td id="day-27" class="text-center bordered_cell hover:text-green-700 align-center">27</td>
-                                        <td id="day-28" class="text-center bordered_cell hover:text-green-700 align-center">28</td>
+                                        <td id="day-22"  style="` + (day == 22 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">22</td>
+                                        <td id="day-23"  style="` + (day == 23 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">23</td>
+                                        <td id="day-24"  style="` + (day == 24 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">24</td>
+                                        <td id="day-25"  style="` + (day == 25 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">25</td>
+                                        <td id="day-26"  style="` + (day == 26 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">26</td>
+                                        <td id="day-27"  style="` + (day == 27 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">27</td>
+                                        <td id="day-28"  style="` + (day == 28 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">28</td>
                                     </tr>
                                     <tr>
-                                        <td id="day-29" class="text-center bordered_cell hover:text-green-700 align-center">29</td>
-                                        <td id="day-30" class="text-center bordered_cell hover:text-green-700 align-center">30</td>
-                                        <td id="day-31" class="text-center bordered_cell hover:text-green-700 align-center">31</td>
-                                        <td id="day-32" class="text-center bordered_cell hover:text-green-700 align-center"></td>
-                                        <td id="day-33" class="text-center bordered_cell hover:text-green-700 align-center"></td>
-                                        <td id="day-34" class="text-center bordered_cell hover:text-green-700 align-center"></td>
-                                        <td id="day-35" class="text-center bordered_cell hover:text-green-700 align-center"></td>
+                                        <td id="day-29"  style="` + (day == 29 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">29</td>
+                                        <td id="day-30"  style="` + (day == 30 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">30</td>
+                                        <td id="day-31"  style="` + (day == 31 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center">31</td>
+                                        <td id="day-32"  style="` + (day == 32 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center"></td>
+                                        <td id="day-33"  style="` + (day == 33 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center"></td>
+                                        <td id="day-34"  style="` + (day == 34 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center"></td>
+                                        <td id="day-35"  style="` + (day == 35 ? 'background-color:red; color:white' : '') + ` class="text-center bordered_cell hover:text-green-700 align-center"></td>
                                     </tr>
                                 </table>
                                 </div>
@@ -204,6 +201,13 @@ require_once('./views/Layouts/header.php');
             .catch(function(error) {
                 console.log(error);
             });
+    }
+
+    function setUserId(id) {
+        if (user_id != id) {
+            user_id = id;
+            bootStrap();
+        }
     }
 
     function getUserSavedBills() {
