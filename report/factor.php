@@ -14,6 +14,10 @@ require_once './app/Controllers/BillFilterController.php';
         /* Get this as close to what height you expect */
         max-height: 50em;
     }
+
+    .selected_day {
+        background-color: rgb(156, 156, 156) !important;
+    }
 </style>
 <script src="./public/js/jalaliMoment.js"></script>
 <div class="rtl min-h-screen grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-9  px-4 mb-4">
@@ -65,14 +69,14 @@ require_once './app/Controllers/BillFilterController.php';
                 <?php foreach (MONTHS as $index => $month) : ?>
                     <div class="">
                         <input class="accordion_condition hidden" type="checkbox" name="panel" id="month-<?= $index ?>">
-                        <label for="month-<?= $index ?>" class="relative block bg-gray-600 text-white p-2 shadow border-b border-grey"><?= $month ?></label>
+                        <label for="month-<?= $index ?>" class="cursor-pointer relative block bg-gray-600 text-white p-2 shadow border-b border-grey"><?= $month ?></label>
                         <div class="accordion__content overflow-hidden bg-grey-lighter">
                             <h2 class="accordion__header pt-4 pl-4">روز مد نظر خود را انتخاب کنید:</h2>
                             <div class="flex justify-center items-center">
                                 <div class="grid grid-cols-7 bg-gray-200 p-2 my-2 gap-0">
                                     <?php
                                     for ($counter = 1; $counter <= DAYS[$index]; $counter++) : ?>
-                                        <div onclick="selectDay(this)" data-day="<?= $counter ?>" data-month="<?= $index + 1 ?>" id="<?= $index . '-' . $counter . '-day' ?>" class="border w-10 h-10 flex justify-center items-center text-sm cursor-pointer hover:bg-gray-300"><?= $counter; ?></div>
+                                        <div onclick="selectDay(this)" data-day="<?= $counter ?>" data-month="<?= $index + 1 ?>" id="<?= $index . '-' . $counter . '-day' ?>" class="days border w-10 h-10 flex justify-center items-center text-sm cursor-pointer hover:bg-gray-300"><?= $counter; ?></div>
                                     <?php endfor; ?>
 
                                 </div>
@@ -89,6 +93,8 @@ require_once './app/Controllers/BillFilterController.php';
 <script>
     let user_id = <?= $_SESSION['user_id'] ?>;
     let now = moment().locale('en').format('YYYY-MM-DD');
+
+    const year = (moment().locale('fa').format('YYYY'));
     const month = (moment().locale('fa').format('M'));
     const day = (moment().locale('fa').format('D'));
 
@@ -104,6 +110,7 @@ require_once './app/Controllers/BillFilterController.php';
 
     // Select all elements with the class '.accordion_condition'
     const accordions = document.querySelectorAll('.accordion_condition');
+    const days = document.querySelectorAll('.days');
 
     // Attach a click event listener to each selected element
     accordions.forEach(function(accordion) {
@@ -114,6 +121,14 @@ require_once './app/Controllers/BillFilterController.php';
             });
 
             e.target.checked = 'checked'
+        });
+    });
+
+    // Attach a click event listener to each selected element
+    days.forEach(function(day) {
+        day.addEventListener('click', function(e) {
+            ucCheckDays();
+            e.target.classList.add('selected_day');
         });
     });
 
@@ -238,6 +253,7 @@ require_once './app/Controllers/BillFilterController.php';
     function setUserId(id) {
         if (user_id != id) {
             user_id = id;
+            ucCheckDays();
             bootStrap();
         }
     }
@@ -297,15 +313,22 @@ require_once './app/Controllers/BillFilterController.php';
     }
 
     function selectDay(element) {
+
         const selectedMonth = element.getAttribute('data-month');
         const selectedDay = element.getAttribute('data-day');
-        
+        now = moment.from(year + "/" + selectedMonth + "/" + selectedDay, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+
+        bootStrap();
+    }
+
+    function ucCheckDays() {
+        days.forEach(function(day) {
+            day.classList.remove('selected_day');
+        });
     }
 
     function bootStrap() {
         active_date = now;
-
-
         getUserSavedBills();
         getUserIncompleteBills();
     }
@@ -313,7 +336,6 @@ require_once './app/Controllers/BillFilterController.php';
     function sanitizeUsers(id) {
 
     }
-
 
     bootStrap();
     // getUsers()
