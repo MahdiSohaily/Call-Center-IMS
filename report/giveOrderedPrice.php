@@ -79,19 +79,21 @@ if ($isValidCustomer) {
                     </tbody>
                 </table>
             </div>
-            <form class="rtl w-1/4 bg-white p-2 rounded" target="_blank" action="giveOrderedPrice.php" method="post">
-                <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
-                <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
-                <input type="text" name="customer" value="1" id="target_customer" hidden>
-                <textarea onchange="filterCode(this)" rows="2" id="code" name="code" required class="border-1 w-1/1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
-                    <button type="type" class="inline-flex mt-2 px-4 py-1 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                        <i class="rtl px-2 material-icons hover:cursor-pointer">search</i>
-                        جستجو
-                    </button>
+            <form class="rtl w-1/4 bg-white p-2 rounded flex" target="_blank" action="giveOrderedPrice.php" method="post">
+                <div>
+                    <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
+                    <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
+                    <input type="text" name="customer" value="1" id="target_customer" hidden>
+                    <textarea onchange="filterCode(this)" id="code" name="code" required class="border-1 border-gray-300 ltr shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                </div>
+                <button type="type" class="inline-flex mt-2 px-4 py-1 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    <i class="rtl px-2 material-icons hover:cursor-pointer">search</i>
+                    جستجو
+                </button>
             </form>
-            <div class="rtl w-1/5 flex justify-start">
+            <div class="m-2 rtl w-1/5 flex justify-start">
                 <table class="col-6 text-sm font-light custom-table mb-2 w-full">
-                    <thead class="font-medium bg-green-600">
+                    <thead class="font-medium bg-gray-600">
                         <tr>
                             <th scope="col" class="px-3 py-3 text-white text-center">
                                 نام
