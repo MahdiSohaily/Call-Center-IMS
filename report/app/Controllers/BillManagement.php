@@ -62,7 +62,7 @@ function getUsersCompleteBills($user, $date)
 }
 
 
-if (isset($_POST['getUserUnCompleteBills'])) {
+if (isset($_POST['getUserIncompleteBills'])) {
     $user = $_POST['user'];
     $date = $_POST['date'];
 

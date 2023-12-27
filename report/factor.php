@@ -30,7 +30,7 @@ require_once './app/Controllers/BillFilterController.php';
             <button class="bg-gray-600 text-white rounded px-3 py-2 mx-3">ایجاد پیش فاکتور جدید</button>
         </div>
         <div class="border-t border-gray-200"></div>
-        <div id="unCompleted_bill" class="p-3 overflow-y-auto">
+        <div id="incompleted_bill" class="p-3 overflow-y-auto">
             <!-- Search Results are going to be appended here -->
         </div>
 
@@ -310,22 +310,22 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
-    function getUserUnCompleteBills() {
-        const unCompleted_bill = document.getElementById('unCompleted_bill');
+    function getUserIncompleteBills() {
+        const incompleted_bill = document.getElementById('incompleted_bill');
 
         const params = new URLSearchParams();
-        params.append('getUserUnCompleteBills', 'getUserUnCompleteBills');
+        params.append('getUserIncompleteBills', 'getUserIncompleteBills');
         params.append('user', user_id);
         params.append('date', now);
 
-        unCompleted_bill.innerHTML = '';
+        incompleted_bill.innerHTML = '';
 
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
                 const factors = response.data;
                 if (factors.length > 0) {
                     for (const factor of factors) {
-                        unCompleted_bill.innerHTML += `
+                        incompleted_bill.innerHTML += `
                             <div ondblclick="submitForm('form-' + ${factor.bill_number})" class="relative flex flex-column justify-between cursor-pointer h-28 relative border p-3 rounded shadow-sm flex-wrap mb-2" >
                                 <div class ="flex justify-between">
                                     <p class="text-sm">
@@ -355,7 +355,7 @@ require_once './app/Controllers/BillFilterController.php';
                             `;
                     }
                 } else {
-                    unCompleted_bill.innerHTML = `<div class="flex justify-between">
+                    incompleted_bill.innerHTML = `<div class="flex justify-between">
                 <p>فاکتوری ثبت نشده است.</p>
             </div>`;
                 }
@@ -387,7 +387,7 @@ require_once './app/Controllers/BillFilterController.php';
     function bootStrap() {
         active_date = now;
         getUserSavedBills();
-        getUserUnCompleteBills();
+        getUserIncompleteBills();
     }
 
     function sanitizeUsers(id) {
