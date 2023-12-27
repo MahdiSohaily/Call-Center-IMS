@@ -10,7 +10,9 @@ if (isset($_POST['BillId'])) {
     $details = getBillInfo($bill_id);
 
     $billInfo = [
+        'id' => $bill_id,
         'billNO' => $details['id'],
+        'customer_id' => $details['customer_id'],
         'date' => $details['bill_date'],
         'total' => $details['total'],
         'quantity' => $details['quantity'],
@@ -23,6 +25,7 @@ if (isset($_POST['BillId'])) {
         $customerInfo = getCustomerInfo($billInfo['customer_id']);
     } else {
         $customerInfo = [
+            'id' => null,
             'name' => null,
             'family' => null,
             'car' => null,
@@ -30,10 +33,22 @@ if (isset($_POST['BillId'])) {
             'address' => null,
         ];
     }
-    $billItems = getBillItems($billInfo['id']);
+    $billItems = getBillItems($billInfo['id'])[0]['billDetails'] === '{}' ? [] : getBillItems($billInfo['id'])[0]['billDetails'];
 } else {
+
+    $incompleteBillId = createBill([
+        'date' => 'null',
+        'total' => 0,
+        'quantity' => 0,
+        'tax' => 0,
+        'discount' => 0,
+        'withdraw' => 0,
+        'totalInWords' => null
+    ]);
+
+    $incompleteBillDetails = createBillItems($incompleteBillId, '{}');
     $billInfo = [
-        'billNO' => null,
+        'billNO' => $incompleteBillId,
         'date' => 'null',
         'total' => 0,
         'quantity' => 0,
@@ -44,15 +59,13 @@ if (isset($_POST['BillId'])) {
     ];
 
     $customerInfo = [
+        'id' => null,
         'name' => null,
         'family' => null,
         'car' => null,
         'phone' => null,
         'address' => null,
     ];
-
-    $incompleteBillId = createBill($billInfo);
-    $incompleteBillDetails = createBillItems($incompleteBillId, '{}');
 }
 
 function getBillInfo($billId)

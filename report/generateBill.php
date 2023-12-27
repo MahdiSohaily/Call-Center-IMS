@@ -218,7 +218,7 @@ require_once './LoadBillDetails.php';
 <div class="rtl fixed flex items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
     <ul class="flex gap-3">
         <li>
-            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="">
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
                 ذخیره تغییرات پیش فاکتور
             </p>
         </li>
@@ -291,8 +291,7 @@ require_once './LoadBillDetails.php';
     };
 
 
-    const billItems = <?php print_r(json_encode($billItems)) ?>;
-
+    const billItems = <?php print_r($billItems) ?>;
     displayBill()
 
     function searchCustomer(pattern) {
@@ -607,7 +606,6 @@ require_once './LoadBillDetails.php';
         let totalPrice = 0;
 
         for (const item of billItems) {
-
             const payPrice = Number(item.quantity) * Number(item.price_per);
             totalPrice += payPrice;
 
@@ -638,13 +636,13 @@ require_once './LoadBillDetails.php';
         bill_body.innerHTML = template;
 
         BillInfo.quantity = billItems.length;
-        BillInfo.total = (totalPrice);
+        BillInfo.totalPrice = (totalPrice);
         BillInfo.totalInWords = numberToPersianWords(totalPrice);
 
         document.getElementById('billNO').value = BillInfo.bill_number;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('quantity').value = BillInfo.quantity;
-        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.total);
+        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
@@ -817,6 +815,27 @@ require_once './LoadBillDetails.php';
         localStorage.setItem('bill_items', JSON.stringify(billItems));
 
         window.location.href = './displayBill.php';
+    }
+
+    function saveIncompleteForm() {
+        if (BillInfo.date == 'null')
+            BillInfo.date = moment().locale('fa').format('YYYY/M/D');
+        var params = new URLSearchParams();
+        params.append('saveIncompleteForm', 'saveIncompleteForm');
+        params.append('customer_info', JSON.stringify(customerInfo));
+        params.append('bill_info', JSON.stringify(BillInfo));
+        params.append('bill_items', JSON.stringify(billItems));
+
+        console.log(billItems);
+
+
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                const data = response.data;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 </script>
 <?php
