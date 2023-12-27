@@ -27,7 +27,7 @@ require_once './app/Controllers/BillFilterController.php';
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
                 پیش فاکتور ها
             </h2>
-            <button onclick="openModal()" class="bg-gray-600 text-white rounded px-3 py-2 mx-3">ایجاد پیش فاکتور جدید</button>
+            <a href="./generateBill.php" class="bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور جدید</a>
         </div>
         <div class="border-t border-gray-200"></div>
         <div id="incomplete_bill" class="p-3 overflow-y-auto">
@@ -91,110 +91,7 @@ require_once './app/Controllers/BillFilterController.php';
 
     </div>
 </div>
-<div id="popup-modal" tabindex="-1" class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm bg-white/30">
-    <div class="relative p-4 w-full max-w-lg max-h-full">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button id="close-modal" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-                <span class="sr-only">Close modal</span>
-            </button>
-            <div class="p-4 md:p-5 text-center">
-                <img class="mx-auto mb-4 text-gray-400 w-16 h-16 dark:text-gray-200" src="./public/img/form.svg" alt="warning sign icon">
-                <form action="./generateBill.php" method="post">
-                    <input type="text" value="create" hidden>
-                    <div class="relative flex justify-center px-3">
-                        <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500 rtl" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
-                        <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
-                                                                                    searchCustomer('');
-                                                                                    document.getElementById('customer_name').value = '';
-                                                                                })();" src="./public/img/clear.svg" alt="customer icon">
-
-                    </div>
-                    <div id="customer_results"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <script>
-    const modal = document.getElementById("popup-modal");
-    const btn_close_modal = document.getElementById("close-modal");
-    const error_message = document.getElementById("message");
-
-    btn_close_modal.addEventListener("click", function() {
-        modal.classList.remove("flex");
-        modal.classList.add("hidden");
-    })
-
-    function openModal() {
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-    }
-
-    function searchCustomer(pattern) {
-        pattern = pattern.trim();
-        if (pattern.length > 3) {
-            customer_results.innerHTML = `<tr class=''>
-                                            <div class='w-full h-52 flex justify-center items-center'>
-                                                <img class=' block w-10 mx-auto h-auto' src='./public/img/loading.png' alt='google'>
-                                            </div>
-                                         </tr>`;
-            var params = new URLSearchParams();
-            params.append('customer_search', 'customer_search');
-            params.append('pattern', pattern);
-
-            if (pattern.length > 3) {
-                axios.post("./app/Controllers/BillController.php", params)
-                    .then(function(response) {
-                        let template = '';
-                        if (response.data.length > 0) {
-                            for (const customer of response.data) {
-                                template += `
-                                    <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 border-gray-300">
-                                        <p class="text-sm font-semibold text-gray-600">
-                                            ` + customer.name + `
-                                            ` + customer.family + `
-                                        </p>
-                                        <p class="text-sm font-semibold text-gray-600">
-                                            ` + customer.phone + `
-                                        </p>
-                                            <i  data-id="` + customer.id + `" 
-                                                data-name="` + customer.name + `" 
-                                                data-family="` + customer.family + `" 
-                                                data-phone="` + customer.phone + `"
-                                                data-address="` + customer.address + `"
-                                                data-car="` + customer.car + `"
-                                                onclick="selectCustomer(this)"
-                                                    class="material-icons bg-green-600 cursor-pointer rounded-circle hover:bg-green-800 text-white">add
-                                            </i>
-                                        </div>
-                                    `;
-                            }
-                        } else {
-                            template += `
-                                    <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 border-gray-300">
-                                        <p class="text-sm font-semibold text-gray-600">
-                                           مشتری ای با مشخصات وارده در سیستم موجود نیست
-                                        </p>
-                                        </div>
-                                    `;
-                        }
-                        customer_results.innerHTML = template;
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    });
-            } else {
-                customer_results.innerHTML = "کد فنی وارد شده فاقد اعتبار است";
-            }
-        } else {
-            customer_results.innerHTML = "";
-        }
-    };
-
-
     let user_id = <?= $_SESSION['user_id'] ?>;
     let now = moment().locale('en').format('YYYY-MM-DD');
 
@@ -428,33 +325,33 @@ require_once './app/Controllers/BillFilterController.php';
                 if (factors.length > 0) {
                     for (const factor of factors) {
                         incomplete_bill.innerHTML += `
-                            <div ondblclick="submitForm('form-${factor.bill_number}')" title="برای بارگذاری دبل کلیک نمایید" class="relative flex flex-column justify-between cursor-pointer h-28 relative border p-3 rounded shadow-sm flex-wrap mb-2">
-                                <div class="flex justify-between">
-                                    <p class="text-sm">
-                                        شماره فاکتور:
-                                        ${factor.bill_number}
-                                    </p>
-                                    <p class="text-sm">
-                                        تاریخ فاکتور:
-                                        ${factor.bill_date}
-                                    </p>
-                                </div>
-                                <div class="flex justify-between">
-                                    <p class="text-sm">
-                                        مشتری: 
-                                        ${factor.name} ${factor.family}
-                                    </p>
-                                    <p class="text-sm">
-                                        قیمت کل:
-                                        ${factor.total}
-                                    </p>
-                                </div>
-                                <div>
-                                    <form id="form-${factor.bill_number}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
-                                        <input type="hidden" name="BillId" value="${factor.bill_number}">
-                                    </form>
-                                </div>
+                        <div ondblclick="submitForm('form-${factor.id}')" title="برای بارگذاری دبل کلیک نمایید" class="relative flex flex-column justify-between cursor-pointer h-28 relative border p-3 rounded shadow-sm flex-wrap mb-2">
+                            <div class="flex justify-between">
+                                <p class="text-sm">
+                                    شماره فاکتور:
+                                    ${factor.bill_number}
+                                </p>
+                                <p class="text-sm">
+                                    تاریخ فاکتور:
+                                    ${factor.bill_date}
+                                </p>
                             </div>
+                            <div class="flex justify-between">
+                                <p class="text-sm">
+                                    مشتری: 
+                                    ${factor.name} ${factor.family}
+                                </p>
+                                <p class="text-sm">
+                                    قیمت کل:
+                                    ${factor.total}
+                                </p>
+                            </div>
+                            <div>
+                                <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
+                                    <input type="hidden" name="BillId" value="${factor.id}">
+                                </form>
+                            </div>
+                        </div>
                             `;
                     }
                 } else {

@@ -8,17 +8,36 @@ if (isset($_POST['BillId'])) {
     $bill_id = $_POST['BillId'];
 
     $billInfo = getBillInfo($bill_id);
-    $customerInfo = getCustomerInfo($billInfo['customer_id']);
+    if (isset($billInfo['customer_id'])) {
+        $customerInfo = getCustomerInfo($billInfo['customer_id']);
+    } else {
+        $customerInfo = [
+            'name' => null,
+            'family' => null,
+            'car' => null,
+            'phone' => null,
+            'address' => null,
+        ];
+    }
     $billItems = getBillItems($billInfo['id']);
 } else {
-    $newBillNumber = getLastBillNumber() + 1;
-    // $newCustomer =
-    // $lastBillId = 
+    $billInfo = [
+        'billNO' => null,
+        'date' => null,
+        'totalPrice' => 0,
+        'quantity' => 0,
+        'tax' => 0,
+        'discount' => 0,
+        'withdraw' => 0,
+        'date' => '-'
+    ];
+    $incompleteBill = createBill($billInfo);
+    $incompleteBillDetails = null;
 }
 
 function getBillInfo($billId)
 {
-    $sql = "SELECT * FROM callcenter.bill WHERE bill_number = ?";
+    $sql = "SELECT * FROM callcenter.bill WHERE id = ?";
     $stmt = CONN->prepare($sql);
     $stmt->bind_param("s", $billId);
 
@@ -102,18 +121,19 @@ function createCustomer($customerInfo)
     return $lastInsertedId;
 }
 
-function createBill($billInfo, $customerId)
+function createBill($billInfo)
 {
-    $user_id = $_SESSION['user_id'];
+    $sql = "INSERT INTO callcenter.bill (quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+    $stmt = CONN->prepare($sql);
+    $stmt->bind_param("dddddsi", $billInfo['quantity'], $billInfo['discount'], $billInfo['tax'], $billInfo['withdraw'], $billInfo['totalPrice'], $billInfo['date'], $_SESSION['user_id']);
 
-    $sql = "INSERT INTO callcenter.bill (customer_id, bill_number, quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES 
-            ('$customerId','$billInfo->billNO', '$billInfo->quantity', '$billInfo->discount', '$billInfo->tax', '$billInfo->withdraw',
-            '$billInfo->totalPrice', '$billInfo->date', '$user_id', 1)";
-    CONN->query($sql);
+    $stmt->execute();
 
-    // Retrieve the last inserted ID
-    $lastInsertedId = CONN->insert_id;
+    if ($stmt->errno) {
+        return false;
+    }
+    $lastInsertedId = $stmt->insert_id;
+    $stmt->close();
 
-    // Return the last inserted ID
     return $lastInsertedId;
 }
