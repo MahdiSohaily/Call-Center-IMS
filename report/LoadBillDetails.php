@@ -18,10 +18,9 @@ if (isset($_POST['BillId'])) {
 
 function getBillInfo($billId)
 {
-    // Use prepared statement to prevent SQL injection
     $sql = "SELECT * FROM callcenter.bill WHERE bill_number = ?";
     $stmt = CONN->prepare($sql);
-    $stmt->bind_param("s", $billId); // Assuming $billId is a string, adjust accordingly if it's an integer
+    $stmt->bind_param("s", $billId);
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -40,30 +39,28 @@ function getBillInfo($billId)
 
 function getCustomerInfo($customerId)
 {
-    // Use prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM callcenter.customer WHERE id = ?";
+    $sql = "SELECT id, name, family, phone, car, address FROM callcenter.customer WHERE id = ?";
     $stmt = CONN->prepare($sql);
-    $stmt->bind_param("s", $customerId); // Assuming $billId is a string, adjust accordingly if it's an integer
+    $stmt->bind_param("s", $customerId);
 
     $stmt->execute();
     $result = $stmt->get_result();
 
     $data = [];
     if ($result->num_rows > 0) {
-        // Fetch the first row if there are results
         $data = $result->fetch_assoc();
     }
 
     $stmt->close();
+    $data['mode'] = 'update';
     return $data;
 }
 
 function getBillItems($bill_id)
 {
-    // Use prepared statement to prevent SQL injection
     $sql = "SELECT * FROM callcenter.bill_details WHERE bill_id = ?";
     $stmt = CONN->prepare($sql);
-    $stmt->bind_param("s", $bill_id); // Assuming $billId is a string, adjust accordingly if it's an integer
+    $stmt->bind_param("s", $bill_id);
 
     $stmt->execute();
     $result = $stmt->get_result();

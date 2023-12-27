@@ -255,14 +255,17 @@ require_once './LoadBillDetails.php';
         modal.classList.add("hidden");
     })
 
-    const customerInfo = {
-        id: undefined,
-        mode: 'create',
-        name: '',
-        family: '',
-        phone: '',
-        car: '',
-        address: '',
+    const customerInfo = <?php print_r(json_encode($customerInfo)); ?>;
+    displayCustomer(customerInfo);
+
+    function displayCustomer(customer) {
+        document.getElementById('id').value = customerInfo.id;
+        document.getElementById('mode').value = customerInfo.mode;
+        document.getElementById('name').value = customerInfo.name + " " + customerInfo.family;
+        document.getElementById('phone').value = customerInfo.phone;
+        document.getElementById('car').value = customerInfo.car;
+        document.getElementById('address').value = customerInfo.address;
+        document.getElementById('customer_name').value = '';
     }
 
     const BillInfo = {
