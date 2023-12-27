@@ -266,17 +266,19 @@ require_once './LoadBillDetails.php';
     }
 
     const BillInfo = {
-        billNO: null,
-        date: moment().locale('fa').format('YYYY/MM/DD'),
-        totalPrice: 0,
-        quantity: 0,
-        tax: 0,
-        discount: 0,
-        withdraw: 0,
-        totalInWords: ''
+        billNO: <?= $billInfo['bill_number'] ?>,
+        date: <?= $billInfo['bill_date'] ?>,
+        totalPrice: <?= $billInfo['total'] ?>,
+        quantity: <?= $billInfo['quantity'] ?>,
+        tax: <?= $billInfo['tax'] ?>,
+        discount: <?= $billInfo['discount'] ?>,
+        withdraw: <?= $billInfo['withdraw'] ?>,
+        totalInWords: numberToPersianWords(<?= $billInfo['total'] ?>)
     }
 
-    const billItems = [];
+    const billItems = <?php print_r(json_encode($billItems)) ?>;
+
+    displayBill()
 
     function searchCustomer(pattern) {
         pattern = pattern.trim();
@@ -552,8 +554,8 @@ require_once './LoadBillDetails.php';
 
         billItems.push({
             id,
-            name,
-            price,
+            partName: name,
+            price_per: price,
             quantity,
             max,
             partNumber
@@ -595,7 +597,7 @@ require_once './LoadBillDetails.php';
 
         for (const item of billItems) {
 
-            const payPrice = Number(item.quantity) * Number(item.price);
+            const payPrice = Number(item.quantity) * Number(item.price_per);
             totalPrice += payPrice;
 
             template += `
@@ -603,17 +605,17 @@ require_once './LoadBillDetails.php';
                 <td class="py-2 px-4 border-b">
                     <span>${counter}</span>
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'name', '${item.id}', '${item.name}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.name}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" value="${item.name}" />
+                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
+                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.partName}</span>
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" value="${item.partName}" />
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
                     <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price', '${item.id}', '${item.price}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price))}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price)}" />
+                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
+                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
                 <td class="py-2 px-4 border-b">${formatAsMoney(payPrice)}</td>
                 <td class="py-2 px-4 border-b w-12 h-12 font-medium">
