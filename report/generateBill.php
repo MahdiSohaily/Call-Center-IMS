@@ -104,27 +104,33 @@ require_once './LoadBillDetails.php';
             </thead>
             <tbody>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">نام</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">نام</td>
                     <td class="py-2 px-4">
                         <input class="w-full p-2 border" type="hidden" name="id" id="id">
                         <input class="w-full p-2 border" type="hidden" name="type" id="mode" value='create'>
-                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="اسم کامل مشتری را وارد کنید..." type="text" name="name" id="name">
+                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نام مشتری را وارد کنید..." type="text" name="name" id="name">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">تلفون</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">نام خانوادگی</td>
+                    <td class="py-2 px-4">
+                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نام خانوادگی مشتری را وارد کنید..." type="text" name="family" id="family">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">تلفون</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="093000000000" type="text" name="phone" id="phone">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">آدرس</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">آدرس</td>
                     <td class="py-2 px-4">
                         <textarea onkeyup="updateCustomerInfo(this)" name="address" id="address" cols="30" rows="4" class="border p-2 w-full text-gray-500" placeholder="آدرس مشتری"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">ماشین</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">ماشین</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="car" id="car">
                     </td>
@@ -141,37 +147,37 @@ require_once './LoadBillDetails.php';
             </thead>
             <tbody>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">شماره فاکتور</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">شماره فاکتور</td>
                     <td class="py-2 px-4">
-                        <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="شماره فاکتور را وارد نمایید" type="text" name="billNO" id="billNO">
+                        <input readonly onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="شماره فاکتور را وارد نمایید" type="text" name="billNO" id="billNO">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">تعداد اقلام</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">تعداد اقلام</td>
                     <td class="py-2 px-4">
                         <input readonly class="w-full p-2 border text-gray-500" placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">جمع کل</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">جمع کل</td>
                     <td class="py-2 px-4">
                         <input readonly class="w-full p-2 border text-gray-500" placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">تخفیف</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">تخفیف</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="discount" id="discount">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">مالبات (۰٪)</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">مالبات (۰٪)</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="tax" id="tax">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-4 text-white bg-gray-800">عوارض</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">عوارض</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="withdraw" id="withdraw">
                     </td>
@@ -261,11 +267,11 @@ require_once './LoadBillDetails.php';
     function displayCustomer(customer) {
         document.getElementById('id').value = customerInfo.id;
         document.getElementById('mode').value = customerInfo.mode;
-        document.getElementById('name').value = customerInfo.name + " " + customerInfo.family;
+        document.getElementById('name').value = customerInfo.name;
+        document.getElementById('family').value = customerInfo.family;
         document.getElementById('phone').value = customerInfo.phone;
         document.getElementById('car').value = customerInfo.car;
         document.getElementById('address').value = customerInfo.address;
-        document.getElementById('customer_name').value = '';
     }
 
     const BillInfo = {
@@ -586,10 +592,6 @@ require_once './LoadBillDetails.php';
 
     function updateCustomerInfo(element) {
         const proprty = element.getAttribute("name");
-        if (proprty !== "name") {
-            customerInfo[proprty] = element.value;
-            return true;
-        }
         customerInfo[proprty] = element.value;
     }
 
@@ -633,6 +635,8 @@ require_once './LoadBillDetails.php';
         BillInfo.totalPrice = (totalPrice);
         BillInfo.totalInWords = numberToPersianWords(totalPrice);
 
+        document.getElementById('billNO').value = BillInfo.billNO;
+        document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
