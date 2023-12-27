@@ -216,12 +216,16 @@ require_once './LoadBillDetails.php';
 
 <div class="h-16"></div>
 <div class="rtl fixed flex items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
-    <ul>
+    <ul class="flex gap-3">
+        <li>
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="">
+                ذخیره تغییرات پیش فاکتور
+            </p>
+        </li>
         <li>
             <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
                 صدور فاکتور
             </p>
-        </li>
         </li>
     </ul>
 </div>
@@ -274,16 +278,18 @@ require_once './LoadBillDetails.php';
         document.getElementById('address').value = customerInfo.address;
     }
 
+
     const BillInfo = {
-        billNO: <?= $billInfo['bill_number'] ?>,
-        date: <?= $billInfo['bill_date'] ?>,
-        totalPrice: <?= $billInfo['total'] ?>,
-        quantity: <?= $billInfo['quantity'] ?>,
-        tax: <?= $billInfo['tax'] ?>,
-        discount: <?= $billInfo['discount'] ?>,
-        withdraw: <?= $billInfo['withdraw'] ?>,
-        totalInWords: numberToPersianWords(<?= $billInfo['total'] ?>)
-    }
+        billNO: "<?= htmlspecialchars($billInfo['billNO']) ?>",
+        date: "<?= htmlspecialchars($billInfo['date']) ?>",
+        totalPrice: <?= (float)$billInfo['total'] ?>, // Assuming total is a numeric value
+        quantity: <?= (int)$billInfo['quantity'] ?>, // Assuming quantity is an integer
+        tax: <?= (float)$billInfo['tax'] ?>, // Assuming tax is a numeric value
+        discount: <?= (float)$billInfo['discount'] ?>, // Assuming discount is a numeric value
+        withdraw: <?= (float)$billInfo['withdraw'] ?>, // Assuming withdraw is a numeric value
+        totalInWords: numberToPersianWords(<?= (float)$billInfo['total'] ?>)
+    };
+
 
     const billItems = <?php print_r(json_encode($billItems)) ?>;
 
@@ -632,13 +638,13 @@ require_once './LoadBillDetails.php';
         bill_body.innerHTML = template;
 
         BillInfo.quantity = billItems.length;
-        BillInfo.totalPrice = (totalPrice);
+        BillInfo.total = (totalPrice);
         BillInfo.totalInWords = numberToPersianWords(totalPrice);
 
-        document.getElementById('billNO').value = BillInfo.billNO;
+        document.getElementById('billNO').value = BillInfo.bill_number;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('quantity').value = BillInfo.quantity;
-        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
+        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.total);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 

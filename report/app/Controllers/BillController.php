@@ -202,16 +202,14 @@ function createBill($billInfo, $customerId)
 function createBillItems($billId, $billItems)
 {
     // Prepared statement
-    $sql = "INSERT INTO callcenter.bill_details (bill_id, nisha_id, partName, quantity, price_per) VALUES (?, ?, ?, ?, ?)";
+    $sql = "UPDATE callcenter.bill_details SET bill_id = ?, billDetails = ? WHERE bill_id = $billId";
 
     // Create a prepared statement
     $stmt = CONN->prepare($sql);
 
-    foreach ($billItems as $item) :
-        $id = getPartNumberId($item->partNumber);
-        $stmt->bind_param("iisid", $billId, $id, $item->name, $item->quantity, $item->price);
-        $stmt->execute();
-    endforeach;
+
+    $stmt->bind_param("is", $billId, $billItems);
+    $stmt->execute();
 
     // Close the statement
     $stmt->close();

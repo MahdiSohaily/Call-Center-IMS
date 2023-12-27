@@ -7,7 +7,18 @@ $billItems = [];
 if (isset($_POST['BillId'])) {
     $bill_id = $_POST['BillId'];
 
-    $billInfo = getBillInfo($bill_id);
+    $details = getBillInfo($bill_id);
+
+    $billInfo = [
+        'billNO' => $details['id'],
+        'date' => $details['bill_date'],
+        'total' => $details['total'],
+        'quantity' => $details['quantity'],
+        'tax' => $details['tax'],
+        'discount' => $details['discount'],
+        'withdraw' => $details['withdraw'],
+    ];
+
     if (isset($billInfo['customer_id'])) {
         $customerInfo = getCustomerInfo($billInfo['customer_id']);
     } else {
@@ -23,16 +34,25 @@ if (isset($_POST['BillId'])) {
 } else {
     $billInfo = [
         'billNO' => null,
-        'date' => null,
-        'totalPrice' => 0,
+        'date' => 'null',
+        'total' => 0,
         'quantity' => 0,
         'tax' => 0,
         'discount' => 0,
         'withdraw' => 0,
-        'date' => '-'
+        'totalInWords' => null
     ];
-    $incompleteBill = createBill($billInfo);
-    $incompleteBillDetails = null;
+
+    $customerInfo = [
+        'name' => null,
+        'family' => null,
+        'car' => null,
+        'phone' => null,
+        'address' => null,
+    ];
+
+    $incompleteBillId = createBill($billInfo);
+    $incompleteBillDetails = createBillItems($incompleteBillId, '{}');
 }
 
 function getBillInfo($billId)
@@ -125,7 +145,7 @@ function createBill($billInfo)
 {
     $sql = "INSERT INTO callcenter.bill (quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
     $stmt = CONN->prepare($sql);
-    $stmt->bind_param("dddddsi", $billInfo['quantity'], $billInfo['discount'], $billInfo['tax'], $billInfo['withdraw'], $billInfo['totalPrice'], $billInfo['date'], $_SESSION['user_id']);
+    $stmt->bind_param("dddddsi", $billInfo['quantity'], $billInfo['discount'], $billInfo['tax'], $billInfo['withdraw'], $billInfo['total'], $billInfo['date'], $_SESSION['user_id']);
 
     $stmt->execute();
 
@@ -136,4 +156,20 @@ function createBill($billInfo)
     $stmt->close();
 
     return $lastInsertedId;
+}
+
+function createBillItems($billId, $billItems)
+{
+    // Prepared statement
+    $sql = "INSERT INTO callcenter.bill_details (bill_id, billDetails) VALUES (?, ?)";
+
+    // Create a prepared statement
+    $stmt = CONN->prepare($sql);
+
+
+    $stmt->bind_param("is", $billId, $billItems);
+    $stmt->execute();
+
+    // Close the statement
+    $stmt->close();
 }
