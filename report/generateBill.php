@@ -2,21 +2,10 @@
 require_once './config/config.php';
 require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
+require_once './LoadBillDetails.php';
 ?>
 <script src="./public/js/persianDate.js"></script>
 <style>
-    fieldset {
-        background-color: lightgray;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-
-    legend {
-        font-size: 18px;
-        font-weight: bold;
-    }
-
     .bill_icon {
         width: 25px;
         height: 25px;

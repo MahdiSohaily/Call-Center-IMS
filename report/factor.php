@@ -326,7 +326,7 @@ require_once './app/Controllers/BillFilterController.php';
                 if (factors.length > 0) {
                     for (const factor of factors) {
                         unCompleted_bill.innerHTML += `
-                            <div class="flex flex-column justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2" >
+                            <div ondblclick="submitForm('form-' + ${factor.bill_number})" class="relative flex flex-column justify-between cursor-pointer h-28 relative border p-3 rounded shadow-sm flex-wrap mb-2" >
                                 <div class ="flex justify-between">
                                     <p class="text-sm">
                                         شماره فاکتور:
@@ -345,6 +345,11 @@ require_once './app/Controllers/BillFilterController.php';
                                         قیمت کل:
                                         ${factor.total}
                                     </p>
+                                </div>
+                                <div>
+                                    <form id="form-${factor.bill_number}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php"
+                                        <input type="hidden" name="bill_id" value="${factor.bill_number}">
+                                    </form>
                                 </div>
                             </div>
                             `;
@@ -367,6 +372,10 @@ require_once './app/Controllers/BillFilterController.php';
         now = moment.from(year + "/" + selectedMonth + "/" + selectedDay, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
 
         bootStrap();
+    }
+
+    function submitForm(formId) {
+        document.getElementById(formId).submit();
     }
 
     function ucCheckDays() {
