@@ -11,10 +11,10 @@ if (isset($_POST['BillId'])) {
     $customerInfo = getCustomerInfo($billInfo['customer_id']);
     $billItems = getBillItems($billInfo['id']);
 } else {
-    print_r($_REQUEST);
-    echo "Please select";
+    $newBillNumber = getLastBillNumber() + 1;
+    // $newCustomer =
+    // $lastBillId = 
 }
-
 
 function getBillInfo($billId)
 {
@@ -34,8 +34,6 @@ function getBillInfo($billId)
     $stmt->close();
     return $data;
 }
-
-
 
 function getCustomerInfo($customerId)
 {
@@ -74,4 +72,48 @@ function getBillItems($bill_id)
 
     $stmt->close();
     return $data;
+}
+
+function getLastBillNumber()
+{
+    $sql = "SELECT bill_number FROM callcenter.bill ORDER BY id DESC LIMIT 1";
+    $stmt = CONN->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc()['bill_number'];
+    } else {
+        return 0;
+    }
+}
+
+function createCustomer($customerInfo)
+{
+    $nameParts = explode(' ', $customerInfo->name);
+    $name = $nameParts[0] ?? '';
+    $family = $nameParts[1] ?? '';
+
+    $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 
+        ('$name', '$family', '$customerInfo->phone', '$customerInfo->address', '$customerInfo->car')";
+    CONN->query($sql);
+    $lastInsertedId = CONN->insert_id;
+    return $lastInsertedId;
+}
+
+function createBill($billInfo, $customerId)
+{
+    $user_id = $_SESSION['user_id'];
+
+    $sql = "INSERT INTO callcenter.bill (customer_id, bill_number, quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES 
+            ('$customerId','$billInfo->billNO', '$billInfo->quantity', '$billInfo->discount', '$billInfo->tax', '$billInfo->withdraw',
+            '$billInfo->totalPrice', '$billInfo->date', '$user_id', 1)";
+    CONN->query($sql);
+
+    // Retrieve the last inserted ID
+    $lastInsertedId = CONN->insert_id;
+
+    // Return the last inserted ID
+    return $lastInsertedId;
 }
