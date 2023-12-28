@@ -341,3 +341,54 @@ function getPartNumberId($partNumber)
         return null;
     }
 }
+
+if (isset($_POST['create_incomplete_bill'])) {
+
+    $incompleteBillId = createBill([
+        'date' => 'null',
+        'total' => 0,
+        'quantity' => 0,
+        'tax' => 0,
+        'discount' => 0,
+        'withdraw' => 0,
+        'totalInWords' => null
+    ]);
+
+    $incompleteBillDetails = createBillItemsTable($incompleteBillId, '[]');
+
+    echo $incompleteBillId;
+}
+
+
+function createBill($billInfo)
+{
+    $sql = "INSERT INTO callcenter.bill (quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+    $stmt = CONN->prepare($sql);
+    $stmt->bind_param("dddddsi", $billInfo['quantity'], $billInfo['discount'], $billInfo['tax'], $billInfo['withdraw'], $billInfo['total'], $billInfo['date'], $_SESSION['user_id']);
+
+    $stmt->execute();
+
+    if ($stmt->errno) {
+        return false;
+    }
+    $lastInsertedId = $stmt->insert_id;
+    $stmt->close();
+
+    return $lastInsertedId;
+}
+
+function createBillItemsTable($billId, $billItems)
+{
+    // Prepared statement
+    $sql = "INSERT INTO callcenter.bill_details (bill_id, billDetails) VALUES (?, ?)";
+
+    // Create a prepared statement
+    $stmt = CONN->prepare($sql);
+
+
+    $stmt->bind_param("is", $billId, $billItems);
+    $stmt->execute();
+
+    // Close the statement
+    $stmt->close();
+}

@@ -27,7 +27,7 @@ require_once './app/Controllers/BillFilterController.php';
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
                 پیش فاکتور ها
             </h2>
-            <a href="./generateBill.php" class="bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور جدید</a>
+            <a onclick="createIncompleteBill()" class="bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور جدید</a>
         </div>
         <div class="border-t border-gray-200"></div>
         <div id="incomplete_bill" class="p-3 overflow-y-auto">
@@ -132,8 +132,6 @@ require_once './app/Controllers/BillFilterController.php';
             e.target.classList.add('selected_day');
         });
     });
-
-
 
     function getUsers() {
         const params = new URLSearchParams();
@@ -390,8 +388,33 @@ require_once './app/Controllers/BillFilterController.php';
         getUserIncompleteBills();
     }
 
-    function sanitizeUsers(id) {
+    function createIncompleteBill() {
+        const params = new URLSearchParams();
+        params.append('create_incomplete_bill', 'create_incomplete_bill');
 
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                const factor_id = response.data;
+
+                const form = document.createElement('form');
+                form.className = 'absolute bottom-2 left-1/2';
+                form.method = 'post';
+                form.action = './generateBill.php';
+
+                const inputBillId = document.createElement('input');
+                inputBillId.type = 'hidden';
+                inputBillId.name = 'BillId';
+                inputBillId.value = factor_id;
+
+                form.appendChild(inputBillId);
+
+                document.body.appendChild(form);
+                form.submit();
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     bootStrap();

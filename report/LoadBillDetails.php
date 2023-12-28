@@ -1,7 +1,7 @@
 <?php
 
 $billInfo = null;
-$customerInfo = null; 
+$customerInfo = null;
 $billItems = [];
 
 if (isset($_POST['BillId'])) {
@@ -34,38 +34,6 @@ if (isset($_POST['BillId'])) {
         ];
     }
     $billItems = getBillItems($billInfo['id'])[0]['billDetails'] === '{}' ? [] : getBillItems($billInfo['id'])[0]['billDetails'];
-} else {
-
-    $incompleteBillId = createBill([
-        'date' => 'null',
-        'total' => 0,
-        'quantity' => 0,
-        'tax' => 0,
-        'discount' => 0,
-        'withdraw' => 0,
-        'totalInWords' => null
-    ]);
-
-    $incompleteBillDetails = createBillItems($incompleteBillId, '{}');
-    $billInfo = [
-        'billNO' => $incompleteBillId,
-        'date' => 'null',
-        'total' => 0,
-        'quantity' => 0,
-        'tax' => 0,
-        'discount' => 0,
-        'withdraw' => 0,
-        'totalInWords' => null
-    ];
-
-    $customerInfo = [
-        'id' => null,
-        'name' => null,
-        'family' => null,
-        'car' => null,
-        'phone' => null,
-        'address' => null,
-    ];
 }
 
 function getBillInfo($billId)
@@ -154,35 +122,3 @@ function createCustomer($customerInfo)
     return $lastInsertedId;
 }
 
-function createBill($billInfo)
-{
-    $sql = "INSERT INTO callcenter.bill (quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
-    $stmt = CONN->prepare($sql);
-    $stmt->bind_param("dddddsi", $billInfo['quantity'], $billInfo['discount'], $billInfo['tax'], $billInfo['withdraw'], $billInfo['total'], $billInfo['date'], $_SESSION['user_id']);
-
-    $stmt->execute();
-
-    if ($stmt->errno) {
-        return false;
-    }
-    $lastInsertedId = $stmt->insert_id;
-    $stmt->close();
-
-    return $lastInsertedId;
-}
-
-function createBillItems($billId, $billItems)
-{
-    // Prepared statement
-    $sql = "INSERT INTO callcenter.bill_details (bill_id, billDetails) VALUES (?, ?)";
-
-    // Create a prepared statement
-    $stmt = CONN->prepare($sql);
-
-
-    $stmt->bind_param("is", $billId, $billItems);
-    $stmt->execute();
-
-    // Close the statement
-    $stmt->close();
-}
