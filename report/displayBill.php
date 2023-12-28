@@ -301,12 +301,30 @@ require_once('./views/Layouts/header.php');
     </li>
 </ul>
 <script>
+    let bill_number = null;
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
     const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
     const billItems = JSON.parse(localStorage.getItem('bill_items'));
-    displayBill();
-    displayCustomer();
-    displayBillDetails();
+    getBillNumber();
+
+
+    function getBillNumber() {
+
+        var params = new URLSearchParams();
+        params.append('getFactorNumber', 'getFactorNumber');
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                bill_number = (response.data);
+
+                BillInfo.billNO = bill_number;
+                displayBill();
+                displayCustomer();
+                displayBillDetails();
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
 
     function displayBill() {
         let counter = 1;
@@ -372,11 +390,6 @@ require_once('./views/Layouts/header.php');
         }
     });
 
-    // Prevent context menu on right-click (optional)
-    // document.addEventListener('contextmenu', function(event) {
-    //     event.preventDefault();
-    // });
-
     function handleSaveAsPdfClick() {
         const content = document.getElementById('bill_body_pdf');
         const opt = {
@@ -396,7 +409,6 @@ require_once('./views/Layouts/header.php');
         };
         html2pdf().set(opt).from(content).save();
     }
-
 
     function saveInvoice() {
         // window.print();

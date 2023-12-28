@@ -116,6 +116,7 @@ function searchPartNumberInStock($pattern)
 }
 
 if (isset($_POST['getFactorNumber'])) {
+    echo getFactorNumber();
 }
 
 function getFactorNumber()
@@ -127,39 +128,32 @@ function getFactorNumber()
     $result = $stmt->get_result();
 
     $stmt->close();
-    
+
     if ($result->num_rows > 0) {
-        return $result->fetch_assoc()['bill_number'];
+        return $result->fetch_assoc()['bill_number'] + 1;
     } else {
-        return 0;
+        return 1;
     }
 }
-
-
 
 if (isset($_POST['saveInvoice'])) {
     $billItems = json_decode($_POST['billItems']);
     $BillInfo = json_decode($_POST['BillInfo']);
     $customerInfo = json_decode($_POST['customerInfo']);
 
-    $customerId = $customerInfo->id ?? null;
+    $customerPhone = $customerInfo->phone ?? null;
     try {
 
         CONN->begin_transaction();
-        if ($customerId == null) {
-            $customerId = createCustomer($customerInfo);
+        $customer_id = getCustomerId($customerInfo);
+        if (!$customer_id) {
+            if ($customerInfo->name != null) {
+                $customer_id = createCustomer($customerInfo);
+            }
         } else {
-            updateCustomer($customerInfo);
+            updateCustomer($customerInfo, $customer_id);
         }
-
-        if ($customerId == null) {
-            echo ('Customer');
-            return false;
-            die("Invalid customer");
-        }
-
-        makeBillCompleted($BillInfo, $customerId);
-
+        makeBillCompleted($BillInfo, $customer_id);
         updateBillItems($BillInfo, $billItems);
         CONN->commit();
     } catch (Exception $e) {
@@ -172,29 +166,24 @@ if (isset($_POST['saveInvoice'])) {
     // echo json_encode([$BillInfo, $customerInfo, $billItems]);
 }
 
-
 if (isset($_POST['saveIncompleteForm'])) {
     $customerInfo = json_decode($_POST['customer_info']);
     $bill_info = json_decode($_POST['bill_info']);
     $bill_items = json_decode($_POST['bill_items']);
 
-    $customerId = $customerInfo->id ?? null;
+    $customerPhone = $customerInfo->phone ?? null;
     try {
         CONN->begin_transaction();
-        if ($customerId == null) {
+        $customer_id = getCustomerId($customerInfo);
+        if (!$customer_id) {
             if ($customerInfo->name != null) {
-                $customerId = createCustomer($customerInfo);
+                $customer_id = createCustomer($customerInfo);
             }
         } else {
-            updateCustomer($customerInfo);
+            updateCustomer($customerInfo, $customer_id);
         }
 
-        if ($customerId == null) {
-            return false;
-            die("Invalid customer");
-        }
-
-        UpdateBill($bill_info, $customerId);
+        UpdateBill($bill_info, $customer_id);
         updateBillItems($bill_info, $bill_items);
         CONN->commit();
     } catch (Exception $e) {
@@ -202,6 +191,25 @@ if (isset($_POST['saveIncompleteForm'])) {
         CONN->rollback();
 
         echo "error: " . $e;
+    }
+}
+
+function getCustomerId($customer)
+{
+    $sql = "SELECT id FROM callcenter.customer WHERE 
+                phone = '$customer->phone'
+                ORDER BY id DESC LIMIT 1";
+    $stmt = CONN->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $stmt->close();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc()['id'];
+    } else {
+        return false;
     }
 }
 
@@ -218,11 +226,11 @@ function createCustomer($customerInfo)
     return $lastInsertedId;
 }
 
-function updateCustomer($customerInfo)
+function updateCustomer($customerInfo, $id = null)
 {
     $sql = "UPDATE callcenter.customer SET name = '$customerInfo->name', family = '$customerInfo->family', 
             phone = '$customerInfo->phone', address = '$customerInfo->address',
-            car = '$customerInfo->car' WHERE id = '$customerInfo->id'";
+            car = '$customerInfo->car' WHERE id = '$id'";
     CONN->query($sql);
 }
 
@@ -231,6 +239,7 @@ function makeBillCompleted($billInfo, $customerId)
     $user_id = $_SESSION['user_id'];
 
     $sql = "UPDATE callcenter.bill SET 
+                bill_number = '$billInfo->billNO',
                 quantity = '$billInfo->quantity',
                 discount = '$billInfo->discount',
                 tax = '$billInfo->tax',

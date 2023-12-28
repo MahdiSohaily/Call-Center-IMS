@@ -457,7 +457,7 @@ require_once './LoadBillDetails.php';
         let template = ``;
         for (const item of data) {
             template += `
-                        <div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                        <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
                                 <p class="text-sm font-semibold text-white">
                                        ${item.partnumber}
@@ -492,7 +492,7 @@ require_once './LoadBillDetails.php';
         let template = ``;
         for (const item of data) {
             template += `
-                        <div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                        <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
                                 <p class="text-sm font-semibold text-white">
                                     ${item.partnumber}
@@ -575,6 +575,7 @@ require_once './LoadBillDetails.php';
             max,
             partNumber
         });
+        document.getElementById("box-" + id).style.display = "none";
         displayBill();
     }
 
