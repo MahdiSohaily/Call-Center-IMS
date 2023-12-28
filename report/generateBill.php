@@ -197,11 +197,11 @@ require_once './LoadBillDetails.php';
                     <tr class="bg-gray-800">
                         <th class="py-2 px-4 border-b text-white w-10">ردیف</th>
                         <!-- <th class="py-2 px-4 border-b text-white">کد فنی</th> -->
-                        <th class="py-2 px-4 border-b text-white">نام قطعه</th>
-                        <th class="py-2 px-4 border-b text-white"> تعداد</th>
-                        <th class="py-2 px-4 border-b text-white"> قیمت</th>
-                        <th class="py-2 px-4 border-b text-white"> قیمت کل</th>
-                        <th class="py-2 px-4 border-b w-12 h-12 font-medium">
+                        <th class="py-2 px-4 border-b text-white w-2/4">نام قطعه</th>
+                        <th class="py-2 px-4 border-b text-white w-18"> تعداد</th>
+                        <th class="py-2 px-4 border-b text-white  w-18"> قیمت</th>
+                        <th class="py-2 px-4 border-b text-white  w-18"> قیمت کل</th>
+                        <th class="py-2 px-4 border-b w-12 h-12 font-medium  w-18">
                             <img class="bill_icon" src="./public/img/setting.svg" alt="settings icon">
                         </th>
                     </tr>
@@ -618,17 +618,24 @@ require_once './LoadBillDetails.php';
                 <td class="py-2 px-4 border-b">
                     <span>${counter}</span>
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
+                <td class="relative py-2 px-4 border-b" ondblclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.partName}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" value="${item.partName}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-42" value="${item.partName}" />
+                    <div class="absolute left-0 top-2 flex flex-wrap gap-1 w-42">
+                        <span style="font-size:11px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">اصلی</span>
+                        <span style="font-size:11px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">چین</span>
+                        <span style="font-size:11px" onclick="appendSufix('${item.id}','کره')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">کره</span>
+                        <span style="font-size:11px" onclick="appendSufix('${item.id}','سانتافه')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">سانتافه</span>
+                        <span style="font-size:11px" onclick="appendSufix('${item.id}','متفرقه')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">متفرقه</span>
+                    </div>
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
+                <td class="w-12 py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-12" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
                 <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-12" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
                 <td class="py-2 px-4 border-b">${formatAsMoney(payPrice)}</td>
                 <td class="py-2 px-4 border-b w-12 h-12 font-medium">
@@ -709,6 +716,20 @@ require_once './LoadBillDetails.php';
                         }
                     }
                 }
+            }
+        }
+        displayBill();
+    }
+
+    function appendSufix(itemId, suffix) {
+        for (let i = 0; i < billItems.length; i++) {
+            if (billItems[i].id == itemId) {
+
+                const partName = billItems[i].partName;
+                let lastIndex = partName.lastIndexOf('-');
+
+                let result = lastIndex !== -1 ? partName.substring(0, lastIndex) : partName;
+                billItems[i].partName = result + ' - ' + suffix;
             }
         }
         displayBill();
