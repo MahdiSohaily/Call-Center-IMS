@@ -316,7 +316,7 @@ function updateBillItems($billInfo, $billItems)
     $billItems = json_encode($billItems);
 
     // Bind parameters
-    $stmt->bind_param("si", $billItems, $billInfo->billNO);
+    $stmt->bind_param("si", $billItems, $billInfo->id);
 
     // Execute the statement
     $stmt->execute();

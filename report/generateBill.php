@@ -846,13 +846,11 @@ require_once './LoadBillDetails.php';
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
 
-        console.log(billItems);
-
-
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
-                alert('ویرایش موفقانه صورت گرفت');
+                console.log(data);
+                // alert('ویرایش موفقانه صورت گرفت');
             })
             .catch(function(error) {
                 console.log(error);
