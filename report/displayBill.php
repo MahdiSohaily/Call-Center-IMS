@@ -214,11 +214,11 @@ require_once('./views/Layouts/header.php');
     </div>
     <div class="customer_info">
         <ul>
-            <li>
+            <li class="text-sm">
                 نام و نام خانوادگی :
                 <span id="name"></span>
             </li>
-            <li>
+            <li class="text-sm">
                 شماره تماس:
                 <span id="phone"></span>
             </li>
@@ -315,24 +315,24 @@ require_once('./views/Layouts/header.php');
 
         for (const item of billItems) {
 
-            const payPrice = Number(item.quantity) * Number(item.price);
+            const payPrice = Number(item.quantity) * Number(item.price_per);
             totalPrice += payPrice;
 
             template += `
             <tr style="padding: 10px !important;" class="even:bg-gray-100">
-                <td>
+                <td class="text-sm">
                     <span>${counter}</span>
                 </td>
-                <td>
-                    <span>${item.name}</span>
+                <td class="text-sm">
+                    <span>${item.partName}</span>
                 </td>
-                <td>
+                <td class="text-sm">
                     <span>${item.quantity}</span>
                 </td>
-                <td>
-                    <span>${formatAsMoney(Number(item.price))}</span>
+                <td class="text-sm">
+                    <span>${formatAsMoney(Number(item.price_per))}</span>
                 </td>
-                <td>
+                <td class="text-sm">
                     <span>${formatAsMoney(payPrice)}</span>
                 </td>
             </tr> `;

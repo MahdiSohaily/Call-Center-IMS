@@ -1,7 +1,7 @@
 <?php
 
 $billInfo = null;
-$customerInfo = null;
+$customerInfo = null; 
 $billItems = [];
 
 if (isset($_POST['BillId'])) {

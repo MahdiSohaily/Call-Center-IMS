@@ -581,8 +581,8 @@ require_once './LoadBillDetails.php';
     function addManually() {
         billItems.push({
             id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
-            name: "برای ویرایش دبل کلیک",
-            price: 0,
+            partName: "برای ویرایش دبل کلیک",
+            price_per: 0,
             quantity: "0",
             max: 'undefined',
             partNumber: 'NOTPART'
@@ -814,6 +814,8 @@ require_once './LoadBillDetails.php';
         localStorage.setItem('customer_info', JSON.stringify(customerInfo));
         localStorage.setItem('bill_info', JSON.stringify(BillInfo));
         localStorage.setItem('bill_items', JSON.stringify(billItems));
+
+        console.log((billItems));
 
         window.location.href = './displayBill.php';
     }

@@ -115,6 +115,28 @@ function searchPartNumberInStock($pattern)
     return $sanitized;
 }
 
+if (isset($_POST['getFactorNumber'])) {
+}
+
+function getFactorNumber()
+{
+    $sql = "SELECT id, bill_number FROM callcenter.bill WHERE bill_number != '0' ORDER BY id DESC LIMIT 1";
+    $stmt = CONN->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $stmt->close();
+    
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc()['bill_number'];
+    } else {
+        return 0;
+    }
+}
+
+
+
 if (isset($_POST['saveInvoice'])) {
     $billItems = json_decode($_POST['billItems']);
     $BillInfo = json_decode($_POST['BillInfo']);
@@ -131,18 +153,14 @@ if (isset($_POST['saveInvoice'])) {
         }
 
         if ($customerId == null) {
+            echo ('Customer');
             return false;
             die("Invalid customer");
         }
 
-        $billId = createBill($BillInfo, $customerId);
+        makeBillCompleted($BillInfo, $customerId);
 
-        if ($billId == null) {
-            return false;
-            die("Invalid bill");
-        }
-
-        createBillItems($billId, $billItems);
+        updateBillItems($BillInfo, $billItems);
         CONN->commit();
     } catch (Exception $e) {
         // An error occurred, rollback the transaction
@@ -208,7 +226,7 @@ function updateCustomer($customerInfo)
     CONN->query($sql);
 }
 
-function createBill($billInfo, $customerId)
+function makeBillCompleted($billInfo, $customerId)
 {
     $user_id = $_SESSION['user_id'];
 
@@ -221,7 +239,7 @@ function createBill($billInfo, $customerId)
                 bill_date = '$billInfo->date',
                 user_id = '$user_id',
                 status = 1
-                WHERE customer_id = '$customerId' AND bill_number = '$billInfo->billNO'";
+                WHERE id = '$billInfo->billNO'";
 
     CONN->query($sql);
 
