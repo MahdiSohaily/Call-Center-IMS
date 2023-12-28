@@ -316,7 +316,7 @@ require_once('./views/Layouts/header.php');
             .then(function(response) {
                 bill_number = (response.data);
 
-                BillInfo.billNO = bill_number;
+                BillInfo.id = bill_number;
                 displayBill();
                 displayCustomer();
                 displayBillDetails();
@@ -371,7 +371,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayBillDetails() {
-        document.getElementById('billNO').innerHTML = BillInfo.billNO;
+        document.getElementById('billNO').innerHTML = BillInfo.id;
         document.getElementById('date').innerHTML = BillInfo.date;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);

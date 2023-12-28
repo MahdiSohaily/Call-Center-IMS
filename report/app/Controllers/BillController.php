@@ -121,7 +121,7 @@ if (isset($_POST['getFactorNumber'])) {
 
 function getFactorNumber()
 {
-    $sql = "SELECT id, bill_number FROM callcenter.bill WHERE bill_number != '0' ORDER BY id DESC LIMIT 1";
+    $sql = "SELECT id, bill_number FROM callcenter.bill WHERE bill_number != '0' ORDER BY bill_number DESC LIMIT 1";
     $stmt = CONN->prepare($sql);
 
     $stmt->execute();
@@ -146,12 +146,13 @@ if (isset($_POST['saveInvoice'])) {
 
         CONN->begin_transaction();
         $customer_id = getCustomerId($customerInfo);
-        if (!$customer_id) {
-            if ($customerInfo->name != null) {
+        if ($customerInfo->name != null) {
+            if (!$customer_id) {
+
                 $customer_id = createCustomer($customerInfo);
+            } else {
+                updateCustomer($customerInfo, $customer_id);
             }
-        } else {
-            updateCustomer($customerInfo, $customer_id);
         }
         makeBillCompleted($BillInfo, $customer_id);
         updateBillItems($BillInfo, $billItems);
@@ -175,14 +176,13 @@ if (isset($_POST['saveIncompleteForm'])) {
     try {
         CONN->begin_transaction();
         $customer_id = getCustomerId($customerInfo);
-        if (!$customer_id) {
-            if ($customerInfo->name != null) {
+        if ($customerInfo->name != null) {
+            if (!$customer_id) {
                 $customer_id = createCustomer($customerInfo);
+            } else {
+                updateCustomer($customerInfo, $customer_id);
             }
-        } else {
-            updateCustomer($customerInfo, $customer_id);
         }
-
         UpdateBill($bill_info, $customer_id);
         updateBillItems($bill_info, $bill_items);
         CONN->commit();
@@ -239,7 +239,8 @@ function makeBillCompleted($billInfo, $customerId)
     $user_id = $_SESSION['user_id'];
 
     $sql = "UPDATE callcenter.bill SET 
-                bill_number = '$billInfo->billNO',
+                customer_id = '$customerId',
+                bill_number = '$billInfo->id',
                 quantity = '$billInfo->quantity',
                 discount = '$billInfo->discount',
                 tax = '$billInfo->tax',
