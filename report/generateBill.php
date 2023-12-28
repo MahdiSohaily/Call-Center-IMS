@@ -280,6 +280,7 @@ require_once './LoadBillDetails.php';
 
 
     const BillInfo = {
+        id: "<?= htmlspecialchars($billInfo['id']) ?>",
         billNO: "<?= htmlspecialchars($billInfo['billNO']) ?>",
         date: "<?= htmlspecialchars($billInfo['date']) ?>",
         totalPrice: <?= (float)$billInfo['total'] ?>, // Assuming total is a numeric value
@@ -289,7 +290,6 @@ require_once './LoadBillDetails.php';
         withdraw: <?= (float)$billInfo['withdraw'] ?>, // Assuming withdraw is a numeric value
         totalInWords: numberToPersianWords(<?= (float)$billInfo['total'] ?>)
     };
-
 
     const billItems = <?php print_r($billItems) ?>;
     displayBill()
@@ -803,7 +803,25 @@ require_once './LoadBillDetails.php';
         }
     }
 
+    function getBillNumber() {
+
+        var params = new URLSearchParams();
+        params.append('getFactorNumber', 'getFactorNumber');
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                bill_number = (response.data);
+                BillInfo.billNO = bill_number;
+                document.getElementById('billNO').value = BillInfo.id;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
     function generateBill() {
+        if (BillInfo.date == 'null') {
+            BillInfo.date = moment().locale('fa').format('YYYY/M/D');
+        }
 
         if (customerInfo.name === null || BillInfo.billNO === null || billItems.length == 0) {
             modal.classList.remove("hidden");
@@ -815,8 +833,6 @@ require_once './LoadBillDetails.php';
         localStorage.setItem('customer_info', JSON.stringify(customerInfo));
         localStorage.setItem('bill_info', JSON.stringify(BillInfo));
         localStorage.setItem('bill_items', JSON.stringify(billItems));
-
-        console.log((billItems));
 
         window.location.href = './displayBill.php';
     }
@@ -836,11 +852,13 @@ require_once './LoadBillDetails.php';
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
+                alert('ویرایش موفقانه صورت گرفت');
             })
             .catch(function(error) {
                 console.log(error);
             });
     }
+    getBillNumber();
 </script>
 <?php
 require_once('./views/Layouts/footer.php');

@@ -315,8 +315,7 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 bill_number = (response.data);
-
-                BillInfo.id = bill_number;
+                BillInfo.billNO = bill_number;
                 displayBill();
                 displayCustomer();
                 displayBillDetails();
@@ -411,6 +410,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function saveInvoice() {
+        console.log(BillInfo);
         // window.print();
 
         var params = new URLSearchParams();
@@ -422,8 +422,6 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
-
-                console.log(response.data);
 
                 if (data == 'error') {
                     alert('خطایی رخ داده است');

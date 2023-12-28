@@ -249,7 +249,7 @@ function makeBillCompleted($billInfo, $customerId)
                 bill_date = '$billInfo->date',
                 user_id = '$user_id',
                 status = 1
-                WHERE id = '$billInfo->billNO'";
+                WHERE id = '$billInfo->id'";
 
     CONN->query($sql);
 

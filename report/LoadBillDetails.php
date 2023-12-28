@@ -11,7 +11,7 @@ if (isset($_POST['BillId'])) {
 
     $billInfo = [
         'id' => $bill_id,
-        'billNO' => $details['id'],
+        'billNO' => $details['bill_number'],
         'customer_id' => $details['customer_id'],
         'date' => $details['bill_date'],
         'total' => $details['total'],
@@ -121,4 +121,3 @@ function createCustomer($customerInfo)
     $lastInsertedId = CONN->insert_id;
     return $lastInsertedId;
 }
-
