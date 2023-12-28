@@ -27,7 +27,7 @@ require_once './app/Controllers/BillFilterController.php';
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
                 پیش فاکتور ها
             </h2>
-            <a onclick="createIncompleteBill()" class="bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور جدید</a>
+            <span onclick="createIncompleteBill()" class="cursor-pointer bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور</span>
         </div>
         <div class="border-t border-gray-200"></div>
         <div id="incomplete_bill" class="p-3 overflow-y-auto">
