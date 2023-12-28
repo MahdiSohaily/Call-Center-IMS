@@ -147,8 +147,8 @@
          const filteredCodes = codes.map(function(code) {
              code = code.replace(/\[[^\]]*\]/g, '');
              const parts = code.split(/[:,]/, 2);
-             const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-             return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+             const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, '').trim();
+             return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, '').trim();
          }).filter(Boolean);
 
          const finalCodes = filteredCodes.filter(function(item) {
@@ -174,8 +174,6 @@
              const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
              return !consecutiveChars;
          });
-
-         console.log(nonConsecutiveCodes);
 
          element.value = nonConsecutiveCodes.map(function(item) {
              return item.split(' ')[0];
