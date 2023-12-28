@@ -215,7 +215,7 @@ require_once './LoadBillDetails.php';
 </div>
 
 <div class="h-16"></div>
-<div class="rtl fixed flex items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
+<div class="rtl fixed flex justify-between items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
     <ul class="flex gap-3">
         <li>
             <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
@@ -227,7 +227,9 @@ require_once './LoadBillDetails.php';
                 صدور فاکتور
             </p>
         </li>
+
     </ul>
+    <p id="save_message" class="hidden bg-white text-green-400 px-3 py-1">ویرایش پیش فاکتور موفقانه صورت گرفت</p>
 </div>
 
 <div id="popup-modal" tabindex="-1" class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm bg-white/30">
@@ -849,8 +851,12 @@ require_once './LoadBillDetails.php';
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
-                console.log(data);
-                // alert('ویرایش موفقانه صورت گرفت');
+                const save_message = document.getElementById('save_message');
+                save_message.classList.remove('hidden');
+
+                setTimeout(() => {
+                    save_message.classList.add('hidden');
+                }, 3000);
             })
             .catch(function(error) {
                 console.log(error);
