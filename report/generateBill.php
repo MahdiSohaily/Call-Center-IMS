@@ -92,7 +92,7 @@ require_once './LoadBillDetails.php';
         <div id="stock_result" class="p-3" style="overflow-y: auto; height:300px"></div>
     </div>
 </div>
-<div class="rtl grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 px-4 mb-4">
+<div class="rtl grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 px-4 mb-4">
     <div class="bg-white rounded-lg shadow-md p-2 w-full">
         <table class="min-w-full border border-gray-800 text-gray-400 mb-5">
             <thead>
