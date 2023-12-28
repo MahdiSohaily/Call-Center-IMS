@@ -366,7 +366,8 @@ require_once './LoadBillDetails.php';
 
         document.getElementById('id').value = customerInfo.id;
         document.getElementById('mode').value = customerInfo.mode;
-        document.getElementById('name').value = customerInfo.name + " " + customerInfo.family;
+        document.getElementById('name').value = customerInfo.name;
+        document.getElementById('family').value = customerInfo.family;
         document.getElementById('phone').value = customerInfo.phone;
         document.getElementById('car').value = customerInfo.car;
         document.getElementById('address').value = customerInfo.address;
@@ -581,8 +582,8 @@ require_once './LoadBillDetails.php';
         billItems.push({
             id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
             name: "برای ویرایش دبل کلیک",
-            price: "",
-            quantity: "برای ویرایش دبل کلیک",
+            price: 0,
+            quantity: "0",
             max: 'undefined',
             partNumber: 'NOTPART'
         });
