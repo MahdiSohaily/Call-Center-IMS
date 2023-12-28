@@ -325,7 +325,6 @@ function updateBillItems($billInfo, $billItems)
     $stmt->close();
 }
 
-
 function getPartNumberId($partNumber)
 {
     $sql = "SELECT id FROM yadakshop1402.nisha WHERE partnumber = '$partNumber'";

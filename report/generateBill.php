@@ -813,7 +813,7 @@ require_once './LoadBillDetails.php';
             .then(function(response) {
                 bill_number = (response.data);
                 BillInfo.billNO = bill_number;
-                document.getElementById('billNO').value = BillInfo.id;
+                document.getElementById('billNO').value = BillInfo.billNO;
             })
             .catch(function(error) {
                 console.log(error);
