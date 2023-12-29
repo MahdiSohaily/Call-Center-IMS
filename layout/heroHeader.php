@@ -79,7 +79,7 @@ $title = '';
     <link rel="stylesheet" href="./css/persianDatepicker.css" />
 
     <!-- Icons style -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./public/css/utilities/material_icons.css" rel="stylesheet">
 
     <!-- Our custome style -->
     <link rel="stylesheet" href="./css/style.css?v=<?php echo (rand()) ?>" media="all" />
