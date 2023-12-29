@@ -52,9 +52,9 @@ require_once('./app/Controllers/TelegramPartnerController.php');
         <div class="p-4 rtl">
             <div id="tab1" class="tab-content">
                 <h1 class="text-xl py-2">ارسال پیام به گروه مخاطبین</h1>
-                <form action="post" id="message" class="flex flex-column">
-                    <textarea required class="border border-2 p-3" name="message_content" id="message_content" cols="20" rows="3" placeholder="متن پیام خود را وارد کنید..."></textarea>
-                    <div class="py-3">
+                <form action="post" id="message" class="flex flex-col">
+                    <textarea required class="w-full border border-2 p-3" name="message_content" id="message_content" cols="20" rows="3" placeholder="متن پیام خود را وارد کنید..."></textarea>
+                    <div class="py-3 block">
                         <?php
                         foreach ($categories as $category) :
                         ?>
@@ -65,6 +65,10 @@ require_once('./app/Controllers/TelegramPartnerController.php');
                         <?php
                         endforeach;
                         ?>
+                        <label class="cursor-pointer pl-5" for="all">
+                            <input type="checkbox" class="category_identifier" onclick="clickAll(this)" name="<?= $category['id'] ?>" id="<?= $category['id'] ?>">
+                            همه موارد
+                        </label>
                     </div>
                 </form>
                 <span class="d-block cursor-pointer rounded-md bg-green-400 w-32 text-white px-3 py-2 my-2 text-center" onclick="sendMessage()">ارسال پیام</span>
@@ -266,6 +270,20 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             // Remove the original lines
             lines.forEach(line => line.remove());
         });
+
+        function clickAll() {
+            // Get all checkboxes on the page
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+            // Loop through checkboxes and check each one
+            node = null;
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = true;
+                node = checkbox;
+            });
+
+            updateCategory(node);
+        }
     </script>
 
 </div>
