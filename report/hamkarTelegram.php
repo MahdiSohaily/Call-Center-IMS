@@ -271,14 +271,14 @@ require_once('./app/Controllers/TelegramPartnerController.php');
             lines.forEach(line => line.remove());
         });
 
-        function clickAll() {
+        function clickAll(element) {
             // Get all checkboxes on the page
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
             // Loop through checkboxes and check each one
             node = null;
             checkboxes.forEach(function(checkbox) {
-                checkbox.checked = true;
+                checkbox.checked = element.checked;
                 node = checkbox;
             });
 
