@@ -85,7 +85,7 @@ if ($isValidCustomer) {
                         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
                         <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
                         <input type="text" name="customer" value="1" id="target_customer" hidden>
-                        <textarea onchange="filterCode(this)" id="code" name="code" required class="h-full bg-transparent border-1 border-white ltr w-full p-3 text-white placeholder-white" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+                        <textarea onchange="filterCode(this)" id="code" name="code" required class="h-full bg-transparent border-1 border-white ltr w-full p-3 text-white placeholder-white" placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
                     </div>
                     <button type="type" class="inline-flex self-end p-3 bg-indigo-500 border-indigo-700  rounded-md font-semibold text-xs text-white hover:bg-indigo-700">
                         جستجو
