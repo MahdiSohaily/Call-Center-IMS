@@ -608,11 +608,12 @@ require_once('./views/Layouts/header.php');
         let counter = 1;
         let template = ``;
         let totalPrice = 0;
+        BillInfo.quantity = 0;
 
         for (const item of billItems) {
             const payPrice = Number(item.quantity) * Number(item.price_per);
             totalPrice += payPrice;
-
+            BillInfo.quantity += Number(item.quantity);
             template += `
             <tr id="${item.id}" class="even:bg-gray-100">
                 <td class="py-2 px-4 border-b">
@@ -645,12 +646,10 @@ require_once('./views/Layouts/header.php');
             counter++;
         }
         bill_body.innerHTML = template;
-
-        BillInfo.quantity = billItems.length;
         BillInfo.totalPrice = (totalPrice);
         BillInfo.totalInWords = numberToPersianWords(totalPrice);
 
-        document.getElementById('billNO').value = BillInfo.bill_number;
+        document.getElementById('billNO').value = BillInfo.billNO;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
