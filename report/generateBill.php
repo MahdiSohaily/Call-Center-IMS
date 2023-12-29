@@ -1,8 +1,8 @@
 <?php
 require_once './config/config.php';
 require_once './database/connect.php';
-require_once('./views/Layouts/header.php');
 require_once './LoadBillDetails.php';
+require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/persianDate.js"></script>
 <style>
@@ -869,9 +869,12 @@ require_once './LoadBillDetails.php';
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
 
+
+
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
+                console.log(data);
                 const save_message = document.getElementById('save_message');
                 save_message.classList.remove('hidden');
 

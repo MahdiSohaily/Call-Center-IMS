@@ -64,7 +64,7 @@ require_once './app/Controllers/BillFilterController.php';
             <select onchange="setUserId(this.value)" name="user_id" id="users" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <?php
                 foreach ($users as $user) : ?>
-                    <option <?= $user['id'] === $_SESSION['user_id'] ? 'checked' : '' ?> value="<?= $user['id'] ?>"><?= $user['name'] . " " . $user['family'] ?></option>
+                    <option <?= $user['id'] == $_SESSION['user_id'] ? 'selected' : '' ?> value="<?= $user['id'] ?>"><?= $user['name'] . " " . $user['family'] ?></option>
                 <?php endforeach; ?>
             </select>
             <div class="accordion flex flex-col w-full py-3">

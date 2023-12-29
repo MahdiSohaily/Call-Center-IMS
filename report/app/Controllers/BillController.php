@@ -171,7 +171,6 @@ if (isset($_POST['saveIncompleteForm'])) {
     $customerInfo = json_decode($_POST['customer_info']);
     $bill_info = json_decode($_POST['bill_info']);
     $bill_items = json_decode($_POST['bill_items']);
-
     $customerPhone = $customerInfo->phone ?? null;
     try {
         CONN->begin_transaction();
@@ -240,7 +239,7 @@ function makeBillCompleted($billInfo, $customerId)
 
     $sql = "UPDATE callcenter.bill SET 
                 customer_id = '$customerId',
-                bill_number = '$billInfo->id',
+                bill_number = '$billInfo->billNO',
                 quantity = '$billInfo->quantity',
                 discount = '$billInfo->discount',
                 tax = '$billInfo->tax',
@@ -275,7 +274,7 @@ function UpdateBill($billInfo, $customerId)
             bill_date = '$billInfo->date',
             user_id = '$user_id',
             status = 0
-            WHERE id = '$billInfo->billNO'";
+            WHERE id = '$billInfo->id'";
 
         CONN->query($sql);
 

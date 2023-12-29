@@ -1,13 +1,14 @@
 <?php
-
 $billInfo = null;
 $customerInfo = null;
 $billItems = [];
-
 if (isset($_POST['BillId'])) {
     $bill_id = $_POST['BillId'];
 
     $details = getBillInfo($bill_id);
+    if ($details['status']) {
+        header('location: ./factor.php');
+    }
 
     $billInfo = [
         'id' => $bill_id,
@@ -21,7 +22,7 @@ if (isset($_POST['BillId'])) {
         'withdraw' => $details['withdraw'],
     ];
 
-    if (isset($billInfo['customer_id'])) {
+    if ($billInfo['customer_id']) {
         $customerInfo = getCustomerInfo($billInfo['customer_id']);
     } else {
         $customerInfo = [
