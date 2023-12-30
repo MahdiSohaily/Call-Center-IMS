@@ -18,7 +18,7 @@ if ($isValidCustomer) {
             foreach ($explodedCodes as $code_index => $code) {
             ?>
                 <input type="checkbox" checked="true" name="panel" id="<?php echo $code ?>" class="hidden">
-                <label for="<?php echo $code ?>" class="relative flex items-center bg-gray-700 text-white p-4 shadow border-b border-grey hover:cursor-pointer">
+                <label for="<?php echo $code ?>" class="relative flex items-center bg-gray-700 text-white p-4 shadow border border-grey-500 hover:cursor-pointer">
                     <?php echo $code ?>
                 </label>
                 <div class="accordion__content overflow-hidden bg-grey-lighter">

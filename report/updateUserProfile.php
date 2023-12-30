@@ -31,7 +31,7 @@ if ($user) {
                             <label class="block font-medium text-sm text-gray-700">
                                 نام
                             </label>
-                            <input value="<?= $user['name'] ?>" name="name" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="serial" type="text" />
+                            <input value="<?= $user['name'] ?>" name="name" class="border mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="serial" type="text" />
                             <p class="mt-2"></p>
                         </div>
                         <!-- Price -->
@@ -39,7 +39,7 @@ if ($user) {
                             <label class="block font-medium text-sm text-gray-700">
                                 نام خانوادگی
                             </label>
-                            <input value="<?= $user['family'] ?>" name="family" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="price" type="text" />
+                            <input value="<?= $user['family'] ?>" name="family" class="border mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="price" type="text" />
                             <p class="mt-2"> </p>
                         </div>
                         <!-- Weight -->
@@ -47,14 +47,14 @@ if ($user) {
                             <label class="block font-medium text-sm text-gray-700">
                                 نام کاربری
                             </label>
-                            <input value="<?= $user['username'] ?>" name="username" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="weight" type="text" />
+                            <input value="<?= $user['username'] ?>" name="username" class="border mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="weight" type="text" />
                             <p class="mt-2"> </p>
                         </div>
                         <div class="col-span-6 sm:col-span-4">
                             <label class="block font-medium text-sm text-gray-700">
                                 پروفایل
                             </label>
-                            <input name="profile" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="profile" type="file" />
+                            <input name="profile" class="border mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="profile" type="file" />
                             <p class="mt-2"> </p>
                         </div>
                         <!-- Mobis -->
@@ -63,14 +63,14 @@ if ($user) {
                                 رمزعبور
                             </label>
                             <i onclick="togglePass(this)" class="material-icons cursor-pointer" style="position: absolute; left:5px; top: 50%">remove_red_eye</i>
-                            <input name="password" minlength="5" maxlength="20" class="border-1 mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="mobis" type="password" />
+                            <input name="password" minlength="5" maxlength="20" class="border mt-1 block w-full border-gray-300 rounded-md shadow-sm px-3 py-2" id="mobis" type="password" />
                         </div>
                         <!-- Korea section -->
                         <div class="col-span-6 sm:col-span-4">
                             <label class="block font-medium text-sm text-gray-700">
                                 نوعیت حساب کاربری
                             </label>
-                            <select name="type" class="border-1 p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="status">
+                            <select name="type" class="border p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="status">
                                 <option value="1" class="text-sm">
                                     تماس با بازار </option>
 

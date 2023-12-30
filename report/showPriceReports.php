@@ -85,7 +85,7 @@ if ($isValidCustomer) {
                         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
                         <input type="text" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
                         <input type="text" name="customer" value="1" id="target_customer" hidden>
-                        <textarea onchange="filterCode(this)" id="code" name="code" required class="h-full bg-transparent border-1 border-white ltr w-full p-3 text-white placeholder-white" placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
+                        <textarea onchange="filterCode(this)" id="code" name="code" required class="h-full bg-transparent border border-white ltr w-full p-3 text-white placeholder-white" placeholder="لطفا کد های مورد نظر خود را در خط های مجزا قرار دهید"></textarea>
                     </div>
                     <button type="type" class="inline-flex self-end p-3 bg-indigo-500 border-indigo-700  rounded-md font-semibold text-xs text-white hover:bg-indigo-700">
                         جستجو
@@ -519,7 +519,7 @@ if ($isValidCustomer) {
                                                     $value = current($givenPrice)['price'];
                                                 }
                                                 ?>
-                                                <input value="<?= $value ?>" onkeyup="update_price(this)" data-target="<?= $relation_id ?>" name="price" class="ltr price-input-custome mt-1 block w-full border-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
+                                                <input value="<?= $value ?>" onkeyup="update_price(this)" data-target="<?= $relation_id ?>" name="price" class="ltr price-input-custome mt-1 block w-full border border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="<?php echo $partNumber ?>-price" data-code="<?php echo $code ?>" type="text" />
                                                 <p class="mt-2"></p>
                                             </div>
 

@@ -8,19 +8,6 @@ $cars = $conn->query($sql);
 $status_sql = "SELECT * FROM status";
 $status = $conn->query($status_sql);
 ?>
-<style>
-    fieldset {
-        background-color: lightgray;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
-
-    legend {
-        font-size: 18px;
-        font-weight: bold;
-    }
-</style>
 <div class="rtl h-70S grid grid-cols-1 my-8 md:grid-cols-3 gap-6 lg:gap-8 p-6 lg:p-8">
     <div class="bg-white rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
@@ -31,7 +18,7 @@ $status = $conn->query($status_sql);
         </div>
 
         <div class="flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); search(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="شماره فنی ..." />
+            <input onkeyup="convertToEnglish(this); search(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="شماره فنی ..." />
         </div>
         <div class="hidden sm:block">
             <div class="py-2">
@@ -99,14 +86,14 @@ $status = $conn->query($status_sql);
                     <label class="block font-medium text-sm text-gray-700">
                         اسم رابطه
                     </label>
-                    <input name="relation_name" value="" class="border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="relation_name" type="text" />
+                    <input name="relation_name" value="" class="border text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="relation_name" type="text" />
                     <p class="mt-2"></p>
                 </div>
                 <div class="col-span-12 sm:col-span-4 mb-3">
                     <label for="cars">
                         خودرو های مرتبط
                     </label>
-                    <select id="cars" type="cars" multiple class="p-2 border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                    <select id="cars" type="cars" multiple class="p-2 border text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                         <?php
                         if (mysqli_num_rows($cars) > 0) {
                             while ($item = mysqli_fetch_assoc($cars)) {
@@ -123,7 +110,7 @@ $status = $conn->query($status_sql);
                     <label for="cars">
                         وضعیت
                     </label>
-                    <select type="status" class="border-1 p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="status">
+                    <select type="status" class="border p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="status">
                         <option value="" class="text-sm">وضعیت مورد نظر خود برای رابطه را انتخاب کنید!</option>
                         <?php
                         if (mysqli_num_rows($status) > 0) {
@@ -137,37 +124,37 @@ $status = $conn->query($status_sql);
                         } ?>
                     </select>
                 </div>
-                <fieldset>
-                    <legend> هشدار موجودی انبار یدک شاپ:</legend>
+                <fieldset class="py-5">
+                    <legend class="text-md font-bold"> هشدار موجودی انبار یدک شاپ:</legend>
                     <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
                         <div class="flex-grow">
                             <label for="original" class="block font-medium text-sm text-gray-700">
                                 مقدار اصلی
                             </label>
-                            <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
+                            <input name="price" value="0" class="ltr border text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original" type="number" min='0' />
                         </div>
                         <div class="flex-grow">
                             <label for="fake" class="block font-medium text-sm text-gray-700">
                                 مقدار غیر اصلی
                             </label>
-                            <input name="price" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
+                            <input name="price" value="0" class="ltr border text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake" type="number" min='0' />
                         </div>
                     </div>
                 </fieldset>
                 <fieldset>
-                    <legend> هشدار موجودی کلی:</legend>
+                    <legend class="text-md font-bold"> هشدار موجودی کلی:</legend>
                     <div class="col-span-12 sm:col-span-4 mb-3 flex flex-wrap gap-2 ">
                         <div class="flex-grow">
                             <label for="original" class="block font-medium text-sm text-gray-700">
                                 مقدار اصلی
                             </label>
-                            <input name="original_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original_all" type="number" min='0' />
+                            <input name="original_all" value="0" class="ltr border text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="original_all" type="number" min='0' />
                         </div>
                         <div class="flex-grow">
                             <label for="fake" class="block font-medium text-sm text-gray-700">
                                 مقدار غیر اصلی
                             </label>
-                            <input name="fake_all" value="0" class="ltr border-1 text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
+                            <input name="fake_all" value="0" class="ltr border text-sm border-gray-300 mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="fake_all" type="number" min='0' />
                         </div>
                     </div>
                 </fieldset>
@@ -176,7 +163,7 @@ $status = $conn->query($status_sql);
                     <label for="description">
                         توضیحات رابطه
                     </label>
-                    <textarea class="border-1 p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 
+                    <textarea class="border p-2 text-sm border-gray-300 mt-1 block w-full border-gray-300 
                                      focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" id="description" rows="5"></textarea>
                 </div>
         </div>
@@ -312,7 +299,7 @@ $status = $conn->query($status_sql);
         let template = '';
         for (const good of selected_goods) {
             template += `
-            <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 border-gray-300">
+            <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border border-gray-300">
                 <p class="text-sm font-semibold text-gray-600">
                     ` + good.partNumber + `
                 </p>

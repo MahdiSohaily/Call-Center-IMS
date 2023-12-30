@@ -21,7 +21,7 @@ if (isset($_GET['form'])) {
                         <h3 class="text-lg font-medium text-gray-900">
                             ویرایش نرخ ارز </h3>
 
-                        <p class="mt-1 text-sm text-gray-600">
+                        <p class=" mt-1 text-sm text-gray-600">
                             برای ویرایش نرخ ارز انتخاب شده اطلاعات ذیل را به دقت ویرایش نمایید. </p>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ if (isset($_GET['form'])) {
                                     <label class="block font-medium text-sm text-gray-700">
                                         نرخ ارز
                                     </label>
-                                    <input name="rate_price" value="<?php echo $selected_rate['amount'] ?>" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="serial" type="text" />
+                                    <input name="rate_price" value="<?php echo $selected_rate['amount'] ?>" class="border mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="serial" type="text" />
                                     <p class="mt-2"></p>
                                 </div>
 
@@ -42,7 +42,7 @@ if (isset($_GET['form'])) {
                                 <div class="col-span-6 sm:col-span-4">
                                     <label class="block font-medium text-sm text-gray-700" for="status">
                                         <span>شاخص نرخ ارز</span></label>
-                                    <select name="status" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="status">
+                                    <select name="status" class="border mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="status">
                                         <option <?php if ($selected_rate['status'] === 'A') echo 'selected' ?> class="A" value="A">A</option>
                                         <option <?php if ($selected_rate['status'] === 'B') echo 'selected' ?> class="B" value="B">B</option>
                                         <option <?php if ($selected_rate['status'] === 'C') echo 'selected' ?> class="C" value="C">C</option>
@@ -103,7 +103,7 @@ if (isset($_GET['form'])) {
                                     <label class="block font-medium text-sm text-gray-700">
                                         نرخ ارز
                                     </label>
-                                    <input name="rate_price" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="serial" type="text" />
+                                    <input name="rate_price" class="border mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" required id="serial" type="text" />
                                     <p class="mt-2"></p>
                                 </div>
 
@@ -111,7 +111,7 @@ if (isset($_GET['form'])) {
                                 <div class="col-span-6 sm:col-span-4">
                                     <label class="block font-medium text-sm text-gray-700" for="status">
                                         <span>شاخص نرخ ارز</span></label>
-                                    <select name="status" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="status">
+                                    <select name="status" class="border mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm px-3 py-2" id="status">
                                         <option class="A" value="A">A</option>
                                         <option class="B" value="B">B</option>
                                         <option class="C" value="C">C</option>

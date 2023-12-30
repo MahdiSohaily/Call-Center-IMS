@@ -14,10 +14,6 @@ require_once './app/Controllers/UserManagementController.php';
     tr:hover {
         filter: none;
     }
-
-    tr:not(:hover) {
-        /* filter: blur(3px); */
-    }
 </style>
 <div class="bg-white rounded-lg shadow-md m-5">
     <div class="rtl flex items-center justify-between p-3">
@@ -29,7 +25,7 @@ require_once './app/Controllers/UserManagementController.php';
     </div>
     <div class="p-3 table-wrapper">
         <table class="table-fixed rtl min-w-full text-sm font-light">
-            <thead id="blur" class="font-medium sticky top-20 dark:border-neutral-500" style="z-index: 99999999999999999999999999;">
+            <thead id="blur" class="font-medium sticky top-20 dark:border-neutral-500" style="z-index: 99;">
                 <tr class="bg-violet-600" style="filter: none;">
                     <th scope="col" class="text-white px-2 py-3">
                         شماره
