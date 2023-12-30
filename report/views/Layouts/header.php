@@ -282,7 +282,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
 <body id="wrapper" class="font-sans antialiased min-h-screen bg-gray-50">
     <nav id="nav" ref="nav" class="main-nav bg-white shadow-lg flex flex-col justify-between">
         <i id="close" onclick="toggleNav()" class="material-icons absolute m-3 left-0 hover:cursor-pointer">close</i>
-        <ul class="rtl flex flex-wrap flex-col pt-5 ">
+        <ul class="rtl flex flex-wrap flex-col pt-5 mt-5 ">
             <a class="cursor-pointer inline-flex items-center py-3 pr-6 text-sm font-medium 
                     leading-5 text-gray-500 hover:bg-indigo-500 hover:text-white focus:outline-none
                      transition duration-150 ease-in-out" href="../index.php">
