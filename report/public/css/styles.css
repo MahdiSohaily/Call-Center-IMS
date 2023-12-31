@@ -1,46 +1,46 @@
 /* Generated for Chrome v114.0.0.0 on Windows */
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/ad3cd4cbda94aee8578c1b622b9002f9dfe345c05870eb375a02da853d08f072.woff2")
-    format("woff2");
+  src: url("../fonts/ad3cd4cbda94aee8578c1b622b9002f9dfe345c05870eb375a02da853d08f072.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/046a76746039189feb148c360dfb82d07a1e3464d31a2078363587af6f5a1cfb.woff2")
-    format("woff2");
+  src: url("../fonts/046a76746039189feb148c360dfb82d07a1e3464d31a2078363587af6f5a1cfb.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/d783603a0dd07db6896ecd8a3460e2256a48dca62373a0478706a05490c1a2d8.woff2")
-    format("woff2");
+  src: url("../fonts/d783603a0dd07db6896ecd8a3460e2256a48dca62373a0478706a05490c1a2d8.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/fc6648da06acebfe96ad5a8f077f569c5c4dd75b77122951723ddfbfeb191728.woff2")
-    format("woff2");
+  src: url("../fonts/fc6648da06acebfe96ad5a8f077f569c5c4dd75b77122951723ddfbfeb191728.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/3b2277e82a583c9f91de41aa9e198a14d7ef7f4ccd04828abdd623acd116a88b.woff2")
-    format("woff2");
+  src: url("../fonts/3b2277e82a583c9f91de41aa9e198a14d7ef7f4ccd04828abdd623acd116a88b.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/71671477a4b62305fbd3ed4976a31c3c08520cf914656ece6b79543524a49132.woff2")
-    format("woff2");
+  src: url("../fonts/71671477a4b62305fbd3ed4976a31c3c08520cf914656ece6b79543524a49132.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
 }
+
 /* CACHED: 2023-06-25T04:00:09+04:30 */
 /* Powered by FontServer.ir */
 .width-20 {
@@ -503,7 +503,7 @@ select[data-multi-select-plugin] {
   transition: all 0.4s cubic-bezier(0.865, 0.14, 0.095, 0.87);
 }
 
-input[name="panel"]:checked ~ .accordion__content {
+input[name="panel"]:checked~.accordion__content {
   /* Get this as close to what height you expect */
   max-height: 150000em;
 }
@@ -702,8 +702,8 @@ input[name="panel"]:checked ~ .accordion__content {
 .custome-tooltip-2 {
   position: absolute;
   display: none;
-  top: 15%;
-  left: 90%;
+  bottom: -10%;
+  left: 60%;
   transform: translateX(-50%);
   padding: 10px;
   border-radius: 5px;
