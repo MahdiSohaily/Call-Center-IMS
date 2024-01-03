@@ -21,11 +21,11 @@ function getFirstLetters($string)
 function givenPrice($con)
 {
     $sql = "SELECT 
-prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family
-FROM ((shop.prices 
-INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
-INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
-ORDER BY prices.created_at DESC LIMIT 40";
+            prices.price, prices.partnumber, users.username,customer.id AS customerID, users.id as userID, prices.created_at, customer.name, customer.family
+            FROM ((shop.prices 
+            INNER JOIN callcenter.customer ON customer.id = prices.customer_id )
+            INNER JOIN yadakshop1402.users ON users.id = prices.user_id)
+            ORDER BY prices.created_at DESC LIMIT 40";
     $result = mysqli_query($con, $sql);
 
 
@@ -37,7 +37,6 @@ ORDER BY prices.created_at DESC LIMIT 40";
     }
     return  $givenPrices;
 }
-// Assuming you have a database connection ($con) established
 
 // Fetch distinct users from the database
 $sqlDistinctUsers = "SELECT DISTINCT user FROM incoming";
@@ -57,12 +56,17 @@ foreach ($users as $user) {
     $datetimeData[$user] = [
         'total' => 0,
         'currentHour' => 0,
+        'receivedCall' => 0,
+        'answeredCall' => 0
     ];
 }
 
 $sqlTotal = "SELECT * FROM incoming 
              WHERE starttime IS NOT NULL 
-             AND time >= CURDATE()";
+             AND time >= '2023-12-20 13:16:18'";
+// $sqlTotal = "SELECT * FROM incoming 
+//              WHERE starttime IS NOT NULL 
+//              AND time >= CURDATE()";
 $resultTotal = mysqli_query($con, $sqlTotal);
 
 if ($resultTotal) {
@@ -76,10 +80,29 @@ if ($resultTotal) {
             // Check if the array key exists before accessing it
             if (array_key_exists($user, $datetimeData) && array_key_exists('total', $datetimeData[$user])) {
                 $datetimeData[$user]['total'] += ($endtime - $starttime);
+                $datetimeData[$user]['answeredCall'] += 1;
             }
         }
     }
 }
+
+
+
+$sqlReceived = "SELECT * FROM incoming 
+             WHERE time >= '2023-12-20 13:16:18'";
+$resultReceived = mysqli_query($con, $sqlReceived);
+
+if ($resultReceived) {
+    while ($row = mysqli_fetch_assoc($resultReceived)) {
+        $user = $row['user'];
+
+        if (array_key_exists($user, $datetimeData)) {
+            $datetimeData[$user]['receivedCall'] += 1;
+        }
+    }
+}
+
+print_r(json_encode($datetimeData));
 
 $sqlCurrentHour = "SELECT * FROM incoming 
                    WHERE starttime IS NOT NULL 
