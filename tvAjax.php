@@ -76,6 +76,32 @@ if ($status == 'on') :
                 endforeach;
                 ?>
             </tr>
+            <tr>
+                <td>
+                    <b>
+                        تماس های دریافتی
+                    </b>
+                </td>
+                <?php
+                foreach ($datetimeData as $key => $value) : ?>
+                    <td style='text-align: center;'><?= ($value['receivedCall']) ?></td>
+                <?php
+                endforeach;
+                ?>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        تماس های پاسخ داده شده
+                    </b>
+                </td>
+                <?php
+                foreach ($datetimeData as $key => $value) : ?>
+                    <td style='text-align: center;'><?= ($value['answeredCall']) ?></td>
+                <?php
+                endforeach;
+                ?>
+            </tr>
         </table>
         <i style="cursor: pointer;" onclick="openFullscreen()" class="material-icons handler">aspect_ratio</i>
         <i style="cursor: pointer;" onclick="closeFullscreen()" class="material-icons handler">border_clear</i>
