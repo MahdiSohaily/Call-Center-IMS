@@ -63,7 +63,7 @@ foreach ($users as $user) {
 
 $sqlTotal = "SELECT * FROM incoming 
              WHERE starttime IS NOT NULL 
-             AND time >= '2023-12-20 13:16:18'";
+             AND time >= '2023-12-29 13:16:18'";
 // $sqlTotal = "SELECT * FROM incoming 
 //              WHERE starttime IS NOT NULL 
 //              AND time >= CURDATE()";
@@ -87,7 +87,7 @@ if ($resultTotal) {
 }
 
 $sqlReceived = "SELECT * FROM incoming 
-             WHERE time >= '2023-12-20 13:16:18'";
+             WHERE time >= '2023-12-29 13:16:18'";
 $resultReceived = mysqli_query($con, $sqlReceived);
 
 if ($resultReceived) {
