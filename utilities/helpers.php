@@ -57,7 +57,8 @@ foreach ($users as $user) {
         'total' => 0,
         'currentHour' => 0,
         'receivedCall' => 0,
-        'answeredCall' => 0
+        'answeredCall' => 0,
+        'successRate' => 0,
     ];
 }
 
@@ -86,7 +87,7 @@ if ($resultTotal) {
 
 $sqlReceived = "SELECT * FROM incoming 
                 WHERE time >= CURDATE()";
-                
+
 $resultReceived = mysqli_query($con, $sqlReceived);
 
 if ($resultReceived) {
@@ -124,6 +125,10 @@ if ($resultCurrentHour) {
 // Sort the users based on total call times
 uasort($datetimeData, 'compareTotalCallTimes');
 uasort($datetimeData, 'compareTotalCallTimes2');
+
+foreach ($datetimeData as &$data) {
+    $data['successRate'] = floor(($data['answeredCall'] * 100) / 100);
+}
 
 function compareTotalCallTimes($a, $b)
 {
