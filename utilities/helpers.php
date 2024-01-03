@@ -86,8 +86,6 @@ if ($resultTotal) {
     }
 }
 
-
-
 $sqlReceived = "SELECT * FROM incoming 
              WHERE time >= '2023-12-20 13:16:18'";
 $resultReceived = mysqli_query($con, $sqlReceived);
@@ -101,8 +99,6 @@ if ($resultReceived) {
         }
     }
 }
-
-print_r(json_encode($datetimeData));
 
 $sqlCurrentHour = "SELECT * FROM incoming 
                    WHERE starttime IS NOT NULL 
