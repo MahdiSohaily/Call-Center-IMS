@@ -222,6 +222,63 @@ function copyPrice(elem) {
   }
 }
 
+// A function to copy content to cliboard
+function copyItemsWith(elem) {
+  try {
+    // Get the text field
+    let parentElement = document.getElementById("priceReport");
+
+    let tdElements = parentElement.getElementsByTagName("td");
+    let tdTextContent = [];
+
+    const elementLength = tdElements.length;
+
+    const dash = ["موجود نیست", "نیاز به بررسی"];
+    const space = ["کد اشتباه", "نیاز به قیمت"];
+
+    for (let i = 0; i < elementLength; i++) {
+      if (tdElements[i].textContent.trim() !== "content_copy") {
+        let text = "";
+        if (dash.includes(tdElements[i].textContent.trim())) {
+          text = "skip";
+        } else if (space.includes(tdElements[i].textContent.trim())) {
+          text = "skip";
+        } else {
+          text = tdElements[i].textContent.trim();
+        }
+
+        tdTextContent.push(text);
+      }
+    }
+
+    const chunkSize = 2;
+    tdTextContent = tdTextContent.filter((td) => td.length > 0);
+
+    let finalResult = [];
+    const size = tdTextContent.length;
+    for (let i = 0; i < size; i += chunkSize) {
+      finalResult.push(tdTextContent.slice(i, i + chunkSize));
+    }
+
+    const filteredResult = finalResult.filter((item) => item[1] !== "skip");
+
+    // Copy the text inside the text field
+    let text = "";
+    for (let item of filteredResult) {
+      text += item.join(" : ");
+      text += "\n";
+    }
+    copyToClipboard(text.trim());
+    // Alert the copied text
+    elem.innerHTML = `done`;
+    setTimeout(() => {
+      elem.innerHTML = `content_copy`;
+    }, 1500);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 function copyItemPrice(elem) {
   // Get the parent <td> element
   var parentTd = elem.parentNode;
@@ -430,47 +487,51 @@ elementsWithDataRelation.forEach((element) => {
   }
 });
 
-
 function filterCode(element) {
   const message = element.value;
   if (!message) {
-      return '';
+    return "";
   }
 
   const codes = message.split("\n");
 
-  const filteredCodes = codes.map(function(code) {
-      code = code.replace(/\[[^\]]*\]/g, '');
+  const filteredCodes = codes
+    .map(function (code) {
+      code = code.replace(/\[[^\]]*\]/g, "");
       const parts = code.split(/[:,]/, 2);
-      const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-      return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-  }).filter(Boolean);
+      const rightSide = (parts[1] || "").replace(/[^a-zA-Z0-9 ]/g, " ").trim();
+      return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, " ").trim();
+    })
+    .filter(Boolean);
 
-  const finalCodes = filteredCodes.filter(function(item) {
-      const data = item.split(" ");
-      if (data[0].length > 4) {
-          return item;
+  const finalCodes = filteredCodes.filter(function (item) {
+    const data = item.split(" ");
+    if (data[0].length > 4) {
+      return item;
+    }
+  });
+
+  const mappedFinalCodes = finalCodes.map(function (item) {
+    const parts = item.split(" ");
+    if (parts.length >= 2) {
+      const partOne = parts[0];
+      const partTwo = parts[1];
+      if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
+        return partOne + partTwo;
       }
+    }
+    return parts[0];
   });
 
-  const mappedFinalCodes = finalCodes.map(function(item) {
-      const parts = item.split(' ');
-      if (parts.length >= 2) {
-          const partOne = parts[0];
-          const partTwo = parts[1];
-          if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
-              return partOne + partTwo;
-          }
-      }
-      return parts[0];
+  const nonConsecutiveCodes = mappedFinalCodes.filter(function (item) {
+    const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
+    return !consecutiveChars;
   });
 
-  const nonConsecutiveCodes = mappedFinalCodes.filter(function(item) {
-      const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
-      return !consecutiveChars;
-  });
-
-  element.value = nonConsecutiveCodes.map(function(item) {
-      return item.split(' ')[0];
-  }).join("\n") + "\n";
+  element.value =
+    nonConsecutiveCodes
+      .map(function (item) {
+        return item.split(" ")[0];
+      })
+      .join("\n") + "\n";
 }
