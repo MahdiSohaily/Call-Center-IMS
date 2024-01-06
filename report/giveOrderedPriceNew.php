@@ -81,7 +81,7 @@ if ($isValidCustomer) {
                 </table>
             </div>
             <div class="m-2 p-2 w-1/4 bg-gray-600 relative">
-                <form class="rtl w-full h-full border border-white flex gap-2 p-2 " target="_blank" action="giveOrderedPrice.php" method="post">
+                <form class="rtl w-full h-full border border-white flex gap-2 p-2 " target="_blank" action="giveOrderedPriceNew.php" method="post">
                     <div class="w-5/6 h-full">
                         <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
                         <input type="text" name="user" value="<?= $_SESSION["id"] ?>" hidden>
