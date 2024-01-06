@@ -48,8 +48,17 @@ require_once('./views/Layouts/header.php');
 
         const filteredCodes = codes.map(function(code) {
             code = code.replace(/\[[^\]]*\]/g, '');
+
             const parts = code.split(/[:,]/, 2);
+
+            // Check if parts[1] contains a forward slash
+            if (parts[1] && parts[1].includes('/')) {
+                // Remove everything after the forward slash
+                parts[1] = parts[1].split('/')[0];
+            }
+
             const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, '').trim();
+
             return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, '').trim();
         }).filter(Boolean);
 

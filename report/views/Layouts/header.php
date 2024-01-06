@@ -110,16 +110,16 @@ $_SESSION["user_id"] = $_SESSION["id"];
 
     <!-- Fonts -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <link href="./public/css/material_icons.css" rel="stylesheet">
-    <script src="./public/js/index.js"></script>
+    <link href="./public/css/material_icons.css?v=<?= rand() ?>" rel="stylesheet">
+    <script src="./public/js/index.js?v=<?= rand() ?>"></script>
     <link rel="stylesheet" href="./public/css/styles.css?v=<?= rand() ?>">
     <script src="./public/js/axios.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"> -->
     </script>
     <script src="./public/js/jquery.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./public/css/select2.css">
-    <script src="./public/js/select2.js"></script>
-    <script src="./public/js/copy.js"></script>
+    <link rel="stylesheet" href="./public/css/select2.css?v=<?= rand() ?>">
+    <script src="./public/js/select2.js?v=<?= rand() ?>"></script>
+    <script src="./public/js/copy.js?v=<?= rand() ?>"></script>
     <script>
         const seekExist = (e) => {
             const element = e;
