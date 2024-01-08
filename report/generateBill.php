@@ -22,7 +22,7 @@ require_once('./views/Layouts/header.php');
             </h2>
         </div>
         <div class="relative flex justify-center px-3">
-            <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
             <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchCustomer('');
                                                                                     document.getElementById('customer_name').value = '';
@@ -47,7 +47,7 @@ require_once('./views/Layouts/header.php');
             </h2>
         </div>
         <div class="relative flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); searchPartNumber(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="کد فنی قطعه مورد نظر را وارد کنید..." />
+            <input onkeyup="convertToEnglish(this); searchPartNumber(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="کد فنی قطعه مورد نظر را وارد کنید..." />
             <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchPartNumber('');
                                                                                     document.getElementById('serial').value = '';
@@ -76,7 +76,7 @@ require_once('./views/Layouts/header.php');
         </div>
 
         <div class="relative flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border-1 text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
             <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchInStock('');
                                                                                     document.getElementById('stock_partNumber').value = '';
@@ -195,9 +195,9 @@ require_once('./views/Layouts/header.php');
             <table class="min-w-full border border-gray-800 text-gray-400">
                 <thead>
                     <tr class="bg-gray-800">
-                        <th class="py-2 px-4 border-b text-white w-10">ردیف</th>
+                        <th class="py-2 px-4 border-b text-white w-10">#</th>
                         <!-- <th class="py-2 px-4 border-b text-white">کد فنی</th> -->
-                        <th class="py-2 px-4 border-b text-white w-2/4">نام قطعه</th>
+                        <th class="py-2 px-4 border-b text-white text-right w-2/4">نام قطعه</th>
                         <th class="py-2 px-4 border-b text-white w-18"> تعداد</th>
                         <th class="py-2 px-4 border-b text-white  w-18"> قیمت</th>
                         <th class="py-2 px-4 border-b text-white  w-18"> قیمت کل</th>
@@ -315,7 +315,7 @@ require_once('./views/Layouts/header.php');
                         if (response.data.length > 0) {
                             for (const customer of response.data) {
                                 template += `
-                                    <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 border-gray-300">
+                                    <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border border-gray-300">
                                         <p class="text-sm font-semibold text-gray-600">
                                             ` + customer.name + `
                                             ` + customer.family + `
@@ -337,7 +337,7 @@ require_once('./views/Layouts/header.php');
                             }
                         } else {
                             template += `
-                                    <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 border-gray-300">
+                                    <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border border-gray-300">
                                         <p class="text-sm font-semibold text-gray-600">
                                            مشتری ای با مشخصات وارده در سیستم موجود نیست
                                         </p>
@@ -399,7 +399,7 @@ require_once('./views/Layouts/header.php');
 
                         resultBox.innerHTML = createPartNumberTemplate(data);
                     } else {
-                        resultBox.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                        resultBox.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
                                 <p class="text-sm font-semibold text-white">
                                       کد مد نظر شما موجود نیست.
@@ -438,7 +438,7 @@ require_once('./views/Layouts/header.php');
 
                         stock_result.innerHTML = createStockTemplate(data);
                     } else {
-                        stock_result.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                        stock_result.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                                                     <div class="w-full py-3 flex justify-between items-center">      
                                                         <p class="text-sm font-semibold text-white">
                                                             کد مد نظر شما موجود نیست.
@@ -459,7 +459,7 @@ require_once('./views/Layouts/header.php');
         let template = ``;
         for (const item of data) {
             template += `
-                        <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                        <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
                                 <p class="text-sm font-semibold text-white">
                                        ${item.partnumber}
@@ -494,7 +494,7 @@ require_once('./views/Layouts/header.php');
         let template = ``;
         for (const item of data) {
             template += `
-                        <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border-1 bg-gray-800">
+                        <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
                                 <p class="text-sm font-semibold text-white">
                                     ${item.partnumber}
@@ -615,13 +615,13 @@ require_once('./views/Layouts/header.php');
             totalPrice += payPrice;
             BillInfo.quantity += Number(item.quantity);
             template += `
-            <tr id="${item.id}" class="even:bg-gray-100">
-                <td class="py-2 px-4 border-b">
+            <tr id="${item.id}" class="even:bg-gray-100 border-gray-800">
+                <td class="py-3 px-4 w-10">
                     <span>${counter}</span>
                 </td>
-                <td class="relative py-2 px-4 border-b" ondblclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
+                <td class="relative py-3 px-4 w-2/4" onclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
                     <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.partName}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-42" value="${item.partName}" />
+                    <input type="text" class="w-2/4 p-2 border text-gray-500 hidden w-42" value="${item.partName}" />
                     <div class="absolute left-0 top-2 flex flex-wrap gap-1 w-42">
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">اصلی</span>
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">چین</span>
@@ -630,16 +630,16 @@ require_once('./views/Layouts/header.php');
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','متفرقه')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">متفرقه</span>
                     </div>
                 </td>
-                <td class="w-12 py-2 px-4 border-b" ondblclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-12" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
+                    <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
+                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-10" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
-                <td class="py-2 px-4 border-b" ondblclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-32" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
+                <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
+                    <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
+                    <input type="text" style="direction:ltr !important;" class=" w-10 p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
-                <td class="py-2 px-4 border-b">${formatAsMoney(payPrice)}</td>
-                <td class="py-2 px-4 border-b w-12 h-12 font-medium">
+                <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
+                <td class="text-center py-3 px-4 w-18 h-12 font-medium">
                     <img onclick="deleteItem(${item.id})" class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
                 </td>
             </tr> `;
@@ -663,6 +663,7 @@ require_once('./views/Layouts/header.php');
         // Make input visible and set focus
         input.classList.remove('hidden');
         input.focus();
+        input.select();
 
         // Hide the span
         span.classList.add('hidden');
