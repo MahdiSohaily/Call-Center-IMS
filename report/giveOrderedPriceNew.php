@@ -23,8 +23,8 @@ if ($isValidCustomer) {
                             <th class="text-left px-3 py-2">کد فنی</th>
                             <th class="text-left px-3 py-2">قیمت</th>
                             <th class="text-right  py-2" onclick="closeTab()">
-                                <i id="copy_all" title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-2 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                                 <i id="copy_all" title="کاپی کردن مقادیر دارای قیمت" onclick="copyItemsWith(this)" class="text-xl pr-1 text-sm material-icons hover:cursor-pointer text-green-500">content_copy</i>
+                                <i id="copy_all" title="کاپی کردن مقادیر" onclick="copyPrice(this)" class="text-xl pr-2 text-sm material-icons hover:cursor-pointer text-rose-500">content_copy</i>
                             </th>
                         </tr>
                     </thead>
