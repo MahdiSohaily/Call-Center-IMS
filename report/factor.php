@@ -182,9 +182,22 @@ require_once './app/Controllers/BillFilterController.php';
                     `;
                     }
                 } else {
-                    completed_bill.innerHTML = `<div class="flex justify-between">
-                        <p>فاکتوری ثبت نشده است.</p>
-                    </div>`;
+                    completed_bill.innerHTML = `<div class="flex flex-col justify-center items-center h-24 border border-rose-400 p-3 rounded shadow-sm shadow-rose-300 bg-rose-300">
+                            <svg width="40px" height="40px" viewBox="0 -0.5 17 17" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-folder-error mb-2">
+                                <title>938</title>
+                                <defs>
+                                </defs>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(1.000000, 2.000000)" fill="#fff">
+                                        <path d="M7.35,3 L5.788,0.042 L2.021,0.042 L2.021,1.063 L0.023,1.063 L0.023,10.976 L1.043,10.976 L1.045,11.976 L15.947,11.976 L15.968,3 L7.35,3 L7.35,3 Z M10.918,9.109 L10.09,9.938 L8.512,8.361 L6.934,9.938 L6.104,9.109 L7.682,7.531 L6.104,5.953 L6.934,5.125 L8.512,6.701 L10.088,5.125 L10.918,5.953 L9.34,7.531 L10.918,9.109 L10.918,9.109 Z" class="si-glyph-fill"></path>
+                                        <path d="M13.964,1.982 L13.964,1.042 L8.024,1.042 L8.354,1.982 L13.964,1.982 Z" class="si-glyph-fill"></path>
+                                    </g>
+                                </g>
+                            </svg>      
+                            <p class="text-sm text-white">فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
+                        </div>`;
                 }
             })
             .catch(function(error) {
@@ -243,9 +256,9 @@ require_once './app/Controllers/BillFilterController.php';
                 } else {
                     incomplete_bill.innerHTML = `
                         <div class="flex flex-col justify-center items-center h-24 border border-orange-400 p-3 rounded shadow-sm shadow-orange-300 bg-orange-300">
-                        <svg   svg width="40px" height="40px" viewBox="0 -0.5 17 17" version="1.1"
+                            <svg width="40px" height="40px" viewBox="0 -0.5 17 17" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-folder-error">
+                                xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-folder-error mb-2">
                                 <title>938</title>
                                 <defs>
                                 </defs>
