@@ -279,6 +279,7 @@ require_once './app/Controllers/BillFilterController.php';
     function createIncompleteBill() {
         const params = new URLSearchParams();
         params.append('create_incomplete_bill', 'create_incomplete_bill');
+        params.append('date', moment().locale('fa').format('YYYY-MM-DD'));
 
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {

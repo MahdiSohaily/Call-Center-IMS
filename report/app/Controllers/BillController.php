@@ -343,7 +343,7 @@ function getPartNumberId($partNumber)
 if (isset($_POST['create_incomplete_bill'])) {
 
     $incompleteBillId = createBill([
-        'date' => 'null',
+        'date' => $_POST['date'],
         'total' => 0,
         'quantity' => 0,
         'tax' => 0,
