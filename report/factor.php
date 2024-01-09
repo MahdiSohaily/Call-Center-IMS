@@ -143,7 +143,6 @@ require_once './app/Controllers/BillFilterController.php';
     }
 
     function getUserSavedBills() {
-        console.log(user_id);
         const completed_bill = document.getElementById('completed_bill');
 
         const params = new URLSearchParams();
@@ -209,7 +208,7 @@ require_once './app/Controllers/BillFilterController.php';
                 if (factors.length > 0) {
                     for (const factor of factors) {
                         incomplete_bill.innerHTML += `
-                        <div ondblclick="submitForm('form-${factor.id}')" title="برای بارگذاری دبل کلیک نمایید" class="flex flex-col justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
+                        <div class="flex flex-col justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                             <div class="flex justify-between">
                                 <p class="text-sm">
                                     شماره فاکتور:
@@ -234,6 +233,9 @@ require_once './app/Controllers/BillFilterController.php';
                                 <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
                                     <input type="hidden" name="BillId" value="${factor.id}">
                                 </form>
+                            </div>
+                            <div onclick="submitForm('form-${factor.id}')" class="absolute left-0 right-0 bottom-2 flex justify-center">
+                                <span class="px-5 py-1 rounded-sm text-xs text-center text-white bg-indigo-400 text-white"> ویرایش</span>
                             </div>
                         </div>
                             `;
@@ -304,7 +306,6 @@ require_once './app/Controllers/BillFilterController.php';
     }
 
     bootStrap();
-    // getUsers()
 </script>
 <?php
 require_once('./views/Layouts/footer.php');

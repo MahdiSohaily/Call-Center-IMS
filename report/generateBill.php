@@ -52,7 +52,6 @@ require_once('./views/Layouts/header.php');
                                                                                     searchPartNumber('');
                                                                                     document.getElementById('serial').value = '';
                                                                                 })();" src="./public/img/clear.svg" alt="customer icon">
-
         </div>
         <div class="hidden sm:block">
             <div class="py-2">
