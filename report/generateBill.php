@@ -633,11 +633,11 @@ require_once('./views/Layouts/header.php');
                 </td>
                 <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
                     <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border border-1 hidden w-10" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                    <input type="number" style="direction:ltr !important;" class="p-2 border border-1 hidden w-16" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
                 <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
                     <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
-                    <input type="text" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
+                    <input type="number" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">

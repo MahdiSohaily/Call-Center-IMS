@@ -410,9 +410,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function saveInvoice() {
-        console.log(BillInfo);
-        // window.print();
-
+        window.print();
         var params = new URLSearchParams();
         params.append('saveInvoice', 'saveInvoice');
         params.append('customerInfo', JSON.stringify(customerInfo));
