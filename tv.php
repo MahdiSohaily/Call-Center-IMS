@@ -224,7 +224,7 @@
                  <?php
                     foreach ($datetimeData as $key => $value) : ?>
                      <td style='text-align: center;'>
-                         <?= ($value['answeredCall']) ?>
+                         <?= ($value['answeredCall'] * 100) / $value['receivedCall'] ?>
                      </td>
                  <?php
                     endforeach;
