@@ -155,6 +155,7 @@ if (isset($_POST['saveInvoice'])) {
             }
         }
         makeBillCompleted($BillInfo, $customer_id);
+        registerFactorNumber($BillInfo->billNO, $customerInfo->name . ' ' . $customerInfo->family);
         updateBillItems($BillInfo, $billItems);
         CONN->commit();
     } catch (Exception $e) {
@@ -191,6 +192,20 @@ if (isset($_POST['saveIncompleteForm'])) {
 
         echo "error: " . $e;
     }
+}
+
+function registerFactorNumber($billNO, $customer)
+{
+    $user_id = $_SESSION['user_id'];
+    $sql = "INSERT INTO callcenter.shomarefaktor (shomare, kharidar,user) VALUES 
+    ('$billNO', '$customer', '$user_id')";
+    CONN->query($sql);
+
+    // Retrieve the last inserted ID
+    $lastInsertedId = CONN->insert_id;
+
+    // Return the last inserted ID
+    return $lastInsertedId;
 }
 
 function getCustomerId($customer)
