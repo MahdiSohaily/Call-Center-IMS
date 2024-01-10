@@ -127,7 +127,8 @@ uasort($datetimeData, 'compareTotalCallTimes');
 uasort($datetimeData, 'compareTotalCallTimes2');
 
 foreach ($datetimeData as &$data) {
-    $data['successRate'] = floor(($data['answeredCall'] * 100) / $data['receivedCall']);
+    if ($data['receivedCall'] !== 0)
+        $data['successRate'] = floor(($data['answeredCall'] * 100) / $data['receivedCall']);
 }
 
 function compareTotalCallTimes($a, $b)
