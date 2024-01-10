@@ -352,7 +352,14 @@ if (isset($_POST['create_incomplete_bill'])) {
         'totalInWords' => null
     ]);
 
-    $incompleteBillDetails = createBillItemsTable($incompleteBillId, '[]');
+    $incompleteBillDetails = createBillItemsTable($incompleteBillId, '[{
+            "id": 5892295,
+            "partName": "اسم قطعه را وارد کنید.",
+            "price_per": 0,
+            "quantity": "0",
+            "max": "undefined",
+            "partNumber": "NOTPART"
+        }]');
 
     echo $incompleteBillId;
 }

@@ -205,7 +205,7 @@ require_once('./views/Layouts/header.php');
                         </th>
                     </tr>
                 </thead>
-                <tbody id="bill_body">
+                <tbody id="bill_body" class="text-gray-800">
                 </tbody>
             </table>
             <img class="cursor-pointer" onclick="addManually()" src="./public/img/add.svg" alt="add icon">
@@ -584,13 +584,14 @@ require_once('./views/Layouts/header.php');
     function addManually() {
         billItems.push({
             id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
-            partName: "برای ویرایش دبل کلیک",
+            partName: "اسم قطعه را وارد کنید.",
             price_per: 0,
             quantity: "0",
             max: 'undefined',
             partNumber: 'NOTPART'
         });
         displayBill();
+        console.log(billItems);
     }
 
     function updateBillInfo(element) {
@@ -632,11 +633,11 @@ require_once('./views/Layouts/header.php');
                 </td>
                 <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
                     <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="text" style="direction:ltr !important;" class="p-2 border hidden w-10" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                    <input type="text" style="direction:ltr !important;" class="p-2 border border-1 hidden w-10" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
                 <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
                     <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
-                    <input type="text" style="direction:ltr !important;" class=" w-10 p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
+                    <input type="text" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">
