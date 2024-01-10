@@ -121,7 +121,7 @@ if (isset($_POST['getFactorNumber'])) {
 
 function getFactorNumber()
 {
-    $sql = "SELECT id, bill_number FROM callcenter.bill WHERE bill_number != '0' ORDER BY bill_number DESC LIMIT 1";
+    $sql = "SELECT shomare FROM callcenter.shomarefaktor ORDER BY id DESC LIMIT 1";
     $stmt = CONN->prepare($sql);
 
     $stmt->execute();
@@ -130,7 +130,7 @@ function getFactorNumber()
     $stmt->close();
 
     if ($result->num_rows > 0) {
-        return $result->fetch_assoc()['bill_number'] + 1;
+        return $result->fetch_assoc()['shomare'] + 1;
     } else {
         return 1;
     }

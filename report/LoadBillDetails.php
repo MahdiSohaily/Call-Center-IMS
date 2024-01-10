@@ -97,7 +97,7 @@ function getBillItems($bill_id)
 
 function getLastBillNumber()
 {
-    $sql = "SELECT bill_number FROM callcenter.bill ORDER BY id DESC LIMIT 1";
+    $sql = "SELECT shomare FROM callcenter.shomarefaktor ORDER BY id DESC LIMIT 1";
     $stmt = CONN->prepare($sql);
 
     $stmt->execute();
