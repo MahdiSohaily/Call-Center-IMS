@@ -104,7 +104,7 @@ function getLastBillNumber()
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        return $result->fetch_assoc()['bill_number'];
+        return $result->fetch_assoc()['shomare'];
     } else {
         return 0;
     }
