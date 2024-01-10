@@ -370,6 +370,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('name').value = customerInfo.name;
         document.getElementById('family').value = customerInfo.family;
         document.getElementById('phone').value = customerInfo.phone;
+        document.getElementById('phone').setAttribute('readOnly', true);
         document.getElementById('car').value = customerInfo.car;
         document.getElementById('address').value = customerInfo.address;
         document.getElementById('customer_name').value = '';
