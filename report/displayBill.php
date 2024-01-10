@@ -215,7 +215,7 @@ require_once('./views/Layouts/header.php');
     <div class="customer_info">
         <ul>
             <li class="text-sm">
-                نام و نام خانوادگی :
+                نام :
                 <span id="name"></span>
             </li>
             <li class="text-sm">
@@ -228,12 +228,12 @@ require_once('./views/Layouts/header.php');
         <table>
             <thead>
                 <tr style="padding: 10px !important;">
-                    <th>ردیف</th>
-                    <!-- <th>کد فنی</th> -->
-                    <th>نام قطعه</th>
-                    <th> تعداد</th>
-                    <th> قیمت</th>
-                    <th> قیمت کل</th>
+                    <th class="text-right">ردیف</th>
+                    <!-- <th class="text-right">کد فنی</th> -->
+                    <th class="text-right">نام قطعه</th>
+                    <th class="text-right"> تعداد</th>
+                    <th class="text-right"> قیمت</th>
+                    <th class="text-right"> قیمت کل</th>
                 </tr>
             </thead>
             <tbody id="bill_body">
@@ -392,7 +392,7 @@ require_once('./views/Layouts/header.php');
     function handleSaveAsPdfClick() {
         const content = document.getElementById('bill_body_pdf');
         const opt = {
-            filename: 'myfile.pdf',
+            filename: BillInfo.billNO + '-' + customerInfo.name + " " + customerInfo.family ?? '' + '.pdf',
             image: {
                 type: 'jpeg',
                 quality: 0.98
