@@ -375,6 +375,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('address').value = customerInfo.address;
         document.getElementById('customer_name').value = '';
         customer_results.innerHTML = "";
+        displayBill();
     }
 
     function searchPartNumber(pattern) {
@@ -627,8 +628,8 @@ require_once('./views/Layouts/header.php');
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">اصلی</span>
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">چین</span>
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','کره')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">کره</span>
-                        <span style="font-size:11px" onclick="appendSufix('${item.id}','سانتافه')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">سانتافه</span>
                         <span style="font-size:11px" onclick="appendSufix('${item.id}','متفرقه')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">متفرقه</span>
+                        <span style="font-size:11px" onclick="appendCarSufix('${item.id}','${customerInfo.car}')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">${customerInfo.car}</span>
                     </div>
                 </td>
                 <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
@@ -731,6 +732,18 @@ require_once('./views/Layouts/header.php');
 
                 let result = lastIndex !== -1 ? partName.substring(0, lastIndex) : partName;
                 billItems[i].partName = result + ' - ' + suffix;
+            }
+        }
+        displayBill();
+    }
+
+    function appendCarSufix(itemId, suffix) {
+        for (let i = 0; i < billItems.length; i++) {
+            if (billItems[i].id == itemId) {
+
+                const partName = billItems[i].partName;
+                let lastIndex = partName;
+                billItems[i].partName = partName + ' ' + suffix;
             }
         }
         displayBill();
