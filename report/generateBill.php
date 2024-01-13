@@ -13,7 +13,7 @@ require_once('./views/Layouts/header.php');
         cursor: pointer;
     }
 </style>
-<div style="height: 450px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6  px-2 mb-3">
+<div style="height: 350px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6  px-2 mb-3">
     <div class="bg-white min-h-full rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
