@@ -587,7 +587,7 @@ require_once('./views/Layouts/header.php');
             id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
             partName: "اسم قطعه را وارد کنید.",
             price_per: 0,
-            quantity: "0",
+            quantity: 1,
             max: 'undefined',
             partNumber: 'NOTPART'
         });

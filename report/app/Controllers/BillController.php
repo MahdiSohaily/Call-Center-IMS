@@ -371,7 +371,7 @@ if (isset($_POST['create_incomplete_bill'])) {
             "id": 5892295,
             "partName": "اسم قطعه را وارد کنید.",
             "price_per": 0,
-            "quantity": "0",
+            "quantity": 1,
             "max": "undefined",
             "partNumber": "NOTPART"
         }]');
