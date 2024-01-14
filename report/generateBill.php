@@ -912,7 +912,11 @@ require_once('./views/Layouts/header.php');
                 console.log(error);
             });
     }
-    getBillNumber();
+    <?php if (!$billInfo['billNO']) {
+
+        echo 'getBillNumber()';
+    }
+    ?>
 </script>
 <?php
 require_once('./views/Layouts/footer.php');
