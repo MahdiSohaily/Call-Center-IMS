@@ -36,7 +36,7 @@ require_once './app/Controllers/BillFilterController.php';
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
                 پیش فاکتور ها
             </h2>
-            <span onclick="createIncompleteBill()" class="cursor-pointer bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور</span>
+            <span onclick="createIncompleteBill()" class="cursor-pointer bg-gray-600 text-white rounded px-3 py-2 mx-3 text-md">ایجاد پیش فاکتور</span>
         </div>
         <div class="border-t border-gray-200"></div>
         <div id="incomplete_bill" class="p-3 overflow-y-auto">
@@ -69,8 +69,8 @@ require_once './app/Controllers/BillFilterController.php';
         <div class="border-t border-gray-200"></div>
 
         <div id="users_list" class="accordion flex flex-col min-h-screen p-3">
-            <label for="users" class="block mb-2 text-sm font-medium text-gray-900">کاربر:</label>
-            <select onchange="setUserId(this.value)" name="user_id" id="users" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <label for="users" class="block mb-2 text-md font-medium text-gray-900">کاربر:</label>
+            <select onchange="setUserId(this.value)" name="user_id" id="users" class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option>کاربر مد نظر خود را انتخاب کنید.</option>
                 <?php
                 foreach ($users as $user) : ?>
@@ -88,7 +88,7 @@ require_once './app/Controllers/BillFilterController.php';
                                 <div class="grid grid-cols-7 bg-gray-200 p-2 my-2 gap-0">
                                     <?php
                                     for ($counter = 1; $counter <= DAYS[$index]; $counter++) : ?>
-                                        <div onclick="selectDay(this)" data-day="<?= $counter ?>" data-month="<?= $index + 1 ?>" id="<?= $index . '-' . $counter . '-day' ?>" class="days border w-10 h-10 flex justify-center items-center text-sm cursor-pointer hover:bg-gray-300"><?= $counter; ?></div>
+                                        <div onclick="selectDay(this)" data-day="<?= $counter ?>" data-month="<?= $index + 1 ?>" id="<?= $index . '-' . $counter . '-day' ?>" class="days border w-10 h-10 flex justify-center items-center text-md cursor-pointer hover:bg-gray-300"><?= $counter; ?></div>
                                     <?php endfor; ?>
 
                                 </div>
@@ -173,21 +173,21 @@ require_once './app/Controllers/BillFilterController.php';
                                     </div>    
                                     <div class="flex-grow flex flex-col justify-between px-3">
                                         <div class="flex justify-between">
-                                            <p class="text-sm">
+                                            <p class="text-md">
                                                 شماره فاکتور:
                                                 ${factor.bill_number}
                                             </p>
-                                            <p class="text-sm">
+                                            <p class="text-md">
                                                 تاریخ فاکتور:
                                                 ${factor.bill_date}
                                             </p>
                                         </div>
                                         <div class="flex justify-between">
-                                            <p class="text-sm">
+                                            <p class="text-md">
                                                 مشتری: 
                                                 ${factor.name ?? ''} ${factor.family ?? ''}
                                             </p>
-                                            <p class="text-sm">
+                                            <p class="text-md">
                                                 قیمت کل:
                                                 ${formatAsMoney(factor.total)}
                                             </p>
@@ -225,7 +225,7 @@ require_once './app/Controllers/BillFilterController.php';
                                     </g>
                                 </g>
                             </svg>      
-                            <p class="text-sm text-white">فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
+                            <p class="text-md text-white">فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
                         </div>`;
                 }
             })
@@ -256,21 +256,21 @@ require_once './app/Controllers/BillFilterController.php';
                             </div>
                             <div class="flex-grow flex flex-col justify-between px-3">   
                                 <div class="flex justify-between">
-                                    <p class="text-sm">
+                                    <p class="text-md">
                                         مشتری: 
                                         ${factor.name ?? ''} ${factor.family ?? ''}
                                     </p>
-                                    <p class="text-sm">
+                                    <p class="text-md">
                                         تاریخ فاکتور:
                                         ${factor.bill_date}
                                     </p>
                                 </div>
                                 <div class="flex justify-between">
-                                    <p class="text-sm">
+                                    <p class="text-md">
                                         تعداد اقلام: 
                                         ${factor.quantity }
                                     </p>
-                                    <p class="text-sm">
+                                    <p class="text-md">
                                         قیمت کل:
                                         ${formatAsMoney(factor.total)}
                                     </p>
@@ -302,7 +302,7 @@ require_once './app/Controllers/BillFilterController.php';
                                     </g>
                                 </g>
                             </svg>      
-                            <p class="text-sm text-white">پیش فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
+                            <p class="text-md text-white">پیش فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
                         </div>`;
                 }
             })
