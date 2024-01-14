@@ -119,7 +119,7 @@ require_once('./views/Layouts/header.php');
                 <tr>
                     <td class="py-2 px-3 text-white bg-gray-800 text-sm">تلفون</td>
                     <td class="py-2 px-4">
-                        <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="093000000000" type="text" name="phone" id="phone">
+                        <input onkeyup="sanitizeInput(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
                     </td>
                 </tr>
                 <tr>
@@ -629,7 +629,7 @@ require_once('./views/Layouts/header.php');
             totalPrice += payPrice;
             BillInfo.quantity += Number(item.quantity);
             template += `
-            <tr id="${item.id}" class="even:bg-gray-100 border-gray-800">
+            <tr id="${item.id}" class="even:bg-gray-100 border-gray-800" >
                 <td class="py-3 px-4 w-10">
                     <span>${counter}</span>
                 </td>
@@ -650,7 +650,7 @@ require_once('./views/Layouts/header.php');
                 </td>
                 <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
                     <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
-                    <input type="number" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="convertToEnglish(this)" value="${Number(item.price_per)}" />
+                    <input type="text" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="format(this);convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">
@@ -669,6 +669,17 @@ require_once('./views/Layouts/header.php');
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
+
+    function format(inputElement) {
+            // Remove non-digit characters
+            let inputValue = inputElement.value.replace(/[^\d]/g, '');
+
+            // Add comma as a 3-digit separator
+            inputValue = inputValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            // Update the input value
+            inputElement.value = inputValue;
+        }
 
     function editCell(cell, property, itemId, originalValue) {
         const input = cell.querySelector('input');
@@ -704,6 +715,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function updateItemProperty(itemId, property, newValue) {
+        newValue = newValue.replace(/,/g, '');
         for (let i = 0; i < billItems.length; i++) {
             if (billItems[i].id == itemId) {
                 if (property !== 'quantity') {
@@ -912,6 +924,19 @@ require_once('./views/Layouts/header.php');
                 console.log(error);
             });
     }
+
+    function sanitizeInput(inputElement) {
+        // Get the input value
+        let inputValue = inputElement.value;
+        // Check if inputValue is defined and not null
+        if (inputValue && inputValue.indexOf('+98') === 0) {
+            // If it does, replace '+98' with '0'
+            inputValue = '0' + inputValue.slice(3);
+            // Update the input value
+            inputElement.value = inputValue;
+        }
+    }
+
     <?php if (!$billInfo['billNO']) {
 
         echo 'getBillNumber()';
