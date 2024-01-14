@@ -216,17 +216,29 @@ require_once('./views/Layouts/header.php');
 <div class="h-16"></div>
 <div class="rtl fixed flex justify-between items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
     <ul class="flex gap-3">
-        <li>
-            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
-                ذخیره تغییرات پیش فاکتور
-            </p>
-        </li>
-        <li>
-            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
-                صدور فاکتور
-            </p>
-        </li>
-
+        <?php if (!$isCompleteFactor) : ?>
+            <li>
+                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                    ذخیره تغییرات پیش فاکتور
+                </p>
+            </li>
+            <li>
+                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
+                    صدور فاکتور
+                </p>
+            </li>
+        <?php else : ?>
+            <li>
+                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                    ویرایش
+                </p>
+            </li>
+            <li>
+                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                    پرینت
+                </p>
+            </li>
+        <?php endif; ?>
     </ul>
     <p id="save_message" class="hidden bg-white text-green-400 px-3 py-1">ویرایش پیش فاکتور موفقانه صورت گرفت</p>
 </div>

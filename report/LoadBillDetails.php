@@ -2,13 +2,15 @@
 $billInfo = null;
 $customerInfo = null;
 $billItems = [];
+$isCompleteFactor = false;
 if (isset($_POST['BillId'])) {
     $bill_id = $_POST['BillId'];
 
     $details = getBillInfo($bill_id);
-    // if ($details['status']) {
-    //     header('location: ./factor.php');
-    // }
+    if ($details['status']) {
+        // header('location: ./factor.php');
+        $isCompleteFactor = true;
+    }
 
     $billInfo = [
         'id' => $bill_id,
