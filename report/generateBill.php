@@ -22,7 +22,7 @@ require_once('./views/Layouts/header.php');
             </h2>
         </div>
         <div class="relative flex justify-center px-3">
-            <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
             <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchCustomer('');
                                                                                     document.getElementById('customer_name').value = '';
@@ -47,7 +47,7 @@ require_once('./views/Layouts/header.php');
             </h2>
         </div>
         <div class="relative flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); searchPartNumber(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="کد فنی قطعه مورد نظر را وارد کنید..." />
+            <input onkeyup="convertToEnglish(this); searchPartNumber(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="کد فنی قطعه مورد نظر را وارد کنید..." />
             <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchPartNumber('');
                                                                                     document.getElementById('serial').value = '';
@@ -75,7 +75,7 @@ require_once('./views/Layouts/header.php');
         </div>
 
         <div class="relative flex justify-center px-3">
-            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border text-sm border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+            <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
             <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchInStock('');
                                                                                     document.getElementById('stock_partNumber').value = '';
@@ -103,7 +103,7 @@ require_once('./views/Layouts/header.php');
             </thead>
             <tbody>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">نام</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">نام</td>
                     <td class="py-2 px-4">
                         <input class="w-full p-2 border" type="hidden" name="id" id="id">
                         <input class="w-full p-2 border" type="hidden" name="type" id="mode" value='create'>
@@ -111,25 +111,25 @@ require_once('./views/Layouts/header.php');
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">نام خانوادگی</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">نام خانوادگی</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نام خانوادگی مشتری را وارد کنید..." type="text" name="family" id="family">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">تلفون</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">تلفون</td>
                     <td class="py-2 px-4">
                         <input onkeyup="sanitizeInput(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">آدرس</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">آدرس</td>
                     <td class="py-2 px-4">
                         <textarea onkeyup="updateCustomerInfo(this)" name="address" id="address" cols="30" rows="4" class="border p-2 w-full text-gray-500" placeholder="آدرس مشتری"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">ماشین</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">ماشین</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نوعیت ماشین مشتری را مشخص کنید" type="text" name="car" id="car">
                     </td>
@@ -145,45 +145,45 @@ require_once('./views/Layouts/header.php');
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">شماره فاکتور</td>
+                <tr class="<?= !$billInfo['billNO'] ? 'hidden' : '' ?>">
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">شماره فاکتور</td>
                     <td class="py-2 px-4">
                         <input readonly onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="شماره فاکتور را وارد نمایید" type="text" name="billNO" id="billNO">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">تعداد اقلام</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">تعداد اقلام</td>
                     <td class="py-2 px-4">
                         <input readonly class="w-full p-2 border text-gray-500" placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">جمع کل</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">جمع کل</td>
                     <td class="py-2 px-4">
                         <input readonly class="w-full p-2 border text-gray-500" placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">تخفیف</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">تخفیف</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="discount" id="discount">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">مالبات (۰٪)</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">مالبات (۰٪)</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="tax" id="tax">
                     </td>
                 </tr>
                 <tr>
-                    <td class="py-2 px-3 text-white bg-gray-800 text-sm">عوارض</td>
+                    <td class="py-2 px-3 text-white bg-gray-800 text-md">عوارض</td>
                     <td class="py-2 px-4">
                         <input onkeyup="updateBillInfo(this)" class="w-full p-2 border text-gray-500" placeholder="0" type="number" name="withdraw" id="withdraw">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" class="bg-gray-800 text-white h-10 border-top">
-                        <p id="total_in_word" class="px-3 text-sm"></p>
+                        <p id="total_in_word" class="px-3 text-md"></p>
                     </td>
                 </tr>
             </tbody>
@@ -246,7 +246,7 @@ require_once('./views/Layouts/header.php');
 <div id="popup-modal" tabindex="-1" class="hidden h-screen overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm bg-white/30">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <button id="close-modal" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
+            <button id="close-modal" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-md w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
@@ -261,6 +261,8 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 </div>
+
+<iframe src="./displayBill.php" class="w-full h-screen" frameborder="0"></iframe>
 
 <script>
     const customer_results = document.getElementById('customer_results');
@@ -327,11 +329,11 @@ require_once('./views/Layouts/header.php');
                             for (const customer of response.data) {
                                 template += `
                                     <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border border-gray-300">
-                                        <p class="text-sm font-semibold text-gray-600">
+                                        <p class="text-md font-semibold text-gray-600">
                                             ` + customer.name + `
                                             ` + customer.family + `
                                         </p>
-                                        <p class="text-sm font-semibold text-gray-600">
+                                        <p class="text-md font-semibold text-gray-600">
                                             ` + customer.phone + `
                                         </p>
                                             <i  data-id="` + customer.id + `" 
@@ -349,7 +351,7 @@ require_once('./views/Layouts/header.php');
                         } else {
                             template += `
                                     <div class="w-full flex justify-between items-center shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border border-gray-300">
-                                        <p class="text-sm font-semibold text-gray-600">
+                                        <p class="text-md font-semibold text-gray-600">
                                            مشتری ای با مشخصات وارده در سیستم موجود نیست
                                         </p>
                                         </div>
@@ -414,7 +416,7 @@ require_once('./views/Layouts/header.php');
                     } else {
                         resultBox.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
-                                <p class="text-sm font-semibold text-white">
+                                <p class="text-md font-semibold text-white">
                                       کد مد نظر شما موجود نیست.
                                 </p>
                             </div>
@@ -453,7 +455,7 @@ require_once('./views/Layouts/header.php');
                     } else {
                         stock_result.innerHTML = `<div class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                                                     <div class="w-full py-3 flex justify-between items-center">      
-                                                        <p class="text-sm font-semibold text-white">
+                                                        <p class="text-md font-semibold text-white">
                                                             کد مد نظر شما موجود نیست.
                                                         </p>
                                                     </div>
@@ -474,14 +476,14 @@ require_once('./views/Layouts/header.php');
             template += `
                         <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
-                                <p class="text-sm font-semibold text-white">
+                                <p class="text-md font-semibold text-white">
                                        ${item.partnumber}
                                 </p>
-                                <p class="text-sm text-white">اسم قطعه بعدا اضافه می شود</p>
+                                <p class="text-md text-white">اسم قطعه بعدا اضافه می شود</p>
                             </div>
                             <div class="w-full flex justify-between items-center">
-                                    <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
-                                    <input type="number" onkeyup="updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
+                                    <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-md text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
+                                    <input type="number" onkeyup="updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-md text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
                                 <i id="${item.id}"
                                     data-quantity= "0"
                                     data-price= "0"
@@ -492,7 +494,7 @@ require_once('./views/Layouts/header.php');
                                 </i>
                             </div>
                             <div class="w-full h-6 flex justify-between items-center">
-                                <p id="error-${item.id}" class="d-none text-sm text-red-600 pt-3">
+                                <p id="error-${item.id}" class="d-none text-md text-red-600 pt-3">
                                 انتخاب قیمت بیشتر از موجودی امکان پذیر نمی باشد
                                 </p>
                             </div>
@@ -509,22 +511,22 @@ require_once('./views/Layouts/header.php');
             template += `
                         <div id="box-${item.id}" class="w-full shadow-md hover:shadow-lg rounded-md px-4 py-3 mb-2 border bg-gray-800">
                             <div class="w-full py-3 flex justify-between items-center">      
-                                <p class="text-sm font-semibold text-white">
+                                <p class="text-md font-semibold text-white">
                                     ${item.partnumber}
                                 </p>
-                                <p class="text-sm font-semibold text-white">
+                                <p class="text-md font-semibold text-white">
                                 برند : 
                                     ${item.brand_name}
                                 </p>
-                                <p class="text-sm font-semibold text-white">
+                                <p class="text-md font-semibold text-white">
                                 موجودی :‌  
                                     ${item.existing}
                                 </p>
-                                <p class="text-sm text-white">اسم قطعه بعدا اضافه می شود</p>
+                                <p class="text-md text-white">اسم قطعه بعدا اضافه می شود</p>
                             </div>
                             <div class="w-full flex justify-between items-center">
-                                    <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
-                                    <input type="number" onkeyup="checkExisting(this, ${item.existing},${item.id});updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-sm text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
+                                    <input type="number" onkeyup="updateCredential('data-price',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-md text-white border border-2 placeholder:text-white bg-gray-800" placeholder="قیمت" />
+                                    <input type="number" onkeyup="checkExisting(this, ${item.existing},${item.id});updateCredential('data-quantity',${item.id},this.value)" class="ml-2 p-2 w-1/2 d-inline text-md text-white border border-2 placeholder:text-white bg-gray-800" placeholder="تعداد" />
                                 <i id="${item.id}"
                                     data-quantity= "0"
                                     data-price= "0"
@@ -536,7 +538,7 @@ require_once('./views/Layouts/header.php');
                                 </i>
                             </div>
                             <div class="w-full h-6 flex justify-between items-center">
-                            <p id="error-${item.id}" class="d-none text-sm text-red-600 pt-3">
+                            <p id="error-${item.id}" class="d-none text-md text-red-600 pt-3">
                             انتخاب قیمت بیشتر از موجودی امکان پذیر نمی باشد
                             </p>
                             </div>
@@ -604,7 +606,6 @@ require_once('./views/Layouts/header.php');
             partNumber: 'NOTPART'
         });
         displayBill();
-        console.log(billItems);
     }
 
     function updateBillInfo(element) {
@@ -634,22 +635,27 @@ require_once('./views/Layouts/header.php');
                     <span>${counter}</span>
                 </td>
                 <td class="relative py-3 px-4 w-2/4" onclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
-                    <span class="cursor-pointer" title="برای ویرایش دوبار کلیک نمایید">${item.partName}</span>
+                    <span class="cursor-pointer text-lg" title="برای ویرایش دوبار کلیک نمایید">${item.partName}</span>
                     <input type="text" class="w-2/4 p-2 border text-gray-500 hidden w-42" value="${item.partName}" />
                     <div class="absolute left-0 top-2 flex flex-wrap gap-1 w-42">
-                        <span style="font-size:11px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">اصلی</span>
-                        <span style="font-size:11px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">چین</span>
-                        <span style="font-size:11px" onclick="appendSufix('${item.id}','کره')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">کره</span>
-                        <span style="font-size:11px" onclick="appendSufix('${item.id}','متفرقه')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">متفرقه</span>
-                        <span style="font-size:11px" onclick="appendCarSufix('${item.id}','${customerInfo.car}')" class="cursor-pointer text-sm text-white bg-gray-600 rounded p-1" title="">${customerInfo.car}</span>
-                    </div>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">اصلی</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">چین</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','کره')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">کره</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','متفرقه')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">متفرقه</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','تایوان')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">تایوان</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','DYC')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">DYC</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','KGC')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">KGC</span>`;
+            if (customerInfo.car != '') {
+                template += `<span style="font-size:13px" onclick="appendCarSufix('${item.id}','${customerInfo.car}')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">${customerInfo.car}</span>`;
+            }
+            template += `</div>
                 </td>
                 <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
-                    <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
+                    <span class="cursor-pointer text-lg text-center" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
                     <input type="number" style="direction:ltr !important;" class="p-2 border border-1 hidden w-16" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
                 </td>
                 <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
-                    <span class="cursor-pointer text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
+                    <span class="cursor-pointer text-lg text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
                     <input type="text" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="format(this);convertToEnglish(this)" value="${Number(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
@@ -671,15 +677,15 @@ require_once('./views/Layouts/header.php');
     }
 
     function format(inputElement) {
-            // Remove non-digit characters
-            let inputValue = inputElement.value.replace(/[^\d]/g, '');
+        // Remove non-digit characters
+        let inputValue = inputElement.value.replace(/[^\d]/g, '');
 
-            // Add comma as a 3-digit separator
-            inputValue = inputValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        // Add comma as a 3-digit separator
+        inputValue = inputValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-            // Update the input value
-            inputElement.value = inputValue;
-        }
+        // Update the input value
+        inputElement.value = inputValue;
+    }
 
     function editCell(cell, property, itemId, originalValue) {
         const input = cell.querySelector('input');
@@ -912,7 +918,6 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
-                console.log(data);
                 const save_message = document.getElementById('save_message');
                 save_message.classList.remove('hidden');
 
@@ -937,6 +942,13 @@ require_once('./views/Layouts/header.php');
         }
     }
 
+    function handleKeyDown(event) {
+        if (event.ctrlKey && event.shiftKey) {
+            addManually();
+        }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
     <?php if (!$billInfo['billNO']) {
 
         echo 'getBillNumber()';
