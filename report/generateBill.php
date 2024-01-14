@@ -510,11 +510,11 @@ require_once('./views/Layouts/header.php');
                     <tr>
                         <td>تعداد اقلام</td>
                         <td>
-                            <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
+                            <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity2">
                         </td>
                         <td>جمع کل</td>
                         <td>
-                            <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
+                            <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice2">
                         </td>
                     </tr>
 
@@ -523,7 +523,7 @@ require_once('./views/Layouts/header.php');
                         <td>
                             <input readonly placeholder="0" type="number" name="discount" id="discount">
                         </td>
-                        <td>مالبات (۰٪)</td>
+                        <td>مالیات (۰٪)</td>
                         <td>
                             <input readonly placeholder="0" type="number" name="tax" id="tax">
                         </td>
@@ -531,7 +531,7 @@ require_once('./views/Layouts/header.php');
                     <tr style="background-color: gray; color:white">
                         <td style="padding:10px;">مبلغ قابل پرداخت</td>
                         <td colspan="3" style="padding:10px;">
-                            <p id="total_in_word" class="px-3 text-sm"></p>
+                            <p id="total_in_word2" class="px-3 text-sm"></p>
                         </td>
                     </tr>
                 </tbody>

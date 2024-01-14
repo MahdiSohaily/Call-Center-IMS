@@ -61,13 +61,13 @@ function displayCustomer() {
 }
 
 function displayBillDetails() {
-  document.getElementById("billNO2").innerHTML = BillInfo.billNO;
+  // document.getElementById("billNO2").innerHTML = BillInfo.billNO;
   document.getElementById("date").innerHTML = BillInfo.date;
-  document.getElementById("quantity").value = BillInfo.quantity;
-  document.getElementById("totalPrice").value = formatAsMoney(
+  document.getElementById("quantity2").value = BillInfo.quantity;
+  document.getElementById("totalPrice2").value = formatAsMoney(
     BillInfo.totalPrice
   );
   document.getElementById("discount").value = BillInfo.discount;
   document.getElementById("tax").value = BillInfo.tax;
-  document.getElementById("total_in_word").innerHTML = BillInfo.totalInWords;
+  document.getElementById("total_in_word2").innerHTML = BillInfo.totalInWords;
 }
