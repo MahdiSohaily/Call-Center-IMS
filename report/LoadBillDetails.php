@@ -6,9 +6,9 @@ if (isset($_POST['BillId'])) {
     $bill_id = $_POST['BillId'];
 
     $details = getBillInfo($bill_id);
-    if ($details['status']) {
-        header('location: ./factor.php');
-    }
+    // if ($details['status']) {
+    //     header('location: ./factor.php');
+    // }
 
     $billInfo = [
         'id' => $bill_id,

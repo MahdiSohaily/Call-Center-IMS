@@ -158,7 +158,7 @@ require_once './app/Controllers/BillFilterController.php';
                 if (factors.length > 0) {
                     for (const factor of factors) {
                         completed_bill.innerHTML += `
-                    <div class="flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2" >
+                    <div class="flex justify-between cursor-pointer h-32 relative border p-3 rounded shadow-sm flex-wrap mb-2" >
                         <div class="w-20 flex justify-center items-center">
                             <img class=" w-12 h-12 rounded-full" src ="../../userimg/${user_id}.jpg"/>
                         </div>    
@@ -181,6 +181,14 @@ require_once './app/Controllers/BillFilterController.php';
                                     قیمت کل:
                                     ${factor.total}
                                 </p>
+                            </div>
+                            <div>
+                                <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
+                                    <input type="hidden" name="BillId" value="${factor.id}">
+                                </form>
+                                </div>
+                                <div onclick="submitForm('form-${factor.id}')" class="absolute left-0 right-0 bottom-2 flex justify-center">
+                                    <span class="px-5 py-1 rounded-sm text-xs text-center text-white bg-indigo-400 text-white"> ویرایش</span>
                             </div>
                         </div>
                     </div>
