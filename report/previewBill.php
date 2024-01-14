@@ -1,8 +1,17 @@
 <?php
 require_once './config/config.php';
 require_once './database/connect.php';
-require_once('./views/Layouts/header.php');
 ?>
+
+<link href="./public/css/material_icons.css?v=<?= rand() ?>" rel="stylesheet">
+<script src="./public/js/index.js?v=<?= rand() ?>"></script>
+<link rel="stylesheet" href="./public/css/styles.css?v=<?= rand() ?>">
+<script src="./public/js/axios.js"></script>
+</script>
+<script src="./public/js/jquery.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./public/css/select2.css?v=<?= rand() ?>">
+<script src="./public/js/select2.js?v=<?= rand() ?>"></script>
+<script src="./public/js/copy.js?v=<?= rand() ?>"></script>
 <script src="./public/js/html2pdf.js"></script>
 
 <style>
