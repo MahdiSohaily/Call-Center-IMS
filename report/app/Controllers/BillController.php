@@ -288,7 +288,7 @@ function UpdateBill($billInfo, $customerId)
             total = '$billInfo->totalPrice',
             bill_date = '$billInfo->date',
             user_id = '$user_id',
-            status = 0
+            status = 1
             WHERE id = '$billInfo->id'";
 
         CONN->query($sql);

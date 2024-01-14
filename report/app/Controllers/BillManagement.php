@@ -73,7 +73,7 @@ if (isset($_POST['getUserIncompleteBills'])) {
 
 function getUsersUnCompleteBills($user, $date)
 {
-    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total
+    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity
     FROM callcenter.bill
     LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
     WHERE bill.user_id = '$user'
