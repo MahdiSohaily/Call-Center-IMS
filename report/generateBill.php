@@ -262,7 +262,7 @@ require_once('./views/Layouts/header.php');
     </div>
 </div>
 
-<iframe src="./displayBill.php" class="w-full h-screen" frameborder="0"></iframe>
+<iframe src="./displayBill.php" class=" absolute top-0 w-4/5 mx-auto h-screen" frameborder="0"></iframe>
 
 <script>
     const customer_results = document.getElementById('customer_results');
