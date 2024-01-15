@@ -17,22 +17,50 @@ header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json"); // Allow requests from any origin
 
 // if (isset($_POST['code'])) {
-    // remove all the special characters from the user input
-    // $code = htmlspecialchars($_POST['code']);
-    $code = '553113F';
-    $completeCode = $code;
-    $finalResult = (setup_loading($completeCode));
+// remove all the special characters from the user input
+// $code = htmlspecialchars($_POST['code']);
+$code = '553113F650';
+$completeCode = $code;
+$finalResult = (setup_loading($completeCode));
 
-    if (!empty($finalResult)) {
-        // Assuming everything went well
-        $response = [
-            'success' => true,
-            'message' => 'Form data received successfully.',
-            'data' => $finalResult,
-        ];
-        // Send the JSON response
-        echo json_encode($response);
+$explodedCodes = &$finalResult['explodedCodes'];
+$not_exist = &$finalResult['not_exist'];
+$existing = &$finalResult['existing'];
+$completeCode = &$finalResult['completeCode'];
+$relation_ids = &$finalResult['relation_id'];
+
+foreach ($explodedCodes as $code_index => &$code) {
+    if (array_key_exists($code, $existing)) {
+        foreach ($existing[$code] as &$item) {
+            if ($item['givenPrice'] !== null && count($item['givenPrice']) > 0) {
+                foreach ($item['givenPrice'] as &$price) {
+                    $priceDate = $price['created_at'];
+
+                    if (checkDateIfOkay($applyDate, $priceDate) && $price['price'] !== 'موجود نیست') {
+                        $rawGivenPrice = $price['price'];
+                        $price['price'] = applyDollarRate($rawGivenPrice);
+                    }
+                }
+                unset($price); // Unset the reference to avoid any unintended modifications outside the loop
+            }
+        }
+        unset($item); // Unset the reference to avoid any unintended modifications outside the loop
     }
+}
+unset($code); // Unset the reference to avoid any unintended modifications outside the loop
+
+
+
+if (!empty($finalResult)) {
+    // Assuming everything went well
+    $response = [
+        'success' => true,
+        'message' => 'Form data received successfully.',
+        'data' => $finalResult,
+    ];
+    // Send the JSON response
+    echo json_encode($response);
+}
 // }
 
 function setup_loading($completeCode)
