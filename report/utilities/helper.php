@@ -7,6 +7,7 @@ if ($rateSpecification) {
     $applyDate = $rateSpecification['created_at'];
     $additionRate = $rateSpecification['rate'];
 }
+
 function getDollarRateInfo()
 {
     $statement = "SELECT * FROM shop.dollarrate WHERE status = 1";
@@ -143,9 +144,6 @@ function applyDollarRate($price)
 
     return $modifiedString;
 }
-
-
-
 
 function checkDateIfOkay($applyDate, $priceDate)
 {

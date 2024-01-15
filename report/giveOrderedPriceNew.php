@@ -494,7 +494,6 @@ if ($isValidCustomer) {
                                     }
                                 </script>
 
-
                                 <!-- Given Price section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-3 overflow-auto shadow-md">
                                     <div class="p-3">

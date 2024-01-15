@@ -1,5 +1,6 @@
 <?php
 include './database/connect.php';
+require_once './utilities/helper.php';
 // Allow requests from any origin
 header("Access-Control-Allow-Origin: *");
 
@@ -15,9 +16,10 @@ header("Access-Control-Allow-Credentials: true");
 // Set content type to JSON
 header("Content-Type: application/json"); // Allow requests from any origin
 
-if (isset($_POST['code'])) {
+// if (isset($_POST['code'])) {
     // remove all the special characters from the user input
-    $code = htmlspecialchars($_POST['code']);
+    // $code = htmlspecialchars($_POST['code']);
+    $code = '553113F';
     $completeCode = $code;
     $finalResult = (setup_loading($completeCode));
 
@@ -31,9 +33,7 @@ if (isset($_POST['code'])) {
         // Send the JSON response
         echo json_encode($response);
     }
-}
-
-
+// }
 
 function setup_loading($completeCode)
 {
