@@ -36,9 +36,21 @@ require_once './app/Controllers/BillFilterController.php';
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
                 پیش فاکتور ها
             </h2>
-            <span onclick="createIncompleteBill()" class="cursor-pointer bg-gray-600 text-white rounded px-3 py-2 mx-3 text-md">ایجاد پیش فاکتور</span>
+            <span onclick="createIncompleteBill()" class="cursor-pointer bg-gray-600 text-white rounded px-3 py-2 mx-3 text-sm">ایجاد پیش فاکتور</span>
         </div>
         <div class="border-t border-gray-200"></div>
+        <div class="p-3">
+            <label for="incompleteBill" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">جستجو</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </div>
+                <input type="search" id="incompleteBill" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  focus:outline-none" placeholder="جستجوی پیش فاکتور به اساس مشتری" required>
+                <button onclick="searchForBill('incomplete')" type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">جستجو</button>
+            </div>
+        </div>
         <div id="incomplete_bill" class="p-3 overflow-y-auto">
             <!-- Search Results are going to be appended here -->
         </div>
@@ -53,7 +65,18 @@ require_once './app/Controllers/BillFilterController.php';
             </h2>
         </div>
         <div class="border-t border-gray-200"></div>
-
+        <div class="p-3">
+            <label for="completeBill" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">جستجو</label>
+            <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                    </svg>
+                </div>
+                <input type="search" id="completeBill" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500  focus:outline-none" placeholder="جستجوی پیش فاکتور به اساس مشتری" required>
+                <button onclick="searchForBill('complete')" type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">جستجو</button>
+            </div>
+        </div>
         <div id="completed_bill" class="p-3">
             <!-- selected items are going to be added here -->
         </div>
@@ -164,9 +187,19 @@ require_once './app/Controllers/BillFilterController.php';
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
                 const factors = response.data;
-                if (factors.length > 0) {
-                    for (const factor of factors) {
-                        completed_bill.innerHTML += `
+                appendCompleteFactorResults(factors)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    function appendCompleteFactorResults(factors) {
+        const completed_bill = document.getElementById('completed_bill');
+        completed_bill.innerHTML = '';
+        if (factors.length > 0) {
+            for (const factor of factors) {
+                completed_bill.innerHTML += `
                                 <div class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                                     <div class="w-14 flex justify-center items-center">
                                         <img class="w-10 h-10 rounded-full" src="../../userimg/${user_id}.jpg"/>
@@ -208,10 +241,10 @@ require_once './app/Controllers/BillFilterController.php';
                                     </div>
                                 </div>
                             `;
-                    }
+            }
 
-                } else {
-                    completed_bill.innerHTML = `<div class="flex flex-col justify-center items-center h-24 border border-rose-400 p-3 rounded shadow-sm shadow-rose-300 bg-rose-300">
+        } else {
+            completed_bill.innerHTML = `<div class="flex flex-col justify-center items-center h-24 border border-rose-400 p-3 rounded shadow-sm shadow-rose-300 bg-rose-300">
                             <svg width="40px" height="40px" viewBox="0 -0.5 17 17" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlns:xlink="http://www.w3.org/1999/xlink" class="si-glyph si-glyph-folder-error mb-2">
@@ -227,11 +260,7 @@ require_once './app/Controllers/BillFilterController.php';
                             </svg>      
                             <p class="text-md text-white">فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
                         </div>`;
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
+        }
     }
 
     function getUserIncompleteBills() {
@@ -247,9 +276,19 @@ require_once './app/Controllers/BillFilterController.php';
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
                 const factors = response.data;
-                if (factors.length > 0) {
-                    for (const factor of factors) {
-                        incomplete_bill.innerHTML += `
+                appendIncompleteFactorResult(factors)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    function appendIncompleteFactorResult(factors) {
+        const incomplete_bill = document.getElementById('incomplete_bill');
+        incomplete_bill.innerHTML = '';
+        if (factors.length > 0) {
+            for (const factor of factors) {
+                incomplete_bill.innerHTML += `
                         <div id="card-${factor.id}" class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                             <div class="w-14 flex justify-center items-center">
                                 <img class=" w-10 h-10 rounded-full" src ="../../userimg/${user_id}.jpg"/>
@@ -291,9 +330,9 @@ require_once './app/Controllers/BillFilterController.php';
                             </div>
                         </div>
                             `;
-                    }
-                } else {
-                    incomplete_bill.innerHTML = `
+            }
+        } else {
+            incomplete_bill.innerHTML = `
                         <div class="flex flex-col justify-center items-center h-24 border border-orange-400 p-3 rounded shadow-sm shadow-orange-300 bg-orange-300">
                             <svg width="40px" height="40px" viewBox="0 -0.5 17 17" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -310,11 +349,7 @@ require_once './app/Controllers/BillFilterController.php';
                             </svg>      
                             <p class="text-md text-white">پیش فاکتوری برای تاریخ مشخص شده درج نشده است.</p>
                         </div>`;
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
+        }
     }
 
     function selectDay(element) {
@@ -415,6 +450,46 @@ require_once './app/Controllers/BillFilterController.php';
 
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
+    }
+
+    function searchForBill(format) {
+        let pattern = null;
+        let factors = null;
+
+        switch (format) {
+            case 'incomplete':
+                pattern = document.getElementById('incompleteBill').value;
+                factors = search(pattern);
+                appendIncompleteFactorResult(factors);
+                break;
+            case 'complete':
+                pattern = document.getElementById('completeBill').value;
+                factors = search(pattern);
+                appendCompleteFactorResult(factors);
+                break;
+        }
+    }
+
+    function search(pattern, container) {
+        const params = new URLSearchParams();
+        params.append('searchForBill', 'searchForBill');
+        params.append('factorId', factorId);
+
+        axios.post("./app/Controllers/BillManagement.php", params)
+            .then(function(response) {
+                if (response.data) {
+                    document.getElementById('card-' + factorId).innerHTML = `
+                    <div class="w-full h-full flex justify-center items-center bg-orange-500">
+                        <p class="text-white">عملیات حذف موفقانه صورت گرفت</p>
+                    </div>`;
+                    setTimeout(() => {
+                        document.getElementById('card-' + factorId).style.display = 'none';
+                    }, 1000);
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     bootStrap();
