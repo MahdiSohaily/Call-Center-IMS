@@ -104,6 +104,10 @@ $_SESSION["user_id"] = $_SESSION["id"];
             $title = "فاکتور";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
+        case 'factor.php':
+            $title = "ایجاد فاکتور";
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            break;
         default:
             $title = "سامانه یدک شاپ";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
