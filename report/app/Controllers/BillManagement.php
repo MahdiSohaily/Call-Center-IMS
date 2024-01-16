@@ -101,18 +101,19 @@ if (isset($_POST['deleteFactor'])) {
 function deleteFactor($factor_id)
 {
     try {
-        CONN->beginTransaction();
+        CONN->begin_transaction();
 
-        $sql = "DELETE FROM bill WHERE id = '$factor_id';";
+        $sql = "DELETE FROM callcenter.bill WHERE id = '$factor_id'";
         CONN->query($sql);
 
-        $billDetailsSQL = "DELETE FROM bill_details WHERE bill_id = '$factor_id'";
+        $billDetailsSQL = "DELETE FROM callcenter.bill_details WHERE bill_id = '$factor_id'";
         CONN->query($billDetailsSQL);
 
         CONN->commit();
 
         return true;
     } catch (Exception $e) {
+        echo $e->getMessage();
         CONN->rollBack();
 
         return false;

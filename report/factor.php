@@ -250,7 +250,7 @@ require_once './app/Controllers/BillFilterController.php';
                 if (factors.length > 0) {
                     for (const factor of factors) {
                         incomplete_bill.innerHTML += `
-                        <div class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
+                        <div id="card-${factor.id}" class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                             <div class="w-14 flex justify-center items-center">
                                 <img class=" w-10 h-10 rounded-full" src ="../../userimg/${user_id}.jpg"/>
                             </div>
@@ -372,18 +372,45 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
+    let templateClone = null;
+
     function confirmDelete(factorId) {
-        const response = confirm('Are you sure you want to delete?');
-        if (response === true) {
-            deleteFactor(factorId);
-        }
+        templateClone = document.getElementById('card-' + factorId).innerHTML;
+        document.getElementById('card-' + factorId).innerHTML = `
+                    <div class="w-full h-full flex flex-col justify-center items-center bg-rose-300">
+                        <p class="text-white">آیا مطمئن هستید که میخواهید حذف صورت بگیرد ؟</p>
+                        <div class="py-2">
+                            <button onclick="deleteFactor('${factorId}')" class="px-4 text-white bg-red-700 rounded">بلی</button>
+                            <button onclick="rollBack('${factorId}')" class="px-4 text-white bg-green-700 rounded">خیر</button>
+                        </div>
+                    </div>`;
     }
 
+    function rollBack(factorId) {
+        document.getElementById('card-' + factorId).innerHTML = templateClone;
+    }
+
+
     function deleteFactor(factorId) {
+        const params = new URLSearchParams();
         params.append('deleteFactor', 'deleteFactor');
         params.append('factorId', factorId);
 
         axios.post("./app/Controllers/BillManagement.php", params)
+            .then(function(response) {
+                if (response.data) {
+                    document.getElementById('card-' + factorId).innerHTML = `
+                    <div class="w-full h-full flex justify-center items-center bg-orange-500">
+                        <p class="text-white">عملیات حذف موفقانه صورت گرفت</p>
+                    </div>`;
+                    setTimeout(() => {
+                        document.getElementById('card-' + factorId).style.display = 'none';
+                    }, 1000);
+                }
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     function formatAsMoney(number) {
