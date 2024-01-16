@@ -277,14 +277,17 @@ require_once './app/Controllers/BillFilterController.php';
                                     </div>
                                     <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
                                             <input type="hidden" name="BillId" value="${factor.id}">
-                                        </form>
-                                        <div onclick="submitForm('form-${factor.id}')" class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
-                                            <ul class="flex gap-2">
-                                                <li title="ویرایش فاکتور">
-                                                    <img src="./public/img/editFactor.svg" class="hover:scale-125" />
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    </form>
+                                    <div class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
+                                        <ul class="flex gap-2">
+                                            <li title="ویرایش فاکتور"  onclick="submitForm('form-${factor.id}')">
+                                                <img src="./public/img/editFactor.svg" class="hover:scale-125" />
+                                            </li>
+                                            <li title="حذف پیش فاکتور" onClick="confirmDelete('${factor.id}')">
+                                                <img src="./public/img/deleteBill.svg" class="hover:scale-125" />
+                                            </li>
+                                        </ul>
+                                    </div>
                             </div>
                         </div>
                             `;
@@ -367,6 +370,20 @@ require_once './app/Controllers/BillFilterController.php';
             .catch(function(error) {
                 console.log(error);
             });
+    }
+
+    function confirmDelete(factorId) {
+        const response = confirm('Are you sure you want to delete?');
+        if (response === true) {
+            deleteFactor(factorId);
+        }
+    }
+
+    function deleteFactor(factorId) {
+        params.append('deleteFactor', 'deleteFactor');
+        params.append('factorId', factorId);
+
+        axios.post("./app/Controllers/BillManagement.php", params)
     }
 
     function formatAsMoney(number) {

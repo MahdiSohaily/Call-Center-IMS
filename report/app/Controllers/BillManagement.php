@@ -92,3 +92,29 @@ function getUsersUnCompleteBills($user, $date)
 
     return $data;
 }
+
+if (isset($_POST['deleteFactor'])) {
+    $factor_id = $_POST['factorId'];
+    echo (json_encode(deleteFactor($factor_id)));
+}
+
+function deleteFactor($factor_id)
+{
+    try {
+        CONN->beginTransaction();
+
+        $sql = "DELETE FROM bill WHERE id = '$factor_id';";
+        CONN->query($sql);
+
+        $billDetailsSQL = "DELETE FROM bill_details WHERE bill_id = '$factor_id'";
+        CONN->query($billDetailsSQL);
+
+        CONN->commit();
+
+        return true;
+    } catch (Exception $e) {
+        CONN->rollBack();
+
+        return false;
+    }
+}
