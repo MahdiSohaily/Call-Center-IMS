@@ -477,15 +477,7 @@ require_once './app/Controllers/BillFilterController.php';
 
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
-                if (response.data) {
-                    document.getElementById('card-' + factorId).innerHTML = `
-                    <div class="w-full h-full flex justify-center items-center bg-orange-500">
-                        <p class="text-white">عملیات حذف موفقانه صورت گرفت</p>
-                    </div>`;
-                    setTimeout(() => {
-                        document.getElementById('card-' + factorId).style.display = 'none';
-                    }, 1000);
-                }
+                return response.data ?? [];
             })
             .catch(function(error) {
                 console.log(error);

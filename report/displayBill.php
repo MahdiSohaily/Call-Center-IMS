@@ -18,7 +18,7 @@ require_once('./views/Layouts/header.php');
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        padding: 10px;
+        padding: 7px;
     }
 
     .bill_info,
@@ -27,13 +27,18 @@ require_once('./views/Layouts/header.php');
         flex: 1;
     }
 
+    .bill_info ul li {
+        font-size: 14px !important;
+    }
+
     .headline {
         text-align: center;
     }
 
     .log_section {
         display: flex;
-        justify-content: end;
+        flex-direction: column;
+        align-items: end;
     }
 
     .logo {
@@ -58,7 +63,7 @@ require_once('./views/Layouts/header.php');
 
     .bill_items,
     .bill_footer {
-        border: 1px solid gray;
+        border: 1px solid black;
         margin-bottom: 10px;
     }
 
@@ -68,19 +73,22 @@ require_once('./views/Layouts/header.php');
     }
 
     thead {
-        background-color: gray;
+        background-color: lightgray;
+        font-size: 14px;
     }
 
     th {
-        padding: 10px;
+        padding: 7px;
+        color: black !important;
     }
 
     .bill_items>table td {
-        padding: 10px;
+        padding: 7px;
     }
 
     .bill_footer>table td {
-        padding: 3px 10px;
+        padding: 3px 7px;
+        font-size: 14px;
     }
 
     .action_button {
@@ -132,9 +140,14 @@ require_once('./views/Layouts/header.php');
         display: block;
     }
 
+    .bill_info_footer {
+        background-color: lightgray;
+        color: black
+    }
+
     @media print {
         * {
-            font-size: 14px;
+            font-size: 12px !important;
         }
 
         main,
@@ -181,12 +194,60 @@ require_once('./views/Layouts/header.php');
             display: none !important;
         }
 
+        .customer_info {
+            background-color: white !important;
+            border: 1px solid black !important;
+        }
+
         .bill {
             padding: 0 !important;
         }
 
         .action_menu {
             display: none;
+        }
+
+        .bill_items {
+            border: none !important;
+        }
+
+        .bill_items>table {
+            border: 1px solid black !important;
+        }
+
+        .bill_items>table tr {
+            background-color: white !important;
+        }
+
+        .bill_items>table tr:not(:last-child) {
+            border-bottom: 1px solid black !important;
+        }
+
+        .bill_items>table tr th {
+            color: black !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        .bill_items>table td {
+            padding: 5px;
+        }
+
+        .bill_items>table td span {
+            font-size: 10px !important;
+        }
+
+        .bill_footer>table td {
+            padding: 3px 5px;
+            font-size: 12px !important;
+        }
+
+        .bill_footer thead tr {
+            background-color: white !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        .bill_info_footer {
+            background-color: white !important;
         }
     }
 </style>
@@ -211,7 +272,10 @@ require_once('./views/Layouts/header.php');
         <div class="log_section">
             <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
         </div>
+
     </div>
+    <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
+
     <div class="customer_info">
         <ul>
             <li class="text-sm">
@@ -241,46 +305,38 @@ require_once('./views/Layouts/header.php');
         </table>
     </div>
     <div class="bill_footer">
-        <table>
+        <table class="w-full">
             <thead>
                 <tr>
-                    <th colspan="4">
+                    <th colspan="6">
                         اطلاعات فاکتور
                     </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>تعداد اقلام</td>
-                    <td>
+                    <td>تعداد
+                        :
                         <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
                     </td>
-                    <td>جمع کل</td>
-                    <td>
+                    <td>تخفیف
+                        :
+                        <input readonly placeholder="0" type="number" name="discount" id="discount">
+                    </td>
+                    <td>جمع
+                        :
                         <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
                     </td>
                 </tr>
-
-                <tr>
-                    <td>تخفیف</td>
-                    <td>
-                        <input readonly placeholder="0" type="number" name="discount" id="discount">
-                    </td>
-                    <td>مالبات (۰٪)</td>
-                    <td>
-                        <input readonly placeholder="0" type="number" name="tax" id="tax">
-                    </td>
-                </tr>
-                <tr style="background-color: gray; color:white">
-                    <td style="padding:10px;">مبلغ قابل پرداخت</td>
-                    <td colspan="3" style="padding:10px;">
+                <tr class="bill_info_footer">
+                    <td style="padding:5px;">مبلغ قابل پرداخت : </td>
+                    <td colspan="5" style="padding:10px;">
                         <p id="total_in_word" class="px-3 text-sm"></p>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
     <div style="display: flex; margin-top: 20px;">
         <p style="flex: 1;">امضاء خریدار</p>
         <p style="flex: 1;">امضاء فروشنده</p>
@@ -359,7 +415,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function formatAsMoney(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     function displayCustomer() {
