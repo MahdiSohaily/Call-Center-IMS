@@ -468,8 +468,11 @@ require_once('./views/Layouts/header.php');
         window.print();
     }
 
-    // Check if the code has already run by checking a flag in sessionStorage
-    if (!sessionStorage.getItem('codeExecuted')) {
+    // Define a unique identifier for this scenario, e.g., based on customerInfo
+    const uniqueIdentifier = JSON.stringify(customerInfo);
+
+    // Check if the code has already run for this unique identifier
+    if (!sessionStorage.getItem('codeExecuted-' + uniqueIdentifier)) {
         var params = new URLSearchParams();
         params.append('saveInvoice', 'saveInvoice');
         params.append('customerInfo', JSON.stringify(customerInfo));
@@ -486,14 +489,19 @@ require_once('./views/Layouts/header.php');
                     alert('فاکتور شما با موفقیت ثبت شد');
                 }
 
-                // Set the flag in sessionStorage to indicate that the code has been executed
-                sessionStorage.setItem('codeExecuted', true);
+                // Set the flag in sessionStorage to indicate that the code has been executed for this unique identifier
+                sessionStorage.setItem('codeExecuted-' + uniqueIdentifier, true);
             }).catch(function(error) {
                 console.log(error);
             });
+
+        // Add an event listener to clear sessionStorage when the user navigates away
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.clear();
+        });
     } else {
-        // The code has already run, you can choose to skip or perform some other action
-        console.log('Code already executed');
+        // The code has already run for this unique identifier
+        console.log('Code already executed for ' + uniqueIdentifier);
     }
 </script>
 <?php
