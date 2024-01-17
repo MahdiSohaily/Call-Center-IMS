@@ -123,4 +123,20 @@ function deleteFactor($factor_id)
 
 if (isset($_POST['searchForBill'])) {
     $pattern = $_POST['pattern'];
+
+    echo (json_encode($pattern));
+}
+
+function getMatchedCustomers($pattern)
+{
+    $sql = "SELECT id FROM callcenter.customer WHERE name = '$pattern' OR family = '$pattern'";
+    $result = CONN->query($sql);
+
+    $customersId = [];
+
+    if ($result->num_rows() > 0) {
+        while ($row = $result->fetch()) {
+            array_push($customersId, $row['id']);
+        }
+    }
 }

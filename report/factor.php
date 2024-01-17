@@ -460,7 +460,7 @@ require_once './app/Controllers/BillFilterController.php';
             case 'incomplete':
                 pattern = document.getElementById('incompleteBill').value;
                 factors = search(pattern);
-                appendIncompleteFactorResult(factors);
+                // appendIncompleteFactorResult(factors);
                 break;
             case 'complete':
                 pattern = document.getElementById('completeBill').value;
@@ -477,7 +477,8 @@ require_once './app/Controllers/BillFilterController.php';
 
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
-                return response.data ?? [];
+                console.log(response.data);
+                return response.data;
             })
             .catch(function(error) {
                 console.log(error);
