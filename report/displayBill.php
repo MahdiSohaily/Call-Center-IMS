@@ -431,7 +431,6 @@ require_once('./views/Layouts/header.php');
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('discount').value = BillInfo.discount;
-        document.getElementById('tax').value = BillInfo.tax;
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
@@ -467,6 +466,10 @@ require_once('./views/Layouts/header.php');
 
     function saveInvoice() {
         window.print();
+    }
+
+    // Check if the code has already run by checking a flag in sessionStorage
+    if (!sessionStorage.getItem('codeExecuted')) {
         var params = new URLSearchParams();
         params.append('saveInvoice', 'saveInvoice');
         params.append('customerInfo', JSON.stringify(customerInfo));
@@ -482,9 +485,15 @@ require_once('./views/Layouts/header.php');
                 } else {
                     alert('فاکتور شما با موفقیت ثبت شد');
                 }
+
+                // Set the flag in sessionStorage to indicate that the code has been executed
+                sessionStorage.setItem('codeExecuted', true);
             }).catch(function(error) {
                 console.log(error);
             });
+    } else {
+        // The code has already run, you can choose to skip or perform some other action
+        console.log('Code already executed');
     }
 </script>
 <?php
