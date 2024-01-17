@@ -249,6 +249,11 @@ require_once('./views/Layouts/header.php');
         .bill_info_footer {
             background-color: white !important;
         }
+
+        #copy_icon {
+            display: none !important;
+        }
+        
     }
 </style>
 <div id="bill_body_pdf" class="rtl bill">
@@ -276,7 +281,7 @@ require_once('./views/Layouts/header.php');
     </div>
     <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
 
-    <div class="customer_info">
+    <div class="customer_info relative">
         <ul>
             <li class="text-sm">
                 نام :
@@ -287,6 +292,7 @@ require_once('./views/Layouts/header.php');
                 <span id="phone"></span>
             </li>
         </ul>
+        <img id="copy_icon" class="cursor-pointer" src="./public/img/copy.svg" alt="copy customer info" onclick="copyInfo(this)">
     </div>
     <div class="bill_items">
         <table>
@@ -468,6 +474,29 @@ require_once('./views/Layouts/header.php');
         window.print();
     }
 
+    function copyInfo(element) {
+        const info = document.getElementById('name').innerHTML;
+        const billNo = document.getElementById('billNO').innerHTML;
+
+        const combinedText = `مشتری : ${info} \nشماره فاکتور : ${billNo}`;
+
+        const textarea = document.createElement('textarea');
+        textarea.value = combinedText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+
+        element.src = './public/img/complete.svg';
+
+        setTimeout(() => {
+            element.src = './public/img/copy.svg';
+        }, 2000);
+    }
+
+
+
     // Define a unique identifier for this scenario, e.g., based on customerInfo
     const uniqueIdentifier = JSON.stringify(customerInfo);
 
@@ -482,7 +511,6 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
-
                 if (data == 'error') {
                     alert('خطایی رخ داده است');
                 } else {
