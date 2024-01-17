@@ -87,7 +87,7 @@ function displayTimePassed($datetimeString)
         }
 
         if (empty($text)) {
-             return "امروز"; // If the difference is less than a month
+            return "امروز"; // If the difference is less than a month
         }
 
         return $text . "قبل";
@@ -125,20 +125,24 @@ function applyDollarRate($price)
             // Extract the matched number, removing any forward slashes
             $number = preg_replace('/\//', '', $word);
 
+
             // Check if the number contains only digits and optional slashes
             if (ctype_digit($number)) {
                 // Increase the matched number by 2%
                 $modifiedNumber = $number + (($number * $GLOBALS['additionRate']) / 100); // Increase by 2%
 
-                // Round the number to the nearest multiple of 10
-                $roundedNumber = round($modifiedNumber / 10) * 10;
+                $roundedNumber = $modifiedNumber;
+
+                if ($modifiedNumber >= 10) {
+                    // Round the number to the nearest multiple of 10
+                    $roundedNumber = round($modifiedNumber / 10) * 10;
+                }
 
                 // Replace the word with the modified number
                 $word = str_replace($number, $roundedNumber, $word);
             }
         }
     }
-
     // Reconstruct the modified string by joining the words with spaces
     $modifiedString = implode(' ', $words);
 
