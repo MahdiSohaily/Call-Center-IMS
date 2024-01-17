@@ -119,3 +119,8 @@ function deleteFactor($factor_id)
         return false;
     }
 }
+
+
+if (isset($_POST['searchForBill'])) {
+    $pattern = $_POST['pattern'];
+}

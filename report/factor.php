@@ -470,10 +470,10 @@ require_once './app/Controllers/BillFilterController.php';
         }
     }
 
-    function search(pattern, container) {
+    function search(pattern) {
         const params = new URLSearchParams();
         params.append('searchForBill', 'searchForBill');
-        params.append('factorId', factorId);
+        params.append('pattern', pattern);
 
         axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
