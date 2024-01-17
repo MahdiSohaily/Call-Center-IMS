@@ -123,20 +123,47 @@ function deleteFactor($factor_id)
 
 if (isset($_POST['searchForBill'])) {
     $pattern = $_POST['pattern'];
+    $mode = $_POST['mode'];
 
-    echo (json_encode($pattern));
+    $customers = getMatchedCustomers($pattern);
+
+    echo (json_encode(getMatchedBills($customers, $mode)));
 }
 
 function getMatchedCustomers($pattern)
 {
-    $sql = "SELECT id FROM callcenter.customer WHERE name = '$pattern' OR family = '$pattern'";
-    $result = CONN->query($sql);
+    $sql = "SELECT id FROM callcenter.customer WHERE name LIKE '$pattern%' OR family LIKE '$pattern%'";
+
+    $result = CONN->query($sql); // Assuming $conn is your database connection object
 
     $customersId = [];
 
-    if ($result->num_rows() > 0) {
-        while ($row = $result->fetch()) {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             array_push($customersId, $row['id']);
         }
     }
+
+    return $customersId;
+}
+
+function getMatchedBills($customers, $mode)
+{
+    // Assuming $conn is your mysqli database connection object
+    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity
+    FROM callcenter.bill
+    LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
+    WHERE customer_id IN (" . implode(',', $customers) . ") 
+    AND $mode
+    ORDER BY bill.created_at DESC";
+
+    $result = CONN->query($sql); // Assuming $conn is your
+
+    $bills = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            array_push($bills, $row);
+        }
+    }
+    return $bills;
 }

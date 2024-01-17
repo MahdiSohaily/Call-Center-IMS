@@ -288,6 +288,7 @@ require_once './app/Controllers/BillFilterController.php';
         incomplete_bill.innerHTML = '';
         if (factors.length > 0) {
             for (const factor of factors) {
+                console.log(factor);
                 incomplete_bill.innerHTML += `
                         <div id="card-${factor.id}" class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                             <div class="w-14 flex justify-center items-center">
@@ -454,30 +455,35 @@ require_once './app/Controllers/BillFilterController.php';
 
     function searchForBill(format) {
         let pattern = null;
-        let factors = null;
 
         switch (format) {
             case 'incomplete':
                 pattern = document.getElementById('incompleteBill').value;
-                factors = search(pattern);
-                // appendIncompleteFactorResult(factors);
+                search(pattern, '0').then(function(factors) {
+                    appendIncompleteFactorResult(factors);
+                }).catch(function(error) {
+                    console.log(error);
+                });
                 break;
             case 'complete':
                 pattern = document.getElementById('completeBill').value;
-                factors = search(pattern);
-                appendCompleteFactorResult(factors);
+                search(pattern, '1').then(function(factors) {
+                    appendCompleteFactorResults(factors);
+                }).catch(function(error) {
+                    console.log(error);
+                });
                 break;
         }
     }
 
-    function search(pattern) {
+    function search(pattern, mode) {
         const params = new URLSearchParams();
         params.append('searchForBill', 'searchForBill');
         params.append('pattern', pattern);
+        params.append('mode', mode);
 
-        axios.post("./app/Controllers/BillManagement.php", params)
+        return axios.post("./app/Controllers/BillManagement.php", params)
             .then(function(response) {
-                console.log(response.data);
                 return response.data;
             })
             .catch(function(error) {
