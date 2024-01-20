@@ -5,6 +5,7 @@ require_once './LoadBillDetails.php';
 require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/persianDate.js"></script>
+<link rel="stylesheet" href="./public/css/bill.css" />
 <style>
     .bill_icon {
         width: 25px;
@@ -262,204 +263,19 @@ require_once('./views/Layouts/header.php');
     </div>
 </div>
 <div id="previewBill" style="display:none" class="fixed inset-0 bg-gray-100 justify-center items-center" style="z-index: 10000000000;">
-    <style>
-        .bill {
-            width: 800px;
-            margin-inline: auto;
-            padding: 20px;
-            background-color: white;
-            min-height: 80vh;
-        }
-
-        .bill_header {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 10px;
-        }
-
-        .bill_info,
-        .headline,
-        .log_section {
-            flex: 1;
-        }
-
-        .headline {
-            text-align: center;
-        }
-
-        .log_section {
-            display: flex;
-            justify-content: end;
-        }
-
-        .logo {
-            width: 100px;
-        }
-
-        .customer_info {
-            background-color: lightgray;
-            margin-block: 10px;
-            border-radius: 10px;
-            padding: 10px;
-            display: flex;
-        }
-
-        .customer_info>ul {
-            flex: 1;
-        }
-
-        .customer_info>ul>li:first-child {
-            padding-bottom: 10px;
-        }
-
-        .bill_items,
-        .bill_footer {
-            border: 1px solid gray;
-            margin-bottom: 10px;
-        }
-
-        .bill_items>table,
-        .bill_footer>table {
-            width: 100%;
-        }
-
-        thead {
-            background-color: gray;
-        }
-
-        th {
-            padding: 10px;
-        }
-
-        .bill_items>table td {
-            padding: 10px;
-        }
-
-        .bill_footer>table td {
-            padding: 3px 10px;
-        }
-
-        .action_button {
-            width: 40px;
-            cursor: pointer;
-            height: 40px;
-            cursor: pointer
-        }
-
-        .action_menu {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .action_tooltip {
-            position: absolute;
-            width: 100px;
-            height: 36px;
-            border-bottom: 1px dotted black;
-            background-color: gray;
-            color: white;
-            padding: 5px 10px;
-            text-align: center;
-            right: 100%;
-            top: calc(50% - 18px);
-            font-size: 14px;
-            margin-right: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .action_tooltip::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -5px;
-            /* Adjust this value based on your design */
-            margin-top: -5px;
-            border-width: 5px 0 5px 5px;
-            border-style: solid;
-            border-color: transparent transparent transparent gray;
-        }
-
-        .action_button:hover+.action_tooltip {
-            display: block;
-        }
-
-        @media print {
-            * {
-                font-size: 14px;
-            }
-
-            main,
-            body,
-            #wrapper {
-                background-color: white !important;
-            }
-
-            .bill {
-                width: 100% !important;
-            }
-
-            #page_header {
-                display: none;
-            }
-
-            * {
-                direction: rtl !important;
-            }
-
-            @page :footer {
-                display: none !important;
-            }
-
-            @page :header {
-                display: none !important;
-            }
-
-            @page {
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-
-            main {
-                padding-block: 10px !important;
-                margin: 0 !important;
-            }
-
-            #nav {
-                display: none !important;
-            }
-
-            #side_nav {
-                display: none !important;
-            }
-
-            .bill {
-                padding: 0 !important;
-            }
-
-            .action_menu {
-                display: none;
-            }
-        }
-    </style>
     <div id="bill_body_pdf" class="rtl bill">
         <div class="bill_header">
             <div class="bill_info">
-                <ul>
-                    <li>
-                        شماره فاکتور:
-                        <span id="billNO2"></span>
-                    </li>
-                    <li>
-                        تاریخ:
-                        <span id="date"></span>
-                    </li>
-                </ul>
+                <table>
+                    <tr>
+                        <td class="text-sm">شماره فاکتور:</td>
+                        <td class="px-1 text-sm"><span id="billNO"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm"> تاریخ:</td>
+                        <td class="px-1 text-sm"><span id="date"></span></td>
+                    </tr>
+                </table>
             </div>
             <div class="headline">
                 <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
@@ -480,6 +296,8 @@ require_once('./views/Layouts/header.php');
                     <span id="phone"></span>
                 </li>
             </ul>
+            <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
+            <img id="copy_icon" class="cursor-pointer" src="./public/img/copy.svg" alt="copy customer info" onclick="copyInfo(this)">
         </div>
         <div class="bill_items">
             <table>
@@ -488,7 +306,7 @@ require_once('./views/Layouts/header.php');
                         <th class="text-right">ردیف</th>
                         <!-- <th class="text-right">کد فنی</th> -->
                         <th class="text-right">نام قطعه</th>
-                        <th class="text-right"> تعداد</th>
+                        <th class="text-center"> تعداد</th>
                         <th class="text-right"> قیمت</th>
                         <th class="text-right"> قیمت کل</th>
                     </tr>
@@ -508,32 +326,25 @@ require_once('./views/Layouts/header.php');
                 </thead>
                 <tbody>
                     <tr>
-                        <td>تعداد اقلام</td>
-                        <td>
-                            <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity2">
+                        <td>تعداد
+                            :
+                            <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
                         </td>
-                        <td>جمع کل</td>
-                        <td>
-                            <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice2">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>تخفیف</td>
-                        <td>
+                        <td>تخفیف
+                            :
                             <input readonly placeholder="0" type="number" name="discount" id="discount">
                         </td>
-                        <td>مالیات (۰٪)</td>
-                        <td>
-                            <input readonly placeholder="0" type="number" name="tax" id="tax">
+                        <td>جمع
+                            :
+                            <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
                         </td>
                     </tr>
-                    <tr style="background-color: gray; color:white">
-                        <td style="padding:10px;">مبلغ قابل پرداخت</td>
-                        <td colspan="3" style="padding:10px;">
-                            <p id="total_in_word2" class="px-3 text-sm"></p>
-                        </td>
-                    </tr>
+                    <tr class="bill_info_footer">
+                    <td style="padding:5px;">مبلغ قابل پرداخت : </td>
+                    <td colspan="5" style="padding:10px;">
+                        <p id="total_in_word2" class="px-3 text-sm"></p>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -1184,7 +995,7 @@ require_once('./views/Layouts/header.php');
 
         window.location.href = './displayBill.php';
     }
-    
+
     function generateBill2() {
         if (BillInfo.date == 'null') {
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');

@@ -1,0 +1,270 @@
+.bill {
+    width: 800px;
+    margin-inline: auto;
+    padding: 20px;
+    background-color: white;
+    min-height: 80vh;
+}
+
+.bill_header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 7px;
+}
+
+.bill_info,
+.headline,
+.log_section {
+    flex: 1;
+}
+
+.bill_info ul li {
+    font-size: 14px !important;
+}
+
+.headline {
+    text-align: center;
+}
+
+.log_section {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.logo {
+    width: 100px;
+}
+
+.customer_info {
+    background-color: lightgray;
+    margin-block: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+.customer_info>ul {
+    flex: 1;
+}
+
+.customer_info>ul>li:first-child {
+    padding-bottom: 10px;
+}
+
+.bill_items,
+.bill_footer {
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.bill_items>table,
+.bill_footer>table {
+    width: 100%;
+}
+
+thead {
+    background-color: lightgray;
+    font-size: 14px;
+}
+
+.bill_items th,
+.bill_footer>table th {
+    padding: 7px;
+    color: black !important;
+    border-bottom: 1px solid black;
+}
+
+.bill_items tr:not(:last-child),
+.bill_footer>table tr:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+.bill_items td:not(:last-child),
+.bill_footer>table td:not(:last-child) {
+    border-left: 1px solid black;
+}
+
+.bill_items td:nth-child(3) {
+    text-align: center;
+}
+
+
+.bill_items>table td {
+    padding: 7px;
+}
+
+.bill_footer>table td {
+    padding: 3px 7px;
+    font-size: 14px;
+}
+
+.action_button {
+    width: 40px;
+    cursor: pointer;
+    height: 40px;
+    cursor: pointer
+}
+
+.action_menu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action_tooltip {
+    position: absolute;
+    width: 100px;
+    height: 36px;
+    border-bottom: 1px dotted black;
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    right: 100%;
+    top: calc(50% - 18px);
+    font-size: 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.action_tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    /* Adjust this value based on your design */
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent gray;
+}
+
+.action_button:hover+.action_tooltip {
+    display: block;
+}
+
+.bill_info_footer {
+    background-color: lightgray;
+    color: black
+}
+
+#bill_date tr {
+    border-bottom: none !important;
+}
+
+@media print {
+    * {
+        font-size: 12px !important;
+    }
+
+    main,
+    body,
+    #wrapper {
+        background-color: white !important;
+    }
+
+    .bill {
+        width: 100% !important;
+    }
+
+    #page_header {
+        display: none;
+    }
+
+    * {
+        direction: rtl !important;
+    }
+
+    @page :footer {
+        display: none !important;
+    }
+
+    @page :header {
+        display: none !important;
+    }
+
+    @page {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    main {
+        padding-block: 10px !important;
+        margin: 0 !important;
+    }
+
+    #nav {
+        display: none !important;
+    }
+
+    #side_nav {
+        display: none !important;
+    }
+
+    .customer_info {
+        background-color: white !important;
+        border: 1px solid black !important;
+    }
+
+    .bill {
+        padding: 0 !important;
+    }
+
+    .action_menu {
+        display: none;
+    }
+
+    .bill_items {
+        border: none !important;
+    }
+
+    .bill_items>table {
+        border: 1px solid black !important;
+    }
+
+    .bill_items>table tr {
+        background-color: white !important;
+    }
+
+    .bill_items>table tr:not(:last-child) {
+        border-bottom: 1px solid black !important;
+    }
+
+    .bill_items>table tr th {
+        color: black !important;
+        border-bottom: 1px solid black !important;
+    }
+
+    .bill_items>table td {
+        padding: 5px;
+    }
+
+    .bill_items>table td span {
+        font-size: 10px !important;
+    }
+
+    .bill_footer>table td {
+        padding: 3px 5px;
+        font-size: 12px !important;
+    }
+
+    .bill_footer thead tr {
+        background-color: white !important;
+        border-bottom: 1px solid black !important;
+    }
+
+    .bill_info_footer {
+        background-color: white !important;
+    }
+
+    #copy_icon {
+        display: none !important;
+    }
+
+}
