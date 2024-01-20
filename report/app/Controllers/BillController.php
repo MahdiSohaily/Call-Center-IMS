@@ -183,6 +183,32 @@ if (isset($_POST['saveIncompleteForm'])) {
                 updateCustomer($customerInfo, $customer_id);
             }
         }
+        UpdateIncompleteBill($bill_info, $customer_id);
+        updateBillItems($bill_info, $bill_items);
+        CONN->commit();
+    } catch (Exception $e) {
+        // An error occurred, rollback the transaction
+        CONN->rollback();
+
+        echo "error: " . $e;
+    }
+}
+
+if (isset($_POST['saveCompleteForm'])) {
+    $customerInfo = json_decode($_POST['customer_info']);
+    $bill_info = json_decode($_POST['bill_info']);
+    $bill_items = json_decode($_POST['bill_items']);
+    $customerPhone = $customerInfo->phone ?? null;
+    try {
+        CONN->begin_transaction();
+        $customer_id = getCustomerId($customerInfo);
+        if ($customerInfo->name != null) {
+            if (!$customer_id) {
+                $customer_id = createCustomer($customerInfo);
+            } else {
+                updateCustomer($customerInfo, $customer_id);
+            }
+        }
         UpdateBill($bill_info, $customer_id);
         updateBillItems($bill_info, $bill_items);
         CONN->commit();
@@ -289,6 +315,35 @@ function UpdateBill($billInfo, $customerId)
             bill_date = '$billInfo->date',
             user_id = '$user_id',
             status = 1
+            WHERE id = '$billInfo->id'";
+
+        CONN->query($sql);
+
+        // Check if the update was successful
+        $success = CONN->affected_rows > 0;
+
+        // Return success status
+        return $success;
+    } catch (\Throwable $th) {
+        echo $th->getMessage();
+    }
+}
+
+function UpdateIncompleteBill($billInfo, $customerId)
+{
+    try {
+        $user_id = $_SESSION['user_id'];
+
+        $sql = "UPDATE callcenter.bill SET 
+            customer_id = '$customerId',
+            quantity = '$billInfo->quantity',
+            discount = '$billInfo->discount',
+            tax = '$billInfo->tax',
+            withdraw = '$billInfo->withdraw',
+            total = '$billInfo->totalPrice',
+            bill_date = '$billInfo->date',
+            user_id = '$user_id',
+            status = 0
             WHERE id = '$billInfo->id'";
 
         CONN->query($sql);

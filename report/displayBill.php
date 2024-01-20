@@ -240,13 +240,9 @@ require_once('./views/Layouts/header.php');
         }, 2000);
     }
 
-
-
-    // Define a unique identifier for this scenario, e.g., based on customerInfo
-    const uniqueIdentifier = JSON.stringify(customerInfo);
-
     // Check if the code has already run for this unique identifier
-    if (!sessionStorage.getItem('codeExecuted-' + uniqueIdentifier) && localStorage.getItem('operation') !== 'print') {
+    if (localStorage.getItem('operation') == 'save') {
+        localStorage.setItem('operation', 'saved');
         var params = new URLSearchParams();
         params.append('saveInvoice', 'saveInvoice');
         params.append('customerInfo', JSON.stringify(customerInfo));
@@ -254,6 +250,7 @@ require_once('./views/Layouts/header.php');
         params.append('billItems', JSON.stringify(billItems));
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
+                console.log(response);
                 const data = response.data;
                 if (data == 'error') {
                     alert('خطایی رخ داده است');
@@ -261,16 +258,10 @@ require_once('./views/Layouts/header.php');
                     alert('فاکتور شما با موفقیت ثبت شد');
                 }
 
-                // Set the flag in sessionStorage to indicate that the code has been executed for this unique identifier
-                sessionStorage.setItem('codeExecuted-' + uniqueIdentifier, true);
+
             }).catch(function(error) {
                 console.log(error);
             });
-
-        // Add an event listener to clear sessionStorage when the user navigates away
-        window.addEventListener('beforeunload', function() {
-            sessionStorage.clear();
-        });
     }
 </script>
 <?php

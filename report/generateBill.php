@@ -230,7 +230,7 @@ require_once('./views/Layouts/header.php');
             </li>
         <?php else : ?>
             <li>
-                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveCompleteForm()">
                     ویرایش
                 </p>
             </li>
@@ -289,7 +289,7 @@ require_once('./views/Layouts/header.php');
             <ul>
                 <li class="text-sm">
                     نام :
-                    <span id="name"></span>
+                    <span id="name_factor"></span>
                 </li>
                 <li class="text-sm">
                     شماره تماس:
@@ -340,11 +340,11 @@ require_once('./views/Layouts/header.php');
                         </td>
                     </tr>
                     <tr class="bill_info_footer">
-                    <td style="padding:5px;">مبلغ قابل پرداخت : </td>
-                    <td colspan="5" style="padding:10px;">
-                        <p id="total_in_word2" class="px-3 text-sm"></p>
-                    </td>
-                </tr>
+                        <td style="padding:5px;">مبلغ قابل پرداخت : </td>
+                        <td colspan="5" style="padding:10px;">
+                            <p id="total_in_word2" class="px-3 text-sm"></p>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -378,6 +378,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('id').value = customerInfo.id;
         document.getElementById('mode').value = customerInfo.mode;
         document.getElementById('name').value = customerInfo.name;
+        document.getElementById('name_factor').value = customerInfo.name;
         document.getElementById('family').value = customerInfo.family;
         document.getElementById('phone').value = customerInfo.phone;
         document.getElementById('car').value = customerInfo.car;
@@ -1021,6 +1022,32 @@ require_once('./views/Layouts/header.php');
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
         var params = new URLSearchParams();
         params.append('saveIncompleteForm', 'saveIncompleteForm');
+        params.append('customer_info', JSON.stringify(customerInfo));
+        params.append('bill_info', JSON.stringify(BillInfo));
+        params.append('bill_items', JSON.stringify(billItems));
+
+
+
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                const data = response.data;
+                const save_message = document.getElementById('save_message');
+                save_message.classList.remove('hidden');
+
+                setTimeout(() => {
+                    save_message.classList.add('hidden');
+                }, 3000);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    function saveCompleteForm() {
+        if (BillInfo.date == 'null')
+            BillInfo.date = moment().locale('fa').format('YYYY/M/D');
+        var params = new URLSearchParams();
+        params.append('saveCompleteForm', 'saveCompleteForm');
         params.append('customer_info', JSON.stringify(customerInfo));
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
