@@ -4,7 +4,7 @@ require_once './database/connect.php';
 require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/html2pdf.js"></script>
-<link rel="stylesheet" href="./public/css/bill.css" />
+<link rel="stylesheet" href="./public/css/bill.css?v=<?= rand() ?>" />
 <div id="bill_body_pdf" class="rtl bill">
     <div class="bill_header">
         <div class="bill_info">
@@ -117,7 +117,41 @@ require_once('./views/Layouts/header.php');
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
     const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
     const billItems = JSON.parse(localStorage.getItem('bill_items'));
-    getBillNumber();
+
+
+    // Check if the code has already run for this unique identifier
+    if (localStorage.getItem('operation') == 'save') {
+        localStorage.setItem('operation', 'saved');
+        var params = new URLSearchParams();
+        params.append('saveInvoice', 'saveInvoice');
+        params.append('customerInfo', JSON.stringify(customerInfo));
+        params.append('BillInfo', JSON.stringify(BillInfo));
+        params.append('billItems', JSON.stringify(billItems));
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                const data = response.data;
+                BillInfo.billNO = data;
+                displayBill();
+                displayCustomer();
+                displayBillDetails();
+                if (data == 'error') {
+                    alert('خطایی رخ داده است');
+                } else {
+                    document.getElementById("action_message").style.bottom = "10px";
+                    setTimeout(() => {
+                        document.getElementById("action_message").style.bottom = "-100px";
+                    }, 2000);
+                }
+
+
+            }).catch(function(error) {
+                console.log(error);
+            });
+    } else {
+        displayBill();
+        displayCustomer();
+        displayBillDetails();
+    }
 
     function getBillNumber() {
 
@@ -239,33 +273,6 @@ require_once('./views/Layouts/header.php');
         setTimeout(() => {
             element.src = './public/img/copy.svg';
         }, 2000);
-    }
-
-    // Check if the code has already run for this unique identifier
-    if (localStorage.getItem('operation') == 'save') {
-        localStorage.setItem('operation', 'saved');
-        var params = new URLSearchParams();
-        params.append('saveInvoice', 'saveInvoice');
-        params.append('customerInfo', JSON.stringify(customerInfo));
-        params.append('BillInfo', JSON.stringify(BillInfo));
-        params.append('billItems', JSON.stringify(billItems));
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                console.log(response);
-                const data = response.data;
-                if (data == 'error') {
-                    alert('خطایی رخ داده است');
-                } else {
-                    document.getElementById("action_message").style.bottom = "10px";
-                    setTimeout(() => {
-                        document.getElementById("action_message").style.bottom = "-100px";
-                    }, 2000);
-                }
-
-
-            }).catch(function(error) {
-                console.log(error);
-            });
     }
 </script>
 <?php

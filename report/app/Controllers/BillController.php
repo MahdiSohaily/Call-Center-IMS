@@ -154,10 +154,11 @@ if (isset($_POST['saveInvoice'])) {
                 updateCustomer($customerInfo, $customer_id);
             }
         }
-        makeBillCompleted($BillInfo, $customer_id);
-        registerFactorNumber($BillInfo->billNO, $customerInfo->name . ' ' . $customerInfo->family);
+        $bill_number = registerFactorNumber($BillInfo->billNO, $customerInfo->name . ' ' . $customerInfo->family);
+        makeBillCompleted($BillInfo, $customer_id, $bill_number);
         updateBillItems($BillInfo, $billItems);
         CONN->commit();
+        echo $bill_number;
     } catch (Exception $e) {
         // An error occurred, rollback the transaction
         CONN->rollback();
@@ -223,16 +224,29 @@ if (isset($_POST['saveCompleteForm'])) {
 function registerFactorNumber($billNO, $customer)
 {
     $user_id = $_SESSION['user_id'];
-    $sql = "INSERT INTO callcenter.shomarefaktor (shomare, kharidar,user) VALUES 
-    ('$billNO', '$customer', '$user_id')";
+    $sql = "INSERT INTO callcenter.shomarefaktor (shomare, kharidar, user) VALUES ('$billNO', '$customer', '$user_id')";
     CONN->query($sql);
 
     // Retrieve the last inserted ID
     $lastInsertedId = CONN->insert_id;
 
-    // Return the last inserted ID
-    return $lastInsertedId;
+    // Retrieve the shomare property of the last inserted item
+    $result = CONN->query("SELECT shomare FROM callcenter.shomarefaktor WHERE id = '$lastInsertedId'");
+
+    // Check if the query was successful
+    if ($result) {
+        // Fetch the shomare property
+        $row = $result->fetch_assoc();
+        $shomare = $row['shomare'];
+
+        // Return the shomare property
+        return $shomare;
+    } else {
+        // Return an error or handle the error as needed
+        return false;
+    }
 }
+
 
 function getCustomerId($customer)
 {
@@ -274,13 +288,13 @@ function updateCustomer($customerInfo, $id = null)
     CONN->query($sql);
 }
 
-function makeBillCompleted($billInfo, $customerId)
+function makeBillCompleted($billInfo, $customerId, $bill_number)
 {
     $user_id = $_SESSION['user_id'];
 
     $sql = "UPDATE callcenter.bill SET 
                 customer_id = '$customerId',
-                bill_number = '$billInfo->billNO',
+                bill_number = '$bill_number',
                 quantity = '$billInfo->quantity',
                 discount = '$billInfo->discount',
                 tax = '$billInfo->tax',

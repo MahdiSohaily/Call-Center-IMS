@@ -5,7 +5,7 @@ require_once './LoadBillDetails.php';
 require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/persianDate.js"></script>
-<link rel="stylesheet" href="./public/css/bill.css" />
+<link rel="stylesheet" href="./public/css/bill.css?v=<?= rand() ?>" />
 <style>
     .bill_icon {
         width: 25px;
@@ -1109,6 +1109,6 @@ require_once('./views/Layouts/header.php');
     }
     ?>
 </script>
-<script src="./public/js/displayBill.js"></script>
+<script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <?php
 require_once('./views/Layouts/footer.php');
