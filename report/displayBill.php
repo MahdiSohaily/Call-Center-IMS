@@ -367,6 +367,7 @@ require_once('./views/Layouts/header.php');
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
     const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
     const billItems = JSON.parse(localStorage.getItem('bill_items'));
+    getBillNumber();
 
     function getBillNumber() {
 
@@ -375,7 +376,8 @@ require_once('./views/Layouts/header.php');
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 bill_number = (response.data);
-                BillInfo.billNO = bill_number;
+                if (localStorage.getItem('operation') !== 'print')
+                    BillInfo.billNO = bill_number - 1;
                 displayBill();
                 displayCustomer();
                 displayBillDetails();
@@ -439,12 +441,8 @@ require_once('./views/Layouts/header.php');
     }
 
     document.addEventListener('keydown', function(event) {
-        // Check if Ctrl (or Command on Mac) + P is pressed
         if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
-            // Prevent the default action (in this case, printing)
             event.preventDefault();
-            // Optionally, you can provide some feedback to the user
-            console.log('Printing is disabled.');
         }
     });
 
@@ -505,7 +503,6 @@ require_once('./views/Layouts/header.php');
         params.append('customerInfo', JSON.stringify(customerInfo));
         params.append('BillInfo', JSON.stringify(BillInfo));
         params.append('billItems', JSON.stringify(billItems));
-        getBillNumber();
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
@@ -525,9 +522,6 @@ require_once('./views/Layouts/header.php');
         window.addEventListener('beforeunload', function() {
             sessionStorage.clear();
         });
-    } else {
-        // The code has already run for this unique identifier
-        console.log('Code already executed for ' + uniqueIdentifier);
     }
 </script>
 <?php
