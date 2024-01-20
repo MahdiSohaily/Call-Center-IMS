@@ -111,6 +111,7 @@ require_once('./views/Layouts/header.php');
         <p class="action_tooltip">پی دی اف</p>
     </li>
 </ul>
+<p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
 <script>
     let bill_number = null;
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
@@ -255,7 +256,10 @@ require_once('./views/Layouts/header.php');
                 if (data == 'error') {
                     alert('خطایی رخ داده است');
                 } else {
-                    alert('فاکتور شما با موفقیت ثبت شد');
+                    document.getElementById("action_message").style.bottom = "10px";
+                    setTimeout(() => {
+                        document.getElementById("action_message").style.bottom = "-100px";
+                    }, 2000);
                 }
 
 
