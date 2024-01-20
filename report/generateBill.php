@@ -1102,12 +1102,6 @@ require_once('./views/Layouts/header.php');
 
     document.addEventListener('keydown', handleKeyDown);
 
-
-    <?php if (!$billInfo['billNO']) {
-
-        echo 'getBillNumber()';
-    }
-    ?>
 </script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <?php

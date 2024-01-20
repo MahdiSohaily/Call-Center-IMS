@@ -153,24 +153,6 @@ require_once('./views/Layouts/header.php');
         displayBillDetails();
     }
 
-    function getBillNumber() {
-
-        var params = new URLSearchParams();
-        params.append('getFactorNumber', 'getFactorNumber');
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                bill_number = (response.data);
-                if (localStorage.getItem('operation') !== 'print')
-                    BillInfo.billNO = bill_number - 1;
-                displayBill();
-                displayCustomer();
-                displayBillDetails();
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-
     function displayBill() {
         let counter = 1;
         let template = ``;
@@ -215,8 +197,6 @@ require_once('./views/Layouts/header.php');
         if (customerInfo.address.length > 0) {
             document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
         }
-        // document.getElementById('car').innerHTML = customerInfo.car;
-        // document.getElementById('address').innerHTML = customerInfo.address;
     }
 
     function displayBillDetails() {
