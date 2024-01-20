@@ -253,7 +253,7 @@ require_once('./views/Layouts/header.php');
         #copy_icon {
             display: none !important;
         }
-        
+
     }
 </style>
 <div id="bill_body_pdf" class="rtl bill">
@@ -367,8 +367,6 @@ require_once('./views/Layouts/header.php');
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
     const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
     const billItems = JSON.parse(localStorage.getItem('bill_items'));
-    getBillNumber();
-
 
     function getBillNumber() {
 
@@ -501,13 +499,13 @@ require_once('./views/Layouts/header.php');
     const uniqueIdentifier = JSON.stringify(customerInfo);
 
     // Check if the code has already run for this unique identifier
-    if (!sessionStorage.getItem('codeExecuted-' + uniqueIdentifier)) {
+    if (!sessionStorage.getItem('codeExecuted-' + uniqueIdentifier) && localStorage.getItem('operation') !== 'print') {
         var params = new URLSearchParams();
         params.append('saveInvoice', 'saveInvoice');
         params.append('customerInfo', JSON.stringify(customerInfo));
         params.append('BillInfo', JSON.stringify(BillInfo));
         params.append('billItems', JSON.stringify(billItems));
-
+        getBillNumber();
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
