@@ -30,7 +30,7 @@ require_once('./views/Layouts/header.php');
     </div>
 
     <div class="customer_info relative flex">
-        <ul>
+        <ul class="w-1/2">
             <li class="text-sm">
                 نام :
                 <span id="name"></span>
@@ -40,7 +40,7 @@ require_once('./views/Layouts/header.php');
                 <span id="phone"></span>
             </li>
         </ul>
-        <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
+        <p class="w-1/2" id="userAddress" style="font-size: 12px;"></p>
         <img id="copy_icon" class="cursor-pointer" src="./public/img/copy.svg" alt="copy customer info" onclick="copyInfo(this)">
     </div>
     <div class="bill_items">
@@ -92,7 +92,7 @@ require_once('./views/Layouts/header.php');
             </tbody>
         </table>
     </div>
-
+    <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
     <div style="display: flex; margin-top: 20px;">
         <p style="flex: 1;">امضاء تحویل گیرنده</p>
     </div>
@@ -211,6 +211,10 @@ require_once('./views/Layouts/header.php');
     function displayCustomer() {
         document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
         document.getElementById('phone').innerHTML = customerInfo.phone;
+        console.log(customerInfo.address.length);
+        if (customerInfo.address.length > 0) {
+            document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
+        }
         // document.getElementById('car').innerHTML = customerInfo.car;
         // document.getElementById('address').innerHTML = customerInfo.address;
     }
