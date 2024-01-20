@@ -269,11 +269,11 @@ require_once('./views/Layouts/header.php');
                 <table>
                     <tr>
                         <td class="text-sm">شماره فاکتور:</td>
-                        <td class="px-1 text-sm"><span id="billNO"></span></td>
+                        <td class="px-1 text-sm"><span id="billNO_bill"></span></td>
                     </tr>
                     <tr>
                         <td class="text-sm"> تاریخ:</td>
-                        <td class="px-1 text-sm"><span id="date"></span></td>
+                        <td class="px-1 text-sm"><span id="date_bill"></span></td>
                     </tr>
                 </table>
             </div>
@@ -289,11 +289,11 @@ require_once('./views/Layouts/header.php');
             <ul>
                 <li class="text-sm">
                     نام :
-                    <span id="name_factor"></span>
+                    <span id="name_bill"></span>
                 </li>
                 <li class="text-sm">
                     شماره تماس:
-                    <span id="phone"></span>
+                    <span id="phone_bill"></span>
                 </li>
             </ul>
             <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
@@ -328,30 +328,28 @@ require_once('./views/Layouts/header.php');
                     <tr>
                         <td>تعداد
                             :
-                            <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
+                            <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity_bill">
                         </td>
                         <td>تخفیف
                             :
-                            <input readonly placeholder="0" type="number" name="discount" id="discount">
+                            <input readonly placeholder="0" type="number" name="discount" id="discount_bill">
                         </td>
                         <td>جمع
                             :
-                            <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
+                            <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice_bill">
                         </td>
                     </tr>
                     <tr class="bill_info_footer">
                         <td style="padding:5px;">مبلغ قابل پرداخت : </td>
                         <td colspan="5" style="padding:10px;">
-                            <p id="total_in_word2" class="px-3 text-sm"></p>
+                            <p id="total_in_word_bill" class="px-3 text-sm"></p>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
         <div style="display: flex; margin-top: 20px;">
-            <p style="flex: 1;">امضاء خریدار</p>
-            <p style="flex: 1;">امضاء فروشنده</p>
+            <p style="flex: 1;">امضاء تحویل گیرنده</p>
         </div>
     </div>
 </div>
@@ -378,7 +376,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('id').value = customerInfo.id;
         document.getElementById('mode').value = customerInfo.mode;
         document.getElementById('name').value = customerInfo.name;
-        document.getElementById('name_factor').value = customerInfo.name;
+        document.getElementById('name').value = customerInfo.name;
         document.getElementById('family').value = customerInfo.family;
         document.getElementById('phone').value = customerInfo.phone;
         document.getElementById('car').value = customerInfo.car;

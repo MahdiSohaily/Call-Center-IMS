@@ -6,7 +6,8 @@ function getBillData() {
     .post("./app/Controllers/BillController.php", params)
     .then(function (response) {
       bill_number = response.data;
-      BillInfo.billNO = bill_number;
+      // BillInfo.billNO = bill_number;
+      document.getElementById("billNO_bill").innerHTML = BillInfo.billNO;
       previewBill();
       displayCustomer();
       displayBillDetails();
@@ -53,21 +54,17 @@ function formatAsMoney(number) {
 }
 
 function displayCustomer() {
-  document.getElementById("name").innerHTML =
+  document.getElementById("name_bill").innerHTML =
     customerInfo.name + " " + customerInfo.family ?? "";
-  document.getElementById("phone").innerHTML = customerInfo.phone;
-  // document.getElementById('car').innerHTML = customerInfo.car;
-  // document.getElementById('address').innerHTML = customerInfo.address;
+  document.getElementById("phone_bill").innerHTML = customerInfo.phone;
 }
 
 function displayBillDetails() {
-  // document.getElementById("billNO2").innerHTML = BillInfo.billNO;
-  document.getElementById("date").innerHTML = BillInfo.date;
-  document.getElementById("quantity2").value = BillInfo.quantity;
-  document.getElementById("totalPrice2").value = formatAsMoney(
+  document.getElementById("date_bill").innerHTML = BillInfo.date;
+  document.getElementById("quantity_bill").value = BillInfo.quantity;
+  document.getElementById("totalPrice_bill").value = formatAsMoney(
     BillInfo.totalPrice
   );
-  document.getElementById("discount").value = BillInfo.discount;
-  document.getElementById("tax").value = BillInfo.tax;
-  document.getElementById("total_in_word2").innerHTML = BillInfo.totalInWords;
+  document.getElementById("discount_bill").value = BillInfo.discount;
+  document.getElementById("total_in_word_bill").innerHTML = BillInfo.totalInWords;
 }
