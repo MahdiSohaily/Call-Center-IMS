@@ -77,10 +77,29 @@ require_once('./views/Layouts/header.php');
         font-size: 14px;
     }
 
-    th {
+    .bill_items th,
+    .bill_footer>table th {
         padding: 7px;
         color: black !important;
+        border-bottom: 1px solid black;
     }
+
+    .bill_items tr:not(:last-child),
+    .bill_footer>table tr:not(:last-child) {
+        border-bottom: 1px solid black;
+    }
+
+    .bill_items td:not(:last-child),
+    .bill_footer>table td:not(:last-child)
+     {
+        border-left: 1px solid black;
+    }
+
+    .bill_items td:nth-child(3)
+     {
+        text-align: center;
+    }
+
 
     .bill_items>table td {
         padding: 7px;
@@ -143,6 +162,10 @@ require_once('./views/Layouts/header.php');
     .bill_info_footer {
         background-color: lightgray;
         color: black
+    }
+
+    #bill_date tr {
+        border-bottom: none !important;
     }
 
     @media print {
@@ -259,16 +282,16 @@ require_once('./views/Layouts/header.php');
 <div id="bill_body_pdf" class="rtl bill">
     <div class="bill_header">
         <div class="bill_info">
-            <ul>
-                <li>
-                    شماره فاکتور:
-                    <span id="billNO"></span>
-                </li>
-                <li>
-                    تاریخ:
-                    <span id="date"></span>
-                </li>
-            </ul>
+            <table id="bill___ddate">
+                <tr>
+                    <td class="text-sm">شماره فاکتور:</td>
+                    <td class="px-1 text-sm"><span id="billNO"></span></td>
+                </tr>
+                <tr>
+                    <td class="text-sm"> تاریخ:</td>
+                    <td class="px-1 text-sm"><span id="date"></span></td>
+                </tr>
+            </table>
         </div>
         <div class="headline">
             <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
@@ -279,9 +302,8 @@ require_once('./views/Layouts/header.php');
         </div>
 
     </div>
-    <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
 
-    <div class="customer_info relative">
+    <div class="customer_info relative flex">
         <ul>
             <li class="text-sm">
                 نام :
@@ -292,6 +314,7 @@ require_once('./views/Layouts/header.php');
                 <span id="phone"></span>
             </li>
         </ul>
+        <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
         <img id="copy_icon" class="cursor-pointer" src="./public/img/copy.svg" alt="copy customer info" onclick="copyInfo(this)">
     </div>
     <div class="bill_items">
@@ -301,7 +324,7 @@ require_once('./views/Layouts/header.php');
                     <th class="text-right">ردیف</th>
                     <!-- <th class="text-right">کد فنی</th> -->
                     <th class="text-right">نام قطعه</th>
-                    <th class="text-right"> تعداد</th>
+                    <th class="text-center"> تعداد</th>
                     <th class="text-right"> قیمت</th>
                     <th class="text-right"> قیمت کل</th>
                 </tr>
@@ -343,9 +366,9 @@ require_once('./views/Layouts/header.php');
             </tbody>
         </table>
     </div>
+
     <div style="display: flex; margin-top: 20px;">
-        <p style="flex: 1;">امضاء خریدار</p>
-        <p style="flex: 1;">امضاء فروشنده</p>
+        <p style="flex: 1;">امضاء تحویل گیرنده</p>
     </div>
 </div>
 <ul class="action_menu">
