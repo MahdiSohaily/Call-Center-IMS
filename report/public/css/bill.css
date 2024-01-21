@@ -158,6 +158,13 @@ thead {
     border-bottom: none !important;
 }
 
+.bill_icon {
+    width: 25px;
+    height: 25px;
+    max-width: 25px !important;
+    cursor: pointer;
+}
+
 @media print {
     * {
         font-size: 12px !important;
