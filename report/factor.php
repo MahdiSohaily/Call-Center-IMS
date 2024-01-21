@@ -95,6 +95,7 @@ require_once './app/Controllers/BillFilterController.php';
             <label for="users" class="block mb-2 text-md font-medium text-gray-900">کاربر:</label>
             <select onchange="setUserId(this.value)" name="user_id" id="users" class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option>کاربر مد نظر خود را انتخاب کنید.</option>
+                <option value="all">همه کاربران</option>
                 <?php
                 foreach ($users as $user) : ?>
                     <option <?= $user['id'] == $_SESSION['user_id'] ? 'selected' : '' ?> value="<?= $user['id'] ?>"><?= $user['name'] . " " . $user['family'] ?></option>
@@ -217,7 +218,7 @@ require_once './app/Controllers/BillFilterController.php';
                 completed_bill.innerHTML += `
                                 <div class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                                     <div class="w-14 flex justify-center items-center">
-                                        <img class="w-10 h-10 rounded-full" src="../../userimg/${user_id}.jpg"/>
+                                        <img class="w-10 h-10 rounded-full" src="../../userimg/${factor.user_id}.jpg"/>
                                     </div>    
                                     <div class="flex-grow flex flex-col justify-between px-3">
                                         <div class="flex justify-between">
@@ -306,7 +307,7 @@ require_once './app/Controllers/BillFilterController.php';
                 incomplete_bill.innerHTML += `
                         <div id="card-${factor.id}" class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                             <div class="w-14 flex justify-center items-center">
-                                <img class=" w-10 h-10 rounded-full" src ="../../userimg/${user_id}.jpg"/>
+                                <img class=" w-10 h-10 rounded-full" src ="../../userimg/${factor.user_id}.jpg"/>
                             </div>
                             <div class="flex-grow flex flex-col justify-between px-3">   
                                 <div class="flex justify-between">

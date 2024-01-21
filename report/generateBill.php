@@ -266,20 +266,22 @@ require_once('./views/Layouts/header.php');
     <div id="bill_body_pdf" class="rtl bill">
         <div class="bill_header">
             <div class="bill_info">
-                <table>
-                    <tr>
-                        <td class="text-sm">شماره فاکتور:</td>
-                        <td class="px-1 text-sm"><span id="billNO_bill"></span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-sm"> تاریخ:</td>
-                        <td class="px-1 text-sm"><span id="date_bill"></span></td>
-                    </tr>
-                </table>
+                <div class="nisha-bill-info">
+                    <div class="A-main">
+                        <div class="A-1">شماره</div>
+                        <div class="A-2"><span id="billNO_bill">5555</span></div>
+
+                    </div>
+                    <div class="B-main">
+                        <div class="B-1">تاریخ</div>
+                        <div class="B-2"><span id="date_bill">1402-10-30</span></div>
+
+                    </div>
+                </div>
             </div>
             <div class="headline">
-                <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
-                <h2 style="margin-bottom: 7px;">یدک شاپ</h2>
+                <h2 style="margin-bottom: 7px;"> پیش فاکتور یدک شاپ</h2>
+                <h2 style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
             </div>
             <div class="log_section">
                 <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
@@ -303,7 +305,7 @@ require_once('./views/Layouts/header.php');
             <table>
                 <thead>
                     <tr style="padding: 10px !important;">
-                        <th class="text-right">ردیف</th>
+                        <th class="text-right w-12">ردیف</th>
                         <!-- <th class="text-right">کد فنی</th> -->
                         <th class="text-right">نام قطعه</th>
                         <th class="text-center"> تعداد</th>
@@ -349,7 +351,34 @@ require_once('./views/Layouts/header.php');
             </table>
         </div>
         <div style="display: flex; margin-top: 20px;">
-            <p style="flex: 1;">امضاء تحویل گیرنده</p>
+            <div class="tahvilgirande-box">
+                <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
+                <div class="tahvilgirande-box-inner">
+                    <div>نام</div>
+                    <div>شماره تماس</div>
+                    <div>امضا</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-box">
+            <p class="footer-box-adress">
+                تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
+            </p>
+            <p class="footer-box-tell">
+                <span>
+                    ۷۰ ۹۳ ۹۷ ۳۳ - ۰۲۱
+                </span>
+                <span>
+                    ۸۸ ۶۷ ۹۴ ۳۳ - ۰۲۱
+                </span>
+                <span>
+                    ۸۰۹ ۱۹ ۳۶۶ - ۰۲۱
+                </span>
+                <span>
+                    ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
+                </span>
+            </p>
         </div>
     </div>
 </div>
@@ -1101,7 +1130,6 @@ require_once('./views/Layouts/header.php');
     }
 
     document.addEventListener('keydown', handleKeyDown);
-
 </script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <?php

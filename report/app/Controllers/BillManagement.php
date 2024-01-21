@@ -41,14 +41,23 @@ if (isset($_POST['getUserCompleteBills'])) {
 
 function getUsersCompleteBills($user, $date)
 {
-    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total
-    FROM callcenter.bill
-    INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
-    WHERE bill.user_id = '$user'
-    AND DATE(bill.created_at) = '$date'
-    AND status = 1
-    ORDER BY bill.created_at DESC;
-    ";
+    if ($user == 'all') {
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.user_id
+                FROM callcenter.bill
+                INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
+                WHERE DATE(bill.created_at) = '$date'
+                AND status = 1
+                ORDER BY bill.created_at DESC";
+    } else {
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.user_id
+                FROM callcenter.bill
+                INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
+                WHERE bill.user_id = '$user'
+                AND DATE(bill.created_at) = '$date'
+                AND status = 1
+                ORDER BY bill.created_at DESC";
+    }
+
     $result = CONN->query($sql);
 
     $data = [];
@@ -73,14 +82,22 @@ if (isset($_POST['getUserIncompleteBills'])) {
 
 function getUsersUnCompleteBills($user, $date)
 {
-    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity
-    FROM callcenter.bill
-    LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
-    WHERE bill.user_id = '$user'
-    AND DATE(bill.created_at) = '$date'
-    AND status = 0
-    ORDER BY bill.created_at DESC;
-    ";
+    if ($user = 'all') {
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity, bill.user_id
+                FROM callcenter.bill
+                LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
+                WHERE DATE(bill.created_at) = '$date'
+                AND status = 0
+                ORDER BY bill.created_at DESC";
+    } else {
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity, bill.user_id
+                FROM callcenter.bill
+                LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
+                WHERE bill.user_id = '$user'
+                AND DATE(bill.created_at) = '$date'
+                AND status = 0
+                ORDER BY bill.created_at DESC";
+    }
     $result = CONN->query($sql);
 
     $data = [];

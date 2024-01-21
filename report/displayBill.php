@@ -106,14 +106,6 @@ require_once('./views/Layouts/header.php');
         </table>
     </div>
     <div style="display: flex; margin-top: 20px;">
-
-
-
-
-
-
-
-
         <div class="tahvilgirande-box">
             <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
             <div class="tahvilgirande-box-inner">
@@ -122,25 +114,12 @@ require_once('./views/Layouts/header.php');
                 <div>امضا</div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
     </div>
 
 
     <div class="footer-box">
-
-
         <p class="footer-box-adress">
             تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
-
         </p>
         <p class="footer-box-tell">
             <span>
@@ -156,8 +135,6 @@ require_once('./views/Layouts/header.php');
                 ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
             </span>
         </p>
-
-
     </div>
 
 
@@ -344,7 +321,6 @@ require_once('./views/Layouts/header.php');
                 element.src = './public/img/copy.svg';
             }, 2000);
         }
-
     </script>
     <?php
-require_once('./views/Layouts/footer.php');
+    require_once('./views/Layouts/footer.php');
