@@ -38,6 +38,7 @@ if (isset($_POST['BillId'])) {
             'car' => null,
             'phone' => null,
             'address' => null,
+            'mode' => 'create'
         ];
     }
     $billItems = getBillItems($billInfo['id'])[0]['billDetails'];

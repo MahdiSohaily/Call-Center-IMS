@@ -137,7 +137,6 @@ function deleteFactor($factor_id)
     }
 }
 
-
 if (isset($_POST['searchForBill'])) {
     $pattern = $_POST['pattern'];
     $mode = $_POST['mode'];

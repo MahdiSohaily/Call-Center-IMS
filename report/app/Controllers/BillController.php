@@ -255,26 +255,24 @@ if (isset($_POST['saveInvoice'])) {
     $BillInfo = json_decode($_POST['BillInfo']);
     $customerInfo = json_decode($_POST['customerInfo']);
     $customerPhone = $customerInfo->phone ?? null;
+
     try {
         CONN->begin_transaction();
-        $customer_id = getCustomerId($customerInfo);
-        if ($customerInfo->name != null) {
-            if (!$customer_id) {
-                $customer_id = createCustomer($customerInfo);
-            } else {
-                updateCustomer($customerInfo, $customer_id);
-            }
+        $customer_id = null;
+        if ($customerInfo->mode == 'update') {
+            $customer_id = $customerInfo->id;
+            updateCustomer($customerInfo);
+        } else {
+            $customer_id = createCustomer($customerInfo);
         }
         $bill_number = registerFactorNumber(getFactorNumber(), $customerInfo->name . ' ' . $customerInfo->family);
         makeBillCompleted($BillInfo, $customer_id, $bill_number);
         updateBillItems($BillInfo, $billItems);
-        CONN->commit();
         echo $bill_number;
+        CONN->commit();
     } catch (Exception $e) {
-        // An error occurred, rollback the transaction
         CONN->rollback();
-
-        echo "error: " . $e;
+        echo "false";
     }
 }
 function getCustomerId($customer)
@@ -304,14 +302,14 @@ if (isset($_POST['saveIncompleteForm'])) {
     $customerPhone = $customerInfo->phone ?? null;
     try {
         CONN->begin_transaction();
-        $customer_id = getCustomerId($customerInfo);
-        if ($customerInfo->name != null) {
-            if (!$customer_id) {
-                $customer_id = createCustomer($customerInfo);
-            } else {
-                updateCustomer($customerInfo, $customer_id);
-            }
+        $customer_id = null;
+        if ($customerInfo->mode == 'update') {
+            $customer_id = $customerInfo->id;
+            updateCustomer($customerInfo);
+        } else {
+            $customer_id = createCustomer($customerInfo);
         }
+
         UpdateIncompleteBill($bill_info, $customer_id);
         updateBillItems($bill_info, $bill_items);
         CONN->commit();
@@ -375,26 +373,35 @@ function registerFactorNumber($billNO, $customer)
     }
 }
 
-
-
 function createCustomer($customerInfo)
 {
-    $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 
-        ('$customerInfo->name', '$customerInfo->family', '$customerInfo->phone', '$customerInfo->address', '$customerInfo->car')";
-    CONN->query($sql);
+    // Check if the phone number already exists
+    $existingCustomerQuery = "SELECT id FROM callcenter.customer WHERE phone = '$customerInfo->phone'";
+    $result = CONN->query($existingCustomerQuery);
 
-    // Retrieve the last inserted ID
-    $lastInsertedId = CONN->insert_id;
+    // If the phone number exists, return the customer ID
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['id'];
+    } else {
+        // If the phone number doesn't exist, create a new customer
+        $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 
+            ('$customerInfo->name', '$customerInfo->family', '$customerInfo->phone', '$customerInfo->address', '$customerInfo->car')";
+        CONN->query($sql);
 
-    // Return the last inserted ID
-    return $lastInsertedId;
+        // Retrieve the last inserted ID
+        $lastInsertedId = CONN->insert_id;
+
+        // Return the last inserted ID
+        return $lastInsertedId;
+    }
 }
 
-function updateCustomer($customerInfo, $id = null)
+function updateCustomer($customerInfo)
 {
     $sql = "UPDATE callcenter.customer SET name = '$customerInfo->name', family = '$customerInfo->family', 
             phone = '$customerInfo->phone', address = '$customerInfo->address',
-            car = '$customerInfo->car' WHERE id = '$id'";
+            car = '$customerInfo->car' WHERE id = '$customerInfo->id'";
     CONN->query($sql);
 }
 

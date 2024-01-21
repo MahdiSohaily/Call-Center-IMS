@@ -8,29 +8,16 @@ require_once('./views/Layouts/header.php');
 <div id="bill_body_pdf" class="rtl bill">
     <div class="bill_header">
         <div class="bill_info">
-
-
-
-
-
-
             <div class="nisha-bill-info">
                 <div class="A-main">
                     <div class="A-1">شماره</div>
                     <div class="A-2"><span id="billNO">5555</span></div>
-
                 </div>
                 <div class="B-main">
                     <div class="B-1">تاریخ</div>
                     <div class="B-2"><span id="date">1402-10-30</span></div>
-
                 </div>
             </div>
-
-
-
-
-
         </div>
         <div class="headline">
             <h2 style="margin-bottom: 7px;">فاکتور فروش یدک شاپ</h2>
@@ -39,9 +26,7 @@ require_once('./views/Layouts/header.php');
         <div class="log_section">
             <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
         </div>
-
     </div>
-
     <div class="customer_info relative flex">
         <ul class="w-1/2">
             <li class="text-sm">
@@ -116,7 +101,6 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 
-
     <div class="footer-box">
         <p class="footer-box-adress">
             تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
@@ -136,13 +120,9 @@ require_once('./views/Layouts/header.php');
             </span>
         </p>
     </div>
-
-
-
-
     <ul class="action_menu">
         <li style="position: relative;">
-            <img class="action_button print" onclick="saveInvoice();" src="./public/img/print.svg" alt="print icon">
+            <img class="action_button print" onclick="window.print();" src="./public/img/print.svg" alt="print icon">
             <p class="action_tooltip">پرینت</p>
         </li>
         <li style="position: relative;">
@@ -170,15 +150,23 @@ require_once('./views/Layouts/header.php');
             params.append('customerInfo', JSON.stringify(customerInfo));
             params.append('BillInfo', JSON.stringify(BillInfo));
             params.append('billItems', JSON.stringify(billItems));
+
+
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
                     const data = response.data;
+                    console.log(data);
                     BillInfo.billNO = data;
                     displayBill();
                     displayCustomer();
                     displayBillDetails();
                     if (data == 'error') {
-                        alert('خطایی رخ داده است');
+                        document.getElementById("action_message").style.bottom = "10px";
+                        document.getElementById("action_message").style.backgroundColor = "red";
+                        document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد";
+                        setTimeout(() => {
+                            document.getElementById("action_message").style.bottom = "-100px";
+                        }, 2000);
                     } else {
                         document.getElementById("action_message").style.bottom = "10px";
                         setTimeout(() => {
@@ -194,24 +182,6 @@ require_once('./views/Layouts/header.php');
             displayBill();
             displayCustomer();
             displayBillDetails();
-        }
-
-        function getBillNumber() {
-
-            var params = new URLSearchParams();
-            params.append('getFactorNumber', 'getFactorNumber');
-            axios.post("./app/Controllers/BillController.php", params)
-                .then(function(response) {
-                    bill_number = (response.data);
-                    if (localStorage.getItem('operation') !== 'print')
-                        BillInfo.billNO = bill_number - 1;
-                    displayBill();
-                    displayCustomer();
-                    displayBillDetails();
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
         }
 
         function displayBill() {
@@ -295,10 +265,6 @@ require_once('./views/Layouts/header.php');
                 }
             };
             html2pdf().set(opt).from(content).save();
-        }
-
-        function saveInvoice() {
-            window.print();
         }
 
         function copyInfo(element) {
