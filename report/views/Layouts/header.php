@@ -101,11 +101,11 @@ $_SESSION["user_id"] = $_SESSION["id"];
             echo ' <link rel="shortcut icon" href="../public/img/b-t.png">';
             break;
         case 'generateBill.php':
-            $title = "فاکتور";
+            $title = "ویرایش فاکتور";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
         case 'factor.php':
-            $title = "ایجاد فاکتور";
+            $title = "مدیریت فاکتور";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
         default:

@@ -1,13 +1,88 @@
 <?php
-// Initialize the session
 session_name("MyAppSession");
 session_start();
 require_once('../../database/connect.php');
+
+// START ------------------ THE FIRST STEP OF FACTOR ( CREATE INCOMPLETE BILL ) -----------------------------
+if (isset($_POST['create_incomplete_bill'])) {
+
+    $incompleteBillId = createBill([
+        'customer_id' => 0,
+        'bill_number' => 0,
+        'quantity' => 0,
+        'discount' => 0,
+        'tax' => 0,
+        'withdraw' => 0,
+        'total' => 0,
+        'date' => $_POST['date'],
+        'totalInWords' => null
+    ]);
+
+    $incompleteBillDetails = createBillItemsTable(
+        $incompleteBillId,
+        '[{
+        "id": 5892295,
+        "partName": "اسم قطعه",
+        "price_per": 0,
+        "quantity": 1,
+        "max": "undefined",
+        "partNumber": "NOTPART"}]'
+    );
+
+    echo $incompleteBillId;
+}
+
+function createBill($billInfo)
+{
+    $sql = "INSERT INTO callcenter.bill 
+                        (customer_id, bill_number, quantity, discount, tax, withdraw, total, bill_date, user_id, status) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
+    $stmt = CONN->prepare($sql);
+    $stmt->bind_param(
+        "dddddddsi",
+        $billInfo['customer_id'],
+        $billInfo['bill_number'],
+        $billInfo['quantity'],
+        $billInfo['discount'],
+        $billInfo['tax'],
+        $billInfo['withdraw'],
+        $billInfo['total'],
+        $billInfo['date'],
+        $_SESSION['user_id']
+    );
+
+    $stmt->execute();
+
+    if ($stmt->errno) {
+        return false;
+    }
+    $lastInsertedId = $stmt->insert_id;
+    $stmt->close();
+
+    return $lastInsertedId;
+}
+
+function createBillItemsTable($billId, $billItems)
+{
+    $sql = "INSERT INTO callcenter.bill_details (bill_id, billDetails) VALUES (?, ?)";
+    $stmt = CONN->prepare($sql);
+    $stmt->bind_param("is", $billId, $billItems);
+    $stmt->execute();
+    $stmt->close();
+}
+// END ------------------ THE FIRST STEP OF FACTOR ( CREATE INCOMPLETE BILL ) -----------------------------
+
+
+
+
+
+
+
+
+
+// START ------------------ THE SEARCHING FOR EXISTING CUSTOMER IN CUSTOMER LIST -----------------------------
 if (isset($_POST['customer_search'])) {
-
     $pattern = $_POST['pattern'];
-
-
     echo json_encode(search_customer($pattern));
 }
 
@@ -24,13 +99,25 @@ function search_customer($pattern)
     }
     return $data;
 }
+// END ------------------ THE SEARCHING FOR EXISTING CUSTOMER IN CUSTOMER LIST -----------------------------
 
+
+
+
+
+
+
+
+
+
+
+
+
+// START ------------------ SEARCH FOR GOODS BASE ON THE REGISTERED NISHA PART NUMBERS IN DATABASE -----------------------------
 if (isset($_POST['partNumber'])) {
-
     $pattern = $_POST['partNumber'];
     echo json_encode(searchPartNumber($pattern));
 }
-
 
 function searchPartNumber($pattern)
 {
@@ -46,9 +133,18 @@ function searchPartNumber($pattern)
 
     return $data;
 }
+// END ------------------ SEARCH FOR GOODS BASE ON THE REGISTERED NISHA PART NUMBERS IN DATABASE -----------------------------
 
+
+
+
+
+
+
+
+
+//START ------------------ SEARCH FOR GOODS BASE ON OUR EXISTING GOODS IN STOCK -----------------------------
 if (isset($_POST['searchInStock'])) {
-
     $pattern = $_POST['searchInStock'];
     echo json_encode(searchPartNumberInStock($pattern));
 }
@@ -110,11 +206,20 @@ function searchPartNumberInStock($pattern)
             array_push($sanitized, $item);
         }
     }
-
-
     return $sanitized;
 }
+//END ------------------ SEARCH FOR GOODS BASE ON OUR EXISTING GOODS IN STOCK -----------------------------
 
+
+
+
+
+
+
+
+
+
+//START ------------------ GETTING THE LAST ISSUED FACTOR NUMBER -----------------------------
 if (isset($_POST['getFactorNumber'])) {
     echo getFactorNumber();
 }
@@ -135,20 +240,26 @@ function getFactorNumber()
         return 1;
     }
 }
+//END ------------------ GETTING THE LAST ISSUED FACTOR NUMBER -----------------------------
 
+
+
+
+
+
+
+
+//START ------------------ SAVE THE INVOICE AND ITS DETAILS IN THE DATABASE -----------------------------
 if (isset($_POST['saveInvoice'])) {
     $billItems = json_decode($_POST['billItems']);
     $BillInfo = json_decode($_POST['BillInfo']);
     $customerInfo = json_decode($_POST['customerInfo']);
-
     $customerPhone = $customerInfo->phone ?? null;
     try {
-
         CONN->begin_transaction();
         $customer_id = getCustomerId($customerInfo);
         if ($customerInfo->name != null) {
             if (!$customer_id) {
-
                 $customer_id = createCustomer($customerInfo);
             } else {
                 updateCustomer($customerInfo, $customer_id);
@@ -165,9 +276,26 @@ if (isset($_POST['saveInvoice'])) {
 
         echo "error: " . $e;
     }
-
-    // echo json_encode([$BillInfo, $customerInfo, $billItems]);
 }
+function getCustomerId($customer)
+{
+    $sql = "SELECT id FROM callcenter.customer WHERE 
+                phone = '$customer->phone'
+                ORDER BY id DESC LIMIT 1";
+    $stmt = CONN->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $stmt->close();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc()['id'];
+    } else {
+        return false;
+    }
+}
+//END ------------------ SAVE THE INVOICE AND ITS DETAILS IN THE DATABASE -----------------------------
 
 if (isset($_POST['saveIncompleteForm'])) {
     $customerInfo = json_decode($_POST['customer_info']);
@@ -248,24 +376,6 @@ function registerFactorNumber($billNO, $customer)
 }
 
 
-function getCustomerId($customer)
-{
-    $sql = "SELECT id FROM callcenter.customer WHERE 
-                phone = '$customer->phone'
-                ORDER BY id DESC LIMIT 1";
-    $stmt = CONN->prepare($sql);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $stmt->close();
-
-    if ($result->num_rows > 0) {
-        return $result->fetch_assoc()['id'];
-    } else {
-        return false;
-    }
-}
 
 function createCustomer($customerInfo)
 {
@@ -422,62 +532,4 @@ function getPartNumberId($partNumber)
         // No result found
         return null;
     }
-}
-
-if (isset($_POST['create_incomplete_bill'])) {
-
-    $incompleteBillId = createBill([
-        'date' => $_POST['date'],
-        'total' => 0,
-        'quantity' => 0,
-        'tax' => 0,
-        'discount' => 0,
-        'withdraw' => 0,
-        'totalInWords' => null
-    ]);
-
-    $incompleteBillDetails = createBillItemsTable($incompleteBillId, '[{
-            "id": 5892295,
-            "partName": "اسم قطعه را وارد کنید.",
-            "price_per": 0,
-            "quantity": 1,
-            "max": "undefined",
-            "partNumber": "NOTPART"
-        }]');
-
-    echo $incompleteBillId;
-}
-
-
-function createBill($billInfo)
-{
-    $sql = "INSERT INTO callcenter.bill (quantity, discount, tax, withdraw, total, bill_date, user_id, status) VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
-    $stmt = CONN->prepare($sql);
-    $stmt->bind_param("dddddsi", $billInfo['quantity'], $billInfo['discount'], $billInfo['tax'], $billInfo['withdraw'], $billInfo['total'], $billInfo['date'], $_SESSION['user_id']);
-
-    $stmt->execute();
-
-    if ($stmt->errno) {
-        return false;
-    }
-    $lastInsertedId = $stmt->insert_id;
-    $stmt->close();
-
-    return $lastInsertedId;
-}
-
-function createBillItemsTable($billId, $billItems)
-{
-    // Prepared statement
-    $sql = "INSERT INTO callcenter.bill_details (bill_id, billDetails) VALUES (?, ?)";
-
-    // Create a prepared statement
-    $stmt = CONN->prepare($sql);
-
-
-    $stmt->bind_param("is", $billId, $billItems);
-    $stmt->execute();
-
-    // Close the statement
-    $stmt->close();
 }
