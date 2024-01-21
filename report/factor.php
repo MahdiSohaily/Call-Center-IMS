@@ -29,8 +29,8 @@ require_once './app/Controllers/BillFilterController.php';
     }
 </style>
 <script src="./public/js/jalaliMoment.js"></script>
-<div class="rtl min-h-screen grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5  px-4 mb-4">
-    <div class="bg-white min-h-full rounded-lg shadow-md">
+<div class="rtl min-h-screen grid grid-cols-1 md:grid-cols-5 gap-4 lg:gap-5  px-4 mb-4">
+    <div class="bg-white min-h-full col-span-2 rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <img class="w-7 h-7" src="./public/img/incomplete.svg" alt="customer icon">
@@ -57,7 +57,7 @@ require_once './app/Controllers/BillFilterController.php';
 
     </div>
 
-    <div class="bg-white min-h-full rounded-lg shadow-md">
+    <div class="bg-white min-h-full col-span-2 rounded-lg shadow-md">
         <div class="flex items-center justify-between p-3">
             <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
                 <img class="w-7 h-7" src="./public/img/saved_bill.svg" alt="customer icon">

@@ -154,7 +154,7 @@ if (isset($_POST['saveInvoice'])) {
                 updateCustomer($customerInfo, $customer_id);
             }
         }
-        $bill_number = registerFactorNumber($BillInfo->billNO, $customerInfo->name . ' ' . $customerInfo->family);
+        $bill_number = registerFactorNumber(getFactorNumber(), $customerInfo->name . ' ' . $customerInfo->family);
         makeBillCompleted($BillInfo, $customer_id, $bill_number);
         updateBillItems($BillInfo, $billItems);
         CONN->commit();
