@@ -137,52 +137,55 @@ require_once './app/Controllers/BillFilterController.php';
     let active_date = null;
     let active_user = null;
 
+    // for styling the current day and month
     const current_month = Number(month) - 1;
-
     document.getElementById('month-' + current_month).checked = 'checked';
-
     document.getElementById(current_month + '-' + day + '-day').style.backgroundColor = 'red';
     document.getElementById(current_month + '-' + day + '-day').style.color = 'white';
 
-    // Select all elements with the class '.accordion_condition'
+    // Select all elements with the class '.accordion_condition' and toggle the accordion
     const accordions = document.querySelectorAll('.accordion_condition');
     const days = document.querySelectorAll('.days');
-
-    // Attach a click event listener to each selected element
     accordions.forEach(function(accordion) {
         accordion.addEventListener('click', function(e) {
-
             accordions.forEach(function(accordion) {
                 accordion.checked = false;
             });
-
             e.target.checked = 'checked'
         });
     });
 
-    // Attach a click event listener to each selected element
+    // Attach a click event listener to each day of month for generating specific date report
     days.forEach(function(day) {
         day.addEventListener('click', function(e) {
-            ucCheckDays();
+            unCheckDays();
             e.target.classList.add('selected_day');
         });
     });
 
+    // Select users from the user filter option
     function setUserId(id) {
         user_id = id;
-        sessionStorage.setItem('user_id', user_id);
-        ucCheckDays();
+        unCheckDays();
         bootStrap();
     }
 
+    // Select the specific day of the month for filtering the date
+    function selectDay(element) {
+        const selectedMonth = element.getAttribute('data-month');
+        const selectedDay = element.getAttribute('data-day');
+        now = moment.from(year + "/" + selectedMonth + "/" + selectedDay, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+
+        bootStrap();
+    }
+
+    // Get the specific user saved bills for the specific date
     function getUserSavedBills() {
         const completed_bill = document.getElementById('completed_bill');
-
         const params = new URLSearchParams();
         params.append('getUserCompleteBills', 'getUserCompleteBills');
         params.append('user', user_id);
         params.append('date', now);
-
         completed_bill.innerHTML = '';
 
         axios.post("./app/Controllers/BillManagement.php", params)
@@ -195,6 +198,7 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
+    // Attache the above retrieved data to its specific container
     function appendCompleteFactorResults(factors) {
         const completed_bill = document.getElementById('completed_bill');
         completed_bill.innerHTML = '';
@@ -229,7 +233,7 @@ require_once './app/Controllers/BillFilterController.php';
                                         <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
                                             <input type="hidden" name="BillId" value="${factor.id}">
                                         </form>
-                                        <div onclick="submitForm('form-${factor.id}')" class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
+                                        <div onclick="EditFactorFormSubmission('form-${factor.id}')" class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
                                             <ul class="flex gap-2">
                                                 <li title="ویرایش فاکتور">
                                                     <img src="./public/img/editFactor.svg" class="hover:scale-125" />
@@ -264,6 +268,7 @@ require_once './app/Controllers/BillFilterController.php';
         }
     }
 
+    // Get the specific user Incomplete bills for specific date
     function getUserIncompleteBills() {
         const incomplete_bill = document.getElementById('incomplete_bill');
 
@@ -284,6 +289,7 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
+    // Attache the above retrieved data to its specific container
     function appendIncompleteFactorResult(factors) {
         const incomplete_bill = document.getElementById('incomplete_bill');
         incomplete_bill.innerHTML = '';
@@ -320,7 +326,7 @@ require_once './app/Controllers/BillFilterController.php';
                                     </form>
                                     <div class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
                                         <ul class="flex gap-2">
-                                            <li title="ویرایش فاکتور"  onclick="submitForm('form-${factor.id}')">
+                                            <li title="ویرایش فاکتور"  onclick="EditFactorFormSubmission('form-${factor.id}')">
                                                 <img src="./public/img/editFactor.svg" class="hover:scale-125" />
                                             </li>
                                             <li title="حذف پیش فاکتور" onClick="confirmDelete('${factor.id}')">
@@ -353,32 +359,28 @@ require_once './app/Controllers/BillFilterController.php';
         }
     }
 
-    function selectDay(element) {
 
-        const selectedMonth = element.getAttribute('data-month');
-        const selectedDay = element.getAttribute('data-day');
-        now = moment.from(year + "/" + selectedMonth + "/" + selectedDay, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
-        sessionStorage.setItem('now', now);
-
-        bootStrap();
-    }
-
-    function submitForm(formId) {
+    // Getting the bill id and send it for the editing
+    // it works both for complete and incomplete bills 
+    function EditFactorFormSubmission(formId) {
         document.getElementById(formId).submit();
     }
 
-    function ucCheckDays() {
+    // remove the selected styles from the day selected previously
+    function unCheckDays() {
         days.forEach(function(day) {
             day.classList.remove('selected_day');
         });
     }
 
+    // Start retrieving the data fro the user and specific date after initializing initial data
     function bootStrap() {
         active_date = now;
         getUserSavedBills();
         getUserIncompleteBills();
     }
 
+    // create new Incomplete date for modification or assigning new bill
     function createIncompleteBill() {
         const params = new URLSearchParams();
         params.append('create_incomplete_bill', 'create_incomplete_bill');
@@ -409,8 +411,9 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
-    let templateClone = null;
+    let templateClone = null; // get a clone of bill card to have it if user cancelled deletion the bill
 
+    // Display the confirmation message to ask whether confirms deletion or not
     function confirmDelete(factorId) {
         templateClone = document.getElementById('card-' + factorId).innerHTML;
         document.getElementById('card-' + factorId).innerHTML = `
@@ -423,11 +426,12 @@ require_once './app/Controllers/BillFilterController.php';
                     </div>`;
     }
 
+    // roll back the bill card after cancelling the deletion operation
     function rollBack(factorId) {
         document.getElementById('card-' + factorId).innerHTML = templateClone;
     }
 
-
+    // Deletion confirmed and send ajax request to delete from the database the selected record
     function deleteFactor(factorId) {
         const params = new URLSearchParams();
         params.append('deleteFactor', 'deleteFactor');
@@ -450,10 +454,12 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
+    // 
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
     }
 
+    // Search among the completed bill or incomplete bills base on the customer name and last name
     function searchForBill(format) {
         let pattern = null;
 
