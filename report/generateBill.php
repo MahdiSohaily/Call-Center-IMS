@@ -116,7 +116,7 @@ require_once('./views/Layouts/header.php');
                     <tr>
                         <td class="py-2 px-3 text-white bg-gray-800 text-md">تلفون</td>
                         <td class="py-2 px-4">
-                            <input onkeyup="sanitizeInput(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
+                            <input onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
                         </td>
                     </tr>
                     <tr>
@@ -482,6 +482,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
+    // Add new bill item manually using the icon on the browser or shift + ctrl key press
     function addNewBillItemManually() {
         billItems.push({
             id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
@@ -494,18 +495,19 @@ require_once('./views/Layouts/header.php');
         displayBill();
     }
 
+    // Updating the bill inforation section (EX: setting the discount or tax)
     function updateBillInfo(element) {
         const proprty = element.getAttribute("name");
         BillInfo[proprty] = element.value;
     }
 
+    // updating the customer information by modifying the customer information table section 
     function updateCustomerInfo(element) {
         const proprty = element.getAttribute("name");
         customerInfo[proprty] = element.value;
     }
 
-
-
+    // Format the item price as money to be more readable
     function format_the_money_input(inputElement) {
         // Remove non-digit characters
         let inputValue = inputElement.value.replace(/[^\d]/g, '');
@@ -517,6 +519,7 @@ require_once('./views/Layouts/header.php');
         inputElement.value = inputValue;
     }
 
+    // Edit the item property by clicking on it and giving new value
     function editCell(cell, property, itemId, originalValue) {
         const input = cell.querySelector('input');
         const span = cell.querySelector('span');
@@ -550,6 +553,7 @@ require_once('./views/Layouts/header.php');
         });
     }
 
+    // Update the edited item property in the data source
     function updateItemProperty(itemId, property, newValue) {
         newValue = newValue.replace(/,/g, '');
         for (let i = 0; i < billItems.length; i++) {
@@ -583,6 +587,7 @@ require_once('./views/Layouts/header.php');
         displayBill();
     }
 
+    // Adding item suffix to it
     function appendSufix(itemId, suffix) {
         for (let i = 0; i < billItems.length; i++) {
             if (billItems[i].id == itemId) {
@@ -597,6 +602,7 @@ require_once('./views/Layouts/header.php');
         displayBill();
     }
 
+    // Append the customer car brand to the items
     function appendCarSufix(itemId, suffix) {
         for (let i = 0; i < billItems.length; i++) {
             if (billItems[i].id == itemId) {
@@ -609,6 +615,7 @@ require_once('./views/Layouts/header.php');
         displayBill();
     }
 
+    // deleiting the specific bill item
     function deleteItem(id) {
         for (let i = 0; i < billItems.length; i++) {
             if (billItems[i].id == id) {
@@ -623,6 +630,7 @@ require_once('./views/Layouts/header.php');
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    // display the bill total amount alphabiticly ------------- START
     function numberToPersianWords(number) {
         const units = [
             '', // ones
@@ -699,22 +707,9 @@ require_once('./views/Layouts/header.php');
             return '';
         }
     }
+    // display the bill total amount alphabiticly -------------- END 
 
-    function getBillNumber() {
-
-        var params = new URLSearchParams();
-        params.append('getFactorNumber', 'getFactorNumber');
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                bill_number = (response.data);
-                BillInfo.billNO = bill_number;
-                document.getElementById('billNO').value = BillInfo.billNO;
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-
+    // Mark bill as completed and send it for the print
     function generateBill() {
         if (BillInfo.date == 'null') {
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
@@ -755,6 +750,7 @@ require_once('./views/Layouts/header.php');
         window.location.href = './displayBill.php';
     }
 
+    // Update the 
     function saveIncompleteForm() {
         if (BillInfo.date == 'null')
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
@@ -807,9 +803,11 @@ require_once('./views/Layouts/header.php');
             });
     }
 
-    function sanitizeInput(inputElement) {
-        // Get the input value
-        let inputValue = inputElement.value;
+    // Rmove the white space and leading +98 from user phone number
+    function sanitizeCustomerPhone(inputElement) {
+        // Get the input value and remove white spaces
+        let inputValue = inputElement.value.replace(/\s/g, '');
+        inputElement.value = inputValue;
         // Check if inputValue is defined and not null
         if (inputValue && inputValue.indexOf('+98') === 0) {
             // If it does, replace '+98' with '0'
@@ -817,9 +815,10 @@ require_once('./views/Layouts/header.php');
             // Update the input value
             inputElement.value = inputValue;
         }
+
     }
 
-    function handleKeyDown(event) {
+    function handelShortcuts(event) {
         if (event.ctrlKey && event.shiftKey) {
             addNewBillItemManually();
         }
@@ -842,12 +841,7 @@ require_once('./views/Layouts/header.php');
 
     bootstrap(); // Display the form data after retrieving every initial data
 
-    document.addEventListener('keydown', handleKeyDown);
-    <?php if (!$billInfo['billNO']) {
-
-        echo 'getBillNumber()';
-    }
-    ?>
+    document.addEventListener('keydown', handelShortcuts);
 </script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <script src="./public/js/billSearchPart.js?= rand() ?>"></script>
