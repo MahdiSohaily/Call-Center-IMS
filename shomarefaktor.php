@@ -18,13 +18,14 @@ $factor_result = mysqli_query(dbconnect(), $sql);
 ?>
 <style>
     .btn {
-        border: 2px solid #4CAF50;
+        border: 1px solid #0d782e;
+        box-shadow: 0px 1px 2px 1px #1f8b40;
         border-radius: 10px;
         padding: 10px 20px;
         font-size: 16px;
         cursor: pointer;
         color: white;
-        background-color: #4CcF70;
+        background-color: #47a965;
     }
 
     .btn:hover {
@@ -58,7 +59,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     <form class="shomare-faktor-form" action="php/shomare-faktor-form-save.php" method="get" autocomplete="off">
         <input minlength="3" id="kharidar" class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
         <button onclick="copiedEffect(this)" class="save-shomare-faktor-form hover:cursor-pointer" type="submit"> گرفتن شماره فاکتور</button>
-        <a href="./report/factor.php" class="btn" type="submit">صدور فاکتو</a>
+        <a href="./report/factor.php" class="btn save-shomare-faktor-form" type="submit">مدیریت فاکتور</a>
     </form>
     <div class="shomare-faktor-result">
     </div>
