@@ -8,20 +8,33 @@ require_once('./views/Layouts/header.php');
 <div id="bill_body_pdf" class="rtl bill">
     <div class="bill_header">
         <div class="bill_info">
-            <table id="bill___ddate">
-                <tr>
-                    <td class="text-sm">شماره فاکتور:</td>
-                    <td class="px-1 text-sm"><span id="billNO"></span></td>
-                </tr>
-                <tr>
-                    <td class="text-sm"> تاریخ:</td>
-                    <td class="px-1 text-sm"><span id="date"></span></td>
-                </tr>
-            </table>
+
+
+
+
+
+
+            <div class="nisha-bill-info">
+                <div class="A-main">
+                    <div class="A-1">شماره</div>
+                    <div class="A-2"><span id="billNO">5555</span></div>
+
+                </div>
+                <div class="B-main">
+                    <div class="B-1">تاریخ</div>
+                    <div class="B-2"><span id="date">1402-10-30</span></div>
+
+                </div>
+            </div>
+
+
+
+
+
         </div>
         <div class="headline">
-            <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
-            <h2 style="margin-bottom: 7px;">یدک شاپ</h2>
+            <h2 style="margin-bottom: 7px;">فاکتور فروش یدک شاپ</h2>
+            <h2 style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
         </div>
         <div class="log_section">
             <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
@@ -47,12 +60,12 @@ require_once('./views/Layouts/header.php');
         <table>
             <thead>
                 <tr style="padding: 10px !important;">
-                    <th class="text-right">ردیف</th>
+                    <th class="text-right w-12">ردیف</th>
                     <!-- <th class="text-right">کد فنی</th> -->
                     <th class="text-right">نام قطعه</th>
                     <th class="text-center"> تعداد</th>
-                    <th class="text-right"> قیمت</th>
-                    <th class="text-right"> قیمت کل</th>
+                    <th class="text-right"> قیمت واحد</th>
+                    <th class="text-right"> قیمت کل (ریال)</th>
                 </tr>
             </thead>
             <tbody id="bill_body">
@@ -84,7 +97,7 @@ require_once('./views/Layouts/header.php');
                     </td>
                 </tr>
                 <tr class="bill_info_footer">
-                    <td style="padding:5px;">مبلغ قابل پرداخت : </td>
+                    <td style="padding:5px;">مبلغ قابل پرداخت </td>
                     <td colspan="5" style="padding:10px;">
                         <p id="total_in_word" class="px-3 text-sm"></p>
                     </td>
@@ -92,78 +105,149 @@ require_once('./views/Layouts/header.php');
             </tbody>
         </table>
     </div>
-    <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
     <div style="display: flex; margin-top: 20px;">
-        <p style="flex: 1;">امضاء تحویل گیرنده</p>
+
+
+
+
+
+
+
+
+        <div class="tahvilgirande-box">
+            <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
+            <div class="tahvilgirande-box-inner">
+                <div>نام</div>
+                <div>شماره تماس</div>
+                <div>امضا</div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
     </div>
-</div>
-<ul class="action_menu">
-    <li style="position: relative;">
-        <img class="action_button print" onclick="saveInvoice();" src="./public/img/print.svg" alt="print icon">
-        <p class="action_tooltip">پرینت</p>
-    </li>
-    <li style="position: relative;">
-        <img class="action_button share" src="./public/img/share.svg" alt="print icon">
-        <p class="action_tooltip">اشتراک گذاری</p>
-    </li>
-    <li style="position: relative;">
-        <img class="action_button pdf" src="./public/img/pdf.svg" onclick="handleSaveAsPdfClick()" alt="print icon">
-        <p class="action_tooltip">پی دی اف</p>
-    </li>
-</ul>
-<p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
-<script>
-    let bill_number = null;
-    const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
-    const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
-    const billItems = JSON.parse(localStorage.getItem('bill_items'));
 
 
-    // Check if the code has already run for this unique identifier
-    if (localStorage.getItem('operation') == 'save') {
-        localStorage.setItem('operation', 'saved');
-        var params = new URLSearchParams();
-        params.append('saveInvoice', 'saveInvoice');
-        params.append('customerInfo', JSON.stringify(customerInfo));
-        params.append('BillInfo', JSON.stringify(BillInfo));
-        params.append('billItems', JSON.stringify(billItems));
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                const data = response.data;
-                BillInfo.billNO = data;
-                displayBill();
-                displayCustomer();
-                displayBillDetails();
-                if (data == 'error') {
-                    alert('خطایی رخ داده است');
-                } else {
-                    document.getElementById("action_message").style.bottom = "10px";
-                    setTimeout(() => {
-                        document.getElementById("action_message").style.bottom = "-100px";
-                    }, 2000);
-                }
+    <div class="footer-box">
 
 
-            }).catch(function(error) {
-                console.log(error);
-            });
-    } else {
-        displayBill();
-        displayCustomer();
-        displayBillDetails();
-    }
+        <p class="footer-box-adress">
+            تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
 
-    function displayBill() {
-        let counter = 1;
-        let template = ``;
-        let totalPrice = 0;
+        </p>
+        <p class="footer-box-tell">
+            <span>
+                ۷۰ ۹۳ ۹۷ ۳۳ - ۰۲۱
+            </span>
+            <span>
+                ۸۸ ۶۷ ۹۴ ۳۳ - ۰۲۱
+            </span>
+            <span>
+                ۸۰۹ ۱۹ ۳۶۶ - ۰۲۱
+            </span>
+            <span>
+                ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
+            </span>
+        </p>
 
-        for (const item of billItems) {
 
-            const payPrice = Number(item.quantity) * Number(item.price_per);
-            totalPrice += payPrice;
+    </div>
 
-            template += `
+
+
+
+    <ul class="action_menu">
+        <li style="position: relative;">
+            <img class="action_button print" onclick="saveInvoice();" src="./public/img/print.svg" alt="print icon">
+            <p class="action_tooltip">پرینت</p>
+        </li>
+        <li style="position: relative;">
+            <img class="action_button share" src="./public/img/share.svg" alt="print icon">
+            <p class="action_tooltip">اشتراک گذاری</p>
+        </li>
+        <li style="position: relative;">
+            <img class="action_button pdf" src="./public/img/pdf.svg" onclick="handleSaveAsPdfClick()" alt="print icon">
+            <p class="action_tooltip">پی دی اف</p>
+        </li>
+    </ul>
+    <p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
+    <script>
+        let bill_number = null;
+        const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
+        const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
+        const billItems = JSON.parse(localStorage.getItem('bill_items'));
+
+
+        // Check if the code has already run for this unique identifier
+        if (localStorage.getItem('operation') == 'save') {
+            localStorage.setItem('operation', 'saved');
+            var params = new URLSearchParams();
+            params.append('saveInvoice', 'saveInvoice');
+            params.append('customerInfo', JSON.stringify(customerInfo));
+            params.append('BillInfo', JSON.stringify(BillInfo));
+            params.append('billItems', JSON.stringify(billItems));
+            axios.post("./app/Controllers/BillController.php", params)
+                .then(function(response) {
+                    const data = response.data;
+                    BillInfo.billNO = data;
+                    displayBill();
+                    displayCustomer();
+                    displayBillDetails();
+                    if (data == 'error') {
+                        alert('خطایی رخ داده است');
+                    } else {
+                        document.getElementById("action_message").style.bottom = "10px";
+                        setTimeout(() => {
+                            document.getElementById("action_message").style.bottom = "-100px";
+                        }, 2000);
+                    }
+
+
+                }).catch(function(error) {
+                    console.log(error);
+                });
+        } else {
+            displayBill();
+            displayCustomer();
+            displayBillDetails();
+        }
+
+        function getBillNumber() {
+
+            var params = new URLSearchParams();
+            params.append('getFactorNumber', 'getFactorNumber');
+            axios.post("./app/Controllers/BillController.php", params)
+                .then(function(response) {
+                    bill_number = (response.data);
+                    if (localStorage.getItem('operation') !== 'print')
+                        BillInfo.billNO = bill_number - 1;
+                    displayBill();
+                    displayCustomer();
+                    displayBillDetails();
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        }
+
+        function displayBill() {
+            let counter = 1;
+            let template = ``;
+            let totalPrice = 0;
+
+            for (const item of billItems) {
+
+                const payPrice = Number(item.quantity) * Number(item.price_per);
+                totalPrice += payPrice;
+
+                template += `
             <tr style="padding: 10px !important;" class="even:bg-gray-100">
                 <td class="text-sm">
                     <span>${counter}</span>
@@ -181,83 +265,86 @@ require_once('./views/Layouts/header.php');
                     <span>${formatAsMoney(payPrice)}</span>
                 </td>
             </tr> `;
-            counter++;
-        }
-        bill_body.innerHTML = template;
-    }
-
-    function formatAsMoney(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    function displayCustomer() {
-        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
-        document.getElementById('phone').innerHTML = customerInfo.phone;
-        console.log(customerInfo.address.length);
-        if (customerInfo.address.length > 0) {
-            document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
-        }
-    }
-
-    function displayBillDetails() {
-        document.getElementById('billNO').innerHTML = BillInfo.billNO;
-        document.getElementById('date').innerHTML = BillInfo.date;
-        document.getElementById('quantity').value = BillInfo.quantity;
-        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
-        document.getElementById('discount').value = BillInfo.discount;
-        document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
-    }
-
-    document.addEventListener('keydown', function(event) {
-        if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
-            event.preventDefault();
-        }
-    });
-
-    function handleSaveAsPdfClick() {
-        const content = document.getElementById('bill_body_pdf');
-        const opt = {
-            filename: BillInfo.billNO + '-' + customerInfo.name + " " + customerInfo.family ?? '' + '.pdf',
-            image: {
-                type: 'jpeg',
-                quality: 0.98
-            },
-            html2canvas: {
-                scale: 2
-            },
-            jsPDF: {
-                unit: 'in',
-                format: 'letter',
-                orientation: 'portrait'
+                counter++;
             }
-        };
-        html2pdf().set(opt).from(content).save();
-    }
+            bill_body.innerHTML = template;
+        }
 
-    function saveInvoice() {
-        window.print();
-    }
+        function formatAsMoney(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
 
-    function copyInfo(element) {
-        const info = document.getElementById('name').innerHTML;
-        const billNo = document.getElementById('billNO').innerHTML;
+        function displayCustomer() {
+            document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
+            document.getElementById('phone').innerHTML = customerInfo.phone;
+            console.log(customerInfo.address.length);
+            if (customerInfo.address.length > 0) {
+                document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
+            }
+            // document.getElementById('car').innerHTML = customerInfo.car;
+            // document.getElementById('address').innerHTML = customerInfo.address;
+        }
 
-        const combinedText = `مشتری : ${info} \nشماره فاکتور : ${billNo}`;
+        function displayBillDetails() {
+            document.getElementById('billNO').innerHTML = BillInfo.billNO;
+            document.getElementById('date').innerHTML = BillInfo.date;
+            document.getElementById('quantity').value = BillInfo.quantity;
+            document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
+            document.getElementById('discount').value = BillInfo.discount;
+            document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
+        }
 
-        const textarea = document.createElement('textarea');
-        textarea.value = combinedText;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
+        document.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
+                event.preventDefault();
+            }
+        });
+
+        function handleSaveAsPdfClick() {
+            const content = document.getElementById('bill_body_pdf');
+            const opt = {
+                filename: BillInfo.billNO + '-' + customerInfo.name + " " + customerInfo.family ?? '' + '.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'portrait'
+                }
+            };
+            html2pdf().set(opt).from(content).save();
+        }
+
+        function saveInvoice() {
+            window.print();
+        }
+
+        function copyInfo(element) {
+            const info = document.getElementById('name').innerHTML;
+            const billNo = document.getElementById('billNO').innerHTML;
+
+            const combinedText = `مشتری : ${info} \nشماره فاکتور : ${billNo}`;
+
+            const textarea = document.createElement('textarea');
+            textarea.value = combinedText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
 
 
-        element.src = './public/img/complete.svg';
+            element.src = './public/img/complete.svg';
 
-        setTimeout(() => {
-            element.src = './public/img/copy.svg';
-        }, 2000);
-    }
-</script>
-<?php
+            setTimeout(() => {
+                element.src = './public/img/copy.svg';
+            }, 2000);
+        }
+
+    </script>
+    <?php
 require_once('./views/Layouts/footer.php');
