@@ -50,13 +50,15 @@ function previewBill() {
 }
 
 function formatAsMoney(number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " ریال";
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function displayCustomer() {
   document.getElementById("name_bill").innerHTML =
     customerInfo.name + " " + customerInfo.family ?? "";
   document.getElementById("phone_bill").innerHTML = customerInfo.phone;
+  document.getElementById("userAddress").innerHTML =
+    "نشانی : " + customerInfo.address;
 }
 
 function displayBillDetails() {
@@ -66,5 +68,6 @@ function displayBillDetails() {
     BillInfo.totalPrice
   );
   document.getElementById("discount_bill").value = BillInfo.discount;
-  document.getElementById("total_in_word_bill").innerHTML = BillInfo.totalInWords;
+  document.getElementById("total_in_word_bill").innerHTML =
+    BillInfo.totalInWords;
 }

@@ -13,6 +13,7 @@ require_once('./views/Layouts/header.php');
         max-width: 25px !important;
         cursor: pointer;
     }
+
 </style>
 <div style="height: 350px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6  px-2 mb-3">
     <div class="bg-white min-h-full rounded-lg shadow-md">
@@ -218,27 +219,27 @@ require_once('./views/Layouts/header.php');
 <div class="rtl fixed flex justify-between items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
     <ul class="flex gap-3">
         <?php if (!$isCompleteFactor) : ?>
-            <li>
-                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
-                    ذخیره تغییرات پیش فاکتور
-                </p>
-            </li>
-            <li>
-                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
-                    صدور فاکتور
-                </p>
-            </li>
+        <li>
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                ذخیره تغییرات پیش فاکتور
+            </p>
+        </li>
+        <li>
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
+                صدور فاکتور
+            </p>
+        </li>
         <?php else : ?>
-            <li>
-                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveCompleteForm()">
-                    ویرایش
-                </p>
-            </li>
-            <li>
-                <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill2()">
-                    پرینت
-                </p>
-            </li>
+        <li>
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveCompleteForm()">
+                ویرایش
+            </p>
+        </li>
+        <li>
+            <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill2()">
+                پرینت
+            </p>
+        </li>
         <?php endif; ?>
     </ul>
     <p id="save_message" class="hidden bg-white text-green-400 px-3 py-1">ویرایش موفقانه صورت گرفت</p>
@@ -262,26 +263,24 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 </div>
-<div id="previewBill" style="display:none; overflow:scroll" class="fixed inset-0 bg-gray-100 justify-center" style="z-index: 10000000000;">
-    <div id="bill_body_pdf" class="rtl bill bg-white " style="margin-top: 100px;">
+<div id="previewBill" style="display:none" class="fixed inset-0 bg-gray-100 justify-center items-center" style="z-index: 10000000000;">
+    <div id="bill_body_pdf" class="rtl bill">
         <div class="bill_header">
             <div class="bill_info">
-                <div class="nisha-bill-info">
-                    <div class="A-main">
-                        <div class="A-1">شماره</div>
-                        <div class="A-2"><span id="billNO_bill">5555</span></div>
-
-                    </div>
-                    <div class="B-main">
-                        <div class="B-1">تاریخ</div>
-                        <div class="B-2"><span id="date_bill">1402-10-30</span></div>
-
-                    </div>
-                </div>
+                <table>
+                    <tr>
+                        <td class="text-sm">شماره فاکتور:</td>
+                        <td class="px-1 text-sm"><span id="billNO_bill"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-sm"> تاریخ:</td>
+                        <td class="px-1 text-sm"><span id="date_bill"></span></td>
+                    </tr>
+                </table>
             </div>
             <div class="headline">
-                <h2 style="margin-bottom: 7px;"> پیش فاکتور یدک شاپ</h2>
-                <h2 style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
+                <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
+                <h2 style="margin-bottom: 7px;">یدک شاپ</h2>
             </div>
             <div class="log_section">
                 <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
@@ -298,14 +297,14 @@ require_once('./views/Layouts/header.php');
                     <span id="phone_bill"></span>
                 </li>
             </ul>
-            <p class="w-1/2" id="userAddress" style="font-size: 12px;"></p>
+            <p style="text-align: center; font-size: 12px;">نشانی: تهران - میدان بهارستان - کوچه نظامیه - بن بست ویژه پلاک ۴</p>
             <img id="copy_icon" class="cursor-pointer" src="./public/img/copy.svg" alt="copy customer info" onclick="copyInfo(this)">
         </div>
         <div class="bill_items">
             <table>
                 <thead>
                     <tr style="padding: 10px !important;">
-                        <th class="text-right w-12">ردیف</th>
+                        <th class="text-right">ردیف</th>
                         <!-- <th class="text-right">کد فنی</th> -->
                         <th class="text-right">نام قطعه</th>
                         <th class="text-center"> تعداد</th>
@@ -351,34 +350,7 @@ require_once('./views/Layouts/header.php');
             </table>
         </div>
         <div style="display: flex; margin-top: 20px;">
-            <div class="tahvilgirande-box">
-                <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
-                <div class="tahvilgirande-box-inner">
-                    <div>نام</div>
-                    <div>شماره تماس</div>
-                    <div>امضا</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-box">
-            <p class="footer-box-adress">
-                تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
-            </p>
-            <p class="footer-box-tell">
-                <span>
-                    ۷۰ ۹۳ ۹۷ ۳۳ - ۰۲۱
-                </span>
-                <span>
-                    ۸۸ ۶۷ ۹۴ ۳۳ - ۰۲۱
-                </span>
-                <span>
-                    ۸۰۹ ۱۹ ۳۶۶ - ۰۲۱
-                </span>
-                <span>
-                    ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
-                </span>
-            </p>
+            <p style="flex: 1;">امضاء تحویل گیرنده</p>
         </div>
     </div>
 </div>
@@ -1130,11 +1102,14 @@ require_once('./views/Layouts/header.php');
     }
 
     document.addEventListener('keydown', handleKeyDown);
+
+
     <?php if (!$billInfo['billNO']) {
 
         echo 'getBillNumber()';
     }
     ?>
+
 </script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <?php
