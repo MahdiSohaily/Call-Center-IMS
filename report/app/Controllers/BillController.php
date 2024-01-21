@@ -265,6 +265,10 @@ if (isset($_POST['saveInvoice'])) {
         } else {
             $customer_id = createCustomer($customerInfo);
         }
+        if (!$customer_id) {
+            echo 'false';
+            die();
+        }
         $bill_number = registerFactorNumber(getFactorNumber(), $customerInfo->name . ' ' . $customerInfo->family);
         makeBillCompleted($BillInfo, $customer_id, $bill_number);
         updateBillItems($BillInfo, $billItems);
@@ -272,7 +276,6 @@ if (isset($_POST['saveInvoice'])) {
         CONN->commit();
     } catch (Exception $e) {
         CONN->rollback();
-        echo "false";
     }
 }
 function getCustomerId($customer)
@@ -382,7 +385,7 @@ function createCustomer($customerInfo)
     // If the phone number exists, return the customer ID
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        return $row['id'];
+        return false;
     } else {
         // If the phone number doesn't exist, create a new customer
         $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 

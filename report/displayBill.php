@@ -156,23 +156,26 @@ require_once('./views/Layouts/header.php');
                 .then(function(response) {
                     const data = response.data;
                     console.log(data);
-                    BillInfo.billNO = data;
-                    displayBill();
-                    displayCustomer();
-                    displayBillDetails();
-                    if (data == 'error') {
+                    if (data) {
+                        BillInfo.billNO = data;
+                        displayBill();
+                        displayCustomer();
+                        displayBillDetails();
+
                         document.getElementById("action_message").style.bottom = "10px";
-                        document.getElementById("action_message").style.backgroundColor = "red";
-                        document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد";
                         setTimeout(() => {
                             document.getElementById("action_message").style.bottom = "-100px";
                         }, 2000);
+
                     } else {
                         document.getElementById("action_message").style.bottom = "10px";
+                        document.getElementById("action_message").style.backgroundColor = "red";
+                        document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد شماره تماش مشتری از قبل در سیستم ریزو شده است.";
                         setTimeout(() => {
                             document.getElementById("action_message").style.bottom = "-100px";
-                        }, 2000);
+                        }, 5000);
                     }
+
 
 
                 }).catch(function(error) {
@@ -224,7 +227,6 @@ require_once('./views/Layouts/header.php');
         function displayCustomer() {
             document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
             document.getElementById('phone').innerHTML = customerInfo.phone;
-            console.log(customerInfo.address.length);
             if (customerInfo.address.length > 0) {
                 document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
             }
