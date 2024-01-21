@@ -3,12 +3,16 @@ $billInfo = null;
 $customerInfo = null;
 $billItems = [];
 $isCompleteFactor = false;
+
 if (isset($_POST['BillId'])) {
     $bill_id = $_POST['BillId'];
 
     $details = getBillInfo($bill_id);
+    if (!$details) {
+        die('فاکتور شما در سیتستم موجود نیست');
+    }
+
     if ($details['status']) {
-        // header('location: ./factor.php');
         $isCompleteFactor = true;
     }
 
@@ -36,7 +40,7 @@ if (isset($_POST['BillId'])) {
             'address' => null,
         ];
     }
-    $billItems = getBillItems($billInfo['id'])[0]['billDetails'] === '{}' ? [] : getBillItems($billInfo['id'])[0]['billDetails'];
+    $billItems = getBillItems($billInfo['id'])[0]['billDetails'];
 }
 
 function getBillInfo($billId)
@@ -95,32 +99,4 @@ function getBillItems($bill_id)
 
     $stmt->close();
     return $data;
-}
-
-function getLastBillNumber()
-{
-    $sql = "SELECT shomare FROM callcenter.shomarefaktor ORDER BY id DESC LIMIT 1";
-    $stmt = CONN->prepare($sql);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        return $result->fetch_assoc()['shomare'];
-    } else {
-        return 0;
-    }
-}
-
-function createCustomer($customerInfo)
-{
-    $nameParts = explode(' ', $customerInfo->name);
-    $name = $nameParts[0] ?? '';
-    $family = $nameParts[1] ?? '';
-
-    $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 
-        ('$name', '$family', '$customerInfo->phone', '$customerInfo->address', '$customerInfo->car')";
-    CONN->query($sql);
-    $lastInsertedId = CONN->insert_id;
-    return $lastInsertedId;
 }
