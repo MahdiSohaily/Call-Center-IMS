@@ -44,11 +44,11 @@
     display: flex;
 }
 
-.customer_info > ul {
+.customer_info>ul {
     flex: 1;
 }
 
-.customer_info > ul > li:first-child {
+.customer_info>ul>li:first-child {
     padding-bottom: 10px;
 }
 
@@ -58,8 +58,8 @@
     margin-bottom: 10px;
 }
 
-.bill_items > table,
-.bill_footer > table {
+.bill_items>table,
+.bill_footer>table {
     width: 100%;
 }
 
@@ -69,7 +69,7 @@ thead {
 }
 
 .bill_items th,
-.bill_footer > table th {
+.bill_footer>table th {
     padding: 7px;
     color: black !important;
     border-bottom: 1px solid black;
@@ -77,12 +77,12 @@ thead {
 }
 
 .bill_items tr:not(:last-child),
-.bill_footer > table tr:not(:last-child) {
+.bill_footer>table tr:not(:last-child) {
     border-bottom: 1px solid black;
 }
 
 .bill_items td:not(:last-child),
-.bill_footer > table td:not(:last-child) {
+.bill_footer>table td:not(:last-child) {
     border-left: 1px solid black;
 }
 
@@ -91,11 +91,11 @@ thead {
 }
 
 
-.bill_items > table td {
+.bill_items>table td {
     padding: 7px;
 }
 
-.bill_footer > table td {
+.bill_footer>table td {
     padding: 3px 7px;
     font-size: 14px;
 }
@@ -145,7 +145,7 @@ thead {
     border-color: transparent transparent transparent gray;
 }
 
-.action_button:hover + .action_tooltip {
+.action_button:hover+.action_tooltip {
     display: block;
 }
 
@@ -224,32 +224,32 @@ thead {
         border: none !important;
     }
 
-    .bill_items > table {
+    .bill_items>table {
         border: 1px solid black !important;
     }
 
-    .bill_items > table tr {
+    .bill_items>table tr {
         background-color: white !important;
     }
 
-    .bill_items > table tr:not(:last-child) {
+    .bill_items>table tr:not(:last-child) {
         border-bottom: 1px solid black !important;
     }
 
-    .bill_items > table tr th {
+    .bill_items>table tr th {
         color: black !important;
         border-bottom: 1px solid black !important;
     }
 
-    .bill_items > table td {
+    .bill_items>table td {
         padding: 5px;
     }
 
-    .bill_items > table td span {
+    .bill_items>table td span {
         font-size: 10px !important;
     }
 
-    .bill_footer > table td {
+    .bill_footer>table td {
         padding: 3px 5px;
         font-size: 12px !important;
     }
@@ -264,6 +264,10 @@ thead {
     }
 
     #copy_icon {
+        display: none !important;
+    }
+
+    #action_message {
         display: none !important;
     }
 

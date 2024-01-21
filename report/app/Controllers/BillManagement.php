@@ -77,12 +77,12 @@ if (isset($_POST['getUserIncompleteBills'])) {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization");
-    echo json_encode(getUsersUnCompleteBills($user, $date));
+    echo json_encode(getUsersInCompleteBills($user, $date));
 }
 
-function getUsersUnCompleteBills($user, $date)
+function getUsersInCompleteBills($user, $date)
 {
-    if ($user = 'all') {
+    if ($user == 'all') {
         $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity, bill.user_id
                 FROM callcenter.bill
                 LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id

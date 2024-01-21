@@ -127,23 +127,8 @@ require_once './app/Controllers/BillFilterController.php';
 </div>
 <script>
     // Retrieve user_id from sessionStorage
-    let user_id = sessionStorage.getItem('user_id');
-
-    // If user_id is not present in sessionStorage, use the value from PHP ($_SESSION)
-    if (!user_id) {
-        user_id = <?= $_SESSION['user_id'] ?>;
-        // Store the user_id in sessionStorage for future pages in the same session
-        sessionStorage.setItem('user_id', user_id);
-    }
-
-    let now = sessionStorage.getItem('now');
-    // If user_id is not present in sessionStorage, use the value from PHP ($_SESSION)
-    if (!now) {
-        now = moment().locale('en').format('YYYY-MM-DD');
-        // Store the user_id in sessionStorage for future pages in the same session
-        sessionStorage.setItem('now', now);
-    }
-    moment().locale('en').format('YYYY-MM-DD');
+    let user_id = <?= $_SESSION['user_id'] ?>;
+    let now = moment().locale('en').format('YYYY-MM-DD');
 
     const year = (moment().locale('fa').format('YYYY'));
     const month = (moment().locale('fa').format('M'));
