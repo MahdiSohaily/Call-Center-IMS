@@ -125,8 +125,24 @@ require_once './app/Controllers/BillFilterController.php';
     </div>
 </div>
 <script>
-    let user_id = <?= $_SESSION['user_id'] ?>;
-    let now = moment().locale('en').format('YYYY-MM-DD');
+    // Retrieve user_id from sessionStorage
+    let user_id = sessionStorage.getItem('user_id');
+
+    // If user_id is not present in sessionStorage, use the value from PHP ($_SESSION)
+    if (!user_id) {
+        user_id = <?= $_SESSION['user_id'] ?>;
+        // Store the user_id in sessionStorage for future pages in the same session
+        sessionStorage.setItem('user_id', user_id);
+    }
+
+    let now = sessionStorage.getItem('now');
+    // If user_id is not present in sessionStorage, use the value from PHP ($_SESSION)
+    if (!now) {
+        now = moment().locale('en').format('YYYY-MM-DD');
+        // Store the user_id in sessionStorage for future pages in the same session
+        sessionStorage.setItem('now', now);
+    }
+    moment().locale('en').format('YYYY-MM-DD');
 
     const year = (moment().locale('fa').format('YYYY'));
     const month = (moment().locale('fa').format('M'));
@@ -167,11 +183,10 @@ require_once './app/Controllers/BillFilterController.php';
     });
 
     function setUserId(id) {
-        if (user_id != id) {
-            user_id = id;
-            ucCheckDays();
-            bootStrap();
-        }
+        user_id = id;
+        sessionStorage.setItem('user_id', user_id);
+        ucCheckDays();
+        bootStrap();
     }
 
     function getUserSavedBills() {
@@ -288,7 +303,6 @@ require_once './app/Controllers/BillFilterController.php';
         incomplete_bill.innerHTML = '';
         if (factors.length > 0) {
             for (const factor of factors) {
-                console.log(factor);
                 incomplete_bill.innerHTML += `
                         <div id="card-${factor.id}" class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
                             <div class="w-14 flex justify-center items-center">
@@ -358,6 +372,7 @@ require_once './app/Controllers/BillFilterController.php';
         const selectedMonth = element.getAttribute('data-month');
         const selectedDay = element.getAttribute('data-day');
         now = moment.from(year + "/" + selectedMonth + "/" + selectedDay, 'fa', 'YYYY/MM/DD').format('YYYY/MM/DD');
+        sessionStorage.setItem('now', now);
 
         bootStrap();
     }
