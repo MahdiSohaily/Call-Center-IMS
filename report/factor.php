@@ -454,7 +454,7 @@ require_once './app/Controllers/BillFilterController.php';
             });
     }
 
-    // 
+    // helper function to display the bill total amount in money format
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' ریال';
     }
