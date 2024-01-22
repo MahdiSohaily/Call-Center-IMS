@@ -116,7 +116,7 @@ require_once('./views/Layouts/header.php');
                     <tr>
                         <td class="py-2 px-3 text-white bg-gray-800 text-md">تلفون</td>
                         <td class="py-2 px-4">
-                            <input onblur="ifCustomerExist(this.value)" onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
+                            <input onblur="ifCustomerExist(this)" onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
                         </td>
                     </tr>
                     <tr>
@@ -217,14 +217,14 @@ require_once('./views/Layouts/header.php');
         <ul class="flex gap-3">
             <?php if (!$isCompleteFactor) : ?>
                 <li>
-                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                    <button id="incomplete_save_button" class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
                         ذخیره تغییرات پیش فاکتور
-                    </p>
+                    </button>
                 </li>
                 <li>
-                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
+                    <button id="complete_save_button" class="diable bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill()">
                         صدور فاکتور
-                    </p>
+                    </button>
                 </li>
             <?php else : ?>
                 <li>
@@ -822,28 +822,51 @@ require_once('./views/Layouts/header.php');
         }
     }
 
-    function ifCustomerExist(value) {
-        var params = new URLSearchParams();
-        params.append('isPhoneExist', 'isPhoneExist');
-        params.append('phone', value);
+    function ifCustomerExist(element) {
+        if (customerInfo.mode == 'create') {
+            if (element.value.length > 0) {
+                var params = new URLSearchParams();
+                params.append('isPhoneExist', 'isPhoneExist');
+                params.append('phone', element.value);
 
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                console.log(response.data);
-                if (response.data !== '0') {
-                    alert(response.data)
-                }
-                // const data = response.data;
-                // const save_message = document.getElementById('save_message');
-                // save_message.classList.remove('hidden');
+                axios.post("./app/Controllers/BillController.php", params)
+                    .then(function(response) {
+                        const customer = response.data;
+                        if (customer !== 0) {
+                            element.classList.add('border-2');
+                            element.classList.add('border-red-500');
 
-                // setTimeout(() => {
-                //     save_message.classList.add('hidden');
-                // }, 3000);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
+                            document.getElementById('complete_save_button').disabled = true;
+                            document.getElementById('complete_save_button').classList.add('opacity-50');
+                            document.getElementById('complete_save_button').classList.add('cursor-not-allowed');
+
+                            document.getElementById('incomplete_save_button').disabled = true;
+                            document.getElementById('incomplete_save_button').classList.add('opacity-50');
+                            document.getElementById('incomplete_save_button').classList.add('cursor-not-allowed');
+                        }
+                        const save_message = document.getElementById('save_message');
+                        const name = customer.name ?? '';
+                        const family = customer.family ?? '';
+                        save_message.innerHTML = `این شماره از قبل به نام ` + name + ' ' + family + 'ثبت شده است.';
+                        save_message.classList.remove('hidden');
+                        save_message.style.color = 'red';
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+            } else {
+                element.classList.remove('border-2');
+                element.classList.remove('border-red-500');
+                document.getElementById('complete_save_button').disabled = false;
+                document.getElementById('incomplete_save_button').disabled = false;
+
+                document.getElementById('complete_save_button').classList.remove('opacity-50');
+                document.getElementById('complete_save_button').classList.remove('cursor-not-allowed');
+                document.getElementById('incomplete_save_button').classList.remove('opacity-50');
+                document.getElementById('incomplete_save_button').classList.remove('cursor-not-allowed');
+                save_message.classList.add('hidden');
+            }
+        }
     }
 
     function toEnglish(value) {
