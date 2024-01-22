@@ -843,13 +843,28 @@ require_once('./views/Layouts/header.php');
                             document.getElementById('incomplete_save_button').disabled = true;
                             document.getElementById('incomplete_save_button').classList.add('opacity-50');
                             document.getElementById('incomplete_save_button').classList.add('cursor-not-allowed');
+
+                            const save_message = document.getElementById('save_message');
+                            const name = customer.name ?? '';
+                            const family = customer.family ?? '';
+                            save_message.innerHTML = `این شماره از قبل به نام ` + name + ' ' + family + 'ثبت شده است.';
+                            save_message.classList.remove('hidden');
+                            save_message.style.color = 'red';
+                        } else {
+                            element.classList.remove('border-2');
+                            element.classList.remove('border-red-500');
+                            document.getElementById('complete_save_button').disabled = false;
+                            document.getElementById('incomplete_save_button').disabled = false;
+
+                            document.getElementById('complete_save_button').classList.remove('opacity-50');
+                            document.getElementById('complete_save_button').classList.remove('cursor-not-allowed');
+                            document.getElementById('incomplete_save_button').classList.remove('opacity-50');
+                            document.getElementById('incomplete_save_button').classList.remove('cursor-not-allowed');
+                            save_message.classList.add('hidden');
+                            save_message.innerHTML = 'تغییرات موفقانه ذخیره شد';
+                            save_message.style.color = 'seagreen';
                         }
-                        const save_message = document.getElementById('save_message');
-                        const name = customer.name ?? '';
-                        const family = customer.family ?? '';
-                        save_message.innerHTML = `این شماره از قبل به نام ` + name + ' ' + family + 'ثبت شده است.';
-                        save_message.classList.remove('hidden');
-                        save_message.style.color = 'red';
+
                     })
                     .catch(function(error) {
                         console.log(error);
@@ -865,6 +880,8 @@ require_once('./views/Layouts/header.php');
                 document.getElementById('incomplete_save_button').classList.remove('opacity-50');
                 document.getElementById('incomplete_save_button').classList.remove('cursor-not-allowed');
                 save_message.classList.add('hidden');
+                save_message.innerHTML = 'تغییرات موفقانه ذخیره شد';
+                save_message.style.color = 'seagreen';
             }
         }
     }
