@@ -116,7 +116,7 @@ require_once('./views/Layouts/header.php');
                     <tr>
                         <td class="py-2 px-3 text-white bg-gray-800 text-md">تلفون</td>
                         <td class="py-2 px-4">
-                            <input onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
+                            <input onblur="ifCustomerExist(this.value)" onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
                         </td>
                     </tr>
                     <tr>
@@ -807,15 +807,101 @@ require_once('./views/Layouts/header.php');
     function sanitizeCustomerPhone(inputElement) {
         // Get the input value and remove white spaces
         let inputValue = inputElement.value.replace(/\s/g, '');
-        inputElement.value = inputValue;
+
+
         // Check if inputValue is defined and not null
         if (inputValue && inputValue.indexOf('+98') === 0) {
             // If it does, replace '+98' with '0'
             inputValue = '0' + inputValue.slice(3);
             // Update the input value
+            inputValue = toEnglish(inputValue);
+            inputElement.value = inputValue;
+        } else {
+            inputValue = toEnglish(inputValue);
             inputElement.value = inputValue;
         }
+    }
 
+    function ifCustomerExist(value) {
+        var params = new URLSearchParams();
+        params.append('isPhoneExist', 'isPhoneExist');
+        params.append('phone', value);
+
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                console.log(response.data);
+                if (response.data !== '0') {
+                    alert(response.data)
+                }
+                // const data = response.data;
+                // const save_message = document.getElementById('save_message');
+                // save_message.classList.remove('hidden');
+
+                // setTimeout(() => {
+                //     save_message.classList.add('hidden');
+                // }, 3000);
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    function toEnglish(value) {
+        const englishCharMap = {
+            'ش': 'a',
+            'ذ': 'b',
+            'ز': 'c',
+            'ی': 'd',
+            'ث': 'e',
+            'ب': 'f',
+            'ل': 'g',
+            'ا': 'h',
+            'ه': 'i',
+            'ت': 'j',
+            'ن': 'k',
+            'م': 'l',
+            'پ': 'm',
+            'د': 'n',
+            'خ': 'o',
+            'ح': 'p',
+            'ض': 'q',
+            'ق': 'r',
+            'س': 's',
+            'ف': 't',
+            'ع': 'u',
+            'ر': 'v',
+            'ص': 'w',
+            'ط': 'x',
+            'غ': 'y',
+            'ظ': 'z',
+            'و': ':',
+            'گ': "'",
+            'ک': ";",
+            'چ': "]",
+            '۱': '1',
+            '۲': '2',
+            '۳': '3',
+            '۴': '4',
+            '۵': '5',
+            '۶': '6',
+            '۷': '7',
+            '۸': '8',
+            '۹': '9',
+            '۰': '0'
+        };
+
+        const customInput = value;
+        let customText = '';
+        const inputText = value;
+        for (let i = 0; i < inputText.length; i++) {
+            const char = inputText[i];
+            if (char in englishCharMap) {
+                customText += englishCharMap[char];
+            } else {
+                customText += char;
+            }
+        }
+        return customText;
     }
 
     function handelShortcuts(event) {

@@ -245,6 +245,27 @@ function getFactorNumber()
 
 
 
+if (isset($_POST['isPhoneExist'])) {
+    $phone = $_POST['phone'];
+    echo json_encode(checkPhoneNumber($phone));
+}
+
+function checkPhoneNumber($phone)
+{
+    $sql = "SELECT id , name, family FROM callcenter.customer WHERE phone = ? LIMIT 1";
+    $stmt = CONN->prepare($sql);
+    $stmt->bind_param('s', $phone);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $stmt->close();
+
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return 0;
+    }
+}
 
 
 
