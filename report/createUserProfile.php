@@ -138,7 +138,7 @@ if (isset($_POST['username'])) {
 
             $conn->query($authority_sql);
 
-            if (isset($_FILES['profile'])) {
+            if ($_FILES['profile']['size'] > 0) {
                 if (uploadFile($last_id, $_FILES['profile'])) {
                     $success = true;
                 }
@@ -156,8 +156,6 @@ function uploadFile($last_id, $file)
 {
     try {
         $allowed = ['jpg'];
-
-
         $type = explode('/', $file['type'])[1];
         if (!in_array($type, $allowed)) {
             $GLOBALS['type_error'] = true;
