@@ -824,47 +824,59 @@ require_once('./views/Layouts/header.php');
     }
 
     function ifCustomerExist(element) {
-        if (customerInfo.mode == 'create') {
-            if (element.value.length > 0) {
-                var params = new URLSearchParams();
-                params.append('isPhoneExist', 'isPhoneExist');
-                params.append('phone', element.value);
 
-                axios.post("./app/Controllers/BillController.php", params)
-                    .then(function(response) {
-                        const customer = response.data;
-                        if (customer !== 0) {
-                            document.getElementById('name').value = customer.name;
-                            document.getElementById('family').value = customer.family;
-                            document.getElementById('address').value = customer.address;
-                            document.getElementById('car').value = customer.car;
-                            customerInfo['id'] = customer.id;
-                            customerInfo['name'] = customer.name;
-                            customerInfo['family'] = customer.family;
-                            customerInfo['address'] = customer.address;
-                            customerInfo['car'] = customer.car;
-                            customerInfo.mode = "update";
-                            console.log(customerInfo);
-                        }
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    });
-            } else {
-                element.classList.remove('border-2');
-                element.classList.remove('border-red-500');
-                document.getElementById('complete_save_button').disabled = false;
-                document.getElementById('incomplete_save_button').disabled = false;
+        if (element.value.length > 0) {
+            var params = new URLSearchParams();
+            params.append('isPhoneExist', 'isPhoneExist');
+            params.append('phone', element.value);
 
-                document.getElementById('complete_save_button').classList.remove('opacity-50');
-                document.getElementById('complete_save_button').classList.remove('cursor-not-allowed');
-                document.getElementById('incomplete_save_button').classList.remove('opacity-50');
-                document.getElementById('incomplete_save_button').classList.remove('cursor-not-allowed');
-                save_message.classList.add('hidden');
-                save_message.innerHTML = 'تغییرات موفقانه ذخیره شد';
-                save_message.style.color = 'seagreen';
-            }
+            axios.post("./app/Controllers/BillController.php", params)
+                .then(function(response) {
+                    const customer = response.data;
+                    if (customer !== 0) {
+                        document.getElementById('name').value = customer.name;
+                        document.getElementById('family').value = customer.family;
+                        document.getElementById('address').value = customer.address;
+                        document.getElementById('car').value = customer.car;
+                        customerInfo['id'] = customer.id;
+                        customerInfo['name'] = customer.name;
+                        customerInfo['family'] = customer.family;
+                        customerInfo['address'] = customer.address;
+                        customerInfo['car'] = customer.car;
+                        customerInfo.mode = "update";
+                        console.log(customerInfo);
+                    } else {
+                        document.getElementById('name').value = '';
+                        document.getElementById('family').value = '';
+                        document.getElementById('address').value = '';
+                        document.getElementById('car').value = '';
+                        customerInfo['id'] = null;
+                        customerInfo['name'] = null;
+                        customerInfo['family'] = null;
+                        customerInfo['address'] = null;
+                        customerInfo['car'] = null;
+                        customerInfo.mode = "create";
+                        console.log(customerInfo);
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        } else {
+            element.classList.remove('border-2');
+            element.classList.remove('border-red-500');
+            document.getElementById('complete_save_button').disabled = false;
+            document.getElementById('incomplete_save_button').disabled = false;
+
+            document.getElementById('complete_save_button').classList.remove('opacity-50');
+            document.getElementById('complete_save_button').classList.remove('cursor-not-allowed');
+            document.getElementById('incomplete_save_button').classList.remove('opacity-50');
+            document.getElementById('incomplete_save_button').classList.remove('cursor-not-allowed');
+            save_message.classList.add('hidden');
+            save_message.innerHTML = 'تغییرات موفقانه ذخیره شد';
+            save_message.style.color = 'seagreen';
         }
+
     }
 
     function toEnglish(value) {
