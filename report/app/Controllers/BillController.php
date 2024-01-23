@@ -252,7 +252,7 @@ if (isset($_POST['isPhoneExist'])) {
 
 function checkPhoneNumber($phone)
 {
-    $sql = "SELECT id , name, family FROM callcenter.customer WHERE phone = ? LIMIT 1";
+    $sql = "SELECT id , name, family, address, car FROM callcenter.customer WHERE phone = ? LIMIT 1";
     $stmt = CONN->prepare($sql);
     $stmt->bind_param('s', $phone);
     $stmt->execute();

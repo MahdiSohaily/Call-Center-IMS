@@ -100,6 +100,12 @@ require_once('./views/Layouts/header.php');
                 </thead>
                 <tbody>
                     <tr>
+                        <td class="py-2 px-3 text-white bg-gray-800 text-md">تلفون</td>
+                        <td class="py-2 px-4">
+                            <input onblur="ifCustomerExist(this)" onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="py-2 px-3 text-white bg-gray-800 text-md">نام</td>
                         <td class="py-2 px-4">
                             <input class="w-full p-2 border" type="hidden" name="id" id="id">
@@ -113,12 +119,7 @@ require_once('./views/Layouts/header.php');
                             <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نام خانوادگی مشتری را وارد کنید..." type="text" name="family" id="family">
                         </td>
                     </tr>
-                    <tr>
-                        <td class="py-2 px-3 text-white bg-gray-800 text-md">تلفون</td>
-                        <td class="py-2 px-4">
-                            <input onblur="ifCustomerExist(this)" onkeyup="sanitizeCustomerPhone(this);updateCustomerInfo(this)" class="w-full p-2 border text-gray-500 ltr" placeholder="093000000000" type="text" name="phone" id="phone">
-                        </td>
-                    </tr>
+
                     <tr>
                         <td class="py-2 px-3 text-white bg-gray-800 text-md">آدرس</td>
                         <td class="py-2 px-4">
@@ -833,38 +834,18 @@ require_once('./views/Layouts/header.php');
                     .then(function(response) {
                         const customer = response.data;
                         if (customer !== 0) {
-                            element.classList.add('border-2');
-                            element.classList.add('border-red-500');
-
-                            document.getElementById('complete_save_button').disabled = true;
-                            document.getElementById('complete_save_button').classList.add('opacity-50');
-                            document.getElementById('complete_save_button').classList.add('cursor-not-allowed');
-
-                            document.getElementById('incomplete_save_button').disabled = true;
-                            document.getElementById('incomplete_save_button').classList.add('opacity-50');
-                            document.getElementById('incomplete_save_button').classList.add('cursor-not-allowed');
-
-                            const save_message = document.getElementById('save_message');
-                            const name = customer.name ?? '';
-                            const family = customer.family ?? '';
-                            save_message.innerHTML = `این شماره از قبل به نام ` + name + ' ' + family + 'ثبت شده است.';
-                            save_message.classList.remove('hidden');
-                            save_message.style.color = 'red';
-                        } else {
-                            element.classList.remove('border-2');
-                            element.classList.remove('border-red-500');
-                            document.getElementById('complete_save_button').disabled = false;
-                            document.getElementById('incomplete_save_button').disabled = false;
-
-                            document.getElementById('complete_save_button').classList.remove('opacity-50');
-                            document.getElementById('complete_save_button').classList.remove('cursor-not-allowed');
-                            document.getElementById('incomplete_save_button').classList.remove('opacity-50');
-                            document.getElementById('incomplete_save_button').classList.remove('cursor-not-allowed');
-                            save_message.classList.add('hidden');
-                            save_message.innerHTML = 'تغییرات موفقانه ذخیره شد';
-                            save_message.style.color = 'seagreen';
+                            document.getElementById('name').value = customer.name;
+                            document.getElementById('family').value = customer.family;
+                            document.getElementById('address').value = customer.address;
+                            document.getElementById('car').value = customer.car;
+                            customerInfo['id'] = customer.id;
+                            customerInfo['name'] = customer.name;
+                            customerInfo['family'] = customer.family;
+                            customerInfo['address'] = customer.address;
+                            customerInfo['car'] = customer.car;
+                            customerInfo.mode = "update";
+                            console.log(customerInfo);
                         }
-
                     })
                     .catch(function(error) {
                         console.log(error);
