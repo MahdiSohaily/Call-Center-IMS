@@ -90,8 +90,8 @@ function search_customer($pattern)
 {
     $name_family = explode(' ', $pattern);
     $name = $name_family[0] ?? '';
-    $family = $name_family[1] ?? '';
-    $similar_sql = "SELECT id, name, family, phone, address, car FROM callcenter.customer WHERE name LIKE '%$name%' AND family LIKE '%$family%'";
+    $family = $name_family[1] ?? $name;
+    $similar_sql = "SELECT id, name, family, phone, address, car FROM callcenter.customer WHERE name LIKE '%$name%' OR family LIKE '%$family%'";
 
     $similar = CONN->query($similar_sql);
     $data = [];
