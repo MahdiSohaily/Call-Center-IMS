@@ -230,7 +230,7 @@ require_once './app/Controllers/BillFilterController.php';
                                                 ${formatAsMoney(factor.total)}
                                             </p>
                                         </div>
-                                        <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
+                                        <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill_new.php">
                                             <input type="hidden" name="BillId" value="${factor.id}">
                                         </form>
                                         <div onclick="EditFactorFormSubmission('form-${factor.id}')" class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
@@ -321,7 +321,7 @@ require_once './app/Controllers/BillFilterController.php';
                                         ${formatAsMoney(factor.total)}
                                     </p>
                                     </div>
-                                    <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill.php">
+                                    <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill_new.php">
                                             <input type="hidden" name="BillId" value="${factor.id}">
                                     </form>
                                     <div class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
@@ -393,7 +393,7 @@ require_once './app/Controllers/BillFilterController.php';
                 const form = document.createElement('form');
                 form.className = 'absolute bottom-2 left-1/2';
                 form.method = 'post';
-                form.action = './generateBill.php';
+                form.action = './generateBill_new.php';
 
                 const inputBillId = document.createElement('input');
                 inputBillId.type = 'hidden';
