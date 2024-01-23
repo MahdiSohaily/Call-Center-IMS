@@ -88,7 +88,10 @@ if (isset($_POST['customer_search'])) {
 
 function search_customer($pattern)
 {
-    $similar_sql = "SELECT id, name, family, phone, address, car FROM callcenter.customer WHERE name LIKE '%$pattern%' OR family LIKE '%$pattern%' OR phone LIKE '%$pattern%'";
+    $name_family = explode(' ', $pattern);
+    $name = $name_family[0] ?? '';
+    $family = $name_family[1] ?? '';
+    $similar_sql = "SELECT id, name, family, phone, address, car FROM callcenter.customer WHERE name LIKE '%$name%' AND family LIKE '%$family%'";
 
     $similar = CONN->query($similar_sql);
     $data = [];
@@ -99,6 +102,7 @@ function search_customer($pattern)
     }
     return $data;
 }
+
 // END ------------------ THE SEARCHING FOR EXISTING CUSTOMER IN CUSTOMER LIST -----------------------------
 
 
