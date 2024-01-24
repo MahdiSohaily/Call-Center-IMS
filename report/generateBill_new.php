@@ -476,7 +476,7 @@ require_once('./views/Layouts/header.php');
                     <input  onchange="editCell(this, 'quantity', '${item.id}', '${item.quantity}')" type="number" style="direction:ltr !important;" class="tab-op tab-op-number  p-2 border border-1 w-16" value="${item.quantity}" />
                 </td>
                 <td class="text-center py-3 px-4 w-18" >
-                    <input onchange="editCell(this, 'price_per', '${item.id}', '${item.price_per}')" type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="format_the_money_input(this);convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
+                    <input onchange="editCell(this, 'price_per', '${item.id}', '${item.price_per}')" type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">
@@ -547,24 +547,37 @@ require_once('./views/Layouts/header.php');
         customerInfo[proprty] = element.value;
     }
 
-    // Format the item price as money to be more readable
-    function format_the_money_input(inputElement) {
-        // Remove non-digit characters
-        let inputValue = inputElement.value.replace(/[^\d]/g, '');
-
-        // Add comma as a 3-digit separator
-        inputValue = inputValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-        // Update the input value
-        inputElement.value = inputValue;
-    }
-
-    // Edit the item property by clicking on it and giving new value
+    // Edit the item property by clicking on it and giving a new value
     function editCell(cell, property, itemId, originalValue) {
         const newValue = cell.value;
+
         // Update the corresponding item in your data structure (billItems)
         updateItemProperty(itemId, property, newValue);
+
+        // Get the parent row (tr) of the current cell
+
+
+        if (property == 'quantity' || property == 'price_per') {
+            const parentRow = cell.closest('tr');
+            const secondToLastTd = parentRow.querySelector('td:nth-last-child(2)');
+
+            const totalpriceParent = parentRow.querySelector('td:nth-last-child(3)');
+            const totalpriceValue = Number(totalpriceParent.querySelector('input').value.replace(',', ''))
+
+            const thirdToLastTd = parentRow.querySelector('td:nth-last-child(4)');
+            const value = (thirdToLastTd.querySelector('input').value);
+            // Find the second-to-last td element in the same row
+
+
+            // Modify the innerHTML of the second-to-last td element
+            if (secondToLastTd) {
+                secondToLastTd.innerHTML = formatAsMoney(Number(totalpriceValue) * value); // Replace 'New Value' with the desired content
+            }
+        }
+
     }
+
+
 
     // Update the edited item property in the data source
     function updateItemProperty(itemId, property, newValue) {
@@ -856,7 +869,6 @@ require_once('./views/Layouts/header.php');
                         customerInfo['address'] = customer.address;
                         customerInfo['car'] = customer.car;
                         customerInfo.mode = "update";
-                        console.log(customerInfo);
                     } else {
                         document.getElementById('name').value = '';
                         document.getElementById('family').value = '';
@@ -868,7 +880,6 @@ require_once('./views/Layouts/header.php');
                         customerInfo['address'] = null;
                         customerInfo['car'] = null;
                         customerInfo.mode = "create";
-                        console.log(customerInfo);
                     }
                 })
                 .catch(function(error) {
@@ -1010,8 +1021,6 @@ require_once('./views/Layouts/header.php');
             // Find the currently focused input element
             const focusedInput = document.activeElement;
 
-            console.log('Focused Input:', focusedInput); // Log the focused input to the console
-
             // Check if the focused input is within the table or outside
             const isTableInput = Array.from(tableInputFields).includes(focusedInput);
 
@@ -1023,12 +1032,8 @@ require_once('./views/Layouts/header.php');
                 // Find the index of the currently focused input element
                 const currentIndex = Array.from(tableInputFields).indexOf(focusedInput);
 
-                console.log('Current Index:', currentIndex); // Log the current index to the console
-
                 // Calculate the index of the next input element with the class "tab-op"
                 let nextIndex = (currentIndex + 1) % tableInputFields.length;
-
-                console.log('Next Index:', nextIndex); // Log the next index to the console
 
                 // Use setTimeout to delay focusing on the next input element
                 setTimeout(() => {
