@@ -20,7 +20,7 @@ require_once('./views/Layouts/header.php');
     }
 
     .tab-op:focus {
-        outline: 1px solid lightgray !important;
+        outline: 2px solid lightgray !important;
     }
 </style>
 
@@ -458,8 +458,8 @@ require_once('./views/Layouts/header.php');
                 <td class="py-3 px-4 w-10">
                     <span>${counter}</span>
                 </td>
-                <td class="relative py-3 px-4 w-2/4" onclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
-                    <input type="text" class="tab-op w-2/4 p-2 border text-gray-500 w-42" value="${item.partName}" />
+                <td class="relative py-3 px-4 w-2/4" >
+                    <input type="text" class="tab-op w-2/4 p-2 border text-gray-500 w-42" onchange="editCell(this, 'partName', '${item.id}', '${item.partName}')" value="${item.partName}" />
                     <div class="absolute left-0 top-2 flex flex-wrap gap-1 w-42">
                         <span style="font-size:13px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">اصلی</span>
                         <span style="font-size:13px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">چین</span>
@@ -472,11 +472,11 @@ require_once('./views/Layouts/header.php');
             }
             template += `</div>
                 </td>
-                <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
-                    <input type="number" style="direction:ltr !important;" class="tab-op tab-op-number  p-2 border border-1 w-16" value="${item.quantity}" />
+                <td class="text-center w-18 py-3 px-4">
+                    <input  onchange="editCell(this, 'quantity', '${item.id}', '${item.quantity}')" type="number" style="direction:ltr !important;" class="tab-op tab-op-number  p-2 border border-1 w-16" value="${item.quantity}" />
                 </td>
-                <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
-                    <input type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="format_the_money_input(this);convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
+                <td class="text-center py-3 px-4 w-18" >
+                    <input onchange="editCell(this, 'price_per', '${item.id}', '${item.price_per}')" type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="format_the_money_input(this);convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">
@@ -536,19 +536,9 @@ require_once('./views/Layouts/header.php');
 
     // Edit the item property by clicking on it and giving new value
     function editCell(cell, property, itemId, originalValue) {
-        const input = cell.querySelector('input');
-        input.focus();
-        input.select();
-
-        // Update input value with the original value
-        input.value = originalValue;
-
-        // Handle changes when the input loses focus
-        input.addEventListener('blur', function() {
-            const newValue = input.value;
-            // Update the corresponding item in your data structure (billItems)
-            updateItemProperty(itemId, property, newValue);
-        });
+        const newValue = cell.value;
+        // Update the corresponding item in your data structure (billItems)
+        updateItemProperty(itemId, property, newValue);
     }
 
     // Update the edited item property in the data source
@@ -972,15 +962,6 @@ require_once('./views/Layouts/header.php');
         }
     });
 
-    let lastFocusedInput = null;
-
-    document.addEventListener("focusin", function(event) {
-        // Update the lastFocusedInput when any input is focused
-        if (event.target.tagName === 'INPUT' && event.target.classList.contains('tab-op')) {
-            lastFocusedInput = event.target;
-        }
-    });
-
     document.addEventListener("keydown", function(event) {
         // Check if the Tab key is pressed
         if (event.key === 'Tab') {
@@ -990,22 +971,28 @@ require_once('./views/Layouts/header.php');
             // Get all input elements with the class "tab-op" within the table
             const inputFields = document.querySelectorAll('table input.tab-op');
 
-            // If a lastFocusedInput exists, focus on the next input
-            if (lastFocusedInput) {
-                const currentIndex = Array.from(inputFields).indexOf(lastFocusedInput);
-                const nextIndex = (currentIndex + 1) % inputFields.length;
+            // Find the currently focused input element
+            const focusedInput = document.activeElement;
 
-                // Calculate the index of the next visible input element with the class "tab-op"
-                let newIndex = nextIndex;
-                while (inputFields[newIndex].offsetParent === null) {
-                    newIndex = (newIndex + 1) % inputFields.length;
-                }
-
-                // Focus on the next visible input element with the class "tab-op"
-                inputFields[newIndex].focus();
-            } else if (inputFields.length > 0) {
-                // If no lastFocusedInput, focus on the first input
+            // If there is no focused input or the focused input is not within the "tab-op" class
+            if (!focusedInput || !focusedInput.classList.contains('tab-op')) {
+                // Focus on the first input element with the class "tab-op"
                 inputFields[0].focus();
+            } else {
+                // Find the index of the currently focused input element
+                const currentIndex = Array.from(inputFields).indexOf(focusedInput);
+
+                // Calculate the index of the next input element with the class "tab-op"
+                let nextIndex = (currentIndex + 1) % inputFields.length;
+
+                // Remove the "hidden" class from the next input element with the class "tab-op"
+                inputFields[nextIndex].classList.remove('hidden');
+
+                // Use setTimeout to delay focusing on the next input element
+                setTimeout(() => {
+                    // Focus on the next input element with the class "tab-op"
+                    inputFields[nextIndex].focus();
+                }, 0);
             }
         }
     });
