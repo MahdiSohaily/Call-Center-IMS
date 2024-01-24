@@ -497,6 +497,31 @@ require_once('./views/Layouts/header.php');
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
+    // A function to display bill items and calculate the amount and goods count and display bill details afterword
+    function updatedisplayBill() {
+        let counter = 1;
+        let activeIndex = 0;
+        let totalPrice = 0;
+        BillInfo.quantity = 0;
+
+        for (const item of billItems) {
+            const payPrice = Number(item.quantity) * Number(item.price_per);
+            totalPrice += payPrice;
+            BillInfo.quantity += Number(item.quantity);
+        }
+
+        BillInfo.totalPrice = (totalPrice);
+        BillInfo.totalInWords = numberToPersianWords(totalPrice);
+        // Display the Bill Information
+        document.getElementById('billNO').value = BillInfo.billNO;
+        document.getElementById('quantity').value = BillInfo.quantity;
+        document.getElementById('quantity').value = BillInfo.quantity;
+        document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
+        document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
+    }
+
+
+
     // Add new bill item manually using the icon on the browser or shift + ctrl key press
     function addNewBillItemManually() {
         billItems.push({
@@ -572,7 +597,7 @@ require_once('./views/Layouts/header.php');
                 }
             }
         }
-        // displayBill();
+        updatedisplayBill();
     }
 
     // Adding item suffix to it
