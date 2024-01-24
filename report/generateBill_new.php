@@ -961,6 +961,7 @@ require_once('./views/Layouts/header.php');
             return false;
         }
     });
+
     document.addEventListener("DOMContentLoaded", function() {
         // Get all input elements with the class "tab-op" within the table
         const tableInputFields = document.querySelectorAll('table input.tab-op');
@@ -975,36 +976,57 @@ require_once('./views/Layouts/header.php');
     document.addEventListener("keydown", function(event) {
         // Check if the Tab key is pressed
         if (event.key === 'Tab') {
+            // Prevent the default Tab behavior
+            event.preventDefault();
+
+            // Get all input elements with the class "tab-op" within the table
+            const inputFields = document.querySelectorAll('table input.tab-op');
+
+            // Find the currently focused input element
+            const focusedInput = document.activeElement;
+
+            // If there is no focused input or the focused input is not within the "tab-op" class
+            if (!focusedInput || !focusedInput.classList.contains('tab-op')) {
+                // Focus on the first input element with the class "tab-op"
+                inputFields[0].focus();
+            } else {
+                // Find the index of the currently focused input element
+                const currentIndex = Array.from(inputFields).indexOf(focusedInput);
+
+                // Calculate the index of the next input element with the class "tab-op"
+                let nextIndex = (currentIndex + 1) % inputFields.length;
+
+                // Remove the "hidden" class from the next input element with the class "tab-op"
+                inputFields[nextIndex].classList.remove('hidden');
+
+                // Use setTimeout to delay focusing on the next input element
+                setTimeout(() => {
+                    // Focus on the next input element with the class "tab-op"
+                    inputFields[nextIndex].focus();
+                }, 0);
+            }
+        }
+        // Check if the Enter key is pressed
+        if (event.key === 'Enter') {
             // Get all input elements with the class "tab-op" within the table
             const tableInputFields = document.querySelectorAll('table input.tab-op');
 
             // Find the currently focused input element
             const focusedInput = document.activeElement;
+            const currentIndex = Array.from(tableInputFields).indexOf(focusedInput);
 
-            // Check if the focused input is within the table or outside
-            const isTableInput = Array.from(tableInputFields).includes(focusedInput);
-
-            // If the focused input is within the table and has the class "tab-op"
-            if (isTableInput) {
-                // Prevent the default Tab behavior
+            // Check if the focused input is within the table and has the class "tab-op"
+            if (Array.from(tableInputFields).includes(focusedInput)) {
+                // Prevent the default Enter behavior
                 event.preventDefault();
 
-                // Find the index of the currently focused input element
-                const currentIndex = Array.from(tableInputFields).indexOf(focusedInput);
+                const inputsPerRow = 3;
+                // Calculate the index of the first input of the next row
+                const nextRowFirstIndex = (Math.trunc(currentIndex / 3) * inputsPerRow + inputsPerRow) % tableInputFields.length;
 
-                // Calculate the index of the next input element with the class "tab-op"
-                let nextIndex = (currentIndex + 1) % tableInputFields.length;
-
-                // Remove the "hidden" class from the next input element with the class "tab-op"
-                tableInputFields[nextIndex].classList.remove('hidden');
-
-                // Use setTimeout to delay focusing on the next input element
-                setTimeout(() => {
-                    // Focus on the next input element with the class "tab-op"
-                    tableInputFields[nextIndex].focus();
-                }, 0);
+                // Focus on the first input of the next row
+                tableInputFields[nextRowFirstIndex].focus();
             }
-            // Allow default Tab behavior for inputs outside the table or without the "tab-op" class
         }
     });
 </script>
