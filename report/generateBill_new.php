@@ -572,7 +572,7 @@ require_once('./views/Layouts/header.php');
                 }
             }
         }
-        displayBill();
+        // displayBill();
     }
 
     // Adding item suffix to it
@@ -962,51 +962,63 @@ require_once('./views/Layouts/header.php');
         }
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get all input elements with the class "tab-op" within the table
-        const tableInputFields = document.querySelectorAll('table input.tab-op');
+    <?php if (!$isCompleteFactor) : ?>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all input elements with the class "tab-op" within the table
+            const tableInputFields = document.querySelectorAll('table input.tab-op');
 
-        // If there are "tab-op" inputs within the table
-        if (tableInputFields.length > 0) {
-            // Give focus to the first "tab-op" input
-            tableInputFields[0].focus();
-        }
-    });
+            // If there are "tab-op" inputs within the table
+            if (tableInputFields.length > 0) {
+                // Give focus to the first "tab-op" input
+                tableInputFields[0].focus();
+                tableInputFields[0].select();
+            }
+        });
+    <?php endif; ?>
 
     document.addEventListener("keydown", function(event) {
         // Check if the Tab key is pressed
         if (event.key === 'Tab') {
-            // Prevent the default Tab behavior
-            event.preventDefault();
-
             // Get all input elements with the class "tab-op" within the table
-            const inputFields = document.querySelectorAll('table input.tab-op');
+            const tableInputFields = document.querySelectorAll('table input.tab-op');
 
             // Find the currently focused input element
             const focusedInput = document.activeElement;
 
-            // If there is no focused input or the focused input is not within the "tab-op" class
-            if (!focusedInput || !focusedInput.classList.contains('tab-op')) {
-                // Focus on the first input element with the class "tab-op"
-                inputFields[0].focus();
-            } else {
+            console.log('Focused Input:', focusedInput); // Log the focused input to the console
+
+            // Check if the focused input is within the table or outside
+            const isTableInput = Array.from(tableInputFields).includes(focusedInput);
+
+            // If the focused input is within the table and has the class "tab-op"
+            if (isTableInput) {
+                // Prevent the default Tab behavior
+                event.preventDefault();
+
                 // Find the index of the currently focused input element
-                const currentIndex = Array.from(inputFields).indexOf(focusedInput);
+                const currentIndex = Array.from(tableInputFields).indexOf(focusedInput);
+
+                console.log('Current Index:', currentIndex); // Log the current index to the console
 
                 // Calculate the index of the next input element with the class "tab-op"
-                let nextIndex = (currentIndex + 1) % inputFields.length;
+                let nextIndex = (currentIndex + 1) % tableInputFields.length;
 
-                // Remove the "hidden" class from the next input element with the class "tab-op"
-                inputFields[nextIndex].classList.remove('hidden');
+                console.log('Next Index:', nextIndex); // Log the next index to the console
 
                 // Use setTimeout to delay focusing on the next input element
                 setTimeout(() => {
                     // Focus on the next input element with the class "tab-op"
-                    inputFields[nextIndex].focus();
+                    tableInputFields[nextIndex].focus();
+                    tableInputFields[nextIndex].select();
                 }, 0);
             }
+            // Allow default Tab behavior for inputs outside the table or without the "tab-op" class
         }
-        // Check if the Enter key is pressed
+    });
+
+
+    document.addEventListener("keydown", function(event) {
+
         if (event.key === 'Enter') {
             // Get all input elements with the class "tab-op" within the table
             const tableInputFields = document.querySelectorAll('table input.tab-op');
