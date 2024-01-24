@@ -8,6 +8,21 @@ require_once('./views/Layouts/header.php');
 <!-- Utility files and styles  -->
 <script src="./public/js/persianDate.js"></script>
 <link rel="stylesheet" href="./public/css/bill.css?v=<?= rand() ?>" />
+<style>
+    .tab-op {
+        background-color: transparent !important;
+        border: none !important;
+        width: 100% !important;
+    }
+
+    .tab-op-number {
+        text-align: center !important;
+    }
+
+    .tab-op:focus {
+        outline: 1px solid lightgray !important;
+    }
+</style>
 
 <main>
     <!-- search and initialing data section -->
@@ -429,6 +444,7 @@ require_once('./views/Layouts/header.php');
     // A function to display bill items and calculate the amount and goods count and display bill details afterword
     function displayBill() {
         let counter = 1;
+        let activeIndex = 0;
         let template = ``;
         let totalPrice = 0;
         BillInfo.quantity = 0;
@@ -443,26 +459,24 @@ require_once('./views/Layouts/header.php');
                     <span>${counter}</span>
                 </td>
                 <td class="relative py-3 px-4 w-2/4" onclick="editCell(this, 'partName', '${item.id}', '${item.partName}')">
-                    <span class="cursor-pointer text-lg" title="برای ویرایش دوبار کلیک نمایید">${item.partName}</span>
-                    <input type="text" class="w-2/4 p-2 border text-gray-500 hidden w-42" value="${item.partName}" />
+                    <input type="text" class="tab-op w-2/4 p-2 border text-gray-500 w-42" value="${item.partName}" />
                     <div class="absolute left-0 top-2 flex flex-wrap gap-1 w-42">
                         <span style="font-size:13px" onclick="appendSufix('${item.id}','اصلی')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">اصلی</span>
                         <span style="font-size:13px" onclick="appendSufix('${item.id}','چین')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">چین</span>
                         <span style="font-size:13px" onclick="appendSufix('${item.id}','کره')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">کره</span>
                         <span style="font-size:13px" onclick="appendSufix('${item.id}','متفرقه')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">متفرقه</span>
-                        <span style="font-size:13px" onclick="appendSufix('${item.id}','تایوان')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">تایوان</span>`;
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','تایوان')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">تایوان</span>
+                        <span style="font-size:13px" onclick="appendSufix('${item.id}','شرکتی')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">شرکتی</span>`;
             if (customerInfo.car != '') {
                 template += `<span style="font-size:13px" onclick="appendCarSufix('${item.id}','${customerInfo.car}')" class="cursor-pointer text-md text-white bg-gray-600 rounded p-1" title="">${customerInfo.car}</span>`;
             }
             template += `</div>
                 </td>
                 <td class="text-center w-18 py-3 px-4" onclick="editCell(this, 'quantity', '${item.id}', '${item.quantity}')">
-                    <span class="cursor-pointer text-lg text-center" title="برای ویرایش دوبار کلیک نمایید">${item.quantity}</span>
-                    <input type="number" style="direction:ltr !important;" class="p-2 border border-1 hidden w-16" onkeyup="convertToEnglish(this)" value="${item.quantity}" />
+                    <input type="number" style="direction:ltr !important;" class="tab-op tab-op-number  p-2 border border-1 w-16" value="${item.quantity}" />
                 </td>
                 <td class="text-center py-3 px-4 w-18" onclick="editCell(this, 'price_per', '${item.id}', '${item.price_per}')">
-                    <span class="cursor-pointer text-lg text-center" title="برای ویرایش دوبار کلیک نمایید">${formatAsMoney(Number(item.price_per))}</span>
-                    <input type="text" style="direction:ltr !important;" class=" w-18 p-2 border hidden" onkeyup="format_the_money_input(this);convertToEnglish(this)" value="${Number(item.price_per)}" />
+                    <input type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="format_the_money_input(this);convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
                 </td>
                 <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">
@@ -523,15 +537,8 @@ require_once('./views/Layouts/header.php');
     // Edit the item property by clicking on it and giving new value
     function editCell(cell, property, itemId, originalValue) {
         const input = cell.querySelector('input');
-        const span = cell.querySelector('span');
-
-        // Make input visible and set focus
-        input.classList.remove('hidden');
         input.focus();
         input.select();
-
-        // Hide the span
-        span.classList.add('hidden');
 
         // Update input value with the original value
         input.value = originalValue;
@@ -539,16 +546,6 @@ require_once('./views/Layouts/header.php');
         // Handle changes when the input loses focus
         input.addEventListener('blur', function() {
             const newValue = input.value;
-
-            // Update the span with the new value
-            span.innerText = newValue;
-
-            // Make the span visible again
-            span.classList.remove('hidden');
-
-            // Hide the input
-            input.classList.add('hidden');
-
             // Update the corresponding item in your data structure (billItems)
             updateItemProperty(itemId, property, newValue);
         });
@@ -961,6 +958,57 @@ require_once('./views/Layouts/header.php');
     bootstrap(); // Display the form data after retrieving every initial data
 
     document.addEventListener('keydown', handelShortcuts);
+    document.addEventListener("keydown", function(event) {
+        // Check if the Ctrl key is pressed and the key is 'S'
+        if (event.ctrlKey && event.key === 's') {
+            // Prevent the default browser behavior for Ctrl + S (e.g., saving the page)
+            event.preventDefault();
+
+            // Call the saveIncompleteForm function
+            saveIncompleteForm();
+
+            // Optionally, use return false to further prevent default behavior
+            return false;
+        }
+    });
+
+    let lastFocusedInput = null;
+
+    document.addEventListener("focusin", function(event) {
+        // Update the lastFocusedInput when any input is focused
+        if (event.target.tagName === 'INPUT' && event.target.classList.contains('tab-op')) {
+            lastFocusedInput = event.target;
+        }
+    });
+
+    document.addEventListener("keydown", function(event) {
+        // Check if the Tab key is pressed
+        if (event.key === 'Tab') {
+            // Prevent the default Tab behavior
+            event.preventDefault();
+
+            // Get all input elements with the class "tab-op" within the table
+            const inputFields = document.querySelectorAll('table input.tab-op');
+
+            // If a lastFocusedInput exists, focus on the next input
+            if (lastFocusedInput) {
+                const currentIndex = Array.from(inputFields).indexOf(lastFocusedInput);
+                const nextIndex = (currentIndex + 1) % inputFields.length;
+
+                // Calculate the index of the next visible input element with the class "tab-op"
+                let newIndex = nextIndex;
+                while (inputFields[newIndex].offsetParent === null) {
+                    newIndex = (newIndex + 1) % inputFields.length;
+                }
+
+                // Focus on the next visible input element with the class "tab-op"
+                inputFields[newIndex].focus();
+            } else if (inputFields.length > 0) {
+                // If no lastFocusedInput, focus on the first input
+                inputFields[0].focus();
+            }
+        }
+    });
 </script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <script src="./public/js/billSearchPart.js?= rand() ?>"></script>
