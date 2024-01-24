@@ -961,6 +961,16 @@ require_once('./views/Layouts/header.php');
             return false;
         }
     });
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all input elements with the class "tab-op" within the table
+        const tableInputFields = document.querySelectorAll('table input.tab-op');
+
+        // If there are "tab-op" inputs within the table
+        if (tableInputFields.length > 0) {
+            // Give focus to the first "tab-op" input
+            tableInputFields[0].focus();
+        }
+    });
 
     document.addEventListener("keydown", function(event) {
         // Check if the Tab key is pressed
