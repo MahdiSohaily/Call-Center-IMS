@@ -75,6 +75,7 @@ function displayBillDetails() {
 function displayAsMoney(inputInstance) {
   // Get the original value from the input and remove non-digit characters
   let originalValue = inputInstance.value.trim().replace(/\D/g, "");
+  originalValue = originalValue.replace(/^0+/, "");
 
   // Use regex to insert commas every three digits
   let formattedValue = originalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
