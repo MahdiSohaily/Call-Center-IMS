@@ -22,6 +22,15 @@ require_once('./views/Layouts/header.php');
     .tab-op:focus {
         outline: 2px solid lightgray !important;
     }
+
+    .hidden-action {
+        display: none;
+        background-color: white;
+    }
+
+    .add-column:hover .hidden-action {
+        display: flex !important;
+    }
 </style>
 
 <main>
@@ -455,9 +464,13 @@ require_once('./views/Layouts/header.php');
             totalPrice += payPrice;
             BillInfo.quantity += Number(item.quantity);
             template += `
-            <tr id="${item.id}" class="even:bg-gray-100 border-gray-800" >
-                <td class="py-3 px-4 w-10">
+            <tr id="${item.id}" class="even:bg-gray-100 border-gray-800 add-column" >
+                <td class="py-3 px-4 w-10 relative text-left">
                     <span>${counter}</span>
+                    <div class="absolute inset-0 flex flex-col items-start justify-center hidden-action">
+                        <img title="افزودن ردیف" class="cursor-pointer w-6" src="./public/img/top_arrow.svg" />
+                        <img title="افزودن ردیف" class="cursor-pointer w-6" src="./public/img/bottom_arrow.svg" />
+                    </div>
                 </td>
                 <td class="relative py-3 px-4 w-2/4" >
                     <input type="text" class="tab-op w-2/4 p-2 border text-gray-500 w-42" onchange="editCell(this, 'partName', '${item.id}', '${item.partName}')" value="${item.partName}" />
