@@ -468,8 +468,8 @@ require_once('./views/Layouts/header.php');
                 <td class="py-3 px-4 w-10 relative text-left">
                     <span>${counter}</span>
                     <div class="absolute inset-0 flex flex-col items-start justify-center hidden-action">
-                        <img title="افزودن ردیف" class="cursor-pointer w-6" src="./public/img/top_arrow.svg" />
-                        <img title="افزودن ردیف" class="cursor-pointer w-6" src="./public/img/bottom_arrow.svg" />
+                        <img onclick="addNewRow('before','${counter - 1}')" title="افزودن ردیف قبل از این ردیف" class="cursor-pointer w-6" src="./public/img/top_arrow.svg" />
+                        <img onclick="addNewRow('after','${counter - 1}')" title="افزودن ردیف بعد از این ردیف" class="cursor-pointer w-6" src="./public/img/bottom_arrow.svg" />
                     </div>
                 </td>
                 <td class="relative py-3 px-4 w-2/4" >
@@ -545,6 +545,45 @@ require_once('./views/Layouts/header.php');
             partNumber: 'NOTPART'
         });
         displayBill();
+    }
+
+    function addNewRow(position, targetIndex) {
+        // Ensure the targetIndex is within the valid range
+        if (targetIndex >= 0 && targetIndex < billItems.length) {
+            // Insert the new object either before or after the target index
+            const newItem = {
+                id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
+                partName: "اسم قطعه را وارد کنید.",
+                price_per: 0,
+                quantity: 1,
+                max: 'undefined',
+                partNumber: 'NOTPART'
+            };
+
+            if (position === 'before') {
+                billItems.splice(targetIndex, 0, newItem);
+            } else if (position === 'after') {
+                billItems.splice(targetIndex + 1, 0, newItem);
+            } else {
+                console.error("Invalid position. Use 'before' or 'after'.");
+            }
+
+            displayBill();
+        } else if (targetIndex === billItems.length && position === 'after') {
+            // If 'after' is selected and the target index is at the end, add to the end
+            billItems.push({
+                id: Math.floor(Math.random() * (9000000 - 1000000 + 1)) + 1000000,
+                partName: "اسم قطعه را وارد کنید.",
+                price_per: 0,
+                quantity: 1,
+                max: 'undefined',
+                partNumber: 'NOTPART'
+            });
+
+            displayBill();
+        } else {
+            console.error("Invalid target index.");
+        }
     }
 
     // Updating the bill inforation section (EX: setting the discount or tax)
