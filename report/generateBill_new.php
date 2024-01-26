@@ -476,9 +476,9 @@ require_once('./views/Layouts/header.php');
                     <input  onchange="editCell(this, 'quantity', '${item.id}', '${item.quantity}')" type="number" style="direction:ltr !important;" class="tab-op tab-op-number  p-2 border border-1 w-16" value="${item.quantity}" />
                 </td>
                 <td class="text-center py-3 px-4 w-18" >
-                    <input onchange="editCell(this, 'price_per', '${item.id}', '${item.price_per}')" type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
+                    <input onchange="editCell(this, 'price_per', '${item.id}', '${item.price_per}')" type="text" style="direction:ltr !important;" class="tab-op tab-op-number w-18 p-2 border " onkeyup="displayAsMoney(this);convertToEnglish(this)" value="${formatAsMoney(item.price_per)}" />
                 </td>
-                <td class="text-center py-3 px-4">${formatAsMoney(payPrice)}</td>
+                <td class="text-center py-3 px-4 ltr">${formatAsMoney(payPrice)}</td>
                 <td class="text-center py-3 px-4 w-18 h-12 font-medium">
                     <img onclick="deleteItem(${item.id})" class="bill_icon" src="./public/img/subtract.svg" alt="subtract icon">
                 </td>
@@ -520,8 +520,6 @@ require_once('./views/Layouts/header.php');
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
     }
 
-
-
     // Add new bill item manually using the icon on the browser or shift + ctrl key press
     function addNewBillItemManually() {
         billItems.push({
@@ -562,7 +560,7 @@ require_once('./views/Layouts/header.php');
             const secondToLastTd = parentRow.querySelector('td:nth-last-child(2)');
 
             const totalpriceParent = parentRow.querySelector('td:nth-last-child(3)');
-            const totalpriceValue = Number(totalpriceParent.querySelector('input').value.replace(',', ''))
+            const totalpriceValue = Number(totalpriceParent.querySelector('input').value.replace(/\D/g, ""));
 
             const thirdToLastTd = parentRow.querySelector('td:nth-last-child(4)');
             const value = (thirdToLastTd.querySelector('input').value);
@@ -576,8 +574,6 @@ require_once('./views/Layouts/header.php');
         }
 
     }
-
-
 
     // Update the edited item property in the data source
     function updateItemProperty(itemId, property, newValue) {
@@ -655,7 +651,6 @@ require_once('./views/Layouts/header.php');
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-
     // display the bill total amount alphabiticly ------------- START
     function numberToPersianWords(number) {
         const units = [

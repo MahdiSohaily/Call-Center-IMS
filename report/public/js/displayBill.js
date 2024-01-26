@@ -71,3 +71,14 @@ function displayBillDetails() {
   document.getElementById("total_in_word_bill").innerHTML =
     BillInfo.totalInWords;
 }
+
+function displayAsMoney(inputInstance) {
+  // Get the original value from the input and remove non-digit characters
+  let originalValue = inputInstance.value.trim().replace(/\D/g, "");
+
+  // Use regex to insert commas every three digits
+  let formattedValue = originalValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // Update the input value with the formatted value
+  inputInstance.value = formattedValue;
+}
