@@ -401,6 +401,7 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 </main>
+<script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <script>
     // Accessing the conatainers to have global access for easy binding data
     const customer_results = document.getElementById('customer_results');
@@ -643,10 +644,6 @@ require_once('./views/Layouts/header.php');
             }
         }
         displayBill();
-    }
-
-    function formatAsMoney(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     // display the bill total amount alphabiticly ------------- START
@@ -1065,7 +1062,6 @@ require_once('./views/Layouts/header.php');
         }
     });
 </script>
-<script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
 <script src="./public/js/billSearchPart.js?= rand() ?>"></script>
 <?php
 require_once('./views/Layouts/footer.php');
