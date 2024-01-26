@@ -544,6 +544,7 @@ require_once('./views/Layouts/header.php');
     function updateCustomerInfo(element) {
         const proprty = element.getAttribute("name");
         customerInfo[proprty] = element.value;
+        displayBill();
     }
 
     // Edit the item property by clicking on it and giving a new value
