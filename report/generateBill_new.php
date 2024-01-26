@@ -552,9 +552,6 @@ require_once('./views/Layouts/header.php');
         // Update the corresponding item in your data structure (billItems)
         updateItemProperty(itemId, property, newValue);
 
-        // Get the parent row (tr) of the current cell
-
-
         if (property == 'quantity' || property == 'price_per') {
             const parentRow = cell.closest('tr');
             const secondToLastTd = parentRow.querySelector('td:nth-last-child(2)');
@@ -651,6 +648,7 @@ require_once('./views/Layouts/header.php');
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
     // display the bill total amount alphabiticly ------------- START
     function numberToPersianWords(number) {
         const units = [
