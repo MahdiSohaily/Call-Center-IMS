@@ -68,3 +68,23 @@ function displayAsMoney(inputInstance) {
   // Update the input value with the formatted value
   inputInstance.value = formattedValue;
 }
+
+function copyInfo(element) {
+  const info = document.getElementById("name_bill").innerHTML;
+  const billNo = document.getElementById("billNO_bill").innerHTML;
+
+  const combinedText = `مشتری : ${info} \nشماره فاکتور : ${billNo}`;
+
+  const textarea = document.createElement("textarea");
+  textarea.value = combinedText;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+
+  element.src = "./public/img/complete.svg";
+
+  setTimeout(() => {
+    element.src = "./public/img/copy.svg";
+  }, 2000);
+}
