@@ -1,20 +1,9 @@
 let bill_number = null;
 function getBillData() {
-  var params = new URLSearchParams();
-  params.append("getFactorNumber", "getFactorNumber");
-  axios
-    .post("./app/Controllers/BillController.php", params)
-    .then(function (response) {
-      bill_number = response.data;
-      // BillInfo.billNO = bill_number;
-      document.getElementById("billNO_bill").innerHTML = BillInfo.billNO;
-      previewBill();
-      displayCustomer();
-      displayBillDetails();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  document.getElementById("billNO_bill").innerHTML = BillInfo.billNO;
+  previewBill();
+  displayCustomer();
+  displayBillDetails();
 }
 
 function previewBill() {
@@ -47,10 +36,6 @@ function previewBill() {
     counter++;
   }
   bill_body_result.innerHTML = template;
-}
-
-function formatAsMoney(number) {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function displayCustomer() {
