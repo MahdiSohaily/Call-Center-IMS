@@ -136,6 +136,8 @@ function applyDollarRate($price)
                 if ($modifiedNumber >= 10) {
                     // Round the number to the nearest multiple of 10
                     $roundedNumber = round($modifiedNumber / 10) * 10;
+                } else {
+                    $roundedNumber = round($modifiedNumber);
                 }
 
                 // Replace the word with the modified number

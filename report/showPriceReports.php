@@ -56,7 +56,7 @@ if ($isValidCustomer) {
 
                                             if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                 $rawGivenPrice = $target['price'];
-                                                $finalPrice = (int)applyDollarRate($rawGivenPrice);
+                                                $finalPrice = applyDollarRate($rawGivenPrice);
                                             endif; //
 
                                             echo $finalPrice !== 'موجود نیست' ? "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . $finalPrice . "</p>" : "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
@@ -409,7 +409,7 @@ if ($isValidCustomer) {
                                                     if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                         $rawGivenPrice = $target['price'];
 
-                                                        $finalPriceForm = (int)applyDollarRate($rawGivenPrice);
+                                                        $finalPriceForm = applyDollarRate($rawGivenPrice);
                                                 ?>
                                                         <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
                                                             <td>
