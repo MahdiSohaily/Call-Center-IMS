@@ -38,7 +38,7 @@ require_once('./views/Layouts/header.php');
                 <span id="phone"></span>
             </li>
         </ul>
-        <p class="w-1/2" id="userAddress" style="font-size: 12px;"></p>
+        <p class="w-1/2" id="userAddress" style="font-size: 13px;"></p>
         <img id="copy_icon" class="cursor-pointer" src="./public/img/copy.svg" alt="copy customer info" onclick="copyInfo(this)">
     </div>
     <div class="bill_items">
