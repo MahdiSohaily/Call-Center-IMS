@@ -46,7 +46,6 @@ require_once('./views/Layouts/header.php');
             <thead>
                 <tr class="bg-gray">
                     <th class="text-right w-8">ردیف</th>
-                    <!-- <th class="text-right">کد فنی</th> -->
                     <th class="text-right">نام قطعه</th>
                     <th class="text-center w-12 border-r border-l-2 border-gray-800"> تعداد</th>
                     <th class="text-right w-32"> قیمت واحد</th>

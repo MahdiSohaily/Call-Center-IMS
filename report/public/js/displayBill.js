@@ -51,11 +51,14 @@ function displayBillDetails() {
     /-/g,
     "/"
   );
-  document.getElementById("quantity_bill").value = BillInfo.quantity;
-  document.getElementById("totalPrice_bill").value = formatAsMoney(
+  document.getElementById("quantity_bill").innerHTML = BillInfo.quantity;
+  document.getElementById("totalPrice_bill").innerHTML = formatAsMoney(
     BillInfo.totalPrice
   );
-  document.getElementById("discount_bill").value = BillInfo.discount;
+  document.getElementById("totalPrice2").innerHTML = formatAsMoney(
+    Number(BillInfo.totalPrice) - Number(BillInfo.discount)
+  );
+  document.getElementById("discount_bill").innerHTML = BillInfo.discount;
   document.getElementById("total_in_word_bill").innerHTML =
     BillInfo.totalInWords;
 }

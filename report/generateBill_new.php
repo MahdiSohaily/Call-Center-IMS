@@ -332,12 +332,11 @@ require_once('./views/Layouts/header.php');
                 <table>
                     <thead>
                         <tr style="padding: 10px !important;">
-                            <th class="text-right w-12">ردیف</th>
-                            <!-- <th class="text-right">کد فنی</th> -->
+                            <th class="text-right w-8">ردیف</th>
                             <th class="text-right">نام قطعه</th>
-                            <th class="text-center"> تعداد</th>
-                            <th class="text-right"> قیمت</th>
-                            <th class="text-right"> قیمت کل</th>
+                            <th class="text-center w-12 border-r border-l-2 border-gray-800"> تعداد</th>
+                            <th class="text-right w-32"> قیمت واحد</th>
+                            <th class="text-right w-32"> قیمت کل (ریال)</th>
                         </tr>
                     </thead>
                     <tbody id="bill_body_result">
@@ -345,45 +344,61 @@ require_once('./views/Layouts/header.php');
                 </table>
             </div>
             <div class="bill_footer">
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="4">
-                                اطلاعات فاکتور
-                            </th>
-                        </tr>
-                    </thead>
+                <table class="w-full">
                     <tbody>
-                        <tr>
-                            <td>تعداد
-                                :
-                                <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity_bill">
+                        <tr class="bg-gray border-b border-gray-800">
+                            <td class="text-right w-8"></td>
+                            <td class="text-right">جمع فاکتور</td>
+                            <td class="text-center w-12 border-r border-l-2 border-gray-800">
+                                <span id="quantity_bill" class="w-full"></span>
                             </td>
-                            <td>تخفیف
-                                :
-                                <input readonly placeholder="0" type="number" name="discount" id="discount_bill">
+                            <td class="text-right w-32">
+                                <span id="totalPrice_bill" class="w-full"></span>
                             </td>
-                            <td>جمع
-                                :
-                                <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice_bill">
+                            <td class="text-right w-32">
                             </td>
                         </tr>
-                        <tr class="bill_info_footer">
-                            <td style="padding:5px;">مبلغ قابل پرداخت : </td>
-                            <td colspan="5" style="padding:10px;">
-                                <p id="total_in_word_bill" class="px-3 text-sm"></p>
+                        <tr>
+                            <td colspan="3" class="w-8 border-l-2 border-gray-800 text-left">تخفیف : </td>
+                            <td colspan="2" class="text-right w-8">
+                                <span id="discount_bill"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="padding:15px;" class="border-t border-b border-gray-800"></td>
+                            <td colspan="2" style="padding:15px;" class="border-t border-b border-gray-800"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right w-8"></td>
+                            <td class="text-right">
+                                <p>مبلغ قابل پرداخت:
+                                    <span id="total_in_word_bill"></span>
+                                </p>
+                            </td>
+                            <td class="text-center w-12 border-l-2 border-gray-800">
+
+                            </td>
+                            <td class="text-right w-32">
+                                <span id="totalPrice2" class="w-full"></span>
+                            </td>
+                            <td class="text-right w-32">
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div style="display: flex; margin-top: 20px;">
+            <div class="flex gap-5" style="margin-top: 20px;">
                 <div class="tahvilgirande-box">
                     <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
                     <div class="tahvilgirande-box-inner">
                         <div>نام</div>
                         <div>شماره تماس</div>
                         <div>امضا</div>
+                    </div>
+                </div>
+                <div class="description-box flex-grow">
+                    <div class="tahvilgirande-box-header">توضیحات فاکتور</div>
+                    <div class="tahvilgirande-box-inner">
                     </div>
                 </div>
             </div>
