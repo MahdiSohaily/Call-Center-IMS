@@ -442,17 +442,19 @@ function makeBillCompleted($billInfo, $customerId, $bill_number)
     $user_id = $_SESSION['user_id'];
 
     $sql = "UPDATE callcenter.bill SET 
-                customer_id = '$customerId',
-                bill_number = '$bill_number',
-                quantity = '$billInfo->quantity',
-                discount = '$billInfo->discount',
-                tax = '$billInfo->tax',
-                withdraw = '$billInfo->withdraw',
-                total = '$billInfo->totalPrice',
-                bill_date = '$billInfo->date',
-                user_id = '$user_id',
-                status = 1
-                WHERE id = '$billInfo->id'";
+            customer_id = '$customerId',
+            bill_number = '$bill_number',
+            quantity = '$billInfo->quantity',
+            discount = '$billInfo->discount',
+            tax = '$billInfo->tax',
+            withdraw = '$billInfo->withdraw',
+            total = '$billInfo->totalPrice',
+            bill_date = '$billInfo->date',
+            created_at = CURRENT_TIMESTAMP,
+            user_id = '$user_id',
+            status = 1
+            WHERE id = '$billInfo->id'";
+
 
     CONN->query($sql);
 
