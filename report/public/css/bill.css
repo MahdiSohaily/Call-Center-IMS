@@ -1,4 +1,3 @@
-/* General Styles */
 .bill {
     width: 800px;
     margin-inline: auto;
@@ -53,19 +52,12 @@
     padding-bottom: 10px;
 }
 
-.bill_items {
-    border-radius: 10px 10px 0 0;
-}
-
 .bill_items,
 .bill_footer {
     border: 1px solid black;
     margin-bottom: 5px;
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
-}
-
-.bill_footer {
-    border-radius: 0 0 10px 10px;
 }
 
 .bill_items>table,
@@ -73,6 +65,11 @@
     width: 100%;
 }
 
+.bill_footer {
+    border-radius: 0 0 10px 10px;
+}
+
+thead,
 .bg-gray {
     background-color: lightgray;
     font-size: 14px;
@@ -102,6 +99,7 @@
     text-align: center;
 }
 
+
 .bill_items>table td {
     padding: 7px;
 }
@@ -115,6 +113,7 @@
     width: 40px;
     cursor: pointer;
     height: 40px;
+    cursor: pointer
 }
 
 .action_menu {
@@ -161,7 +160,7 @@
 
 .bill_info_footer {
     background-color: lightgray;
-    color: black;
+    color: black
 }
 
 #bill_date tr {
@@ -175,7 +174,6 @@
     cursor: pointer;
 }
 
-/* Print Styles */
 @media print {
     * {
         font-size: 12px !important;
@@ -189,7 +187,6 @@
 
     .bill {
         width: 100% !important;
-        padding: 0 !important;
     }
 
     #page_header {
@@ -218,7 +215,10 @@
         margin: 0 !important;
     }
 
-    #nav,
+    #nav {
+        display: none !important;
+    }
+
     #side_nav {
         display: none !important;
     }
@@ -228,10 +228,15 @@
         border: 1px solid black !important;
     }
 
-    .bill_items,
-    .bill_footer,
-    .bill_items>table,
-    .bill_footer>table {
+    .bill {
+        padding: 0 !important;
+    }
+
+    .action_menu {
+        display: none;
+    }
+
+    .bill_items {
         border: none !important;
     }
 
@@ -241,6 +246,9 @@
 
     .bill_items>table tr {
         background-color: white !important;
+    }
+
+    .bill_items>table tr:not(:last-child) {
         border-bottom: 1px solid black !important;
     }
 
@@ -271,11 +279,29 @@
         background-color: white !important;
     }
 
-    #copy_icon,
+    #copy_icon {
+        display: none !important;
+    }
+
     #action_message {
         display: none !important;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* nisha css */
 .tahvilgirande-box {
@@ -304,6 +330,7 @@
     font-size: 12px;
 }
 
+
 .footer-box {
     border-top: 1px solid #dddddd;
     text-align: center;
@@ -320,17 +347,26 @@ p.footer-box-tell span {
     font-size: 14px;
 }
 
+
+
+
+
+
+
+
 .nisha-bill-info {
     border: 1px solid #dddddd;
     border-radius: 10px;
     width: 160px;
     height: 60px;
+
 }
 
 .A-main div,
 .B-main div {
     height: 29px;
     float: right;
+
 }
 
 .A-1 {
@@ -348,7 +384,7 @@ p.footer-box-tell span {
     background: #efefef;
     text-align: center;
     line-height: 30px;
-    font-size: 12px;
+    font-size: 12px
 }
 
 .A-2,
@@ -356,7 +392,7 @@ p.footer-box-tell span {
     text-align: center;
     width: 60%;
     line-height: 34px;
-    font-size: 12px;
+    font-size: 12px
 }
 
 .B-2 {
