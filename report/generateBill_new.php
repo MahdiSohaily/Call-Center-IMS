@@ -242,7 +242,7 @@ require_once('./views/Layouts/header.php');
         <ul class="flex gap-3">
             <?php if (!$isCompleteFactor) : ?>
                 <li>
-                    <button id="incomplete_save_button" class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteForm()">
+                    <button id="incomplete_save_button" class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveIncompleteBill()">
                         ذخیره تغییرات پیش فاکتور
                     </button>
                 </li>
@@ -253,12 +253,12 @@ require_once('./views/Layouts/header.php');
                 </li>
             <?php else : ?>
                 <li>
-                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="saveCompleteForm()">
+                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="updateCompleteBill()">
                         ویرایش
                     </p>
                 </li>
                 <li>
-                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="generateBill2()">
+                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="printCompletedBill()">
                         پرینت
                     </p>
                 </li>
@@ -799,9 +799,7 @@ require_once('./views/Layouts/header.php');
 
     // Mark bill as completed and send it for the print
     function generateBill() {
-        if (BillInfo.date == 'null') {
-            BillInfo.date = moment().locale('fa').format('YYYY/M/D');
-        }
+        BillInfo.date = moment().locale('fa').format('YYYY/M/D');
 
         if (customerInfo.name === null || BillInfo.billNO === null || billItems.length == 0) {
             modal.classList.remove("hidden");
@@ -818,7 +816,7 @@ require_once('./views/Layouts/header.php');
         window.location.href = './displayBill.php';
     }
 
-    function generateBill2() {
+    function printCompletedBill() {
         if (BillInfo.date == 'null') {
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
         }
@@ -839,7 +837,7 @@ require_once('./views/Layouts/header.php');
     }
 
     // Update the 
-    function saveIncompleteForm() {
+    function saveIncompleteBill() {
         if (BillInfo.date == 'null')
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
         var params = new URLSearchParams();
@@ -865,7 +863,7 @@ require_once('./views/Layouts/header.php');
             });
     }
 
-    function saveCompleteForm() {
+    function updateCompleteBill() {
         if (BillInfo.date == 'null')
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
         var params = new URLSearchParams();
@@ -873,8 +871,6 @@ require_once('./views/Layouts/header.php');
         params.append('customer_info', JSON.stringify(customerInfo));
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
-
-
 
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
