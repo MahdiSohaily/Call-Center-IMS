@@ -252,7 +252,7 @@ require_once('./views/Layouts/header.php');
             document.getElementById('date').innerHTML = BillInfo.date.replace(/-/g, "/");
             document.getElementById('quantity').innerHTML = BillInfo.quantity;
             document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.totalPrice);
-            document.getElementById('totalPrice2').innerHTML = formatAsMoney(BillInfo.totalPrice);
+            document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
             document.getElementById('discount').innerHTML = BillInfo.discount;
             document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
         }
