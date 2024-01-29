@@ -44,13 +44,13 @@ require_once('./views/Layouts/header.php');
     <div class="bill_items">
         <table>
             <thead>
-                <tr style="padding: 10px !important;">
+                <tr class="bg-gray">
                     <th class="text-right w-8">ردیف</th>
                     <!-- <th class="text-right">کد فنی</th> -->
                     <th class="text-right">نام قطعه</th>
                     <th class="text-center w-12 border-r border-l-2 border-gray-800"> تعداد</th>
-                    <th class="text-right w-28"> قیمت واحد</th>
-                    <th class="text-right w-28"> قیمت کل (ریال)</th>
+                    <th class="text-right w-32"> قیمت واحد</th>
+                    <th class="text-right w-32"> قیمت کل (ریال)</th>
                 </tr>
             </thead>
             <tbody id="bill_body">
@@ -66,10 +66,10 @@ require_once('./views/Layouts/header.php');
                     <td class="text-center w-12 border-r border-l-2 border-gray-800">
                         <span id="quantity" class="w-full"></span>
                     </td>
-                    <td class="text-right w-28">
-                        <span id="totalPrice" class="w-full" ></span>
+                    <td class="text-right w-32">
+                        <span id="totalPrice" class="w-full"></span>
                     </td>
-                    <td class="text-right w-28">
+                    <td class="text-right w-32">
                     </td>
                 </tr>
                 <tr>
@@ -92,22 +92,27 @@ require_once('./views/Layouts/header.php');
                     <td class="text-center w-12 border-l-2 border-gray-800">
 
                     </td>
-                    <td class="text-right w-28">
+                    <td class="text-right w-32">
                         <span id="totalPrice2" class="w-full"></span>
                     </td>
-                    <td class="text-right w-28">
+                    <td class="text-right w-32">
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <div style="display: flex; margin-top: 20px;">
+    <div class="flex gap-5" style="margin-top: 20px;">
         <div class="tahvilgirande-box">
             <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
             <div class="tahvilgirande-box-inner">
                 <div>نام</div>
                 <div>شماره تماس</div>
                 <div>امضا</div>
+            </div>
+        </div>
+        <div class="description-box flex-grow">
+            <div class="tahvilgirande-box-header">توضیحات فاکتور</div>
+            <div class="tahvilgirande-box-inner">
             </div>
         </div>
     </div>

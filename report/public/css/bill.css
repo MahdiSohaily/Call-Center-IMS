@@ -1,3 +1,4 @@
+/* General Styles */
 .bill {
     width: 800px;
     margin-inline: auto;
@@ -60,7 +61,6 @@
 .bill_footer {
     border: 1px solid black;
     margin-bottom: 5px;
-
     overflow: hidden;
 }
 
@@ -73,7 +73,6 @@
     width: 100%;
 }
 
-thead,
 .bg-gray {
     background-color: lightgray;
     font-size: 14px;
@@ -103,7 +102,6 @@ thead,
     text-align: center;
 }
 
-
 .bill_items>table td {
     padding: 7px;
 }
@@ -117,7 +115,6 @@ thead,
     width: 40px;
     cursor: pointer;
     height: 40px;
-    cursor: pointer
 }
 
 .action_menu {
@@ -164,7 +161,7 @@ thead,
 
 .bill_info_footer {
     background-color: lightgray;
-    color: black
+    color: black;
 }
 
 #bill_date tr {
@@ -178,6 +175,7 @@ thead,
     cursor: pointer;
 }
 
+/* Print Styles */
 @media print {
     * {
         font-size: 12px !important;
@@ -191,6 +189,7 @@ thead,
 
     .bill {
         width: 100% !important;
+        padding: 0 !important;
     }
 
     #page_header {
@@ -219,10 +218,7 @@ thead,
         margin: 0 !important;
     }
 
-    #nav {
-        display: none !important;
-    }
-
+    #nav,
     #side_nav {
         display: none !important;
     }
@@ -232,15 +228,10 @@ thead,
         border: 1px solid black !important;
     }
 
-    .bill {
-        padding: 0 !important;
-    }
-
-    .action_menu {
-        display: none;
-    }
-
-    .bill_items {
+    .bill_items,
+    .bill_footer,
+    .bill_items>table,
+    .bill_footer>table {
         border: none !important;
     }
 
@@ -250,9 +241,6 @@ thead,
 
     .bill_items>table tr {
         background-color: white !important;
-    }
-
-    .bill_items>table tr:not(:last-child) {
         border-bottom: 1px solid black !important;
     }
 
@@ -283,29 +271,11 @@ thead,
         background-color: white !important;
     }
 
-    #copy_icon {
-        display: none !important;
-    }
-
+    #copy_icon,
     #action_message {
         display: none !important;
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* nisha css */
 .tahvilgirande-box {
@@ -334,7 +304,6 @@ thead,
     font-size: 12px;
 }
 
-
 .footer-box {
     border-top: 1px solid #dddddd;
     text-align: center;
@@ -351,26 +320,17 @@ p.footer-box-tell span {
     font-size: 14px;
 }
 
-
-
-
-
-
-
-
 .nisha-bill-info {
     border: 1px solid #dddddd;
     border-radius: 10px;
     width: 160px;
     height: 60px;
-
 }
 
 .A-main div,
 .B-main div {
     height: 29px;
     float: right;
-
 }
 
 .A-1 {
@@ -388,7 +348,7 @@ p.footer-box-tell span {
     background: #efefef;
     text-align: center;
     line-height: 30px;
-    font-size: 12px
+    font-size: 12px;
 }
 
 .A-2,
@@ -396,7 +356,7 @@ p.footer-box-tell span {
     text-align: center;
     width: 60%;
     line-height: 34px;
-    font-size: 12px
+    font-size: 12px;
 }
 
 .B-2 {
