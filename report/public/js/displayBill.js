@@ -47,7 +47,10 @@ function displayCustomer() {
 }
 
 function displayBillDetails() {
-  document.getElementById("date_bill").innerHTML = BillInfo.date;
+  document.getElementById("date_bill").innerHTML = BillInfo.date.replace(
+    /-/g,
+    "/"
+  );
   document.getElementById("quantity_bill").value = BillInfo.quantity;
   document.getElementById("totalPrice_bill").value = formatAsMoney(
     BillInfo.totalPrice

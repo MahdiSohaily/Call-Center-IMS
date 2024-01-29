@@ -48,9 +48,9 @@ require_once('./views/Layouts/header.php');
                     <th class="text-right w-12">ردیف</th>
                     <!-- <th class="text-right">کد فنی</th> -->
                     <th class="text-right">نام قطعه</th>
-                    <th class="text-center"> تعداد</th>
-                    <th class="text-right"> قیمت واحد</th>
-                    <th class="text-right"> قیمت کل (ریال)</th>
+                    <th class="text-center w-12 border-r border-l-2 border-gray-800"> تعداد</th>
+                    <th class="text-right w-28"> قیمت واحد</th>
+                    <th class="text-right w-28"> قیمت کل (ریال)</th>
                 </tr>
             </thead>
             <tbody id="bill_body">
@@ -59,34 +59,19 @@ require_once('./views/Layouts/header.php');
     </div>
     <div class="bill_footer">
         <table class="w-full">
-            <thead>
-                <tr>
-                    <th colspan="6">
-                        اطلاعات فاکتور
-                    </th>
-                </tr>
-            </thead>
             <tbody>
-                <tr>
-                    <td>تعداد
-                        :
-                        <input readonly placeholder="تعداد اقلام فاکتور" type="text" name="quantity" id="quantity">
-                    </td>
-                    <td>تخفیف
-                        :
-                        <input readonly placeholder="0" type="number" name="discount" id="discount">
-                    </td>
-                    <td>جمع
-                        :
-                        <input readonly placeholder="جمع کل اقلام فاکتور" type="text" name="totalPrice" id="totalPrice">
-                    </td>
-                </tr>
-                <tr class="bill_info_footer">
-                    <td style="padding:5px;">مبلغ قابل پرداخت </td>
-                    <td colspan="5" style="padding:10px;">
-                        <p id="total_in_word" class="px-3 text-sm"></p>
-                    </td>
-                </tr>
+                <td class="text-right w-12"></td>
+                <td class="text-right">جمع فاکتور</td>
+                <td class="text-center w-12 border-r border-l-2 border-gray-800">
+                    <input type="text" id="quantity" class="w-full text-center" readonly>
+                </td>
+                <td class="text-right w-28">
+                    <input type="text" id="totalPrice" class="w-full text-center" readonly>
+                </td>
+                <td class="text-right w-28">
+                    <input type="text" id="discount">
+                    <span id="total_in_word"></span>
+                </td>
             </tbody>
         </table>
     </div>
@@ -205,7 +190,7 @@ require_once('./views/Layouts/header.php');
                 <td class="text-sm">
                     <span>${item.partName}</span>
                 </td>
-                <td class="text-sm">
+                <td class="text-sm border-r border-l-2 border-gray-800">
                     <span>${item.quantity}</span>
                 </td>
                 <td class="text-sm">

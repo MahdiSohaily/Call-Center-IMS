@@ -55,7 +55,7 @@
 .bill_items,
 .bill_footer {
     border: 1px solid black;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .bill_items>table,
@@ -68,6 +68,10 @@ thead {
     font-size: 14px;
 }
 
+.bill_items td:nth-child(3) {
+    border-left: 2px solid black !important;
+}
+
 .bill_items th,
 .bill_footer>table th {
     padding: 7px;
@@ -76,13 +80,11 @@ thead {
     font-size: 12px;
 }
 
-.bill_items tr:not(:last-child),
-.bill_footer>table tr:not(:last-child) {
+.bill_items tr:not(:last-child) {
     border-bottom: 1px solid black;
 }
 
-.bill_items td:not(:last-child),
-.bill_footer>table td:not(:last-child) {
+.bill_items td:not(:last-child) {
     border-left: 1px solid black;
 }
 
