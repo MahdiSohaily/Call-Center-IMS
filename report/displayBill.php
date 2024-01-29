@@ -45,7 +45,7 @@ require_once('./views/Layouts/header.php');
         <table>
             <thead>
                 <tr style="padding: 10px !important;">
-                    <th class="text-right w-12">ردیف</th>
+                    <th class="text-right w-8">ردیف</th>
                     <!-- <th class="text-right">کد فنی</th> -->
                     <th class="text-right">نام قطعه</th>
                     <th class="text-center w-12 border-r border-l-2 border-gray-800"> تعداد</th>
@@ -60,18 +60,44 @@ require_once('./views/Layouts/header.php');
     <div class="bill_footer">
         <table class="w-full">
             <tbody>
-                <td class="text-right w-12"></td>
-                <td class="text-right">جمع فاکتور</td>
-                <td class="text-center w-12 border-r border-l-2 border-gray-800">
-                    <input type="text" id="quantity" class="w-full text-center" readonly>
-                </td>
-                <td class="text-right w-28">
-                    <input type="text" id="totalPrice" class="w-full text-center" readonly>
-                </td>
-                <td class="text-right w-28">
-                    <input type="text" id="discount">
-                    <span id="total_in_word"></span>
-                </td>
+                <tr class="bg-gray border-b border-gray-800">
+                    <td class="text-right w-8"></td>
+                    <td class="text-right">جمع فاکتور</td>
+                    <td class="text-center w-12 border-r border-l-2 border-gray-800">
+                        <span id="quantity" class="w-full"></span>
+                    </td>
+                    <td class="text-right w-28">
+                        <span id="totalPrice" class="w-full" ></span>
+                    </td>
+                    <td class="text-right w-28">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="w-8 border-l-2 border-gray-800 text-left">تخفیف : </td>
+                    <td colspan="2" class="text-right w-8">
+                        <span id="discount"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="padding:15px;" class="border-t border-b border-gray-800"></td>
+                    <td colspan="2" style="padding:15px;" class="border-t border-b border-gray-800"></td>
+                </tr>
+                <tr>
+                    <td class="text-right w-8"></td>
+                    <td class="text-right">
+                        <p>مبلغ قابل پرداخت:
+                            <span id="total_in_word"></span>
+                        </p>
+                    </td>
+                    <td class="text-center w-12 border-l-2 border-gray-800">
+
+                    </td>
+                    <td class="text-right w-28">
+                        <span id="totalPrice2" class="w-full"></span>
+                    </td>
+                    <td class="text-right w-28">
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -140,7 +166,6 @@ require_once('./views/Layouts/header.php');
             axios.post("./app/Controllers/BillController.php", params)
                 .then(function(response) {
                     const data = response.data;
-                    console.log(data);
                     if (data) {
                         BillInfo.billNO = data;
                         displayBill();
@@ -184,7 +209,7 @@ require_once('./views/Layouts/header.php');
 
                 template += `
             <tr style="padding: 10px !important;" class="even:bg-gray-100">
-                <td class="text-sm">
+                <td class="text-sm text-center">
                     <span>${counter}</span>
                 </td>
                 <td class="text-sm">
@@ -215,16 +240,15 @@ require_once('./views/Layouts/header.php');
             if (customerInfo.address.length > 0) {
                 document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
             }
-            // document.getElementById('car').innerHTML = customerInfo.car;
-            // document.getElementById('address').innerHTML = customerInfo.address;
         }
 
         function displayBillDetails() {
             document.getElementById('billNO').innerHTML = BillInfo.billNO;
-            document.getElementById('date').innerHTML = BillInfo.date;
-            document.getElementById('quantity').value = BillInfo.quantity;
-            document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
-            document.getElementById('discount').value = BillInfo.discount;
+            document.getElementById('date').innerHTML = BillInfo.date.replace(/-/g, "/");
+            document.getElementById('quantity').innerHTML = BillInfo.quantity;
+            document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.totalPrice);
+            document.getElementById('totalPrice2').innerHTML = formatAsMoney(BillInfo.totalPrice);
+            document.getElementById('discount').innerHTML = BillInfo.discount;
             document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
         }
 

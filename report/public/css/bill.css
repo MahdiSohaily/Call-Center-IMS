@@ -52,10 +52,20 @@
     padding-bottom: 10px;
 }
 
+.bill_items {
+    border-radius: 10px 10px 0 0;
+}
+
 .bill_items,
 .bill_footer {
     border: 1px solid black;
     margin-bottom: 5px;
+
+    overflow: hidden;
+}
+
+.bill_footer {
+    border-radius: 0 0 10px 10px;
 }
 
 .bill_items>table,
@@ -63,7 +73,8 @@
     width: 100%;
 }
 
-thead {
+thead,
+.bg-gray {
     background-color: lightgray;
     font-size: 14px;
 }
