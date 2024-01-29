@@ -195,7 +195,7 @@ require_once('./views/Layouts/header.php');
                 }).catch(function(error) {
                     console.log(error);
                 });
-        } else {
+        } else { 
             displayBill();
             displayCustomer();
             displayBillDetails();
