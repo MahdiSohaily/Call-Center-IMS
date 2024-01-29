@@ -165,21 +165,26 @@ function getMatchedCustomers($pattern)
 
 function getMatchedBills($customers, $mode)
 {
-    // Assuming $conn is your mysqli database connection object
-    $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity
-    FROM callcenter.bill
-    LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
-    WHERE customer_id IN (" . implode(',', $customers) . ") 
-    AND $mode
-    ORDER BY bill.created_at DESC";
+    try {
+        // Assuming $conn is your mysqli database connection object
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.quantity, bill.user_id
+            FROM callcenter.bill
+            LEFT JOIN callcenter.customer ON customer_id = callcenter.customer.id
+            WHERE customer_id IN (" . implode(',', $customers) . ") 
+            AND status = '$mode'
+            ORDER BY bill.created_at DESC";
 
-    $result = CONN->query($sql); // Assuming $conn is your
+        $result = CONN->query($sql); // Use $conn instead of CONN
 
-    $bills = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            array_push($bills, $row);
+        $bills = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                array_push($bills, $row);
+            }
         }
+
+        return $bills;
+    } catch (\Throwable $th) {
+        return []; //
     }
-    return $bills;
 }
