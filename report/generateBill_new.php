@@ -211,7 +211,6 @@ require_once('./views/Layouts/header.php');
                 </tbody>
             </table>
         </div>
-
         <!-- bill body table -->
         <div class="bg-white rounded-lg shadow-md p-2 w-full col-span-3">
             <div class="container mx-auto">
@@ -233,10 +232,13 @@ require_once('./views/Layouts/header.php');
                     </tbody>
                 </table>
                 <img class="cursor-pointer" onclick="addNewBillItemManually()" src="./public/img/add.svg" alt="add icon">
+                <div class="flex flex-row p-5 gap-5">
+                    <label for="description">توضیحات فاکتور</label>
+                    <textarea onkeyup="updateBillInfo(this)" class="border border-gray-800 w-1/2 p-5" name="description" id="description" placeholder="توضیحات فاکتور را وارد نمایید ..." cols="30" rows="4"></textarea>
+                </div>
             </div>
         </div>
     </section>
-
     <div class="h-16"></div> <!-- adding a little white space at the bottom to be more user friendly -->
     <div class="rtl fixed flex justify-between items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
         <ul class="flex gap-3">
@@ -524,6 +526,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('quantity').value = BillInfo.quantity;
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
+        document.getElementById('description').innerHTML = BillInfo.description;
     }
 
     // A function to display bill items and calculate the amount and goods count and display bill details afterword
@@ -845,6 +848,7 @@ require_once('./views/Layouts/header.php');
         params.append('customer_info', JSON.stringify(customerInfo));
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
+        console.log(BillInfo);
 
 
 
@@ -1044,7 +1048,7 @@ require_once('./views/Layouts/header.php');
     document.addEventListener('keydown', handelShortcuts);
     document.addEventListener("keydown", function(event) {
         // Check if the Ctrl key is pressed and the key is 'S'
-        if (event.ctrlKey && event.key === 's') {
+        if (event.altKey && event.key === 's') {
             // Prevent the default browser behavior for Ctrl + S (e.g., saving the page)
             event.preventDefault();
 
@@ -1103,7 +1107,6 @@ require_once('./views/Layouts/header.php');
             // Allow default Tab behavior for inputs outside the table or without the "tab-op" class
         }
     });
-
 
     document.addEventListener("keydown", function(event) {
 

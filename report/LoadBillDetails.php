@@ -25,6 +25,7 @@ if (isset($_POST['BillId'])) {
         'quantity' => $details['quantity'],
         'tax' => $details['tax'],
         'discount' => $details['discount'],
+        'description' => $details['description'],
         'withdraw' => $details['withdraw'],
     ];
 

@@ -508,6 +508,7 @@ function UpdateIncompleteBill($billInfo, $customerId)
             total = '$billInfo->totalPrice',
             bill_date = '$billInfo->date',
             user_id = '$user_id',
+            description = '$billInfo->description',
             status = 0
             WHERE id = '$billInfo->id'";
 
