@@ -83,7 +83,7 @@ $_SESSION["user_id"] = $_SESSION["id"];
             $title = "نوتیفیکشن ها";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
-        case 'giveOrderedPrice.php':
+        case 'giveOrderedPriceNew.php':
             $title = "قیمت دستوری";
             echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
@@ -108,9 +108,13 @@ $_SESSION["user_id"] = $_SESSION["id"];
             $title = "مدیریت فاکتور";
             echo ' <link rel="shortcut icon" href="./public/img/bill_generate.svg">';
             break;
+        case 'defineExchangeRate.php':
+            $title = "تعریف افزایش دلار";
+            echo ' <link rel="shortcut icon" href="./public/img/dollar.svg">';
+            break;
         default:
             $title = "سامانه یدک شاپ";
-            echo ' <link rel="shortcut icon" href="./public/img/bill_generate.svg">';
+            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
             break;
     }
     ?>
