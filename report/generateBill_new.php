@@ -138,6 +138,21 @@ require_once('./views/Layouts/header.php');
                             <input class="w-full p-2 border" type="hidden" name="id" id="id">
                             <input class="w-full p-2 border" type="hidden" name="type" id="mode" value='create'>
                             <input onkeyup="updateCustomerInfo(this)" class="w-full p-2 border text-gray-500" placeholder="نام مشتری را وارد کنید..." type="text" name="name" id="name">
+                            <label class="text-sm ml-2 cursor-pointer" for="mr">
+                                <input type="radio" class="ml-1" name="suffix" id="mr" onclick="appendPrefix('جناب آقای'); event.stopPropagation();">جناب آقای
+                            </label>
+
+                            <label class="text-sm ml-2 cursor-pointer" for="miss">
+                                <input type="radio" class="ml-1" name="suffix" id="miss" onclick="appendPrefix('سرکار خانم'); event.stopPropagation();">سرکار خانم
+                            </label>
+
+                            <label class="text-sm ml-2 cursor-pointer" for="compony">
+                                <input type="radio" class="ml-1" name="suffix" id="compony" onclick="appendPrefix('شرکت'); event.stopPropagation();">شرکت
+                            </label>
+
+                            <label class="text-sm ml-2 cursor-pointer" for="store">
+                                <input type="radio" class="ml-1" name="suffix" id="store" onclick="appendPrefix('فروشگاه'); event.stopPropagation();">فروشگاه
+                            </label>
                         </td>
                     </tr>
                     <tr>
@@ -681,7 +696,7 @@ require_once('./views/Layouts/header.php');
         updatedisplayBill();
     }
 
-    // Adding item suffix to it
+    // Adding item snameElement
     function appendSufix(itemId, suffix) {
         for (let i = 0; i < billItems.length; i++) {
             if (billItems[i].id == itemId) {
@@ -695,6 +710,23 @@ require_once('./views/Layouts/header.php');
         }
         displayBill();
     }
+
+    function appendPrefix(prefix) {
+        const nameElement = document.getElementById('name');
+        let name = nameElement.value.trim().split(' ');
+        const prefixes = ['جناب آقای', 'سرکار خانم', 'شرکت', 'فروشگاه'];
+
+        if (prefixes.includes(name[0])) {
+            name = [prefix].concat(name.slice(1)).join(' ');
+        } else if (prefixes.includes(name[0] + ' ' + name[1])) {
+            name = [prefix].concat(name.slice(2)).join(' ');
+        } else {
+            name = [prefix].concat(name).join(' ');
+        }
+
+        nameElement.value = name.trim();
+    }
+
 
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

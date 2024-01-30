@@ -359,7 +359,6 @@ require_once './app/Controllers/BillFilterController.php';
         }
     }
 
-
     // Getting the bill id and send it for the editing
     // it works both for complete and incomplete bills 
     function EditFactorFormSubmission(formId) {
