@@ -34,81 +34,84 @@ require_once('./views/Layouts/header.php');
 </style>
 
 <main>
-    <!-- search and initialing data section -->
-    <div style="height: 350px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6  px-2 mb-3">
-        <!-- Search for customer section -->
-        <section class="bg-white min-h-full rounded-lg shadow-md">
-            <div class="flex items-center justify-between p-3">
-                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
-                    <img src="./public/img/customer.svg" alt="customer icon">
-                    انتخاب مشتری
-                </h2>
-            </div>
-            <div class="relative flex justify-center px-3">
-                <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
-                <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {searchCustomer('');document.getElementById('customer_name').value = '';})();" src="./public/img/clear.svg" alt="customer icon">
-            </div>
-            <div class="hidden sm:block">
-                <div class="py-2">
-                    <div class="border-t border-gray-200"></div>
+    <details class="rtl ">
+        <summary class="bg-gray-800 text-white p-4 mx-4 cursor-pointer">جستجو</summary>
+        <!-- search and initialing data section -->
+        <div style="height: 350px !important;" class="rtl h-1/3 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6  px-2 mb-3">
+            <!-- Search for customer section -->
+            <section class="bg-white min-h-full rounded-lg shadow-md">
+                <div class="flex items-center justify-between p-3">
+                    <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                        <img src="./public/img/customer.svg" alt="customer icon">
+                        انتخاب مشتری
+                    </h2>
                 </div>
-            </div>
-            <div id="customer_results" style="overflow-y: auto; height:300px" class="p-3 overflow-y-auto">
-                <!-- Search Results are going to be appended here -->
-            </div>
-        </section>
-
-        <!-- search for goods base on the part number section -->
-        <section class="bg-white min-h-full rounded-lg shadow-md">
-            <div class="flex items-center justify-between p-3">
-                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
-                    <img src="./public/img/barcode.svg" alt="customer icon">
-                    انتخاب کد فنی
-                </h2>
-            </div>
-            <div class="relative flex justify-center px-3">
-                <input onkeyup="convertToEnglish(this); searchPartNumber(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="کد فنی قطعه مورد نظر را وارد کنید..." />
-                <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {searchPartNumber('');document.getElementById('serial').value = '';})();" src="./public/img/clear.svg" alt="customer icon">
-            </div>
-            <div class="hidden sm:block">
-                <div class="py-2">
-                    <div class="border-t border-gray-200"></div>
+                <div class="relative flex justify-center px-3">
+                    <input onkeyup="convertToPersian(this); searchCustomer(this.value)" type="text" name="customer" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" id="customer_name" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+                    <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {searchCustomer('');document.getElementById('customer_name').value = '';})();" src="./public/img/clear.svg" alt="customer icon">
                 </div>
-            </div>
-            <p id="select_box_error" class="px-3 tiny-text text-red-500 hidden">
-                لیست اجناس انتخاب شده برای افزودن به رابطه خالی بوده نمیتواند!
-            </p>
-            <div id="selected_box" class="p-3" style="overflow-y: auto; height:300px">
-                <!-- selected items are going to be added here -->
-            </div>
-        </section>
+                <div class="hidden sm:block">
+                    <div class="py-2">
+                        <div class="border-t border-gray-200"></div>
+                    </div>
+                </div>
+                <div id="customer_results" style="overflow-y: auto; height:300px" class="p-3 overflow-y-auto">
+                    <!-- Search Results are going to be appended here -->
+                </div>
+            </section>
 
-        <!-- Search in the stock base on existing using part number section -->
-        <section class="bg-white min-h-full rounded-lg shadow-md">
-            <div class="p-3">
-                <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
-                    <img src="./public/img/inventory.svg" alt="inventory icon">
-                    انتخاب کالای موجود
-                </h2>
-            </div>
+            <!-- search for goods base on the part number section -->
+            <section class="bg-white min-h-full rounded-lg shadow-md">
+                <div class="flex items-center justify-between p-3">
+                    <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                        <img src="./public/img/barcode.svg" alt="customer icon">
+                        انتخاب کد فنی
+                    </h2>
+                </div>
+                <div class="relative flex justify-center px-3">
+                    <input onkeyup="convertToEnglish(this); searchPartNumber(this.value)" type="text" name="serial" id="serial" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder="کد فنی قطعه مورد نظر را وارد کنید..." />
+                    <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {searchPartNumber('');document.getElementById('serial').value = '';})();" src="./public/img/clear.svg" alt="customer icon">
+                </div>
+                <div class="hidden sm:block">
+                    <div class="py-2">
+                        <div class="border-t border-gray-200"></div>
+                    </div>
+                </div>
+                <p id="select_box_error" class="px-3 tiny-text text-red-500 hidden">
+                    لیست اجناس انتخاب شده برای افزودن به رابطه خالی بوده نمیتواند!
+                </p>
+                <div id="selected_box" class="p-3" style="overflow-y: auto; height:300px">
+                    <!-- selected items are going to be added here -->
+                </div>
+            </section>
 
-            <div class="relative flex justify-center px-3">
-                <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
-                <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
+            <!-- Search in the stock base on existing using part number section -->
+            <section class="bg-white min-h-full rounded-lg shadow-md">
+                <div class="p-3">
+                    <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                        <img src="./public/img/inventory.svg" alt="inventory icon">
+                        انتخاب کالای موجود
+                    </h2>
+                </div>
+
+                <div class="relative flex justify-center px-3">
+                    <input onkeyup="convertToEnglish(this); searchInStock(this.value)" type="text" name="stock_partNumber" id="stock_partNumber" class="rounded-md py-3 px-3 w-full border text-md border-gray-300 focus:outline-none text-gray-500" min="0" max="30" placeholder=" اسم کامل مشتری را وارد نمایید ..." />
+                    <img class="absolute left-5 top-3 cursor-pointer" onclick="(() => {
                                                                                     searchInStock('');
                                                                                     document.getElementById('stock_partNumber').value = '';
                                                                                 })();" src="./public/img/clear.svg" alt="customer icon">
 
-            </div>
-
-            <div class="hidden sm:block">
-                <div class="py-2">
-                    <div class="border-t border-gray-200"></div>
                 </div>
-            </div>
-            <div id="stock_result" class="p-3" style="overflow-y: auto; height:300px"></div>
-        </section>
-    </div>
+
+                <div class="hidden sm:block">
+                    <div class="py-2">
+                        <div class="border-t border-gray-200"></div>
+                    </div>
+                </div>
+                <div id="stock_result" class="p-3" style="overflow-y: auto; height:300px"></div>
+            </section>
+        </div>
+    </details>
 
     <!-- Bill editing and information section -->
     <section class="rtl grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-6 px-2 mb-4">
