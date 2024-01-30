@@ -479,6 +479,7 @@ function UpdateBill($billInfo, $customerId)
             withdraw = '$billInfo->withdraw',
             total = '$billInfo->totalPrice',
             bill_date = '$billInfo->date',
+            description = '$billInfo->description',
             user_id = '$user_id',
             status = 1
             WHERE id = '$billInfo->id'";
