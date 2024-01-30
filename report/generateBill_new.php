@@ -1045,12 +1045,12 @@ require_once('./views/Layouts/header.php');
     document.addEventListener('keydown', handelShortcuts);
     document.addEventListener("keydown", function(event) {
         // Check if the Ctrl key is pressed and the key is 'S'
-        if (event.altKey && event.key === 's') {
+        if (event.altKey && (event.key === 's' || event.key === 'س')) {
             // Prevent the default browser behavior for Ctrl + S (e.g., saving the page)
             event.preventDefault();
 
             // Call the saveIncompleteForm function
-            saveIncompleteForm();
+            saveIncompleteBill();
 
             // Optionally, use return false to further prevent default behavior
             return false;
@@ -1127,6 +1127,12 @@ require_once('./views/Layouts/header.php');
                 // Focus on the first input of the next row
                 tableInputFields[nextRowFirstIndex].focus();
             }
+        }
+    });
+
+    document.getElementById("bill_body").addEventListener("focusin", function(event) {
+        if (event.target.tagName === "INPUT") {
+            event.target.select();
         }
     });
 </script>
