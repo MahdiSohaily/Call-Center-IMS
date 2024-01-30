@@ -1,20 +1,6 @@
 <?php
+require_once './app/controller/FactorController.php';
 require_once './layout/heroHeader.php';
-?>
-<?php
-$date = date('Y-m-d H:i:s');
-$startDate = date_create(date('Y-m-d H:i:s'));
-$endDate = date_create(date('Y-m-d H:i:s'));
-
-$endDate = $endDate->setTime(23, 59, 59);
-$startDate = $startDate->setTime(1, 1, 0);
-
-$end = date_format($endDate, "Y-m-d H:i:s");
-$start = date_format($startDate, "Y-m-d H:i:s");
-
-$sql = "SELECT * FROM shomarefaktor WHERE time < '$end' AND time >= '$start' ORDER BY shomare DESC";
-$factor_result = mysqli_query(dbconnect(), $sql);
-
 ?>
 <style>
     .btn {
@@ -33,8 +19,8 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     }
 </style>
 <div class="shomare-faktor-date">
-    <?php echo jdate('Y/m/d')  ?> -
-    <?php echo jdate('l J F'); ?>
+    <?= jdate('Y/m/d')  ?> -
+    <?= jdate('l J F'); ?>
 </div>
 
 <div id="myModal" class="modal">
@@ -51,7 +37,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     <form>
         <label class="inline-block mr-3 pb-2 bold" for="invoice_time">زمان فاکتور</label>
         <br>
-        <input class="p-2 mr-3" data-gdate="<?php echo date('Y/m/d') ?>" value="<?php echo (jdate("Y/m/d", time(), "", "Asia/Tehran", "en")) ?>" type="text" name="invoice_time" id="invoice_time">
+        <input class="p-2 mr-3" data-gdate="<?= date('Y/m/d') ?>" value="<?= (jdate("Y/m/d", time(), "", "Asia/Tehran", "en")) ?>" type="text" name="invoice_time" id="invoice_time">
         <span id="span_invoice_time"></span>
     </form>
 
@@ -68,20 +54,14 @@ $factor_result = mysqli_query(dbconnect(), $sql);
     <div class="today-faktor-statistics">
         <div class="">
             <?php
-            if (mysqli_num_rows($factor_result) > 0) :
-            ?>
+            if (count($factors)) : ?>
                 <div class="ranking mb-2">
                     <p class="text-white px-2">تعداد کل</p>
                     <span class="counter">
-                        <?php
-                        echo mysqli_num_rows($factor_result);
-                        ?>
+                        <?= count($factors) ?>
                     </span>
                 </div>
-            <?php
-            endif;
-
-            ?>
+            <?php endif; ?>
         </div>
 
         <div class="">
@@ -98,7 +78,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                     }
             ?>
                     <div class="ranking mb-2">
-                        <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="<?= $profile ?>" />
+                        <img class="hover:cursor-pointer" data-id="<?= $row['user']; ?>" onclick="userReport(this)" src="<?= $profile ?>" />
                         <?php if ($n == 1) {
                             echo '<i class="fas ranking-icon fa-star golden"></i>';
                         }
@@ -111,7 +91,7 @@ $factor_result = mysqli_query(dbconnect(), $sql);
                             echo '<i class="fas ranking-icon fa-thumbs-up lucky"></i>';
                         }
                         $n = $n + 1; ?>
-                        <span class="counter"><?php echo $row['count_shomare']; ?></span>
+                        <span class="counter"><?= $row['count_shomare']; ?></span>
                     </div>
 
             <?php
@@ -137,34 +117,32 @@ $factor_result = mysqli_query(dbconnect(), $sql);
             <tbody>
                 <?php
 
-                if (mysqli_num_rows($factor_result) > 0) {
-                    while ($row = mysqli_fetch_assoc($factor_result)) {
-                        $shomare = $row['shomare'];
-                        $kharidar = $row['kharidar'];
-                        $user = $row['user'];
-                ?>
+                if (count($factors)) :
+                    foreach ($factors as $factor) :
+                        $shomare = $factor['shomare'];
+                        $kharidar = $factor['kharidar'];
+                        $user = $factor['user']; ?>
                         <tr>
                             <td>
                                 <div title="کپی کردن شماره فاکتور" style="cursor: pointer;" data-billNumber="<?= $shomare ?>" class="jadval-shomare-blue" onClick='copyBillNumberSingle(this)'>
                                     <i class="fas fa-paste"></i>
-                                    <?php echo $shomare ?>
+                                    <?= $shomare ?>
                                 </div>
                             </td>
                             <td>
-                                <div class="jadval-shomare-kharidar"><?php echo $kharidar ?></div>
+                                <div class="jadval-shomare-kharidar"><?= $kharidar ?></div>
                             </td>
-                            <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" src="../userimg/<?php echo $user ?>.jpg" /></td>
+                            <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?= $factor['user']; ?>" src="../userimg/<?= $user ?>.jpg" /></td>
 
                             <?php
                             if ($isAdmin) : ?>
-                                <td class="edit"><a id="<?php echo $row["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
+                                <td class="edit"><a id="<?= $factor["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
                             <?php endif; ?>
 
                         </tr>
                 <?php
-
-                    }
-                }
+                    endforeach;
+                endif;
 
                 ?>
             </tbody>
