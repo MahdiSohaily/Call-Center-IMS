@@ -119,26 +119,27 @@ require_once './layout/heroHeader.php';
 
                 if (count($factors)) :
                     foreach ($factors as $factor) :
-                        $shomare = $factor['shomare'];
-                        $kharidar = $factor['kharidar'];
-                        $user = $factor['user']; ?>
+                        $profile = '../userimg/' . $factor['user'] . '.jpg';
+                        if (!file_exists($profile)) :
+                            $profile = '../userimg/default.jpg"';
+                        endif;
+                ?>
                         <tr>
                             <td>
-                                <div title="کپی کردن شماره فاکتور" style="cursor: pointer;" data-billNumber="<?= $shomare ?>" class="jadval-shomare-blue" onClick='copyBillNumberSingle(this)'>
+                                <div title="کپی کردن شماره فاکتور" style="cursor: pointer;" data-billNumber="<?= $factor['shomare'] ?>" class="jadval-shomare-blue" onClick='copyBillNumberSingle(this)'>
                                     <i class="fas fa-paste"></i>
-                                    <?= $shomare ?>
+                                    <?= $factor['shomare'] ?>
                                 </div>
                             </td>
                             <td>
-                                <div class="jadval-shomare-kharidar"><?= $kharidar ?></div>
+                                <div class="jadval-shomare-kharidar"><?= $factor['kharidar'] ?></div>
                             </td>
-                            <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?= $factor['user']; ?>" src="../userimg/<?= $user ?>.jpg" /></td>
+                            <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?= $factor['user']; ?>" src="<?= $profile ?>" /></td>
 
                             <?php
                             if ($isAdmin) : ?>
                                 <td class="edit"><a id="<?= $factor["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
                             <?php endif; ?>
-
                         </tr>
                 <?php
                     endforeach;
