@@ -126,16 +126,13 @@ function applyDollarRate($price)
             $number = preg_replace('/\//', '', $word);
 
 
-            // Check if the number contains only digits and optional slashes
             if (ctype_digit($number)) {
                 // Increase the matched number by 2%
-                $modifiedNumber = $number + (($number * $GLOBALS['additionRate']) / 100); // Increase by 2%
-
-                $roundedNumber = $modifiedNumber;
+                $modifiedNumber = $number + (($number * $GLOBALS['additionRate']) / 100);
 
                 if ($modifiedNumber >= 10) {
                     // Round the number to the nearest multiple of 10
-                    $roundedNumber = round($modifiedNumber / 10) * 10;
+                    $roundedNumber = ceil($modifiedNumber / 10) * 10;
                 } else {
                     $roundedNumber = round($modifiedNumber);
                 }
