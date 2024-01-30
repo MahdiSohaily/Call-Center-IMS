@@ -1,4 +1,5 @@
  <?php
+    require_once './app/controller/DashboardController.php';
     require_once './layout/heroHeader.php';
     require_once './utilities/helpers.php';
     ?>
@@ -20,52 +21,52 @@
              <div class="flex items-start justify-between">
                  <div class="flex flex-col space-y-2">
                      <span class="text-gray-800">مجموع کاربران</span>
-                     <span class="text-lg font-semibold">100</span>
+                     <span class="text-lg font-semibold"><?= $totalUsers ?></span>
                  </div>
                  <img class="rounded-md w-16 h-16" src="<?= ('./public/img/user.svg') ?>" alt="">
              </div>
              <div>
                  <span class="inline-block px-2 text-sm text-white bg-green-500 ml-1 rounded">14%</span>
-                 <a href="#" class="text-blue-500 underline">مدیریت کاربران</a>
+                 <a href="./report/usersManagement.php" class="text-blue-500 underline">مدیریت کاربران</a>
              </div>
          </div>
          <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg">
              <div class="flex items-start justify-between">
                  <div class="flex flex-col space-y-2">
                      <span class="text-gray-800">مجموع فاکتور های ثبت شده</span>
-                     <span class="text-lg font-semibold">100,221</span>
+                     <span class="text-lg font-semibold"><?= $totalFactors ?></span>
                  </div>
                  <img class="rounded-md w-16 h-16" src="<?= ('./public/img/invoice.svg') ?>" alt="">
              </div>
              <div>
                  <span class="inline-block px-2 text-sm text-white bg-green-500 ml-1 rounded">14%</span>
-                 <a href="#" class="text-blue-500 underline">ثبت فاکتور جدید</a>
+                 <a href="./report/factor_new.php" class="text-blue-500 underline">ثبت فاکتور جدید</a>
              </div>
          </div>
          <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg">
              <div class="flex items-start justify-between">
                  <div class="flex flex-col space-y-2">
                      <span class="text-gray-800">مجموع اقلام وارد شده</span>
-                     <span class="text-lg font-semibold">100,221</span>
+                     <span class="text-lg font-semibold"><?= $totalGoods ?></span>
                  </div>
                  <img class="rounded-md w-16 h-16" src="<?= ('./public/img/receive.svg') ?>" alt="">
              </div>
              <div>
                  <span class="inline-block px-2 text-sm text-white bg-green-500 ml-1 rounded">14%</span>
-                 <a href="#" class="text-blue-500 underline">گزارش اقلام وارده</a>
+                 <a href="../1402/vorodkala-report.php?interval=3" class="text-blue-500 underline">گزارش اقلام وارده</a>
              </div>
          </div>
          <div class="p-4 transition-shadow bg-white rounded-lg shadow-sm hover:shadow-lg">
              <div class="flex items-start justify-between">
                  <div class="flex flex-col space-y-2">
                      <span class="text-gray-800">مجموع اقلام به فروش رسیده</span>
-                     <span class="text-lg font-semibold">100,221</span>
+                     <span class="text-lg font-semibold"><?= $totalSold ?></span>
                  </div>
                  <img class="rounded-md w-16 h-16" src="<?= ('./public/img/deliver.svg') ?>" alt="">
              </div>
              <div>
                  <span class="inline-block px-2 text-sm text-white bg-green-500 ml-1 rounded">14%</span>
-                 <a href="#" class="text-blue-500 underline">گزارش اقلام خارجه</a>
+                 <a href="../1402/khorojkala-report.php?interval=3" class="text-blue-500 underline">گزارش اقلام خارجه</a>
              </div>
          </div>
      </div>
