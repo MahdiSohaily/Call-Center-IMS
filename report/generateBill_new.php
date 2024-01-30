@@ -848,9 +848,6 @@ require_once('./views/Layouts/header.php');
         params.append('customer_info', JSON.stringify(customerInfo));
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
-        console.log(BillInfo);
-
-
 
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {

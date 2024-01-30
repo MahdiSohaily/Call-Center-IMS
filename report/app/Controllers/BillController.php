@@ -452,6 +452,7 @@ function makeBillCompleted($billInfo, $customerId, $bill_number)
             bill_date = '$billInfo->date',
             created_at = CURRENT_TIMESTAMP,
             user_id = '$user_id',
+            description = '$$billInfo->description',
             status = 1
             WHERE id = '$billInfo->id'";
 
