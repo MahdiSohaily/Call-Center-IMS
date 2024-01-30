@@ -82,129 +82,49 @@
                      <table class="w-full text-sm text-left rtl:text-right text-gray-800 h-full">
                          <thead class="text-xs text-gray-700 uppercase bg-gray-200">
                              <tr>
-                                 <th scope="col" class="text-gray-800 px-6 py-3">
+                                 <th scope="col" class="text-right text-gray-800 px-6 py-3">
                                      شهرت
                                  </th>
-                                 <th scope="col" class="text-gray-800 px-6 py-3">
-                                     مسئولیت
+                                 <th scope="col" class="text-right text-gray-800 px-6 py-3">
+                                     آي پی آدرس
                                  </th>
-                                 <th scope="col" class="text-gray-800 px-6 py-3">
+                                 <th scope="col" class="text-right text-gray-800 px-6 py-3">
                                      داخلی
                                  </th>
-                                 <th scope="col" class="text-gray-800 px-6 py-3">
+                                 <th scope="col" class="text-right text-gray-800 px-6 py-3">
                                      مدت زمان مکالمه
                                  </th>
                              </tr>
                          </thead>
                          <tbody>
-                             <tr class="border-b/10 hover:bg-gray-50 ">
-                                 <th scope="row" class="flex items-center px-6 py-4 text-gray-800 whitespace-nowrap">
-                                     <img class="w-10 h-10 rounded-full" src="<?= ('../userimg/5.jpg') ?>" alt="Jese image">
-                                     <div class="ps-3">
-                                         <div class="text-base font-semibold">مهدی رضایی</div>
-                                         <div class="font-normal text-gray-500 py-1">neil.sims@flowbite.com</div>
-                                     </div>
-                                 </th>
-                                 <td class="px-6 py-4">
-                                     توسعه دهنده وب
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     <div class="flex items-center">
-                                         <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
-                                         ۱۰۱
-                                     </div>
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     ۱ ساعت و ۴۵ دقیقه
-                                 </td>
-                             </tr>
-                             <tr class="border-b/10 hover:bg-gray-50 ">
-
-                                 <th scope="row" class="flex items-center px-6 py-4 text-gray-800 whitespace-nowrap">
-                                     <img class="w-10 h-10 rounded-full" src="<?= ('../userimg/1.jpg') ?>" alt="Jese image">
-                                     <div class="ps-3">
-                                         <div class="text-base font-semibold">نیایش زحیمی</div>
-                                         <div class="font-normal text-gray-500 py-1">neil.sims@flowbite.com</div>
-                                     </div>
-                                 </th>
-                                 <td class="px-6 py-4">
-                                     مدیر فروشات
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     <div class="flex items-center">
-                                         <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> ۱۰۲
-                                     </div>
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     ۱ ساعت و ۴۵ دقیقه
-                                 </td>
-                             </tr>
-                             <tr class="border-b/10 hover:bg-gray-50 ">
-
-                                 <th scope="row" class="flex items-center px-6 py-4 text-gray-800 whitespace-nowrap">
-                                     <img class="w-10 h-10 rounded-full" src="<?= ('../userimg/6.jpg') ?>" alt="Jese image">
-                                     <div class="ps-3">
-                                         <div class="text-base font-semibold">بابک صفری</div>
-                                         <div class="font-normal text-gray-500 py-1">neil.sims@flowbite.com</div>
-                                     </div>
-                                 </th>
-                                 <td class="px-6 py-4">
-                                     مدیر فروشات
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     <div class="flex items-center">
-                                         <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
-                                         ۱۰۳
-                                     </div>
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     ۱ ساعت و ۴۵ دقیقه
-                                 </td>
-                             </tr>
-                             <tr class="border-b/10 hover:bg-gray-50 ">
-
-                                 <th scope="row" class="flex items-center px-6 py-4 text-gray-800 whitespace-nowrap">
-                                     <img class="w-10 h-10 rounded-full" src="<?= ('../userimg/21.jpg') ?>" alt="Jese image">
-                                     <div class="ps-3">
-                                         <div class="text-base font-semibold">مریم امیردوست</div>
-                                         <div class="font-normal text-gray-500 py-1">neil.sims@flowbite.com</div>
-                                     </div>
-                                 </th>
-                                 <td class="px-6 py-4">
-                                     بازاریاب
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     <div class="flex items-center">
-                                         <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
-                                         ۱۰۴
-                                     </div>
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     ۱ ساعت و ۴۵ دقیقه
-                                 </td>
-                             </tr>
-                             <tr class="border-b/10 hover:bg-gray-50 ">
-
-                                 <th scope="row" class="flex items-center px-6 py-4 text-gray-800 whitespace-nowrap">
-                                     <img class="w-10 h-10 rounded-full" src="<?= ('../userimg/33.jpg') ?>" alt="Jese image">
-                                     <div class="ps-3">
-                                         <div class="text-base font-semibold">زینب سهیلی</div>
-                                         <div class="font-normal text-gray-500 py-1">neil.sims@flowbite.com</div>
-                                     </div>
-                                 </th>
-                                 <td class="px-6 py-4">
-                                     بازاریاب
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     <div class="flex items-center">
-                                         <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
-                                         ۱۰۵
-                                     </div>
-                                 </td>
-                                 <td class="px-6 py-4">
-                                     ۱ ساعت و ۴۵ دقیقه
-                                 </td>
-                             </tr>
+                             <?php foreach (getCallCenterUsers() as $user) :
+                                    $profile = '../userimg/default.png';
+                                    if (file_exists("../userimg/" . $user['id'] . ".jpg")) {
+                                        $profile = "../userimg/" . $user['id'] . ".jpg";
+                                    }
+                                ?>
+                                 <tr class="border-b/10 hover:bg-gray-50 rtl ">
+                                     <th scope="row" class="flex items-center px-6 py-4 text-gray-800 whitespace-nowrap">
+                                         <img class="w-10 h-10 rounded-full" src="<?= $profile ?>" alt="Jese image">
+                                         <div class="ps-3">
+                                             <div class="text-base font-semibold text-right"><?= $user['name'] . ' ' . $user['family'] ?></div>
+                                             <div class="font-normal text-gray-500 py-1 text-right"><?= $user['username'] ?></div>
+                                         </div>
+                                     </th>
+                                     <td class="px-6 py-4 text-right text-sm">
+                                         <?= $user['ip'] ?>
+                                     </td>
+                                     <td class="px-6 py-4 text-right text-sm">
+                                         <div class="flex items-center">
+                                             <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                                             <?= $user['internal'] ?>
+                                         </div>
+                                     </td>
+                                     <td class="px-6 py-4 text-right text-sm">
+                                         ۱ ساعت و ۴۵ دقیقه
+                                     </td>
+                                 </tr>
+                             <?php endforeach; ?>
                          </tbody>
                      </table>
                  </div>

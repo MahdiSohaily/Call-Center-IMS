@@ -33,3 +33,11 @@ function getSoldGoods()
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC)[0]['total'];
 }
+
+
+function getCallCenterUsers()
+{
+    $stmt = DB_CONNECTION->prepare("SELECT * FROM yadakshop1402.users WHERE internal ORDER BY internal");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
