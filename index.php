@@ -1,7 +1,6 @@
  <?php
     require_once './app/controller/DashboardController.php';
     require_once './layout/heroHeader.php';
-    require_once './utilities/helpers.php';
     ?>
  <style>
      body {
@@ -97,7 +96,8 @@
                              </tr>
                          </thead>
                          <tbody>
-                             <?php foreach (getCallCenterUsers() as $user) :
+                             <?php
+                                foreach (getCallCenterUsers() as $user) :
                                     $profile = '../userimg/default.png';
                                     if (file_exists("../userimg/" . $user['id'] . ".jpg")) {
                                         $profile = "../userimg/" . $user['id'] . ".jpg";
@@ -121,7 +121,7 @@
                                          </div>
                                      </td>
                                      <td class="px-6 py-4 text-right text-sm">
-                                         ۱ ساعت و ۴۵ دقیقه
+                                         <?= format_calling_time_seconds($datetimeData[$user['internal']]['total']) ?? ' ۰ ثانیه' ?>
                                      </td>
                                  </tr>
                              <?php endforeach; ?>

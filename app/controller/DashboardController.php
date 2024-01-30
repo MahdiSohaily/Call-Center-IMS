@@ -44,12 +44,14 @@ function getCallCenterUsers()
 
 
 // Fetch distinct users from the database
-$sqlDistinctUsers = "SELECT DISTINCT user FROM incoming";
-$resultDistinctUsers = mysqli_query($con, $sqlDistinctUsers);
+$sqlDistinctUsers = DB_CONNECTION->prepare("SELECT DISTINCT user FROM incoming");
+
+$sqlDistinctUsers->execute();
+$resultDistinctUsers = $sqlDistinctUsers->fetchAll(PDO::FETCH_ASSOC);
 
 $users = [];
 if ($resultDistinctUsers) {
-    while ($row = mysqli_fetch_assoc($resultDistinctUsers)) {
+    foreach ($resultDistinctUsers as $row) {
         $users[] = $row['user'];
     }
 }
@@ -107,7 +109,8 @@ if ($resultReceived) {
 
 $sqlCurrentHour = DB_CONNECTION->prepare("SELECT * FROM incoming WHERE starttime IS NOT NULL AND time >= CURDATE() AND HOUR(starttime) = :time");
 
-$sqlCurrentHour->bindParam(':time', (int)date('G'));
+$time = (int)date('G');
+$sqlCurrentHour->bindParam(':time', $time);
 $sqlCurrentHour->execute();
 $resultCurrentHour = $sqlCurrentHour->fetchAll(PDO::FETCH_ASSOC);
 
@@ -127,6 +130,15 @@ if ($resultCurrentHour) {
     }
 }
 
+function compareTotalCallTimes($a, $b)
+{
+    if ($a['total'] == $b['total']) {
+        return 0;
+    }
+
+    return ($a['total'] > $b['total']) ? -1 : 1;
+}
+
 // Sort the users based on total call times
 uasort($datetimeData, 'compareTotalCallTimes');
 uasort($datetimeData, 'compareTotalCallTimes2');
@@ -136,14 +148,7 @@ foreach ($datetimeData as &$data) {
         $data['successRate'] = floor(($data['answeredCall'] * 100) / $data['receivedCall']);
 }
 
-function compareTotalCallTimes($a, $b)
-{
-    if ($a['total'] == $b['total']) {
-        return 0;
-    }
 
-    return ($a['total'] > $b['total']) ? -1 : 1;
-}
 
 function compareTotalCallTimes2($a, $b)
 {
