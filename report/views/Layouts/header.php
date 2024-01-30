@@ -100,17 +100,17 @@ $_SESSION["user_id"] = $_SESSION["id"];
             $title = "تلگرام قیمت";
             echo ' <link rel="shortcut icon" href="../public/img/b-t.png">';
             break;
-        case 'generateBill.php':
+        case 'generateBill_new.php':
             $title = "ویرایش فاکتور";
-            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            echo ' <link rel="shortcut icon" href="./public/img/bill_generate.svg">';
             break;
-        case 'factor.php':
+        case 'factor_new.php':
             $title = "مدیریت فاکتور";
-            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            echo ' <link rel="shortcut icon" href="./public/img/bill_generate.svg">';
             break;
         default:
             $title = "سامانه یدک شاپ";
-            echo ' <link rel="shortcut icon" href="./public/img/report.png">';
+            echo ' <link rel="shortcut icon" href="./public/img/bill_generate.svg">';
             break;
     }
     ?>
