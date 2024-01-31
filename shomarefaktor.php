@@ -203,6 +203,7 @@ require_once './layout/heroHeader.php';
             onRender: function() {}
         });
     });
+    
     const element = document.getElementById('invoice_time');
 
 
