@@ -130,15 +130,17 @@ require_once './layout/heroHeader.php';
                                     <?= $factor['shomare'] ?>
                                 </div>
                             </td>
-                            <td class="flex justify-center items-center gap-2">
+                            <td>
                                 <?php if ($factor['exists_in_bill']) : ?>
-                                    <img class="w-6 mt-5 cursor-pointer" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
+                                    <img class="w-6 mr-4 cursor-pointer" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <div class="jadval-shomare-kharidar"><?= $factor['kharidar'] ?></div>
                             </td>
-                            <td><img onclick="userReport(this)" class="user-img hover:cursor-pointer" data-id="<?= $factor['user']; ?>" src="<?= $profile ?>" /></td>
+                            <td class="flex justify-center">
+                                <img onclick="userReport(this)" class="user-img hover:cursor-pointer mt-2" data-id="<?= $factor['user']; ?>" src="<?= $profile ?>" />
+                            </td>
 
                             <?php
                             if ($isAdmin) : ?>
