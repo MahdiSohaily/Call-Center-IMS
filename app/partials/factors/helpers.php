@@ -24,3 +24,26 @@ function getFactors($start, $end)
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
+
+function getCountFactorByUser($start, $end = null)
+{
+    // Base query
+    $sql = "SELECT COUNT(shomare) as count_shomare, user FROM shomarefaktor WHERE time < '$end' AND time >= '$start' GROUP BY user ORDER BY count_shomare DESC";
+
+    // Append the WHERE clause based on the condition
+    if ($end !== null) {
+        $sql .= " ";
+    } else {
+        $sql .= " WHERE time >= CURDATE()";
+    }
+
+    // Prepare and execute the query
+    $statement = DB_CONNECTION->prepare($sql);
+    $statement->execute();
+
+    // Fetch the result
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the result
+    return $result;
+}

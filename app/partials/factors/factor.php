@@ -19,12 +19,12 @@ if (isset($_POST['getNewFactor'])) {
     <div class="today-faktor-statistics">
         <div class="">
             <?php
-            if (count($factors)) :
+            if (count($factors) > 0) :
             ?>
                 <div class="ranking mb-2">
                     <p class="text-white px-2">تعداد کل</p>
                     <span class="counter">
-                        <?= count($factors) ?? 0; ?>
+                        <?= count($factors); ?>
                     </span>
                 </div>
             <?php
@@ -35,30 +35,32 @@ if (isset($_POST['getNewFactor'])) {
         <div class="">
             <p class="today-faktor-plus">+</p>
             <?php
-            if (count($factors)) :
-                $counter = 1;
-                foreach ($factors as $row) :
+            $sql = "SELECT COUNT(shomare) as count_shomare,user FROM shomarefaktor WHERE time < '$end' AND time >= '$start' GROUP BY user ORDER BY count_shomare DESC ";
+            $result = mysqli_query($con, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $n = 1;
+                while ($row = mysqli_fetch_assoc($result)) {
             ?>
                     <div class="ranking mb-2">
                         <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="../userimg/<?php echo $row['user']; ?>.jpg" />
-                        <?php if ($counter == 1) {
+                        <?php if ($n == 1) {
                             echo '<i class="fas ranking-icon fa-star golden"></i>';
                         }
 
-                        if ($counter == 2) {
+                        if ($n == 2) {
                             echo '<i class="fas ranking-icon fa-star silver"></i>';
                         }
 
-                        if ($counter == 3) {
+                        if ($n == 3) {
                             echo '<i class="fas ranking-icon fa-thumbs-up lucky"></i>';
                         }
-                        $counter = $counter + 1; ?>
+                        $n = $n + 1; ?>
                         <span class="counter"><?php echo $row['count_shomare']; ?></span>
                     </div>
 
             <?php
-                endforeach;
-            endif;
+                }
+            }
             ?>
         </div>
     </div>
@@ -72,8 +74,8 @@ if (isset($_POST['getNewFactor'])) {
             </tr>
             <tbody>
                 <?php
-                if (count($factors)) :
-                   foreach($factors as $row) {
+                if (mysqli_num_rows($factor_result) > 0) {
+                    while ($row = mysqli_fetch_assoc($factor_result)) {
                         $shomare = $row['shomare'];
                         $kharidar = $row['kharidar'];
                         $user = $row['user'];
@@ -94,7 +96,7 @@ if (isset($_POST['getNewFactor'])) {
                 <?php
 
                     }
-                endif;
+                }
 
                 ?>
             </tbody>

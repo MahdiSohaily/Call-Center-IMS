@@ -67,11 +67,9 @@ require_once './layout/heroHeader.php';
         <div class="">
             <p class="today-faktor-plus">+</p>
             <?php
-            $sql = "SELECT COUNT(shomare) as count_shomare,user FROM shomarefaktor WHERE time >= CURDATE() GROUP BY user ORDER BY count_shomare DESC ";
-            $result = mysqli_query(dbconnect(), $sql);
-            if (mysqli_num_rows($result) > 0) {
+            if (count($countFactorByUser)) :
                 $n = 1;
-                while ($row = mysqli_fetch_assoc($result)) {
+                foreach ($countFactorByUser as $row) :
                     $profile = '../userimg/default.png';
                     if (file_exists("../userimg/" . $row['user'] . ".jpg")) {
                         $profile = "../userimg/" . $row['user'] . ".jpg";
@@ -95,8 +93,8 @@ require_once './layout/heroHeader.php';
                     </div>
 
             <?php
-                }
-            }
+                endforeach;
+            endif;
             ?>
         </div>
     </div>
@@ -203,7 +201,7 @@ require_once './layout/heroHeader.php';
             onRender: function() {}
         });
     });
-    
+
     const element = document.getElementById('invoice_time');
 
 

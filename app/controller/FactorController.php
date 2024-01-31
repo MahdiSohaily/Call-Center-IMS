@@ -13,3 +13,5 @@ $end = date_format($endDate, "Y-m-d H:i:s");
 $start = date_format($startDate, "Y-m-d H:i:s");
 
 $factors = getFactors($start, $end);
+
+$countFactorByUser = getCountFactorByUser($start, $end);
