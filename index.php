@@ -121,7 +121,9 @@
                                          </div>
                                      </td>
                                      <td class="px-6 py-4 text-right text-sm">
-                                         <?= format_calling_time_seconds($datetimeData[$user['internal']]['total']) ?? ' ۰ ثانیه' ?>
+                                         <?=
+                                            isset($datetimeData[$user['internal']]['total']) ? format_calling_time_seconds($datetimeData[$user['internal']]['total']) : ' ۰ ثانیه'
+                                            ?>
                                      </td>
                                  </tr>
                              <?php endforeach; ?>

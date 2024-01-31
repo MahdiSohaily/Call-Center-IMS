@@ -22,7 +22,18 @@ $factors = getFactors($start, $end);
  */
 function getFactors($start, $end)
 {
-    $query = "SELECT * FROM shomarefaktor WHERE time < '$end' AND time >= '$start' ORDER BY shomare DESC";
+    $query = "SELECT
+        shomarefaktor.*,
+        bill.id as bill_id,
+        CASE WHEN bill.bill_number IS NOT NULL THEN TRUE ELSE FALSE END AS exists_in_bill
+        FROM
+        shomarefaktor
+        LEFT JOIN
+        bill ON shomarefaktor.shomare = bill.bill_number
+        WHERE
+        shomarefaktor.time < '$end' AND shomarefaktor.time >= '$start'
+        ORDER BY
+        shomarefaktor.shomare DESC";
     $statement = DB_CONNECTION->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);

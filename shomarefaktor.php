@@ -105,6 +105,7 @@ require_once './layout/heroHeader.php';
             <thead>
                 <tr class="table-heading">
                     <th>شماره فاکتور</th>
+                    <th></th>
                     <th>خریدار</th>
                     <th>کاربر</th>
                     <?php
@@ -130,6 +131,11 @@ require_once './layout/heroHeader.php';
                                     <i class="fas fa-paste"></i>
                                     <?= $factor['shomare'] ?>
                                 </div>
+                            </td>
+                            <td class="flex justify-center items-center gap-2">
+                                <?php if ($factor['exists_in_bill']) : ?>
+                                    <img class="w-6 mt-5 cursor-pointer" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <div class="jadval-shomare-kharidar"><?= $factor['kharidar'] ?></div>
@@ -249,6 +255,25 @@ require_once './layout/heroHeader.php';
         copyToClipboard(billNumber);
 
         element.innerHTML = '<i class="fas fa-check" style="color:red; margin-inline:5px"></i>' + billNumber;
+    }
+
+    function displayBill(id) {
+        const factor_id = id;
+
+        const form = document.createElement('form');
+        form.className = 'absolute bottom-2 left-1/2';
+        form.method = 'post';
+        form.action = './report/generateBill_new.php';
+
+        const inputBillId = document.createElement('input');
+        inputBillId.type = 'hidden';
+        inputBillId.name = 'BillId';
+        inputBillId.value = factor_id;
+
+        form.appendChild(inputBillId);
+
+        document.body.appendChild(form);
+        form.submit();
     }
 </script>
 
