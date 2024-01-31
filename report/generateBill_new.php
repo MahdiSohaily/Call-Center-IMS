@@ -478,8 +478,7 @@ require_once('./views/Layouts/header.php');
     function displayCustomer(customer) {
         document.getElementById('id').value = customerInfo.id;
         document.getElementById('mode').value = customerInfo.mode;
-        document.getElementById('name').value = customerInfo.name;
-        document.getElementById('name').value = customerInfo.name;
+        document.getElementById('name').value = customerInfo.displayName;
         document.getElementById('family').value = customerInfo.family;
         document.getElementById('phone').value = customerInfo.phone;
         document.getElementById('car').value = customerInfo.car;
@@ -713,20 +712,10 @@ require_once('./views/Layouts/header.php');
 
     function appendPrefix(prefix) {
         const nameElement = document.getElementById('name');
-        let name = nameElement.value.trim().split(' ');
-        const prefixes = ['جناب آقای', 'سرکار خانم', 'شرکت', 'فروشگاه'];
 
-        if (prefixes.includes(name[0])) {
-            name = [prefix].concat(name.slice(1)).join(' ');
-        } else if (prefixes.includes(name[0] + ' ' + name[1])) {
-            name = [prefix].concat(name.slice(2)).join(' ');
-        } else {
-            name = [prefix].concat(name).join(' ');
-        }
-
-        nameElement.value = name.trim();
+        nameElement.value = prefix + ' '.customerInfo.name.trim();
+        customerInfo.displayName = prefix + ' '.customerInfo.name.trim();
     }
-
 
     function formatAsMoney(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

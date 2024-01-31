@@ -35,6 +35,7 @@ if (isset($_POST['BillId'])) {
         $customerInfo = [
             'id' => null,
             'name' => null,
+            'displayName' => 'null',
             'family' => null,
             'car' => null,
             'phone' => null,
@@ -66,7 +67,7 @@ function getBillInfo($billId)
 
 function getCustomerInfo($customerId)
 {
-    $sql = "SELECT id, name, family, phone, car, address FROM callcenter.customer WHERE id = ?";
+    $sql = "SELECT id, name, name AS displayName, family, phone, car, address FROM callcenter.customer WHERE id = ?";
     $stmt = CONN->prepare($sql);
     $stmt->bind_param("s", $customerId);
 
