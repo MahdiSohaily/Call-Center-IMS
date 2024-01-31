@@ -127,7 +127,7 @@ thead,
 
 .action_tooltip {
     position: absolute;
-    width: 100px;
+    min-width: 130px;
     height: 36px;
     border-bottom: 1px dotted black;
     background-color: gray;

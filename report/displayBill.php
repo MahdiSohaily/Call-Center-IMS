@@ -136,7 +136,12 @@ require_once('./views/Layouts/header.php');
         </p>
     </div>
     <ul class="action_menu">
-
+        <li style="position: relative;">
+            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php">
+                <img src="./public/img/logo.png" class="rounded-full" alt="">
+            </a>
+            <p class="action_tooltip text-sm">فاکتور یدک شاپ</p>
+        </li>
         <li style="position: relative;">
             <a class="action_button print bg-green-500 rounded-full flex justify-center items-center text-white text-sm" href="./insuranceBill.php">بیمه</a>
             <p class="action_tooltip">فاکتور بیمه</p>
