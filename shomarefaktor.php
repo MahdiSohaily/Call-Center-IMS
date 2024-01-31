@@ -132,7 +132,7 @@ require_once './layout/heroHeader.php';
                             </td>
                             <td>
                                 <?php if ($factor['exists_in_bill']) : ?>
-                                    <img class="w-6 mr-4 cursor-pointer" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
+                                    <img class="w-6 mr-4 cursor-pointer d-block" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
                                 <?php endif; ?>
                             </td>
                             <td>
@@ -144,13 +144,17 @@ require_once './layout/heroHeader.php';
 
                             <?php
                             if ($isAdmin) : ?>
-                                <td class="edit"><a id="<?= $factor["id"] ?>" class="edit-shomare-faktor-btn">ویرایش<i class="fas fa-edit"></i></a></td>
+                                <td class="edit">
+                                    <a id="<?= $factor["id"] ?>" class="edit-shomare-faktor-btn">
+                                        ویرایش
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
                             <?php endif; ?>
                         </tr>
                 <?php
                     endforeach;
                 endif;
-
                 ?>
             </tbody>
         </table>
@@ -159,6 +163,7 @@ require_once './layout/heroHeader.php';
 <script type="text/javascript">
     const resultBox = document.getElementById('resultBox');
     let filter = false;
+
     $(function() {
         $("#invoice_time").persianDatepicker({
             months: ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"],
@@ -192,7 +197,7 @@ require_once './layout/heroHeader.php';
                 var params = new URLSearchParams();
                 params.append('getFactor', 'getFactor');
                 params.append('date', date);
-                axios.post("./factorAjax.php", params)
+                axios.post("./app/partials/factors/factor.php", params)
                     .then(function(response) {
                         resultBox.innerHTML = response.data;
                     })
@@ -217,7 +222,7 @@ require_once './layout/heroHeader.php';
         if (filter == false) {
             params.append('getFactor', 'getFactor');
             params.append('date', date);
-            axios.post("./factorAjax.php", params)
+            axios.post("./app/partials/factors/factor.php", params)
                 .then(function(response) {
                     resultBox.innerHTML = response.data;
                 })
@@ -230,7 +235,7 @@ require_once './layout/heroHeader.php';
         params.append('getReport', 'getReport');
         params.append('date', date);
         params.append('user', id);
-        axios.post("./factorAjax.php", params)
+        axios.post("./app/partials/factors/factor.php", params)
             .then(function(response) {
                 resultBox.innerHTML = response.data;
             })

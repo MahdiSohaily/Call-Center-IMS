@@ -5,7 +5,7 @@
  * @param string $start is the starting time period
  * @param string $end is the ending time period
  */
-function getFactors($start, $end)
+function getFactors($start, $end, $user = null)
 {
     $query = "SELECT
         shomarefaktor.*,
@@ -25,7 +25,7 @@ function getFactors($start, $end)
     return $result;
 }
 
-function getCountFactorByUser($start, $end = null)
+function getCountFactorByUser($start, $end = null, $user = null)
 {
     // Base query
     $sql = "SELECT COUNT(shomare) as count_shomare, user FROM shomarefaktor WHERE time < '$end' AND time >= '$start' GROUP BY user ORDER BY count_shomare DESC";
