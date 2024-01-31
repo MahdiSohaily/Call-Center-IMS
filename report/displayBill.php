@@ -239,7 +239,7 @@ require_once('./views/Layouts/header.php');
         }
 
         function displayCustomer() {
-            document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
+            document.getElementById('name').innerHTML = customerInfo.displayName + " " + customerInfo.family ?? '';
             document.getElementById('phone').innerHTML = customerInfo.phone;
             if (customerInfo.address.length > 0) {
                 document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
