@@ -1,5 +1,6 @@
 <?php
 require_once './config/database.php';
+require_once './app/partials/factors/helpers.php';
 
 if (isset($_POST['getNewFactor'])) {
     $startDate = date_create($_POST['date']);
@@ -11,23 +12,19 @@ if (isset($_POST['getNewFactor'])) {
     $end = date_format($endDate, "Y-m-d H:i:s");
     $start = date_format($startDate, "Y-m-d H:i:s");
 
-    $sql = "SELECT * FROM shomarefaktor WHERE time < '$end' AND time >= '$start' ORDER BY shomare DESC";
-
-    $factor_result = mysqli_query($con, $sql);
+    $factors = getFactors($start, $end);
 
 
 ?>
     <div class="today-faktor-statistics">
         <div class="">
             <?php
-            if (mysqli_num_rows($factor_result) > 0) :
+            if (count($factors)) :
             ?>
                 <div class="ranking mb-2">
                     <p class="text-white px-2">تعداد کل</p>
                     <span class="counter">
-                        <?php
-                        echo mysqli_num_rows($factor_result);
-                        ?>
+                        <?= count($factors) ?? 0; ?>
                     </span>
                 </div>
             <?php
@@ -38,32 +35,30 @@ if (isset($_POST['getNewFactor'])) {
         <div class="">
             <p class="today-faktor-plus">+</p>
             <?php
-            $sql = "SELECT COUNT(shomare) as count_shomare,user FROM shomarefaktor WHERE time < '$end' AND time >= '$start' GROUP BY user ORDER BY count_shomare DESC ";
-            $result = mysqli_query($con, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                $n = 1;
-                while ($row = mysqli_fetch_assoc($result)) {
+            if (count($factors)) :
+                $counter = 1;
+                foreach ($factors as $row) :
             ?>
                     <div class="ranking mb-2">
                         <img class="hover:cursor-pointer" data-id="<?php echo $row['user']; ?>" onclick="userReport(this)" src="../userimg/<?php echo $row['user']; ?>.jpg" />
-                        <?php if ($n == 1) {
+                        <?php if ($counter == 1) {
                             echo '<i class="fas ranking-icon fa-star golden"></i>';
                         }
 
-                        if ($n == 2) {
+                        if ($counter == 2) {
                             echo '<i class="fas ranking-icon fa-star silver"></i>';
                         }
 
-                        if ($n == 3) {
+                        if ($counter == 3) {
                             echo '<i class="fas ranking-icon fa-thumbs-up lucky"></i>';
                         }
-                        $n = $n + 1; ?>
+                        $counter = $counter + 1; ?>
                         <span class="counter"><?php echo $row['count_shomare']; ?></span>
                     </div>
 
             <?php
-                }
-            }
+                endforeach;
+            endif;
             ?>
         </div>
     </div>
@@ -77,8 +72,8 @@ if (isset($_POST['getNewFactor'])) {
             </tr>
             <tbody>
                 <?php
-                if (mysqli_num_rows($factor_result) > 0) {
-                    while ($row = mysqli_fetch_assoc($factor_result)) {
+                if (count($factors)) :
+                   foreach($factors as $row) {
                         $shomare = $row['shomare'];
                         $kharidar = $row['kharidar'];
                         $user = $row['user'];
@@ -99,7 +94,7 @@ if (isset($_POST['getNewFactor'])) {
                 <?php
 
                     }
-                }
+                endif;
 
                 ?>
             </tbody>
@@ -280,11 +275,6 @@ if (filter_has_var(INPUT_POST, 'getReport')) {
             <?php
                 }
             }
-
-
-
-
-
             ?>
         </div>
     </div>
