@@ -40,7 +40,7 @@ function previewBill() {
 
 function displayCustomer() {
   document.getElementById("name_bill").innerHTML =
-    customerInfo.name + " " + customerInfo.family ?? "";
+    customerInfo.displayName + " " + customerInfo.family ?? "";
   document.getElementById("phone_bill").innerHTML = customerInfo.phone;
   document.getElementById("userAddress").innerHTML =
     "نشانی : " + customerInfo.address;
