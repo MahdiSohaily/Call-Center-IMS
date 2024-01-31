@@ -20,11 +20,11 @@ require_once('./views/Layouts/header.php');
             </div>
         </div>
         <div class="headline">
-            <h2 style="margin-bottom: 7px;">فاکتور بیمه</h2>
-            <h2 style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
+            <h2 style="margin-bottom: 7px;">فاکتور فروش</h2>
+            <h2 style="margin-bottom: 7px;">کره اتوپارت</h2>
         </div>
         <div class="log_section">
-            <img class="logo" src="./public/img/insurance.png" alt="logo of yadakshop">
+            <img class="logo" src="./public/img/partner.png" alt="logo of yadakshop">
         </div>
     </div>
     <div class="customer_info relative flex">
