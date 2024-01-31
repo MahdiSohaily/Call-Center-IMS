@@ -16,9 +16,13 @@ function getFactors($start, $end, $user = null)
         LEFT JOIN
         bill ON shomarefaktor.shomare = bill.bill_number
         WHERE
-        shomarefaktor.time < '$end' AND shomarefaktor.time >= '$start'
-        ORDER BY
-        shomarefaktor.shomare DESC";
+        shomarefaktor.time < '$end' AND shomarefaktor.time >= '$start'";
+
+    if ($user !== null) {
+        $query .= " AND shomarefaktor.user = '$user'";
+    }
+
+    $query .= " ORDER BY shomarefaktor.time DESC";
     $statement = DB_CONNECTION->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -28,7 +32,13 @@ function getFactors($start, $end, $user = null)
 function getCountFactorByUser($start, $end = null, $user = null)
 {
     // Base query
-    $sql = "SELECT COUNT(shomare) as count_shomare, user FROM shomarefaktor WHERE time < '$end' AND time >= '$start' GROUP BY user ORDER BY count_shomare DESC";
+    $sql = "SELECT COUNT(shomare) as count_shomare, user FROM shomarefaktor 
+            WHERE time < '$end' AND time >= '$start'";
+    if($user !== null) {
+        $sql .= " AND user = '$user'";
+    }
+
+    $sql .= " GROUP BY user ORDER BY count_shomare DESC";
 
     // Append the WHERE clause based on the condition
     if ($end !== null) {
