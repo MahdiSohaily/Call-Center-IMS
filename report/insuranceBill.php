@@ -136,19 +136,6 @@ require_once('./views/Layouts/header.php');
         </p>
     </div>
     <ul class="action_menu">
-
-        <li style="position: relative;">
-            <a class="action_button print bg-green-500 rounded-full flex justify-center items-center text-white text-sm" href="./insuranceBill.php">بیمه</a>
-            <p class="action_tooltip">فاکتور بیمه</p>
-        </li>
-        <li style="position: relative;">
-            <a class="action_button print bg-blue-500 rounded-full flex justify-center items-center text-white text-sm" href="./partnerBill.php">همکار</a>
-            <p class="action_tooltip">فاکتور همکار</p>
-        </li>
-        <li style="position: relative;">
-            <a class="action_button print bg-gray-500 rounded-full flex justify-center items-center text-white text-sm" href="./koreaBill.php">کوریا</a>
-            <p class="action_tooltip">فاکتور کوریا</p>
-        </li>
         <li style="position: relative;">
             <img class="action_button print" onclick="window.print();" src="./public/img/print.svg" alt="print icon">
             <p class="action_tooltip">پرینت</p>
