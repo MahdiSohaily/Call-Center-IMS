@@ -4,7 +4,6 @@ require_once './config/database.php';
 mysqli_set_charset($con, "utf8");
 require_once './php/jdf.php';
 // Global Variable to change the page title base on the page accordingly
-$title = '';
 ?>
 <!DOCTYPE html>
 <html lang="fe" style="margin-top: 0 !important;">
@@ -16,6 +15,7 @@ $title = '';
     <meta name="description" content="This is a simple CMS for tracing goods based on thier serail or part number.">
     <meta name="author" content="Mahdi Rezaei">
     <?php
+    $title = '';
     // Swith the page title based on the files name
     switch (basename($_SERVER['PHP_SELF'])) {
         case 'cartable.php':
