@@ -1,13 +1,7 @@
  <?php
     require_once './layout/heroHeader.php';
 
-
-
-
-
     $phone = $_GET['phone'];
-
-
 
     require_once("php/db.php");
     $sql = "SELECT * FROM customer WHERE phone LIKE '" . $phone . "%'";
@@ -22,7 +16,6 @@
             $address = $row['address'];
             $car = $row['car'];
             $kind = $row['kind'];
-
 
             echo '<div class="phone-status">شماره <span>' . $phone . '</span> با نام <span>' . $name . '</span> <span>' . $family . '</span> در سیستم ثبت می باشد .</div>';
             $isold = 1;

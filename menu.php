@@ -11,7 +11,7 @@
             <li><a href="customer-list.php">لیست مشتریان <i class="fas fa-users"></i></a></li>
 
             <!-- <li><a href="inquery-list.php">قیمت های داده شده <i class="fas fa-arrow-up"></i><i class="fas fa-dollar-sign"></i></a></li> -->
-            
+
             <li><a href="last-calling-time.php">آخرین مکالمات <i class="fas fa-feather-alt"></i></a></li>
 
             <li><a href="bazar.php">تماس عمومی <i class="fas fa-phone-volume"></i></a></li>
