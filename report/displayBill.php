@@ -167,69 +167,75 @@ require_once('./views/Layouts/header.php');
             <p class="action_tooltip">پی دی اف</p>
         </li>
     </ul>
-    <p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
-    <script>
-        let bill_number = null;
-        const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
-        const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
-        const billItems = JSON.parse(localStorage.getItem('bill_items'));
+</div>
+<p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
+<script>
+    let bill_number = null;
+    const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
+    const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
+    const billItems = JSON.parse(localStorage.getItem('bill_items'));
 
 
-        // Check if the code has already run for this unique identifier
-        if (localStorage.getItem('operation') == 'save') {
-            localStorage.setItem('operation', 'saved');
-            var params = new URLSearchParams();
-            params.append('saveInvoice', 'saveInvoice');
-            params.append('customerInfo', JSON.stringify(customerInfo));
-            params.append('BillInfo', JSON.stringify(BillInfo));
-            params.append('billItems', JSON.stringify(billItems));
+    // Check if the code has already run for this unique identifier
+    if (localStorage.getItem('operation') == 'save') {
+        localStorage.setItem('operation', 'saved');
+        var params = new URLSearchParams();
+        params.append('saveInvoice', 'saveInvoice');
+        params.append('customerInfo', JSON.stringify(customerInfo));
+        params.append('BillInfo', JSON.stringify(BillInfo));
+        params.append('billItems', JSON.stringify(billItems));
 
 
-            axios.post("./app/Controllers/BillController.php", params)
-                .then(function(response) {
-                    const data = response.data;
-                    if (data) {
-                        BillInfo.billNO = data;
-                        displayBill();
-                        displayCustomer();
-                        displayBillDetails();
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                const data = response.data;
+                if (data) {
+                    BillInfo.billNO = data;
+                    displayBill();
+                    displayCustomer();
+                    displayBillDetails();
 
-                        document.getElementById("action_message").style.bottom = "10px";
-                        setTimeout(() => {
-                            document.getElementById("action_message").style.bottom = "-100px";
-                        }, 2000);
+                    // Convert the object to a JSON string and store it in local storage
+                    localStorage.setItem('customer_info', JSON.stringify(customerInfo));
+                    localStorage.setItem('bill_info', JSON.stringify(BillInfo));
+                    localStorage.setItem('bill_items', JSON.stringify(billItems));
 
-                    } else {
-                        document.getElementById("action_message").style.bottom = "10px";
-                        document.getElementById("action_message").style.backgroundColor = "red";
-                        document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد شماره تماش مشتری از قبل در سیستم ریزو شده است.";
-                        setTimeout(() => {
-                            document.getElementById("action_message").style.bottom = "-100px";
-                        }, 5000);
-                    }
+                    document.getElementById("action_message").style.bottom = "10px";
+                    setTimeout(() => {
+                        document.getElementById("action_message").style.bottom = "-100px";
+                    }, 2000);
+
+                } else {
+                    document.getElementById("action_message").style.bottom = "10px";
+                    document.getElementById("action_message").style.backgroundColor = "red";
+                    document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد شماره تماش مشتری از قبل در سیستم ریزو شده است.";
+                    setTimeout(() => {
+                        document.getElementById("action_message").style.bottom = "-100px";
+                    }, 5000);
+                }
 
 
 
-                }).catch(function(error) {
-                    console.log(error);
-                });
-        } else {
-            displayBill();
-            displayCustomer();
-            displayBillDetails();
-        }
+            }).catch(function(error) {
+                console.log(error);
+            });
+    } else {
+        displayBill();
+        displayCustomer();
+        displayBillDetails();
+    }
 
-        function displayBill() {
-            let counter = 1;
-            let template = ``;
-            let totalPrice = 0;
+    function displayBill() {
+        let counter = 1;
+        let template = ``;
+        let totalPrice = 0;
 
-            for (const item of billItems) {
+        for (const item of billItems) {
 
-                const payPrice = Number(item.quantity) * Number(item.price_per);
-                totalPrice += payPrice;
+            const payPrice = Number(item.quantity) * Number(item.price_per);
+            totalPrice += payPrice;
 
-                template += `
+            template += `
             <tr style="padding: 10px !important;" class="even:bg-gray-100">
                 <td class="text-sm text-center">
                     <span>${counter}</span>
@@ -247,80 +253,80 @@ require_once('./views/Layouts/header.php');
                     <span>${formatAsMoney(payPrice)}</span>
                 </td>
             </tr> `;
-                counter++;
+            counter++;
+        }
+        bill_body.innerHTML = template;
+    }
+
+    function formatAsMoney(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function displayCustomer() {
+        document.getElementById('name').innerHTML = customerInfo.displayName + " " + customerInfo.family ?? '';
+        document.getElementById('phone').innerHTML = customerInfo.phone;
+        if (customerInfo.address.length > 0) {
+            document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
+        }
+    }
+
+    function displayBillDetails() {
+        document.getElementById('billNO').innerHTML = BillInfo.billNO;
+        document.getElementById('date').innerHTML = BillInfo.date.replace(/-/g, "/");
+        document.getElementById('quantity').innerHTML = BillInfo.quantity;
+        document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.totalPrice);
+        document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
+        document.getElementById('discount').innerHTML = BillInfo.discount;
+        document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
+        document.getElementById('description').innerHTML = BillInfo.description;
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
+            event.preventDefault();
+        }
+    });
+
+    function handleSaveAsPdfClick() {
+        const content = document.getElementById('bill_body_pdf');
+        const opt = {
+            filename: BillInfo.billNO + '-' + customerInfo.name + " " + customerInfo.family ?? '' + '.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas: {
+                scale: 2
+            },
+            jsPDF: {
+                unit: 'in',
+                format: 'letter',
+                orientation: 'portrait'
             }
-            bill_body.innerHTML = template;
-        }
+        };
+        html2pdf().set(opt).from(content).save();
+    }
 
-        function formatAsMoney(number) {
-            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
+    function copyInfo(element) {
+        const info = document.getElementById('name').innerHTML;
+        const billNo = document.getElementById('billNO').innerHTML;
 
-        function displayCustomer() {
-            document.getElementById('name').innerHTML = customerInfo.displayName + " " + customerInfo.family ?? '';
-            document.getElementById('phone').innerHTML = customerInfo.phone;
-            if (customerInfo.address.length > 0) {
-                document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
-            }
-        }
+        const combinedText = `مشتری : ${info} \nشماره فاکتور : ${billNo}`;
 
-        function displayBillDetails() {
-            document.getElementById('billNO').innerHTML = BillInfo.billNO;
-            document.getElementById('date').innerHTML = BillInfo.date.replace(/-/g, "/");
-            document.getElementById('quantity').innerHTML = BillInfo.quantity;
-            document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.totalPrice);
-            document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
-            document.getElementById('discount').innerHTML = BillInfo.discount;
-            document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
-            document.getElementById('description').innerHTML = BillInfo.description;
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
-                event.preventDefault();
-            }
-        });
-
-        function handleSaveAsPdfClick() {
-            const content = document.getElementById('bill_body_pdf');
-            const opt = {
-                filename: BillInfo.billNO + '-' + customerInfo.name + " " + customerInfo.family ?? '' + '.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 0.98
-                },
-                html2canvas: {
-                    scale: 2
-                },
-                jsPDF: {
-                    unit: 'in',
-                    format: 'letter',
-                    orientation: 'portrait'
-                }
-            };
-            html2pdf().set(opt).from(content).save();
-        }
-
-        function copyInfo(element) {
-            const info = document.getElementById('name').innerHTML;
-            const billNo = document.getElementById('billNO').innerHTML;
-
-            const combinedText = `مشتری : ${info} \nشماره فاکتور : ${billNo}`;
-
-            const textarea = document.createElement('textarea');
-            textarea.value = combinedText;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
+        const textarea = document.createElement('textarea');
+        textarea.value = combinedText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
 
 
-            element.src = './public/img/complete.svg';
+        element.src = './public/img/complete.svg';
 
-            setTimeout(() => {
-                element.src = './public/img/copy.svg';
-            }, 2000);
-        }
-    </script>
-    <?php
-    require_once('./views/Layouts/footer.php');
+        setTimeout(() => {
+            element.src = './public/img/copy.svg';
+        }, 2000);
+    }
+</script>
+<?php
+require_once('./views/Layouts/footer.php');

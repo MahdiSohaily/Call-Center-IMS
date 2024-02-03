@@ -100,7 +100,7 @@ require_once('./views/Layouts/header.php');
             </tbody>
         </table>
     </div>
-    <div class="flex gap-5" style="margin-top: 20px;">
+    <!-- <div class="flex gap-5" style="margin-top: 20px;">
         <div class="tahvilgirande-box">
             <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
             <div class="tahvilgirande-box-inner">
@@ -114,7 +114,7 @@ require_once('./views/Layouts/header.php');
             <div class="tahvilgirande-box-inner" id="description">
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="footer-box">
         <p class="footer-box-adress">
@@ -272,7 +272,7 @@ require_once('./views/Layouts/header.php');
             document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
             document.getElementById('discount').innerHTML = BillInfo.discount;
             document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
-            document.getElementById('description').innerHTML = BillInfo.description;
+            // document.getElementById('description').innerHTML = BillInfo.description;
         }
 
         document.addEventListener('keydown', function(event) {
