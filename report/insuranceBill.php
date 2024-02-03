@@ -100,7 +100,7 @@ require_once('./views/Layouts/header.php');
             </tbody>
         </table>
     </div>
-    <div class="flex gap-5" style="margin-top: 20px;">
+    <!-- <div class="flex gap-5" style="margin-top: 20px;">
         <div class="tahvilgirande-box">
             <div class="tahvilgirande-box-header">مشخصات تحویل گیرنده</div>
             <div class="tahvilgirande-box-inner">
@@ -114,9 +114,9 @@ require_once('./views/Layouts/header.php');
             <div class="tahvilgirande-box-inner" id="description">
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="footer-box">
+    <!-- <div class="footer-box">
         <p class="footer-box-adress">
             تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
         </p>
@@ -134,7 +134,7 @@ require_once('./views/Layouts/header.php');
                 ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
             </span>
         </p>
-    </div>
+    </div> -->
     <ul class="action_menu">
         <li style="position: relative;">
             <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php">
@@ -272,7 +272,7 @@ require_once('./views/Layouts/header.php');
             document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
             document.getElementById('discount').innerHTML = BillInfo.discount;
             document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
-            document.getElementById('description').innerHTML = BillInfo.description;
+            // document.getElementById('description').innerHTML = BillInfo.description;
         }
 
         document.addEventListener('keydown', function(event) {
