@@ -957,12 +957,14 @@ require_once('./views/Layouts/header.php');
                         document.getElementById('car').value = customer.car;
                         customerInfo['id'] = customer.id;
                         customerInfo['name'] = customer.name;
+                        customerInfo['displayName'] = customer.name;
                         customerInfo['family'] = customer.family;
                         customerInfo['address'] = customer.address;
                         customerInfo['car'] = customer.car;
                         customerInfo.mode = "update";
                     } else {
                         document.getElementById('name').value = '';
+                        customerInfo['displayName'] = customer.name;
                         document.getElementById('family').value = '';
                         document.getElementById('address').value = '';
                         document.getElementById('car').value = '';
