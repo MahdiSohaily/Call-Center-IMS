@@ -202,51 +202,54 @@ require_once './app/Controllers/BillFilterController.php';
     function appendCompleteFactorResults(factors) {
         const completed_bill = document.getElementById('completed_bill');
         completed_bill.innerHTML = '';
+        const user = '<?= $_SESSION['username']; ?>';
         if (factors.length > 0) {
             for (const factor of factors) {
                 completed_bill.innerHTML += `
-                                <div class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
-                                    <div class="w-14 flex justify-center items-center">
-                                        <img class="w-10 h-10 rounded-full" src="../../userimg/${factor.user_id}.jpg"/>
-                                    </div>    
-                                    <div class="flex-grow flex flex-col justify-between px-3">
-                                        <div class="flex justify-between">
-                                            <p class="text-md">
-                                                شماره فاکتور:
-                                                ${factor.bill_number}
-                                            </p>
-                                            <p class="text-md">
-                                                تاریخ فاکتور:
-                                                ${factor.bill_date}
-                                            </p>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <p class="text-md">
-                                                مشتری: 
-                                                ${factor.name ?? ''} ${factor.family ?? ''}
-                                            </p>
-                                            <p class="text-md">
-                                                قیمت کل:
-                                                ${formatAsMoney(factor.total)}
-                                            </p>
-                                        </div>
-                                        <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill_new.php">
-                                            <input type="hidden" name="BillId" value="${factor.id}">
-                                        </form>
-                                        <div class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
-                                            <ul class="flex gap-2">
-                                                <li title="ویرایش فاکتور" onclick="EditFactorFormSubmission('form-${factor.id}')">
-                                                    <img src="./public/img/editFactor.svg" class="hover:scale-125" />
-                                                </li>
-                                                <li title="ایجاد پیش فاکتور از این فاکتور">
-                                                    <img src="./public/img/useFactorTemplate.svg" class="hover:scale-125" />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            `;
+        <div class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
+            <div class="w-14 flex justify-center items-center">
+                <img class="w-10 h-10 rounded-full" src="../../userimg/${factor.user_id}.jpg"/>
+            </div>    
+            <div class="flex-grow flex flex-col justify-between px-3">
+                <div class="flex justify-between">
+                    <p class="text-md">
+                        شماره فاکتور:
+                        ${factor.bill_number}
+                    </p>
+                    <p class="text-md">
+                        تاریخ فاکتور:
+                        ${factor.bill_date}
+                    </p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="text-md">
+                        مشتری: 
+                        ${factor.name ?? ''} ${factor.family ?? ''}
+                    </p>
+                    <p class="text-md">
+                        قیمت کل:
+                        ${formatAsMoney(factor.total)}
+                    </p>
+                </div>
+                <form id="form-${factor.id}" class="absolute bottom-2 left-1/2" method="post" action="./generateBill_new.php">
+                    <input type="hidden" name="BillId" value="${factor.id}">
+                </form>
+                <div class="edit-container absolute left-0 right-0 bottom-0 top-0 bg-gray-100 flex justify-center items-center">
+                    <ul class="flex gap-2">
+                        ${user === 'niyayesh' ? `
+                            <li title="ویرایش فاکتور" onclick="EditFactorFormSubmission('form-${factor.id}')">
+                                <img src="./public/img/editFactor.svg" class="hover:scale-125" />
+                            </li>` : ''}
+                        <li title="ایجاد پیش فاکتور از این فاکتور">
+                            <img src="./public/img/useFactorTemplate.svg" class="hover:scale-125" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    `;
             }
+
 
         } else {
             completed_bill.innerHTML = `<div class="flex flex-col justify-center items-center h-24 border border-rose-400 p-3 rounded shadow-sm shadow-rose-300 bg-rose-300">
