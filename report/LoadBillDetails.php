@@ -35,7 +35,7 @@ if (isset($_POST['BillId'])) {
         $customerInfo = [
             'id' => null,
             'name' => null,
-            'displayName' => 'null',
+            'displayName' => null,
             'family' => null,
             'car' => null,
             'phone' => null,

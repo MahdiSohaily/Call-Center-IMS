@@ -445,7 +445,7 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 </main>
-
+ 
 <script>
     // Accessing the conatainers to have global access for easy binding data
     const customer_results = document.getElementById('customer_results');
