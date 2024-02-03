@@ -207,30 +207,27 @@ require_once './app/Controllers/BillFilterController.php';
             for (const factor of factors) {
                 completed_bill.innerHTML += `
         <div class="card-container flex justify-between cursor-pointer h-24 relative border p-3 rounded shadow-sm flex-wrap mb-2">
-            <div class="w-14 flex justify-center items-center">
-                <img class="w-10 h-10 rounded-full" src="../../userimg/${factor.user_id}.jpg"/>
-            </div>    
             <div class="flex-grow flex flex-col justify-between px-3">
                 <div class="flex justify-between">
-                    <p class="text-xs">
+                    <p class="text-sm font-bold">
                         شماره فاکتور:
                         ${factor.bill_number}
                     </p>
-                    <p class="text-xs">
+                    <p class="text-sm">
                         تعداد اقلام:
                         ${factor.quantity}
                     </p>
-                    <p class="text-xs">
+                    <p class="text-sm">
                         تاریخ فاکتور:
                         ${factor.bill_date}
                     </p>
                 </div>
                 <div class="flex justify-between">
-                    <p class="text-xs">
+                    <p class="text-sm font-bold">
                         مشتری: 
                         ${factor.name ?? ''} ${factor.family ?? ''}
                     </p>
-                    <p class="text-xs">
+                    <p class="text-sm">
                         قیمت کل:
                         ${formatAsMoney(factor.total)}
                     </p>
@@ -250,6 +247,9 @@ require_once './app/Controllers/BillFilterController.php';
                     </ul>
                 </div>
             </div>
+            <div class="w-14 flex justify-center items-center">
+                <img class="w-10 h-10 rounded-full" src="../../userimg/${factor.user_id}.jpg"/>
+            </div> 
         </div>
     `;
             }
