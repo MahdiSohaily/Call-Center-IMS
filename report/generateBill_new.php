@@ -252,12 +252,21 @@ require_once('./views/Layouts/header.php');
                 <img class="cursor-pointer" onclick="addNewBillItemManually()" src="./public/img/add.svg" alt="add icon">
                 <div class="flex flex-row p-5 gap-5">
                     <label for="description">توضیحات فاکتور</label>
-                    <textarea onkeyup="updateBillInfo(this)" class="border border-gray-800 w-1/2 p-5" name="description" id="description" placeholder="توضیحات فاکتور را وارد نمایید ..." cols="30" rows="4"></textarea>
+                    <textarea onkeyup="updateBillInfo(this)" class="border border-gray-800 w-1/2 p-5" name="description" id="description" placeholder="توضیحات فاکتور را وارد نمایید ..." cols="20" rows="4"></textarea>
                 </div>
             </div>
         </div>
     </section>
     <div class="h-16"></div> <!-- adding a little white space at the bottom to be more user friendly -->
+    <div class="rtl fixed left-0 p-5 backdrop-blur-xl bg-black/20 m-5 rounded-md" style="bottom: 50px;">
+        <ul class="list-disc list-inside">
+            <li class="text-sm">برای ایجاد آیتم جدید در فاکتور از کلیدهای ترکیبی <code class="text-white bg-black px-1 rounded-md text-xs">Ctrl + Shift</code> استفاده نمایید. </li>
+            <li class="text-sm">با استفاده از کلید <span class="text-white bg-black px-1 rounded-md text-xs">F9</span> میتوانید پیش فاکتور مشتری را مشاهده کنید.</li>
+            <li class="text-sm">برای جابجای راحت میان ستون ها از کلید <span class="text-white bg-black px-1 rounded-md text-xs">Tab</span> میتوانید استفاده کنید.</li>
+            <li class="text-sm">برای جابجای میان سطرها از کلید <span class="text-white bg-black px-1 rounded-md text-xs">Enter</span> میتوانید استفاده کنید.</li>
+            <li class="text-sm">برای ذخیره فاکتور میتوانید از کلیدهای ترکیبی <span class="text-white bg-black px-1 rounded-md text-xs">Alt + S</span> استفاده نمایید.</li>
+        </ul>
+    </div>
     <div class="rtl fixed flex justify-between items-center min-w-full h-12 bottom-0 bg-gray-800 px-3">
         <ul class="flex gap-3">
             <?php if (!$isCompleteFactor) : ?>
@@ -445,7 +454,7 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 </main>
- 
+
 <script>
     // Accessing the conatainers to have global access for easy binding data
     const customer_results = document.getElementById('customer_results');
