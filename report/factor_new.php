@@ -212,21 +212,25 @@ require_once './app/Controllers/BillFilterController.php';
             </div>    
             <div class="flex-grow flex flex-col justify-between px-3">
                 <div class="flex justify-between">
-                    <p class="text-md">
+                    <p class="text-xs">
                         شماره فاکتور:
                         ${factor.bill_number}
                     </p>
-                    <p class="text-md">
+                    <p class="text-xs">
+                        تعداد اقلام:
+                        ${factor.quantity}
+                    </p>
+                    <p class="text-xs">
                         تاریخ فاکتور:
                         ${factor.bill_date}
                     </p>
                 </div>
                 <div class="flex justify-between">
-                    <p class="text-md">
+                    <p class="text-xs">
                         مشتری: 
                         ${factor.name ?? ''} ${factor.family ?? ''}
                     </p>
-                    <p class="text-md">
+                    <p class="text-xs">
                         قیمت کل:
                         ${formatAsMoney(factor.total)}
                     </p>

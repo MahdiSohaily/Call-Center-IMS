@@ -42,14 +42,14 @@ if (isset($_POST['getUserCompleteBills'])) {
 function getUsersCompleteBills($user, $date)
 {
     if ($user == 'all') {
-        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.user_id
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.quantity, bill.bill_date, bill.total, bill.user_id
                 FROM callcenter.bill
                 INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
                 WHERE DATE(bill.created_at) = '$date'
                 AND status = 1
                 ORDER BY bill.created_at DESC";
     } else {
-        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.bill_date, bill.total, bill.user_id
+        $sql = "SELECT customer.name, customer.family, bill.id, bill.bill_number, bill.quantity, bill.bill_date, bill.total, bill.user_id
                 FROM callcenter.bill
                 INNER JOIN callcenter.customer ON customer_id = callcenter.customer.id
                 WHERE bill.user_id = '$user'
