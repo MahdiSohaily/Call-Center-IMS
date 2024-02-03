@@ -21,14 +21,12 @@ def compare_and_get_changed_records():
         try:
             cursor = connection.cursor(dictionary=True)
 
-            # Select records from qtybank where brand is different in qtybankOld
+            # Select records from qtybank where seller is different in oldQtybank and changed to 0
             query = """
-                SELECT new.id, b1.name as newBrand, b2.name as oldBrand, new.qty, new.invoice_number
+                SELECT new.id, new.qty, new.invoice_number, old.seller as oldSeller, new.seller as newSeller
                 FROM qtybank new
-                JOIN qtybankOld old ON new.id = old.id
-                JOIN brand b1 ON new.brand = b1.id
-                JOIN brand b2 ON old.brand = b2.id
-                WHERE new.brand != old.brand
+                JOIN oldQtybank old ON new.id = old.id
+                WHERE new.seller != old.seller AND new.seller = 0
             """
             
             cursor.execute(query)
@@ -50,6 +48,6 @@ changed_records = compare_and_get_changed_records()
 
 if changed_records:
     for record in changed_records:
-        print(record)
+        print(f"ID: {record['id']}, Qty: {record['qty']}, Invoice Number: {record['invoice_number']}, Old Seller: {record['oldSeller']}, New Seller: {record['newSeller']}")
 else:
     print("No changed records found.")

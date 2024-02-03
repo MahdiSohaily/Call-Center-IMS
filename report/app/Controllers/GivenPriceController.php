@@ -70,7 +70,7 @@ function setup_loading($conn, $customer, $completeCode, $notification = null)
 
     $itemDetails = [];
     $relation_id = [];
-    $codeRelationId = []; 
+    $codeRelationId = [];
     foreach ($explodedCodes as $code) {
         if (!in_array($code, $results_array['not_exist'])) {
             $itemDetails[$code] = [];
@@ -434,6 +434,8 @@ function exist($conn, $id)
                 WHERE codeid IN ('" . implode("','", $id) . "')";
     }
 
+    echo  $data_sql;
+
     $data_result = mysqli_query($conn, $data_sql);
 
     $incoming = [];
@@ -444,10 +446,6 @@ function exist($conn, $id)
     };
 
     $brands = [];
-    $amount = [];
-    $stockInfo = [];
-
-    $modifiedResult = [];
 
     $incoming = array_map(function ($item) {
         global $conn;
@@ -506,10 +504,6 @@ function sortArrayByNumericPropertyDescending($array, $property)
     return $array;
 }
 
-function getLimitAlertSpecification($conn, $id, $type)
-{
-}
-
 function inventorySpecification($conn, $id, $type)
 {
     $sql = '';
@@ -545,4 +539,3 @@ function overallSpecification($conn, $id, $type)
     $allLimit = !empty($limit_all) ? $limit_all : false;
     return $allLimit;
 }
- 
