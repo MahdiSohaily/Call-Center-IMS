@@ -24,7 +24,7 @@ require_once('./views/Layouts/header.php');
             <h2 style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
         </div>
         <div class="log_section">
-            <img class="logo" src="./public/img/korea.png" alt="logo of yadakshop">
+            <img class="logo" src="./public/img/Korea.jpg" alt="logo of yadakshop">
         </div>
     </div>
     <div class="customer_info relative flex">

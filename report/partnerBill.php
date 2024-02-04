@@ -24,7 +24,7 @@ require_once('./views/Layouts/header.php');
             <h2 style="margin-bottom: 7px;">کره اتوپارت</h2>
         </div>
         <div class="log_section">
-            <img class="logo" src="./public/img/partner.png" alt="logo of yadakshop">
+            <img class="logo w-36" src="./public/img/partner.jpg" alt="logo of yadakshop">
         </div>
     </div>
     <div class="customer_info relative flex">
