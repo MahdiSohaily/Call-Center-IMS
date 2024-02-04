@@ -35,6 +35,10 @@
 .logo {
     height: 60px;
 }
+.partnerBill .logo ,.insuranceBill .logo{
+    height: 45px;
+        margin-top: 6px;
+}
 
 .customer_info {
     background-color: lightgray;
@@ -285,7 +289,7 @@ thead,
 .tahvilgirande-box,
 .description-box {
     border: 1px dashed #dddddd;
-    padding: 2px 10px;
+    padding: 2px 10px 28px 10px;
     border-radius: 10px;
 }
 
@@ -298,14 +302,14 @@ thead,
     font-size: 13px;
     text-align: center;
     color: #616060;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     border-bottom: 1px solid #dddddd;
-    line-height: 25px;
+    line-height: 33px;
 }
 
 .tahvilgirande-box-inner div {
     width: 50%;
-    height: 20px;
+    height: 35px;
     color: #7d7c7c;
     font-size: 12px;
 }
@@ -313,7 +317,7 @@ thead,
 .footer-box {
     border-top: 1px solid #dddddd;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .footer-box-adress {

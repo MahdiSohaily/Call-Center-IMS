@@ -34,7 +34,7 @@ require_once('./views/Layouts/header.php');
                 <span id="name"></span>
             </li>
             <li class="text-sm">
-                شماره تماس:
+                شماره تماس :
                 <span id="phone"></span>
             </li>
         </ul>
@@ -266,7 +266,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('name').innerHTML = customerInfo.displayName + " " + customerInfo.family ?? '';
         document.getElementById('phone').innerHTML = customerInfo.phone;
         if (customerInfo.address.length > 0) {
-            document.getElementById('userAddress').innerHTML = 'نشانی :‌' + customerInfo.address;
+            document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
         }
     }
 
