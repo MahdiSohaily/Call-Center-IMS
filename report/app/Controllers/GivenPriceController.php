@@ -434,8 +434,6 @@ function exist($conn, $id)
                 WHERE codeid IN ('" . implode("','", $id) . "')";
     }
 
-    echo  $data_sql;
-
     $data_result = mysqli_query($conn, $data_sql);
 
     $incoming = [];
