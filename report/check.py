@@ -14,7 +14,7 @@ def connect_to_database():
         print(f"Error: {err}")
         return None
 
-def compare_and_get_changed_records():
+def compare_and_update_records():
     connection = connect_to_database()
     
     if connection is not None:
@@ -32,10 +32,23 @@ def compare_and_get_changed_records():
             cursor.execute(query)
             changed_records = cursor.fetchall()
 
+            # Update records to their previous values
+            for record in changed_records:
+                update_query = f"""
+                    UPDATE qtybank
+                    SET seller = {record['oldSeller']}
+                    WHERE id = {record['id']}
+                """
+                cursor.execute(update_query)
+
+            # Commit the changes
+            connection.commit()
+
             return changed_records
 
         except mysql.connector.Error as err:
             print(f"Error: {err}")
+            connection.rollback()
 
         finally:
             cursor.close()
@@ -44,10 +57,11 @@ def compare_and_get_changed_records():
     return None
 
 # Example usage
-changed_records = compare_and_get_changed_records()
+changed_records = compare_and_update_records()
 
 if changed_records:
     for record in changed_records:
         print(f"ID: {record['id']}, Qty: {record['qty']}, Invoice Number: {record['invoice_number']}, Old Seller: {record['oldSeller']}, New Seller: {record['newSeller']}")
+    print("Records updated successfully.")
 else:
     print("No changed records found.")

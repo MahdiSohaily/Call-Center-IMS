@@ -285,7 +285,7 @@ thead,
 .tahvilgirande-box,
 .description-box {
     border: 1px dashed #dddddd;
-    padding: 2px 10px 28px 10px;
+    padding: 2px 10px;
     border-radius: 10px;
 }
 
@@ -298,14 +298,14 @@ thead,
     font-size: 13px;
     text-align: center;
     color: #616060;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
     border-bottom: 1px solid #dddddd;
-    line-height: 33px;
+    line-height: 25px;
 }
 
 .tahvilgirande-box-inner div {
     width: 50%;
-    height: 35px;
+    height: 20px;
     color: #7d7c7c;
     font-size: 12px;
 }
@@ -313,7 +313,7 @@ thead,
 .footer-box {
     border-top: 1px solid #dddddd;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .footer-box-adress {
