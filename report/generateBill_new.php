@@ -320,6 +320,12 @@ require_once('./views/Layouts/header.php');
     <!-- A modal to preview the bill to show the user it's requested items -->
     <div id="previewBill" style="display:none; overflow:scroll" class="fixed inset-0 bg-gray-100 justify-center" style="z-index: 10000000000;">
         <div id="bill_body_pdf" class="rtl bill bg-white " style="margin-top: 100px;">
+            <ul class="flex mb-5">
+                <li onclick="changeLayout('yadak')" class="text-sm text-white bg-gray-900 rounded-md mx-1 px-2 cursor-pointer">یدک شاپ</li>
+                <li onclick="changeLayout('insurance')" class="text-sm text-white bg-gray-900 rounded-md mx-1 px-2 cursor-pointer">بیمه</li>
+                <li onclick="changeLayout('partner')" class="text-sm text-white bg-gray-900 rounded-md mx-1 px-2 cursor-pointer">همکار</li>
+                <li onclick="changeLayout('korea')" class="text-sm text-white bg-gray-900 rounded-md mx-1 px-2 cursor-pointer">آتوپارت</li>
+            </ul>
             <div class="bill_header">
                 <div class="bill_info">
                     <div class="nisha-bill-info">
@@ -336,11 +342,11 @@ require_once('./views/Layouts/header.php');
                     </div>
                 </div>
                 <div class="headline">
-                    <h2 style="margin-bottom: 7px;"> پیش فاکتور یدک شاپ</h2>
-                    <h2 style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
+                    <h2 id="factor_heading" style="margin-bottom: 7px;"> پیش فاکتور یدک شاپ</h2>
+                    <h2 id="factor_heading" style="margin-bottom: 7px;">لوازم یدکی هیوندای و کیا</h2>
                 </div>
                 <div class="log_section">
-                    <img class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
+                    <img id="factor_logo" class="logo" src="./public/img/logo.png" alt="logo of yadakshop">
                 </div>
             </div>
             <div class="customer_info">
@@ -425,18 +431,17 @@ require_once('./views/Layouts/header.php');
                         <div>امضا</div>
                     </div>
                 </div>
-                <div class="description-box flex-grow">
+                <div id="factor_description" class="description-box flex-grow">
                     <div class="tahvilgirande-box-header">توضیحات فاکتور</div>
                     <div class="tahvilgirande-box-inner">
                     </div>
                 </div>
             </div>
-
             <div class="footer-box">
-                <p class="footer-box-adress">
+                <p id="factor_address" class="footer-box-adress">
                     تهران ، میدان بهارستان ، خیابان مصطفی خمینی ، خیابان نظامیه ، بن بست ویژه ، پلاک ۴
                 </p>
-                <p class="footer-box-tell">
+                <p id="factor_phone" class="footer-box-tell">
                     <span>
                         ۷۰ ۹۳ ۹۷ ۳۳ - ۰۲۱
                     </span>
@@ -1170,6 +1175,80 @@ require_once('./views/Layouts/header.php');
             event.target.select();
         }
     });
+
+
+    function changeLayout(layout) {
+        const logo_element = document.getElementById('factor_logo')
+        const yadak_logo = './public/img/logo.png';
+        const insurance_logo = './public/img/insurance.png';
+        const partner_logo = './public/img/partner.jpg';
+        const korea_logo = './public/img/korea.jpg';
+
+        switch (layout) {
+            case 'yadak':
+                logo_element.src = yadak_logo;
+                document.getElementById('factor_heading').innerHTML = 'پیش فاکتور یدک شاپ';
+                document.getElementById('factor_description').style.display = 'block';
+                document.getElementById('factor_address').style.display = 'block';
+                document.getElementById('factor_phone').innerHTML = `<span>
+                                                                        ۷۰ ۹۳ ۹۷ ۳۳ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                        ۸۸ ۶۷ ۹۴ ۳۳ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                        ۸۰۹ ۱۹ ۳۶۶ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                        ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
+                                                                    </span>`;
+                break;
+            case 'insurance':
+                logo_element.src = insurance_logo;
+                document.getElementById('factor_heading').innerHTML = 'شرق یدک';
+                document.getElementById('factor_description').style.display = 'none';
+                document.getElementById('factor_address').style.display = 'none';
+                document.getElementById('factor_phone').innerHTML = `<span>
+                                                                        ۷۷۵۴۸۹۴۶ - ۰۲۱
+                                                                    </span>`;
+                break;
+            case 'partner':
+                logo_element.src = partner_logo;
+                document.getElementById('factor_heading').innerHTML = 'فاکتور فروش همکار';
+                document.getElementById('factor_description').style.display = 'block';
+                document.getElementById('factor_address').style.display = 'block';
+                document.getElementById('factor_phone').innerHTML = `<span>
+                ۳۴ ۷۲ ۹۸ ۳۳ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                    ۳۳ ۷۲ ۹۸ ۳۳ - ۰۲۱ 
+                                                                    </span>
+                                                                    <span>
+                                                                    ۳۲ ۷۲ ۹۸ ۳۳ - ۰۲۱
+                                                                    </span>`;
+                break;
+                break;
+            case 'korea':
+                logo_element.src = korea_logo;
+                document.getElementById('factor_heading').innerHTML = 'بازرگانی کره اتوپارت';
+                document.getElementById('factor_description').style.display = 'block';
+                document.getElementById('factor_address').style.display = 'block';
+                document.getElementById('factor_phone').innerHTML = `<span>
+                                                                        ۷۰ ۹۳ ۹۷ ۳۳ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                        ۸۸ ۶۷ ۹۴ ۳۳ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                        ۸۰۹ ۱۹ ۳۶۶ - ۰۲۱
+                                                                    </span>
+                                                                    <span>
+                                                                        ۴۳۲ ۱۹ ۳۶۶ - ۰۲۱
+                                                                    </span>`;
+                break;
+                break;
+        }
+    }
 </script>
 <script src="./public/js/billSearchPart.js?=<?= rand() ?>"></script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
