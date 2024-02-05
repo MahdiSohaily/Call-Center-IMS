@@ -854,7 +854,7 @@ require_once('./views/Layouts/header.php');
         localStorage.setItem('bill_items', JSON.stringify(billItems));
         localStorage.setItem('operation', 'save');
 
-        window.location.href = './displayBill.php';
+        window.location.href = './displayBill_new.php';
     }
 
     function printCompletedBill() {
@@ -874,7 +874,7 @@ require_once('./views/Layouts/header.php');
         localStorage.setItem('bill_items', JSON.stringify(billItems));
         localStorage.setItem('operation', 'print');
 
-        window.location.href = './displayBill.php';
+        window.location.href = './displayBill_new.php';
     }
 
     // Update the 
