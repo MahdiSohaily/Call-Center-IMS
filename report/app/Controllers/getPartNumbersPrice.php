@@ -7,8 +7,6 @@ if (filter_has_var(INPUT_POST, 'codes')) {
     $codes = $_POST['codes'];
     sanitizeData($codes);
     echo json_encode(getPrice($codes));
-} else {
-    echo 'Here';
 }
 
 
@@ -30,7 +28,7 @@ function sanitizeData(&$codes)
     });
 
     // Remove duplicate codes from results array
-    $codes = array_unique($explodedCodes);
+    $codes = ($explodedCodes);
 }
 
 function getPrice($codes)
