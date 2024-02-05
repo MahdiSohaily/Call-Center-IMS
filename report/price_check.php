@@ -2,13 +2,13 @@
 require_once('./views/Layouts/header.php');
 ?>
 <div class="rtl w-5/6 mx-auto py-20 sm:px-6 lg:px-8 bg-white rounded-lg shadow-sm mt-11 d-flex">
-    <div class="grow px-4">
+    <div class="grow px-4 mb-4">
         <!-- Korea section -->
         <div class="col-span-6 sm:col-span-4">
             <label for="code" class="block font-medium text-sm text-gray-700">
                 قیمت کد های ارائه شده
             </label>
-            <textarea onclick="copyOperation(this.value)" id="results_box" readonly rows="10" class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
+            <textarea onclick="copyOperation(this.value)" id="results_box" readonly rows="10" class="border border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3"></textarea>
         </div>
     </div>
     <form id="partNumbers" class="grow px-4" target="_blank" action="giveOrderedPrice.php" method="post">
@@ -17,7 +17,7 @@ require_once('./views/Layouts/header.php');
             <label for="code" class="block font-medium text-sm text-gray-700">
                 کدهای مدنظر
             </label>
-            <textarea onchange="filterCode(this)" rows="10" id="code" name="code" required class="border-1 border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+            <textarea onchange="filterCode(this)" rows="10" id="code" name="code" required class="border border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
         </div>
 
         <div v-if="hasActions" class="flex items-center py-3 text-right sm:rounded-bl-md sm:rounded-br-md">
@@ -51,9 +51,18 @@ require_once('./views/Layouts/header.php');
 
         const filteredCodes = codes.map(function(code) {
             code = code.replace(/\[[^\]]*\]/g, '');
+
             const parts = code.split(/[:,]/, 2);
-            const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
-            return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, ' ').trim();
+
+            // Check if parts[1] contains a forward slash
+            if (parts[1] && parts[1].includes('/')) {
+                // Remove everything after the forward slash
+                parts[1] = parts[1].split('/')[0];
+            }
+
+            const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, '').trim();
+
+            return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, '').trim();
         }).filter(Boolean);
 
         const finalCodes = filteredCodes.filter(function(item) {
