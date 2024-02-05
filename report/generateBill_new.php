@@ -364,8 +364,8 @@ require_once('./views/Layouts/header.php');
                             <th class="text-right w-8">ردیف</th>
                             <th class="text-right">نام قطعه</th>
                             <th class="text-center w-12 border-r border-l-2 border-gray-800"> تعداد</th>
-                            <th class="text-right w-32"> قیمت واحد</th>
-                            <th class="text-right w-32"> قیمت کل (ریال)</th>
+                            <th class="text-right w-28"> قیمت واحد</th>
+                            <th class="text-right w-28"> قیمت کل (ریال)</th>
                         </tr>
                     </thead>
                     <tbody id="bill_body_result">
@@ -381,10 +381,10 @@ require_once('./views/Layouts/header.php');
                             <td class="text-center w-12 border-r border-l-2 border-gray-800">
                                 <span id="quantity_bill" class="w-full"></span>
                             </td>
-                            <td class="text-right w-32">
+                            <td class="text-right w-28">
                                 <span id="totalPrice_bill" class="w-full"></span>
                             </td>
-                            <td class="text-right w-32">
+                            <td class="text-right w-28">
                             </td>
                         </tr>
                         <tr>
@@ -407,10 +407,10 @@ require_once('./views/Layouts/header.php');
                             <td class="text-center w-12 border-l-2 border-gray-800">
 
                             </td>
-                            <td class="text-right w-32">
-                                <span id="totalPrice2" class="w-full"></span>
+                            <td class="text-right w-28">
+                                <span id="totalPrice2" class="w-full font-bold"></span>
                             </td>
-                            <td class="text-right w-32">
+                            <td class="text-right w-28">
                             </td>
                         </tr>
                     </tbody>
