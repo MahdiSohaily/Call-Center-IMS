@@ -176,55 +176,9 @@ require_once('./views/Layouts/header.php');
     const BillInfo = <?= json_encode($BillInfo) ?>;
     const billItems = <?= ($billItems) ?>;
 
-
-    // Check if the code has already run for this unique identifier
-    if (localStorage.getItem('operation') == 'save') {
-        localStorage.setItem('operation', 'saved');
-        var params = new URLSearchParams();
-        params.append('saveInvoice', 'saveInvoice');
-        params.append('customerInfo', JSON.stringify(customerInfo));
-        params.append('BillInfo', JSON.stringify(BillInfo));
-        params.append('billItems', JSON.stringify(billItems));
-
-
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                const data = response.data;
-                if (data) {
-                    BillInfo.billNO = data;
-                    displayBill();
-                    displayCustomer();
-                    displayBillDetails();
-
-                    // Convert the object to a JSON string and store it in local storage
-                    localStorage.setItem('customer_info', JSON.stringify(customerInfo));
-                    localStorage.setItem('bill_info', JSON.stringify(BillInfo));
-                    localStorage.setItem('bill_items', JSON.stringify(billItems));
-
-                    document.getElementById("action_message").style.bottom = "10px";
-                    setTimeout(() => {
-                        document.getElementById("action_message").style.bottom = "-100px";
-                    }, 2000);
-
-                } else {
-                    document.getElementById("action_message").style.bottom = "10px";
-                    document.getElementById("action_message").style.backgroundColor = "red";
-                    document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد شماره تماش مشتری از قبل در سیستم ریزو شده است.";
-                    setTimeout(() => {
-                        document.getElementById("action_message").style.bottom = "-100px";
-                    }, 5000);
-                }
-
-
-
-            }).catch(function(error) {
-                console.log(error);
-            });
-    } else {
-        displayBill();
-        displayCustomer();
-        displayBillDetails();
-    }
+    displayBill();
+    displayCustomer();
+    displayBillDetails();
 
     function displayBill() {
         let counter = 1;
@@ -280,8 +234,8 @@ require_once('./views/Layouts/header.php');
         document.getElementById('description').innerHTML = BillInfo.description;
     }
 
-        // display the bill total amount alphabiticly ------------- START
-        function numberToPersianWords(number) {
+    // display the bill total amount alphabiticly ------------- START
+    function numberToPersianWords(number) {
         const units = [
             '', // ones
             'هزار', // thousands
@@ -357,6 +311,7 @@ require_once('./views/Layouts/header.php');
             return '';
         }
     }
+    // display the bill total amount alphabiticly ------------- END
 
     document.addEventListener('keydown', function(event) {
         if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
