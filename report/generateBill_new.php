@@ -1257,8 +1257,6 @@ require_once('./views/Layouts/header.php');
             }
         });
     <?php endif; ?>
-
-    
 </script>
 <script src="./public/js/billSearchPart.js?=<?= rand() ?>"></script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
