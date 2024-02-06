@@ -478,6 +478,7 @@ require_once('./views/Layouts/header.php');
 
     // Assign the customer info received from the server to the JS Object to work with and display after ward
     const customerInfo = <?= json_encode($customerInfo); ?>;
+    console.log(customerInfo);
     const BillInfo = <?= json_encode($billInfo); ?>;
     BillInfo.totalInWords = numberToPersianWords(<?= (float)$billInfo['total'] ?>)
     const billItems = <?= $billItems ?>;
