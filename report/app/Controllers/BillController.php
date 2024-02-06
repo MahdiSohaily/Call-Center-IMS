@@ -307,6 +307,7 @@ if (isset($_POST['saveInvoice'])) {
         CONN->rollback();
     }
 }
+
 function getCustomerId($customer)
 {
     $sql = "SELECT id FROM callcenter.customer WHERE 
