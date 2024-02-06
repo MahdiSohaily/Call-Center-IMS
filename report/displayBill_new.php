@@ -1,6 +1,7 @@
 <?php
 require_once './config/config.php';
 require_once './database/connect.php';
+require_once './app/Controllers/DisplayBillController.php';
 require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/html2pdf.js"></script>
