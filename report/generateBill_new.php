@@ -478,7 +478,6 @@ require_once('./views/Layouts/header.php');
 
     // Assign the customer info received from the server to the JS Object to work with and display after ward
     const customerInfo = <?= json_encode($customerInfo); ?>;
-    console.log(customerInfo);
     const BillInfo = <?= json_encode($billInfo); ?>;
     BillInfo.totalInWords = numberToPersianWords(<?= (float)$billInfo['total'] ?>)
     const billItems = <?= $billItems ?>;
@@ -845,7 +844,7 @@ require_once('./views/Layouts/header.php');
     function generateBill() {
         BillInfo.date = moment().locale('fa').format('YYYY/M/D');
 
-        if (customerInfo.name === null || BillInfo.billNO === null || billItems.length == 0) {
+        if (customerInfo.phone === null || BillInfo.billNO === null || billItems.length == 0) {
             modal.classList.remove("hidden");
             modal.classList.add("flex");
             message.innerHTML = "لطفا برای  ثبت فاکتور , مشتری مد نظر , شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید";
@@ -891,6 +890,12 @@ require_once('./views/Layouts/header.php');
     function saveIncompleteBill() {
         if (BillInfo.date == 'null')
             BillInfo.date = moment().locale('fa').format('YYYY/M/D');
+        if (customerInfo.phone == '' || customerInfo.phone === null || BillInfo.billNO === null || billItems.length == 0) {
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            message.innerHTML = "لطفا برای  ثبت فاکتور , مشتری مد نظر , شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید";
+            return false
+        }
         var params = new URLSearchParams();
         params.append('saveIncompleteForm', 'saveIncompleteForm');
         params.append('customer_info', JSON.stringify(customerInfo));
