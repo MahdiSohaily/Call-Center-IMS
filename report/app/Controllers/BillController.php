@@ -348,7 +348,6 @@ if (isset($_POST['saveIncompleteForm'])) {
     } catch (Exception $e) {
         // An error occurred, rollback the transaction
         CONN->rollback();
-
         echo "error: " . $e;
     }
 }
@@ -374,7 +373,6 @@ if (isset($_POST['saveCompleteForm'])) {
     } catch (Exception $e) {
         // An error occurred, rollback the transaction
         CONN->rollback();
-
         echo "error: " . $e;
     }
 }
