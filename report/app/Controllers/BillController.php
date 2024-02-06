@@ -334,14 +334,14 @@ if (isset($_POST['saveIncompleteForm'])) {
     $customerPhone = $customerInfo->phone ?? null;
     try {
         CONN->begin_transaction();
-        $customer_id = null;
-        if ($customerInfo->mode == 'update') {
-            $customer_id = $customerInfo->id;
-            updateCustomer($customerInfo);
-        } else {
-            $customer_id = createCustomer($customerInfo);
+        $customer_id = getCustomerId($customerInfo);
+        if ($customerInfo->name != null) {
+            if (!$customer_id) {
+                $customer_id = createCustomer($customerInfo);
+            } else {
+                updateCustomer($customerInfo, $customer_id);
+            }
         }
-
         UpdateIncompleteBill($bill_info, $customer_id);
         updateBillItems($bill_info, $bill_items);
         CONN->commit();
