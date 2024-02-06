@@ -316,7 +316,6 @@ require_once('./views/Layouts/header.php');
         </div>
     </div>
 
-
     <!-- A modal to preview the bill to show the user it's requested items -->
     <div id="previewBill" style="display:none; overflow:scroll" class="fixed inset-0 bg-gray-100 justify-center" style="z-index: 10000000000;">
         <div id="bill_body_pdf" class="rtl bill bg-white " style="margin-top: 100px;">
