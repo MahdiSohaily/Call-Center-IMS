@@ -138,7 +138,7 @@ require_once('./views/Layouts/header.php');
     </div>
     <ul class="action_menu">
         <li style="position: relative;">
-            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">
+            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill_new.php?billNumber=<?= $BillInfo['bill_number'] ?>">
                 <img src="./public/img/logo.png" class="rounded-full" alt="">
             </a>
             <p class="action_tooltip text-sm">فاکتور یدک شاپ</p>

@@ -123,7 +123,7 @@ require_once('./views/Layouts/header.php');
     </div>
     <ul class="action_menu">
         <li style="position: relative;">
-            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">
+            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill_new.php?billNumber=<?= $BillInfo['bill_number'] ?>">
                 <img src="./public/img/logo.png" class="rounded-full" alt="">
             </a>
             <p class="action_tooltip text-sm">فاکتور یدک شاپ</p>
@@ -216,7 +216,6 @@ require_once('./views/Layouts/header.php');
         document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.total) - Number(BillInfo.discount));
         document.getElementById('discount').innerHTML = BillInfo.discount;
         document.getElementById('total_in_word').innerHTML = numberToPersianWords(BillInfo.total);
-        document.getElementById('description').innerHTML = BillInfo.description;
     }
 
     // display the bill total amount alphabetically ------------- START
