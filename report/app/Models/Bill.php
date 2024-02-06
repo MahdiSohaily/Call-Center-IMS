@@ -29,4 +29,17 @@ class Bill
             return false;
         }
     }
+
+    public function getCustomer($customerId)
+    {
+        $sql = "SELECT * FROM callcenter.customer WHERE id = '$customerId' ORDER BY id DESC LIMIT 1";
+
+        $result = CONN->query($sql);
+
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return false;
+        }
+    }
 }

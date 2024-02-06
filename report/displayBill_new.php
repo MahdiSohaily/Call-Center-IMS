@@ -172,7 +172,7 @@ require_once('./views/Layouts/header.php');
 <p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
 <script>
     let bill_number = null;
-    const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
+    const customerInfo = <?= json_encode($customerInfo) ?>;
     const BillInfo = <?= json_encode($BillInfo) ?>;
     const billItems = <?= ($billItems) ?>;
 
@@ -218,7 +218,7 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
-        document.getElementById('name').innerHTML = customerInfo.displayName + " " + customerInfo.family ?? '';
+        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
         document.getElementById('phone').innerHTML = customerInfo.phone;
         document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
     }
