@@ -287,7 +287,7 @@ require_once('./views/Layouts/header.php');
                     </p>
                 </li>
                 <li>
-                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="printCompletedBill()">
+                    <p class="bg-white rounded text-gray-800 px-3 py-1 cursor-pointer" onclick="updateCompleteBill();printCompletedBill()">
                         پرینت
                     </p>
                 </li>
