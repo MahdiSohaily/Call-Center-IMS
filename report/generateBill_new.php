@@ -977,17 +977,17 @@ require_once('./views/Layouts/header.php');
                         customerInfo['car'] = customer.car;
                         customerInfo.mode = "update";
                     } else {
-                        document.getElementById('name').value = '';
-                        customerInfo['displayName'] = customer.name;
-                        document.getElementById('family').value = '';
-                        document.getElementById('address').value = '';
-                        document.getElementById('car').value = '';
-                        customerInfo['id'] = null;
-                        customerInfo['name'] = null;
-                        customerInfo['family'] = null;
-                        customerInfo['address'] = null;
-                        customerInfo['car'] = null;
-                        customerInfo.mode = "create";
+                        // document.getElementById('name').value = '';
+                        // customerInfo['displayName'] = customer.name;
+                        // document.getElementById('family').value = '';
+                        // document.getElementById('address').value = '';
+                        // document.getElementById('car').value = '';
+                        // customerInfo['id'] = null;
+                        // customerInfo['name'] = null;
+                        // customerInfo['family'] = null;
+                        // customerInfo['address'] = null;
+                        // customerInfo['car'] = null;
+                        // customerInfo.mode = "create";
                     }
                 })
                 .catch(function(error) {
