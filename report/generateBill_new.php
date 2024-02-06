@@ -879,13 +879,8 @@ require_once('./views/Layouts/header.php');
             message.innerHTML = "لطفا برای  ثبت فاکتور , مشتری مد نظر , شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید";
             return false
         }
-        // Convert the object to a JSON string and store it in local storage
-        localStorage.setItem('customer_info', JSON.stringify(customerInfo));
-        localStorage.setItem('bill_info', JSON.stringify(BillInfo));
-        localStorage.setItem('bill_items', JSON.stringify(billItems));
-        localStorage.setItem('operation', 'print');
 
-        window.location.href = './displayBill_new.php';
+        window.location.href = './displayBill_new.php?billNumber=' + BillInfo.billNO;
     }
 
     // Update the 
