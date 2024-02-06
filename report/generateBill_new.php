@@ -645,6 +645,9 @@ require_once('./views/Layouts/header.php');
     function updateCustomerInfo(element) {
         const proprty = element.getAttribute("name");
         customerInfo[proprty] = element.value;
+        if (proprty == 'name') {
+            customerInfo.displayName = element.value;
+        }
         displayBill();
     }
 
@@ -860,6 +863,7 @@ require_once('./views/Layouts/header.php');
             .then(function(response) {
                 billNumber = response.data;
                 if (billNumber) {
+                    localStorage.setItem('displayName', customerInfo.displayName);
                     window.location.href = './displayBill_new.php?billNumber=' + billNumber;
                 }
             }).catch(function(error) {
@@ -879,7 +883,7 @@ require_once('./views/Layouts/header.php');
             message.innerHTML = "لطفا برای  ثبت فاکتور , مشتری مد نظر , شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید";
             return false
         }
-
+        localStorage.setItem('displayName', customerInfo.displayName);
         window.location.href = './displayBill_new.php?billNumber=' + BillInfo.billNO;
     }
 

@@ -218,6 +218,11 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
+        const displayName = localStorage.getItem('displayName');
+        if (displayName) {
+            customerInfo.name = displayName;
+            localStorage.setItem('displayName', null);
+        }
         document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
         document.getElementById('phone').innerHTML = customerInfo.phone;
         document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
