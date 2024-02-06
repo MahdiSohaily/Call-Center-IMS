@@ -19,7 +19,7 @@ class Bill
 
     public function getBillItems($billNumber)
     {
-        $sql = "SELECT * FROM callcenter.bill_details WHERE bill_number = '$billNumber' ORDER BY bill_number DESC LIMIT 1";
+        $sql = "SELECT * FROM callcenter.bill_details WHERE bill_id = '$billNumber' ORDER BY id DESC LIMIT 1";
 
         $result = CONN->query($sql);
 

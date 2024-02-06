@@ -173,8 +173,8 @@ require_once('./views/Layouts/header.php');
 <script>
     let bill_number = null;
     const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
-    const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
-    const billItems = JSON.parse(localStorage.getItem('bill_items'));
+    const BillInfo = <?= json_encode($BillInfo) ?>;
+    const billItems = <?= ($billItems) ?>;
 
 
     // Check if the code has already run for this unique identifier
@@ -270,14 +270,92 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayBillDetails() {
-        document.getElementById('billNO').innerHTML = BillInfo.billNO;
-        document.getElementById('date').innerHTML = BillInfo.date.replace(/-/g, "/");
+        document.getElementById('billNO').innerHTML = BillInfo.bill_number;
+        document.getElementById('date').innerHTML = BillInfo.bill_date.replace(/-/g, "/");
         document.getElementById('quantity').innerHTML = BillInfo.quantity;
-        document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.totalPrice);
-        document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
+        document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.total);
+        document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.total) - Number(BillInfo.discount));
         document.getElementById('discount').innerHTML = BillInfo.discount;
-        document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
+        document.getElementById('total_in_word').innerHTML = numberToPersianWords(BillInfo.total);
         document.getElementById('description').innerHTML = BillInfo.description;
+    }
+
+        // display the bill total amount alphabiticly ------------- START
+        function numberToPersianWords(number) {
+        const units = [
+            '', // ones
+            'هزار', // thousands
+            'میلیون', // millions
+            'میلیارد', // billions
+            'تریلیارد', // trillions
+            'پادا', // quadrillions
+            'هکتا', // quintillions
+            'اکتا', // sextillions
+            'نونا', // septillions
+            'دسیلیارد', // decillions
+        ];
+        const numberStr = String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        const chunks = numberStr.split(',');
+
+        let words = [];
+        const size = chunks.length;
+        for (let index in chunks) {
+
+            let word = converter(removeLeadingZeros(chunks[index]));
+            if (word.length > 0) {
+                word += " " + units[size - (Number(index) + 1)];
+                words.push(word);
+            }
+        }
+
+        return words.join(' و ') + ' ریال';
+    }
+
+    function removeLeadingZeros(numberString) {
+        // Use regular expression to match and remove leading zeros
+        const cleanedNumber = numberString.replace(/^0+/, '');
+
+        return cleanedNumber;
+    }
+
+    function converter(number) {
+        const ones = ['صفر', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
+        const teens = ['ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده'];
+        const tens = ["", "", 'بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'];
+
+        if (Number(number > 99)) {
+            const hole = Math.trunc(number / 100);
+            const remainder = number % 100;
+            let delimiters = '';
+
+            if (remainder > 0) {
+                delimiters = ' و ';
+            }
+
+            return ones[hole] + ' صد' + delimiters + converter(remainder);
+
+        } else if (Number(number) > 19) {
+            const hole = Math.trunc(number / 10);
+            const remainder = number % 10;
+
+            let delimiters = '';
+
+            if (remainder > 0) {
+                delimiters = ' و ';
+            }
+
+            return tens[hole] + delimiters + converter(remainder);
+        } else if (Number(number) > 9) {
+            const hole = Math.trunc(number / 10);
+            const remainder = number % 10;
+            return teens[remainder] + ' ';
+
+        } else if (Number(number) > 0) {
+            return ones[number];
+        } else {
+            return '';
+        }
     }
 
     document.addEventListener('keydown', function(event) {

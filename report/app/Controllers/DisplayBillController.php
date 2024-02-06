@@ -3,11 +3,13 @@ require_once './app/Models/Bill.php';
 if (isset($_GET['billNumber'])) {
     $billNumber = $_GET['billNumber'];
     $bill = new Bill();
-    $billData = $bill->getBill($billNumber);
-    if ($billData) {
-        $billItems = $bill->getBillItems($billNumber);
-        $billData['items'] = $billItems;
-        echo json_encode($billData);
+    $BillInfo = $bill->getBill($billNumber);
+    $billItems = [];
+
+
+
+    if ($BillInfo) {
+        $billItems = $bill->getBillItems($BillInfo['id'])['billDetails'];
     } else {
         echo "Bill not found";
     }
