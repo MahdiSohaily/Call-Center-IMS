@@ -138,21 +138,21 @@ require_once('./views/Layouts/header.php');
     </div>
     <ul class="action_menu">
         <li style="position: relative;">
-            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php">
+            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">
                 <img src="./public/img/logo.png" class="rounded-full" alt="">
             </a>
             <p class="action_tooltip text-sm">فاکتور یدک شاپ</p>
         </li>
         <li style="position: relative;">
-            <a class="action_button print bg-green-500 rounded-full flex justify-center items-center text-white text-sm" href="./insuranceBill.php">بیمه</a>
+            <a class="action_button print bg-green-500 rounded-full flex justify-center items-center text-white text-sm" href="./insuranceBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">بیمه</a>
             <p class="action_tooltip">فاکتور بیمه</p>
         </li>
         <li style="position: relative;">
-            <a class="action_button print bg-blue-500 rounded-full flex justify-center items-center text-white text-sm" href="./partnerBill.php">همکار</a>
+            <a class="action_button print bg-blue-500 rounded-full flex justify-center items-center text-white text-sm" href="./partnerBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">همکار</a>
             <p class="action_tooltip">فاکتور همکار</p>
         </li>
         <li style="position: relative;">
-            <a class="action_button print bg-gray-500 rounded-full flex justify-center items-center text-white text-sm" href="./koreaBill.php">کوریا</a>
+            <a class="action_button print bg-gray-500 rounded-full flex justify-center items-center text-white text-sm" href="./koreaBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">کوریا</a>
             <p class="action_tooltip">فاکتور کوریا</p>
         </li>
         <li style="position: relative;">
@@ -234,7 +234,7 @@ require_once('./views/Layouts/header.php');
         document.getElementById('description').innerHTML = BillInfo.description;
     }
 
-    // display the bill total amount alphabiticly ------------- START
+    // display the bill total amount alphabetically ------------- START
     function numberToPersianWords(number) {
         const units = [
             '', // ones
@@ -311,7 +311,7 @@ require_once('./views/Layouts/header.php');
             return '';
         }
     }
-    // display the bill total amount alphabiticly ------------- END
+    // display the bill total amount alphabetically ------------- END
 
     document.addEventListener('keydown', function(event) {
         if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {

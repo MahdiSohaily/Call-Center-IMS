@@ -1,6 +1,7 @@
 <?php
 require_once './config/config.php';
 require_once './database/connect.php';
+require_once './app/Controllers/DisplayBillController.php';
 require_once('./views/Layouts/header.php');
 ?>
 <script src="./public/js/html2pdf.js"></script>
@@ -100,43 +101,43 @@ require_once('./views/Layouts/header.php');
             </tbody>
         </table>
     </div>
- 
+
     <div class="flex gap-5" style="margin-top: 20px;">
         <div class="tahvilgirande-box">
             <div class="tahvilgirande-box-header">مهر فروشنده</div>
-          <br>
-          <br>
-          <br>
+            <br>
+            <br>
+            <br>
         </div>
-    
+
     </div>
 
     <div class="footer-box">
-       
+
         <p class="footer-box-tell">
             <span>
-              ۷۷۵۴۸۹۴۶ - ۰۲۱
+                ۷۷۵۴۸۹۴۶ - ۰۲۱
             </span>
- 
+
         </p>
     </div>
     <ul class="action_menu">
         <li style="position: relative;">
-            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php">
+            <a class="action_button print bg-white rounded-full flex justify-center items-center text-white text-sm" href="./displayBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">
                 <img src="./public/img/logo.png" class="rounded-full" alt="">
             </a>
             <p class="action_tooltip text-sm">فاکتور یدک شاپ</p>
         </li>
         <li style="position: relative;">
-            <a class="action_button print bg-green-500 rounded-full flex justify-center items-center text-white text-sm" href="./insuranceBill.php">بیمه</a>
+            <a class="action_button print bg-green-500 rounded-full flex justify-center items-center text-white text-sm" href="./insuranceBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">بیمه</a>
             <p class="action_tooltip">فاکتور بیمه</p>
         </li>
         <li style="position: relative;">
-            <a class="action_button print bg-blue-500 rounded-full flex justify-center items-center text-white text-sm" href="./partnerBill.php">همکار</a>
+            <a class="action_button print bg-blue-500 rounded-full flex justify-center items-center text-white text-sm" href="./partnerBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">همکار</a>
             <p class="action_tooltip">فاکتور همکار</p>
         </li>
         <li style="position: relative;">
-            <a class="action_button print bg-gray-500 rounded-full flex justify-center items-center text-white text-sm" href="./koreaBill.php">کوریا</a>
+            <a class="action_button print bg-gray-500 rounded-full flex justify-center items-center text-white text-sm" href="./koreaBill.php?billNumber=<?= $BillInfo['bill_number'] ?>">کوریا</a>
             <p class="action_tooltip">فاکتور کوریا</p>
         </li>
         <li style="position: relative;">
@@ -156,59 +157,13 @@ require_once('./views/Layouts/header.php');
 <p id="action_message" style="bottom:-100px; left:50%; transform: translateX(-50%); transition:all 0.5 all;" class="fixed bg-green-800 text-white py-3 px-5 rounded ">فاکتور شما با موفقیت ثبت شد</p>
 <script>
     let bill_number = null;
-    const customerInfo = JSON.parse(localStorage.getItem('customer_info'));
-    const BillInfo = JSON.parse(localStorage.getItem('bill_info'));
-    const billItems = JSON.parse(localStorage.getItem('bill_items'));
+    const customerInfo = <?= json_encode($customerInfo) ?>;
+    const BillInfo = <?= json_encode($BillInfo) ?>;
+    const billItems = <?= ($billItems) ?>;
 
-
-    // Check if the code has already run for this unique identifier
-    if (localStorage.getItem('operation') == 'save') {
-        localStorage.setItem('operation', 'saved');
-        var params = new URLSearchParams();
-        params.append('saveInvoice', 'saveInvoice');
-        params.append('customerInfo', JSON.stringify(customerInfo));
-        params.append('BillInfo', JSON.stringify(BillInfo));
-        params.append('billItems', JSON.stringify(billItems));
-
-
-        axios.post("./app/Controllers/BillController.php", params)
-            .then(function(response) {
-                const data = response.data;
-                if (data) {
-                    BillInfo.billNO = data;
-                    displayBill();
-                    displayCustomer();
-                    displayBillDetails();
-
-                    // Convert the object to a JSON string and store it in local storage
-                    localStorage.setItem('customer_info', JSON.stringify(customerInfo));
-                    localStorage.setItem('bill_info', JSON.stringify(BillInfo));
-                    localStorage.setItem('bill_items', JSON.stringify(billItems));
-
-                    document.getElementById("action_message").style.bottom = "10px";
-                    setTimeout(() => {
-                        document.getElementById("action_message").style.bottom = "-100px";
-                    }, 2000);
-
-                } else {
-                    document.getElementById("action_message").style.bottom = "10px";
-                    document.getElementById("action_message").style.backgroundColor = "red";
-                    document.getElementById("action_message").innerHTML = "فاکتور شما ثبت نشد شماره تماش مشتری از قبل در سیستم ریزو شده است.";
-                    setTimeout(() => {
-                        document.getElementById("action_message").style.bottom = "-100px";
-                    }, 5000);
-                }
-
-
-
-            }).catch(function(error) {
-                console.log(error);
-            });
-    } else {
-        displayBill();
-        displayCustomer();
-        displayBillDetails();
-    }
+    displayBill();
+    displayCustomer();
+    displayBillDetails();
 
     function displayBill() {
         let counter = 1;
@@ -248,23 +203,100 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
-        document.getElementById('name').innerHTML = customerInfo.displayName + " " + customerInfo.family ?? '';
+        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
         document.getElementById('phone').innerHTML = customerInfo.phone;
-        if (customerInfo.address.length > 0) {
-            document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
-        }
+        document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
     }
 
     function displayBillDetails() {
-        document.getElementById('billNO').innerHTML = BillInfo.billNO;
-        document.getElementById('date').innerHTML = BillInfo.date.replace(/-/g, "/");
+        document.getElementById('billNO').innerHTML = BillInfo.bill_number;
+        document.getElementById('date').innerHTML = BillInfo.bill_date.replace(/-/g, "/");
         document.getElementById('quantity').innerHTML = BillInfo.quantity;
-        document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.totalPrice);
-        document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.totalPrice) - Number(BillInfo.discount));
+        document.getElementById('totalPrice').innerHTML = formatAsMoney(BillInfo.total);
+        document.getElementById('totalPrice2').innerHTML = formatAsMoney(Number(BillInfo.total) - Number(BillInfo.discount));
         document.getElementById('discount').innerHTML = BillInfo.discount;
-        document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
+        document.getElementById('total_in_word').innerHTML = numberToPersianWords(BillInfo.total);
         document.getElementById('description').innerHTML = BillInfo.description;
     }
+
+    // display the bill total amount alphabetically ------------- START
+    function numberToPersianWords(number) {
+        const units = [
+            '', // ones
+            'هزار', // thousands
+            'میلیون', // millions
+            'میلیارد', // billions
+            'تریلیارد', // trillions
+            'پادا', // quadrillions
+            'هکتا', // quintillions
+            'اکتا', // sextillions
+            'نونا', // septillions
+            'دسیلیارد', // decillions
+        ];
+        const numberStr = String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+        const chunks = numberStr.split(',');
+
+        let words = [];
+        const size = chunks.length;
+        for (let index in chunks) {
+
+            let word = converter(removeLeadingZeros(chunks[index]));
+            if (word.length > 0) {
+                word += " " + units[size - (Number(index) + 1)];
+                words.push(word);
+            }
+        }
+
+        return words.join(' و ') + ' ریال';
+    }
+
+    function removeLeadingZeros(numberString) {
+        // Use regular expression to match and remove leading zeros
+        const cleanedNumber = numberString.replace(/^0+/, '');
+
+        return cleanedNumber;
+    }
+
+    function converter(number) {
+        const ones = ['صفر', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
+        const teens = ['ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده'];
+        const tens = ["", "", 'بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'];
+
+        if (Number(number > 99)) {
+            const hole = Math.trunc(number / 100);
+            const remainder = number % 100;
+            let delimiters = '';
+
+            if (remainder > 0) {
+                delimiters = ' و ';
+            }
+
+            return ones[hole] + ' صد' + delimiters + converter(remainder);
+
+        } else if (Number(number) > 19) {
+            const hole = Math.trunc(number / 10);
+            const remainder = number % 10;
+
+            let delimiters = '';
+
+            if (remainder > 0) {
+                delimiters = ' و ';
+            }
+
+            return tens[hole] + delimiters + converter(remainder);
+        } else if (Number(number) > 9) {
+            const hole = Math.trunc(number / 10);
+            const remainder = number % 10;
+            return teens[remainder] + ' ';
+
+        } else if (Number(number) > 0) {
+            return ones[number];
+        } else {
+            return '';
+        }
+    }
+    // display the bill total amount alphabetically ------------- END
 
     document.addEventListener('keydown', function(event) {
         if ((event.ctrlKey || event.metaKey) && (event.key === 'p' || event.keyCode === 80)) {
