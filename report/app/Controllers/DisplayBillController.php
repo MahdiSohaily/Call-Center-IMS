@@ -12,6 +12,7 @@ if (isset($_GET['billNumber'])) {
         $billItems = $bill->getBillItems($BillInfo['id'])['billDetails'];
     } else {
         echo "Bill not found";
+        die();
     }
 } else {
     echo "Invalid Request";
