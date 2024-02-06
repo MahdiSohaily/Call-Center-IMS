@@ -1090,8 +1090,6 @@ require_once('./views/Layouts/header.php');
         setTimeout(callback, 0);
     }
 
-    bootstrap(); // Display the form data after retrieving every initial data
-
     document.addEventListener('keydown', handelShortcuts);
     document.addEventListener("keydown", function(event) {
         // Check if the Ctrl key is pressed and the key is 'S'
@@ -1186,7 +1184,6 @@ require_once('./views/Layouts/header.php');
         }
     });
 
-
     function changeLayout(layout) {
         const logo_element = document.getElementById('factor_logo')
         const yadak_logo = './public/img/logo.png';
@@ -1259,6 +1256,8 @@ require_once('./views/Layouts/header.php');
                 break;
         }
     }
+
+    bootstrap(); // Display the form data after retrieving every initial data
 </script>
 <script src="./public/js/billSearchPart.js?=<?= rand() ?>"></script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
