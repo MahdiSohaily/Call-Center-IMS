@@ -1089,6 +1089,7 @@ require_once('./views/Layouts/header.php');
         // Call the callback after the toggle animation is complete
         setTimeout(callback, 0);
     }
+    bootstrap(); // Display the form data after retrieving every initial data
 
     document.addEventListener('keydown', handelShortcuts);
     document.addEventListener("keydown", function(event) {
@@ -1104,20 +1105,6 @@ require_once('./views/Layouts/header.php');
             return false;
         }
     });
-
-    <?php if (!$isCompleteFactor) : ?>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Get all input elements with the class "tab-op" within the table
-            const tableInputFields = document.querySelectorAll('table input.tab-op');
-
-            // If there are "tab-op" inputs within the table
-            if (tableInputFields.length > 0) {
-                // Give focus to the first "tab-op" input
-                tableInputFields[0].focus();
-                tableInputFields[0].select();
-            }
-        });
-    <?php endif; ?>
 
     document.addEventListener("keydown", function(event) {
         // Check if the Tab key is pressed
@@ -1257,7 +1244,21 @@ require_once('./views/Layouts/header.php');
         }
     }
 
-    bootstrap(); // Display the form data after retrieving every initial data
+    <?php if (!$isCompleteFactor) : ?>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all input elements with the class "tab-op" within the table
+            const tableInputFields = document.querySelectorAll('table input.tab-op');
+
+            // If there are "tab-op" inputs within the table
+            if (tableInputFields.length > 0) {
+                // Give focus to the first "tab-op" input
+                tableInputFields[0].focus();
+                tableInputFields[0].select();
+            }
+        });
+    <?php endif; ?>
+
+    
 </script>
 <script src="./public/js/billSearchPart.js?=<?= rand() ?>"></script>
 <script src="./public/js/displayBill.js?v=<?= rand() ?>"></script>
