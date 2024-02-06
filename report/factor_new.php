@@ -398,6 +398,7 @@ require_once './app/Controllers/BillFilterController.php';
                 const form = document.createElement('form');
                 form.className = 'absolute bottom-2 left-1/2';
                 form.method = 'post';
+                form.target
                 form.action = './generateBill_new.php';
 
                 const inputBillId = document.createElement('input');

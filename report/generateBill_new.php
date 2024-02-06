@@ -896,9 +896,14 @@ require_once('./views/Layouts/header.php');
         params.append('bill_info', JSON.stringify(BillInfo));
         params.append('bill_items', JSON.stringify(billItems));
 
+        console.log(customerInfo);
+        console.log(BillInfo);
+        console.log(billItems);
+
         axios.post("./app/Controllers/BillController.php", params)
             .then(function(response) {
                 const data = response.data;
+                console.log(response);
                 const save_message = document.getElementById('save_message');
                 save_message.classList.remove('hidden');
 
