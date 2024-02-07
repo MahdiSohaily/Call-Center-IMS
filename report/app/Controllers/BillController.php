@@ -304,7 +304,6 @@ if (isset($_POST['saveInvoice'])) {
         $bill_number = registerFactorNumber(getFactorNumber(), $name . ' ' . $family);
         makeBillCompleted($BillInfo, $customer_id, $bill_number);
         updateBillItems($BillInfo, $billItems);
-        echo $bill_number;
         CONN->commit();
     } catch (Exception $e) {
         CONN->rollback();
