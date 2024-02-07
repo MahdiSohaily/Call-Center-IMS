@@ -222,8 +222,9 @@ require_once('./views/Layouts/header.php');
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="bg-gray-800 text-white h-10 border-top">
-                            <p id="total_in_word" class="px-3 text-md"></p>
+                        <td colspan="2" class="bg-gray-800 text-white h-10 border-top px-3">
+                            <span class="text-sm mr-x">مبلغ قابل پرداخت: </span>
+                            <span id="total_in_word" class="px-3 text-sm"></span>
                         </td>
                     </tr>
                 </tbody>
@@ -553,7 +554,7 @@ require_once('./views/Layouts/header.php');
         // Display the Bill Information
         document.getElementById('billNO').value = BillInfo.billNO;
         document.getElementById('quantity').value = BillInfo.quantity;
-        document.getElementById('quantity').value = BillInfo.quantity;
+        document.getElementById('discount').value = BillInfo.discount;
         document.getElementById('totalPrice').value = formatAsMoney(BillInfo.totalPrice);
         document.getElementById('total_in_word').innerHTML = BillInfo.totalInWords;
         document.getElementById('description').innerHTML = BillInfo.description;
