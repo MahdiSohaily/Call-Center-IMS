@@ -729,9 +729,10 @@ require_once('./views/Layouts/header.php');
 
     function appendPrefix(prefix) {
         const nameElement = document.getElementById('name');
-
-        nameElement.value = prefix + ' ' + customerInfo.name.trim();
-        customerInfo.displayName = prefix + ' ' + customerInfo.name.trim();
+        if (customerInfo.name) {
+            nameElement.value = prefix + ' ' + customerInfo.name.trim();
+            customerInfo.displayName = prefix + ' ' + customerInfo.name.trim();
+        }
     }
 
     function formatAsMoney(number) {
