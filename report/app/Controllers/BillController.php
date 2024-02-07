@@ -283,7 +283,6 @@ if (isset($_POST['saveInvoice'])) {
     $billItems = json_decode($_POST['billItems']);
     $BillInfo = json_decode($_POST['BillInfo']);
     $customerInfo = json_decode($_POST['customerInfo']);
-    $customerPhone = $customerInfo->phone ?? null;
 
     try {
         CONN->begin_transaction();
@@ -298,7 +297,11 @@ if (isset($_POST['saveInvoice'])) {
             echo 'false';
             die();
         }
-        $bill_number = registerFactorNumber(getFactorNumber(), $customerInfo->name . ' ' . $customerInfo->family);
+
+        $name = $customerInfo->name ?? '';
+        $family = $customerInfo->family ?? '';
+
+        $bill_number = registerFactorNumber(getFactorNumber(), $name . ' ' . $family);
         makeBillCompleted($BillInfo, $customer_id, $bill_number);
         updateBillItems($BillInfo, $billItems);
         echo $bill_number;
@@ -407,24 +410,39 @@ function registerFactorNumber($billNO, $customer)
 function createCustomer($customerInfo)
 {
     // Check if the phone number already exists
-    $existingCustomerQuery = "SELECT id FROM callcenter.customer WHERE phone = '$customerInfo->phone'";
-    $result = CONN->query($existingCustomerQuery);
+    $existingCustomerQuery = "SELECT id FROM callcenter.customer WHERE phone = ?";
+
+    // Prepare the statement
+    $stmt = CONN->prepare($existingCustomerQuery);
+
+    // Bind parameters
+    $stmt->bind_param("s", $customerInfo->phone);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Get the result
+    $result = $stmt->get_result();
 
     // If the phone number exists, return the customer ID
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        return false;
+        return $row['id'];
     } else {
         // If the phone number doesn't exist, create a new customer
-        $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES 
-            ('$customerInfo->name', '$customerInfo->family', '$customerInfo->phone', '$customerInfo->address', '$customerInfo->car')";
-        CONN->query($sql);
+        $sql = "INSERT INTO callcenter.customer (name, family, phone, address, car) VALUES (?, ?, ?, ?, ?)";
 
-        // Retrieve the last inserted ID
-        $lastInsertedId = CONN->insert_id;
+        // Prepare the statement
+        $stmt = CONN->prepare($sql);
+
+        // Bind parameters
+        $stmt->bind_param("sssss", $customerInfo->name, $customerInfo->family, $customerInfo->phone, $customerInfo->address, $customerInfo->car);
+
+        // Execute the query
+        $stmt->execute();
 
         // Return the last inserted ID
-        return $lastInsertedId;
+        return CONN->insert_id;
     }
 }
 
