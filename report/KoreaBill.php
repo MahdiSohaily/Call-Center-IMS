@@ -218,9 +218,24 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
-        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
-        document.getElementById('phone').innerHTML = customerInfo.phone;
-        document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
+        // Retrieve display name from local storage
+        const displayName = localStorage.getItem('displayName');
+
+        // Update customer information if display name is available
+        if (displayName !== null && displayName !== undefined) {
+            // Update customer information if display name is available
+            customerInfo.name = displayName;
+        }
+
+
+        // Display customer information on the webpage
+        const nameElement = document.getElementById('name');
+        const phoneElement = document.getElementById('phone');
+        const addressElement = document.getElementById('userAddress');
+
+        nameElement.innerHTML = customerInfo.name + (customerInfo.family ? " " + customerInfo.family : '');
+        phoneElement.innerHTML = customerInfo.phone;
+        addressElement.innerHTML = 'نشانی: ' + customerInfo.address;
     }
 
     function displayBillDetails() {
