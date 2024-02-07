@@ -549,7 +549,7 @@ require_once('./views/Layouts/header.php');
 
         bill_body.innerHTML = template;
         BillInfo.totalPrice = (totalPrice);
-        BillInfo.totalInWords = numberToPersianWords(totalPrice);
+        BillInfo.totalInWords = numberToPersianWords(totalPrice - BillInfo.discount);
         // Display the Bill Information
         document.getElementById('billNO').value = BillInfo.billNO;
         document.getElementById('quantity').value = BillInfo.quantity;
@@ -841,50 +841,50 @@ require_once('./views/Layouts/header.php');
     // display the bill total amount alphabiticly -------------- END 
 
     function generateBill() {
-    // Set the date using Moment.js with Persian (Farsi) locale
-    BillInfo.date = moment().locale('fa').format('YYYY/M/D');
+        // Set the date using Moment.js with Persian (Farsi) locale
+        BillInfo.date = moment().locale('fa').format('YYYY/M/D');
 
-    // Check if necessary information is provided
-    if (customerInfo.phone === null || BillInfo.billNO === null || billItems.length === 0) {
-        displayModal("لطفا برای ثبت فاکتور، مشتری مد نظر، شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید");
-        return false;
+        // Check if necessary information is provided
+        if (customerInfo.phone === null || BillInfo.billNO === null || billItems.length === 0) {
+            displayModal("لطفا برای ثبت فاکتور، مشتری مد نظر، شماره فاکتور و اقلام مندرج در فاکتور را مشخص نمایید");
+            return false;
+        }
+
+        // Save invoice data
+        saveInvoiceData();
     }
 
-    // Save invoice data
-    saveInvoiceData();
-}
+    function saveInvoiceData() {
+        // Prepare parameters for the HTTP request
+        var params = new URLSearchParams();
+        params.append('saveInvoice', 'saveInvoice');
+        params.append('customerInfo', JSON.stringify(customerInfo));
+        params.append('BillInfo', JSON.stringify(BillInfo));
+        params.append('billItems', JSON.stringify(billItems));
 
-function saveInvoiceData() {
-    // Prepare parameters for the HTTP request
-    var params = new URLSearchParams();
-    params.append('saveInvoice', 'saveInvoice');
-    params.append('customerInfo', JSON.stringify(customerInfo));
-    params.append('BillInfo', JSON.stringify(BillInfo));
-    params.append('billItems', JSON.stringify(billItems));
+        // Send POST request to save invoice data
+        axios.post("./app/Controllers/BillController.php", params)
+            .then(function(response) {
+                // If successful, redirect to display the bill
+                var billNumber = response.data;
+                if (billNumber) {
+                    localStorage.setItem('displayName', customerInfo.displayName);
+                    window.location.href = './displayBill_new.php?billNumber=' + billNumber;
+                }
+            })
+            .catch(function(error) {
+                // Handle errors
+                console.error("Error saving invoice data:", error);
+                displayModal("An error occurred while saving the invoice data. Please try again later.");
+            });
+    }
 
-    // Send POST request to save invoice data
-    axios.post("./app/Controllers/BillController.php", params)
-        .then(function(response) {
-            // If successful, redirect to display the bill
-            var billNumber = response.data;
-            if (billNumber) {
-                localStorage.setItem('displayName', customerInfo.displayName);
-                window.location.href = './displayBill_new.php?billNumber=' + billNumber;
-            }
-        })
-        .catch(function(error) {
-            // Handle errors
-            console.error("Error saving invoice data:", error);
-            displayModal("An error occurred while saving the invoice data. Please try again later.");
-        });
-}
-
-function displayModal(message) {
-    // Display modal with the provided message
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-    message.innerHTML = message;
-}
+    function displayModal(message) {
+        // Display modal with the provided message
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        message.innerHTML = message;
+    }
 
 
     function printCompletedBill() {

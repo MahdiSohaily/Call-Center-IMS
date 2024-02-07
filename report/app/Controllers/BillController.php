@@ -470,13 +470,15 @@ function UpdateBill($billInfo, $customerId)
     try {
         $user_id = $_SESSION['user_id'];
 
+        $total = $billInfo->totalPrice - $billInfo->discount;
+
         $sql = "UPDATE callcenter.bill SET 
             customer_id = '$customerId',
             quantity = '$billInfo->quantity',
             discount = '$billInfo->discount',
             tax = '$billInfo->tax',
             withdraw = '$billInfo->withdraw',
-            total = '$billInfo->totalPrice',
+            total = ' $total',
             bill_date = '$billInfo->date',
             description = '$billInfo->description',
             user_id = '$user_id',
