@@ -119,20 +119,20 @@ require_once('./views/Layouts/header.php');
 
     <div class="footer-box">
         <p class="footer-box-adress">
-             نظامیه ، بن بست ویژه ، پلاک ۴
+            نظامیه ، بن بست ویژه ، پلاک ۴
         </p>
         <p class="footer-box-tell">
-            
-              <span>
+
+            <span>
                 ۳۴ ۷۲ ۹۸ ۳۳ - ۰۲۱
             </span>
             <span>
                 ۳۳ ۷۲ ۹۸ ۳۳ - ۰۲۱
             </span>
-         <span>
+            <span>
                 ۳۲ ۷۲ ۹۸ ۳۳ - ۰۲۱
-         </span>
-            
+            </span>
+
         </p>
     </div>
     <ul class="action_menu">
@@ -217,9 +217,24 @@ require_once('./views/Layouts/header.php');
     }
 
     function displayCustomer() {
-        document.getElementById('name').innerHTML = customerInfo.name + " " + customerInfo.family ?? '';
-        document.getElementById('phone').innerHTML = customerInfo.phone;
-        document.getElementById('userAddress').innerHTML = 'نشانی :‌ ' + customerInfo.address;
+        // Retrieve display name from local storage
+        const displayName = localStorage.getItem('displayName');
+
+        // Update customer information if display name is available
+        if (displayName !== null && displayName !== undefined) {
+            // Update customer information if display name is available
+            customerInfo.name = displayName;
+        }
+
+
+        // Display customer information on the webpage
+        const nameElement = document.getElementById('name');
+        const phoneElement = document.getElementById('phone');
+        const addressElement = document.getElementById('userAddress');
+
+        nameElement.innerHTML = customerInfo.name + (customerInfo.family ? " " + customerInfo.family : '');
+        phoneElement.innerHTML = customerInfo.phone;
+        addressElement.innerHTML = 'نشانی: ' + customerInfo.address;
     }
 
     function displayBillDetails() {
