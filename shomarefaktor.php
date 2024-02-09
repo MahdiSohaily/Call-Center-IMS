@@ -45,7 +45,7 @@ require_once './layout/heroHeader.php';
     <form class="shomare-faktor-form" action="php/shomare-faktor-form-save.php" method="get" autocomplete="off">
         <input minlength="3" id="kharidar" class="kharidar" name="kharidar" type="text" placeholder="نام خریدار را وارد کنید ...">
         <button onclick="copiedEffect(this)" class="save-shomare-faktor-form hover:cursor-pointer" type="submit"> گرفتن شماره فاکتور</button>
-        <a href="./report/factor_new.php" class="btn save-shomare-faktor-form" type="submit">مدیریت فاکتور</a>
+        <a href="../factor/" class="btn save-shomare-faktor-form" type="submit">مدیریت فاکتور</a>
     </form>
     <div class="shomare-faktor-result">
     </div>
