@@ -219,7 +219,9 @@ if (isset($_POST['getFactor'])) :
                             </td>
                             <td class="flex justify-center items-center gap-2">
                                 <?php if ($factor['exists_in_bill']) : ?>
-                                    <img class="w-6 mt-5 cursor-pointer" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
+                                    <a href="../factor/complete.php?factor_number=<?= $factor['bill_id'] ?>">
+                                        <img class="w-6 mr-4 cursor-pointer d-block" title="مشاهده فاکتور" src="./public/img/bill.svg" />
+                                    </a>
                                 <?php endif; ?>
                             </td>
                             <td>

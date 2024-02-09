@@ -132,7 +132,9 @@ require_once './layout/heroHeader.php';
                             </td>
                             <td>
                                 <?php if ($factor['exists_in_bill']) : ?>
-                                    <img class="w-6 mr-4 cursor-pointer d-block" title="مشاهده فاکتور" src="./public/img/bill.svg" onclick="displayBill('<?= $factor['bill_id'] ?>')" />
+                                    <a href="../factor/complete.php?factor_number=<?= $factor['bill_id'] ?>">
+                                        <img class="w-6 mr-4 cursor-pointer d-block" title="مشاهده فاکتور" src="./public/img/bill.svg" />
+                                    </a>
                                 <?php endif; ?>
                             </td>
                             <td>
@@ -261,25 +263,6 @@ require_once './layout/heroHeader.php';
         copyToClipboard(billNumber);
 
         element.innerHTML = '<i class="fas fa-check" style="color:red; margin-inline:5px"></i>' + billNumber;
-    }
-
-    function displayBill(id) {
-        const factor_id = id;
-
-        const form = document.createElement('form');
-        form.className = 'absolute bottom-2 left-1/2';
-        form.method = 'post';
-        form.action = './report/generateBill_new.php';
-
-        const inputBillId = document.createElement('input');
-        inputBillId.type = 'hidden';
-        inputBillId.name = 'BillId';
-        inputBillId.value = factor_id;
-
-        form.appendChild(inputBillId);
-
-        document.body.appendChild(form);
-        form.submit();
     }
 </script>
 
