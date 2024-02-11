@@ -71,11 +71,11 @@ if ($isValidCustomer) :
                                             <!-- Start the code info section -->
                                             <div class="min-w-full bg-white rounded-lg overflow-auto shadow-md mt-2">
                                                 <div class="rtl p-3">
-                                                    <p style="font-size: 0.8rem;" class="text-center bg-gray-600 text-white p-2 my-3 rounded-md font-bold">
+                                                    <p class="text-center text-sm bg-gray-600 text-white p-2 my-3 rounded-md font-bold">
                                                         <?= strtoupper($index); ?>
                                                     </p>
                                                     <?php if ($information) { ?>
-                                                        <div>
+                                                        <div class="p-2 bg-blue-400 rounded-md text-white text-sm font-bold">
                                                             <p class="my-2">قطعه: <?= $information['relationInfo']['name'] ?></p>
                                                             <?php if (array_key_exists("status_name", $information['relationInfo'])) { ?>
                                                                 <p class="my-2">وضعیت: <?= $information['relationInfo']['status_name'] ?></p>
@@ -97,7 +97,7 @@ if ($isValidCustomer) :
                                                         </div>
                                                     <?php } else {
                                                     ?>
-                                                        <p class="text-rose-500">
+                                                        <p class="bg-rose-500 text-white px-5 py-2 rounded-md text-sm font-bold">
                                                             رابطه ای پیدا نشد
                                                         </p>
                                                     <?php } ?>
