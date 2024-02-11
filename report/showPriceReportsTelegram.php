@@ -41,7 +41,7 @@ if ($isValidCustomer) :
                                     } else {
                                         echo '<i class="material-icons text-red-600 rounded-circle">do_not_disturb_on</i>';
                                     }
-                                    echo "<span class='text-white'>" . strtoupper($code) . "</span>"
+                                    echo "<span class='text-white font-bold'>" . strtoupper($code) . "</span>"
                                     ?>
 
                                 </p>
@@ -71,7 +71,7 @@ if ($isValidCustomer) :
                                             <!-- Start the code info section -->
                                             <div class="min-w-full bg-white rounded-lg overflow-auto shadow-md mt-2">
                                                 <div class="rtl p-3">
-                                                    <p style="font-size: 0.8rem;" class="text-left bg-gray-600 text-white p-2 my-3 rounded-md">
+                                                    <p style="font-size: 0.8rem;" class="text-center bg-gray-600 text-white p-2 my-3 rounded-md font-bold">
                                                         <?= strtoupper($index); ?>
                                                     </p>
                                                     <?php if ($information) { ?>
@@ -97,7 +97,7 @@ if ($isValidCustomer) :
                                                         </div>
                                                     <?php } else {
                                                     ?>
-                                                        <p v-else>
+                                                        <p class="text-rose-500">
                                                             رابطه ای پیدا نشد
                                                         </p>
                                                     <?php } ?>
