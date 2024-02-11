@@ -192,7 +192,7 @@ if ($isValidCustomer) {
                                             </div>
                                         <?php } else {
                                         ?>
-                                            <p class="bg-rose-400 text-white px-5 py-2 rounded-md">
+                                            <p class="bg-rose-500 text-white px-5 py-2 rounded-md">
                                                 رابطه ای پیدا نشد
                                             </p>
                                         <?php } ?>
@@ -282,7 +282,7 @@ if ($isValidCustomer) {
                                                                         <?php }
                                                                             }
                                                                         } else {
-                                                                            echo '<p class="text-red-400 text-center bold"> در حال حاضر موجود نیست </p>';
+                                                                            echo '<p class="bg-rose-500 text-white text-center text-sm font-bold rounded-md py-2"> در حال حاضر موجود نیست </p>';
                                                                         } ?>
                                                                     </tr>
                                                                 </thead>
