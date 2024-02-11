@@ -166,7 +166,7 @@ if ($isValidCustomer) {
                                 <!-- Start the code info section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md mt-2">
                                     <div class="rtl p-3">
-                                        <p class="text-sm text-center bg-gray-600 text-white p-2 my-3 rounded-md">
+                                        <p class="text-sm text-center bg-gray-600 text-white p-2 my-3 rounded-md font-bold">
                                             <?= strtoupper($index); ?>
                                         </p>
                                         <?php if ($information) { ?>
