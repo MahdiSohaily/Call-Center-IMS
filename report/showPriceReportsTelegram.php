@@ -187,7 +187,7 @@ if ($isValidCustomer) :
                                                                                     <?php }
                                                                                         }
                                                                                     } else {
-                                                                                        echo '<p class="text-red-400 text-center bold"> در حال حاضر موجود نیست </p>';
+                                                                                        echo '<p class="bg-rose-500 text-white text-center rounded-md py-2 font-bold"> در حال حاضر موجود نیست </p>';
                                                                                     } ?>
                                                                                 </tr>
                                                                             </thead>
