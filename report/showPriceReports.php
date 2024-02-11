@@ -191,7 +191,7 @@ if ($isValidCustomer) {
                                             </div>
                                         <?php } else {
                                         ?>
-                                            <p v-else>
+                                            <p class="text-white bg-rose-500 text-sm font-bold px-5 py-2 rounded-md">
                                                 رابطه ای پیدا نشد
                                             </p>
                                         <?php } ?>
