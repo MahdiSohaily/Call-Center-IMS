@@ -502,10 +502,10 @@ if ($isValidCustomer) {
 
                                                         $finalPriceForm = (applyDollarRate($rawGivenPrice));
                                                 ?>
-                                                        <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
+                                                        <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer text-sm">
                                                             <td>
                                                             </td>
-                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                            <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" scope="col" class="relative text-center text-gray-900 px-2 py-1 <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                 <?= $target['price'] === null ? 'ندارد' :  $finalPriceForm ?>
                                                             </td>
                                                             <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
@@ -528,7 +528,7 @@ if ($isValidCustomer) {
                                                     foreach ($givenPrice as $price) { ?>
                                                         <?php if ($price['price'] !== null && $price['price'] !== '') {
                                                             if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
-                                                                <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer">
+                                                                <tr class="min-w-full mb-1  bg-red-400 hover:cursor-pointer text-sm">
                                                                 <?php } else { ?>
                                                                 <tr class="min-w-full mb-1  bg-indigo-200 hover:cursor-pointer">
                                                                 <?php  } ?>
