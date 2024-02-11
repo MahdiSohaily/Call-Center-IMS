@@ -161,18 +161,16 @@ if ($isValidCustomer) {
                             $givenPrice =  $item['givenPrice'];
                             $estelam = $item['estelam'];
                             $limit_id = $relation['limit_alert'];
-                            // $customer = $customer;
-                            // $completeCode = $completeCode;
                     ?>
                             <div class="grid grid-cols-1 grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-2 lg:p-2 overflow-auto">
                                 <!-- Start the code info section -->
                                 <div class="min-w-full bg-white rounded-lg col-span-2 overflow-auto shadow-md mt-2">
                                     <div class="rtl p-3">
-                                        <p style="font-size: 0.8rem;" class="text-left bg-gray-600 text-white p-2 my-3 rounded-md">
+                                        <p class="text-sm text-center bg-gray-600 text-white p-2 my-3 rounded-md">
                                             <?= strtoupper($index); ?>
                                         </p>
                                         <?php if ($information) { ?>
-                                            <div>
+                                            <div class="bg-blue-400 rounded-md p-3 text-sm text-white">
                                                 <p class="my-2">قطعه: <?= $information['relationInfo']['name'] ?></p>
                                                 <?php if (array_key_exists("status_name", $information['relationInfo'])) { ?>
                                                     <p class="my-2">وضعیت: <?= $information['relationInfo']['status_name'] ?></p>
@@ -194,7 +192,7 @@ if ($isValidCustomer) {
                                             </div>
                                         <?php } else {
                                         ?>
-                                            <p v-else>
+                                            <p class="bg-rose-400 text-white px-5 py-2 rounded-md">
                                                 رابطه ای پیدا نشد
                                             </p>
                                         <?php } ?>
