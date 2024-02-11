@@ -37,17 +37,17 @@ if ($isValidCustomer) :
                                 <p class="flex items-center gap-2 w-36">
                                     <?php
                                     if ($max > 0) {
-                                        echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
+                                        echo '<i class="material-icons text-green-500 rounded-circle">check_circle</i>';
                                     } else {
-                                        echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
+                                        echo '<i class="material-icons text-red-600 rounded-circle">do_not_disturb_on</i>';
                                     }
                                     echo "<span class='text-white'>" . strtoupper($code) . "</span>"
                                     ?>
 
                                 </p>
                                 <div class="px-7">
-                                    <img class='userImage inline' src="http://telegram.om-dienstleistungen.de/img/telegram/<?= $profile ?>" alt="" srcset="">
-                                    <span class="text-white"><?= $fullName ?></span>
+                                    <img class='userImage inline' src="http://telegram.om-dienstleistungen.de/img/telegram/<?= $profile ?>" alt="User profile" srcset="">
+                                    <span class="text-white text-sm"><?= $fullName ?></span>
                                 </div>
                             </div>
                             <div class="accordion-content overflow-hidden bg-grey-lighter" style="<?= $max > 0 ? 'max-height: 1000vh;' : 'max-height: 0vh;' ?>">
