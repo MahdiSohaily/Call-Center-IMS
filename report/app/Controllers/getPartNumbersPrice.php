@@ -11,7 +11,7 @@ if (filter_has_var(INPUT_POST, 'codes')) {
 
 
 function sanitizeData(&$codes)
-{ 
+{
 
     $explodedCodes = explode("\n", $codes);
 
@@ -43,10 +43,10 @@ function getPrice($codes)
         if (!empty($item['id'])) {
             $gen = $item['price'];
             $mobis = $item['mobis'];
-            if (empty($gen)) {
+            if (empty($gen) || $gen == '-') {
                 $avgPrice = round((intval($mobis) * 110) / 243.5);
                 $desiredValue =  round($avgPrice * 1.1);
-            } elseif (empty($mobis)) {
+            } elseif (empty($mobis) || $mobis == '-') {
                 $avgPrice = round((intval($gen) * 110) / 243.5);
                 $desiredValue = round($avgPrice * 1.1);
             } else {
