@@ -11,7 +11,7 @@ if (filter_has_var(INPUT_POST, 'codes')) {
 
 
 function sanitizeData(&$codes)
-{
+{ 
 
     $explodedCodes = explode("\n", $codes);
 
@@ -22,7 +22,7 @@ function sanitizeData(&$codes)
     }, $explodedCodes);
 
     $explodedCodes = array_filter($explodedCodes, function ($code) {
-        if (strlen($code) > 6) {
+        if (strlen($code) > 4) {
             return  $code;
         }
     });

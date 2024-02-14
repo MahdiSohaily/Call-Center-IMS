@@ -100,6 +100,7 @@ require_once('./views/Layouts/header.php');
         const code = document.getElementById('code').value;
         const params = new URLSearchParams();
         params.append('codes', code);
+        results_box.value = '';
         axios
             .post("./app/Controllers/getPartNumbersPrice.php", params)
             .then(function(response) {
