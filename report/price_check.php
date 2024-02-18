@@ -17,7 +17,7 @@ require_once('./views/Layouts/header.php');
             <label for="code" class="block font-medium text-sm text-gray-700">
                 کدهای مدنظر
             </label>
-            <textarea onchange="(this)" rows="10" id="code" name="code" required class="border border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
+            <textarea rows="10" id="code" name="code" required class="border border-gray-300 ltr mt-1 shadow-sm block w-full rounded-md border-gray-300 p-3" placeholder="لطفا کد های مود نظر خود را در خط های مجزا قرار دهید"></textarea>
         </div>
 
         <div v-if="hasActions" class="flex items-center py-3 text-right sm:rounded-bl-md sm:rounded-br-md">
