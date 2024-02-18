@@ -455,7 +455,7 @@ function exist($conn, $id)
     }, $incoming);
 
     $incoming = array_filter($incoming, function ($item) {
-        if ($item !== null) {
+        if ($item !== null  && $item['qty'] > 0) {
             return $item;
         }
     });

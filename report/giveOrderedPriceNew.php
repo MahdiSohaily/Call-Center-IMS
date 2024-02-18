@@ -14,6 +14,7 @@ if ($isValidCustomer) {
         $notification = $finalResult['notification'];
         $rates = $finalResult['rates'];
         $relation_ids = $finalResult['relation_id'];
+        // print_r(json_encode($finalResult));
 ?>
         <div class="flex justify-between">
             <div class="m-2 p-2 w-1/4 bg-gray-600 relative">
