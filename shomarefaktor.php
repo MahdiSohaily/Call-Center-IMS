@@ -264,6 +264,10 @@ require_once './layout/heroHeader.php';
 
         element.innerHTML = '<i class="fas fa-check" style="color:red; margin-inline:5px"></i>' + billNumber;
     }
+
+    function displayBill(billNumber) {
+        window.location.href = "../factor/complete.php?factor_number=" + billNumber;
+    }
 </script>
 
 
