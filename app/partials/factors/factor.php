@@ -327,10 +327,10 @@ if (filter_has_var(INPUT_POST, 'getReport')) {
 
                 if (count($factors)) :
                     foreach ($factors as $factor) :
-                        $profile = '../../../../userimg/' . $factor['user'] . '.jpg';
-                        if (!file_exists($profile)) :
-                            $profile = '../userimg/default.jpg"';
-                        endif;
+                        $profile = '../userimg/default.png';
+                        if (file_exists("../../../../userimg/" . $factor['user'] . ".jpg")) {
+                            $profile = "../userimg/" . $factor['user'] . ".jpg";
+                        }
                 ?>
                         <tr>
                             <td>
