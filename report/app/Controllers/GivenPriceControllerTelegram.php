@@ -39,7 +39,6 @@ function customSort($a, $b)
     return ($sumA > $sumB) ? -1 : 1;
 }
 
-
 function setup_loading($conn, $customer, $completeCode,  $userMessage, $username, $profile, $fullName, $notification = null, $messageDate)
 {
 
@@ -468,7 +467,7 @@ function exist($conn, $id)
     }, $incoming);
 
     $incoming = array_filter($incoming, function ($item) {
-        if ($item !== null) {
+        if ($item !== null  && $item['qty'] > 0) {
             return $item;
         }
     });
