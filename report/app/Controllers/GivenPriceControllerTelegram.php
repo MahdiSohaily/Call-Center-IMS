@@ -452,10 +452,6 @@ function exist($conn, $id)
     };
 
     $brands = [];
-    $amount = [];
-    $stockInfo = [];
-
-    $modifiedResult = [];
 
     $incoming = array_map(function ($item) {
         global $conn;
