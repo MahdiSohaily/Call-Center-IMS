@@ -27,6 +27,7 @@ if (isset($_POST['jsonData'])) {
         }
     }
 }
+
 function customSort($a, $b)
 {
     $sumA = array_sum($a['relation']['sorted']); // Calculate the sum of values in $a
@@ -508,10 +509,6 @@ function sortArrayByNumericPropertyDescending($array, $property)
         return $b->$property - $a->$property;
     });
     return $array;
-}
-
-function getLimitAlertSpecification($conn, $id, $type)
-{
 }
 
 function inventorySpecification($conn, $id, $type)
