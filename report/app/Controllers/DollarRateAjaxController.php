@@ -5,17 +5,17 @@ session_start();
 require_once('../../database/connect.php');
 
 
-if (isset($_POST['deactivate'])) {
-    deactivate($_POST['rate_id']);
+if (isset($_POST['toggleActivation'])) {
+    toggleActivation($_POST['rate_id'], $_POST['type']);
 }
 
 
 
-function deactivate($rate_id)
+function toggleActivation($rate_id, $type)
 {
-    $sql = "UPDATE dollar_rates SET active = 0 WHERE id = ?";
+    $sql = "UPDATE dollar_rates SET status = ? WHERE id = ?";
     $stmt = CONN->prepare($sql);
-    $stmt->execute([$rate_id]);
+    $stmt->execute([$type, $rate_id]);
     echo true;
     exit;
 }
