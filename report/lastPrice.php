@@ -38,7 +38,7 @@ if (isset($_POST['code'])) {
 
                         if (checkDateIfOkay($applyDate, $priceDate) && $price['price'] !== 'موجود نیست') {
                             $rawGivenPrice = $price['price'];
-                            $price['price'] = applyDollarRate($rawGivenPrice);
+                            $price['price'] = applyDollarRate($rawGivenPrice, $applyDate);
                         }
                     }
                     unset($price); // Unset the reference to avoid any unintended modifications outside the loop
