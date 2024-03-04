@@ -29,16 +29,16 @@ require_once './app/Controllers/DollarRateController.php';
             </thead>
             <tbody id="results">
                 <tr class="odd:bg-gray-200">
-                    <td class='p-2 rtl'>
+                    <td class='p-2 rtl text-center'>
                         <?= $dollarRate['id'] ?>
                     </td>
-                    <td class='p-2 rtl'>
+                    <td class='p-2 rtl text-center'>
                         <?= $dollarRate['rate'] ?>
                     </td>
-                    <td class='p-2 rtl '>
+                    <td class='p-2 rtl text-center '>
                         <?= $dollarRate['created_at'] ?>
                     </td>
-                    <td class='p-2 rtl'>
+                    <td class='p-2 rtl text-center'>
                         <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
                             <?php if ($dollarRate['status']) : ?>
                                 <input type="hidden" name="status" value='0'>
@@ -68,23 +68,17 @@ require_once './app/Controllers/DollarRateController.php';
         </div>
         <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
             <div class="flex flex-wrap mb-6">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         درصد دلار
                     </label>
                     <input name="rate" value="<?= $dollarRate['rate'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="درصد دلار" required>
                 </div>
-                <div class="w-full md:w-1/3 px-3">
+                <div class="w-full md:w-1/2 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                          بازه اول
+                        بازه اول
                     </label>
                     <input name="date" value="<?= $dollarRate['created_at'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="date" placeholder="اعمال تا تاریخ" required>
-                </div>
-                <div class="w-full md:w-1/3 px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                          بازه دوم
-                    </label>
-                    <input name="date" value="<?= $dollarRate['second_period'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="date" placeholder="اعمال تا تاریخ" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <button class=" shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
@@ -98,5 +92,29 @@ require_once './app/Controllers/DollarRateController.php';
         </form>
     </div>
 </div>
+<script>
+    function deactivate(id) {
+        const params = new URLSearchParams();
+        params.append("deactivate", "deactivate");
+        params.append("rate_id", rate_id);
+
+        axios
+            .post("./app/Controllers/GivenPriceAjax.php", params)
+            .then(function(response) {
+                if (response.data == true) {
+                    form_success.style.bottom = "10px";
+                    setTimeout(() => {
+                        form_success.style.bottom = "-300px";
+                    }, 2000);
+                } else {
+                    form_error.style.bottom = "10px";
+                    setTimeout(() => {
+                        form_error.style.bottom = "-300px";
+                    }, 2000);
+                }
+            })
+            .catch(function(error) {});
+    }
+</script>
 <?php
 require_once('./views/Layouts/footer.php');
