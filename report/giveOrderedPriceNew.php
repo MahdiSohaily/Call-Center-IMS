@@ -509,7 +509,7 @@ if ($isValidCustomer) {
                                                                 <?= $target['price'] === null ? 'ندارد' :  $finalPriceForm ?>
                                                             </td>
                                                             <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
-                                                                افزایش قیمت <?= $additionRate ?> در صد
+                                                                افزایش قیمت <?= $appliedRate ?> در صد
                                                             </td>
                                                             <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" class="bold <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
                                                                 <?= array_key_exists("partnumber", $target) ? $target['partnumber'] : '' ?>

@@ -1,4 +1,5 @@
 <?php
+$appliedRate = 0;
 $applyDate = null;
 $additionRate = null;
 
@@ -131,6 +132,8 @@ function applyDollarRate($price, $priceDate)
     } elseif ($priceDate < $GLOBALS['applyDateSmall']) {
         $rate = $GLOBALS['additionRateSmall'];
     }
+
+    $GLOBALS['appliedRate'] = $rate;
 
     // Split the input string into words using space as the delimiter
     $words = explode(' ', $price);
