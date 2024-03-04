@@ -28,32 +28,34 @@ require_once './app/Controllers/DollarRateController.php';
                 </tr>
             </thead>
             <tbody id="results">
-                <tr class="odd:bg-gray-200">
-                    <td class='p-2 rtl text-center'>
-                        <?= $dollarRate['id'] ?>
-                    </td>
-                    <td class='p-2 rtl text-center'>
-                        <?= $dollarRate['rate'] ?>
-                    </td>
-                    <td class='p-2 rtl text-center '>
-                        <?= $dollarRate['created_at'] ?>
-                    </td>
-                    <td class='p-2 rtl text-center'>
-                        <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
-                            <?php if ($dollarRate['status']) : ?>
-                                <input type="hidden" name="status" value='0'>
-                                <button class=" shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                                    غیر فعال سازی
-                                </button>
-                            <?php else : ?>
-                                <input type="hidden" name="status" value='1'>
-                                <button class=" shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                                    فعال سازی
-                                </button>
-                            <?php endif; ?>
-                        </form>
-                    </td>
-                </tr>
+                <?php foreach ($dollarRate as $rate) : ?>
+                    <tr class="odd:bg-gray-200">
+                        <td class='p-2 rtl text-center'>
+                            <?= $rate['id'] ?>
+                        </td>
+                        <td class='p-2 rtl text-center'>
+                            <?= $rate['rate'] ?>
+                        </td>
+                        <td class='p-2 rtl text-center '>
+                            <?= $rate['created_at'] ?>
+                        </td>
+                        <td class='p-2 rtl text-center'>
+                            <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
+                                <?php if ($rate['status']) : ?>
+                                    <input type="hidden" name="status" value='0'>
+                                    <button class=" shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                        غیر فعال سازی
+                                    </button>
+                                <?php else : ?>
+                                    <input type="hidden" name="status" value='1'>
+                                    <button class=" shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                        فعال سازی
+                                    </button>
+                                <?php endif; ?>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
