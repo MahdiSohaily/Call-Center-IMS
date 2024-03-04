@@ -27,6 +27,6 @@ function getDollarRateInfo($conn)
 {
     $statement = "SELECT * FROM shop.dollarrate";
     $result = $conn->query($statement);
-    $rate = $result->fetch_assoc();
+    $rate = $result->fetch_all();
     return $rate;
 }

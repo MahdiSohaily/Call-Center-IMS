@@ -99,7 +99,7 @@ require_once './app/Controllers/DollarRateController.php';
         params.append("rate_id", rate_id);
 
         axios
-            .post("./app/Controllers/GivenPriceAjax.php", params)
+            .post("./app/Controllers/DollarRateAjaxController.php", params)
             .then(function(response) {
                 if (response.data == true) {
                     form_success.style.bottom = "10px";
