@@ -40,8 +40,8 @@ require_once './app/Controllers/DollarRateController.php';
                             <?= $rate['created_at'] ?>
                         </td>
                         <td class='p-2 rtl text-center'>
-                            <?php if ($rate['status']) :
-                                $id = $rate['id'] ?>
+                            <?php $id = $rate['id'];
+                            if ($rate['status']) : ?>
                                 <button onclick="toggleActivation(<?= $id ?>, 0)" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                                     غیر فعال سازی
                                 </button>
@@ -133,16 +133,13 @@ require_once './app/Controllers/DollarRateController.php';
         const params = new URLSearchParams();
         params.append("toggleActivation", "toggleActivation");
         params.append("type", type);
-        params.append("rate_id", rate_id);
+        params.append("rate_id", id);
 
         axios
             .post("./app/Controllers/DollarRateAjaxController.php", params)
             .then(function(response) {
                 if (response.data == true) {
-                    // form_success.style.bottom = "10px";
-                    // setTimeout(() => {
-                    //     form_success.style.bottom = "-300px";
-                    // }, 2000);
+                    window.location.reload();
                 }
             })
             .catch(function(error) {});

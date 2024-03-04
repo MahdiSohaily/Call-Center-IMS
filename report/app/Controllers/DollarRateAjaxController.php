@@ -13,7 +13,7 @@ if (isset($_POST['toggleActivation'])) {
 
 function toggleActivation($rate_id, $type)
 {
-    $sql = "UPDATE dollar_rates SET status = ? WHERE id = ?";
+    $sql = "UPDATE dollarrate SET status = ? WHERE id = ?";
     $stmt = CONN->prepare($sql);
     $stmt->execute([$type, $rate_id]);
     echo true;
