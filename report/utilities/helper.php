@@ -6,8 +6,11 @@ $rateSpecification  = getDollarRateInfo();
 print_r(json_encode($rateSpecification));
 
 if ($rateSpecification) {
-    $applyDate = $rateSpecification['created_at'];
-    $additionRate = $rateSpecification['rate'];
+    $applyDate = $rateSpecification[0]['created_at'];
+    $additionRate = $rateSpecification[0]['rate'];
+
+    $applyDateSmall = $rateSpecification[1]['created_at'];
+    $additionRateSmall = $rateSpecification[1]['rate'];
 }
 
 function getDollarRateInfo()
