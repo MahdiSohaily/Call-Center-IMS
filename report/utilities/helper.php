@@ -173,9 +173,13 @@ function applyDollarRate($price, $priceDate)
 
 function checkDateIfOkay($applyDate, $priceDate)
 {
-    // Extract only the date part from the datetime strings
-    $applyDate = date('Y-m-d', strtotime($applyDate));
     $priceDate = date('Y-m-d', strtotime($priceDate));
 
-    return $priceDate <= $applyDate;
+    if ($priceDate >= $GLOBALS['applyDate'] && $priceDate <= $GLOBALS['applyDateSmall']) {
+        return true;
+    } elseif ($priceDate < $GLOBALS['applyDateSmall']) {
+        return true;
+    }
+
+    return false;
 }
