@@ -40,12 +40,13 @@ require_once './app/Controllers/DollarRateController.php';
                             <?= $rate['created_at'] ?>
                         </td>
                         <td class='p-2 rtl text-center'>
-                            <?php if ($rate['status']) : ?>
-                                <button class=" shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                            <?php if ($rate['status']) :
+                                $id = $rate['id'] ?>
+                                <button onclick="toggleActivation('<?= $id ?>', 0)" class=" shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                                     غیر فعال سازی
                                 </button>
                             <?php else : ?>
-                                <button class=" shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                <button onclick="toggleActivation('<?= $id ?>', 1)" class=" shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                                     فعال سازی
                                 </button>
                             <?php endif; ?>
