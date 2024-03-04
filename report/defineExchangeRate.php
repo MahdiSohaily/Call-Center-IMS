@@ -103,7 +103,9 @@ require_once './app/Controllers/DollarRateController.php';
             </h2>
         </div>
         <div class="flex flex-wrap mb-6">
+
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <input type="hidden" name="id" id="edit_id">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="edit_rate">
                     درصد دلار
                 </label>
@@ -116,7 +118,7 @@ require_once './app/Controllers/DollarRateController.php';
                 <input id="edit_date" name="date" value="" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" placeholder="اعمال تا تاریخ" required>
             </div>
             <div class="w-full md:w-1/2 px-3">
-                <button class=" shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                <button onclick="completeEdit()" class=" shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
                     ویرایش
                 </button>
             </div>
@@ -148,6 +150,20 @@ require_once './app/Controllers/DollarRateController.php';
     function editItem(id) {
         editBlock.classList.remove('hidden');
         insertBlock.classList.add('hidden');
+
+        const params = new URLSearchParams();
+        params.append("getItem", "getItem");
+        params.append("rate_id", id);
+
+        axios
+            .post("./app/Controllers/DollarRateAjaxController.php", params)
+            .then(function(response) {
+                $item = response.data;
+                
+                document.getElementById('edit_rate').value = $item.rate;
+                document.getElementById('edit_date').value = $item.created_at;
+            })
+            .catch(function(error) {});
     }
 </script>
 <?php
