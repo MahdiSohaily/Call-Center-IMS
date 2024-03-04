@@ -40,19 +40,15 @@ require_once './app/Controllers/DollarRateController.php';
                             <?= $rate['created_at'] ?>
                         </td>
                         <td class='p-2 rtl text-center'>
-                            <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
-                                <?php if ($rate['status']) : ?>
-                                    <input type="hidden" name="status" value='0'>
-                                    <button class=" shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                                        غیر فعال سازی
-                                    </button>
-                                <?php else : ?>
-                                    <input type="hidden" name="status" value='1'>
-                                    <button class=" shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                                        فعال سازی
-                                    </button>
-                                <?php endif; ?>
-                            </form>
+                            <?php if ($rate['status']) : ?>
+                                <button class=" shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                    غیر فعال سازی
+                                </button>
+                            <?php else : ?>
+                                <button class=" shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                    فعال سازی
+                                </button>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -95,9 +91,10 @@ require_once './app/Controllers/DollarRateController.php';
     </div>
 </div>
 <script>
-    function deactivate(id) {
+    function toggleActivation(id, type) {
         const params = new URLSearchParams();
         params.append("deactivate", "deactivate");
+        params.append("type", type);
         params.append("rate_id", rate_id);
 
         axios
