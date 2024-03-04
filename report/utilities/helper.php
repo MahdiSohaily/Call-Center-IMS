@@ -1,6 +1,10 @@
 <?php
 $applyDate = null;
 $additionRate = null;
+
+$applyDateSmall = null;
+$additionRateSmall = null;
+
 $rateSpecification  = getDollarRateInfo();
 
 if ($rateSpecification) {
