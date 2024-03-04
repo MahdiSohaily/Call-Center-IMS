@@ -3,8 +3,6 @@ $applyDate = null;
 $additionRate = null;
 $rateSpecification  = getDollarRateInfo();
 
-print_r(json_encode($rateSpecification));
-
 if ($rateSpecification) {
     $applyDate = $rateSpecification[0]['created_at'];
     $additionRate = $rateSpecification[0]['rate'];
@@ -15,7 +13,7 @@ if ($rateSpecification) {
 
 function getDollarRateInfo()
 {
-    $statement = "SELECT * FROM shop.dollarrate WHERE status = 1 ORDER BY created_at DESC LIMIT 2";
+    $statement = "SELECT rate, created_at FROM shop.dollarrate WHERE status = 1 ORDER BY created_at DESC LIMIT 2";
     $result = CONN->query($statement);
     $rate = [];
 
