@@ -159,7 +159,31 @@ require_once './app/Controllers/DollarRateController.php';
             .post("./app/Controllers/DollarRateAjaxController.php", params)
             .then(function(response) {
                 $item = response.data;
-                
+
+                document.getElementById('edit_id').value = $item.id;
+                document.getElementById('edit_rate').value = $item.rate;
+                document.getElementById('edit_date').value = $item.created_at;
+            })
+            .catch(function(error) {});
+    }
+
+    function completeEdit() {
+        const id = document.getElementById('edit_id').value;
+        const rate = document.getElementById('edit_rate').value;
+        const date = document.getElementById('edit_date').value;
+
+        const params = new URLSearchParams();
+        params.append("updateItem", "updateItem");
+        params.append("id", id);
+        params.append("rate", rate);
+        params.append("date", date);
+
+        axios
+            .post("./app/Controllers/DollarRateAjaxController.php", params)
+            .then(function(response) {
+                $item = response.data;
+
+                document.getElementById('edit_id').value = $item.id;
                 document.getElementById('edit_rate').value = $item.rate;
                 document.getElementById('edit_date').value = $item.created_at;
             })
