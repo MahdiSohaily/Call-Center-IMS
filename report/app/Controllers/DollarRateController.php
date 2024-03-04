@@ -12,9 +12,7 @@ if (isset($_POST['rate'])) {
         $rate = $_POST['rate'];
         $data = $_POST['date'];
 
-
-        echo insertNewRate($rate, $data);
-        
+        insertNewRate($rate, $data);
     } catch (\Throwable $th) {
         echo $th;
     }
