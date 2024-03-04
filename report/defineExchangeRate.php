@@ -68,51 +68,23 @@ require_once './app/Controllers/DollarRateController.php';
         </div>
         <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
             <div class="flex flex-wrap mb-6">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                         درصد دلار
                     </label>
                     <input name="rate" value="<?= $dollarRate['rate'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="درصد دلار" required>
                 </div>
-                <div class="w-full md:w-1/2 px-3">
+                <div class="w-full md:w-1/3 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                        اعمال تا تاریخ
+                          بازه اول
                     </label>
                     <input name="date" value="<?= $dollarRate['created_at'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="date" placeholder="اعمال تا تاریخ" required>
                 </div>
-                <div class="w-full md:w-1/2 px-3">
-                    <button class=" shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                        ویرایش
-                    </button>
-                    <?php if ($status) : ?>
-                        <p class="text-green-600 ">ویرایش موفقانه صورت گرفت.</p>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="my-5  bg-white rounded-lg shadow-md w-1/2 mx-auto p-5">
-    <div class="rtl">
-        <div class="rtl flex items-center justify-between mb-4">
-            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2">
-                تعریف درصد تغییر قیمت دلار
-                <i class="material-icons font-semibold text-indigo-400">create</i>
-            </h2>
-        </div>
-        <form class="w-full" action=<?= htmlspecialchars($_SERVER['PHP_SELF']) ?> method="post">
-            <div class="flex flex-wrap mb-6">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                        درصد دلار
-                    </label>
-                    <input name="rate" value="<?= $dollarRate['rate'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="درصد دلار" required>
-                </div>
-                <div class="w-full md:w-1/2 px-3">
+                <div class="w-full md:w-1/3 px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                        اعمال تا تاریخ
+                          بازه دوم
                     </label>
-                    <input name="date" value="<?= $dollarRate['created_at'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="date" placeholder="اعمال تا تاریخ" required>
+                    <input name="date" value="<?= $dollarRate['second_period'] ?>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="date" placeholder="اعمال تا تاریخ" required>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
                     <button class=" shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
