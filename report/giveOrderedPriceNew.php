@@ -1,4 +1,4 @@
-﻿<?php 
+﻿<?php
 require_once('./views/Layouts/header.php');
 require_once './database/connect.php';
 require_once './utilities/helper.php';
@@ -56,7 +56,7 @@ if ($isValidCustomer) {
 
                                             if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                 $rawGivenPrice = $target['price'];
-                                                $finalPrice = applyDollarRate($rawGivenPrice);
+                                                $finalPrice = applyDollarRate($rawGivenPrice, $priceDate);
                                             endif; //
 
                                             echo $finalPrice !== 'موجود نیست' ? "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . $finalPrice . "</p>" : "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
@@ -500,7 +500,7 @@ if ($isValidCustomer) {
                                                     if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                         $rawGivenPrice = $target['price'];
 
-                                                        $finalPriceForm = (applyDollarRate($rawGivenPrice));
+                                                        $finalPriceForm = (applyDollarRate($rawGivenPrice, $priceDate));
                                                 ?>
                                                         <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer text-sm">
                                                             <td>

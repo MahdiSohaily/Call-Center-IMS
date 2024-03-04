@@ -121,8 +121,17 @@ function convertToPersian($number)
     return $persianNumber;
 }
 
-function applyDollarRate($price)
+function applyDollarRate($price, $priceDate)
 {
+    $priceDate = date('Y-m-d', strtotime($priceDate));
+
+    $rate = 0;
+    if ($priceDate >= $GLOBALS['applyDate'] && $priceDate <= $GLOBALS['applyDateSmall']) {
+        $rate = $GLOBALS['additionRate'];
+    } elseif ($priceDate < $GLOBALS['applyDateSmall']) {
+        $rate = $GLOBALS['additionRateSmall'];
+    }
+
     // Split the input string into words using space as the delimiter
     $words = explode(' ', $price);
 
@@ -139,7 +148,7 @@ function applyDollarRate($price)
 
             if (ctype_digit($number)) {
                 // Increase the matched number by 2%
-                $modifiedNumber = $number + (($number * $GLOBALS['additionRate']) / 100);
+                $modifiedNumber = $number + (($number * $rate) / 100);
 
                 if ($modifiedNumber >= 10) {
                     // Round the number to the nearest multiple of 10
