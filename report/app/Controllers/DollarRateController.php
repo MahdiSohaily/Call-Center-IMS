@@ -13,9 +13,8 @@ if (isset($_POST['rate'])) {
         $data = $_POST['date'];
 
 
-        $sql = "UPDATE shop.dollarrate SET rate = '$rate', created_at = '$data' WHERE id = 1";
-        $conn->query($sql);
-        $status = true;
+        echo insertNewRate($rate, $data);
+        
     } catch (\Throwable $th) {
         echo $th;
     }
@@ -23,6 +22,7 @@ if (isset($_POST['rate'])) {
 
 $dollarRate  = getDollarRateInfo($conn);
 $status = null;
+
 function getDollarRateInfo($conn)
 {
     $statement = "SELECT * FROM shop.dollarrate";
@@ -35,3 +35,9 @@ function getDollarRateInfo($conn)
     return $rate;
 }
 
+function insertNewRate($rate, $date)
+{
+    $sql = "INSERT INTO shop.dollarrate (rate, created_at) VALUES ('$rate', '$date')";
+    $result = CONN->query($sql);
+    return $result !== false; // Returns true if insertion was successful, false otherwise
+}
