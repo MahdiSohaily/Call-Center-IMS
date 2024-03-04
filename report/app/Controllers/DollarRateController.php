@@ -23,7 +23,7 @@ $status = null;
 
 function getDollarRateInfo($conn)
 {
-    $statement = "SELECT * FROM shop.dollarrate";
+    $statement = "SELECT * FROM shop.dollarrate ORDER BY created_at DESC LIMIT 2";
     $result = $conn->query($statement);
 
     $rate = [];
