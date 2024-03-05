@@ -298,7 +298,7 @@ if ($isValidCustomer) :
                                                                 if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                                     $rawGivenPrice = $target['price'];
 
-                                                                    $finalPriceForm = applyDollarRate($rawGivenPrice);
+                                                                    $finalPriceForm = applyDollarRate($rawGivenPrice, $priceDate);
                                                             ?>
                                                                     <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
                                                                         <td>
