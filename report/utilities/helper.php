@@ -125,7 +125,9 @@ function convertToPersian($number)
 function applyDollarRate($price, $priceDate)
 {
     $priceDate = date('Y-m-d', strtotime($priceDate));
-
+    echo "Price Date: $priceDate <br/>";
+    echo "Apply Date: {$GLOBALS['applyDate']} <br/>";
+    echo "Apply Date Small: {$GLOBALS['applyDateSmall']} <br/>";
     $rate = 0;
 
     if ($priceDate <= $GLOBALS['applyDate'] && $priceDate >= $GLOBALS['applyDateSmall']) {
@@ -133,9 +135,9 @@ function applyDollarRate($price, $priceDate)
     } elseif ($priceDate < $GLOBALS['applyDateSmall']) {
         $rate = $GLOBALS['additionRateSmall'];
     }
-    
-    $GLOBALS['appliedRate'] = $rate;
 
+    $GLOBALS['appliedRate'] = $rate;
+    echo "Rate: $rate";
     // Split the input string into words using space as the delimiter
     $words = explode(' ', $price);
 
