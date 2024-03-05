@@ -283,6 +283,7 @@ if ($isValidCustomer) :
                                                     <table class=" min-w-full text-sm font-light">
                                                         <thead>
                                                             <tr class="min-w-full bg-green-600">
+                                                                <td class="text-white bold text-center py-2 px-2 "></td>
                                                                 <td class="text-white bold text-center py-2 px-2 w-28">قیمت</td>
                                                                 <td class="text-white bold text-center py-2 px-2 rtl">مشتری</td>
                                                                 <td class="text-white bold text-center py-2 px-2 rtl">کد فنی</td>
@@ -300,7 +301,8 @@ if ($isValidCustomer) :
                                                                     $finalPriceForm = applyDollarRate($rawGivenPrice, $priceDate);
                                                             ?>
                                                                     <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
-                                                                        
+                                                                        <td>
+                                                                        </td>
                                                                         <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?php echo $partNumber ?>" scope="col" class="relative text-center text-gray-800 px-2 py-1 <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
                                                                             <?php echo $target['price'] === null ? 'ندارد' :  $finalPriceForm ?>
                                                                         </td>
@@ -333,7 +335,9 @@ if ($isValidCustomer) :
                                                                             <?php
                                                                         }
                                                                         if (array_key_exists("id", $price)) : ?>
-                                                                               
+                                                                                <td onclick="deleteGivenPrice(this)" data-code="<?= $code ?>" data-part="<?= $partNumber ?>" data-del='<?= $price['id'] ?>' scope="col" class="text-center text-gray-800 px-2 py-1 <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : '' ?>">
+                                                                                    <i id="deleteGivenPrice" class="material-icons" title="حذف قیمت">close</i>
+                                                                                </td>
                                                                             <?php else : ?>
                                                                                 <td></td>
                                                                             <?php endif; ?>
@@ -362,7 +366,7 @@ if ($isValidCustomer) :
                                                                             </tr>
                                                                             <?php if (array_key_exists("ordered", $price) || $price['customerID'] == 1) { ?>
                                                                                 <tr class="min-w-full mb-1 border-b-2 bg-red-500">
-                                                                                    
+                                                                                    <td></td>
                                                                                     <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
                                                                                         <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
                                                                                             <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
@@ -403,7 +407,7 @@ if ($isValidCustomer) :
                                                                                 </tr>
                                                                             <?php } elseif (array_key_exists("ordered", $price) || $price['customerID'] == 2) { ?>
                                                                                 <tr class="min-w-full mb-1 bg-slate-400 hover:cursor-pointer">
-                                                                                    
+                                                                                    <td></td>
                                                                                     <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
                                                                                         <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
                                                                                             <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
@@ -445,7 +449,7 @@ if ($isValidCustomer) :
                                                                             <?php  } else {
                                                                             ?>
                                                                                 <tr class="min-w-full mb-1  bg-indigo-300 hover:cursor-pointer">
-                                                                                    
+                                                                                    <td></td>
                                                                                     <td class="<?php array_key_exists("ordered", $price) ? 'text-white' : '' ?> text-gray-800 px-2 tiny-text" colspan="4" scope="col">
                                                                                         <div class="rtl flex items-center w-full <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">
                                                                                             <i class="px-1 material-icons tiny-text <?= array_key_exists("ordered", $price) || $price['customerID'] == 1 ? 'text-white' : 'text-gray-800' ?>">access_time</i>
