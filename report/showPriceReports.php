@@ -56,7 +56,7 @@ if ($isValidCustomer) {
 
                                             if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                 $rawGivenPrice = $target['price'];
-                                                $finalPrice = applyDollarRate($rawGivenPrice);
+                                                $finalPrice = applyDollarRate($rawGivenPrice, $priceDate);
                                             endif; //
 
                                             echo $finalPrice !== 'موجود نیست' ? "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "'>" . $finalPrice . "</p>" : "<p data-relation='" . $relation_id . "' id='" . $code . '-append' . "' class ='text-yellow-400'>نیاز به بررسی</p>";
@@ -394,7 +394,7 @@ if ($isValidCustomer) {
                                                     if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                         $rawGivenPrice = $target['price'];
 
-                                                        $finalPriceForm = applyDollarRate($rawGivenPrice);
+                                                        $finalPriceForm = applyDollarRate($rawGivenPrice, $priceDate);
                                                 ?>
                                                         <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
                                                             <td>
@@ -403,7 +403,7 @@ if ($isValidCustomer) {
                                                                 <?= $target['price'] === null ? 'ندارد' :  $finalPriceForm ?>
                                                             </td>
                                                             <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
-                                                                افزایش قیمت <?= $additionRate ?> در صد
+                                                                افزایش قیمت <?= $appliedRate ?> در صد
                                                             </td>
                                                             <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?= $code ?>" data-price="<?= $finalPriceForm ?>" data-part="<?= $partNumber ?>" class="bold <?= array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
                                                                 <?= array_key_exists("partnumber", $target) ? $target['partnumber'] : '' ?>
