@@ -30,6 +30,7 @@ if (isset($_POST['delete_price'])) {
             $rawGivenPrice = $target['price'];
 
             $finalPrice = applyDollarRate($rawGivenPrice, $priceDate);
+
 ?>
             <tr class="min-w-full mb-1  bg-cyan-400 hover:cursor-pointer">
                 <td>
@@ -38,7 +39,7 @@ if (isset($_POST['delete_price'])) {
                     <?php echo $target['price'] === null ? 'ندارد' :  $finalPrice ?>
                 </td>
                 <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" scope="col" class="text-center text-gray-800 px-2 py-1 rtl <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?>">
-                    افزایش قیمت <?= $additionRate ?> در صد
+                    افزایش قیمت <?= $appliedRate ?> در صد
                 </td>
                 <td onclick="setPrice(this)" data-target="<?= $relation_id ?>" data-code="<?php echo $code ?>" data-price="<?= $finalPrice ?>" data-part="<?php echo $partNumber ?>" class="bold <?php echo array_key_exists("ordered", $target) || $target['customerID'] == 1 ? 'text-white' : '' ?> ">
                     <?php echo array_key_exists("partnumber", $target) ? $target['partnumber'] : '' ?>
