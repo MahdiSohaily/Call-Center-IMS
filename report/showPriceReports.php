@@ -136,11 +136,11 @@ if ($isValidCustomer) {
                     <p class="flex items-center gap-2">
                         <?= "<span class='text-white'>{$code}</span>";
                         if (in_array($code, $not_exist)) {
-                            echo '<i class="material-icons text-neutral-400 bg-white rounded-circle">block</i>';
+                            echo '<i class="material-icons text-neutral-400 bg-white rounded-full">block</i>';
                         } else if ($max > 0) {
-                            echo '<i class="material-icons text-green-500 bg-white rounded-circle">check_circle</i>';
+                            echo '<i class="material-icons text-green-500 bg-white rounded-full">check_circle</i>';
                         } else {
-                            echo '<i class="material-icons text-red-600 bg-white rounded-circle">do_not_disturb_on</i>';
+                            echo '<i class="material-icons text-red-600 bg-white rounded-full">do_not_disturb_on</i>';
                         } ?>
 
                     </p>
