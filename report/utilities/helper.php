@@ -126,18 +126,14 @@ function applyDollarRate($price, $priceDate)
 {
     $priceDate = date('Y-m-d', strtotime($priceDate));
 
-    // Output values for debugging
-    echo "Price Date: $priceDate <br/>";
-    echo "Apply Date: {$GLOBALS['applyDate']} <br/>";
-    echo "Apply Date Small: {$GLOBALS['applyDateSmall']} <br/>";
-
     $rate = 0;
+
     if ($priceDate <= $GLOBALS['applyDate'] && $priceDate >= $GLOBALS['applyDateSmall']) {
         $rate = $GLOBALS['additionRate'];
     } elseif ($priceDate < $GLOBALS['applyDateSmall']) {
         $rate = $GLOBALS['additionRateSmall'];
     }
-    echo "Rate: $rate";
+    
     $GLOBALS['appliedRate'] = $rate;
 
     // Split the input string into words using space as the delimiter
