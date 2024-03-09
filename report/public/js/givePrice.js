@@ -490,72 +490,68 @@ elementsWithDataRelation.forEach((element) => {
 function filterCode(element) {
   const message = element.value;
   if (!message) {
-      return '';
+    return "";
   }
 
   const codes = message.split("\n");
 
-  const filteredCodes = codes.map(function(code) {
-      code = code.replace(/\[[^\]]*\]/g, '');
+  const filteredCodes = codes
+    .map(function (code) {
+      code = code.replace(/\[[^\]]*\]/g, "");
 
       const parts = code.split(/[:,]/, 2);
 
       // Check if parts[1] contains a forward slash
-      if (parts[1] && parts[1].includes('/')) {
-          // Remove everything after the forward slash
-          parts[1] = parts[1].split('/')[0];
+      if (parts[1] && parts[1].includes("/")) {
+        // Remove everything after the forward slash
+        parts[1] = parts[1].split("/")[0];
       }
 
-      const rightSide = (parts[1] || '').replace(/[^a-zA-Z0-9 ]/g, '').trim();
+      const rightSide = (parts[1] || "").replace(/[^a-zA-Z0-9 ]/g, "").trim();
 
-      return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, '').trim();
-  }).filter(Boolean);
+      return rightSide ? rightSide : code.replace(/[^a-zA-Z0-9 ]/g, "").trim();
+    })
+    .filter(Boolean);
 
-  const finalCodes = filteredCodes.filter(function(item) {
-      const data = item.split(" ");
-      if (data[0].length > 4) {
-          return item;
+  const finalCodes = filteredCodes.filter(function (item) {
+    const data = item.split(" ");
+    if (data[0].length > 4) {
+      return item;
+    }
+  });
+
+  const mappedFinalCodes = finalCodes.map(function (item) {
+    const parts = item.split(" ");
+    if (parts.length >= 2) {
+      const partOne = parts[0];
+      const partTwo = parts[1];
+      if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
+        return partOne + partTwo;
       }
+    }
+    return parts[0];
   });
 
-  const mappedFinalCodes = finalCodes.map(function(item) {
-      const parts = item.split(' ');
-      if (parts.length >= 2) {
-          const partOne = parts[0];
-          const partTwo = parts[1];
-          if (!/[a-zA-Z]{4,}/i.test(partOne) && !/[a-zA-Z]{4,}/i.test(partTwo)) {
-              return partOne + partTwo;
-          }
-      }
-      return parts[0];
+  const nonConsecutiveCodes = mappedFinalCodes.filter(function (item) {
+    const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
+    return !consecutiveChars;
   });
 
-  const nonConsecutiveCodes = mappedFinalCodes.filter(function(item) {
-      const consecutiveChars = /[a-zA-Z]{4,}/i.test(item);
-      return !consecutiveChars;
-  });
-
-  element.value = nonConsecutiveCodes.map(function(item) {
-      return item.split(' ')[0];
-  }).join("\n") + "\n";
+  element.value =
+    nonConsecutiveCodes
+      .map(function (item) {
+        return item.split(" ")[0];
+      })
+      .join("\n") + "\n";
 }
 
-
-
 function addSelectedGood(partNumber) {
-  const good = document.getElementById(partNumber + "-good").value;
-  const customer_id = document.getElementById("customer_id").value;
-  const notification_id = document.getElementById("notification_id").value;
-
   const params = new URLSearchParams();
-  params.append("addSelectedGood", "addSelectedGood");
+  params.append("selectedGoodForMessage", "selectedGoodForMessage");
   params.append("partNumber", partNumber);
-  params.append("customer_id", customer_id);
-  params.append("notification_id", notification_id);
-  params.append("good", good);
 
   axios
-    .post("./app/Controllers/GivenPriceAjax.php", params)
+    .post("./app/Controllers/SelectedGoodForMessage.php", params)
     .then(function (response) {
       if (response.data) {
         form_success.style.bottom = "10px";

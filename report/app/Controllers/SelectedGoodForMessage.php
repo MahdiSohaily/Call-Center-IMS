@@ -8,29 +8,26 @@ require_once('../../utilities/helper.php');
 if (isset($_POST['selectedGoodForMessage'])) {
     $partNumber  = $_POST['partNumber'];
 
-    $goodID = getGoodID($partNumber, $connection);
-    addSelectedGoodForMessage($goodID, $partNumber);
+    $goodID = getGoodID($partNumber);
+    echo addSelectedGoodForMessage($goodID, $partNumber);
 }
 
-function getGoodID($partNumber, $connection)
+function getGoodID($partNumber)
 {
     // Prepare the SQL statement
-    $sql = "SELECT id FROM shop.goods WHERE part_number = ? LIMIT 1";
+    $sql = "SELECT id FROM yadakshop1402.nisha WHERE partnumber = ? LIMIT 1";
 
     // Prepare the statement
-    $statement = $connection->prepare($sql);
+    $statement = CONN->prepare($sql);
 
     // Bind parameters and execute the statement
     $statement->bind_param("s", $partNumber);
     $statement->execute();
 
-    // Store result
     $result = $statement->get_result();
 
-    // Fetch the row
     $row = $result->fetch_assoc();
 
-    // Return the value of 'id' column or null if not found
     return $row ? $row['id'] : null;
 }
 
@@ -39,8 +36,11 @@ function getGoodID($partNumber, $connection)
 
 function addSelectedGoodForMessage($goodID, $partNumber)
 {
+    if (checkIfAlreadyExist($partNumber)) {
+        return false;
+    }
     // Prepare the SQL statement
-    $sql = "INSERT INTO shop.goods_for_sell (good_id, partNumber) VALUES (?, ?)";
+    $sql = "INSERT INTO telegram.goods_for_sell (good_id, partNumber) VALUES (?, ?)";
 
     // Prepare the statement
     $statement = CONN->prepare($sql);
@@ -51,4 +51,23 @@ function addSelectedGoodForMessage($goodID, $partNumber)
 
     // Return true if the execution was successful, false otherwise
     return $result ? true : false;
+}
+
+function checkIfAlreadyExist($partNumber)
+{
+    // Prepare the SQL statement
+    $sql = "SELECT * FROM telegram.goods_for_sell WHERE partNumber = ?";
+
+    // Prepare the statement
+    $statement = CONN->prepare($sql);
+
+    // Bind parameters and execute the statement
+    $statement->bind_param("s", $partNumber);
+    $statement->execute();
+
+    // Store result
+    $result = $statement->get_result();
+
+    // Check if any rows were returned
+    return $result->num_rows > 0;
 }
