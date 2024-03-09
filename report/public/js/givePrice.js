@@ -545,7 +545,8 @@ function filterCode(element) {
       .join("\n") + "\n";
 }
 
-function addSelectedGood(partNumber) {
+function addSelectedGood(partNumber, element) {
+  element.style.display = "none";
   const params = new URLSearchParams();
   params.append("selectedGoodForMessage", "selectedGoodForMessage");
   params.append("partNumber", partNumber);

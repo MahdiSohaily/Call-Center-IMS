@@ -240,7 +240,7 @@ if ($isValidCustomer) {
                                                                         <img src="./public/img/singleItem.svg" class="w-5 h-auto" alt="">
                                                                     </a>
                                                                     <?php if ($not_registered) { ?>
-                                                                        <a title="افزودن به لیست پیام خودکار" onclick="addSelectedGood('<?= $goods[$index]['partnumber'] ?>')">
+                                                                        <a title="افزودن به لیست پیام خودکار" onclick="addSelectedGood('<?= $goods[$index]['partnumber'] ?>', this)">
                                                                             <img src="./public/img/add_good.svg" class="w-5 h-auto" alt="">
                                                                         </a>
                                                                     <?php } ?>
