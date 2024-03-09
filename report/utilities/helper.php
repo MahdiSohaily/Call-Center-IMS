@@ -182,3 +182,22 @@ function checkDateIfOkay($applyDate, $priceDate)
 
     return false;
 }
+
+function is_registered($partNumber, $connection)
+{
+    // Prepare the SQL statement
+    $sql = "SELECT * FROM telegram.goods_for_sell WHERE partNumber = ?";
+    
+    // Prepare the statement
+    $statement = $connection->prepare($sql);
+    
+    // Bind parameters and execute the statement
+    $statement->bind_param("s", $partNumber);
+    $statement->execute();
+    
+    // Store result
+    $result = $statement->get_result();
+    
+    // Check if any rows were returned
+    return $result->num_rows > 0;
+}

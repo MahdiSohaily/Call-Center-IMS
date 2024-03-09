@@ -539,3 +539,35 @@ function filterCode(element) {
       return item.split(' ')[0];
   }).join("\n") + "\n";
 }
+
+
+
+function addSelectedGood(partNumber) {
+  const good = document.getElementById(partNumber + "-good").value;
+  const customer_id = document.getElementById("customer_id").value;
+  const notification_id = document.getElementById("notification_id").value;
+
+  const params = new URLSearchParams();
+  params.append("addSelectedGood", "addSelectedGood");
+  params.append("partNumber", partNumber);
+  params.append("customer_id", customer_id);
+  params.append("notification_id", notification_id);
+  params.append("good", good);
+
+  axios
+    .post("./app/Controllers/GivenPriceAjax.php", params)
+    .then(function (response) {
+      if (response.data) {
+        form_success.style.bottom = "10px";
+        setTimeout(() => {
+          form_success.style.bottom = "-300px";
+        }, 2000);
+      } else {
+        form_error.style.bottom = "10px";
+        setTimeout(() => {
+          form_error.style.bottom = "-300px";
+        }, 2000);
+      }
+    })
+    .catch(function (error) {});
+}

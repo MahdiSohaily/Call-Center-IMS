@@ -225,7 +225,9 @@ if ($isValidCustomer) {
                                                         <td class="relative px-1 hover:cursor-pointer" data-part="<?= $goods[$index]['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
                                                             <div class="relative">
                                                                 <p class="text-center bold bg-gray-600 text-white px-2 py-3">
-                                                                    <?= strtoupper($goods[$index]['partnumber']); ?>
+                                                                    <?php
+                                                                    $not_registered = !is_registered($goods[$index]['partnumber'], $conn);
+                                                                    echo strtoupper($goods[$index]['partnumber']); ?>
                                                                 </p>
                                                                 <div class="custom-tooltip" id="<?= $goods[$index]['partnumber'] . '-google' ?>">
                                                                     <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?= $goods[$index]['partnumber'] ?>'>
@@ -237,6 +239,11 @@ if ($isValidCustomer) {
                                                                     <a title="بررسی تک آیتم" target='_blank' href='../../1402/singleItemReport.php?code=<?= $goods[$index]['partnumber'] ?>'>
                                                                         <img src="./public/img/singleItem.svg" class="w-5 h-auto" alt="">
                                                                     </a>
+                                                                    <?php if ($not_registered) { ?>
+                                                                        <a title="افزودن به لیست پیام خودکار" onclick="addSelectedGood('<?= $goods[$index]['partnumber'] ?>')">
+                                                                            <img src="./public/img/add_good.svg" class="w-5 h-auto" alt="">
+                                                                        </a>
+                                                                    <?php } ?>
                                                                 </div>
                                                             </div>
                                                         </td>
