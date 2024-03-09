@@ -28,11 +28,10 @@ $(document).ready(function () {
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
 
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
-    modal.style.display = "none";
-    window.location.reload();
-  };
+  // span.addEventListener("click", function () {
+  //   modal.style.display = "none";
+  //   window.location.reload();
+  // });
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
@@ -49,6 +48,7 @@ $(document).ready(function () {
     $(".manual-add-customer a").attr("href", "main.php?phone=" + x);
   });
 });
+
 function updateBill(element) {
   $(".modal").css("display", "block");
   const id = element.getAttribute("id");

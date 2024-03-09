@@ -112,7 +112,7 @@
          <div class="bg-gray-200">
              <h2 class="title text-lg bg-white"> کد های مد نظر برای جستجو
              </h2>
-             <form method="post" target="_blank" class="" action="./report/showPriceReports.php">
+             <form method="post" target="_blank" class="" action="./report/giveOrderedPriceNew.php">
                  <?php if (isset($id)) { ?>
                      <input type="text" name="givenPrice" value="givenPrice" id="form" hidden>
                      <input type="text" id="givenUser" name="user" value="<?php echo  $_SESSION["id"] ?>" hidden>
