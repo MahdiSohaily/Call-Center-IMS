@@ -431,6 +431,12 @@ $_SESSION["user_id"] = $_SESSION["id"];
                         تلگرام
                     </a>
                 </li>
+                <li class="my-2">
+                    <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../../telegram/index.php">
+                        <i class="fas fa-history"></i>
+                        پیام خودکار
+                    </a>
+                </li>
             </ul>
 
             <div class="my-2 flex flex-wrap items-top p-2">

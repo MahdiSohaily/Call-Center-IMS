@@ -453,6 +453,11 @@ require_once './php/jdf.php';
                                 تلگرام
                             </a>
                         </li>
+                        <li class="my-2">
+                            <a class="px-4 py-2 bg-violet-600 ml-2 rounded-md text-white text-xs" target="_blank" href="../../telegram/index.php">
+                                پیام خودکار
+                            </a>
+                        </li>
                     </ul>
 
                     <div class=" flex flex-wrap items-top p-2 my-3">
