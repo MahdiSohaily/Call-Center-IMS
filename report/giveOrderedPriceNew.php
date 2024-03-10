@@ -506,7 +506,6 @@ if ($isValidCustomer) {
                                                     $priceDate = $target['created_at'];
                                                     if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') :
                                                         $rawGivenPrice = $target['price'];
-                                                        echo $rawGivenPrice;
 
                                                         $finalPriceForm = (applyDollarRate($rawGivenPrice, $priceDate));
                                                 ?>

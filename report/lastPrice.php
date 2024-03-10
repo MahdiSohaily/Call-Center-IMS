@@ -36,7 +36,7 @@ if (isset($_POST['code'])) {
                     foreach ($item['givenPrice'] as &$price) {
                         $priceDate = $price['created_at'];
 
-                        if (checkDateIfOkay($applyDate, $priceDate) && $price['price'] !== 'موجود نیست') {
+                        if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') {
                             $rawGivenPrice = $price['price'];
                             $price['price'] = applyDollarRate($rawGivenPrice, $applyDate);
                         }
