@@ -554,6 +554,7 @@ function addSelectedGood(partNumber, element) {
   axios
     .post("./app/Controllers/SelectedGoodForMessage.php", params)
     .then(function (response) {
+      console.log(response);
       if (response.data) {
         form_success.style.bottom = "10px";
         setTimeout(() => {
