@@ -54,7 +54,10 @@ function addSelectedGoodForMessage($goodID, $partNumber)
         $relatedItems = getInRelationItems($nishaId);
         if ($relatedItems) {
             foreach ($relatedItems as $item) {
-                var_dump($item);
+                if (checkIfAlreadyExist($item['partnumber'])) {
+                    continue; //
+                }
+
                 $sql = "INSERT INTO telegram.goods_for_sell (good_id, partNumber) VALUES (?, ?)";
                 $stmt = CONN->prepare($sql);
                 $stmt->bind_param('ss', $item['id'], $item['partnumber']);
