@@ -568,3 +568,22 @@ function addSelectedGood(partNumber, element) {
     })
     .catch(function (error) {});
 }
+
+function deleteGood(partNumber, element) {
+  element.style.display = "none";
+  var params = new URLSearchParams();
+  params.append("deleteGood", "deleteGood");
+  params.append("partNumber", partNumber);
+
+  axios
+    .post("./app/Controllers/SelectedGoodForMessage.php", params)
+    .then(function (response) {
+      const data = response.data;
+      if (data == "true") {
+        window.location.reload();
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}

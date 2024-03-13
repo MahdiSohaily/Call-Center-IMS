@@ -31,9 +31,6 @@ function getGoodID($partNumber)
     return $row ? $row['id'] : null;
 }
 
-
-
-
 function addSelectedGoodForMessage($goodID, $partNumber)
 {
     if (checkIfAlreadyExist($partNumber)) {
@@ -70,4 +67,26 @@ function checkIfAlreadyExist($partNumber)
 
     // Check if any rows were returned
     return $result->num_rows > 0;
+}
+
+
+if (isset($_POST['deleteGood'])) {
+    $partNumber  = $_POST['partNumber'];
+    echo deleteGood($partNumber);
+}
+
+function deleteGood($partNumber)
+{
+    // Prepare the SQL statement
+    $sql = "DELETE FROM telegram.goods_for_sell WHERE partNumber = ?";
+
+    // Prepare the statement
+    $statement = CONN->prepare($sql);
+
+    // Bind parameters and execute the statement
+    $statement->bind_param("s", $partNumber);
+    $result = $statement->execute();
+
+    // Return true if the execution was successful, false otherwise
+    return $result ? true : false;
 }

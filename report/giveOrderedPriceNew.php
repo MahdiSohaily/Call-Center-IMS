@@ -224,11 +224,19 @@ if ($isValidCustomer) {
                                                     <tr>
                                                         <td class="relative px-1 hover:cursor-pointer" data-part="<?= $goods[$index]['partnumber'] ?>" onmouseleave="hideToolTip(this)" onmouseover="showToolTip(this)">
                                                             <div class="relative">
-                                                                <p class="text-center bold bg-gray-600 text-white px-2 py-3">
-                                                                    <?php
-                                                                    $not_registered = !is_registered($goods[$index]['partnumber'], $conn);
-                                                                    echo strtoupper($goods[$index]['partnumber']); ?>
-                                                                </p>
+                                                                <?php
+                                                                $not_registered = !is_registered($goods[$index]['partnumber'], $conn);
+                                                                if ($not_registered) { ?>
+                                                                    <p class="text-center bold bg-gray-600 text-red-500 px-2 py-3">
+                                                                        <?php
+                                                                        echo strtoupper($goods[$index]['partnumber']); ?>
+                                                                    </p>
+                                                                <?php } else { ?>
+                                                                    <p class="text-center bold bg-gray-600 text-green-500 px-2 py-3">
+                                                                        <?php
+                                                                        echo strtoupper($goods[$index]['partnumber']); ?>
+                                                                    </p>
+                                                                <?php } ?>
                                                                 <div class="custom-tooltip" id="<?= $goods[$index]['partnumber'] . '-google' ?>">
                                                                     <a target='_blank' href='https://www.google.com/search?tbm=isch&q=<?= $goods[$index]['partnumber'] ?>'>
                                                                         <img class="w-5 h-auto" src="./public/img/google.png" alt="google">
@@ -242,6 +250,10 @@ if ($isValidCustomer) {
                                                                     <?php if ($not_registered) { ?>
                                                                         <a title="افزودن به لیست پیام خودکار" onclick="addSelectedGood('<?= $goods[$index]['partnumber'] ?>', this)">
                                                                             <img src="./public/img/add_good.svg" class="w-5 h-auto" alt="">
+                                                                        </a>
+                                                                    <?php } else { ?>
+                                                                        <a title="حذف از لیست پیام خودکار" onclick="deleteGood('<?= $goods[$index]['partnumber'] ?>', this)">
+                                                                            <img src="./public/img/deleteBill.svg" class="w-5 h-auto" alt="">
                                                                         </a>
                                                                     <?php } ?>
                                                                 </div>
