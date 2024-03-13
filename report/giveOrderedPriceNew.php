@@ -227,7 +227,7 @@ if ($isValidCustomer) {
                                                                 <?php
                                                                 $not_registered = !is_registered($goods[$index]['partnumber'], $conn);
                                                                 if ($not_registered) { ?>
-                                                                    <p class="text-center bold bg-gray-600 text-red-500 px-2 py-3">
+                                                                    <p class="text-center bold bg-gray-600 text-white px-2 py-3">
                                                                         <?php
                                                                         echo strtoupper($goods[$index]['partnumber']); ?>
                                                                     </p>
