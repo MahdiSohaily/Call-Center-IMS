@@ -579,8 +579,16 @@ function deleteGood(partNumber, element) {
     .post("./app/Controllers/SelectedGoodForMessage.php", params)
     .then(function (response) {
       const data = response.data;
-      if (data == "true") {
-        window.location.reload();
+      if (response.data) {
+        form_success.style.bottom = "10px";
+        setTimeout(() => {
+          form_success.style.bottom = "-300px";
+        }, 2000);
+      } else {
+        form_error.style.bottom = "10px";
+        setTimeout(() => {
+          form_error.style.bottom = "-300px";
+        }, 2000);
       }
     })
     .catch(function (error) {
