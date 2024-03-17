@@ -226,6 +226,7 @@ if ($isValidCustomer) {
                                                             <div class="relative">
                                                                 <?php
                                                                 $not_registered = !is_registered($goods[$index]['partnumber'], $conn);
+                                                                $user = $_SESSION['username'];
                                                                 if ($not_registered) { ?>
                                                                     <p class="text-center bold bg-gray-600 text-white px-2 py-3">
                                                                         <?php
@@ -247,15 +248,18 @@ if ($isValidCustomer) {
                                                                     <a title="بررسی تک آیتم" target='_blank' href='../../1402/singleItemReport.php?code=<?= $goods[$index]['partnumber'] ?>'>
                                                                         <img src="./public/img/singleItem.svg" class="w-5 h-auto" alt="">
                                                                     </a>
-                                                                    <?php if ($not_registered) { ?>
-                                                                        <a title="افزودن به لیست پیام خودکار" onclick="addSelectedGood('<?= $goods[$index]['partnumber'] ?>', this)">
-                                                                            <img src="./public/img/add_good.svg" class="w-5 h-auto" alt="">
-                                                                        </a>
-                                                                    <?php } else { ?>
-                                                                        <a title="حذف از لیست پیام خودکار" onclick="deleteGood('<?= $goods[$index]['partnumber'] ?>', this)">
-                                                                            <img src="./public/img/deleteBill.svg" class="w-5 h-auto" alt="">
-                                                                        </a>
-                                                                    <?php } ?>
+                                                                    <?php
+                                                                    if ($user == 'niyayesh' || $user == 'mahdi') {
+                                                                        if ($not_registered) { ?>
+                                                                            <a title="افزودن به لیست پیام خودکار" onclick="addSelectedGood('<?= $goods[$index]['partnumber'] ?>', this)">
+                                                                                <img src="./public/img/add_good.svg" class="w-5 h-auto" alt="">
+                                                                            </a>
+                                                                        <?php } else { ?>
+                                                                            <a title="حذف از لیست پیام خودکار" onclick="deleteGood('<?= $goods[$index]['partnumber'] ?>', this)">
+                                                                                <img src="./public/img/deleteBill.svg" class="w-5 h-auto" alt="">
+                                                                            </a>
+                                                                    <?php }
+                                                                    } ?>
                                                                 </div>
                                                             </div>
                                                         </td>
