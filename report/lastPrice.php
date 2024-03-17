@@ -16,9 +16,9 @@ header("Access-Control-Allow-Credentials: true");
 // Set content type to JSON
 header("Content-Type: application/json"); // Allow requests from any origin
 
-if (isset($_POST['code'])) {
+if (isset($_GET['code'])) {
     //remove all the special characters from the user input
-    $code = htmlspecialchars($_POST['code']);
+    $code = htmlspecialchars($_GET['code']);
 
     $completeCode = $code;
     $finalResult = (setup_loading($completeCode));
@@ -36,9 +36,9 @@ if (isset($_POST['code'])) {
                     foreach ($item['givenPrice'] as &$price) {
                         $priceDate = $price['created_at'];
 
-                        if (checkDateIfOkay($applyDate, $priceDate) && $target['price'] !== 'موجود نیست') {
+                        if (checkDateIfOkay($applyDate, $priceDate) && $price['price'] !== 'موجود نیست') {
                             $rawGivenPrice = $price['price'];
-                            $price['price'] = applyDollarRate($rawGivenPrice, $applyDate);
+                            $price['price'] = applyDollarRate($rawGivenPrice, $priceDate);
                         }
                     }
                     unset($price); // Unset the reference to avoid any unintended modifications outside the loop
