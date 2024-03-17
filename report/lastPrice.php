@@ -16,9 +16,9 @@ header("Access-Control-Allow-Credentials: true");
 // Set content type to JSON
 header("Content-Type: application/json"); // Allow requests from any origin
 
-if (isset($_GET['code'])) {
+if (isset($_POST['code'])) {
     //remove all the special characters from the user input
-    $code = htmlspecialchars($_GET['code']);
+    $code = htmlspecialchars($_POST['code']);
 
     $completeCode = $code;
     $finalResult = (setup_loading($completeCode));
