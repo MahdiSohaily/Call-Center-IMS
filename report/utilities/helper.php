@@ -133,7 +133,7 @@ function applyDollarRate($price, $priceDate)
         $rate = $GLOBALS['additionRateSmall'];
     }
 
-    $priceDate = $rate;
+    $GLOBALS['appliedRate'] = $rate;
     // Split the input string into words using space as the delimiter
     $words = explode(' ', $price);
 
